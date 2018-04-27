@@ -1,0 +1,67 @@
+# Google Assistant
+project_id: !secret ga_project
+client_id: !secret ga_client
+access_token: !secret ga_access
+agent_user_id: !secret agent
+api_key: !secret api-ga
+exposed_domains:
+  - switch
+  - light
+  - scene
+entity_config:
+  light.yeelight_white_34ce00882e27:
+    expose: false
+  light.yeelight_white_34ce00887db6:
+    expose: false
+  light.office_light_group:
+    expose: false
+  light.lounge:
+    room: lounge room
+  light.dining:
+    room: dining room
+  light.office:
+    room: office
+  light.spots:
+    room: office
+  scene.bedtime:
+    room: bedroom
+  scene.dining_daylight:
+    room: dining room
+  scene.dining_normal:
+    room: dining room
+  scene.dining_warm:
+    room: dining room
+  scene.lounge_100:
+    room: lounge room
+  scene.lounge_daylight:
+    room: lounge room
+  scene.lounge_movie:
+    room: lounge room
+  scene.lounge_normal:
+    room: lounge room
+  scene.lounge_warm:
+    room: lounge room
+  scene.office_all:
+    room: office
+  scene.office_daylight:
+    room: office
+  scene.office_main:
+    room: office
+  scene.office_warm:
+    room: office
+  scene.spots_daylight:
+    room: office
+  scene.spots_normal:
+    room: office
+  scene.spots_warm:
+    room: office
+  switch.coffee_maker:
+    room: kitchen
+  switch.usenet:
+    room: computer
+  switch.toothbrush:
+    room: bathroom
+  switch.home_assistant:
+    room: computer
+  switch.wemo_switch:
+    expose: false

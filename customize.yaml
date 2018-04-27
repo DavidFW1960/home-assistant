@@ -1,0 +1,142 @@
+switch.toothbrush:
+  icon: mdi:power-socket
+switch.home_assistant:
+  icon: mdi:power-socket
+switch.coffee_maker:
+  icon: mdi:coffee
+switch.usenet:
+  icon: mdi:kodi
+switch.wemo_switch:
+  icon: mdi:power-socket
+sensor.cpu_temperature:
+  icon: mdi:thermometer
+sensor.speedtest_download_filtered:
+  icon: mdi:speedometer
+sensor.speedtest_upload_filtered:
+  icon: mdi:speedometer
+sensor.busmonitor1:
+  icon: mdi:bus
+sensor.busmonitor2:
+  icon: mdi:bus
+sensor.karionggosford:
+  hidden: true
+sensor.gosfordkariong:
+  hidden: true
+sensor.trainmonitor1:
+  icon: mdi:train
+sensor.trainmonitor2:
+  icon: mdi:train
+sensor.gosfordcentral:
+  hidden: true
+sensor.centralgosford:
+  hidden: true
+media_player.roku_5x46aj056306:
+  friendly_name: Telstra TV
+media_player.foxtel_7587:
+  friendly_name: Foxtel Now Box
+light.yeelight_white_34ce00882e27:
+  friendly_name: Fan Light
+light.yeelight_white_34ce00887db6:
+  friendly_name: Meals Area Light
+sensor.dark_sky_cloud_coverage:
+  friendly_name: Cloud Coverage Today
+sensor.dark_sky_cloud_coverage_1:
+  friendly_name: Cloud Coverage Tomorrow
+sensor.dark_sky_daily_high_temperature:
+  friendly_name: High Today
+sensor.dark_sky_daily_high_temperature_1:
+  friendly_name: High Tomorrow
+sensor.dark_sky_daily_low_temperature:
+  friendly_name: Low Today
+sensor.dark_sky_daily_low_temperature_1:
+  friendly_name: Low Tomorrow
+sensor.dark_sky_daily_summary:
+  friendly_name: Daily Summary
+sensor.dark_sky_hourly_summary:
+  friendly_name: Hourly Summary
+sensor.dark_sky_precip_probability:
+  friendly_name: Probability Rain Today
+sensor.dark_sky_precip_probability_1:
+  friendly_name: Probability Rain Tomorrow
+sensor.dark_sky_summary:
+  friendly_name: Summary
+sensor.dark_sky_wind_speed:
+  friendly_name: Wind Speed
+sensor.dark_sky_wind_speed_1:
+  friendly_name: Wind Speed Tomorrow
+sensor.dark_sky_cloud_coverage_2:
+  hidden: true
+sensor.dark_sky_cloud_coverage_3:
+  hidden: true
+sensor.dark_sky_cloud_coverage_4:
+  hidden: true
+sensor.dark_sky_cloud_coverage_5:
+  hidden: true
+sensor.dark_sky_cloud_coverage_6:
+  hidden: true
+sensor.dark_sky_cloud_coverage_7:
+  hidden: true
+sensor.dark_sky_daily_high_temperature_2:
+  hidden: true
+sensor.dark_sky_daily_high_temperature_3:
+  hidden: true
+sensor.dark_sky_daily_high_temperature_4:
+  hidden: true
+sensor.dark_sky_daily_high_temperature_5:
+  hidden: true
+sensor.dark_sky_daily_high_temperature_6:
+  hidden: true
+sensor.dark_sky_daily_high_temperature_7:
+  hidden: true
+sensor.dark_sky_daily_low_temperature_2:
+  hidden: true
+sensor.dark_sky_daily_low_temperature_3:
+  hidden: true
+sensor.dark_sky_daily_low_temperature_4:
+  hidden: true
+sensor.dark_sky_daily_low_temperature_5:
+  hidden: true
+sensor.dark_sky_daily_low_temperature_6:
+  hidden: true
+sensor.dark_sky_daily_low_temperature_7:
+  hidden: true
+sensor.dark_sky_icon:
+  hidden: true
+sensor.dark_sky_icon_1:
+  hidden: true
+sensor.dark_sky_icon_2:
+  hidden: true
+sensor.dark_sky_icon_3:
+  hidden: true
+sensor.dark_sky_icon_4:
+  hidden: true
+sensor.dark_sky_icon_5:
+  hidden: true
+sensor.dark_sky_icon_6:
+  hidden: true
+sensor.dark_sky_icon_7:
+  hidden: true
+sensor.dark_sky_precip_probability_2:
+  hidden: true
+sensor.dark_sky_precip_probability_3:
+  hidden: true
+sensor.dark_sky_precip_probability_4:
+  hidden: true
+sensor.dark_sky_precip_probability_5:
+  hidden: true
+sensor.dark_sky_precip_probability_6:
+  hidden: true
+sensor.dark_sky_precip_probability_7:
+  hidden: true
+sensor.dark_sky_wind_speed_2:
+  hidden: true
+sensor.dark_sky_wind_speed_3:
+  hidden: true
+sensor.dark_sky_wind_speed_4:
+  hidden: true
+sensor.dark_sky_wind_speed_5:
+  hidden: true
+sensor.dark_sky_wind_speed_6:
+  hidden: true
+sensor.dark_sky_wind_speed_7:
+  hidden: true

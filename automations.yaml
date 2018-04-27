@@ -1,0 +1,137 @@
+- id: '1507434167220'
+  alias: Coffee Maker On
+  trigger:
+    - platform: time
+      at: '07:00:00'
+    - platform: time
+      at: '08:00:00'
+    - platform: time
+      at: '07:15:00'
+    - platform: time
+      at: '12:00:00'
+    - platform: time
+      at: '19:00:00'
+  condition:
+    condition: or
+    conditions:
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '07:00' and now().weekday() < 5 }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '08:00' and now().weekday() >= 5 }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '07:15' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '12:00' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '19:00' }}"
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.coffee_maker
+- id: '1507434167221'
+  alias: Coffee Maker Off
+  trigger:
+    - platform: time
+      at: '08:30:00'
+    - platform: time
+      at: '14:00:00'
+    - platform: time
+      at: '22:00:00'
+  condition:
+    condition: or
+    conditions:
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '08:30' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '14:00' and now().weekday() < 5 }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '22:00' }}"
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.coffee_maker
+- action:
+  - data:
+      brightness_pct: 75
+      entity_id: light.lounge
+      kelvin: 3100
+    service: light.turn_on
+  alias: Turn Lounge Light On Elevation < 25° & after 4PM
+  condition:
+  - after: '16:00:00'
+    before: '22:00:00'
+    condition: time
+  - condition: template
+    value_template: '{{states.sun.sun.attributes.elevation < 25}}'
+  id: '1505977024304'
+  trigger:
+  - below: '25'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  - at: '16:00:00'
+    platform: time
+- alias: Update Available
+  trigger:
+  - entity_id: sensor.hass_current_version
+    platform: state
+  condition:
+  - condition: template
+    value_template: '{{ states.sensor.hass_current_version.state != "unavailable"
+      and "b" not in states.sensor.hass_current_version.state and states.sensor.hass_current_version.state
+      != states.sensor.hass_installed_version.state }}'
+  action:
+  - data:
+      message: Home Assistant {{ states.sensor.hass_current_version.state }} is now
+        available
+      title: Home Assistant Update
+    service: notify.notify
+  id: '1509933513624'
+- action:
+  - data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+    service: hassio.snapshot_full
+  - data_template:
+      message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d')
+        }}"
+    service: notify.notify
+  alias: Daily Backup at 3 AM
+  id: '1507434167214'
+  trigger:
+  - at: '3:00:00'
+    platform: time
+- action:
+  - data:
+      addon: 7be23ff5_dropbox_sync
+      input:
+        command: upload
+    service: hassio.addon_stdin
+  - data_template:
+      message: Copied all new backups to Dropbox
+    service: notify.notify
+  alias: Copy Backups to Dropbox
+  condition: []
+  id: '1519082437913'
+  trigger:
+  - at: '4:00:00'
+    platform: time
+- action:
+  - data:
+      entity_id: switch.toothbrush
+    service: switch.turn_on
+  alias: Toothbrush On
+  condition: []
+  id: '1523937971401'
+  trigger:
+  - at: 08:00:00
+    platform: time
+- action:
+  - data:
+      entity_id: switch.toothbrush
+    service: switch.turn_off
+  alias: Toothbrush Off
+  condition: []
+  id: '1523938046054'
+  trigger:
+  - at: '21:00:00'
+    platform: time

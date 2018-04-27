@@ -1,0 +1,355 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret my_latitude
+  longitude: !secret my_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret my_elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret my_timezone
+  # Customization file
+  customize: !include customize.yaml
+  # Weather Forecast
+  packages: !include_dir_named packages
+  # LimitlessLED
+  customize_domain:
+    light:
+      assumed_state: false
+
+# Python
+# python_script:
+
+# Map
+map:
+
+# Show Aussie Broadband CVC Capacity, BOM Satellite and Radar
+camera:
+  - platform: generic
+    name: Aussie Broadband CVC Capacity
+    still_image_url: !secret my_abb_cvc
+  - platform: generic
+    name: BOM Satellite
+    still_image_url: !secret my_bom_sat
+  - platform: generic
+    name: !secret my_bom_radar_name_1
+    still_image_url: !secret my_bom_1_radar
+  - platform: generic
+    name: !secret my_bom_radar_name_2
+    still_image_url: !secret my_bom_2_radar 
+
+# Show links to resources in log and frontend
+# introduction:
+
+# Enables the frontend
+frontend:
+  javascript_version: latest
+
+# HTML5 Push Notifications
+notify:
+  - name: html5_notify
+    platform: html5
+    gcm_api_key: !secret gcm_api
+    gcm_sender_id: !secret gcm_sender
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+    api_password: !secret http_password
+    ssl_certificate: !secret ssl_cert_lets
+    ssl_key: !secret ssl_key_lets
+    ip_ban_enabled: True
+    login_attempts_threshold: 5
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+    base_url: !secret base_url_name
+
+#Configurator, Terminal & MDI Icon Files
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: !secret configurator
+  terminal:
+    title: Terminal
+    icon: mdi:console
+    url: !secret terminal
+  mdiindex:
+    title: MDI Icon Index
+    icon: mdi:vector-square
+    url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
+
+# Recorder
+recorder:
+  purge_interval: 1
+  purge_keep_days: 7
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+  - platform: yr
+
+# Public Transport NSW
+  - platform: transport_nsw
+    name: 'Kariong-Gosford'
+    stopid: '2250275'
+    apikey: !secret trans_nsw
+  - platform: transport_nsw
+    name: 'Gosford-Kariong'
+    stopid: '225042'
+    apikey: !secret trans_nsw
+  - platform: transport_nsw
+    name: 'Gosford-Central'
+    stopid: '10101139'
+    route: 'Central Coast & Newcastle Line'
+    apikey: !secret trans_nsw
+  - platform: transport_nsw
+    name: 'Central-Gosford'
+    stopid: '10101100'
+    route: 'Central Coast & Newcastle Line'
+    apikey: !secret trans_nsw
+  - platform: template
+    sensors:
+      busmonitor1:
+        friendly_name: "Bus Kariong to Gosford"
+        value_template: >-
+          {% if is_state_attr('sensor.karionggosford', 'due_in', 'n/a') %}
+            No schedule found
+          {% else %}
+            {{ states.sensor.karionggosford.attributes.route }} in {{ states.sensor.karionggosford.attributes.due }}m ({{ states.sensor.karionggosford.attributes.delay }}m delay)
+          {% endif %}
+  - platform: template
+    sensors:
+      busmonitor2:
+        friendly_name: "Bus Gosford to Kariong"
+        value_template: >-
+          {% if is_state_attr('sensor.gosfordkariong', 'due_in', 'n/a') %}
+            No schedule found
+          {% else %}
+            {{ states.sensor.gosfordkariong.attributes.route }} in {{ states.sensor.gosfordkariong.attributes.due }}m ({{ states.sensor.gosfordkariong.attributes.delay }}m delay)
+          {% endif %}
+  - platform: template
+    sensors:
+      trainmonitor1:
+        friendly_name: "Train Gosford to Central"
+        value_template: >-
+          {% if is_state_attr('sensor.gosfordcentral', 'due_in', 'n/a') %}
+            No schedule found
+          {% else %}
+            {{ states.sensor.gosfordcentral.attributes.route }} in {{ states.sensor.gosfordcentral.attributes.due }}m ({{ states.sensor.gosfordcentral.attributes.delay }}m delay)
+          {% endif %}
+  - platform: template
+    sensors:
+      trainmonitor2:
+        friendly_name: "Train Central to Gosford"
+        value_template: >-
+          {% if is_state_attr('sensor.centralgosford', 'due_in', 'n/a') %}
+            No schedule found
+          {% else %}
+            {{ states.sensor.centralgosford.attributes.route }} in {{ states.sensor.centralgosford.attributes.due }}m ({{ states.sensor.centralgosford.attributes.delay }}m delay)
+          {% endif %}
+
+
+# Certificate LetsEncrypt
+  - platform: cert_expiry
+    host: !secret my_letsencrypt
+    port: 8123
+
+# CPU Temperature
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+# BOM
+  - platform: bom
+    station: !secret my_bom_station
+    name: !secret my_bom_name
+    monitored_conditions:
+      - apparent_t
+      - delta_t
+      - gust_kmh
+      - gust_kt
+      - air_temp
+      - dewpt
+      - rain_trace
+      - rel_hum
+      - wind_dir
+      - wind_spd_kmh
+      - wind_spd_kt
+
+# FritzBox
+  - platform: fritzbox_netmonitor
+    host: !secret my_fritz_host
+
+# Speedtest
+  - platform: speedtest
+    minute:
+      - 0
+      - 30
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+
+# Speedtest Download Sensor Filter
+  - platform: filter
+    name: "Speedtest Download Filtered"
+    entity_id: sensor.speedtest_download
+    filters:
+      - filter: lowpass
+        time_constant: 20
+        precision: 2
+  - platform: filter
+    name: "Speedtest Upload Filtered"
+    entity_id: sensor.speedtest_upload
+    filters:
+      - filter: lowpass
+        time_constant: 20
+        precision: 2
+
+# SABnzbd
+  - platform: sabnzbd
+    host: !secret my_sab_host
+    api_key: !secret sabnzbd_api
+    monitored_variables:
+      - 'current_status'
+      - 'speed'
+      - 'queue_size'
+      - 'queue_remaining'
+      - 'disk_size'
+      - 'disk_free'
+      - 'queue_count'
+
+# Sonarr
+  - platform: sonarr
+    api_key: !secret sonarr_api
+    host: !secret my_sonnar_host
+    monitored_conditions:
+      - upcoming
+      - queue
+    days: 2
+
+# Version and Availability
+  - platform: rest
+    resource: https://raw.githubusercontent.com/home-assistant/hassio/dev/version.json
+    name: Hass Current Version
+    value_template: '{{ value_json.homeassistant }}'
+
+  - platform: version
+    name: Hass Installed Version
+
+  - platform: template
+    sensors:
+      hass_update_available:
+        friendly_name: 'Hass Update Available'
+        value_template: >-
+          {%- if states.sensor.hass_current_version.state != states.sensor.hass_installed_version.state and states.sensor.hass_current_version.state != "unavailable"-%}
+             Yes
+          {%- else -%}
+             No
+          {%- endif -%}
+        icon_template: >-
+          {%- if states.sensor.hass_current_version.state != states.sensor.hass_installed_version.state and states.sensor.hass_current_version.state != "unavailable"-%}
+            mdi:alert-box
+          {% else %}
+            mdi:approval
+          {% endif %}
+
+# Graph Speedtest Download Filtered and Unfiltered
+history_graph:
+  gr1:
+    name: Speedtest Graph
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_download_filtered
+      - sensor.speedtest_upload
+      - sensor.speedtest_upload_filtered
+    hours_to_show: 24
+    refresh: 1800
+        
+# iOS Component
+ios:
+
+# Text to speech
+tts:
+  - platform: google
+
+# IFTTT
+ifttt:
+  key: !secret ifttt_api
+
+# Kodi & Samsung TV
+media_player:
+  - platform: kodi
+    host: !secret my_kodi_host
+  - platform: samsungtv
+    host: !secret my_samsung_host
+    name: Samsung TV
+
+# Xiaomi Switches
+switch:
+  - platform: xiaomi_miio
+    name: Home Assistant
+    host: !secret homeassistant-ip
+    token: !secret homeassistant-token
+  - platform: xiaomi_miio
+    name: Usenet
+    host: !secret usenet-ip
+    token: !secret usenet-token
+  - platform: mqtt
+    name: "Toothbrush"
+    command_topic: "cmnd/sonoff1/power"
+    state_topic: "stat/sonoff1/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+  - platform: mqtt
+    name: "Coffee Maker"
+    command_topic: "cmnd/sonoff2/power"
+    state_topic: "stat/sonoff2/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+# MQTT
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_user_name
+  password: !secret mqtt_password
+
+google_assistant: !include google_assistant.yaml
+light: !include lights.yaml
+scene: !include scene.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml

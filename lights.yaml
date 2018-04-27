@@ -1,0 +1,25 @@
+# LimitlessLED
+- platform: limitlessled
+  bridges:
+    - host: 10.90.11.25
+      version: 6
+      port: 5987
+      groups:
+      - number: 1
+        type: rgbww
+        name: Lounge
+      - number: 2
+        type: rgbww
+        name: Dining
+      - number: 3
+        type: rgbww
+        name: Office
+      - number: 4
+        type: rgbww
+        name: Spots
+# Office Light Group
+- platform: group
+  name: Office Light Group
+  entities:
+    - light.office
+    - light.spots
