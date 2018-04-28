@@ -140,3 +140,7 @@ sensor.dark_sky_wind_speed_6:
   hidden: true
 sensor.dark_sky_wind_speed_7:
   hidden: true
+sensor.yrwthr:
+  friendly_name: Weather
+sensor.yr_symbol:
+  hidden: true
