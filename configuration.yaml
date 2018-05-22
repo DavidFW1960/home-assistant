@@ -240,26 +240,16 @@ sensor:
         time_constant: 20
         precision: 2
 
-# SABnzbd
-  - platform: sabnzbd
-    host: !secret my_sab_host
-    api_key: !secret sabnzbd_api
-    monitored_variables:
-      - 'current_status'
-      - 'speed'
-      - 'queue_size'
-      - 'queue_remaining'
-      - 'disk_size'
-      - 'disk_free'
-      - 'queue_count'
-
 # Sonarr
   - platform: sonarr
     api_key: !secret sonarr_api
     host: !secret my_sonnar_host
     monitored_conditions:
+      - series
       - upcoming
+      - wanted
       - queue
+      - commands
     days: 2
 
 # Version and Availability
@@ -287,6 +277,23 @@ sensor:
           {% else %}
             mdi:approval
           {% endif %}
+
+# SABnzbd
+sabnzbd:
+  api_key: !secret sabnzbd_api
+  host: !secret my_sab_host
+  sensors:
+    - current_status
+    - speed
+    - queue_size
+    - queue_remaining
+    - disk_size
+    - disk_free
+    - queue_count
+    - day_size
+    - week_size
+    - month_size
+    - total_size
 
 # Graph Speedtest Download Filtered and Unfiltered
 history_graph:
@@ -319,7 +326,7 @@ media_player:
     host: !secret my_samsung_host
     name: Samsung TV
 
-# Xiaomi Switches
+# Xiaomi & Sonoff Switches
 switch:
   - platform: xiaomi_miio
     name: Home Assistant
@@ -330,7 +337,7 @@ switch:
     host: !secret usenet-ip
     token: !secret usenet-token
   - platform: mqtt
-    name: "Toothbrush"
+    name: "Toothbrush1"
     command_topic: "cmnd/sonoff1/power"
     state_topic: "stat/sonoff1/POWER"
     qos: 1
@@ -345,6 +352,40 @@ switch:
     payload_on: "ON"
     payload_off: "OFF"
     retain: true
+  - platform: template
+    switches:
+      toothbrush:
+        value_template: "{{ is_state('switch.toothbrush1', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: switch.toothbrush1
+        turn_off:
+          service: switch.turn_off
+          data:
+            entity_id: switch.toothbrush1
+        entity_picture_template: >-
+          {% if is_state('switch.toothbrush1', 'on') %}
+            /local/icons/icons/toothbrush-on.png
+          {% else %}
+            /local/icons/icons/toothbrush-off.png
+          {% endif %}
+      homeassistant:
+        value_template: "{{ is_state('switch.home_assistant', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: switch.home_assistant
+        turn_off:
+          service: switch.turn_off
+          data:
+            entity_id: switch.home_assistant
+        entity_picture_template: >-
+          {% if is_state('switch.home_assistant', 'on') %}
+            /local/icons/icons/homeassistant-on.jpg
+          {% else %}
+            /local/icons/icons/homeassistant-off.jpg
+          {% endif %}
 
 # MQTT
 mqtt:

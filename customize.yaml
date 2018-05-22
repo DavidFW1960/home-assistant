@@ -1,7 +1,11 @@
+switch.toothbrush1:
+  hidden: true
 switch.toothbrush:
-  icon: mdi:power-socket
+  friendly_name: Toothbrush
 switch.home_assistant:
-  icon: mdi:power-socket
+  hidden: true
+switch.homeassistant:
+  friendly_name: Home Assistant
 switch.coffee_maker:
   icon: mdi:coffee
 switch.usenet:
@@ -10,6 +14,28 @@ switch.wemo_switch:
   icon: mdi:power-socket
 sensor.cpu_temperature:
   icon: mdi:thermometer
+sensor.sabnzbd_status:
+  icon: mdi:download
+sensor.sabnzbd_queue:
+  icon: mdi:download
+sensor.sabnzbd_queue_count:
+  icon: mdi:download
+sensor.sabnzbd_speed:
+  icon: mdi:speedometer
+sensor.sabnzbd_left:
+  icon: mdi:download
+sensor.sabnzbd_disk:
+  icon: mdi:harddisk
+sensor.sabnzbd_disk_free:
+  icon: mdi:harddisk
+sensor.sabnzbd_daily_total:
+  icon: mdi:disk
+sensor.sabnzbd_weekly_total:
+  icon: mdi:disk
+sensor.sabnzbd_monthly_total:
+  icon: mdi:disk
+sensor.sabnzbd_total:
+  icon: mdi:disk
 sensor.speedtest_download_filtered:
   icon: mdi:speedometer
 sensor.speedtest_upload_filtered:
@@ -42,13 +68,13 @@ sensor.dark_sky_cloud_coverage:
   friendly_name: Cloud Coverage Today
 sensor.dark_sky_cloud_coverage_1:
   friendly_name: Cloud Coverage Tomorrow
-sensor.dark_sky_daily_high_temperature:
+sensor.dark_sky_daytime_high_temperature:
   friendly_name: High Today
-sensor.dark_sky_daily_high_temperature_1:
+sensor.dark_sky_daytime_high_temperature_1:
   friendly_name: High Tomorrow
-sensor.dark_sky_daily_low_temperature:
+sensor.dark_sky_overnight_low_temperature:
   friendly_name: Low Today
-sensor.dark_sky_daily_low_temperature_1:
+sensor.dark_sky_overnight_low_temperature_1:
   friendly_name: Low Tomorrow
 sensor.dark_sky_daily_summary:
   friendly_name: Daily Summary
@@ -76,29 +102,29 @@ sensor.dark_sky_cloud_coverage_6:
   hidden: true
 sensor.dark_sky_cloud_coverage_7:
   hidden: true
-sensor.dark_sky_daily_high_temperature_2:
+sensor.dark_sky_daytime_high_temperature_2:
   hidden: true
-sensor.dark_sky_daily_high_temperature_3:
+sensor.dark_sky_daytime_high_temperature_3:
   hidden: true
-sensor.dark_sky_daily_high_temperature_4:
+sensor.dark_sky_daytime_high_temperature_4:
   hidden: true
-sensor.dark_sky_daily_high_temperature_5:
+sensor.dark_sky_daytime_high_temperature_5:
   hidden: true
-sensor.dark_sky_daily_high_temperature_6:
+sensor.dark_sky_daytime_high_temperature_6:
   hidden: true
-sensor.dark_sky_daily_high_temperature_7:
+sensor.dark_sky_daytime_high_temperature_7:
   hidden: true
-sensor.dark_sky_daily_low_temperature_2:
+sensor.dark_sky_overnight_low_temperature_2:
   hidden: true
-sensor.dark_sky_daily_low_temperature_3:
+sensor.dark_sky_overnight_low_temperature_3:
   hidden: true
-sensor.dark_sky_daily_low_temperature_4:
+sensor.dark_sky_overnight_low_temperature_4:
   hidden: true
-sensor.dark_sky_daily_low_temperature_5:
+sensor.dark_sky_overnight_low_temperature_5:
   hidden: true
-sensor.dark_sky_daily_low_temperature_6:
+sensor.dark_sky_overnight_low_temperature_6:
   hidden: true
-sensor.dark_sky_daily_low_temperature_7:
+sensor.dark_sky_overnight_low_temperature_7:
   hidden: true
 sensor.dark_sky_icon:
   hidden: true

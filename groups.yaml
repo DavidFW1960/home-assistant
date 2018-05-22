@@ -29,8 +29,15 @@
       - sensor.sabnzbd_left
       - sensor.sabnzbd_disk
       - sensor.sabnzbd_disk_free
+      - sensor.sabnzbd_daily_total
+      - sensor.sabnzbd_weekly_total
+      - sensor.sabnzbd_monthly_total
+      - sensor.sabnzbd_total
+      - sensor.sonarr_series
       - sensor.sonarr_upcoming
+      - sensor.sonarr_wanted
       - sensor.sonarr_queue
+      - sensor.sonarr_commands
   iOS_Devices:
     name: iOS Devices
     entities:
@@ -68,18 +75,18 @@
       - sensor.dark_sky_cloud_coverage_5
       - sensor.dark_sky_cloud_coverage_6
       - sensor.dark_sky_cloud_coverage_7
-      - sensor.dark_sky_daily_high_temperature_2
-      - sensor.dark_sky_daily_high_temperature_3
-      - sensor.dark_sky_daily_high_temperature_4
-      - sensor.dark_sky_daily_high_temperature_5
-      - sensor.dark_sky_daily_high_temperature_6
-      - sensor.dark_sky_daily_high_temperature_7
-      - sensor.dark_sky_daily_low_temperature_2
-      - sensor.dark_sky_daily_low_temperature_3
-      - sensor.dark_sky_daily_low_temperature_4
-      - sensor.dark_sky_daily_low_temperature_5
-      - sensor.dark_sky_daily_low_temperature_6
-      - sensor.dark_sky_daily_low_temperature_7
+      - sensor.dark_sky_daytime_high_temperature_2
+      - sensor.dark_sky_daytime_high_temperature_3
+      - sensor.dark_sky_daytime_high_temperature_4
+      - sensor.dark_sky_daytime_high_temperature_5
+      - sensor.dark_sky_daytime_high_temperature_6
+      - sensor.dark_sky_daytime_high_temperature_7
+      - sensor.dark_sky_overnight_low_temperature_2
+      - sensor.dark_sky_overnight_low_temperature_3
+      - sensor.dark_sky_overnight_low_temperature_4
+      - sensor.dark_sky_overnight_low_temperature_5
+      - sensor.dark_sky_overnight_low_temperature_6
+      - sensor.dark_sky_overnight_low_temperature_7
       - sensor.dark_sky_icon
       - sensor.dark_sky_icon_1
       - sensor.dark_sky_icon_2
@@ -104,10 +111,10 @@
     entities:
       - sensor.dark_sky_cloud_coverage
       - sensor.dark_sky_cloud_coverage_1
-      - sensor.dark_sky_daily_high_temperature
-      - sensor.dark_sky_daily_high_temperature_1
-      - sensor.dark_sky_daily_low_temperature
-      - sensor.dark_sky_daily_low_temperature_1
+      - sensor.dark_sky_daytime_high_temperature
+      - sensor.dark_sky_daytime_high_temperature_1
+      - sensor.dark_sky_overnight_low_temperature
+      - sensor.dark_sky_overnight_low_temperature_1
       - sensor.dark_sky_daily_summary
       - sensor.dark_sky_hourly_summary
       - sensor.dark_sky_precip_probability
@@ -133,7 +140,7 @@
     control: hidden
     entities:
       - switch.coffee_maker
-      - switch.home_assistant
+      - switch.homeassistant
       - switch.usenet
       - switch.toothbrush
       - switch.wemo_switch
@@ -144,3 +151,17 @@
       - sensor.busmonitor2
       - sensor.trainmonitor1
       - sensor.trainmonitor2
+  Media:
+    name: Media Players
+    control: hidden
+    entities:
+      - media_player.all_speakers
+      - media_player.living_areas
+      - media_player.bedroom_speaker
+      - media_player.office_speaker
+      - media_player.lounge_speaker
+      - media_player.lounge_room_tv
+      - media_player.roku_5x46aj056306
+      - media_player.foxtel_7587
+      - media_player.kodi
+      - media_player.samsung_tv

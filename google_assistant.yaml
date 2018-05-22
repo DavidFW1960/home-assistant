@@ -61,7 +61,11 @@ entity_config:
     room: computer
   switch.toothbrush:
     room: bathroom
-  switch.home_assistant:
+  switch.toothbrush1:
+    expose: false
+  switch.homeassistant:
     room: computer
+  switch.home_assistant:
+    expose: false
   switch.wemo_switch:
     expose: false

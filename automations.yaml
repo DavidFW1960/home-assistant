@@ -1,55 +1,61 @@
 - id: '1507434167220'
   alias: Coffee Maker On
   trigger:
-    - platform: time
-      at: '07:00:00'
-    - platform: time
-      at: '08:00:00'
-    - platform: time
-      at: '07:15:00'
-    - platform: time
-      at: '12:00:00'
-    - platform: time
-      at: '19:00:00'
+  - platform: time
+    at: 07:00:00
+  - platform: time
+    at: 08:00:00
+  - platform: time
+    at: 07:15:00
+  - platform: time
+    at: '12:00:00'
+  - platform: time
+    at: '19:00:00'
   condition:
     condition: or
     conditions:
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '07:00' and now().weekday() < 5 }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '08:00' and now().weekday() >= 5 }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '07:15' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '12:00' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '19:00' }}"
+    - condition: template
+      value_template: '{{ now().strftime(''%H:%M'') == ''07:00'' and now().weekday()
+        < 5 }}'
+    - condition: template
+      value_template: '{{ now().strftime(''%H:%M'') == ''08:00'' and now().weekday()
+        >= 5 }}'
+    - condition: template
+      value_template: '{{ now().strftime(''%H:%M'') == ''07:15'' and ((as_timestamp(now())
+        - as_timestamp(''2017-09-24 00:00:00'')) / 86400)|int % 28 == 0 }}'
+    - condition: template
+      value_template: '{{ now().strftime(''%H:%M'') == ''12:00'' and ((as_timestamp(now())
+        - as_timestamp(''2017-09-24 00:00:00'')) / 86400)|int % 28 == 0 }}'
+    - condition: template
+      value_template: '{{ now().strftime(''%H:%M'') == ''19:00'' }}'
   action:
-    - service: switch.turn_on
-      data:
-        entity_id: switch.coffee_maker
+  - service: switch.turn_on
+    data:
+      entity_id: switch.coffee_maker
 - id: '1507434167221'
   alias: Coffee Maker Off
   trigger:
-    - platform: time
-      at: '08:30:00'
-    - platform: time
-      at: '14:00:00'
-    - platform: time
-      at: '22:00:00'
+  - platform: time
+    at: 08:30:00
+  - platform: time
+    at: '14:00:00'
+  - platform: time
+    at: '22:00:00'
   condition:
     condition: or
     conditions:
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '08:30' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '14:00' and now().weekday() < 5 }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '22:00' }}"
+    - condition: template
+      value_template: '{{ now().strftime(''%H:%M'') == ''08:30'' and ((as_timestamp(now())
+        - as_timestamp(''2017-09-24 00:00:00'')) / 86400)|int % 28 == 0 }}'
+    - condition: template
+      value_template: '{{ now().strftime(''%H:%M'') == ''14:00'' and now().weekday()
+        < 5 }}'
+    - condition: template
+      value_template: '{{ now().strftime(''%H:%M'') == ''22:00'' }}'
   action:
-    - service: switch.turn_off
-      data:
-        entity_id: switch.coffee_maker
+  - service: switch.turn_off
+    data:
+      entity_id: switch.coffee_maker
 - action:
   - data:
       brightness_pct: 75
@@ -115,23 +121,33 @@
   trigger:
   - at: '4:00:00'
     platform: time
-- action:
-  - data:
-      entity_id: switch.toothbrush
-    service: switch.turn_on
+- id: '1523937971401'
   alias: Toothbrush On
-  condition: []
-  id: '1523937971401'
   trigger:
   - at: 08:00:00
     platform: time
-- action:
+  condition: []
+  action:
   - data:
       entity_id: switch.toothbrush
-    service: switch.turn_off
+    service: switch.turn_on
+- id: '1523938046054'
   alias: Toothbrush Off
-  condition: []
-  id: '1523938046054'
   trigger:
   - at: '21:00:00'
     platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.toothbrush
+    service: switch.turn_off
+- id: '1525065631530'
+  alias: Let's Encrypt Renewal
+  trigger:
+  - at: 00:00:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      addon: core_letsencrypt
+    service: hassio.addon_restart
