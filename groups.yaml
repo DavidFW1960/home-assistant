@@ -66,6 +66,7 @@
       - sensor.hass_update_available
       - sensor.ssl_certificate_expiry
       - sensor.cpu_temperature
+      - sensor.sonoff_firmware_version
   Dark-Sky-Invisible:
     name: Dark Sky Invisible
     entities:

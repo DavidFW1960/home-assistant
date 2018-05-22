@@ -62,6 +62,8 @@ http:
     api_password: !secret http_password
     ssl_certificate: !secret ssl_cert_lets
     ssl_key: !secret ssl_key_lets
+    trusted_networks:
+      - !secret trusted_network
     ip_ban_enabled: True
     login_attempts_threshold: 5
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
@@ -277,6 +279,12 @@ sensor:
           {% else %}
             mdi:approval
           {% endif %}
+
+# Sonoff Firmware Version
+  - platform: command_line
+    name: Sonoff Firmware Version
+    command: "curl -s https://github.com/arendst/Sonoff-Tasmota/releases/latest | cut -d'\"' -f2 | rev | cut -d'/' -f1 | rev"
+    scan_interval: 21600
 
 # SABnzbd
 sabnzbd:
