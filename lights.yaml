@@ -1,7 +1,7 @@
 # LimitlessLED
 - platform: limitlessled
   bridges:
-    - host: 10.90.11.25
+    - host: !secret limitleddledhost
       version: 6
       port: 5987
       groups:
