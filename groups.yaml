@@ -4,6 +4,9 @@
       - sensor.forecast_0
       - sensor.season
       - sun.sun
+      - sensor.nextsunrise
+      - sensor.nextsunset
+      - sensor.moon
       - sensor.yrwthr
       - sensor.bom_gosford_air_temp_c
       - sensor.bom_gosford_delta_temp_c
