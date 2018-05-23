@@ -125,12 +125,12 @@ sensor:
       nextsunrise:
         friendly_name: 'Next Sunrise'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
+          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom('(%I/%M%p)') | replace("(0", "") | replace("/", ":") | replace (")", "") }}
         icon_template: mdi:weather-sunset-up
       nextsunset:
         friendly_name: 'Next Sunset'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
+          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('(%I/%M%p)') | replace("(0", "") | replace("/", ":") | replace (")", "") }}
         icon_template: mdi:weather-sunset-down
 
 # Public Transport NSW
