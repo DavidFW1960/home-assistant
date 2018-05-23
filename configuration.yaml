@@ -125,12 +125,12 @@ sensor:
       nextsunrise:
         friendly_name: 'Next Sunrise'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom('(%I/%M%p)') | replace("(0", "") | replace("/", ":") | replace (")", "") }}
+          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-up
       nextsunset:
         friendly_name: 'Next Sunset'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('(%I/%M%p)') | replace("(0", "") | replace("/", ":") | replace (")", "") }}
+          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
 
 # Public Transport NSW
@@ -294,7 +294,7 @@ sensor:
 # Sonoff Firmware Version
   - platform: command_line
     name: Sonoff Firmware Version
-    command: "curl -s https://github.com/arendst/Sonoff-Tasmota/releases/latest | cut -d'\"' -f2 | rev | cut -d'/' -f1 | rev"
+    command: /config/versionsonoffhtml.sh
     scan_interval: 21600
 
 # SABnzbd
