@@ -58,13 +58,13 @@ entity_config:
   switch.coffee_maker:
     room: kitchen
   switch.usenet:
-    room: computer
+    expose: false
   switch.toothbrush:
     room: bathroom
   switch.toothbrush1:
     expose: false
   switch.homeassistant:
-    room: computer
+    expose: false
   switch.home_assistant:
     expose: false
   switch.wemo_switch:

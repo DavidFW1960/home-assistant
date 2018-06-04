@@ -12,7 +12,7 @@ homeassistant:
   time_zone: !secret my_timezone
   # Customization file
   customize: !include customize.yaml
-  # Weather Forecast
+  # Weather Forecast & Updates
   packages: !include_dir_named packages
   # LimitlessLED
   customize_domain:
@@ -79,6 +79,10 @@ panel_iframe:
     title: Terminal
     icon: mdi:console
     url: !secret terminal
+  sonweb:
+    title: SonWEB
+    icon: mdi:lightbulb-on
+    url: !secret sonweb
   mdiindex:
     title: MDI Icon Index
     icon: mdi:vector-square
@@ -192,7 +196,7 @@ sensor:
           {% else %}
             {{ states.sensor.centralgosford.attributes.route }} in {{ states.sensor.centralgosford.attributes.due }}m ({{ states.sensor.centralgosford.attributes.delay }}m delay)
           {% endif %}
-
+          
 # Certificate LetsEncrypt
   - platform: cert_expiry
     host: !secret my_letsencrypt
@@ -263,32 +267,6 @@ sensor:
       - queue
       - commands
     days: 2
-
-# Version and Availability
-  - platform: rest
-    resource: https://raw.githubusercontent.com/home-assistant/hassio/dev/version.json
-    name: Hass Current Version
-    value_template: '{{ value_json.homeassistant }}'
-
-  - platform: version
-    name: Hass Installed Version
-
-  - platform: template
-    sensors:
-      hass_update_available:
-        friendly_name: 'Hass Update Available'
-        value_template: >-
-          {%- if states.sensor.hass_current_version.state != states.sensor.hass_installed_version.state and states.sensor.hass_current_version.state != "unavailable"-%}
-             Yes
-          {%- else -%}
-             No
-          {%- endif -%}
-        icon_template: >-
-          {%- if states.sensor.hass_current_version.state != states.sensor.hass_installed_version.state and states.sensor.hass_current_version.state != "unavailable"-%}
-            mdi:alert-box
-          {% else %}
-            mdi:approval
-          {% endif %}
 
 # Sonoff Firmware Version
   - platform: command_line

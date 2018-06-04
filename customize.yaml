@@ -12,6 +12,10 @@ switch.usenet:
   icon: mdi:kodi
 switch.wemo_switch:
   icon: mdi:power-socket
+sensor.hass_current_beta_version:
+  icon: mdi:beta
+sensor.hass_current_dev_version:
+  icon: mdi:alpha
 sensor.cpu_temperature:
   icon: mdi:thermometer
 sensor.sabnzbd_status:

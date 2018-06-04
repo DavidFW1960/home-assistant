@@ -77,22 +77,22 @@
     value_template: '{{ state.attributes.elevation }}'
   - at: '16:00:00'
     platform: time
-- alias: Update Available
+- id: '1509933513624'
+  alias: Update Available
   trigger:
-  - entity_id: sensor.hass_current_version
+  - entity_id: sensor.hass_current_stable_version
     platform: state
   condition:
   - condition: template
-    value_template: '{{ states.sensor.hass_current_version.state != "unavailable"
-      and "b" not in states.sensor.hass_current_version.state and states.sensor.hass_current_version.state
-      != states.sensor.hass_installed_version.state }}'
+    value_template: '{{ states.sensor.hass_current_stable_version.state != "unavailable"
+      and states.sensor.hass_current_stable_version.state > states.sensor.hass_installed_version.state
+      }}'
   action:
   - data:
-      message: Home Assistant {{ states.sensor.hass_current_version.state }} is now
-        available
+      message: Home Assistant {{ states.sensor.hass_current_stable_version.state }}
+        is now available
       title: Home Assistant Update
     service: notify.notify
-  id: '1509933513624'
 - action:
   - data_template:
       name: Automated Backup {{ now().strftime('%Y-%m-%d') }}

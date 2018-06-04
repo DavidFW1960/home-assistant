@@ -19,6 +19,7 @@
       - sensor.bom_gosford_wind_gust_kmh
       - sensor.bom_gosford_wind_gust_kt
       - sensor.bom_gosford_wind_speed_kmh
+      - sensor.bom_gosford_wind_speed_kt
       - camera.bom_satellite
       - camera.bom_radar_sydney
       - camera.bom_radar_newcastle
@@ -64,9 +65,6 @@
   Hassio:
     name: Hassio
     entities:
-      - sensor.hass_installed_version
-      - sensor.hass_current_version
-      - sensor.hass_update_available
       - sensor.ssl_certificate_expiry
       - sensor.cpu_temperature
       - sensor.sonoff_firmware_version
