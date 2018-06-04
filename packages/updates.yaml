@@ -16,31 +16,31 @@ homeassistant:
     ## Binary Sensor
     ################################################
 
-    binary_sensor.ha_update_available:
+    binary_sensor.hass_update_available:
       <<: *customize
-      friendly_name: 'Update Available HA'
+      friendly_name: 'Update Available Hass'
       device_class: safety
 
     ################################################
     ## Sensor
     ################################################
 
-    sensor.ha_installed_version:
+    sensor.hass_installed_version:
       <<: *customize
       friendly_name: 'Hass.io Installed Version'
       icon: mdi:approval
 
-    sensor.ha_current_stable_version:
+    sensor.hass_current_stable_version:
       <<: *customize
       friendly_name: 'Hass.io Current Stable Version'
       icon: mdi:approval
 
-    sensor.ha_current_beta_version:
+    sensor.hass_current_beta_version:
       <<: *customize
       friendly_name: 'Hass.io Beta Release'
       icon: mdi:beta
 
-    sensor.ha_current_dev_version:
+    sensor.hass_current_dev_version:
       <<: *customize
       friendly_name: 'Hass.io Dev Release'
       icon: mdi:alpha
@@ -61,21 +61,21 @@ updater:
 
 sensor:
   - platform: version
-    name: HA Installed Version
+    name: Hass Installed Version
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/stable.json
-    name: HA Current Stable Version
+    name: Hass Current Stable Version
     value_template: '{{ value_json.homeassistant.default }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/beta.json
-    name: HA Current Beta Version
+    name: Hass Current Beta Version
     value_template: '{{ value_json.homeassistant.default }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/beta.json
-    name: HA Current Dev Version
+    name: Hass Current Dev Version
     value_template: '{{ value_json.homeassistant.default }}'
 
 ################################################
@@ -85,44 +85,37 @@ sensor:
 binary_sensor:
   - platform: template
     sensors:
-      ha_update_available:
+      hass_update_available:
         value_template: >-
-          {{ states.sensor.ha_current_stable_version.state > states.sensor.ha_installed_version.state and
-             states.sensor.ha_current_stable_version.state != 'unavailable' }}
+          {{ states.sensor.hass_current_stable_version.state != 'unavailable' and 
+             states.sensor.hass_current_stable_version.state > states.sensor.hass_installed_version.state
+              }}
 group:
   host_updates:
     name: 'Updates'
     entities:
       - updater.updater
-      - sensor.ha_installed_version
-      - sensor.ha_current_stable_version
-      - sensor.ha_current_beta_version
-      - sensor.ha_current_dev_version
-      - binary_sensor.ha_update_available
-      - sensor.ha_update_available
+      - sensor.hass_installed_version
+      - sensor.hass_current_stable_version
+      - sensor.hass_current_beta_version
+      - sensor.hass_current_dev_version
+      - binary_sensor.hass_update_available
+      - sensor.hass_update_available
 
 ################################################
 ## Automation
 ################################################
 
 automation:
-  - alias: 'Home Assistant Update Available Notification'
-    trigger:
-      - platform: state
-        entity_id: updater.updater
-    action:
-      - service: notify.admin
-        data:
-          message: 'Update for Home Assistant available'
-
   - alias: 'Hass.io Update Available Notification'
     trigger:
       - platform: template
         value_template: >-
-          {{ states.sensor.ha_current_stable_version.state > states.sensor.ha_installed_version.state and
-             states.sensor.ha_current_stable_version.state != 'unavailable' }}
+          {{ states.sensor.hass_current_stable_version.state != 'unavailable' and 
+             states.sensor.hass_current_stable_version.state > states.sensor.hass_installed_version.state
+             }}
     action:
       - service: notify.admin
         data:
-          message: 'Home Assistant version {{ states.sensor.ha_current_stable_version.state }} is now available for Hass.io'
+          message: 'Home Assistant version {{ states.sensor.hass_current_stable_version.state }} is now available for Hass.io'
           title: Home Assistant Update
