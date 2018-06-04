@@ -1,0 +1,128 @@
+################################################
+## Packages / Host / Updates
+################################################
+
+homeassistant:
+  customize:
+    ################################################
+    ## Node Anchors
+    ################################################
+
+    package.node_anchors:
+      customize: &customize
+        package: 'updates'
+
+    ################################################
+    ## Binary Sensor
+    ################################################
+
+    binary_sensor.ha_update_available:
+      <<: *customize
+      friendly_name: 'Update Available HA'
+      device_class: safety
+
+    ################################################
+    ## Sensor
+    ################################################
+
+    sensor.ha_installed_version:
+      <<: *customize
+      friendly_name: 'Hass.io Installed Version'
+      icon: mdi:approval
+
+    sensor.ha_current_stable_version:
+      <<: *customize
+      friendly_name: 'Hass.io Current Stable Version'
+      icon: mdi:approval
+
+    sensor.ha_current_beta_version:
+      <<: *customize
+      friendly_name: 'Hass.io Beta Release'
+      icon: mdi:beta
+
+    sensor.ha_current_dev_version:
+      <<: *customize
+      friendly_name: 'Hass.io Dev Release'
+      icon: mdi:alpha
+
+################################################
+## Updater
+## https://www.home-assistant.io/components/updater/
+## https://www.home-assistant.io/docs/backend/updater/
+################################################
+
+updater:
+  reporting: true # collect basic information about this instance and its environment
+  include_used_components: true # report components to developers
+
+################################################
+## Sensor
+################################################
+
+sensor:
+  - platform: version
+    name: HA Installed Version
+
+  - platform: rest
+    resource: https://s3.amazonaws.com/hassio-version/stable.json
+    name: HA Current Stable Version
+    value_template: '{{ value_json.homeassistant.default }}'
+
+  - platform: rest
+    resource: https://s3.amazonaws.com/hassio-version/beta.json
+    name: HA Current Beta Version
+    value_template: '{{ value_json.homeassistant.default }}'
+
+  - platform: rest
+    resource: https://s3.amazonaws.com/hassio-version/beta.json
+    name: HA Current Dev Version
+    value_template: '{{ value_json.homeassistant.default }}'
+
+################################################
+## Binary Sensor
+################################################
+
+binary_sensor:
+  - platform: template
+    sensors:
+      ha_update_available:
+        value_template: >-
+          {{ states.sensor.ha_current_stable_version.state > states.sensor.ha_installed_version.state and
+             states.sensor.ha_current_stable_version.state != 'unavailable' }}
+group:
+  host_updates:
+    name: 'Updates'
+    entities:
+      - updater.updater
+      - sensor.ha_installed_version
+      - sensor.ha_current_stable_version
+      - sensor.ha_current_beta_version
+      - sensor.ha_current_dev_version
+      - binary_sensor.ha_update_available
+      - sensor.ha_update_available
+
+################################################
+## Automation
+################################################
+
+automation:
+  - alias: 'Home Assistant Update Available Notification'
+    trigger:
+      - platform: state
+        entity_id: updater.updater
+    action:
+      - service: notify.admin
+        data:
+          message: 'Update for Home Assistant available'
+
+  - alias: 'Hass.io Update Available Notification'
+    trigger:
+      - platform: template
+        value_template: >-
+          {{ states.sensor.ha_current_stable_version.state > states.sensor.ha_installed_version.state and
+             states.sensor.ha_current_stable_version.state != 'unavailable' }}
+    action:
+      - service: notify.admin
+        data:
+          message: 'Home Assistant version {{ states.sensor.ha_current_stable_version.state }} is now available for Hass.io'
+          title: Home Assistant Update
