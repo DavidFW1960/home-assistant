@@ -60,14 +60,14 @@ config:
 http:
   # Uncomment this to add a password (recommended!)
     api_password: !secret http_password
-    ssl_certificate: !secret ssl_cert_lets
-    ssl_key: !secret ssl_key_lets
+  # ssl_certificate: /ssl/fullchain.pem
+  # ssl_key: /ssl/privkey.pem
     trusted_networks:
       - !secret trusted_network
     ip_ban_enabled: True
     login_attempts_threshold: 5
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-    base_url: !secret base_url_name
+  # base_url: https://my-duck-dns-domain.duckdns.org:8123
 
 #Configurator, Terminal & MDI Icon Files
 panel_iframe:
@@ -197,11 +197,6 @@ sensor:
             {{ states.sensor.centralgosford.attributes.route }} in {{ states.sensor.centralgosford.attributes.due }}m ({{ states.sensor.centralgosford.attributes.delay }}m delay)
           {% endif %}
           
-# Certificate LetsEncrypt
-  - platform: cert_expiry
-    host: !secret my_letsencrypt
-    port: 8123
-
 # CPU Temperature
   - platform: command_line
     name: CPU Temperature
