@@ -74,7 +74,7 @@ sensor:
     value_template: '{{ value_json.homeassistant.default }}'
 
   - platform: rest
-    resource: https://s3.amazonaws.com/hassio-version/beta.json
+    resource: https://s3.amazonaws.com/hassio-version/dev.json
     name: Hass Current Dev Version
     value_template: '{{ value_json.homeassistant.default }}'
 
