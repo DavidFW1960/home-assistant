@@ -107,7 +107,7 @@ group:
 ################################################
 
 automation:
-  - alias: 'Hass.io Update Available Notification'
+  - alias: 'Update Available'
     trigger:
       - platform: template
         value_template: >-
