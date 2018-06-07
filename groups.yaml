@@ -66,6 +66,7 @@
     name: Hassio
     entities:
       - sensor.hass_installed_version
+      - sensor.ssl_certificate_expiry
       - sensor.cpu_temperature
       - sensor.sonoff_firmware_version
   Dark-Sky-Invisible:

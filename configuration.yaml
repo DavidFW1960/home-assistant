@@ -196,6 +196,11 @@ sensor:
           {% else %}
             {{ states.sensor.centralgosford.attributes.route }} in {{ states.sensor.centralgosford.attributes.due }}m ({{ states.sensor.centralgosford.attributes.delay }}m delay)
           {% endif %}
+
+# Certificate LetsEncrypt
+  - platform: cert_expiry
+    host: !secret my_letsencrypt
+    port: !secret certificate_port
           
 # CPU Temperature
   - platform: command_line
