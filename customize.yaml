@@ -1,3 +1,12 @@
+group.all_automations:
+  friendly_name: Automations
+  hidden: false
+group.darkskyvisible:
+  friendly_name: Dark Sky
+group.bom:
+  friendly_name: Weather from BOM Australia
+group.ios_devices:
+  friendly_name: iOS Devices
 switch.toothbrush1:
   hidden: true
 switch.toothbrush:
@@ -6,6 +15,10 @@ switch.home_assistant:
   hidden: true
 switch.homeassistant:
   friendly_name: Home Assistant
+sensor.sonoff_firmware_version:
+  icon: mdi:script
+sensor.artisan_software_version:
+  icon: mdi:coffee
 switch.coffee_maker:
   icon: mdi:coffee
 switch.usenet:
