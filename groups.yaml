@@ -154,6 +154,8 @@ Dark-Sky-Visible:
   - sensor.dark_sky_wind_speed_1
   - sensor.dark_sky_wind_speed_2
 Light:
+  control: hidden
+  entities:
     - light.dining
     - light.lounge
     - light.yeelight_white_34ce00887db6
@@ -162,11 +164,13 @@ Light:
     - light.office
     - light.spots
 Switch:
-  - switch.coffee_maker
-  - switch.homeassistant
-  - switch.usenet
-  - switch.toothbrush
-  - switch.wemo_switch
+  control: hidden
+  entities:
+    - switch.coffee_maker
+    - switch.homeassistant
+    - switch.usenet
+    - switch.toothbrush
+    - switch.wemo_switch
 Transport:
   - sensor.busmonitor1
   - sensor.busmonitor2
