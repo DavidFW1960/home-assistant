@@ -13,9 +13,9 @@ switch.toothbrush1:
 switch.toothbrush:
   friendly_name: Toothbrush
 switch.home_assistant:
-  hidden: true
-switch.homeassistant:
+  hidden: false
   friendly_name: Home Assistant
+  icon: mdi:home-assistant
 sensor.sonoff_firmware_version:
   icon: mdi:script
 sensor.artisan_software_version:

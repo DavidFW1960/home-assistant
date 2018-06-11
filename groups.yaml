@@ -167,7 +167,7 @@ Switch:
   control: hidden
   entities:
     - switch.coffee_maker
-    - switch.homeassistant
+    - switch.home_assistant
     - switch.usenet
     - switch.toothbrush
     - switch.wemo_switch
