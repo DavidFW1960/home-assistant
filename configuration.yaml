@@ -136,6 +136,29 @@ sensor:
         value_template: >
           {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
+      moonphases:
+        entity_id: sensor.moon
+        friendly_name: 'Moon'
+        value_template: >
+          {{ states.sensor.moon.state }}
+        entity_picture_template: >-
+          {% if is_state('sensor.moon', 'New moon') %}
+            /local/icons/MoonPhases/NNewMoon.jpg
+          {% elif is_state('sensor.moon', 'Waxing crescent') %}
+            /local/icons/MoonPhases/NWaxingCrescent.jpg
+          {% elif is_state('sensor.moon', 'First quarter') %}
+            /local/icons/MoonPhases/NFirstQuarter.jpg
+          {% elif is_state('sensor.moon', 'Waxing gibbous') %}
+            /local/icons/MoonPhases/NWaxingGibbous.jpg
+          {% elif is_state('sensor.moon', 'Full moon') %}
+            /local/icons/MoonPhases/NFullMoon.jpg
+          {% elif is_state('sensor.moon', 'Waning gibbous') %}
+            /local/icons/MoonPhases/NWaningGibbous.jpg
+          {% elif is_state('sensor.moon', 'Last quarter') %}
+            /local/icons/MoonPhases/NLastQuarter.jpg
+          {% elif is_state('sensor.moon', 'Waning crescent') %}
+            /local/icons/MoonPhases/NWaningCrescent.jpg
+          {% endif %}
 
 # Public Transport NSW
   - platform: transport_nsw
@@ -337,7 +360,7 @@ switch:
     host: !secret usenet-ip
     token: !secret usenet-token
   - platform: mqtt
-    name: "Toothbrush1"
+    name: "Toothbrush"
     command_topic: "cmnd/sonoff1/power"
     state_topic: "stat/sonoff1/POWER"
     qos: 1
@@ -352,24 +375,6 @@ switch:
     payload_on: "ON"
     payload_off: "OFF"
     retain: true
-  - platform: template
-    switches:
-      toothbrush:
-        value_template: "{{ is_state('switch.toothbrush1', 'on') }}"
-        turn_on:
-          service: switch.turn_on
-          data:
-            entity_id: switch.toothbrush1
-        turn_off:
-          service: switch.turn_off
-          data:
-            entity_id: switch.toothbrush1
-        entity_picture_template: >-
-          {% if is_state('switch.toothbrush1', 'on') %}
-            /local/icons/icons/toothbrush-on.png
-          {% else %}
-            /local/icons/icons/toothbrush-off.png
-          {% endif %}
 
 # MQTT
 mqtt:

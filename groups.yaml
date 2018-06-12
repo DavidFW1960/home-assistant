@@ -5,6 +5,7 @@ default_view:
   entities:
     - group.hassio
     - group.host_updates
+    - group.ios_devices
     - group.internet
     - group.newsgroups
 weather:
@@ -22,10 +23,9 @@ devices:
   control: hidden
   entities:
     - group.light
-    - group.ios_devices
-    - group.scenes
-    - group.all_automations
     - group.switch
+    - group.all_automations
+    - group.scenes
 mediaplayers:
   name: Media
   view: yes
@@ -44,7 +44,7 @@ BOM:
   - sun.sun
   - sensor.nextsunrise
   - sensor.nextsunset
-  - sensor.moon
+  - sensor.moonphases
   - sensor.yrwthr
   - sensor.bom_gosford_air_temp_c
   - sensor.bom_gosford_delta_temp_c
