@@ -143,21 +143,21 @@ sensor:
           {{ states.sensor.moon.state }}
         entity_picture_template: >-
           {% if is_state('sensor.moon', 'New moon') %}
-            /local/icons/MoonPhases/NNewMoon.jpg
+            /local/icons/MoonPhases/SNewMoon.jpg
           {% elif is_state('sensor.moon', 'Waxing crescent') %}
-            /local/icons/MoonPhases/NWaxingCrescent.jpg
+            /local/icons/MoonPhases/SWaxingCrescent.jpg
           {% elif is_state('sensor.moon', 'First quarter') %}
-            /local/icons/MoonPhases/NFirstQuarter.jpg
+            /local/icons/MoonPhases/SFirstQuarter.jpg
           {% elif is_state('sensor.moon', 'Waxing gibbous') %}
-            /local/icons/MoonPhases/NWaxingGibbous.jpg
+            /local/icons/MoonPhases/SWaxingGibbous.jpg
           {% elif is_state('sensor.moon', 'Full moon') %}
-            /local/icons/MoonPhases/NFullMoon.jpg
+            /local/icons/MoonPhases/SFullMoon.jpg
           {% elif is_state('sensor.moon', 'Waning gibbous') %}
-            /local/icons/MoonPhases/NWaningGibbous.jpg
+            /local/icons/MoonPhases/SWaningGibbous.jpg
           {% elif is_state('sensor.moon', 'Last quarter') %}
-            /local/icons/MoonPhases/NLastQuarter.jpg
+            /local/icons/MoonPhases/SLastQuarter.jpg
           {% elif is_state('sensor.moon', 'Waning crescent') %}
-            /local/icons/MoonPhases/NWaningCrescent.jpg
+            /local/icons/MoonPhases/SWaningCrescent.jpg
           {% endif %}
 
 # Public Transport NSW
