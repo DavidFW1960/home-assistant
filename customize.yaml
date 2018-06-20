@@ -6,14 +6,16 @@ group.darkskyvisible:
   friendly_name: Dark Sky
 group.bom:
   friendly_name: Weather from BOM Australia
+group.bomradar:
+  friendly_name: BOM Satelite & Radar
 group.ios_devices:
   friendly_name: iOS Devices
-switch.toothbrush1:
-  hidden: true
+group.nswfuel:
+  friendly_name: NSW Fuel Watch
 switch.toothbrush:
   friendly_name: Toothbrush
+  icon: mdi:tooth
 switch.home_assistant:
-  hidden: false
   friendly_name: Home Assistant
   icon: mdi:home-assistant
 sensor.sonoff_firmware_version:
@@ -84,6 +86,30 @@ light.yeelight_white_34ce00882e27:
   friendly_name: Fan Light
 light.yeelight_white_34ce00887db6:
   friendly_name: Meals Area Light
+sensor.bom_gosford_air_temp_c:
+  friendly_name: Air Temp
+sensor.bom_gosford_delta_temp_c:
+  friendly_name: Delta Temp
+sensor.bom_gosford_dew_point_c:
+  friendly_name: Dew Point
+sensor.bom_gosford_feels_like_c:
+  friendly_name: Feels Like
+sensor.bom_gosford_rain_today:
+  friendly_name: Rain Today
+sensor.bom_gosford_relative_humidity:
+  friendly_name: Relative Humidity
+sensor.bom_gosford_wind_direction:
+  friendly_name: Wind Direction
+sensor.bom_gosford_wind_direction_kt:
+  friendly_name: Wind Direction kt
+sensor.bom_gosford_wind_gust_kmh:
+  friendly_name: Wind Gust
+sensor.bom_gosford_wind_gust_kt:
+  friendly_name: Wind Gust kt
+sensor.bom_gosford_wind_speed_kmh:
+  friendly_name: Wind Speed
+sensor.bom_gosford_wind_speed_kt:
+  friendly_name: Wind Speed kt
 sensor.dark_sky_cloud_coverage:
   friendly_name: Cloud Coverage Today
 sensor.dark_sky_cloud_coverage_1:
@@ -190,3 +216,30 @@ sensor.yrwthr:
   friendly_name: Weather
 sensor.yr_symbol:
   hidden: true
+sensor.caltex_kariong_pdl:
+  friendly_name: Caltex Kariong
+  icon: mdi:gas-station
+sensor.caltex_woolworths_gosford_pdl:
+  friendly_name: Caltex Woolies Wyoming
+  icon: mdi:gas-station
+sensor.caltex_gosford_west_pdl_2:
+  friendly_name: Caltex West Gosford
+  icon: mdi:gas-station
+sensor.caltex_gosford_west_pdl:
+  friendly_name: Caltex Manns Rd West Gosford
+  icon: mdi:gas-station
+sensor.caltex_woolworths_erina_pdl:
+  friendly_name: Caltex Woolies Erina
+  icon: mdi:gas-station
+sensor.caltex_wyoming_pdl:
+  friendly_name: Caltex Wyoming
+  icon: mdi:gas-station
+sensor.caltex_woolworths_tuggerah_pdl:
+  friendly_name: Caltex Woolies Westfield
+  icon: mdi:gas-station
+sensor.caltex_wyong_pdl:
+  friendly_name: Caltex M1
+  icon: mdi:gas-station
+sensor.coles_express_kariong_dl:
+  friendly_name: Shell Kariong (Diesel)
+  icon: mdi:gas-station

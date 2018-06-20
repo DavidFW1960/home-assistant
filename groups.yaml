@@ -14,6 +14,7 @@ weather:
   icon: mdi:thermometer
   entities:
     - group.bom
+    - group.bomradar
     - group.darkskyvisible
     - group.weather_card_forecast
 devices:
@@ -33,14 +34,15 @@ mediaplayers:
   entities:
     - group.media
 transportnsw:
-  name: Buses & Trains
+  name: Buses, Trains & Fuel
   view: yes
   icon: mdi:train
   entities:
     - group.transport
+    - group.nswfuel
 BOM:
   - sensor.forecast_0
-  - sensor.season
+  - sensor.seasonname
   - sun.sun
   - sensor.nextsunrise
   - sensor.nextsunset
@@ -58,6 +60,7 @@ BOM:
   - sensor.bom_gosford_wind_gust_kt
   - sensor.bom_gosford_wind_speed_kmh
   - sensor.bom_gosford_wind_speed_kt
+BOMradar:
   - camera.bom_satellite
   - camera.bom_radar_sydney
   - camera.bom_radar_newcastle
@@ -176,6 +179,16 @@ Transport:
   - sensor.busmonitor2
   - sensor.trainmonitor1
   - sensor.trainmonitor2
+NSWFuel:
+  - sensor.caltex_kariong_pdl
+  - sensor.caltex_woolworths_gosford_pdl
+  - sensor.caltex_gosford_west_pdl_2
+  - sensor.caltex_gosford_west_pdl
+  - sensor.caltex_woolworths_erina_pdl
+  - sensor.caltex_wyoming_pdl
+  - sensor.caltex_woolworths_tuggerah_pdl
+  - sensor.caltex_wyong_pdl
+  - sensor.coles_express_kariong_dl
 Media:
   - media_player.all_speakers
   - media_player.living_areas

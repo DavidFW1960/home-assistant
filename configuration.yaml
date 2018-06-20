@@ -159,6 +159,21 @@ sensor:
           {% elif is_state('sensor.moon', 'Waning crescent') %}
             /local/icons/MoonPhases/SWaningCrescent.jpg
           {% endif %}
+      seasonname:
+        entity_id: sensor.season
+        friendly_name: 'Season'
+        value_template: >
+          {{ states.sensor.season.state }}
+        entity_picture_template: >-
+          {% if is_state('sensor.season', 'winter') %}
+            /local/icons/season/winter.png
+          {% elif is_state('sensor.season', 'spring') %}
+            /local/icons/season/spring.png
+          {% elif is_state('sensor.season', 'summer') %}
+            /local/icons/season/summer.png
+          {% elif is_state('sensor.season', 'autumn') %}
+            /local/icons/season/autumn.png
+          {% endif %}
 
 # Public Transport NSW
   - platform: transport_nsw
@@ -300,6 +315,44 @@ sensor:
     name: Artisan Software Version
     command: /config/versionartisanhtml.sh
     scan_interval: 21600
+
+# NSW Fuel Watch
+  - platform: nsw_fuel_station
+    station_id: 911
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 622
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 874
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 845
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 17249
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 2263
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 620
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 907
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 902
+    fuel_types:
+      - DL
 
 # SABnzbd
 sabnzbd:
