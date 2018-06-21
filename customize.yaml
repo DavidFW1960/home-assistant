@@ -28,6 +28,8 @@ switch.usenet:
   icon: mdi:kodi
 switch.wemo_switch:
   icon: mdi:power-socket
+sensor.fritz_netmonitor:
+  friendly_name: Fritz Net Monitor
 sensor.hass_current_beta_version:
   icon: mdi:beta
 sensor.hass_current_dev_version:
@@ -96,20 +98,28 @@ sensor.bom_gosford_feels_like_c:
   friendly_name: Feels Like
 sensor.bom_gosford_rain_today:
   friendly_name: Rain Today
+  icon: mdi:weather-rainy
 sensor.bom_gosford_relative_humidity:
   friendly_name: Relative Humidity
+  icon: mdi:water-percent
 sensor.bom_gosford_wind_direction:
   friendly_name: Wind Direction
+  icon: mdi:weather-windy
 sensor.bom_gosford_wind_direction_kt:
   friendly_name: Wind Direction kt
+  icon: mdi:weather-windy
 sensor.bom_gosford_wind_gust_kmh:
   friendly_name: Wind Gust
+  icon: mdi:weather-windy
 sensor.bom_gosford_wind_gust_kt:
   friendly_name: Wind Gust kt
+  icon: mdi:weather-windy
 sensor.bom_gosford_wind_speed_kmh:
   friendly_name: Wind Speed
+  icon: mdi:weather-windy
 sensor.bom_gosford_wind_speed_kt:
   friendly_name: Wind Speed kt
+  icon: mdi:weather-windy
 sensor.dark_sky_cloud_coverage:
   friendly_name: Cloud Coverage Today
 sensor.dark_sky_cloud_coverage_1:

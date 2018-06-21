@@ -77,34 +77,6 @@
     value_template: '{{ state.attributes.elevation }}'
   - at: '16:00:00'
     platform: time
-- action:
-  - data_template:
-      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-    service: hassio.snapshot_full
-  - data_template:
-      message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d')
-        }}"
-    service: notify.notify
-  alias: Daily Backup at 3 AM
-  id: '1507434167214'
-  trigger:
-  - at: '3:00:00'
-    platform: time
-- action:
-  - data:
-      addon: 7be23ff5_dropbox_sync
-      input:
-        command: upload
-    service: hassio.addon_stdin
-  - data_template:
-      message: Copied all new backups to Dropbox
-    service: notify.notify
-  alias: Copy Backups to Dropbox
-  condition: []
-  id: '1519082437913'
-  trigger:
-  - at: '4:00:00'
-    platform: time
 - id: '1523937971401'
   alias: Toothbrush On
   trigger:
@@ -125,3 +97,25 @@
   - data:
       entity_id: switch.toothbrush
     service: switch.turn_off
+- id: '1519082437913'
+  alias: Make Snapshot & Copy Backups to Dropbox
+  trigger:
+  - at: '03:00:00'
+    platform: time
+  condition: []
+  action:
+  - data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+    service: hassio.snapshot_full
+  - data_template:
+      message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d') }}"
+    service: notify.notify 
+  - delay: '01:00:00'
+  - data_template:
+      addon: 7be23ff5_dropbox_sync
+      input:
+        command: upload
+    service: hassio.addon_stdin
+  - data_template:
+      message: Copied all new backups to Dropbox
+    service: notify.notify
