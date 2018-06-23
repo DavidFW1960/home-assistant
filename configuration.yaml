@@ -69,7 +69,7 @@ http:
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: https://my-duck-dns-domain.duckdns.org:8123
 
-#Configurator, Terminal & MDI Icon Files
+#Configurator, Terminal, Tasmoadmin & MDI Icon Files
 panel_iframe:
   configurator:
     title: Configurator
@@ -79,10 +79,10 @@ panel_iframe:
     title: Terminal
     icon: mdi:console
     url: !secret terminal
-  sonweb:
-    title: SonWEB
+  tasmoadmin:
+    title: Tasmo Admin
     icon: mdi:lightbulb-on
-    url: !secret sonweb
+    url: !secret tasmoadmin
   mdiindex:
     title: MDI Icon Index
     icon: mdi:vector-square
