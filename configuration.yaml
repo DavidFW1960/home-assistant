@@ -59,13 +59,13 @@ config:
 
 http:
   # Uncomment this to add a password (recommended!)
-    api_password: !secret http_password
+  api_password: !secret http_password
   # ssl_certificate: /ssl/fullchain.pem
   # ssl_key: /ssl/privkey.pem
-    trusted_networks:
-      - !secret trusted_network
-    ip_ban_enabled: True
-    login_attempts_threshold: 5
+  trusted_networks:
+    - !secret trusted_network
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: https://my-duck-dns-domain.duckdns.org:8123
 
