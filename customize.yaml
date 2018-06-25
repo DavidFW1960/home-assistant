@@ -138,8 +138,10 @@ sensor.dark_sky_hourly_summary:
   friendly_name: Hourly Summary
 sensor.dark_sky_precip_probability:
   friendly_name: Probability Rain Today
+  hidden: true
 sensor.dark_sky_precip_probability_1:
   friendly_name: Probability Rain Tomorrow
+  hidden: true
 sensor.dark_sky_summary:
   friendly_name: Summary
 sensor.dark_sky_wind_speed:
