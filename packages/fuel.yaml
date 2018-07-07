@@ -1,0 +1,53 @@
+# NSW Fuel Watch
+sensor:
+  - platform: nsw_fuel_station
+    station_id: 911
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 622
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 874
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 845
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 17249
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 2263
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 620
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 907
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 902
+    fuel_types:
+      - DL
+group:
+  nswfuel:
+    name: NSW Fuel
+    view: no
+    icon: mdi:gas-station
+    entities:
+      - sensor.caltex_kariong_pdl
+      - sensor.caltex_woolworths_gosford_pdl
+      - sensor.caltex_gosford_west_pdl_2
+      - sensor.caltex_gosford_west_pdl
+      - sensor.caltex_woolworths_erina_pdl
+      - sensor.caltex_wyoming_pdl
+      - sensor.caltex_woolworths_tuggerah_pdl
+      - sensor.caltex_wyong_pdl
+      - sensor.coles_express_kariong_dl

@@ -66,17 +66,17 @@ sensor:
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/stable.json
     name: Hass Current Stable Version
-    value_template: '{{ value_json.homeassistant.default }}'
+    value_template: '{{ value_json.homeassistant.raspberrypi3 }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/beta.json
     name: Hass Current Beta Version
-    value_template: '{{ value_json.homeassistant.default }}'
+    value_template: '{{ value_json.homeassistant.raspberrypi3 }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/dev.json
     name: Hass Current Dev Version
-    value_template: '{{ value_json.homeassistant.default }}'
+    value_template: '{{ value_json.homeassistant.raspberrypi3 }}'
 
 ################################################
 ## Binary Sensor

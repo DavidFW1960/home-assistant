@@ -13,6 +13,7 @@ weather:
   view: yes
   icon: mdi:thermometer
   entities:
+    - group.time_tides
     - group.bom
     - group.bomradar
     - group.darkskyvisible
@@ -42,12 +43,6 @@ transportnsw:
     - group.nswfuel
 BOM:
   - sensor.forecast_0
-  - sensor.seasonname
-  - sun.sun
-  - sensor.nextsunrise
-  - sensor.nextsunset
-  - sensor.moonphases
-  - sensor.yrwthr
   - sensor.bom_gosford_air_temp_c
   - sensor.bom_gosford_delta_temp_c
   - sensor.bom_gosford_dew_point_c
@@ -174,21 +169,6 @@ Switch:
     - switch.usenet
     - switch.toothbrush
     - switch.wemo_switch
-Transport:
-  - sensor.busmonitor1
-  - sensor.busmonitor2
-  - sensor.trainmonitor1
-  - sensor.trainmonitor2
-NSWFuel:
-  - sensor.caltex_kariong_pdl
-  - sensor.caltex_woolworths_gosford_pdl
-  - sensor.caltex_gosford_west_pdl_2
-  - sensor.caltex_gosford_west_pdl
-  - sensor.caltex_woolworths_erina_pdl
-  - sensor.caltex_wyoming_pdl
-  - sensor.caltex_woolworths_tuggerah_pdl
-  - sensor.caltex_wyong_pdl
-  - sensor.coles_express_kariong_dl
 Media:
   - media_player.all_speakers
   - media_player.living_areas

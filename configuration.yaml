@@ -62,14 +62,14 @@ http:
   api_password: !secret http_password
   # ssl_certificate: /ssl/fullchain.pem
   # ssl_key: /ssl/privkey.pem
-  trusted_networks:
-    - !secret trusted_network
+  # trusted_networks:
+  #   - !secret trusted_network
   ip_ban_enabled: True
   login_attempts_threshold: 5
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: https://my-duck-dns-domain.duckdns.org:8123
 
-#Configurator, Terminal, Tasmoadmin & MDI Icon Files
+# iFrame Configurator, Terminal, Tasmoadmin & MDI Icon Files
 panel_iframe:
   configurator:
     title: Configurator
@@ -117,123 +117,8 @@ logbook:
 # Track the sun
 sun:
  
-# Weather prediction
+# Sensors
 sensor:
-  - platform: moon
-  - platform: yr
-  - platform: template
-    sensors:
-      yrwthr:
-        value_template: '{%set list2 = "0","Clear Sky","Fair","Partly Cloudy","Cloudy","Rain Showers","Rain Showers And Thunder","Sleet Showers","Snow Showers","Rain","Heavy Rain","Heavy Rain And Thunder","Sleet","Snow","Snow And Thunder","Fog","0","0","0","0","Sleet Showers And Thunder","Snow Showers And Thunder","Rain And Thunder","Sleet And Thunder","Light Rain Showers And Thunder","Heavy Rain Showers And Thunder","Light Sleet Showers And Thunder","Heavy Sleet Showers And Thunder","Light Snow Showers And Thunder","Heavy Snow Showers And Thunder","Light Rain And Thunder","Light Sleet And Thunder","Heavy Sleet And Thunder","Light Snow And Thunder","Heavy Snow And Thunder","0","0","0","0","0","Light Rain Showers","Heavy Rain Showers","Light Sleet Showers","Heavy Sleet Showers","Light Snow Showers","Heavy Snow Showers","Light Rain","Light Sleet","Heavy Sleet","Light Snow","Heavy Snow"%}{{list2[states.sensor.yr_symbol.state|int]}}'
-        entity_picture_template: "{{ state_attr('sensor.yr_symbol','entity_picture') }}"
-      nextsunrise:
-        friendly_name: 'Next Sunrise'
-        value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
-        icon_template: mdi:weather-sunset-up
-      nextsunset:
-        friendly_name: 'Next Sunset'
-        value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
-        icon_template: mdi:weather-sunset-down
-      moonphases:
-        entity_id: sensor.moon
-        friendly_name: 'Moon'
-        value_template: >
-          {{ states.sensor.moon.state }}
-        entity_picture_template: >-
-          {% if is_state('sensor.moon', 'New moon') %}
-            /local/icons/MoonPhases/SNewMoon.jpg
-          {% elif is_state('sensor.moon', 'Waxing crescent') %}
-            /local/icons/MoonPhases/SWaxingCrescent.jpg
-          {% elif is_state('sensor.moon', 'First quarter') %}
-            /local/icons/MoonPhases/SFirstQuarter.jpg
-          {% elif is_state('sensor.moon', 'Waxing gibbous') %}
-            /local/icons/MoonPhases/SWaxingGibbous.jpg
-          {% elif is_state('sensor.moon', 'Full moon') %}
-            /local/icons/MoonPhases/SFullMoon.jpg
-          {% elif is_state('sensor.moon', 'Waning gibbous') %}
-            /local/icons/MoonPhases/SWaningGibbous.jpg
-          {% elif is_state('sensor.moon', 'Last quarter') %}
-            /local/icons/MoonPhases/SLastQuarter.jpg
-          {% elif is_state('sensor.moon', 'Waning crescent') %}
-            /local/icons/MoonPhases/SWaningCrescent.jpg
-          {% endif %}
-      seasonname:
-        entity_id: sensor.season
-        friendly_name: 'Season'
-        value_template: >
-          {{ states.sensor.season.state }}
-        entity_picture_template: >-
-          {% if is_state('sensor.season', 'winter') %}
-            /local/icons/season/winter.png
-          {% elif is_state('sensor.season', 'spring') %}
-            /local/icons/season/spring.png
-          {% elif is_state('sensor.season', 'summer') %}
-            /local/icons/season/summer.png
-          {% elif is_state('sensor.season', 'autumn') %}
-            /local/icons/season/autumn.png
-          {% endif %}
-
-# Public Transport NSW
-  - platform: transport_nsw
-    name: 'Kariong-Gosford'
-    stopid: '2250275'
-    apikey: !secret trans_nsw
-  - platform: transport_nsw
-    name: 'Gosford-Kariong'
-    stopid: '225042'
-    apikey: !secret trans_nsw
-  - platform: transport_nsw
-    name: 'Gosford-Central'
-    stopid: '10101139'
-    route: 'Central Coast & Newcastle Line'
-    apikey: !secret trans_nsw
-  - platform: transport_nsw
-    name: 'Central-Gosford'
-    stopid: '10101100'
-    route: 'Central Coast & Newcastle Line'
-    apikey: !secret trans_nsw
-  - platform: template
-    sensors:
-      busmonitor1:
-        friendly_name: "Bus Kariong to Gosford"
-        value_template: >-
-          {% if is_state_attr('sensor.karionggosford', 'due_in', 'n/a') %}
-            No schedule found
-          {% else %}
-            {{ states.sensor.karionggosford.attributes.route }} in {{ states.sensor.karionggosford.attributes.due }}m ({{ states.sensor.karionggosford.attributes.delay }}m delay)
-          {% endif %}
-  - platform: template
-    sensors:
-      busmonitor2:
-        friendly_name: "Bus Gosford to Kariong"
-        value_template: >-
-          {% if is_state_attr('sensor.gosfordkariong', 'due_in', 'n/a') %}
-            No schedule found
-          {% else %}
-            {{ states.sensor.gosfordkariong.attributes.route }} in {{ states.sensor.gosfordkariong.attributes.due }}m ({{ states.sensor.gosfordkariong.attributes.delay }}m delay)
-          {% endif %}
-  - platform: template
-    sensors:
-      trainmonitor1:
-        friendly_name: "Train Gosford to Central"
-        value_template: >-
-          {% if is_state_attr('sensor.gosfordcentral', 'due_in', 'n/a') %}
-            No schedule found
-          {% else %}
-            {{ states.sensor.gosfordcentral.attributes.route }} in {{ states.sensor.gosfordcentral.attributes.due }}m ({{ states.sensor.gosfordcentral.attributes.delay }}m delay)
-          {% endif %}
-  - platform: template
-    sensors:
-      trainmonitor2:
-        friendly_name: "Train Central to Gosford"
-        value_template: >-
-          {% if is_state_attr('sensor.centralgosford', 'due_in', 'n/a') %}
-            No schedule found
-          {% else %}
-            {{ states.sensor.centralgosford.attributes.route }} in {{ states.sensor.centralgosford.attributes.due }}m ({{ states.sensor.centralgosford.attributes.delay }}m delay)
-          {% endif %}
 
 # Certificate LetsEncrypt
   - platform: cert_expiry
@@ -315,44 +200,6 @@ sensor:
     name: Artisan Software Version
     command: /config/versionartisanhtml.sh
     scan_interval: 21600
-
-# NSW Fuel Watch
-  - platform: nsw_fuel_station
-    station_id: 911
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
-    station_id: 622
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
-    station_id: 874
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
-    station_id: 845
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
-    station_id: 17249
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
-    station_id: 2263
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
-    station_id: 620
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
-    station_id: 907
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
-    station_id: 902
-    fuel_types:
-      - DL
 
 # SABnzbd
 sabnzbd:
