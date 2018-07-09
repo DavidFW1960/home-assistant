@@ -193,7 +193,7 @@ sensor:
 
 # Sonoff Firmware & Artisan Software Version
   - platform: command_line
-    name: Sonoff Firmware Version
+    name: Sonoff Firmware Version Available
     command: /config/versionsonoffhtml.sh
     scan_interval: 21600
   - platform: command_line
