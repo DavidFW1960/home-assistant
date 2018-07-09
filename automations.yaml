@@ -97,6 +97,24 @@
   - data:
       entity_id: switch.toothbrush
     service: switch.turn_off
+- id: 'sonoff_firmware_installed'
+  alias: Sonoff Firmware Installed
+  trigger:
+    - platform: time
+      at: '00:00:00'
+    - platform: time
+      at: '12:00:00'
+    - platform: homeassistant
+      event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: cmnd/sonoff1/status
+        payload: "2"
+    - service: mqtt.publish
+      data:
+        topic: cmnd/sonoff2/status
+        payload: "2"
 - id: '1519082437913'
   alias: Make Snapshot & Copy Backups to Dropbox
   trigger:

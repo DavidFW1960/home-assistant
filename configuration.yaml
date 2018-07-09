@@ -200,6 +200,14 @@ sensor:
     name: Artisan Software Version
     command: /config/versionartisanhtml.sh
     scan_interval: 21600
+  - platform: mqtt
+    name: "Coffee Maker Firmware"
+    state_topic: "stat/sonoff2/STATUS2"
+    value_template: "v{{ value_json.StatusFWR.Version }}"
+  - platform: mqtt
+    name: "Toothbrush Firmware"
+    state_topic: "stat/sonoff1/STATUS2"
+    value_template: "v{{ value_json.StatusFWR.Version }}"
 
 # SABnzbd
 sabnzbd:
