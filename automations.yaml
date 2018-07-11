@@ -2,11 +2,11 @@
   alias: Coffee Maker On
   trigger:
   - platform: time
-    at: 07:00:00
+    at: '07:00:00'
   - platform: time
-    at: 08:00:00
+    at: '08:00:00'
   - platform: time
-    at: 07:15:00
+    at: '07:15:00'
   - platform: time
     at: '12:00:00'
   - platform: time
@@ -36,7 +36,7 @@
   alias: Coffee Maker Off
   trigger:
   - platform: time
-    at: 08:30:00
+    at: '08:30:00'
   - platform: time
     at: '14:00:00'
   - platform: time
@@ -56,47 +56,69 @@
   - service: switch.turn_off
     data:
       entity_id: switch.coffee_maker
-- action:
-  - data:
-      brightness_pct: 75
-      entity_id: light.lounge
-      kelvin: 3100
-    service: light.turn_on
+- id: '1505977024304'
   alias: Turn Lounge Light On Elevation < 25° & after 4PM
+  trigger:
+  - below: '25'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  - platform: time
+    at: '16:00:00'
   condition:
   - after: '16:00:00'
     before: '22:00:00'
     condition: time
   - condition: template
     value_template: '{{states.sun.sun.attributes.elevation < 25}}'
-  id: '1505977024304'
-  trigger:
-  - below: '25'
-    entity_id: sun.sun
-    platform: numeric_state
-    value_template: '{{ state.attributes.elevation }}'
-  - at: '16:00:00'
-    platform: time
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 75
+      entity_id: light.lounge
+      kelvin: 3100
 - id: '1523937971401'
   alias: Toothbrush On
   trigger:
-  - at: 08:00:00
-    platform: time
+  - platform: time
+    at: '08:00:00'
   condition: []
   action:
-  - data:
+  - service: switch.turn_on
+    data:
       entity_id: switch.toothbrush
-    service: switch.turn_on
 - id: '1523938046054'
   alias: Toothbrush Off
   trigger:
-  - at: '21:00:00'
-    platform: time
+  - platform: time
+    at: '21:00:00'
   condition: []
   action:
-  - data:
+  - service: switch.turn_off
+    data:
       entity_id: switch.toothbrush
-    service: switch.turn_off
+- id: '1519082437913'
+  alias: Make Snapshot & Copy Backups to Dropbox
+  trigger:
+  - platform: time
+    at: '03:00:00'
+  condition: []
+  action:
+  - service: hassio.snapshot_full
+    data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+  - service: notify.notify 
+    data_template:
+      message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d') }}"
+  - delay: '01:00:00'
+  - service: hassio.addon_stdin
+    data_template:
+      addon: 7be23ff5_dropbox_sync
+      input:
+        command: upload
+  - service: notify.notify
+    data_template:
+      message: Copied all new backups to Dropbox
 - id: 'sonoff_firmware_installed'
   alias: Sonoff Firmware Installed
   trigger:
@@ -115,25 +137,3 @@
       data:
         topic: cmnd/sonoff2/status
         payload: "2"
-- id: '1519082437913'
-  alias: Make Snapshot & Copy Backups to Dropbox
-  trigger:
-  - at: '03:00:00'
-    platform: time
-  condition: []
-  action:
-  - data_template:
-      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-    service: hassio.snapshot_full
-  - data_template:
-      message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d') }}"
-    service: notify.notify 
-  - delay: '01:00:00'
-  - data_template:
-      addon: 7be23ff5_dropbox_sync
-      input:
-        command: upload
-    service: hassio.addon_stdin
-  - data_template:
-      message: Copied all new backups to Dropbox
-    service: notify.notify
