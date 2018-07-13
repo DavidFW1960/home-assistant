@@ -24,6 +24,9 @@ sensor.sonoff_firmware_version_available:
   icon: mdi:script
 sensor.artisan_software_version:
   icon: mdi:coffee
+binary_sensor.sonoff_update_available:
+  friendly_name: 'Update Available Hass'
+  device_class: safety
 sensor.coffee_maker_firmware:
   icon: mdi:coffee
 sensor.toothbrush_firmware:

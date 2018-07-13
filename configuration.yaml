@@ -208,6 +208,12 @@ sensor:
     name: "Toothbrush Firmware"
     state_topic: "stat/sonoff1/STATUS2"
     value_template: "v{{ value_json.StatusFWR.Version }}"
+binary_sensor:
+  - platform: template
+    sensors:
+      sonoff_update_available:
+        value_template: >-
+          {{ states.sensor.sonoff_firmware_version_available != states.sensor.toothbrush_firmware }}
 
 # SABnzbd
 sabnzbd:
