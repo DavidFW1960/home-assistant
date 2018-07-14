@@ -113,7 +113,7 @@ sensor.bom_gosford_relative_humidity:
   icon: mdi:water-percent
 sensor.bom_gosford_wind_direction:
   friendly_name: Wind Direction
-  icon: mdi:weather-windy
+  entity_picture: /local/icons/MoonPhases/rooster.png
 sensor.bom_gosford_wind_direction_kt:
   friendly_name: Wind Direction kt
   icon: mdi:weather-windy
