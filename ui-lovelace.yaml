@@ -185,7 +185,7 @@ views:
           - automation.update_available
       - type: entities
         title: Scenes
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - scene.bedtime
           - scene.dining_daylight
