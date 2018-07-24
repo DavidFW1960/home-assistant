@@ -3,174 +3,195 @@ views:
   - title: Home Assistant
     icon: mdi:home-assistant
     cards:
-      - type: entities
-        title: System Information
-        show_header_toggle: true
-        entities:
-          - sensor.ssl_certificate_expiry
-          - sensor.cpu_temperature
-          - sensor.sonoff_firmware_version_available
-          - sensor.coffee_maker_firmware
-          - sensor.toothbrush_firmware
-          - binary_sensor.sonoff_update_available
-          - sensor.artisan_software_version
-      - type: entities
-        title: Updates
-        show_header_toggle: true
-        entities:
-          - sensor.hass_installed_version
-          - sensor.hass_current_stable_version
-          - sensor.hass_current_beta_version
-          - sensor.hass_current_dev_version
-          - binary_sensor.hass_update_available
-      - type: entities
-        title: iOS Devices
-        show_header_toggle: true
-        entities:
-          - device_tracker.davids_iphone
-          - sensor.davidsiphone_battery_level
-          - sensor.davidsiphone_battery_state
-          - device_tracker.davids_ipad
-          - sensor.davidsipad_battery_level
-          - sensor.davidsipad_battery_state
-      - type: entities
-        title: Internet
-        show_header_toggle: true
-        entities:
-          - sensor.speedtest_download
-          - sensor.speedtest_download_filtered
-          - sensor.speedtest_upload
-          - sensor.speedtest_upload_filtered
-          - sensor.speedtest_ping
-          - sensor.fritz_netmonitor
-      - type: history-graph
-        title: Speedtest Graph
-        hours_to_show: 24
-        refresh_interval: 1800
-        entities:
-          - sensor.speedtest_download
-          - sensor.speedtest_download_filtered
-          - sensor.speedtest_upload
-          - sensor.speedtest_upload_filtered
-      - type: picture-entity
-        title: Aussie Broadband CVC Capacity
-        entity: camera.aussie_broadband_cvc_capacity
-        camera_image: camera.aussie_broadband_cvc_capacity
-        show_info: true
-        tap_action: dialog
-      - type: entities
-        title: Newsgroups
-        show_header_toggle: true
-        entities:
-          - sensor.sabnzbd_status
-          - sensor.sabnzbd_queue
-          - sensor.sabnzbd_queue_count
-          - sensor.sabnzbd_speed
-          - sensor.sabnzbd_left
-          - sensor.sabnzbd_disk
-          - sensor.sabnzbd_disk_free
-          - sensor.sabnzbd_daily_total
-          - sensor.sabnzbd_weekly_total
-          - sensor.sabnzbd_monthly_total
-          - sensor.sabnzbd_total
-          - sensor.sonarr_series
-          - sensor.sonarr_upcoming
-          - sensor.sonarr_wanted
-          - sensor.sonarr_queue
-          - sensor.sonarr_commands
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: System Information
+            show_header_toggle: true
+            entities:
+              - sensor.ssl_certificate_expiry
+              - sensor.cpu_temperature
+              - sensor.sonoff_firmware_version_available
+              - sensor.coffee_maker_firmware
+              - sensor.toothbrush_firmware
+              - binary_sensor.sonoff_update_available
+              - sensor.artisan_software_version
+          - type: entities
+            title: Updates
+            show_header_toggle: true
+            entities:
+              - sensor.hass_installed_version
+              - sensor.hass_current_stable_version
+              - sensor.hass_current_beta_version
+              - sensor.hass_current_dev_version
+              - sensor.hass_current_supervisor_version
+              - sensor.hass_current_hassos_version
+              - binary_sensor.hass_update_available
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: iOS Devices
+            show_header_toggle: true
+            entities:
+              - device_tracker.davids_iphone
+              - sensor.davidsiphone_battery_level
+              - sensor.davidsiphone_battery_state
+              - device_tracker.davids_ipad
+              - sensor.davidsipad_battery_level
+              - sensor.davidsipad_battery_state
+          - type: entities
+            title: Newsgroups
+            show_header_toggle: true
+            entities:
+              - sensor.sabnzbd_status
+              - sensor.sabnzbd_queue
+              - sensor.sabnzbd_queue_count
+              - sensor.sabnzbd_speed
+              - sensor.sabnzbd_left
+              - sensor.sabnzbd_disk
+              - sensor.sabnzbd_disk_free
+              - sensor.sabnzbd_daily_total
+              - sensor.sabnzbd_weekly_total
+              - sensor.sabnzbd_monthly_total
+              - sensor.sabnzbd_total
+              - sensor.sonarr_series
+              - sensor.sonarr_upcoming
+              - sensor.sonarr_wanted
+              - sensor.sonarr_queue
+              - sensor.sonarr_commands
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Internet
+            show_header_toggle: true
+            entities:
+              - sensor.speedtest_download
+              - sensor.speedtest_download_filtered
+              - sensor.speedtest_upload
+              - sensor.speedtest_upload_filtered
+              - sensor.speedtest_ping
+              - sensor.fritz_netmonitor
+          - type: history-graph
+            title: Speedtest Download Graph
+            hours_to_show: 24
+            refresh_interval: 1800
+            entities:
+              - sensor.speedtest_download
+              - sensor.speedtest_download_filtered
+          - type: history-graph
+            title: Speedtest Upload Graph
+            hours_to_show: 24
+            refresh_interval: 1800
+            entities:
+              - sensor.speedtest_upload
+              - sensor.speedtest_upload_filtered
+          - type: picture-entity
+            title: Aussie Broadband CVC Capacity
+            entity: camera.aussie_broadband_cvc_capacity
+            camera_image: camera.aussie_broadband_cvc_capacity
+            show_info: true
+            tap_action: dialog
   - title: Weather
     icon: mdi:thermometer
     cards:
-      - type: entities
-        title: Season, Sun & Moon Phase
-        show_header_toggle: true
-        entities:
-          - sensor.seasonname
-          - sun.sun
-          - sensor.nextsunrise
-          - sensor.nextsunset
-          - sensor.daylight
-          - sensor.yrwthr
-          - sensor.moonphases
-      - type: entities
-        title: Weather from BOM Australia
-        show_header_toggle: true
-        entities:
-          - sensor.forecast_0
-          - sensor.bom_gosford_air_temp_c
-          - sensor.bom_gosford_delta_temp_c
-          - sensor.bom_gosford_dew_point_c
-          - sensor.bom_gosford_feels_like_c
-          - sensor.bom_gosford_rain_today
-          - sensor.bom_gosford_relative_humidity
-          - sensor.bom_gosford_wind_direction
-          - sensor.bom_gosford_wind_gust_kmh
-          - sensor.bom_gosford_wind_gust_kt
-          - sensor.bom_gosford_wind_speed_kmh
-          - sensor.bom_gosford_wind_speed_kt
-      - type: picture-entity
-        title: BOM Satellite
-        entity: camera.bom_satellite
-        camera_image: camera.bom_satellite
-        show_info: true
-        tap_action: dialog
-      - type: picture-entity
-        title: BOM Radar Sydney
-        entity: camera.bom_radar_sydney
-        camera_image: camera.bom_radar_sydney
-        show_info: true
-        tap_action: dialog
-      - type: picture-entity
-        title: BOM Radar Newcastle
-        entity: camera.bom_radar_newcastle
-        camera_image: camera.bom_radar_newcastle
-        show_info: true
-        tap_action: dialog
-      - type: entities
-        title: Dark Sky
-        show_header_toggle: true
-        entities:
-          - sensor.dark_sky_cloud_coverage
-          - sensor.dark_sky_cloud_coverage_1
-          - sensor.dark_sky_daily_summary
-          - sensor.dark_sky_hourly_summary
-          - sensor.dark_sky_summary
-          - sensor.dark_sky_wind_speed
-          - sensor.dark_sky_wind_speed_1
-      - type: entities
-        title: Forecast
-        show_header_toggle: true
-        entities:
-          - sensor.forecast_0
-          - sensor.forecast_1
-          - sensor.forecast_2
-          - sensor.forecast_3
-          - sensor.forecast_4
-          - sensor.forecast_5
-          - sensor.forecast_6
-          - sensor.forecast_7
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Season, Sun & Moon Phase
+            show_header_toggle: true
+            entities:
+              - sensor.seasonname
+              - sun.sun
+              - sensor.nextsunrise
+              - sensor.nextsunset
+              - sensor.daylight
+              - sensor.yrwthr
+              - sensor.moonphases
+          - type: entities
+            title: Dark Sky
+            show_header_toggle: true
+            entities:
+              - sensor.dark_sky_cloud_coverage
+              - sensor.dark_sky_cloud_coverage_1
+              - sensor.dark_sky_daily_summary
+              - sensor.dark_sky_hourly_summary
+              - sensor.dark_sky_summary
+              - sensor.dark_sky_wind_speed
+              - sensor.dark_sky_wind_speed_1
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Weather from BOM Australia
+            show_header_toggle: true
+            entities:
+              - sensor.forecast_0
+              - sensor.bom_gosford_air_temp_c
+              - sensor.bom_gosford_delta_temp_c
+              - sensor.bom_gosford_dew_point_c
+              - sensor.bom_gosford_feels_like_c
+              - sensor.bom_gosford_rain_today
+              - sensor.bom_gosford_relative_humidity
+              - sensor.bom_gosford_wind_direction
+              - sensor.bom_gosford_wind_gust_kmh
+              - sensor.bom_gosford_wind_gust_kt
+              - sensor.bom_gosford_wind_speed_kmh
+              - sensor.bom_gosford_wind_speed_kt
+          - type: entities
+            title: Forecast
+            show_header_toggle: true
+            entities:
+              - sensor.forecast_0
+              - sensor.forecast_1
+              - sensor.forecast_2
+              - sensor.forecast_3
+              - sensor.forecast_4
+              - sensor.forecast_5
+              - sensor.forecast_6
+              - sensor.forecast_7
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            title: BOM Satellite
+            entity: camera.bom_satellite
+            camera_image: camera.bom_satellite
+            show_info: true
+            tap_action: dialog
+          - type: picture-entity
+            title: BOM Radar Sydney
+            entity: camera.bom_radar_sydney
+            camera_image: camera.bom_radar_sydney
+            show_info: true
+            tap_action: dialog
+          - type: picture-entity
+            title: BOM Radar Newcastle
+            entity: camera.bom_radar_newcastle
+            camera_image: camera.bom_radar_newcastle
+            show_info: true
+            tap_action: dialog
   - title: Lights & Switches
     icon: mdi:power
     cards:
-      - type: entities
-        title: Light
-        show_header_toggle: false
-        entities:
-          - light.dining
-          - light.lounge
-          - light.yeelight_white_34ce00887db6
-          - light.yeelight_white_34ce00882e27
-          - light.office_light_group
-          - light.office
-          - light.spots
-      - type: entities
-        title: Switch
-        show_header_toggle: false
-        entities:
-          - switch.coffee_maker
-          - switch.home_assistant
-          - switch.usenet
-          - switch.toothbrush
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Light
+            show_header_toggle: false
+            entities:
+              - light.dining
+              - light.lounge
+              - light.yeelight_white_34ce00887db6
+              - light.yeelight_white_34ce00882e27
+              - light.office_light_group
+              - light.office
+              - light.spots
+          - type: entities
+            title: Switch
+            show_header_toggle: false
+            entities:
+              - switch.coffee_maker
+              - switch.home_assistant
+              - switch.usenet
+              - switch.toothbrush
       - type: entities
         title: Automations
         show_header_toggle: false

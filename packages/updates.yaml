@@ -45,6 +45,16 @@ homeassistant:
       friendly_name: 'Hass.io Dev Release'
       icon: mdi:alpha
 
+    sensor.hass_current_supervisor_version:
+      <<: *customize
+      friendly_name: 'Hass.io Current Supervisor Version'
+      icon: mdi:approval
+
+    sensor.hass_current_hassos_version:
+      <<: *customize
+      friendly_name: 'Hass.io Current HassOS Version'
+      icon: mdi:approval
+
 ################################################
 ## Updater
 ## https://www.home-assistant.io/components/updater/
@@ -78,6 +88,16 @@ sensor:
     name: Hass Current Dev Version
     value_template: '{{ value_json.homeassistant.raspberrypi3 }}'
 
+  - platform: rest
+    resource: https://s3.amazonaws.com/hassio-version/stable.json
+    name: Hass Current Supervisor Version
+    value_template: '{{ value_json.supervisor }}'
+
+  - platform: rest
+    resource: https://s3.amazonaws.com/hassio-version/stable.json
+    name: Hass Current HassOS Version
+    value_template: '{{ value_json.hassos.rpi3 }}'
+
 ################################################
 ## Binary Sensor
 ################################################
@@ -99,6 +119,8 @@ group:
       - sensor.hass_current_stable_version
       - sensor.hass_current_beta_version
       - sensor.hass_current_dev_version
+      - sensor.hass_current_supervisor_version
+      - sensor.hass_current_hassos_version
       - binary_sensor.hass_update_available
       - sensor.hass_update_available
 
