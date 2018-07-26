@@ -147,6 +147,6 @@
   condition: []
   action:
   - service: notify.notify
-    data:
+    data_template:
       message: "Warning, currently your raspberry pi is status {{ states.sensor.rpi_power_status.attributes.value }} and {{ states.sensor.rpi_power_status.state }}."
     
