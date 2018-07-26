@@ -202,6 +202,7 @@ views:
           - automation.coffee_maker_off
           - automation.coffee_maker_on
           - automation.make_snapshot__copy_backups_to_dropbox
+          - automation.power_problem_notification
           - automation.sonoff_firmware_installed
           - automation.toothbrush_off
           - automation.toothbrush_on

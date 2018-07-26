@@ -140,11 +140,13 @@
 - id: '1532478833426'
   alias: Power Problem Notification
   trigger:
-  - above: 0
+  - above: '0'
     entity_id: sensor.rpi_power_status
     platform: numeric_state
+    value_template: '{{ state.attributes.value }}'
   condition: []
   action:
-  - data:
-      message: "Warning, currently your raspberry pi is {{ states.sensor.rpi_power_status.state }} and {{ state_attr('sensor.rpi_power_status', 'description') }}."
-    service: notify.notify
+  - service: notify.notify
+    data:
+      message: "Warning, currently your raspberry pi is status {{ states.sensor.rpi_power_status.attributes.value }} and {{ states.sensor.rpi_power_status.state }}."
+    
