@@ -11,7 +11,7 @@ views:
             entities:
               - sensor.ssl_certificate_expiry
               - sensor.cpu_temperature
-              - sensor.rpi_power_description
+              - sensor.rpi_power_status
               - sensor.sonoff_firmware_version_available
               - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
@@ -105,20 +105,23 @@ views:
               - sun.sun
               - sensor.nextsunrise
               - sensor.nextsunset
-              - sensor.daylight
+              - sensor.day_length_yesterday_sunrisesunsetorg
+              - sensor.day_length_today_sunrisesunsetorg
+              - sensor.day_length_tomorrow_sunrisesunsetorg
               - sensor.yrwthr
               - sensor.moonphases
           - type: entities
-            title: Dark Sky
+            title: Forecast
             show_header_toggle: true
             entities:
-              - sensor.dark_sky_cloud_coverage
-              - sensor.dark_sky_cloud_coverage_1
-              - sensor.dark_sky_daily_summary
-              - sensor.dark_sky_hourly_summary
-              - sensor.dark_sky_summary
-              - sensor.dark_sky_wind_speed
-              - sensor.dark_sky_wind_speed_1
+              - sensor.forecast_0
+              - sensor.forecast_1
+              - sensor.forecast_2
+              - sensor.forecast_3
+              - sensor.forecast_4
+              - sensor.forecast_5
+              - sensor.forecast_6
+              - sensor.forecast_7
       - type: vertical-stack
         cards:
           - type: entities
@@ -138,17 +141,16 @@ views:
               - sensor.bom_gosford_wind_speed_kmh
               - sensor.bom_gosford_wind_speed_kt
           - type: entities
-            title: Forecast
+            title: Dark Sky
             show_header_toggle: true
             entities:
-              - sensor.forecast_0
-              - sensor.forecast_1
-              - sensor.forecast_2
-              - sensor.forecast_3
-              - sensor.forecast_4
-              - sensor.forecast_5
-              - sensor.forecast_6
-              - sensor.forecast_7
+              - sensor.dark_sky_cloud_coverage
+              - sensor.dark_sky_cloud_coverage_1
+              - sensor.dark_sky_daily_summary
+              - sensor.dark_sky_hourly_summary
+              - sensor.dark_sky_summary
+              - sensor.dark_sky_wind_speed
+              - sensor.dark_sky_wind_speed_1
       - type: vertical-stack
         cards:
           - type: picture-entity

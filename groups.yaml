@@ -95,7 +95,7 @@ Internet:
 Hassio:
   - sensor.ssl_certificate_expiry
   - sensor.cpu_temperature
-  - sensor.rpi_power_description
+  - sensor.rpi_power_status
   - sensor.sonoff_firmware_version_available
   - sensor.coffee_maker_firmware
   - sensor.toothbrush_firmware

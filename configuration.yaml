@@ -142,12 +142,7 @@ sensor:
 
 # RPI Power
   - platform: rpi_power
-  - platform: template
-    sensors:
-      rpi_power_description:
-        friendly_name: "RPi Power Status"
-        value_template: "{{ state_attr('sensor.rpi_power_status', 'description') }}"
-        icon_template: mdi:raspberrypi
+    text_state: true
 
 # BOM
   - platform: bom
