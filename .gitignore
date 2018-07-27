@@ -22,4 +22,4 @@ zones.yaml
 *.err
 .storage
 *.html
-
+creds.data
