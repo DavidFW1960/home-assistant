@@ -1,0 +1,1 @@
+docker exec -it homeassistant pip3 install construct==2.9.31

@@ -140,7 +140,7 @@
 - id: '1532478833426'
   alias: Power Problem Notification
   trigger:
-  - above: '0'
+  - above: 0
     entity_id: sensor.rpi_power_status
     platform: numeric_state
     value_template: '{{ state.attributes.value }}'

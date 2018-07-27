@@ -20,16 +20,16 @@ sensor:
         value_template: >
           {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
-      daylight:
-        friendly_name: 'Daylight Hours'
-        value_template: >
-          {% set nr = as_timestamp(state_attr('sun.sun','next_rising')) %}
-          {% set ns = as_timestamp(state_attr('sun.sun','next_setting')) %}
-          {% if nr > ns %}
-            {% set nr = nr - 60*60*24 %}
-          {% endif %}
-          {{ (ns - nr)|timestamp_custom('%H:%M',false) }}
-        icon_template: mdi:weather-sunny
+#      daylight:
+#        friendly_name: 'Daylight Hours'
+#        value_template: >
+#          {% set nr = as_timestamp(state_attr('sun.sun','next_rising')) %}
+#          {% set ns = as_timestamp(state_attr('sun.sun','next_setting')) %}
+#          {% if nr > ns %}
+#            {% set nr = nr - 60*60*24 %}
+#          {% endif %}
+#          {{ (ns - nr)|timestamp_custom('%H:%M',false) }}
+#        icon_template: mdi:weather-sunny
       moonphases:
         entity_id: sensor.moon
         friendly_name: 'Moon'
@@ -68,6 +68,24 @@ sensor:
           {% elif is_state('sensor.season', 'autumn') %}
             /local/icons/season/autumn.png
           {% endif %}
+  - platform: rest
+    resource: !secret daylength_yesterday
+    name: "Day Length Yesterday (sunrise-sunset.org)"
+    value_template: "{{ value_json.results.day_length }}"
+    scan_interval:
+      hours: 1
+  - platform: rest
+    resource: !secret daylength_today
+    name: "Day Length Today (sunrise-sunset.org)"
+    value_template: "{{ value_json.results.day_length }}"
+    scan_interval:
+      hours: 1
+  - platform: rest
+    resource: !secret daylength_tomorrow
+    name: "Day Length Tomorrow (sunrise-sunset.org)"
+    value_template: "{{ value_json.results.day_length }}"
+    scan_interval:
+      hours: 1
 group:
   time_tides:
     name: Season, Sun & Moon Phase
@@ -78,6 +96,8 @@ group:
       - sun.sun
       - sensor.nextsunrise
       - sensor.nextsunset
-      - sensor.daylight
+      - sensor.day_length_yesterday_sunrisesunsetorg
+      - sensor.day_length_today_sunrisesunsetorg
+      - sensor.day_length_tomorrow_sunrisesunsetorg
       - sensor.yrwthr
       - sensor.moonphases

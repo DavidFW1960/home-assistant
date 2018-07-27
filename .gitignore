@@ -18,3 +18,8 @@ known_devices.yaml
 html5_push_registrations.conf
 ip_bans.yaml
 zones.yaml
+.HA_VERSION
+*.err
+.storage
+*.html
+

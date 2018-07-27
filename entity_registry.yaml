@@ -1,0 +1,86 @@
+sensor.davidsiphone_battery_level:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_davids_iphone
+sensor.davidsipad_battery_level:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_davids_ipad
+sensor.davidsipad_battery_state:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_davids_ipad
+sensor.davidsiphone_battery_state:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_davids_iphone
+media_player.foxtel_7587:
+  config_entry_id:
+  name:
+  platform: cast
+  unique_id: e9d1e29b-1b20-601c-a8c6-3a9f6ea256e2
+media_player.bedroom_speaker:
+  config_entry_id:
+  name:
+  platform: cast
+  unique_id: a9637343-8460-a25e-5b41-cda821c59d55
+media_player.lounge_room_tv:
+  config_entry_id:
+  name:
+  platform: cast
+  unique_id: f619ecdb-6129-0f67-f004-ded7bd5888f2
+media_player.office_speaker:
+  config_entry_id:
+  name:
+  platform: cast
+  unique_id: e7045fdb-8b0f-aaf7-98a1-c19950c05dcd
+media_player.all_speakers:
+  config_entry_id:
+  name:
+  platform: cast
+  unique_id: 5c0aec54-cdb9-439b-a3ff-66da777a9b00
+media_player.living_areas:
+  config_entry_id:
+  name:
+  platform: cast
+  unique_id: 87d0f132-2e31-4b80-82de-5050e6ab8be7
+media_player.lounge_speaker:
+  config_entry_id:
+  name:
+  platform: cast
+  unique_id: 5054cf55-b8be-560b-d23b-f140727a7df6
+switch.home_assistant:
+  config_entry_id:
+  name:
+  platform: xiaomi_miio
+  unique_id: chuangmi.plug.m1-34:CE:00:CF:71:E8
+media_player.apple_tv:
+  config_entry_id:
+  name:
+  platform: apple_tv
+  unique_id: 6aa476f363272ac4da256728dd042941d834f2b4553b569db6e8299905db2a40
+remote.apple_tv:
+  config_entry_id:
+  name:
+  platform: apple_tv
+  unique_id: 6aa476f363272ac4da256728dd042941d834f2b4553b569db6e8299905db2a40
+switch.usenet:
+  config_entry_id:
+  name:
+  platform: xiaomi_miio
+  unique_id: chuangmi.plug.m1-34:CE:00:CF:79:1F
+switch.wemo_switch:
+  config_entry_id:
+  name:
+  platform: wemo
+  unique_id: 221303K11007E9
+media_player.roku_5x46aj056306:
+  config_entry_id:
+  name:
+  platform: roku
+  unique_id: 5X46AJ056306
+
