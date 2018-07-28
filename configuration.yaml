@@ -133,7 +133,16 @@ sensor:
     host: !secret my_letsencrypt
     port: !secret certificate_port
           
-# CPU Temperature
+# CPU Resources Used & Temperature
+  - platform: systemmonitor
+    resources:
+    - type: disk_use
+      arg: /
+    - type: disk_free
+      arg: /
+    - type: memory_use_percent
+    - type: processor_use
+    - type: last_boot
   - platform: command_line
     name: CPU Temperature
     command: "cat /sys/class/thermal/thermal_zone0/temp"
