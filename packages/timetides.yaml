@@ -73,19 +73,19 @@ sensor:
     name: "Day Length Yesterday (sunrise-sunset.org)"
     value_template: "{{ value_json.results.day_length }}"
     scan_interval:
-      hours: 1
+      minutes: 10
   - platform: rest
     resource: !secret daylength_today
     name: "Day Length Today (sunrise-sunset.org)"
     value_template: "{{ value_json.results.day_length }}"
     scan_interval:
-      hours: 1
+      minutes: 10
   - platform: rest
     resource: !secret daylength_tomorrow
     name: "Day Length Tomorrow (sunrise-sunset.org)"
     value_template: "{{ value_json.results.day_length }}"
     scan_interval:
-      hours: 1
+      minutes: 10
 group:
   time_tides:
     name: Season, Sun & Moon Phase
