@@ -24,3 +24,4 @@ zones.yaml
 *.html
 creds.data
 g-actions
+entity_registry.yaml
