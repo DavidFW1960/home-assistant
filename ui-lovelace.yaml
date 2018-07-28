@@ -103,6 +103,8 @@ views:
             entities:
               - sensor.seasonname
               - sun.sun
+              - sensor.sunrisetoday
+              - sensor.sunsettoday
               - sensor.nextsunrise
               - sensor.nextsunset
               - sensor.day_length_yesterday_sunrisesunsetorg
