@@ -13,22 +13,22 @@ sensor:
       nextsunrise:
         friendly_name: 'Next Sunrise'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom(' %I:%M:%S%p') | replace(" 0", "") }}
+          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-up
       nextsunset:
         friendly_name: 'Next Sunset'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %I:%M:%S%p') | replace(" 0", "") }}
+          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       sunrisetoday:
         friendly_name: 'Sunrise'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.sunrise) | timestamp_custom(' %I:%M:%S%p') | replace(" 0", "") }}
+          {{ as_timestamp(states.sun.sun.attributes.sunrise) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-up
       sunsettoday:
         friendly_name: 'Sunset'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.sunset) | timestamp_custom(' %I:%M:%S%p') | replace(" 0", "") }}
+          {{ as_timestamp(states.sun.sun.attributes.sunset) | timestamp_custom(' %I:%M%p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       moonphases:
         entity_id: sensor.moon
