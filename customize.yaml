@@ -22,6 +22,8 @@ switch.toothbrush:
 switch.home_assistant:
   friendly_name: Home Assistant
   icon: mdi:home-assistant
+sensor.rpi_power_status:
+  friendly_name: RPi Power Status
 sensor.sonoff_firmware_version_available:
   icon: mdi:script
 sensor.artisan_software_version:
