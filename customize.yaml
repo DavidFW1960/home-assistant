@@ -268,12 +268,10 @@ sensor.caltex_wyong_pdl:
 sensor.coles_express_kariong_dl:
   friendly_name: Shell Kariong (Diesel)
   icon: mdi:gas-station
-sensor.day_length_yesterday_sunrisesunsetorg:
-  icon: mdi:weather-sunny
-sensor.day_length_today_sunrisesunsetorg:
-  icon: mdi:weather-sunny
-sensor.day_length_tomorrow_sunrisesunsetorg:
-  icon: mdi:weather-sunny
+sensor.sunrisetoday:
+  friendly_name: Sunrise (Today)
+sensor.sunsettoday:
+  friendly_name: Sunset (Today)
 sensor.disk_use_:
   friendly_name: Disk Used
 sensor.disk_free_:

@@ -255,7 +255,7 @@ sabnzbd:
     - month_size
     - total_size
 
-# Graph Speedtest Download Filtered and Unfiltered
+# Graph Speedtest Download Filtered and Unfiltered; Daylight Hours
 history_graph:
   gr1:
     name: Speedtest Graph
@@ -265,6 +265,12 @@ history_graph:
       - sensor.speedtest_upload
       - sensor.speedtest_upload_filtered
     hours_to_show: 24
+    refresh: 1800
+  gr2:
+    name: Daylight Hours
+    entities:
+      - sensor.daylighttoday
+    hours_to_show: 168
     refresh: 1800
         
 # iOS Component

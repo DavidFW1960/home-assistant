@@ -15,6 +15,7 @@ weather:
   icon: mdi:thermometer
   entities:
     - group.time_tides
+    - history_graph.daylight_hours
     - group.bom
     - group.bomradar
     - group.darkskyvisible

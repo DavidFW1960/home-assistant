@@ -116,11 +116,17 @@ views:
               - sensor.sunsettoday
               - sensor.nextsunrise
               - sensor.nextsunset
-              - sensor.day_length_yesterday_sunrisesunsetorg
-              - sensor.day_length_today_sunrisesunsetorg
-              - sensor.day_length_tomorrow_sunrisesunsetorg
+              - sensor.daylightyesterday
+              - sensor.daylighttoday
+              - sensor.daylighttomorrow
               - sensor.yrwthr
               - sensor.moonphases
+          - type: history-graph
+            title: Daylight Hours
+            hours_to_show: 168
+            refresh_interval: 1800
+            entities:
+              - sensor.daylighttoday
           - type: entities
             title: Forecast
             show_header_toggle: true
