@@ -36,6 +36,9 @@ STATE_ATTR_NEXT_RISING = 'next_rising'
 STATE_ATTR_NEXT_SETTING = 'next_setting'
 STATE_ATTR_SUNRISE = 'sunrise'
 STATE_ATTR_SUNSET = 'sunset'
+STATE_ATTR_DAYLIGHT = 'daylight'
+STATE_ATTR_PREV_DAYLIGHT = 'prev_daylight'
+STATE_ATTR_NEXT_DAYLIGHT = 'next_daylight'
 
 
 @asyncio.coroutine
@@ -63,6 +66,7 @@ class Sun(Entity):
         self.location = location
         self._state = self.next_rising = self.next_setting = None
         self.sunrise = self.sunset = None
+        self.daylight = self.prev_daylight = self.next_daylight = None
         self.next_dawn = self.next_dusk = None
         self.next_midnight = self.next_noon = None
         self.solar_elevation = self.solar_azimuth = None
@@ -94,6 +98,9 @@ class Sun(Entity):
             STATE_ATTR_NEXT_SETTING: self.next_setting.isoformat(),
             STATE_ATTR_SUNRISE: self.sunrise.isoformat(),
             STATE_ATTR_SUNSET: self.sunset.isoformat(),
+            STATE_ATTR_DAYLIGHT: str(self.daylight),
+            STATE_ATTR_PREV_DAYLIGHT: str(self.prev_daylight),
+            STATE_ATTR_NEXT_DAYLIGHT: str(self.next_daylight),
             STATE_ATTR_ELEVATION: round(self.solar_elevation, 2),
             STATE_ATTR_AZIMUTH: round(self.solar_azimuth, 2)
         }
@@ -127,6 +134,15 @@ class Sun(Entity):
             self.hass, 'sunrise', utc_point_in_time)
         self.sunset = get_astral_event_date(
             self.hass, 'sunset', utc_point_in_time)
+        d = get_astral_event_date(
+            self.hass, 'daylight', utc_point_in_time)
+        self.daylight = d[1] - d[0]
+        d = get_astral_event_date(
+            self.hass, 'daylight', utc_point_in_time-timedelta(days=1))
+        self.prev_daylight = d[1] - d[0]
+        d = get_astral_event_date(
+            self.hass, 'daylight', utc_point_in_time+timedelta(days=1))
+        self.next_daylight = d[1] - d[0]
 
     @callback
     def update_sun_position(self, utc_point_in_time):
