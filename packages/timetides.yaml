@@ -33,17 +33,17 @@ sensor:
       daylightyesterday:
         friendly_name: 'Day Length Yesterday'
         value_template: >
-          {{ (states.sun.sun.attributes.prev_daylight) | timestamp_custom(' %I:%M:%S') | replace(" 0", "") }}
+          {{ (states.sun.sun.attributes.prev_daylight) | timestamp_custom(' %I:%M:%S',false) }}
         icon_template: mdi:weather-sunny
       daylighttoday:
         friendly_name: 'Day Length Today'
         value_template: >
-          {{ (states.sun.sun.attributes.daylight) | timestamp_custom(' %I:%M:%S') | replace(" 0", "") }}
+          {{ (states.sun.sun.attributes.daylight) | timestamp_custom(' %I:%M:%S',false) }}
         icon_template: mdi:weather-sunny
       daylighttomorrow:
         friendly_name: 'Day Length Tomorrow'
         value_template: >
-          {{ (states.sun.sun.attributes.next_daylight) | timestamp_custom(' %I:%M:%S') | replace(" 0", "") }}
+          {{ (states.sun.sun.attributes.next_daylight) | timestamp_custom(' %I:%M:%S',false) }}
         icon_template: mdi:weather-sunny
       moonphases:
         entity_id: sensor.moon

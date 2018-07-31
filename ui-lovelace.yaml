@@ -121,12 +121,6 @@ views:
               - sensor.daylighttomorrow
               - sensor.yrwthr
               - sensor.moonphases
-          - type: history-graph
-            title: Daylight Hours
-            hours_to_show: 168
-            refresh_interval: 1800
-            entities:
-              - sensor.daylighttoday
           - type: entities
             title: Forecast
             show_header_toggle: true

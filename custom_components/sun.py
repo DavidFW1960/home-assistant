@@ -98,9 +98,9 @@ class Sun(Entity):
             STATE_ATTR_NEXT_SETTING: self.next_setting.isoformat(),
             STATE_ATTR_SUNRISE: self.sunrise.isoformat(),
             STATE_ATTR_SUNSET: self.sunset.isoformat(),
-            STATE_ATTR_DAYLIGHT: str(self.daylight),
-            STATE_ATTR_PREV_DAYLIGHT: str(self.prev_daylight),
-            STATE_ATTR_NEXT_DAYLIGHT: str(self.next_daylight),
+            STATE_ATTR_DAYLIGHT: self.daylight.total_seconds(),
+            STATE_ATTR_PREV_DAYLIGHT: self.prev_daylight.total_seconds(),
+            STATE_ATTR_NEXT_DAYLIGHT: self.next_daylight.total_seconds(),
             STATE_ATTR_ELEVATION: round(self.solar_elevation, 2),
             STATE_ATTR_AZIMUTH: round(self.solar_azimuth, 2)
         }
