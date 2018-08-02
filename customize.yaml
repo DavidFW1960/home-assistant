@@ -272,6 +272,8 @@ sensor.sunrisetoday:
   friendly_name: Sunrise (Today)
 sensor.sunsettoday:
   friendly_name: Sunset (Today)
+sensor.decimaldaylengthtoday:
+  hidden: true
 sensor.disk_use_:
   friendly_name: Disk Used
 sensor.disk_free_:

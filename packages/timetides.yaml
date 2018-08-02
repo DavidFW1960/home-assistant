@@ -40,6 +40,11 @@ sensor:
         value_template: >
           {{ (states.sun.sun.attributes.daylight) | timestamp_custom(' %H:%M:%S',false) | replace(" 0", "") }}
         icon_template: mdi:weather-sunny
+      decimaldaylengthtoday:
+        friendly_name: 'Decimal Hours Daylength Today'
+        value_template: >
+          {{ (state_attr('sun.sun', 'daylight') / (60*60)) | round(2) }}
+        icon_template: mdi:weather-sunny
       daylighttomorrow:
         friendly_name: 'Day Length Tomorrow'
         value_template: >
