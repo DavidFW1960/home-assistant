@@ -42,6 +42,7 @@ sensor:
         icon_template: mdi:weather-sunny
       decimaldaylengthtoday:
         friendly_name: 'Decimal Hours Daylength Today'
+        unit_of_measurement: "hours"
         value_template: >
           {{ (state_attr('sun.sun', 'daylight') / (60*60)) | round(2) }}
         icon_template: mdi:weather-sunny
