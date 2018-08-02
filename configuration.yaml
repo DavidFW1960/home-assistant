@@ -266,7 +266,12 @@ history_graph:
       - sensor.speedtest_upload_filtered
     hours_to_show: 24
     refresh: 1800
-        
+  gr2:
+    name: Day Length Change
+    entities:
+      - sensor.daylengthchange        
+    hours_to_show: 168
+    refresh: 1800
 # iOS Component
 ios:
 

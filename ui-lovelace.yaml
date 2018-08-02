@@ -42,6 +42,7 @@ views:
             title: Updates
             show_header_toggle: true
             entities:
+              - updater.updater
               - sensor.hass_installed_version
               - sensor.hass_current_stable_version
               - sensor.hass_current_beta_version
@@ -121,6 +122,12 @@ views:
               - sensor.daylighttomorrow
               - sensor.yrwthr
               - sensor.moonphases
+          - type: history-graph
+            title: Change in Day Length
+            hours_to_show: 168
+            refresh_interval: 1800
+            entities:
+              - sensor.daylengthchange
           - type: entities
             title: Forecast
             show_header_toggle: true
