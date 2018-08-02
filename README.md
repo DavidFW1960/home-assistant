@@ -11,3 +11,4 @@ Sonoff Switches with Tasmota firmware
 Media Devices
 Google Assistant integration
 Speedtest and Filter
+Customised sun.py showing daylight yesterday, today & tomorrow, Sunset/sunrise today and next
