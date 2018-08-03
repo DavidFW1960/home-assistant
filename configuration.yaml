@@ -255,7 +255,7 @@ sabnzbd:
     - month_size
     - total_size
 
-# Graph Speedtest Download Filtered and Unfiltered
+# Graph Speedtest Download Filtered and Unfiltered; Day Length Change
 history_graph:
   gr1:
     name: Speedtest Graph
