@@ -61,23 +61,39 @@ sensor:
         entity_id: sensor.moon
         friendly_name: 'Moon'
         value_template: >
-          {{ states.sensor.moon.state }}
+          {% if is_state('sensor.moon' , 'new_moon') %} 
+            New Moon
+          {% elif is_state('sensor.moon' , 'waxing_crescent') %} 
+            Waxing Crescent 
+          {% elif is_state('sensor.moon' , 'first_quarter') %} 
+            First Quarter 
+          {% elif is_state('sensor.moon' , 'waxing_gibbous') %} 
+            Waxing Gibbous 
+          {% elif is_state('sensor.moon' , 'full_moon') %} 
+            Full Moon 
+          {% elif is_state('sensor.moon' , 'waning_gibbous') %} 
+            Waning Gibbous 
+          {% elif is_state('sensor.moon' , 'last_quarter') %} 
+            Last Quarter 
+          {% elif is_state('sensor.moon' , 'waning_crescent') %} 
+            Waning Crescent 
+          {% endif %}
         entity_picture_template: >-
-          {% if is_state('sensor.moon', 'New moon') %}
+          {% if is_state('sensor.moon', 'new_moon') %}
             /local/icons/MoonPhases/SNewMoon.jpg
-          {% elif is_state('sensor.moon', 'Waxing crescent') %}
+          {% elif is_state('sensor.moon', 'waxing_crescent') %}
             /local/icons/MoonPhases/SWaxingCrescent.jpg
-          {% elif is_state('sensor.moon', 'First quarter') %}
+          {% elif is_state('sensor.moon', 'first_quarter') %}
             /local/icons/MoonPhases/SFirstQuarter.jpg
-          {% elif is_state('sensor.moon', 'Waxing gibbous') %}
+          {% elif is_state('sensor.moon', 'waxing_gibbous') %}
             /local/icons/MoonPhases/SWaxingGibbous.jpg
-          {% elif is_state('sensor.moon', 'Full moon') %}
+          {% elif is_state('sensor.moon', 'full_moon') %}
             /local/icons/MoonPhases/SFullMoon.jpg
-          {% elif is_state('sensor.moon', 'Waning gibbous') %}
+          {% elif is_state('sensor.moon', 'waning_gibbous') %}
             /local/icons/MoonPhases/SWaningGibbous.jpg
-          {% elif is_state('sensor.moon', 'Last quarter') %}
+          {% elif is_state('sensor.moon', 'last_quarter') %}
             /local/icons/MoonPhases/SLastQuarter.jpg
-          {% elif is_state('sensor.moon', 'Waning crescent') %}
+          {% elif is_state('sensor.moon', 'waning_crescent') %}
             /local/icons/MoonPhases/SWaningCrescent.jpg
           {% endif %}
       seasonname:
