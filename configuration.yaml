@@ -125,19 +125,19 @@ logbook:
 # Track the sun
 sun:
   monitored_conditions:
+    - azimuth
+    - elevation
     - next_dawn
     - next_dusk
     - next_midnight
     - next_noon
     - next_rising
     - next_setting
+    - daylight
+    - next_daylight
+    - prev_daylight
     - sunrise
     - sunset
-    - daylight
-    - prev_daylight
-    - next_daylight
-    - elevation
-    - azimuth
   scan_interval: '00:01:00'
  
 # Sensors
