@@ -130,6 +130,7 @@ group:
 
 automation:
   - alias: 'Update Available'
+    initial_state: 'on'
     trigger:
       - platform: template
         value_template: >-
