@@ -120,24 +120,6 @@ history:
 # View all events in a logbook
 logbook:
 
-# Track the sun
-sun:
-  monitored_conditions:
-    - azimuth
-    - elevation
-    - next_dawn
-    - next_dusk
-    - next_midnight
-    - next_noon
-    - next_rising
-    - next_setting
-    - daylight
-    - next_daylight
-    - prev_daylight
-    - sunrise
-    - sunset
-  scan_interval: '00:01:00'
- 
 # Sensors
 sensor:
 
@@ -268,9 +250,9 @@ sabnzbd:
     - month_size
     - total_size
 
-# Graph Speedtest Download Filtered and Unfiltered; Day Length Change
+# Graph Speedtest Download Filtered and Unfiltered
 history_graph:
-  gr1:
+  speedtest:
     name: Speedtest Graph
     entities:
       - sensor.speedtest_download
@@ -279,12 +261,7 @@ history_graph:
       - sensor.speedtest_upload_filtered
     hours_to_show: 24
     refresh: 1800
-  gr2:
-    name: Day Length Change
-    entities:
-      - sensor.daylengthchange        
-    hours_to_show: 168
-    refresh: 1800
+
 # iOS Component
 ios:
 

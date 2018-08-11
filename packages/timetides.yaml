@@ -1,6 +1,26 @@
 # Moon & Seasons
 # Need the Moon Phase Icons and Season Icons
 # See my Github https://github.com/DavidFW1960/home-assistant/tree/master/www/icons
+# Note also that for the Moon Icons, by default these are set for the Southern Hemisphere.
+# See that the jpg files all start with an 'S'. For Northern Hemisphere, change these to 'N'
+
+# Track the sun
+sun:
+  monitored_conditions:
+    - azimuth
+    - elevation
+    - next_dawn
+    - next_dusk
+    - next_midnight
+    - next_noon
+    - next_rising
+    - next_setting
+    - daylight
+    - next_daylight
+    - prev_daylight
+    - sunrise
+    - sunset
+  scan_interval: '00:01:00'
 
 sensor:
   - platform: moon
@@ -111,6 +131,15 @@ sensor:
           {% elif is_state('sensor.season', 'autumn') %}
             /local/icons/season/autumn.png
           {% endif %}
+
+# Graph Day Length Change
+history_graph:
+  lencha:
+    name: Day Length Change
+    entities:
+      - sensor.daylengthchange        
+    hours_to_show: 168
+    refresh: 1800
 
 group:
   time_tides:
