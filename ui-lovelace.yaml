@@ -42,7 +42,7 @@ views:
             title: Updates
             show_header_toggle: true
             entities:
-              - updater.updater
+#             - updater.updater
               - sensor.hass_installed_version
               - sensor.hass_current_stable_version
               - sensor.hass_current_beta_version
