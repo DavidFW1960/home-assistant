@@ -97,6 +97,10 @@ media_player.roku_5x46aj056306:
   friendly_name: Telstra TV
 media_player.foxtel_7587:
   friendly_name: Foxtel Now Box
+media_player.txnr1009:
+  friendly_name: Onkyo
+media_player.osmc_vero4:
+  friendly_name: OSMC Vero
 light.yeelight_white_34ce00882e27:
   friendly_name: Fan Light
 light.yeelight_white_34ce00887db6:

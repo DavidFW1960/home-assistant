@@ -266,6 +266,10 @@ views:
       - type: media-control
         entity: media_player.kodi
       - type: media-control
+        entity: media_player.osmc_vero4
+      - type: media-control
+        entity: media_player.txnr1009
+      - type: media-control
         entity: media_player.samsung_tv
   - title: Buses, Trains & Fuel
     icon: mdi:train

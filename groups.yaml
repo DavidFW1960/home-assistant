@@ -189,6 +189,8 @@ Media:
   - media_player.roku_5x46aj056306
   - media_player.foxtel_7587
   - media_player.kodi
+  - media_player.osmc_vero4
+  - media_player.txnr1009
   - media_player.samsung_tv
   - media_player.apple_tv
 Scenes:
