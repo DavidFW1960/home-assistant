@@ -89,6 +89,10 @@ panel_iframe:
     title: Tasmo Admin
     icon: mdi:lightbulb-on
     url: !secret tasmoadmin
+  logviewer:
+    title: Log Viewer
+    icon: mdi:script
+    url: !secret logviewer
   mdiindex:
     title: MDI Icon Index
     icon: mdi:vector-square
@@ -110,6 +114,8 @@ updater:
 
 # Discover some devices automatically
 discovery:
+# enable:
+#   - dlna_dmr
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:

@@ -13,14 +13,13 @@ sun:
     - next_dusk
     - next_midnight
     - next_noon
-    - next_rising
-    - next_setting
     - daylight
     - next_daylight
     - prev_daylight
     - sunrise
     - sunset
-  scan_interval: '00:01:00'
+  scan_interval:
+    minutes: 1
 
 sensor:
   - platform: moon
@@ -120,7 +119,15 @@ sensor:
         entity_id: sensor.season
         friendly_name: 'Season'
         value_template: >
-          {{ states.sensor.season.state }}
+          {% if is_state('sensor.season' , 'winter') %} 
+            Winter
+          {% elif is_state('sensor.season' , 'spring') %} 
+            Spring 
+          {% elif is_state('sensor.season' , 'summer') %} 
+            Summer 
+          {% elif is_state('sensor.moon' , 'autumn') %} 
+            Autumn 
+          {% endif %}
         entity_picture_template: >-
           {% if is_state('sensor.season', 'winter') %}
             /local/icons/season/winter.png
