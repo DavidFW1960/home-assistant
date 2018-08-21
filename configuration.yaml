@@ -81,6 +81,10 @@ panel_iframe:
     title: Configurator
     icon: mdi:wrench
     url: !secret configurator
+  ide:
+    title: IDE
+    icon: mdi:code-braces
+    url: !secret ide-cloud9    
   terminal:
     title: Terminal
     icon: mdi:console
@@ -114,8 +118,8 @@ updater:
 
 # Discover some devices automatically
 discovery:
-# enable:
-#   - dlna_dmr
+  enable:
+    - dlna_dmr
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
