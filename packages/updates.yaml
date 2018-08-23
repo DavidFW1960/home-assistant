@@ -120,7 +120,7 @@ group:
       - sensor.hass_current_beta_version
       - sensor.hass_current_dev_version
       - sensor.hass_current_supervisor_version
-      - sensor.hass_current_hassos_version
+#     - sensor.hass_current_hassos_version
       - binary_sensor.hass_update_available
       - sensor.hass_update_available
 
