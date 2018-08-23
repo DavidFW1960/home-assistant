@@ -56,16 +56,10 @@ entity_config:
   scene.spots_warm:
     room: office
   switch.coffee_maker:
-    room: kitchen
-  switch.usenet:
+    expose: false
+  switch.vpn_router:
     expose: false
   switch.toothbrush:
     room: bathroom
-  switch.toothbrush1:
-    expose: false
-  switch.homeassistant:
-    expose: false
   switch.home_assistant:
-    expose: false
-  switch.wemo_switch:
     expose: false

@@ -154,10 +154,6 @@ sensor:
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
 
-# RPI Power
-  - platform: rpi_power
-    text_state: true
-
 # BOM
   - platform: bom
     station: !secret my_bom_station
@@ -207,8 +203,9 @@ sensor:
 
 # Sonarr
   - platform: sonarr
-    api_key: !secret sonarr_api
-    host: !secret my_sonnar_host
+    api_key: !secret my_sonarr_api
+    host: !secret my_sonarr_host
+    port: !secret my_sonarr_port
     monitored_conditions:
       - series
       - upcoming
@@ -227,20 +224,15 @@ sensor:
     command: /config/versionartisanhtml.sh
     scan_interval: 21600
   - platform: mqtt
-    name: "Coffee Maker Firmware"
-    state_topic: "stat/sonoff2/STATUS2"
-    value_template: "v{{ value_json.StatusFWR.Version }}"
-  - platform: mqtt
     name: "Toothbrush Firmware"
-    state_topic: "stat/sonoff1/STATUS2"
+    state_topic: "stat/sonoff2/STATUS2"
     value_template: "v{{ value_json.StatusFWR.Version }}"
 binary_sensor:
   - platform: template
     sensors:
       sonoff_update_available:
         value_template: >-
-          {{ states.sensor.sonoff_firmware_version_available.state != states.sensor.toothbrush_firmware.state or 
-             states.sensor.sonoff_firmware_version_available.state != states.sensor.coffee_maker_firmware.state
+          {{ states.sensor.sonoff_firmware_version_available.state != states.sensor.toothbrush_firmware.state
               }}
 
 # SABnzbd
@@ -298,25 +290,20 @@ switch:
     host: !secret homeassistant-ip
     token: !secret homeassistant-token
   - platform: xiaomi_miio
-    name: Usenet
-    host: !secret usenet-ip
-    token: !secret usenet-token
+    name: VPN Router
+    host: !secret vpnrouter-ip
+    token: !secret vpnrouter-token
   - platform: mqtt
     name: "Toothbrush"
-    command_topic: "cmnd/sonoff1/power"
-    state_topic: "stat/sonoff1/POWER"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-  - platform: mqtt
-    name: "Coffee Maker"
     command_topic: "cmnd/sonoff2/power"
     state_topic: "stat/sonoff2/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
     retain: true
+
+# Wemo Switch
+wemo:
 
 # MQTT
 mqtt:

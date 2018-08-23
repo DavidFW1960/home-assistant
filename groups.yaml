@@ -4,7 +4,7 @@ default_view:
   icon: mdi:home-assistant
   entities:
     - group.hassio
-    - group.rpi_resources
+    - group.nuc_resources
     - group.host_updates
     - group.ios_devices
     - group.internet
@@ -96,13 +96,11 @@ Internet:
 Hassio:
   - sensor.ssl_certificate_expiry
   - sensor.sonoff_firmware_version_available
-  - sensor.coffee_maker_firmware
   - sensor.toothbrush_firmware
   - binary_sensor.sonoff_update_available
   - sensor.artisan_software_version
-RPi_Resources:
+NUC_Resources:
   - sensor.cpu_temperature
-  - sensor.rpi_power_status
   - sensor.disk_use_
   - sensor.disk_free_
   - sensor.memory_use_percent
@@ -176,9 +174,8 @@ Switch:
   entities:
     - switch.coffee_maker
     - switch.home_assistant
-    - switch.usenet
+    - switch.vpn_router
     - switch.toothbrush
-    - switch.wemo_switch
 Media:
   - media_player.all_speakers
   - media_player.living_areas

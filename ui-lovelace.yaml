@@ -11,16 +11,14 @@ views:
             entities:
               - sensor.ssl_certificate_expiry
               - sensor.sonoff_firmware_version_available
-              - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
               - binary_sensor.sonoff_update_available
               - sensor.artisan_software_version
           - type: entities
-            title: RPi Resources
+            title: NUC Resources
             show_header_toggle: true
             entities:
               - sensor.cpu_temperature
-              - sensor.rpi_power_status
               - sensor.disk_use_
               - sensor.disk_free_
               - sensor.memory_use_percent
@@ -42,13 +40,11 @@ views:
             title: Updates
             show_header_toggle: true
             entities:
-#             - updater.updater
               - sensor.hass_installed_version
               - sensor.hass_current_stable_version
               - sensor.hass_current_beta_version
               - sensor.hass_current_dev_version
               - sensor.hass_current_supervisor_version
-              - sensor.hass_current_hassos_version
               - binary_sensor.hass_update_available
           - type: entities
             title: Newsgroups
@@ -211,7 +207,7 @@ views:
             entities:
               - switch.coffee_maker
               - switch.home_assistant
-              - switch.usenet
+              - switch.vpn_router
               - switch.toothbrush
       - type: entities
         title: Automations

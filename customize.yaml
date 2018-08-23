@@ -10,8 +10,8 @@ group.bomradar:
   friendly_name: BOM Satelite & Radar
 group.ios_devices:
   friendly_name: iOS Devices
-group.rpi_resources:
-  friendly_name: RPi Resources
+group.nuc_resources:
+  friendly_name: NUC Resources
 group.nswfuel:
   friendly_name: NSW Fuel Watch
 group.hassio:
@@ -22,8 +22,6 @@ switch.toothbrush:
 switch.home_assistant:
   friendly_name: Home Assistant
   icon: mdi:home-assistant
-sensor.rpi_power_status:
-  friendly_name: RPi Power Status
 sensor.sonoff_firmware_version_available:
   icon: mdi:script
 sensor.artisan_software_version:
@@ -31,16 +29,12 @@ sensor.artisan_software_version:
 binary_sensor.sonoff_update_available:
   friendly_name: 'Update Available Sonoff'
   device_class: problem
-sensor.coffee_maker_firmware:
-  icon: mdi:coffee
 sensor.toothbrush_firmware:
   icon: mdi:tooth
 switch.coffee_maker:
   icon: mdi:coffee
-switch.usenet:
+switch.vpn_router:
   icon: mdi:kodi
-switch.wemo_switch:
-  icon: mdi:power-socket
 sensor.fritz_netmonitor:
   friendly_name: Fritz Net Monitor
 sensor.hass_current_beta_version:
@@ -288,3 +282,5 @@ sensor.processor_use:
   friendly_name: Processor Used
 sensor.last_boot:
   friendly_name: Last Boot
+sensor.hass_current_hassos_version:
+  hidden: true
