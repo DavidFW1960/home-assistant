@@ -281,6 +281,12 @@ sensor.caltex_woolworths_waitara_pdl:
 sensor.caltex_woolworths_turramurra_pdl:
   friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
   icon: mdi:gas-station
+sensor.caltex_st_ives_north_pdl:
+  friendly_name: Caltex 363 Mona Vale Rd St Ives North
+  icon: mdi:gas-station
+sensor.caltex_st_ives_pdl:
+  friendly_name: Caltex 164 Mona Vale Rd St Ives
+  icon: mdi:gas-station
 sensor.caltex_woolworths_glenrose_pdl:
   friendly_name: Caltex Woolies 60 Glenn St Belrose
   icon: mdi:gas-station

@@ -57,6 +57,14 @@ sensor:
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
+    station_id: 861
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 745
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
     station_id: 643
     fuel_types:
       - PDL
@@ -84,5 +92,7 @@ group:
       - sensor.coles_express_kariong_dl
       - sensor.caltex_woolworths_waitara_pdl
       - sensor.caltex_woolworths_turramurra_pdl
+      - sensor.caltex_st_ives_pdl
+      - sensor.caltex_st_ives_north_pdl
       - sensor.caltex_woolworths_glenrose_pdl
       - sensor.caltex_belrose_pdl

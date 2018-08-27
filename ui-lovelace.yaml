@@ -296,5 +296,7 @@ views:
           - sensor.coles_express_kariong_dl
           - sensor.caltex_woolworths_waitara_pdl
           - sensor.caltex_woolworths_turramurra_pdl
+          - sensor.caltex_st_ives_pdl
+          - sensor.caltex_st_ives_north_pdl
           - sensor.caltex_woolworths_glenrose_pdl
           - sensor.caltex_belrose_pdl
