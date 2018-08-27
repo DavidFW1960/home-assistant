@@ -284,10 +284,17 @@ views:
         entities:
           - sensor.caltex_kariong_pdl
           - sensor.caltex_woolworths_gosford_pdl
-          - sensor.caltex_gosford_west_pdl_2
           - sensor.caltex_gosford_west_pdl
+          - sensor.caltex_gosford_west_pdl_2
+          - sensor.caltex_gosford_west_pdl_3
           - sensor.caltex_woolworths_erina_pdl
           - sensor.caltex_wyoming_pdl
           - sensor.caltex_woolworths_tuggerah_pdl
+          - sensor.caltex_woolworths_tuggerah_north_pdl
           - sensor.caltex_wyong_pdl
+          - sensor.caltex_wyong_pdl_2
           - sensor.coles_express_kariong_dl
+          - sensor.caltex_woolworths_waitara_pdl
+          - sensor.caltex_woolworths_turramurra_pdl
+          - sensor.caltex_woolworths_glenrose_pdl
+          - sensor.caltex_belrose_pdl

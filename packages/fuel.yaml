@@ -9,6 +9,10 @@ sensor:
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
+    station_id: 819
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
     station_id: 874
     fuel_types:
       - PDL
@@ -29,13 +33,37 @@ sensor:
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
+    station_id: 523
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
     station_id: 907
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 906
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 902
     fuel_types:
       - DL
+  - platform: nsw_fuel_station
+    station_id: 2436
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 663
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 643
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 721
+    fuel_types:
+      - PDL
 group:
   nswfuel:
     name: NSW Fuel
@@ -44,10 +72,17 @@ group:
     entities:
       - sensor.caltex_kariong_pdl
       - sensor.caltex_woolworths_gosford_pdl
-      - sensor.caltex_gosford_west_pdl_2
       - sensor.caltex_gosford_west_pdl
+      - sensor.caltex_gosford_west_pdl_2
+      - sensor.caltex_gosford_west_pdl_3
       - sensor.caltex_woolworths_erina_pdl
       - sensor.caltex_wyoming_pdl
       - sensor.caltex_woolworths_tuggerah_pdl
+      - sensor.caltex_woolworths_tuggerah_north_pdl
       - sensor.caltex_wyong_pdl
+      - sensor.caltex_wyong_pdl_2
       - sensor.coles_express_kariong_dl
+      - sensor.caltex_woolworths_waitara_pdl
+      - sensor.caltex_woolworths_turramurra_pdl
+      - sensor.caltex_woolworths_glenrose_pdl
+      - sensor.caltex_belrose_pdl
