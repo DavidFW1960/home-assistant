@@ -19,12 +19,6 @@ homeassistant:
     light:
       assumed_state: false
 
-# Auth
-# auth_providers:
-#   - type: homeassistant
-#   Uncomment next line if you want to enable legacy API password support
-#   - type: legacy_api_password
-
 # Python
 # python_script:
 
