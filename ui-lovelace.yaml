@@ -270,16 +270,28 @@ views:
   - title: Buses, Trains & Fuel
     icon: mdi:train
     cards:
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Transport
+            show_header_toggle: true
+            entities:
+              - sensor.busmonitor1
+              - sensor.busmonitor2
+              - sensor.trainmonitor1
+              - sensor.trainmonitor2
+          - type: entities
+            title: NSW Fuel Watch - Sydney
+            show_header_toggle: true
+            entities:
+              - sensor.caltex_woolworths_waitara_pdl
+              - sensor.caltex_woolworths_turramurra_pdl
+              - sensor.caltex_st_ives_pdl
+              - sensor.caltex_st_ives_north_pdl
+              - sensor.caltex_woolworths_glenrose_pdl
+              - sensor.caltex_belrose_pdl
       - type: entities
-        title: Transport
-        show_header_toggle: true
-        entities:
-          - sensor.busmonitor1
-          - sensor.busmonitor2
-          - sensor.trainmonitor1
-          - sensor.trainmonitor2
-      - type: entities
-        title: NSW Fuel Watch
+        title: NSW Fuel Watch - Central Coast
         show_header_toggle: true
         entities:
           - sensor.caltex_kariong_pdl
@@ -294,9 +306,3 @@ views:
           - sensor.caltex_wyong_pdl
           - sensor.caltex_wyong_pdl_2
           - sensor.coles_express_kariong_dl
-          - sensor.caltex_woolworths_waitara_pdl
-          - sensor.caltex_woolworths_turramurra_pdl
-          - sensor.caltex_st_ives_pdl
-          - sensor.caltex_st_ives_north_pdl
-          - sensor.caltex_woolworths_glenrose_pdl
-          - sensor.caltex_belrose_pdl

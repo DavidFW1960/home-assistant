@@ -73,8 +73,8 @@ sensor:
     fuel_types:
       - PDL
 group:
-  nswfuel:
-    name: NSW Fuel
+  nswfuelcentralcoast:
+    name: NSW Fuel Central Coast
     view: no
     icon: mdi:gas-station
     entities:
@@ -90,6 +90,11 @@ group:
       - sensor.caltex_wyong_pdl
       - sensor.caltex_wyong_pdl_2
       - sensor.coles_express_kariong_dl
+  nswfuelsydney:
+    name: NSW Fuel Sydney
+    view: no
+    icon: mdi:gas-station
+    entities:
       - sensor.caltex_woolworths_waitara_pdl
       - sensor.caltex_woolworths_turramurra_pdl
       - sensor.caltex_st_ives_pdl

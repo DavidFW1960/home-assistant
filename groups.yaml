@@ -41,7 +41,8 @@ transportnsw:
   icon: mdi:train
   entities:
     - group.transport
-    - group.nswfuel
+    - group.nswfuelcentralcoast
+    - group.nswfuelsydney
 BOM:
   - sensor.forecast_0
   - sensor.bom_gosford_air_temp_c
