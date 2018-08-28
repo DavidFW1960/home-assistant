@@ -97,7 +97,19 @@
   trigger:
   - platform: time
     at: '21:00:00'
-  condition: []
+  - entity_id: switch.toothbrush
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+    condition: or
+    conditions:
+    - condition: time
+      after: '21:00:00'
+      before: 00:00:00
+    - condition: time
+      after: 00:00:00
+      before: 08:00:00
   action:
   - service: switch.turn_off
     data:
@@ -145,15 +157,15 @@
         topic: cmnd/sonoff2/status
         payload: "2"
 - id: '1532478833426'
-  alias: Power Problem Notification
+  alias: All Lights off failsafe
   initial_state: 'on'
   trigger:
-  - above: 0
-    entity_id: sensor.rpi_power_status
-    platform: numeric_state
-    value_template: '{{ state.attributes.value }}'
+  - platform: time
+    at: '00:00:00'
+  - platform: time
+    at: '00:10:00'
   condition: []
   action:
-  - service: notify.notify
-    data_template:
-      message: "Warning, currently your raspberry pi is status {{ states.sensor.rpi_power_status.attributes.value }} and {{ states.sensor.rpi_power_status.state }}."
+  - service: light.turn_off
+    data:
+      entity_id: group.all_lights
