@@ -157,7 +157,7 @@
         topic: cmnd/sonoff2/status
         payload: "2"
 - id: '1532478833426'
-  alias: All Lights off failsafe
+  alias: All Lights Off Failsafe
   initial_state: 'on'
   trigger:
   - platform: time
