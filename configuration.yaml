@@ -207,6 +207,12 @@ sensor:
       - queue
       - commands
     days: 2
+  - platform: sonarr_upcoming_card
+    api_key: !secret my_sonarr_api
+    host: !secret my_sonarr_host
+    port: !secret my_sonarr_port
+    days: 2
+    ssl: false
 
 # Sonoff Firmware & Artisan Software Version
   - platform: command_line
