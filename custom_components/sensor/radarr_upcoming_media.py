@@ -1,15 +1,14 @@
 """
-A component for the Sonarr Upcoming Lovelace card.
+Radarr component for the Upcoming Media Lovelace card.
 
-This is a simple modification of the default sonarr component,
-it can work with or without the default sonarr component. 
+This is a simple modification of the default radarr component,
+it can work with or without the default radarr component. 
 
-For more details about this component, please refer to the documentation at
-https://github.com/maykar/sonarr-upcoming-card
 """
 import logging
 import time
 import re
+import os
 from datetime import datetime
 
 import requests
@@ -21,24 +20,25 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
+__version__ = '0.0.3'
+
 _LOGGER = logging.getLogger(__name__)
 
 CONF_DAYS = 'days'
 CONF_INCLUDED = 'include_paths'
-CONF_UNIT = 'unit'
 CONF_URLBASE = 'urlbase'
 
 DEFAULT_HOST = 'localhost'
-DEFAULT_PORT = 8989
+DEFAULT_PORT = 7878
 DEFAULT_URLBASE = ''
-DEFAULT_DAYS = '7'
+DEFAULT_DAYS = '60'
 
 SENSOR_TYPES = {
-    'card': ['card', None, None]
+    'media': ['media', None, None]
 }
 
 ENDPOINTS = {
-    'card':
+    'media':
         'http{0}://{1}:{2}/{3}api/calendar?start={4}&end={5}'
 }
 
@@ -47,7 +47,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_DAYS, default=DEFAULT_DAYS): cv.string,
     vol.Optional(CONF_HOST, default=DEFAULT_HOST): cv.string,
     vol.Optional(CONF_INCLUDED, default=[]): cv.ensure_list,
-    vol.Optional(CONF_MONITORED_CONDITIONS, default=['card']):
+    vol.Optional(CONF_MONITORED_CONDITIONS, default=['media']):
         vol.All(cv.ensure_list, [vol.In(list(SENSOR_TYPES))]),
     vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
     vol.Optional(CONF_SSL, default=False): cv.boolean,
@@ -55,16 +55,18 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 })
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
-    """Set up the Sonarr platform."""
+    """Set up the Radarr platform."""
     conditions = config.get(CONF_MONITORED_CONDITIONS)
     add_devices(
-        [Sonarr_UpcomingSensor(hass, config, sensor) for sensor in conditions], True)
-
-class Sonarr_UpcomingSensor(Entity):
-    """Implementation of the Sonarr sensor."""
+        [Radarr_UpcomingSensor(hass, config, sensor) for sensor in conditions], True)
+    directory = "www/custom-lovelace/upcoming-media-card/images/radarr/"
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+class Radarr_UpcomingSensor(Entity):
+    """Implementation of the Radarr sensor."""
 
     def __init__(self, hass, conf, sensor_type):
-        """Create Sonarr entity."""
+        """Create Radarr entity."""
         from pytz import timezone
         self.conf = conf
         self.host = conf.get(CONF_HOST)
@@ -85,7 +87,7 @@ class Sonarr_UpcomingSensor(Entity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        return '{} {}'.format('Sonarr_Upcoming', self._name)
+        return '{} {}'.format('Radarr_Upcoming', self._name)
 
     @property
     def state(self):
@@ -99,18 +101,29 @@ class Sonarr_UpcomingSensor(Entity):
 
     @property
     def device_state_attributes(self):
+        directory = "www/custom-lovelace/upcoming-media-card/images/radarr/"
         """Return the state attributes of the sensor."""
         attributes = {}
         attribNum = 0
-        for show in self.data:
+        for movie in self.data:
             attribNum += 1
-            attributes['banner' + str(attribNum)] = show['series']['images'][1]['url']
-            attributes['poster' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
-            attributes['series' + str(attribNum)] = show['series']['title']
-            attributes['episode' + str(attribNum)] = show['title']
-            attributes['airdate' + str(attribNum)] = show['airDate']
-            attributes['airtime' + str(attribNum)] = show['series']['airTime']
-            attributes['hasFile' + str(attribNum)] = show['hasFile']
+            p = open(directory + 'poster' + str(attribNum) + '.jpg','wb')
+            p.write(requests.get('http' + self.ssl + '://' + str(self.host) + ':' + str(self.port) + '/api' + re.sub('poster', 'poster-500', movie['images'][0]['url']) + '?apikey=' + self.apikey).content)
+            p.close()
+            b = open(directory + 'banner' + str(attribNum) + '.jpg','wb')
+            b.write(requests.get('http' + self.ssl + '://' + str(self.host) + ':' + str(self.port) + '/api' + re.sub('fanart', 'fanart-360', movie['images'][1]['url']) + '?apikey=' + self.apikey).content)
+            b.close()
+            attributes['poster' + str(attribNum)] = '../local/custom-lovelace/upcoming-media-card/images/radarr/poster' + str(attribNum) + '.jpg'
+            attributes['banner' + str(attribNum)] = '../local/custom-lovelace/upcoming-media-card/images/radarr/banner' + str(attribNum) + '.jpg'
+            attributes['title' + str(attribNum)] = movie['title']
+            attributes['subtitle' + str(attribNum)] = movie['genres']
+            if 'physicalRelease' in movie:
+                attributes['airdate' + str(attribNum)] = movie['physicalRelease']
+                attributes['info' + str(attribNum)] = 'Available '
+            else:
+                attributes['airdate' + str(attribNum)] = movie['inCinemas']
+                attributes['info' + str(attribNum)] = 'In Theaters '
+            attributes['hasFile' + str(attribNum)] = movie['hasFile']
         return attributes
 
     def update(self):

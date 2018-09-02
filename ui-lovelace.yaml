@@ -1,9 +1,11 @@
 title: Home
 resources:
-- url: /local/custom-lovelace/sonarr-upcoming-card/sonarr-upcoming-card.js
-  type: js
-- url: /local/custom_ui/dark-sky-weather-card.js
-  type: js
+  - url: /local/tracker-card.js?v=0.1.4
+    type: js
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.2
+    type: js
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=1
+    type: js
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -51,26 +53,11 @@ views:
               - sensor.hass_current_dev_version
               - sensor.hass_current_supervisor_version
               - binary_sensor.hass_update_available
-          - type: entities
-            title: Newsgroups
-            show_header_toggle: true
-            entities:
-              - sensor.sabnzbd_status
-              - sensor.sabnzbd_queue
-              - sensor.sabnzbd_queue_count
-              - sensor.sabnzbd_speed
-              - sensor.sabnzbd_left
-              - sensor.sabnzbd_disk
-              - sensor.sabnzbd_disk_free
-              - sensor.sabnzbd_daily_total
-              - sensor.sabnzbd_weekly_total
-              - sensor.sabnzbd_monthly_total
-              - sensor.sabnzbd_total
-              - sensor.sonarr_series
-              - sensor.sonarr_upcoming
-              - sensor.sonarr_wanted
-              - sensor.sonarr_queue
-              - sensor.sonarr_commands
+          - type: custom:tracker-card
+            title: Custom Card Updates
+            trackers:
+              - sensor.custom_card_tracker
+              - sensor.custom_component_tracker
       - type: vertical-stack
         cards:
           - type: entities
@@ -243,7 +230,8 @@ views:
         title: Automations
         show_header_toggle: false
         entities:
-          - automation.all_lights_off_failsafe
+          - automation.lights_off_failsafe
+          - automation.lights_on_failsafe
           - automation.coffee_maker_off
           - automation.coffee_maker_on
           - automation.make_snapshot__copy_backups_to_dropbox
@@ -275,16 +263,6 @@ views:
   - title: Media
     icon: mdi:vlc
     cards:
-      - type: custom:sonarr-upcoming-card
-        image_style: poster
-        clock: 12
-        max: 3
-        show_color: '#ffffff'
-        episode_color: '#000000'
-        time_color: '#f41103'
-        downloaded_color: '#000000'
-        ribbon_color: '#03a9f4'
-        border_color: 'grey'
       - type: media-control
         entity: media_player.all_speakers
       - type: media-control
@@ -307,6 +285,62 @@ views:
         entity: media_player.txnr1009
       - type: media-control
         entity: media_player.samsung_tv
+  - title: Downloader
+    icon: mdi:kodi
+    panel: true
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:upcoming-media-card
+            service: sonarr
+            title: Sonarr Upcoming
+            image_style: poster
+            clock: 12
+            date: 'ddmm'
+            max: 10
+            show_color: '#ffffff'
+            episode_color: '#000000'
+            time_color: '#f41103'
+            downloaded_color: '#000000'
+            ribbon_color: '#03a9f4'
+            border_color: 'grey'
+            text_shadows: off
+            box_shadows: on
+          - type: custom:upcoming-media-card
+            service: radarr
+            title: Radarr Upcoming
+            image_style: poster
+            clock: 12
+            date: 'ddmm'
+            max: 10
+            show_color: '#ffffff'
+            episode_color: '#000000'
+            time_color: '#f41103'
+            downloaded_color: '#000000'
+            ribbon_color: '#03a9f4'
+            border_color: 'grey'
+            text_shadows: off
+            box_shadows: on
+          - type: entities
+            title: Newsgroups
+            show_header_toggle: true
+            entities:
+              - sensor.sabnzbd_status
+              - sensor.sabnzbd_queue
+              - sensor.sabnzbd_queue_count
+              - sensor.sabnzbd_speed
+              - sensor.sabnzbd_left
+              - sensor.sabnzbd_disk
+              - sensor.sabnzbd_disk_free
+              - sensor.sabnzbd_daily_total
+              - sensor.sabnzbd_weekly_total
+              - sensor.sabnzbd_monthly_total
+              - sensor.sabnzbd_total
+              - sensor.sonarr_series
+              - sensor.sonarr_upcoming
+              - sensor.sonarr_wanted
+              - sensor.sonarr_queue
+              - sensor.sonarr_commands
   - title: Buses, Trains & Fuel
     icon: mdi:train
     cards:

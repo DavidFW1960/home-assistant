@@ -207,11 +207,17 @@ sensor:
       - queue
       - commands
     days: 2
-  - platform: sonarr_upcoming_card
+  - platform: sonarr_upcoming_media
     api_key: !secret my_sonarr_api
     host: !secret my_sonarr_host
     port: !secret my_sonarr_port
-    days: 2
+    days: 14
+    ssl: false
+  - platform: radarr_upcoming_media
+    api_key: !secret my_radarr_api
+    host: !secret my_radarr_host
+    port: !secret my_radarr_port
+    days: 14
     ssl: false
 
 # Sonoff Firmware & Artisan Software Version
@@ -225,7 +231,7 @@ sensor:
     scan_interval: 21600
   - platform: mqtt
     name: "Toothbrush Firmware"
-    state_topic: "stat/sonoff2/STATUS2"
+    state_topic: "stat/sonoff1/STATUS2"
     value_template: "v{{ value_json.StatusFWR.Version }}"
 binary_sensor:
   - platform: template
@@ -295,8 +301,8 @@ switch:
     token: !secret vpnrouter-token
   - platform: mqtt
     name: "Toothbrush"
-    command_topic: "cmnd/sonoff2/power"
-    state_topic: "stat/sonoff2/POWER"
+    command_topic: "cmnd/sonoff1/power"
+    state_topic: "stat/sonoff1/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
@@ -310,6 +316,9 @@ mqtt:
   broker: core-mosquitto
   username: !secret mqtt_user_name
   password: !secret mqtt_password
+
+# Custom Component Updater
+custom_updater:
 
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml
