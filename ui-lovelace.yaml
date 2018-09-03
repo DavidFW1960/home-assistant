@@ -2,7 +2,7 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.4
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.2
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.4
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
@@ -230,14 +230,15 @@ views:
         title: Automations
         show_header_toggle: false
         entities:
-          - automation.lights_off_failsafe
           - automation.lights_on_failsafe
-          - automation.coffee_maker_off
+          - automation.lights_off_failsafe
+          - automation.power_state_sonoff_on_ha_startup
           - automation.coffee_maker_on
+          - automation.coffee_maker_off
           - automation.make_snapshot__copy_backups_to_dropbox
           - automation.sonoff_firmware_installed
-          - automation.toothbrush_off
           - automation.toothbrush_on
+          - automation.toothbrush_off
           - automation.turn_lounge_light_on_elevation__25__after_4pm
           - automation.update_available
       - type: entities

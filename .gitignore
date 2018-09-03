@@ -4,6 +4,7 @@
 *.csr
 *.crt
 *.key
+*.jpg
 home-assistant.log
 home-assistant_v2.db
 *.db-journal

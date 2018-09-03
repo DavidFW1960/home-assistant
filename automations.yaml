@@ -219,6 +219,8 @@
         {% else %}
         light.dining
         {% endif %}
+      brightness_pct: 75
+      kelvin: 3100
   - delay: '00:00:05'
   - service: light.turn_on
     data_template:
@@ -234,3 +236,28 @@
         {% else %}
         light.dining
         {% endif %}
+      brightness_pct: 75
+      kelvin: 3100
+- id: '1532478833428'
+  alias: "Power State Sonoff on HA Start-Up"
+  initial_state: 'on'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/power1"
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/power2"
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/Power3"
+        payload: "" 
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/power4"
+        payload: ""

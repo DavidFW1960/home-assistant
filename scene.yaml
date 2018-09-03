@@ -1,125 +1,125 @@
 # Lounge Light Scenes 
- - name: Lounge 100
-   entities:
-     light.lounge:
-       state: on
-       transition: 2
-       brightness_pct: 100
-       kelvin: 3100
- - name: Lounge Normal
-   entities:
-     light.lounge:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 3100
- - name: Lounge Movie
-   entities:
-     light.lounge:
-       state: on
-       transition: 2
-       brightness_pct: 30
-       rgb_color: [0,0,255]
- - name: Lounge Daylight
-   entities:
-     light.lounge:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 6500
- - name: Lounge Warm
-   entities:
-     light.lounge:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 2700
+- name: Lounge 100
+  entities:
+    light.lounge:
+      state: on
+      transition: 2
+      brightness_pct: 100
+      kelvin: 3100
+- name: Lounge Normal
+  entities:
+    light.lounge:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 3100
+- name: Lounge Movie
+  entities:
+    light.lounge:
+      state: on
+      transition: 2
+      brightness_pct: 30
+      rgb_color: [0,0,255]
+- name: Lounge Daylight
+  entities:
+    light.lounge:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 6500
+- name: Lounge Warm
+  entities:
+    light.lounge:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 2700
 # Office Light Scenes 
- - name: Spots Normal
-   entities:
-     light.spots:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 3100
- - name: Office Main
-   entities:
-     light.office:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 3100
- - name: Office All
-   entities:
-     light.spots:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 3100
-     light.office:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 3100
- - name: Office Daylight
-   entities:
-     light.office:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 6500
- - name: Office Warm
-   entities:
-     light.office:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 2700
- - name: Spots Daylight
-   entities:
-     light.spots:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 6500
- - name: Spots Warm
-   entities:
-     light.spots:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 2700
+- name: Spots Normal
+  entities:
+    light.spots:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 3100
+- name: Office Main
+  entities:
+    light.office:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 3100
+- name: Office All
+  entities:
+    light.spots:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 3100
+    light.office:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 3100
+- name: Office Daylight
+  entities:
+    light.office:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 6500
+- name: Office Warm
+  entities:
+    light.office:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 2700
+- name: Spots Daylight
+  entities:
+    light.spots:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 6500
+- name: Spots Warm
+  entities:
+    light.spots:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 2700
 # Dining Light Scenes 
- - name: Dining Normal
-   entities:
-     light.dining:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 3100
- - name: Dining Daylight
-   entities:
-     light.dining:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 6500
- - name: Dining Warm
-   entities:
-     light.dining:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 2700
+- name: Dining Normal
+  entities:
+    light.dining:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 3100
+- name: Dining Daylight
+  entities:
+    light.dining:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 6500
+- name: Dining Warm
+  entities:
+    light.dining:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 2700
 # Bedtime Scenes
- - name: Bedtime
-   entities:
-     light.spots:
-       state: on
-       transition: 2
-       brightness_pct: 75
-       kelvin: 3100
-     light.yeelight_white_34ce00887db6:
-       state: on
-     light.yeelight_white_34ce00882e27:
-       state: on
+- name: Bedtime
+  entities:
+    light.spots:
+      state: on
+      transition: 2
+      brightness_pct: 75
+      kelvin: 3100
+    light.yeelight_white_34ce00887db6:
+      state: on
+    light.yeelight_white_34ce00882e27:
+      state: on
