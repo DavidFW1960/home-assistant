@@ -60,13 +60,13 @@ sensor.sabnzbd_disk:
 sensor.sabnzbd_disk_free:
   icon: mdi:harddisk
 sensor.sabnzbd_daily_total:
-  icon: mdi:disk
+  icon: mdi:disc
 sensor.sabnzbd_weekly_total:
-  icon: mdi:disk
+  icon: mdi:disc
 sensor.sabnzbd_monthly_total:
-  icon: mdi:disk
+  icon: mdi:disc
 sensor.sabnzbd_total:
-  icon: mdi:disk
+  icon: mdi:disc
 sensor.speedtest_download_filtered:
   icon: mdi:speedometer
 sensor.speedtest_upload_filtered:

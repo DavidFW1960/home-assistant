@@ -220,15 +220,37 @@ sensor:
     days: 28
     ssl: false
 
-# Sonoff Firmware & Artisan Software Version
-  - platform: command_line
-    name: Sonoff Firmware Version Available
-    command: /config/versionsonoffhtml.sh
-    scan_interval: 21600
-  - platform: command_line
+# Artisan Software Version
+# Alternate way of getting Artisan version using script 
+# - platform: command_line
+#   name: Artisan Software Version
+#   command: /config/versionartisanhtml.sh
+#   scan_interval: 21600
+# Getting Artisan version from JSON
+  - platform: rest
+    resource: https://api.github.com/repos/artisan-roaster-scope/artisan/releases/latest
     name: Artisan Software Version
-    command: /config/versionartisanhtml.sh
-    scan_interval: 21600
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+
+# Tasmota Firmware
+# Alternate way of getting firmware using script
+# - platform: command_line
+#   name: Sonoff Firmware Version Available
+#   command: /config/versionsonoffhtml.sh
+#   scan_interval: 21600
+# Getting Firmware from JSON for Tasmota
+  - platform: rest
+    resource: https://api.github.com/repos/arendst/Sonoff-Tasmota/releases/latest
+    name: Sonoff Firmware Version Available
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
   - platform: mqtt
     name: "Toothbrush Firmware"
     state_topic: "stat/sonoff1/STATUS2"

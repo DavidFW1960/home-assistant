@@ -28,12 +28,12 @@ homeassistant:
     sensor.hass_installed_version:
       <<: *customize
       friendly_name: 'Hass.io Installed Version'
-      icon: mdi:approval
+      icon: mdi:check-decagram
 
     sensor.hass_current_stable_version:
       <<: *customize
       friendly_name: 'Hass.io Current Stable Version'
-      icon: mdi:approval
+      icon: mdi:check-decagram
 
     sensor.hass_current_beta_version:
       <<: *customize
@@ -48,12 +48,12 @@ homeassistant:
     sensor.hass_current_supervisor_version:
       <<: *customize
       friendly_name: 'Hass.io Current Supervisor Version'
-      icon: mdi:approval
+      icon: mdi:check-decagram
 
     sensor.hass_current_hassos_version:
       <<: *customize
       friendly_name: 'Hass.io Current HassOS Version'
-      icon: mdi:approval
+      icon: mdi:check-decagram
 
 ################################################
 ## Updater

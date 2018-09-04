@@ -2,7 +2,7 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.4
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.4
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.5
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
@@ -305,8 +305,8 @@ views:
             downloaded_color: '#000000'
             ribbon_color: '#03a9f4'
             border_color: 'grey'
-            text_shadows: off
-            box_shadows: on
+            text_shadows: 'off'
+            box_shadows: 'on'
           - type: custom:upcoming-media-card
             service: radarr
             title: Radarr Upcoming
@@ -320,8 +320,8 @@ views:
             downloaded_color: '#000000'
             ribbon_color: '#03a9f4'
             border_color: 'grey'
-            text_shadows: off
-            box_shadows: on
+            text_shadows: 'off'
+            box_shadows: 'on'
           - type: entities
             title: Newsgroups
             show_header_toggle: true

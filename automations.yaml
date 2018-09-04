@@ -170,32 +170,32 @@
   - service: light.turn_off
     data_template:
       entity_id: >-
-        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5) -%}
+        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 3) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 3) -%}
         light.lounge, light.spots
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5) -%}
+        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 3) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 3) -%}
         light.office, light.spots
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 3 -%}
         light.spots
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 3 -%}
         light.office
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 3 -%}
         light.lounge
         {%- else -%}
         light.dining
         {%- endif -%}
-  - delay: '00:00:05'
+  - delay: '00:00:02'
   - service: light.turn_off
     data_template:
       entity_id: >-
-        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15) -%}
+        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 6) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 6) -%}
         light.lounge, light.spots
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15) -%}
+        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 6) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 6) -%}
         light.office, light.spots
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 6 -%}
         light.spots
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 6 -%}
         light.office
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 6 -%}
         light.lounge
         {%- else -%}
         light.dining
@@ -214,15 +214,15 @@
   - service: light.turn_on
     data_template:
       entity_id: >-
-        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5) -%}
+        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 3) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 3) -%}
         light.lounge, light.spots
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5) -%}
+        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 3) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 3) -%}
         light.office, light.spots
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 3 -%}
         light.spots
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 3 -%}
         light.office
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 3 -%}
         light.lounge
         {%- else -%}
         light.dining
@@ -233,15 +233,15 @@
   - service: light.turn_on
     data_template:
       entity_id: >-
-        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15) -%}
+        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 6) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 6) -%}
         light.lounge, light.spots
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15) -%}
+        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 6) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 6) -%}
         light.office, light.spots
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 6 -%}
         light.spots
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 6 -%}
         light.office
-        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15 -%}
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 6 -%}
         light.lounge
         {%- else -%}
         light.dining
