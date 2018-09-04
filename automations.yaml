@@ -166,35 +166,40 @@
     entity_id: light.lounge, light.dining, light.spots, light.office
   condition: []
   action:
+  - delay: '00:00:02'
   - service: light.turn_off
     data_template:
       entity_id: >-
-        {% if as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5 %}
-        light.spots
-        {% elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5 %}
-        light.office
-        {% elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5 %}
-        light.lounge
-        {% elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5 %} and {% elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5 %}
+        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5) -%}
         light.lounge, light.spots
-        {% else %}
+        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5) -%}
+        light.office, light.spots
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5 -%}
+        light.spots
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5 -%}
+        light.office
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5 -%}
+        light.lounge
+        {%- else -%}
         light.dining
-        {% endif %}
+        {%- endif -%}
   - delay: '00:00:05'
   - service: light.turn_off
     data_template:
       entity_id: >-
-        {% if as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15 %}
-        light.spots
-        {% elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15 %}
-        light.office
-        {% elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15 %}
-        light.lounge
-        {% elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15 %} and {% elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15 %}
+        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15) -%}
         light.lounge, light.spots
-        {% else %}
+        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15) -%}
+        light.office, light.spots
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15 -%}
+        light.spots
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15 -%}
+        light.office
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15 -%}
+        light.lounge
+        {%- else -%}
         light.dining
-        {% endif %}
+        {%- endif -%}
 - id: '1532478833427'
   alias: Lights On Failsafe
   initial_state: 'on'
@@ -205,37 +210,42 @@
     entity_id: light.lounge, light.dining, light.spots, light.office
   condition: []
   action:
+  - delay: '00:00:02'
   - service: light.turn_on
     data_template:
       entity_id: >-
-        {% if as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5 %}
-        light.spots
-        {% elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5 %}
-        light.office
-        {% elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5 %}
-        light.lounge
-        {% elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5 %} and {% elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5 %}
+        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5) -%}
         light.lounge, light.spots
-        {% else %}
+        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5) -%}
+        light.office, light.spots
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 5 -%}
+        light.spots
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5 -%}
+        light.office
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5 -%}
+        light.lounge
+        {%- else -%}
         light.dining
-        {% endif %}
+        {%- endif -%}
       brightness_pct: 75
       kelvin: 3100
   - delay: '00:00:05'
   - service: light.turn_on
     data_template:
       entity_id: >-
-        {% if as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15 %}
-        light.spots
-        {% elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15 %}
-        light.office
-        {% elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15 %}
-        light.lounge
-        {% elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15 %} and {% elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15 %}
+        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15) -%}
         light.lounge, light.spots
-        {% else %}
+        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15) and (as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15) -%}
+        light.office, light.spots
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.spots.last_changed) < 15 -%}
+        light.spots
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 15 -%}
+        light.office
+        {%- elif as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 15 -%}
+        light.lounge
+        {%- else -%}
         light.dining
-        {% endif %}
+        {%- endif -%}
       brightness_pct: 75
       kelvin: 3100
 - id: '1532478833428'

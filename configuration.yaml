@@ -217,7 +217,7 @@ sensor:
     api_key: !secret my_radarr_api
     host: !secret my_radarr_host
     port: !secret my_radarr_port
-    days: 14
+    days: 28
     ssl: false
 
 # Sonoff Firmware & Artisan Software Version
