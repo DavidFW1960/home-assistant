@@ -230,6 +230,9 @@ sensor:
   - platform: rest
     resource: https://api.github.com/repos/artisan-roaster-scope/artisan/releases/latest
     name: Artisan Software Version
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
     value_template: '{{ value_json.tag_name }}'
     headers:
       Accept: application/vnd.github.v3+json
@@ -246,6 +249,9 @@ sensor:
   - platform: rest
     resource: https://api.github.com/repos/arendst/Sonoff-Tasmota/releases/latest
     name: Sonoff Firmware Version Available
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
     value_template: '{{ value_json.tag_name }}'
     headers:
       Accept: application/vnd.github.v3+json
