@@ -266,7 +266,7 @@ binary_sensor:
     sensors:
       sonoff_update_available:
         value_template: >-
-          {{ states.sensor.sonoff_firmware_version_available.state != states.sensor.toothbrush_firmware.state
+          {{ states.sensor.sonoff_firmware_version_available.state > states.sensor.toothbrush_firmware.state
               }}
 
 # SABnzbd
