@@ -61,7 +61,7 @@ sensor:
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
-    station_id: 745
+    station_id: 17310
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
