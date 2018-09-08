@@ -19,7 +19,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -103,8 +103,14 @@ class Sonarr_UpcomingSensor(Entity):
         attribNum = 0
         for show in self.data:
             attribNum += 1
-            attributes['banner' + str(attribNum)] = show['series']['images'][1]['url']
-            attributes['poster' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
+            try:
+                attributes['banner' + str(attribNum)] = show['series']['images'][1]['url']
+            except:
+                attributes['banner' + str(attribNum)] = 'https://i.imgur.com/fxX01Ic.jpg'
+            try:
+                attributes['poster' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
+            except:
+                attributes['poster' + str(attribNum)] = 'https://i.imgur.com/GmAQyT5.jpg'
             attributes['title' + str(attribNum)] = show['series']['title']
             attributes['subtitle' + str(attribNum)] = show['title']
             attributes['airdate' + str(attribNum)] = show['airDateUtc']

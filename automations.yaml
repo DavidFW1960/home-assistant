@@ -148,14 +148,14 @@
     - platform: homeassistant
       event: start
   action:
-    - service: mqtt.publish
-      data:
-        topic: cmnd/sonoff1/status
-        payload: "2"
-    - service: mqtt.publish
-      data:
-        topic: cmnd/sonoff2/status
-        payload: "2"
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoff1/status
+      payload: "2"
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoff2/status
+      payload: "2"
 - id: '1532478833426'
   alias: Lights Off Failsafe
   initial_state: 'on'
@@ -255,19 +255,19 @@
     platform: homeassistant
     event: start
   action:
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/power1"
-        payload: ""
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/power2"
-        payload: ""
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/Power3"
-        payload: "" 
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/power4"
-        payload: ""
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/power1"
+      payload: ""
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/power2"
+      payload: ""
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/Power3"
+      payload: "" 
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/power4"
+      payload: ""

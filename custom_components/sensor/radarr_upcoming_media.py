@@ -1,14 +1,10 @@
 """
 Radarr component for the Upcoming Media Lovelace card.
-
 This is a simple modification of the default radarr component,
-it can work with or without the default radarr component. 
-
+it can work with or without the default radarr component.
 """
 import logging
 import time
-import re
-import os
 from datetime import datetime
 
 import requests
@@ -20,7 +16,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.0.7'
+__version__ = '0.1.2'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -93,42 +89,35 @@ class Radarr_UpcomingSensor(Entity):
         return self._state
 
     @property
-    def available(self):
-        """Return sensor availability."""
-        return self._available
-
-    @property
     def device_state_attributes(self):
         """Return the state attributes of the sensor."""
         attributes = {}
         self.attribNum = 0
-        for movie in self.data:
-#The Movie Database offers free API keys. The request rate limiting is only imposed by IP address, not API key.
-#So there is no reason in stealing this one, just go get your own. www.themoviedb.org.
-            faurl = requests.get('https://api.themoviedb.org/3/movie/'+str(movie['tmdbId'])+'?api_key='+'1f7708bb9a218ab891a5d438b1b63992')
-            fajson = faurl.json()
-            if 'physicalRelease' in movie:
+        for movie in sorted(self.data, key = lambda i: i['path']):
+            if movie['inCinemas'] > datetime.now().replace(microsecond=0).isoformat()+'Z':
                 self.attribNum += 1
-                if 'physicalRelease' in movie:
-                    attributes['airdate' + str(self.attribNum)] = movie['physicalRelease']
-                    attributes['info' + str(self.attribNum)] = 'Available '
-                else:
-                    attributes['airdate' + str(self.attribNum)] = movie['inCinemas']
-                    attributes['info' + str(self.attribNum)] = 'In Theaters '
-                try:
-                    attributes['poster' + str(self.attribNum)] = 'https://image.tmdb.org/t/p/w500'+ fajson['poster_path']
-                except KeyError:
-                    attributes['poster' + str(self.attribNum)] = 'https://raw.githubusercontent.com/maykar/Home-Assistant-Config/master/notfound.jpg'
-                try:
-                    attributes['banner' + str(self.attribNum)] = 'https://raw.githubusercontent.com/maykar/Home-Assistant-Config/master/notfound.jpg'
-                except KeyError:
-                    attributes['banner' + str(self.attribNum)] = 'https://raw.githubusercontent.com/maykar/Home-Assistant-Config/master/notfound.jpg'
-                try:
-                    attributes['subtitle' + str(self.attribNum)] = movie['studio']
-                except KeyError:
-                    attributes['subtitle' + str(self.attribNum)] = 'unknown'
-                attributes['title' + str(self.attribNum)] = movie['title']
-                attributes['hasFile' + str(self.attribNum)] = movie['hasFile']
+                attributes['airdate{}'.format(str(self.attribNum))] = movie['path']
+                attributes['info{}'.format(str(self.attribNum))] = 'In Theaters '
+            elif 'physicalRelease' in movie:
+                self.attribNum += 1
+                attributes['airdate{}'.format(str(self.attribNum))] = movie['path']
+                attributes['info{}'.format(str(self.attribNum))] = 'Available '
+            else:
+                continue
+            try:
+                attributes['poster{}'.format(str(self.attribNum))] = movie['poster_path']
+            except KeyError:
+                attributes['poster{}'.format(str(self.attribNum))] = 'https://i.imgur.com/GmAQyT5.jpg'
+            try:
+                attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
+            except KeyError:
+                attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
+            try:
+                attributes['subtitle{}'.format(str(self.attribNum))] = movie['studio']
+            except KeyError:
+                attributes['subtitle{}'.format(str(self.attribNum))] = 'unknown'
+            attributes['title{}'.format(str(self.attribNum))] = movie['title']
+            attributes['hasFile{}'.format(str(self.attribNum))] = movie['hasFile']
         return attributes
 
     def update(self):
@@ -152,14 +141,26 @@ class Radarr_UpcomingSensor(Entity):
             if self.days == 1:
                 self.data = list(
                     filter(
-                        lambda x: x['airDate'] == str(start),
+                        lambda x: x['physicalRelease'] == str(start),
                         res.json()
                     )
                 )
             else:
                 self.data = res.json()
             self._state = self.attribNum
-        self._available = True
+
+            for movie in self.data:
+#The Movie Database offers free API keys. The request rate limiting is only imposed by IP address, not API key.
+#So there is no reason in stealing this one, just go get your own. www.themoviedb.org.
+                session = requests.Session()
+                tmdburl = session.get('http://api.themoviedb.org/3/movie/{}?api_key=1f7708bb9a218ab891a5d438b1b63992'.format(str(movie['tmdbId'])))
+                tmdbjson = tmdburl.json()
+                movie['poster_path'] = 'https://image.tmdb.org/t/p/w500{}'.format(tmdbjson['poster_path'])
+                if movie['inCinemas'] > datetime.now().replace(microsecond=0).isoformat()+'Z':
+                    movie['path'] = movie['inCinemas']
+                elif 'physicalRelease' in movie:
+                    movie['path'] = movie['physicalRelease']
+
 
 def get_date(zone, offset=0):
     """Get date based on timezone and offset of days."""
