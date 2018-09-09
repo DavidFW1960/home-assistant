@@ -96,8 +96,9 @@ Internet:
   - camera.aussie_broadband_cvc_capacity
 Hassio:
   - sensor.ssl_certificate_expiry
-  - sensor.sonoff_firmware_version_available
+  - sensor.coffee_maker_firmware
   - sensor.toothbrush_firmware
+  - sensor.sonoff_firmware_version_available
   - binary_sensor.sonoff_update_available
   - sensor.artisan_software_version
 NUC_Resources:
@@ -169,7 +170,7 @@ Light:
     - light.yeelight_white_34ce00882e27
     - light.office_light_group
     - light.office
-    - light.spots
+    - light.desk
 Switch:
   control: hidden
   entities:
@@ -206,6 +207,6 @@ Scenes:
   - scene.office_daylight
   - scene.office_main
   - scene.office_warm
-  - scene.spots_daylight
-  - scene.spots_normal
-  - scene.spots_warm
+  - scene.desk_daylight
+  - scene.desk_normal
+  - scene.desk_warm

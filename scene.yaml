@@ -35,9 +35,9 @@
       brightness_pct: 75
       kelvin: 2700
 # Office Light Scenes 
-- name: Spots Normal
+- name: Desk Normal
   entities:
-    light.spots:
+    light.desk:
       state: on
       transition: 2
       brightness_pct: 75
@@ -51,7 +51,7 @@
       kelvin: 3100
 - name: Office All
   entities:
-    light.spots:
+    light.desk:
       state: on
       transition: 2
       brightness_pct: 75
@@ -75,16 +75,16 @@
       transition: 2
       brightness_pct: 75
       kelvin: 2700
-- name: Spots Daylight
+- name: Desk Daylight
   entities:
-    light.spots:
+    light.desk:
       state: on
       transition: 2
       brightness_pct: 75
       kelvin: 6500
-- name: Spots Warm
+- name: Desk Warm
   entities:
-    light.spots:
+    light.desk:
       state: on
       transition: 2
       brightness_pct: 75
@@ -114,7 +114,7 @@
 # Bedtime Scenes
 - name: Bedtime
   entities:
-    light.spots:
+    light.desk:
       state: on
       transition: 2
       brightness_pct: 75

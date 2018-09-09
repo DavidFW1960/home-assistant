@@ -2,7 +2,7 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.4
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.5
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.6
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
@@ -17,9 +17,9 @@ views:
             show_header_toggle: true
             entities:
               - sensor.ssl_certificate_expiry
-              - sensor.sonoff_firmware_version_available
-              - sensor.toothbrush_firmware
               - sensor.coffee_maker_firmware
+              - sensor.toothbrush_firmware
+              - sensor.sonoff_firmware_version_available
               - binary_sensor.sonoff_update_available
               - sensor.artisan_software_version
           - type: entities
@@ -218,7 +218,7 @@ views:
               - light.yeelight_white_34ce00882e27
               - light.office_light_group
               - light.office
-              - light.spots
+              - light.desk
           - type: entities
             title: Switch
             show_header_toggle: false
@@ -260,9 +260,9 @@ views:
           - scene.office_daylight
           - scene.office_main
           - scene.office_warm
-          - scene.spots_daylight
-          - scene.spots_normal
-          - scene.spots_warm
+          - scene.desk_daylight
+          - scene.desk_normal
+          - scene.desk_warm
   - title: Media
     icon: mdi:vlc
     cards:

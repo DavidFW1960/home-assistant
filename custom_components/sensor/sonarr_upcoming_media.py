@@ -19,7 +19,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -92,11 +92,6 @@ class Sonarr_UpcomingSensor(Entity):
         return self._state
 
     @property
-    def available(self):
-        """Return sensor availability."""
-        return self._available
-
-    @property
     def device_state_attributes(self):
         """Return the state attributes of the sensor."""
         attributes = {}
@@ -111,6 +106,30 @@ class Sonarr_UpcomingSensor(Entity):
                 attributes['poster' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
             except:
                 attributes['poster' + str(attribNum)] = 'https://i.imgur.com/GmAQyT5.jpg'
+            try:
+                studio = show['series']['network']
+                stustr = True
+            except:
+                studio = ''
+                stustr = False
+            try:
+                if show['series']['ratings']['value'] > 0:
+                    rating = "\N{BLACK STAR}"+' '+str(show['series']['ratings']['value'])
+                    ratstr = True
+                else:
+                    rating = ''
+                    ratstr = False
+            except:
+                rating = ''
+                ratstr = False
+            if all((stustr,ratstr)):
+                attributes['extrainfo' + str(attribNum)] = rating+' - '+studio
+            elif stustr and not ratstr:
+                attributes['extrainfo' + str(attribNum)] = studio
+            elif ratstr and not stustr:
+                attributes['extrainfo' + str(attribNum)] = rating
+            else:
+                attributes['extrainfo' + str(attribNum)] = ''
             attributes['title' + str(attribNum)] = show['series']['title']
             attributes['subtitle' + str(attribNum)] = show['title']
             attributes['airdate' + str(attribNum)] = show['airDateUtc']
@@ -132,7 +151,6 @@ class Sonarr_UpcomingSensor(Entity):
                 timeout=10)
         except OSError:
             _LOGGER.warning("Host %s is not available", self.host)
-            self._available = False
             self._state = None
             return
 
@@ -147,7 +165,6 @@ class Sonarr_UpcomingSensor(Entity):
             else:
                 self.data = res.json()
             self._state = len(self.data)
-        self._available = True
 
 def get_date(zone, offset=0):
     """Get date based on timezone and offset of days."""

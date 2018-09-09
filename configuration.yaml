@@ -258,11 +258,11 @@ sensor:
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
   - platform: mqtt
-    name: "Toothbrush Firmware"
+    name: "Coffee Maker Firmware"
     state_topic: "stat/sonoff1/STATUS2"
     value_template: "v{{ value_json.StatusFWR.Version }}"
   - platform: mqtt
-    name: "Coffee Maker Firmware"
+    name: "Toothbrush Firmware"
     state_topic: "stat/sonoff2/STATUS2"
     value_template: "v{{ value_json.StatusFWR.Version }}"
 binary_sensor:
@@ -332,7 +332,7 @@ switch:
     host: !secret vpnrouter-ip
     token: !secret vpnrouter-token
   - platform: mqtt
-    name: "Toothbrush"
+    name: "Coffee Maker"
     command_topic: "cmnd/sonoff1/power"
     state_topic: "stat/sonoff1/POWER"
     qos: 1
@@ -340,7 +340,7 @@ switch:
     payload_off: "OFF"
     retain: false
   - platform: mqtt
-    name: "Coffee Maker"
+    name: "Toothbrush"
     command_topic: "cmnd/sonoff2/power"
     state_topic: "stat/sonoff2/POWER"
     qos: 1

@@ -16,10 +16,10 @@
         name: Office
       - number: 4
         type: rgbww
-        name: Spots
+        name: Desk
 # Office Light Group
 - platform: group
   name: Office Light Group
   entities:
     - light.office
-    - light.spots
+    - light.desk

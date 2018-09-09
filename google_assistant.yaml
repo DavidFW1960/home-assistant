@@ -21,7 +21,7 @@ entity_config:
     room: dining room
   light.office:
     room: office
-  light.spots:
+  light.desk:
     room: office
   scene.bedtime:
     room: bedroom
@@ -49,11 +49,11 @@ entity_config:
     room: office
   scene.office_warm:
     room: office
-  scene.spots_daylight:
+  scene.desk_daylight:
     room: office
-  scene.spots_normal:
+  scene.desk_normal:
     room: office
-  scene.spots_warm:
+  scene.desk_warm:
     room: office
   switch.coffee_maker:
     room: kitchen

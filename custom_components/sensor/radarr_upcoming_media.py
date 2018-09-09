@@ -16,7 +16,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -97,25 +97,45 @@ class Radarr_UpcomingSensor(Entity):
             if movie['inCinemas'] > datetime.now().replace(microsecond=0).isoformat()+'Z':
                 self.attribNum += 1
                 attributes['airdate{}'.format(str(self.attribNum))] = movie['path']
-                attributes['info{}'.format(str(self.attribNum))] = 'In Theaters '
+                attributes['info{}'.format(str(self.attribNum))] = 'In Theaters'
             elif 'physicalRelease' in movie:
                 self.attribNum += 1
                 attributes['airdate{}'.format(str(self.attribNum))] = movie['path']
-                attributes['info{}'.format(str(self.attribNum))] = 'Available '
+                attributes['info{}'.format(str(self.attribNum))] = 'Available'
             else:
                 continue
             try:
-                attributes['poster{}'.format(str(self.attribNum))] = movie['poster_path']
-            except KeyError:
+                studio = movie['studio']
+                stustr = True
+            except:
+                studio = ''
+                stustr = False
+            try:
+                if movie['ratings']['value'] > 0:
+                    rating = "\N{BLACK STAR}"+' '+str(movie['ratings']['value'])
+                    ratstr = True
+                else:
+                    rating = ''
+                    ratstr = False
+            except:
+                rating = ''
+                ratstr = False
+            if all((stustr,ratstr)):
+                attributes['extrainfo{}'.format(str(self.attribNum))] = rating+' - '+studio
+            elif stustr and not ratstr:
+                attributes['extrainfo{}'.format(str(self.attribNum))] = studio
+            elif ratstr and not stustr:
+                attributes['extrainfo{}'.format(str(self.attribNum))] = rating
+            else:
+                attributes['extrainfo{}'.format(str(self.attribNum))] = ''
+            try:
+                attributes['poster{}'.format(str(self.attribNum))] = movie['images'][0]
+            except:
                 attributes['poster{}'.format(str(self.attribNum))] = 'https://i.imgur.com/GmAQyT5.jpg'
             try:
                 attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
-            except KeyError:
+            except:
                 attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
-            try:
-                attributes['subtitle{}'.format(str(self.attribNum))] = movie['studio']
-            except KeyError:
-                attributes['subtitle{}'.format(str(self.attribNum))] = 'unknown'
             attributes['title{}'.format(str(self.attribNum))] = movie['title']
             attributes['hasFile{}'.format(str(self.attribNum))] = movie['hasFile']
         return attributes
@@ -133,7 +153,6 @@ class Radarr_UpcomingSensor(Entity):
                 timeout=10)
         except OSError:
             _LOGGER.warning("Host %s is not available", self.host)
-            self._available = False
             self._state = None
             return
 
@@ -155,12 +174,13 @@ class Radarr_UpcomingSensor(Entity):
                 session = requests.Session()
                 tmdburl = session.get('http://api.themoviedb.org/3/movie/{}?api_key=1f7708bb9a218ab891a5d438b1b63992'.format(str(movie['tmdbId'])))
                 tmdbjson = tmdburl.json()
-                movie['poster_path'] = 'https://image.tmdb.org/t/p/w500{}'.format(tmdbjson['poster_path'])
+                movie['images'][0] = 'https://image.tmdb.org/t/p/w500{}'.format(tmdbjson['poster_path'])
                 if movie['inCinemas'] > datetime.now().replace(microsecond=0).isoformat()+'Z':
                     movie['path'] = movie['inCinemas']
                 elif 'physicalRelease' in movie:
                     movie['path'] = movie['physicalRelease']
-
+                else:
+                    continue
 
 def get_date(zone, offset=0):
     """Get date based on timezone and offset of days."""
