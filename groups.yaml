@@ -175,6 +175,7 @@ Switch:
   entities:
     - switch.coffee_maker
     - switch.home_assistant
+    - switch.hifi
     - switch.vpn_router
     - switch.toothbrush
 Media:

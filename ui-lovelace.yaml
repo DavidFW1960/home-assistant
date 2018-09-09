@@ -19,6 +19,7 @@ views:
               - sensor.ssl_certificate_expiry
               - sensor.sonoff_firmware_version_available
               - sensor.toothbrush_firmware
+              - sensor.coffee_maker_firmware
               - binary_sensor.sonoff_update_available
               - sensor.artisan_software_version
           - type: entities
@@ -224,6 +225,7 @@ views:
             entities:
               - switch.coffee_maker
               - switch.home_assistant
+              - switch.hifi
               - switch.vpn_router
               - switch.toothbrush
       - type: entities

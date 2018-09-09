@@ -31,10 +31,15 @@ binary_sensor.sonoff_update_available:
   device_class: problem
 sensor.toothbrush_firmware:
   icon: mdi:tooth
+sensor.coffee_maker_firmware:
+  icon: mdi:coffee
 switch.coffee_maker:
   icon: mdi:coffee
 switch.vpn_router:
   icon: mdi:kodi
+switch.hifi:
+  icon: mdi:television
+  friendly_name: HiFi
 sensor.fritz_netmonitor:
   friendly_name: Fritz Net Monitor
 sensor.hass_current_beta_version:
