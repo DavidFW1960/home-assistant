@@ -34,6 +34,7 @@ sensor:
       - precip_intensity
       - precip_intensity_max
       - uv_index
+      - moon_phase
       - daily_summary
       - pressure
       - visibility
