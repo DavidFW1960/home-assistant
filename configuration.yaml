@@ -359,6 +359,8 @@ mqtt:
 
 # Custom Component Updater
 custom_updater:
+  component_urls:
+    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
 
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml

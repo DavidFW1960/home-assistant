@@ -1,7 +1,9 @@
 """
 Radarr component for the Upcoming Media Lovelace card.
-This is a simple modification of the default radarr component,
+
+This is a simple modification of the default sonarr component,
 it can work with or without the default radarr component.
+
 """
 import logging
 import time
@@ -16,7 +18,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.1.3'
+__version__ = '0.1.5'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -102,40 +104,28 @@ class Radarr_UpcomingSensor(Entity):
                 self.attribNum += 1
                 attributes['airdate{}'.format(str(self.attribNum))] = movie['path']
                 attributes['info{}'.format(str(self.attribNum))] = 'Available'
-            else:
-                continue
-            try:
-                studio = movie['studio']
-                stustr = True
-            except:
-                studio = ''
-                stustr = False
+            else: continue
+            try: studio = movie['studio']
+            except: studio = ''
             try:
                 if movie['ratings']['value'] > 0:
                     rating = "\N{BLACK STAR}"+' '+str(movie['ratings']['value'])
-                    ratstr = True
+                else: rating = ''
+            except: rating = ''
+            if all((studio,rating)): attributes['extrainfo{}'.format(str(self.attribNum))] = rating+' - '+studio
+            elif studio and not rating: attributes['extrainfo{}'.format(str(self.attribNum))] = studio
+            elif rating and not studio: attributes['extrainfo{}'.format(str(self.attribNum))] = rating
+            else: attributes['extrainfo{}'.format(str(self.attribNum))] = ''
+            try: attributes['poster{}'.format(str(self.attribNum))] = movie['images'][0]
+            except: attributes['poster{}'.format(str(self.attribNum))] = 'https://i.imgur.com/GmAQyT5.jpg'
+            try:
+                if (movie['images'][1][-4:] != 'None'):
+                    attributes['fanart{}'.format(str(self.attribNum))] = movie['images'][1]
                 else:
-                    rating = ''
-                    ratstr = False
-            except:
-                rating = ''
-                ratstr = False
-            if all((stustr,ratstr)):
-                attributes['extrainfo{}'.format(str(self.attribNum))] = rating+' - '+studio
-            elif stustr and not ratstr:
-                attributes['extrainfo{}'.format(str(self.attribNum))] = studio
-            elif ratstr and not stustr:
-                attributes['extrainfo{}'.format(str(self.attribNum))] = rating
-            else:
-                attributes['extrainfo{}'.format(str(self.attribNum))] = ''
-            try:
-                attributes['poster{}'.format(str(self.attribNum))] = movie['images'][0]
-            except:
-                attributes['poster{}'.format(str(self.attribNum))] = 'https://i.imgur.com/GmAQyT5.jpg'
-            try:
-                attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
-            except:
-                attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
+                    attributes['fanart{}'.format(str(self.attribNum))] = movie['images'][0]
+            except: attributes['fanart{}'.format(str(self.attribNum))] = ''
+            try: attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
+            except: attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
             attributes['title{}'.format(str(self.attribNum))] = movie['title']
             attributes['hasFile{}'.format(str(self.attribNum))] = movie['hasFile']
         return attributes
@@ -168,19 +158,22 @@ class Radarr_UpcomingSensor(Entity):
                 self.data = res.json()
             self._state = self.attribNum
 
+# The Movie Database offers free API keys. The request rate limiting is only imposed by IP address, not API key and
+# is 40 calls per 10 seconds. No reason in stealing this one, just go get your own: www.themoviedb.org.
+
             for movie in self.data:
-#The Movie Database offers free API keys. The request rate limiting is only imposed by IP address, not API key.
-#So there is no reason in stealing this one, just go get your own. www.themoviedb.org.
                 session = requests.Session()
                 tmdburl = session.get('http://api.themoviedb.org/3/movie/{}?api_key=1f7708bb9a218ab891a5d438b1b63992'.format(str(movie['tmdbId'])))
                 tmdbjson = tmdburl.json()
-                movie['images'][0] = 'https://image.tmdb.org/t/p/w500{}'.format(tmdbjson['poster_path'])
+                try: movie['images'][0] = 'https://image.tmdb.org/t/p/w500{}'.format(tmdbjson['poster_path'])
+                except: movie['images'][0] = 'https://i.imgur.com/GmAQyT5.jpg'
+                try: movie['images'][1] = 'https://image.tmdb.org/t/p/w780{}'.format(tmdbjson['backdrop_path'])
+                except: movie['images'][1] = ''
                 if movie['inCinemas'] > datetime.now().replace(microsecond=0).isoformat()+'Z':
                     movie['path'] = movie['inCinemas']
                 elif 'physicalRelease' in movie:
                     movie['path'] = movie['physicalRelease']
-                else:
-                    continue
+                else: continue
 
 def get_date(zone, offset=0):
     """Get date based on timezone and offset of days."""

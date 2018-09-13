@@ -2,7 +2,7 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.4
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.6
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.9
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js

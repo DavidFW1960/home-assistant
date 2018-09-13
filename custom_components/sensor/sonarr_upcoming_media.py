@@ -19,7 +19,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.0.5'
+__version__ = '0.0.7'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -98,38 +98,26 @@ class Sonarr_UpcomingSensor(Entity):
         attribNum = 0
         for show in self.data:
             attribNum += 1
+            try: attributes['banner' + str(attribNum)] = show['series']['images'][1]['url']
+            except: attributes['banner' + str(attribNum)] = 'https://i.imgur.com/fxX01Ic.jpg'
+            try: attributes['poster' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
+            except: attributes['poster' + str(attribNum)] = 'https://i.imgur.com/GmAQyT5.jpg'
             try:
-                attributes['banner' + str(attribNum)] = show['series']['images'][1]['url']
-            except:
-                attributes['banner' + str(attribNum)] = 'https://i.imgur.com/fxX01Ic.jpg'
-            try:
-                attributes['poster' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
-            except:
-                attributes['poster' + str(attribNum)] = 'https://i.imgur.com/GmAQyT5.jpg'
-            try:
-                studio = show['series']['network']
-                stustr = True
-            except:
-                studio = ''
-                stustr = False
+                if '.jpg' not in show['series']['images'][0]['url']:
+                    attributes['fanart' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
+                else: attributes['fanart' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][0]['url'])
+            except: attributes['fanart' + str(attribNum)] = ''
+            try: studio = show['series']['network']
+            except: studio = ''
             try:
                 if show['series']['ratings']['value'] > 0:
                     rating = "\N{BLACK STAR}"+' '+str(show['series']['ratings']['value'])
-                    ratstr = True
-                else:
-                    rating = ''
-                    ratstr = False
-            except:
-                rating = ''
-                ratstr = False
-            if all((stustr,ratstr)):
-                attributes['extrainfo' + str(attribNum)] = rating+' - '+studio
-            elif stustr and not ratstr:
-                attributes['extrainfo' + str(attribNum)] = studio
-            elif ratstr and not stustr:
-                attributes['extrainfo' + str(attribNum)] = rating
-            else:
-                attributes['extrainfo' + str(attribNum)] = ''
+                else: rating = ''
+            except: rating = ''
+            if all((studio,rating)): attributes['extrainfo' + str(attribNum)] = rating+' - '+studio
+            elif studio and not rating: attributes['extrainfo' + str(attribNum)] = studio
+            elif rating and not studio: attributes['extrainfo' + str(attribNum)] = rating
+            else: attributes['extrainfo' + str(attribNum)] = ''
             attributes['title' + str(attribNum)] = show['series']['title']
             attributes['subtitle' + str(attribNum)] = show['title']
             attributes['airdate' + str(attribNum)] = show['airDateUtc']
@@ -162,8 +150,7 @@ class Sonarr_UpcomingSensor(Entity):
                         res.json()
                     )
                 )
-            else:
-                self.data = res.json()
+            else: self.data = res.json()
             self._state = len(self.data)
 
 def get_date(zone, offset=0):
