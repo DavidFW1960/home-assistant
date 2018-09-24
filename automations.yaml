@@ -41,6 +41,8 @@
   - platform: time
     at: '14:00:00'
   - platform: time
+    at: '16:00:00'
+  - platform: time
     at: '22:00:00'
   condition:
     condition: or
@@ -51,6 +53,8 @@
     - condition: template
       value_template: '{{ now().strftime(''%H:%M'') == ''14:00'' and now().weekday()
         < 5 }}'
+    - condition: template
+      value_template: '{{ now().strftime(''%H:%M'') == ''16:00'' }}'
     - condition: template
       value_template: '{{ now().strftime(''%H:%M'') == ''22:00'' }}'
   action:
