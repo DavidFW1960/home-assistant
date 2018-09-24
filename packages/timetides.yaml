@@ -80,64 +80,18 @@ sensor:
         entity_id: sensor.moon
         friendly_name: 'Moon'
         value_template: >
-          {% if is_state('sensor.moon' , 'new_moon') %} 
-            New Moon
-          {% elif is_state('sensor.moon' , 'waxing_crescent') %} 
-            Waxing Crescent 
-          {% elif is_state('sensor.moon' , 'first_quarter') %} 
-            First Quarter 
-          {% elif is_state('sensor.moon' , 'waxing_gibbous') %} 
-            Waxing Gibbous 
-          {% elif is_state('sensor.moon' , 'full_moon') %} 
-            Full Moon 
-          {% elif is_state('sensor.moon' , 'waning_gibbous') %} 
-            Waning Gibbous 
-          {% elif is_state('sensor.moon' , 'last_quarter') %} 
-            Last Quarter 
-          {% elif is_state('sensor.moon' , 'waning_crescent') %} 
-            Waning Crescent 
-          {% endif %}
-        entity_picture_template: >-
-          {% if is_state('sensor.moon', 'new_moon') %}
-            /local/icons/MoonPhases/SNewMoon.jpg
-          {% elif is_state('sensor.moon', 'waxing_crescent') %}
-            /local/icons/MoonPhases/SWaxingCrescent.jpg
-          {% elif is_state('sensor.moon', 'first_quarter') %}
-            /local/icons/MoonPhases/SFirstQuarter.jpg
-          {% elif is_state('sensor.moon', 'waxing_gibbous') %}
-            /local/icons/MoonPhases/SWaxingGibbous.jpg
-          {% elif is_state('sensor.moon', 'full_moon') %}
-            /local/icons/MoonPhases/SFullMoon.jpg
-          {% elif is_state('sensor.moon', 'waning_gibbous') %}
-            /local/icons/MoonPhases/SWaningGibbous.jpg
-          {% elif is_state('sensor.moon', 'last_quarter') %}
-            /local/icons/MoonPhases/SLastQuarter.jpg
-          {% elif is_state('sensor.moon', 'waning_crescent') %}
-            /local/icons/MoonPhases/SWaningCrescent.jpg
-          {% endif %}
+          {{ states('sensor.moon').title().replace('_',' ') }}
+        entity_picture_template: >
+          {% set state = states('sensor.moon').title().replace('_','').replace(' ','') %}
+          {{ '/local/icons/MoonPhases/S{}.jpg'.format(state) }}
       seasonname:
         entity_id: sensor.season
         friendly_name: 'Season'
         value_template: >
-          {% if is_state('sensor.season' , 'winter') %} 
-            Winter
-          {% elif is_state('sensor.season' , 'spring') %} 
-            Spring 
-          {% elif is_state('sensor.season' , 'summer') %} 
-            Summer 
-          {% elif is_state('sensor.moon' , 'autumn') %} 
-            Autumn 
-          {% endif %}
+          {{ states('sensor.season').title() }} 
         entity_picture_template: >-
-          {% if is_state('sensor.season', 'winter') %}
-            /local/icons/season/winter.png
-          {% elif is_state('sensor.season', 'spring') %}
-            /local/icons/season/spring.png
-          {% elif is_state('sensor.season', 'summer') %}
-            /local/icons/season/summer.png
-          {% elif is_state('sensor.season', 'autumn') %}
-            /local/icons/season/autumn.png
-          {% endif %}
+          {% set state = states('sensor.season'.title()) %}
+          {{ '/local/icons/season/{}.png'.format(state) }}
 
 # Graph Day Length Change
 history_graph:

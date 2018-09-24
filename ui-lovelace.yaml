@@ -14,7 +14,6 @@ views:
         cards:
           - type: entities
             title: System Information
-            show_header_toggle: true
             entities:
               - sensor.ssl_certificate_expiry
               - sensor.coffee_maker_firmware
@@ -24,7 +23,6 @@ views:
               - sensor.artisan_software_version
           - type: entities
             title: NUC Resources
-            show_header_toggle: true
             entities:
               - sensor.cpu_temperature
               - sensor.disk_use_
@@ -34,7 +32,6 @@ views:
               - sensor.last_boot
           - type: entities
             title: iOS Devices
-            show_header_toggle: true
             entities:
               - device_tracker.davids_iphone
               - sensor.davidsiphone_battery_level
@@ -46,7 +43,6 @@ views:
         cards:
           - type: entities
             title: Updates
-            show_header_toggle: true
             entities:
               - sensor.hass_installed_version
               - sensor.hass_current_stable_version
@@ -63,7 +59,6 @@ views:
         cards:
           - type: entities
             title: Internet
-            show_header_toggle: true
             entities:
               - sensor.speedtest_download
               - sensor.speedtest_download_filtered
@@ -98,7 +93,6 @@ views:
         cards:
           - type: entities
             title: Season, Sun & Moon Phase
-            show_header_toggle: true
             entities:
               - sensor.seasonname
               - sun.sun
@@ -119,7 +113,6 @@ views:
               - sensor.daylengthchange
           - type: entities
             title: Forecast
-            show_header_toggle: true
             entities:
               - sensor.forecast_0
               - sensor.forecast_1
@@ -158,7 +151,6 @@ views:
             entity_forecast_icon_5: sensor.dark_sky_icon_5
           - type: entities
             title: Weather from BOM Australia
-            show_header_toggle: true
             entities:
               - sensor.forecast_0
               - sensor.bom_gosford_air_temp_c
@@ -174,7 +166,6 @@ views:
               - sensor.bom_gosford_wind_speed_kt
           - type: entities
             title: Dark Sky
-            show_header_toggle: true
             entities:
               - sensor.dark_sky_cloud_coverage
               - sensor.dark_sky_cloud_coverage_1
@@ -228,24 +219,30 @@ views:
               - switch.hifi
               - switch.vpn_router
               - switch.toothbrush
-      - type: entities
-        title: Automations
-        show_header_toggle: false
-        entities:
-          - automation.lights_on_failsafe
-          - automation.lights_off_failsafe
-          - automation.power_state_sonoff_on_ha_startup
-          - automation.coffee_maker_on
-          - automation.coffee_maker_off
-          - automation.make_snapshot__copy_backups_to_dropbox
-          - automation.sonoff_firmware_installed
-          - automation.toothbrush_on
-          - automation.toothbrush_off
-          - automation.turn_lounge_light_on_elevation__25__after_4pm
-          - automation.update_available
+      - type: vertical-stack
+        cards:      
+          - type: entities
+            title: Automations
+            entities:
+              - automation.lights_on_failsafe
+              - automation.lights_off_failsafe
+              - automation.power_state_sonoff_on_ha_startup
+              - automation.coffee_maker_on
+              - automation.coffee_maker_off
+              - automation.make_snapshot__copy_backups_to_dropbox
+              - automation.sonoff_firmware_installed
+              - automation.toothbrush_on
+              - automation.toothbrush_off
+              - automation.turn_lounge_light_on_elevation__25__after_4pm
+              - automation.update_available
+          - type: entities
+            title: Holiday Automations
+            entities:
+              - automation.coffee_maker_on
+              - automation.toothbrush_on
+              - automation.turn_lounge_light_on_elevation__25__after_4pm
       - type: entities
         title: Scenes
-        show_header_toggle: false
         entities:
           - scene.bedtime
           - scene.dining_daylight
@@ -288,7 +285,7 @@ views:
         entity: media_player.txnr1009
       - type: media-control
         entity: media_player.samsung_tv
-  - title: Downloader
+  - title: TV & Movies
     icon: mdi:kodi
     panel: true
     cards:
@@ -326,7 +323,6 @@ views:
             box_shadows: 'on'
           - type: entities
             title: Newsgroups
-            show_header_toggle: true
             entities:
               - sensor.sabnzbd_status
               - sensor.sabnzbd_queue
@@ -351,7 +347,6 @@ views:
         cards:
           - type: entities
             title: Transport
-            show_header_toggle: true
             entities:
               - sensor.busmonitor1
               - sensor.busmonitor2
@@ -359,7 +354,6 @@ views:
               - sensor.trainmonitor2
           - type: entities
             title: NSW Fuel Watch - Sydney
-            show_header_toggle: true
             entities:
               - sensor.caltex_woolworths_waitara_pdl
               - sensor.caltex_woolworths_turramurra_pdl
@@ -369,10 +363,9 @@ views:
               - sensor.caltex_belrose_pdl
       - type: entities
         title: NSW Fuel Watch - Central Coast
-        show_header_toggle: true
         entities:
           - sensor.caltex_kariong_pdl
-          - sensor.caltex_woolworths_gosford_pdl
+          - sensor.caltex_woolworths_pdl
           - sensor.caltex_gosford_west_pdl
           - sensor.caltex_gosford_west_pdl_2
           - sensor.caltex_gosford_west_pdl_3

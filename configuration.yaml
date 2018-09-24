@@ -79,6 +79,10 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: !secret ide-cloud9    
+  portainer:
+    title: Portainer
+    icon: mdi:docker
+    url: !secret portainer
   terminal:
     title: Terminal
     icon: mdi:console

@@ -2,74 +2,92 @@
 sensor:
   - platform: nsw_fuel_station
     station_id: 911
+    friendly_name: Caltex Langford Drive Kariong
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 622
+    friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 819
+    friendly_name: Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 874
+    friendly_name: Caltex 283 Manns Rd West Gosford
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 845
+    friendly_name: Caltex 30A Pacific Hwy West Gosford (From Gosford)
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 17249
+    friendly_name: Caltex Woolies 155 The Entrance Rd Erina
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 2263
+    friendly_name: Caltex 465 Pacific Hwy Wyoming
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 620
+    friendly_name: Caltex Woolies Westfield 24-26 Gavenlock Road
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 523
+    friendly_name: Caltex Woolies 186 Pacific Hwy Tuggerah
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 907
+    friendly_name: Caltex M1 Southbound
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 906
+    friendly_name: Caltex M1 Northbound
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 902
+    friendly_name: Shell 6-8 Pacific Hwy Kariong
     fuel_types:
       - DL
   - platform: nsw_fuel_station
     station_id: 2436
+    friendly_name: Caltex Woolies 59-61 Pacific Hwy Waitara
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 663
+    friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 861
+    friendly_name: Caltex 164 Mona Vale Rd St Ives
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 17310
+    friendle_name: Caltex 363 Mona Vale Rd St Ives North
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 643
+    friendly_name: Caltex Woolies 60 Glenn St Belrose
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 721
+    friendly_name: Caltex 153 Forest Way Belrose
     fuel_types:
       - PDL
 group:

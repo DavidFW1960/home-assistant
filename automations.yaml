@@ -1,6 +1,5 @@
 - id: '1507434167220'
   alias: Coffee Maker On
-  initial_state: 'on'
   trigger:
   - platform: time
     at: '07:00:00'
@@ -60,7 +59,6 @@
       entity_id: switch.coffee_maker
 - id: '1505977024304'
   alias: Turn Lounge Light On Elevation < 25° & after 4PM
-  initial_state: 'on'
   trigger:
   - below: '25'
     entity_id: sun.sun
@@ -82,7 +80,6 @@
       kelvin: 3100
 - id: '1523937971401'
   alias: Toothbrush On
-  initial_state: 'on'
   trigger:
   - platform: time
     at: '08:00:00'
