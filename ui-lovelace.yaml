@@ -291,78 +291,75 @@ views:
     icon: mdi:boombox
     cards:
       - type: entities
-        title: Media Mini-Player
+        title: Google Devices
         entities:
         - entity: media_player.all_speakers
           type: "custom:mini-media-player"
           group: true
           show_tts: google
           artwork: cover
-          artwork_border: true
           power_color: true
         - entity: media_player.living_areas
           type: "custom:mini-media-player"
           group: true
           show_tts: google
           artwork: cover
-          artwork_border: true
           power_color: true
         - entity: media_player.bedroom_speaker
           type: "custom:mini-media-player"
           group: true
           show_tts: google
           artwork: cover
-          artwork_border: true
           power_color: true
         - entity: media_player.office_speaker
           type: "custom:mini-media-player"
           group: true
           show_tts: google
           artwork: cover
-          artwork_border: true
           power_color: true
         - entity: media_player.lounge_speaker
           type: "custom:mini-media-player"
           group: true
           show_tts: google
           artwork: cover
-          artwork_border: true
           power_color: true
+        - entity: media_player.lounge_room_tv
+          type: "custom:mini-media-player"
+          group: true
+          artwork: cover
+          power_color: true
+      - type: entities
+        title: Other Media Players
+        entities:
         - entity: media_player.roku_5x46aj056306
           type: "custom:mini-media-player"
           group: true
           artwork: cover
-          artwork_border: true
           power_color: true
         - entity: media_player.foxtel_7587
           type: "custom:mini-media-player"
           group: true
           artwork: cover
-          artwork_border: true
           power_color: true
         - entity: media_player.kodi
           type: "custom:mini-media-player"
           group: true
           artwork: cover
-          artwork_border: true
           power_color: true
         - entity: media_player.osmc_vero4
           type: "custom:mini-media-player"
           group: true
           artwork: cover
-          artwork_border: true
           power_color: true
         - entity: media_player.txnr1009
           type: "custom:mini-media-player"
           group: true
           artwork: cover
-          artwork_border: true
           power_color: true
         - entity: media_player.samsung_tv
           type: "custom:mini-media-player"
           group: true
           artwork: cover
-          artwork_border: true
           power_color: true
   - title: TV & Movies
     icon: mdi:kodi
