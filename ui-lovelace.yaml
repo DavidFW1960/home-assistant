@@ -276,6 +276,8 @@ views:
       - type: media-control
         entity: media_player.lounge_speaker
       - type: media-control
+        entity: media_player.lounge_room_tv
+      - type: media-control
         entity: media_player.roku_5x46aj056306
       - type: media-control
         entity: media_player.foxtel_7587
