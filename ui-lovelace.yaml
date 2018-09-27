@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player.js?ver=0.7
+  - url: /local/mini-media-player.js?ver=0.8
     type: module
 views:
   - title: Home Assistant
@@ -301,30 +301,35 @@ views:
           show_tts: google
           artwork: cover
           power_color: true
+          scroll_info: true
         - entity: media_player.living_areas
           type: "custom:mini-media-player"
           group: true
           show_tts: google
           artwork: cover
           power_color: true
+          scroll_info: true
         - entity: media_player.bedroom_speaker
           type: "custom:mini-media-player"
           group: true
           show_tts: google
           artwork: cover
           power_color: true
+          scroll_info: true
         - entity: media_player.office_speaker
           type: "custom:mini-media-player"
           group: true
           show_tts: google
           artwork: cover
           power_color: true
+          scroll_info: true
         - entity: media_player.lounge_speaker
           type: "custom:mini-media-player"
           group: true
           show_tts: google
           artwork: cover
           power_color: true
+          scroll_info: true
         - entity: media_player.lounge_room_tv
           type: "custom:mini-media-player"
           group: true
@@ -338,31 +343,38 @@ views:
           group: true
           artwork: cover
           power_color: true
+          scroll_info: true
         - entity: media_player.foxtel_7587
           type: "custom:mini-media-player"
           group: true
           artwork: cover
           power_color: true
+          scroll_info: true
         - entity: media_player.kodi
           type: "custom:mini-media-player"
           group: true
           artwork: cover
           power_color: true
+          scroll_info: true
         - entity: media_player.osmc_vero4
           type: "custom:mini-media-player"
           group: true
           artwork: cover
           power_color: true
+          scroll_info: true
         - entity: media_player.txnr1009
           type: "custom:mini-media-player"
           group: true
           artwork: cover
           power_color: true
+          scroll_info: true
+          show_source: true
         - entity: media_player.samsung_tv
           type: "custom:mini-media-player"
           group: true
           artwork: cover
           power_color: true
+          show_source: true
   - title: TV & Movies
     icon: mdi:kodi
     panel: true
