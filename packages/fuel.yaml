@@ -1,7 +1,8 @@
-# NSW Fuel Watch
+# NSW Fuel Watch Search for /FuelCheckApp/v1/fuel/prices/bylocation
+# Site: https://www.fuelcheck.nsw.gov.au/App/
 sensor:
   - platform: nsw_fuel_station
-    station_id: 911
+    station_id: 17340
     friendly_name: Caltex Langford Drive Kariong
     fuel_types:
       - PDL
