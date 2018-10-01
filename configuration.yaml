@@ -18,6 +18,9 @@ homeassistant:
   customize_domain:
     light:
       assumed_state: false
+  auth_mfa_modules:
+    - type: notify
+    - type: totp
 
 # Python
 # python_script:
@@ -99,6 +102,10 @@ panel_iframe:
     title: MDI Icon Index
     icon: mdi:vector-square
     url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
+  mqtt:
+    title: MQTT
+    icon: mdi:code-brackets
+    url: !secret mqtt-webterminal
 
 # Recorder
 recorder:
@@ -355,7 +362,8 @@ switch:
 
 # Wemo Switch
 wemo:
-
+  static:
+    - !secret wemo_ip
 # MQTT
 mqtt:
   broker: core-mosquitto
@@ -364,6 +372,12 @@ mqtt:
 
 # Custom Component Updater
 custom_updater:
+  show_installable: false
+  hide_sensor: false
+  track:
+    - components
+    - cards
+    - python_scripts
   component_urls:
     - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
 

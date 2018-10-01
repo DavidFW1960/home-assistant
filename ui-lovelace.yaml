@@ -1,12 +1,12 @@
 title: Home
 resources:
-  - url: /local/tracker-card.js?v=0.1.4
+  - url: /local/tracker-card.js?v=0.1.5
     type: js
   - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.9
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player.js?ver=0.8
+  - url: /local/mini-media-player.js?ver=0.8.2
     type: module
 views:
   - title: Home Assistant
