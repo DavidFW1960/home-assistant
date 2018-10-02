@@ -6,8 +6,10 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player.js?ver=0.8.2
+  - url: /local/mini-media-player.js?ver=0.8.3
     type: module
+  - url: /local/column-card.js?ver=0.0.1
+    type: js
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -379,7 +381,8 @@ views:
     icon: mdi:kodi
     panel: true
     cards:
-      - type: horizontal-stack
+      - type: custom:column-card
+#     - type: horizontal-stack
         cards:
           - type: custom:upcoming-media-card
             service: sonarr

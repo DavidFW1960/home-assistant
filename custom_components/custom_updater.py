@@ -10,11 +10,11 @@ import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.event import track_time_interval
 
-__version__ = '3.1.0'
+__version__ = '3.1.2'
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['pyupdate==0.1.2']
+REQUIREMENTS = ['pyupdate==0.2.1']
 
 CONF_TRACK = 'track'
 CONF_HIDE_SENSOR = 'hide_sensor'
@@ -101,9 +101,12 @@ def setup(hass, config):
         """Install single component/card."""
         element = call.data.get(ATTR_ELEMENT)
         _LOGGER.debug('Installing %s', element)
-        card_controller.install(element)
-        components_controller.install(element)
-        python_scripts_controller.install(element)
+        if not conf_track or 'cards' in conf_track:
+            card_controller.install(element)
+        if not conf_track or 'components' in conf_track:
+            components_controller.install(element)
+        if not conf_track or 'python_scripts' in conf_track:
+            python_scripts_controller.install(element)
 
     hass.services.register(DOMAIN, 'check_all', check_all_service)
     hass.services.register(DOMAIN, 'update_all', update_all_service)
@@ -173,7 +176,8 @@ class CustomComponents():
 
     def cache_versions(self):
         """Cache."""
-        information = self.pyupdate.get_sensor_data(self.show_installable,
+        information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
+                                                    self.show_installable,
                                                     self.custom_url)
         self.hass.states.set('sensor.custom_component_tracker', information[1],
                              information[0])
@@ -181,7 +185,8 @@ class CustomComponents():
     def update_all(self):
         """Update all components."""
         self.pyupdate.update_all(self.ha_conf_dir, self.custom_url)
-        information = self.pyupdate.get_sensor_data(self.show_installable,
+        information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
+                                                    self.show_installable,
                                                     self.custom_url)
         self.hass.states.set('sensor.custom_component_tracker', information[1],
                              information[0])
@@ -212,7 +217,8 @@ class CustomPythonScripts():
 
     def cache_versions(self):
         """Cache."""
-        information = self.pyupdate.get_sensor_data(self.show_installable,
+        information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
+                                                    self.show_installable,
                                                     self.custom_url)
         self.hass.states.set('sensor.custom_python_script_tracker',
                              information[1],
@@ -221,7 +227,8 @@ class CustomPythonScripts():
     def update_all(self):
         """Update all python_scripts."""
         self.pyupdate.update_all(self.ha_conf_dir, self.custom_url)
-        information = self.pyupdate.get_sensor_data(self.show_installable,
+        information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
+                                                    self.show_installable,
                                                     self.custom_url)
         self.hass.states.set('sensor.custom_python_script_tracker',
                              information[1],

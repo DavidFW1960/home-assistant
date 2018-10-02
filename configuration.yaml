@@ -102,10 +102,6 @@ panel_iframe:
     title: MDI Icon Index
     icon: mdi:vector-square
     url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
-  mqtt:
-    title: MQTT
-    icon: mdi:code-brackets
-    url: !secret mqtt-webterminal
 
 # Recorder
 recorder:
@@ -380,6 +376,8 @@ custom_updater:
     - python_scripts
   component_urls:
     - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
 
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml

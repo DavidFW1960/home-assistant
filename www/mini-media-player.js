@@ -1,4 +1,4 @@
-/* mini-media-player - version: v0.8.2 */
+/* mini-media-player - version: v0.8.3 */
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@^0.6.1/lit-element.js?module';
 
 class MiniMediaPlayer extends LitElement {
@@ -21,6 +21,13 @@ class MiniMediaPlayer extends LitElement {
       'send': 'mdi:send',
       'dropdown': 'mdi:chevron-down'
     }
+    this._media_info = [
+      { attr: 'media_title' },
+      { attr: 'media_artist' },
+      { attr: 'media_series_title' },
+      { attr: 'media_season', prefix: 'S' },
+      { attr: 'media_episode', prefix: 'E'}
+    ];
   }
 
   static get properties() {
@@ -28,15 +35,15 @@ class MiniMediaPlayer extends LitElement {
       _hass: Object,
       config: Object,
       entity: Object,
-
-      source: String
+      source: String,
+      position: Number
     };
   }
 
   set hass(hass) {
+    const entity = hass.states[this.config.entity];
     this._hass = hass;
-    const entity = hass.states[this.config.entity]
-    if (this.entity !== entity) {
+    if (entity && this.entity !== entity) {
       this.entity = entity;
     }
   }
@@ -63,14 +70,17 @@ class MiniMediaPlayer extends LitElement {
     config.scroll_info = (config.scroll_info ? true : false);
     config.short_info = (config.short_info || config.scroll_info ? true : false);
     config.max_volume = Number(config.max_volume) || 100;
+    config.show_progress = (config.show_progress ? true : false);
 
     this.config = config;
   }
 
   shouldUpdate(changedProps) {
-    const entity = changedProps.has('entity') || changedProps.has('source');
-    const initial = changedProps.get('_hass') == undefined;
-    if (initial || entity) return true;
+    const change = changedProps.has('entity') || changedProps.has('source') || changedProps.has('position');
+    if (change) {
+      if (this.config.show_progress) this._checkProgress();
+      return true;
+    }
   }
 
   updated() {
@@ -81,48 +91,38 @@ class MiniMediaPlayer extends LitElement {
 
   render({_hass, config, entity} = this) {
     if (!entity) return;
-    const name = config.name || this._getAttribute(entity, 'friendly_name')
-    const attributes = entity.attributes;
+    const name = config.name || this._getAttribute('friendly_name')
+    const attr = entity.attributes;
     const active = (entity.state !== 'off' && entity.state !== 'unavailable') || false;
-    const has_artwork = (attributes.entity_picture && attributes.entity_picture != '') || false;
+    const has_artwork = (attr.entity_picture && attr.entity_picture != '') || false;
     const hide_controls = (config.hide_controls || config.hide_volume) || false;
-    const short = (hide_controls || config.short_info)
-    if (!config.icon) config.icon = attributes['icon'] || 'mdi:cast';
+    const short = (hide_controls || config.short_info);
+    if (!config.icon) config.icon = attr['icon'] || 'mdi:cast';
 
     return html`
       ${this._style()}
       <ha-card ?group=${config.group}
         ?more-info=${config.more_info} ?has-title=${config.title !== ''}
         artwork=${config.artwork} ?has-artwork=${has_artwork}
-        @click='${(e) => this._handleMore()}'>
+        @click='${(e) => this._handleMore()}' state=${entity.state}>
         <div id='artwork-cover'
-          style='background-image: url("${attributes.entity_picture}")'>
+          style='background-image: url("${attr.entity_picture}")'>
         </div>
         <header>${config.title}</header>
         <div class='entity flex'>
             ${active && has_artwork && config.artwork == 'default' ?
               html`<div id='artwork' ?border=${config.artwork_border}
-                style='background-image: url("${attributes.entity_picture}")'
+                style='background-image: url("${attr.entity_picture}")'
                 state=${entity.state}>
               </div>`
             :
               html`<div id='icon'><ha-icon icon='${config.icon}'></ha-icon></div>`
             }
             <div class='info' ?short=${short}>
-              <div id='playername' ?has-info=${this._hasMediaInfo(entity)}>
+              <div id='playername' ?has-info=${this._hasMediaInfo()}>
                 ${name}
               </div>
-                <div id='mediainfo' ?short=${short}>
-                  ${config.scroll_info ? html`
-                    <div class='marquee'>
-                      <span class='mediatitle'>${this._getAttribute(entity, 'media_title')}</span>
-                      <span class='mediaartist'>${this._getAttribute(entity, 'media_artist')}</span>
-                    </div>` : '' }
-                  <div>
-                    <span class='mediatitle'>${this._getAttribute(entity, 'media_title')}</span>
-                    <span class='mediaartist'>${this._getAttribute(entity, 'media_artist')}</span>
-                  </div>
-                </div>
+              ${this._renderMediaInfo(short)}
             </div>
           <div class='power-state flex'>
             ${this._renderPowerStrip(entity, active)}
@@ -130,6 +130,7 @@ class MiniMediaPlayer extends LitElement {
         </div>
         ${active && !hide_controls ? this._renderControlRow(entity) : html``}
         ${config.show_tts ? this._renderTts() : html``}
+        ${config.show_progress ? this._renderProgress(entity) : ''}
       </ha-card>`;
   }
 
@@ -146,6 +147,33 @@ class MiniMediaPlayer extends LitElement {
         @click='${(e) => this._callService(e, "toggle")}'
         ?color=${this.config.power_color && active}>
       </paper-icon-button>`;
+  }
+
+  _renderMediaInfo(short) {
+    const items = this._media_info.map(item => {
+      item.info = this._getAttribute(item.attr);
+      item.prefix = item.prefix || '';
+      return item;
+    }).filter(item => item.info !== '');
+
+    return html`
+      <div id='mediainfo' ?short=${short}>
+        ${this.config.scroll_info ? html`
+          <div class='marquee'>
+            ${items.map(item => html`<span>${item.prefix + item.info}</span>`)}
+          </div>` : '' }
+        <div>
+          ${items.map(item => html`<span>${item.prefix + item.info}</span>`)}
+        </div>
+      </div>`;
+  }
+
+  _renderProgress(entity) {
+    const show = this._showProgress();
+    return html`
+      <paper-progress id='progress' max=${entity.attributes.media_duration}
+        value=${this.position} class='transiting ${!show ? "hidden" : ""}'>
+      </paper-progress>`;
   }
 
   _renderPowerStrip(entity, active, {config} = this) {
@@ -324,20 +352,52 @@ class MiniMediaPlayer extends LitElement {
     return e;
   }
 
-  _hasMediaInfo(entity, attr) {
-    if (entity.attributes.media_title && entity.attributes.media_title !== '')
-      return true;
-    if (entity.attributes.media_artist && entity.attributes.media_artist !== '')
-      return true;
-    return false;
+  async _checkProgress() {
+    if (this._isPlaying() && this._showProgress()) {
+      if (!this._positionTracker) {
+        this._positionTracker = setInterval(() => this.position = this._currentProgress(), 1000);
+      }
+    } else if (this._positionTracker) {
+      clearInterval(this._positionTracker);
+      this._positionTracker = null;
+    }
+    if (this._showProgress) {
+      this.position = this._currentProgress();
+    }
   }
 
-  _hasAttribute(entity, attr) {
-    if (entity.ettributes[attr] && entity.ettributes[attr] !== '') return true;
-    return false;
+  _showProgress() {
+    return (
+      (this._isPlaying() || this._isPaused())
+      && 'media_duration' in this.entity.attributes
+      && 'media_position' in this.entity.attributes
+      && 'media_position_updated_at' in this.entity.attributes);
+  }
+  _currentProgress() {
+    let progress = this.entity.attributes.media_position;
+    if (this._isPlaying()) {
+      progress += (Date.now() - new Date(this.entity.attributes.media_position_updated_at).getTime()) / 1000.0;
+
+    }
+    return progress;
   }
 
-  _getAttribute(entity, attr) {
+  _isPaused() {
+    return this.entity.state === 'paused';
+  }
+
+  _isPlaying() {
+    return this.entity.state === 'playing';
+  }
+
+  _hasMediaInfo() {
+    const items = this._media_info.map(item => {
+      return item.info = this._getAttribute(item.attr);
+    }).filter(item => item !== '');
+    return items.length == 0 ? false : true;
+  }
+
+  _getAttribute(attr, {entity} = this) {
     return entity.attributes[attr] || '';
   }
 
@@ -420,6 +480,9 @@ class MiniMediaPlayer extends LitElement {
         .justify {
           -webkit-justify-content: space-between;
           justify-content: space-between;
+        }
+        .hidden {
+          display: none;
         }
         .flex-wrap[wrap] {
           flex-wrap: wrap;
@@ -506,8 +569,11 @@ class MiniMediaPlayer extends LitElement {
         #power-button[color] {
           color: var(--accent-color);
         }
-        .mediaartist:before {
-          content: '- ';
+        #mediainfo span:before {
+          content: ' - ';
+        }
+        #mediainfo span:first-child:before {
+          content: '';
         }
         #mediainfo span:empty,
         #source-menu span:empty {
@@ -572,6 +638,28 @@ class MiniMediaPlayer extends LitElement {
           overflow: hidden;
           text-overflow: ellipsis;
         }
+        #progress {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          height: var(--paper-progress-height, 4px);
+          --paper-progress-active-color: var(--accent-color);
+          --paper-progress-container-color: rgba(150,150,150,0.25);
+          --paper-progress-transition-duration: 1s;
+          --paper-progress-transition-timing-function: linear;
+          --paper-progress-transition-delay: 0s;
+        }
+        ha-card[state='paused'] #progress {
+          --paper-progress-active-color: var(--disabled-text-color, rgba(150,150,150,.5));
+        }
+        ha-card[group] #progress {
+          position: relative
+        }
+        #unavailable {
+          white-space: nowrap;
+        }
         @keyframes slide {
           from {transform: translate(0, 0); }
           to {transform: translate(-100%, 0); }
@@ -579,9 +667,6 @@ class MiniMediaPlayer extends LitElement {
         @keyframes move {
           from {transform: translate(100%, 0); }
           to {transform: translate(0, 0); }
-        }
-        #unavailable {
-          white-space: nowrap;
         }
       </style>
     `;
