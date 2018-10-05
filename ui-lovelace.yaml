@@ -2,13 +2,13 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.5
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.1.9
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.2.0
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
   - url: /local/mini-media-player.js?ver=0.8.3
     type: module
-  - url: /local/column-card.js?ver=0.0.1
+  - url: /local/column-card.js?ver=7221e1
     type: js
 views:
   - title: Home Assistant
@@ -54,6 +54,15 @@ views:
               - sensor.hass_current_dev_version
               - sensor.hass_current_supervisor_version
               - binary_sensor.hass_update_available
+          - type: history-graph
+            title: NUC Resources Graph
+            hours_to_show: 72
+            refresh_interval: 1800
+            entities:
+              - sensor.memory_use_percent
+              - sensor.nuc_memory_used_filtered
+              - sensor.processor_use
+              - sensor.nuc_processor_used_filtered
           - type: custom:tracker-card
             title: Custom Card Updates
             trackers:
@@ -126,6 +135,16 @@ views:
               - sensor.forecast_5
               - sensor.forecast_6
               - sensor.forecast_7
+          - type: entities
+            title: Dark Sky
+            entities:
+              - sensor.dark_sky_cloud_coverage
+              - sensor.dark_sky_cloud_coverage_1
+              - sensor.dark_sky_daily_summary
+              - sensor.dark_sky_hourly_summary
+              - sensor.dark_sky_summary
+              - sensor.dark_sky_wind_speed
+              - sensor.dark_sky_wind_speed_1
       - type: vertical-stack
         cards:
           - type: custom:dark-sky-weather-card
@@ -153,6 +172,18 @@ views:
             entity_forecast_icon_3: sensor.dark_sky_icon_3
             entity_forecast_icon_4: sensor.dark_sky_icon_4
             entity_forecast_icon_5: sensor.dark_sky_icon_5
+          - type: history-graph
+            title: Weather BOM Gosford
+            hours_to_show: 72
+            refresh_interval: 300
+            entities:
+              - sensor.bom_gosford_air_temp_c
+              - sensor.bom_gosford_feels_like_c
+              - sensor.bom_gosford_dew_point_c
+              - sensor.bom_gosford_rain_today
+              - sensor.bom_gosford_relative_humidity
+              - sensor.bom_gosford_wind_gust_kmh
+              - sensor.bom_gosford_wind_speed_kmh
           - type: entities
             title: Weather from BOM Australia
             entities:
@@ -168,16 +199,6 @@ views:
               - sensor.bom_gosford_wind_gust_kt
               - sensor.bom_gosford_wind_speed_kmh
               - sensor.bom_gosford_wind_speed_kt
-          - type: entities
-            title: Dark Sky
-            entities:
-              - sensor.dark_sky_cloud_coverage
-              - sensor.dark_sky_cloud_coverage_1
-              - sensor.dark_sky_daily_summary
-              - sensor.dark_sky_hourly_summary
-              - sensor.dark_sky_summary
-              - sensor.dark_sky_wind_speed
-              - sensor.dark_sky_wind_speed_1
       - type: vertical-stack
         cards:
           - type: picture-entity
@@ -382,7 +403,6 @@ views:
     panel: true
     cards:
       - type: custom:column-card
-#     - type: horizontal-stack
         cards:
           - type: custom:upcoming-media-card
             service: sonarr
@@ -391,11 +411,12 @@ views:
             clock: 12
             date: 'ddmm'
             max: 10
-            show_color: '#ffffff'
-            episode_color: '#000000'
-            time_color: '#f41103'
-            downloaded_color: '#000000'
-            ribbon_color: '#03a9f4'
+            title_color: '#ffffff'
+            line1_color: '#000000'
+            line2_color: '#f41103'
+            line3_color: 'green'
+            download_color: '#000000'
+            accent_color: '#03a9f4'
             border_color: 'grey'
             text_shadows: 'off'
             box_shadows: 'on'
@@ -406,11 +427,12 @@ views:
             clock: 12
             date: 'ddmm'
             max: 10
-            show_color: '#ffffff'
-            episode_color: '#000000'
-            time_color: '#f41103'
-            downloaded_color: '#000000'
-            ribbon_color: '#03a9f4'
+            title_color: '#ffffff'
+            line1_color: '#000000'
+            line2_color: '#f41103'
+            line3_color: 'green'
+            download_color: '#000000'
+            accent_color: '#03a9f4'
             border_color: 'grey'
             text_shadows: 'off'
             box_shadows: 'on'

@@ -19,7 +19,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.0.7'
+__version__ = '0.0.8'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -121,7 +121,6 @@ class Sonarr_UpcomingSensor(Entity):
             attributes['title' + str(attribNum)] = show['series']['title']
             attributes['subtitle' + str(attribNum)] = show['title']
             attributes['airdate' + str(attribNum)] = show['airDateUtc']
-            attributes['airtime' + str(attribNum)] = show['series']['airTime']
             attributes['hasFile' + str(attribNum)] = show['hasFile']
             attributes['info' + str(attribNum)] = 'S{:02d}E{:02d}'.format(show['seasonNumber'], show['episodeNumber'])
         return attributes

@@ -39,9 +39,11 @@ camera:
   - platform: generic
     name: !secret my_bom_radar_name_1
     still_image_url: !secret my_bom_1_radar
+    limit_refetch_to_url_change: true
   - platform: generic
     name: !secret my_bom_radar_name_2
     still_image_url: !secret my_bom_2_radar 
+    limit_refetch_to_url_change: true
 
 # Show links to resources in log and frontend
 # introduction:
@@ -187,7 +189,7 @@ sensor:
       - download
       - upload
 
-# Speedtest Download Sensor Filter
+# Speedtest Sensor Filters
   - platform: filter
     name: "Speedtest Download Filtered"
     entity_id: sensor.speedtest_download
@@ -198,6 +200,21 @@ sensor:
   - platform: filter
     name: "Speedtest Upload Filtered"
     entity_id: sensor.speedtest_upload
+    filters:
+      - filter: lowpass
+        time_constant: 20
+        precision: 2
+# NUC Resources
+  - platform: filter
+    name: "NUC Memory Used Filtered"
+    entity_id: sensor.memory_use_percent
+    filters:
+      - filter: lowpass
+        time_constant: 20
+        precision: 2
+  - platform: filter
+    name: "NUC Processor Used Filtered"
+    entity_id: sensor.processor_use
     filters:
       - filter: lowpass
         time_constant: 20
@@ -225,7 +242,7 @@ sensor:
     api_key: !secret my_radarr_api
     host: !secret my_radarr_host
     port: !secret my_radarr_port
-    days: 28
+    days: 100
     ssl: false
 
 # Artisan Software Version
@@ -325,6 +342,7 @@ ifttt:
 media_player:
   - platform: kodi
     host: !secret my_kodi_host
+    enable_websocket: true
   - platform: samsungtv
     host: !secret my_samsung_host
     name: Samsung TV

@@ -88,7 +88,7 @@ class ColumnCard extends HTMLElement {
       // Find the shortest column
       let minIndex = 0;
       for (let i = 0; i < columnEntityCount.length; i++) {
-        if (columnEntityCount[i] < 5) {
+        if (columnEntityCount[i] < 3) {
           minIndex = i;
           break;
         }
