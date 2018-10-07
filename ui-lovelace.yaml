@@ -2,7 +2,7 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.5
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.2.0
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.2.1
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
@@ -31,9 +31,18 @@ views:
               - sensor.cpu_temperature
               - sensor.disk_use_
               - sensor.disk_free_
+              - sensor.disk_use_percent_
               - sensor.memory_use_percent
+              - sensor.memory_use
+              - sensor.memory_free
+              - sensor.swap_use_percent
+              - sensor.load
               - sensor.processor_use
+              - sensor.ipv4_address_eno1
+              - sensor.network_in_eno1
+              - sensor.network_out_eno1
               - sensor.last_boot
+              - sensor.since_last_boot
           - type: entities
             title: iOS Devices
             entities:

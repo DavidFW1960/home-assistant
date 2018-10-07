@@ -308,11 +308,36 @@ sensor.disk_use_:
   friendly_name: Disk Used
 sensor.disk_free_:
   friendly_name: Disk Free
+sensor.disk_use_percent_:
+  friendly_name: Percent Disk Used
 sensor.memory_use_percent:
+  friendly_name: Percent Memory Used
+sensor.memory_use:
   friendly_name: Memory Used
+sensor.memory_free:
+  friendly_name: Memory Free
+sensor.swap_use_percent:
+  friendly_name: Percent Swap Used
+sensor.load_1m:
+  friendly_name: 1m Load
+sensor.load_5m:
+  friendly_name: 5m Load
+sensor.load_15m:
+  friendly_name: 15m Load
+sensor.load:
+  friendly_name: Load Averages
+  icon: mdi:memory
 sensor.processor_use:
   friendly_name: Processor Used
+sensor.ipv4_address:
+  friendly_name: IPv4 Address
+sensor.network_in_eno1:
+  friendly_name: Network In
+sensor.network_out_eno1:
+  friendly_name: Network Out
 sensor.last_boot:
   friendly_name: Last Boot
+sensor.since_last_boot:
+  friendly_name: Since Last Boot
 sensor.hass_current_hassos_version:
   hidden: true

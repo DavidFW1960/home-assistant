@@ -1,0 +1,57 @@
+﻿# CPU Resources Used & Temperature
+sensor:
+  - platform: command_line
+    name: "CPU Temperature"
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) | round(1) }}'
+  - platform: systemmonitor
+    resources:
+    - type: disk_use
+      arg: /
+    - type: disk_free
+      arg: /
+    - type: disk_use_percent
+      arg: /
+    - type: memory_use_percent
+    - type: memory_use
+    - type: memory_free
+    - type: swap_use_percent
+    - type: load_1m
+    - type: load_5m
+    - type: load_15m
+    - type: processor_use
+    - type: ipv4_address
+      arg: 'eno1'
+    - type: network_in
+      arg: 'eno1'
+    - type: network_out
+      arg: 'eno1'
+    - type: last_boot
+    - type: since_last_boot
+  - platform: template
+    sensors:
+      load:
+        friendly_name: "Load Averages"
+        value_template: '{{states.sensor.load_1m.state|round(2)}}, {{states.sensor.load_5m.state|round(2)}}, {{states.sensor.load_15m.state|round(2)}} (1, 5, 15 min)'
+group:
+  nuc_resources:
+    name: "NUC Resources"
+    view: no
+    icon: mdi:server
+    entities:
+      - sensor.cpu_temperature
+      - sensor.disk_use_
+      - sensor.disk_free_
+      - sensor.disk_use_percent_
+      - sensor.memory_use_percent
+      - sensor.memory_use
+      - sensor.memory_free
+      - sensor.swap_use_percent
+      - sensor.load
+      - sensor.processor_use
+      - sensor.ipv4_address
+      - sensor.network_in_eno1
+      - sensor.network_out_eno1
+      - sensor.last_boot
+      - sensor.since_last_boot

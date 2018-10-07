@@ -101,13 +101,6 @@ Hassio:
   - sensor.sonoff_firmware_version_available
   - binary_sensor.sonoff_update_available
   - sensor.artisan_software_version
-NUC_Resources:
-  - sensor.cpu_temperature
-  - sensor.disk_use_
-  - sensor.disk_free_
-  - sensor.memory_use_percent
-  - sensor.processor_use
-  - sensor.last_boot
 Dark-Sky-Invisible:
   - sensor.dark_sky_cloud_coverage_2
   - sensor.dark_sky_cloud_coverage_3
