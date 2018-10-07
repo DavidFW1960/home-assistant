@@ -5,6 +5,9 @@ sensor:
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
+  - platform: command_line
+    name: "WAN IP Address"
+    command: "wget -q -O - http://icanhazip.com/ | tail"
   - platform: systemmonitor
     resources:
     - type: disk_use
@@ -41,6 +44,7 @@ group:
     icon: mdi:server
     entities:
       - sensor.cpu_temperature
+      - sensor.wan_ip_address
       - sensor.disk_use_
       - sensor.disk_free_
       - sensor.disk_use_percent_

@@ -331,6 +331,9 @@ sensor.processor_use:
   friendly_name: Processor Used
 sensor.ipv4_address:
   friendly_name: IPv4 Address
+sensor.wan_ip_address:
+  friendly_name: WAN IP Address
+  icon: mdi:server-network
 sensor.network_in_eno1:
   friendly_name: Network In
 sensor.network_out_eno1:
