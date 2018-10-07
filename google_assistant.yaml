@@ -1,8 +1,5 @@
 # Google Assistant
 project_id: !secret ga_project
-client_id: !secret ga_client
-access_token: !secret ga_access
-agent_user_id: !secret agent
 api_key: !secret api-ga
 exposed_domains:
   - switch

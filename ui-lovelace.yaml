@@ -39,6 +39,7 @@ views:
               - sensor.load
               - sensor.processor_use
               - sensor.ipv4_address_eno1
+              - sensor.wan_ip_address
               - sensor.network_in_eno1
               - sensor.network_out_eno1
               - sensor.last_boot
@@ -319,8 +320,6 @@ views:
         entity: media_player.osmc_vero4
       - type: media-control
         entity: media_player.txnr1009
-      - type: media-control
-        entity: media_player.samsung_tv
   - title: Media Mini
     icon: mdi:boombox
     cards:
@@ -400,12 +399,6 @@ views:
           artwork: cover
           power_color: true
           scroll_info: true
-          show_source: true
-        - entity: media_player.samsung_tv
-          type: "custom:mini-media-player"
-          group: true
-          artwork: cover
-          power_color: true
           show_source: true
   - title: TV & Movies
     icon: mdi:kodi

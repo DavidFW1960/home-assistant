@@ -1,5 +1,19 @@
 # Download the Dark Sky icons from https://www.dr-lex.be/software/download/DarkSky-icons.zip
 # and save them under /www/icons/dark_sky/ in your configuration directory.
+# Show BOM Satellite and Radar
+
+camera:
+  - platform: generic
+    name: BOM Satellite
+    still_image_url: !secret my_bom_sat
+  - platform: generic
+    name: !secret my_bom_radar_name_1
+    still_image_url: !secret my_bom_1_radar
+    limit_refetch_to_url_change: true
+  - platform: generic
+    name: !secret my_bom_radar_name_2
+    still_image_url: !secret my_bom_2_radar 
+    limit_refetch_to_url_change: true
 
 sensor:
   - platform: darksky

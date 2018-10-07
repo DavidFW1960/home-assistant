@@ -28,23 +28,6 @@ homeassistant:
 # Map
 map:
 
-# Show Aussie Broadband CVC Capacity, BOM Satellite and Radar
-camera:
-  - platform: generic
-    name: Aussie Broadband CVC Capacity
-    still_image_url: !secret my_abb_cvc
-  - platform: generic
-    name: BOM Satellite
-    still_image_url: !secret my_bom_sat
-  - platform: generic
-    name: !secret my_bom_radar_name_1
-    still_image_url: !secret my_bom_1_radar
-    limit_refetch_to_url_change: true
-  - platform: generic
-    name: !secret my_bom_radar_name_2
-    still_image_url: !secret my_bom_2_radar 
-    limit_refetch_to_url_change: true
-
 # Show links to resources in log and frontend
 # introduction:
 
@@ -159,51 +142,6 @@ sensor:
       - wind_spd_kmh
       - wind_spd_kt
 
-# FritzBox
-  - platform: fritzbox_netmonitor
-    host: !secret my_fritz_host
-
-# Speedtest
-  - platform: speedtest
-    minute:
-      - 0
-      - 30
-    monitored_conditions:
-      - ping
-      - download
-      - upload
-
-# Speedtest Sensor Filters
-  - platform: filter
-    name: "Speedtest Download Filtered"
-    entity_id: sensor.speedtest_download
-    filters:
-      - filter: lowpass
-        time_constant: 20
-        precision: 2
-  - platform: filter
-    name: "Speedtest Upload Filtered"
-    entity_id: sensor.speedtest_upload
-    filters:
-      - filter: lowpass
-        time_constant: 20
-        precision: 2
-# NUC Resources
-  - platform: filter
-    name: "NUC Memory Used Filtered"
-    entity_id: sensor.memory_use_percent
-    filters:
-      - filter: lowpass
-        time_constant: 20
-        precision: 2
-  - platform: filter
-    name: "NUC Processor Used Filtered"
-    entity_id: sensor.processor_use
-    filters:
-      - filter: lowpass
-        time_constant: 20
-        precision: 2
-
 # Sonarr
   - platform: sonarr
     api_key: !secret my_sonarr_api
@@ -299,18 +237,6 @@ sabnzbd:
     - month_size
     - total_size
 
-# Graph Speedtest Download Filtered and Unfiltered
-history_graph:
-  speedtest:
-    name: Speedtest Graph
-    entities:
-      - sensor.speedtest_download
-      - sensor.speedtest_download_filtered
-      - sensor.speedtest_upload
-      - sensor.speedtest_upload_filtered
-    hours_to_show: 24
-    refresh: 1800
-
 # iOS Component
 ios:
 
@@ -327,9 +253,6 @@ media_player:
   - platform: kodi
     host: !secret my_kodi_host
     enable_websocket: true
-  - platform: samsungtv
-    host: !secret my_samsung_host
-    name: Samsung TV
 
 # Xiaomi & Sonoff Switches
 switch:
