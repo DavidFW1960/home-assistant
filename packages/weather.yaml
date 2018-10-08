@@ -16,6 +16,23 @@ camera:
     limit_refetch_to_url_change: true
 
 sensor:
+  - platform: bom
+    station: !secret my_bom_station
+    name: !secret my_bom_name
+    scan_interval: 7200
+    monitored_conditions:
+      - apparent_t
+      - delta_t
+      - gust_kmh
+      - gust_kt
+      - air_temp
+      - dewpt
+      - rain_trace
+      - rel_hum
+      - wind_dir
+      - wind_spd_kmh
+      - wind_spd_kt
+
   - platform: darksky
     api_key: !secret darksky_key
     forecast:
@@ -56,6 +73,7 @@ sensor:
       minutes: 5
 
   - platform: season
+
   - platform: template
     sensors:
       forecast_0:
