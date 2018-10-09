@@ -12,7 +12,7 @@ homeassistant:
   time_zone: !secret my_timezone
   # Customization file
   customize: !include customize.yaml
-  # Weather Forecast & Updates
+  # Fuel Monitor, System Monitor, Sun, Moon, Transport Weather & Updates Packages
   packages: !include_dir_named packages
   # LimitlessLED
   customize_domain:
@@ -150,11 +150,6 @@ sensor:
     ssl: false
 
 # Artisan Software Version
-# Alternate way of getting Artisan version using script 
-# - platform: command_line
-#   name: Artisan Software Version
-#   command: /config/versionartisanhtml.sh
-#   scan_interval: 21600
 # Getting Artisan version from JSON
   - platform: rest
     resource: https://api.github.com/repos/artisan-roaster-scope/artisan/releases/latest
@@ -169,11 +164,6 @@ sensor:
       User-Agent: Home Assistant REST sensor
 
 # Tasmota Firmware
-# Alternate way of getting firmware using script
-# - platform: command_line
-#   name: Sonoff Firmware Version Available
-#   command: /config/versionsonoffhtml.sh
-#   scan_interval: 21600
 # Getting Firmware from JSON for Tasmota
   - platform: rest
     resource: https://api.github.com/repos/arendst/Sonoff-Tasmota/releases/latest

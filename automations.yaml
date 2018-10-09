@@ -76,11 +76,6 @@
     condition: time
   - condition: template
     value_template: '{{states.sun.sun.attributes.elevation < 25}}'
-  - condition: state
-    entity_id: automation.turn_lounge_light_on_elevation__25__after_4pm
-    state: 'on'
-    for:
-      minutes: 5
   action:
   - service: light.turn_on
     data:
