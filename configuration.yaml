@@ -55,7 +55,7 @@ http:
   ip_ban_enabled: True
   login_attempts_threshold: 5
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: https://my-duck-dns-domain.duckdns.org:8123
+  base_url: !secret base_http_url
 
 # iFrame Configurator, Terminal, Tasmoadmin & MDI Icon Files
 panel_iframe:
