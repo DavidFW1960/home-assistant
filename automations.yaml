@@ -64,16 +64,16 @@
 - id: '1505977024304'
   alias: Turn Lounge Light On Elevation < 25° & after 4PM
   trigger:
-  - below: 25
+  - platform: numeric_state
+    below: 25
     entity_id: sun.sun
-    platform: numeric_state
     value_template: '{{ state.attributes.elevation }}'
   - platform: time
     at: '16:00:00'
   condition:
-  - after: '16:00:00'
-    before: '22:00:00'
-    condition: time
+  - condition: time
+    after: '16:00:00'
+    before: '19:00:00'    
   - condition: template
     value_template: '{{states.sun.sun.attributes.elevation < 25}}'
   action:
