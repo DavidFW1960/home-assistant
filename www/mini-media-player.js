@@ -1,25 +1,25 @@
-/* mini-media-player - version: v0.8.4 */
+/* mini-media-player - version: v0.8.7 */
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@^0.6.2/lit-element.js?module';
 
 class MiniMediaPlayer extends LitElement {
   constructor() {
     super();
     this._icons = {
-      'playing': {
-        true: 'mdi:pause',
-        false: 'mdi:play'
-      },
       'prev': 'mdi:skip-previous',
       'next': 'mdi:skip-next',
       'power': 'mdi:power',
       'volume_up': 'mdi:volume-high',
       'volume_down': 'mdi:volume-medium',
+      'send': 'mdi:send',
+      'dropdown': 'mdi:chevron-down',
       'mute': {
         true: 'mdi:volume-off',
         false: 'mdi:volume-high'
       },
-      'send': 'mdi:send',
-      'dropdown': 'mdi:chevron-down'
+      'playing': {
+        true: 'mdi:pause',
+        false: 'mdi:play'
+      }
     }
     this._media_info = [
       { attr: 'media_title' },
@@ -43,36 +43,35 @@ class MiniMediaPlayer extends LitElement {
   set hass(hass) {
     const entity = hass.states[this.config.entity];
     this._hass = hass;
-    if (entity && this.entity !== entity) {
+    if (entity && this.entity !== entity)
       this.entity = entity;
-    }
   }
 
   setConfig(config) {
-    if (!config.entity || config.entity.split('.')[0] !== 'media_player') {
+    if (!config.entity || config.entity.split('.')[0] !== 'media_player')
       throw new Error('Specify an entity from within the media_player domain.');
-    }
 
     const conf = Object.assign({
-      title: '',
-      icon: false,
-      more_info: true,
-      show_tts: false,
-      show_source: false,
-      artwork_border: false,
-      group: false,
-      power_color: false,
       artwork: 'default',
-      volume_stateless: false,
-      hide_power: false,
+      artwork_border: false,
+      background: false,
+      group: false,
       hide_controls: false,
-      hide_volume: false,
-      hide_mute: false,
       hide_info: false,
+      hide_mute: false,
+      hide_power: false,
+      hide_volume: false,
+      icon: false,
+      max_volume: 100,
+      more_info: true,
+      power_color: false,
       scroll_info: false,
       short_info: false,
-      max_volume: 100,
-      show_progress: false
+      show_progress: false,
+      show_source: false,
+      show_tts: false,
+      title: '',
+      volume_stateless: false
     }, config);
     conf.max_volume = Number(conf.max_volume) || 100;
     conf.short_info = (conf.short_info || conf.scroll_info ? true : false);
@@ -81,7 +80,9 @@ class MiniMediaPlayer extends LitElement {
   }
 
   shouldUpdate(changedProps) {
-    const change = changedProps.has('entity') || changedProps.has('source') || changedProps.has('position');
+    const change = changedProps.has('entity')
+      || changedProps.has('source')
+      || changedProps.has('position');
     if (change) {
       if (this.config.show_progress) this._checkProgress();
       return true;
@@ -104,8 +105,8 @@ class MiniMediaPlayer extends LitElement {
         ?more-info=${config.more_info} ?has-title=${config.title !== ''}
         artwork=${config.artwork} ?has-artwork=${artwork}
         @click='${(e) => this._handleMore()}' state=${entity.state}>
-        <div id='artwork-cover'
-          style='background-image: url("${artwork}")'>
+        <div id='artwork-cover' ?bg=${config.background}
+          style='background-image: url("${this._computeBackground()}")'>
         </div>
         <header>${config.title}</header>
         <div class='entity flex' ?hide-info=${this.config.hide_info}>
@@ -130,15 +131,22 @@ class MiniMediaPlayer extends LitElement {
     return this.config.name || this.entity.attributes.friendly_name;
   }
 
+  _computeBackground() {
+    const artwork = this._computeArtwork();
+    return artwork && this.config.artwork == "cover" ? artwork : this.config.background;
+  }
+
   _computeArtwork() {
     return (this.entity.attributes.entity_picture
       && this.entity.attributes.entity_picture != '')
+      && this.config.artwork !== 'none'
       ? this.entity.attributes.entity_picture
       : false;
   }
 
   _computeIcon() {
-    return this.config.icon ? this.config.icon : this.entity.attributes.icon
+    return this.config.icon
+      ? this.config.icon : this.entity.attributes.icon
       || 'mdi:cast';
   }
 
@@ -157,7 +165,6 @@ class MiniMediaPlayer extends LitElement {
           state=${this.entity.state}>
         </div>`;
     }
-
     return html`
       <div id='icon'><ha-icon icon='${this._computeIcon()}'></ha-icon></div>
     `;
@@ -166,7 +173,7 @@ class MiniMediaPlayer extends LitElement {
   _renderPower() {
     return html`
       <paper-icon-button id='power-button'
-        icon=${this._icons['power']}
+        .icon=${this._icons['power']}
         @click='${(e) => this._callService(e, "toggle")}'
         ?color=${this.config.power_color && this._isActive()}>
       </paper-icon-button>`;
@@ -232,7 +239,7 @@ class MiniMediaPlayer extends LitElement {
           <paper-button slot='dropdown-trigger'>
             ${this.config.show_source !== 'small' ? html`
             <span id='source'>${this.source || source}</span>` : '' }
-            <iron-icon icon=${this._icons['dropdown']}></iron-icon>
+            <iron-icon .icon=${this._icons['dropdown']}></iron-icon>
           </paper-button>
           <paper-listbox id='list' slot='dropdown-content' selected=${selected}
             @click='${(e) => this._handleSource(e)}'>
@@ -254,14 +261,14 @@ class MiniMediaPlayer extends LitElement {
     const playing = entity.state == 'playing';
     return html`
       <div class='flex'>
-        <paper-icon-button id='prev-button' icon=${this._icons["prev"]}
+        <paper-icon-button id='prev-button' .icon=${this._icons["prev"]}
           @click='${(e) => this._callService(e, "media_previous_track")}'>
         </paper-icon-button>
         <paper-icon-button id='play-button'
-          icon=${this._icons.playing[playing]}
+          .icon=${this._icons.playing[playing]}
           @click='${(e) => this._callService(e, "media_play_pause")}'>
         </paper-icon-button>
-        <paper-icon-button id='next-button' icon=${this._icons["next"]}
+        <paper-icon-button id='next-button' .icon=${this._icons["next"]}
           @click='${(e) => this._callService(e, "media_next_track")}'>
         </paper-icon-button>
       </div>`;
@@ -272,15 +279,14 @@ class MiniMediaPlayer extends LitElement {
     if (this.config.volume_stateless) {
       return this._renderVolButtons(entity, muted);
     } else {
-      return html`
-        ${this._renderVolSlider(entity, muted)}`;
+      return this._renderVolSlider(entity, muted);
     }
   }
 
   _renderMuteButton(muted) {
     if (!this.config.hide_mute)
       return html`
-        <paper-icon-button id='mute-button' icon=${this._icons.mute[muted]}
+        <paper-icon-button id='mute-button' .icon=${this._icons.mute[muted]}
           @click='${(e) => this._callService(e, "volume_mute", { is_volume_muted: !muted })}'>
         </paper-icon-button>`;
   }
@@ -306,10 +312,10 @@ class MiniMediaPlayer extends LitElement {
     return html`
       <div class='flex'>
         ${this._renderMuteButton(muted)}
-        <paper-icon-button id='volume-down-button' icon=${this._icons.volume_down}
+        <paper-icon-button id='volume-down-button' .icon=${this._icons.volume_down}
           @click='${(e) => this._callService(e, "volume_down")}'>
         </paper-icon-button>
-        <paper-icon-button id='volume-up-button' icon=${this._icons.volume_up}
+        <paper-icon-button id='volume-up-button' .icon=${this._icons.volume_up}
           @click='${(e) => this._callService(e, "volume_up")}'>
         </paper-icon-button>
       </div>`;
@@ -471,7 +477,8 @@ class MiniMediaPlayer extends LitElement {
         ha-card[more-info] {
           cursor: pointer;
         }
-        ha-card[artwork='cover'][has-artwork] #artwork-cover {
+        ha-card[artwork='cover'][has-artwork] #artwork-cover,
+        #artwork-cover[bg] {
           display: block;
         }
         ha-card[artwork='cover'][has-artwork] paper-icon-button,
@@ -494,7 +501,7 @@ class MiniMediaPlayer extends LitElement {
           position: absolute;
           top: 0; left: 0; bottom: 0; right: 0;
         }
-        #artwork-cover:before {
+        ha-card[artwork='cover'][has-artwork] #artwork-cover:before {
           background: #000000;
           content: '';
           opacity: .5;
@@ -538,8 +545,9 @@ class MiniMediaPlayer extends LitElement {
           background-repeat: no-repeat;
           background-position: center center;
           border-radius: 100%;
-          text-align: center;
           line-height: 40px;
+          position: relative;
+          text-align: center;
         }
         #artwork[border] {
           border: 2px solid var(--primary-text-color);
@@ -699,7 +707,7 @@ class MiniMediaPlayer extends LitElement {
         .entity[hide-info] .select {
           justify-content: space-between;
         }
-        .right {
+        .entity[hide-info] .right {
           justify-content: flex-end;
           margin-left: auto;
         }
