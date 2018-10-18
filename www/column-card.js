@@ -16,6 +16,9 @@ class ColumnCard extends HTMLElement {
         max-width: 500px;
         overflow-x: hidden;
       }
+      .column > *:first-child {
+        margin-top: 0;
+      }
       .column > * {
         display: block;
         margin: 4px 4px 8px;
@@ -88,7 +91,7 @@ class ColumnCard extends HTMLElement {
       // Find the shortest column
       let minIndex = 0;
       for (let i = 0; i < columnEntityCount.length; i++) {
-        if (columnEntityCount[i] < 3) {
+        if (columnEntityCount[i] < 5) {
           minIndex = i;
           break;
         }
@@ -129,7 +132,6 @@ class ColumnCard extends HTMLElement {
   }
 
   getCardSize() {
-    return 1;
     return Math.max(this.columnEntityCount);
   }
 }
