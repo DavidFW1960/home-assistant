@@ -1,33 +1,35 @@
-/* mini-media-player - version: v0.8.7 */
+/* mini-media-player - version: v0.8.8 */
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@^0.6.2/lit-element.js?module';
+
+const MEDIA_INFO = [
+  { attr: 'media_title' },
+  { attr: 'media_artist' },
+  { attr: 'media_series_title' },
+  { attr: 'media_season', prefix: 'S' },
+  { attr: 'media_episode', prefix: 'E'}
+];
+
+const ICON = {
+  'prev': 'mdi:skip-previous',
+  'next': 'mdi:skip-next',
+  'power': 'mdi:power',
+  'volume_up': 'mdi:volume-high',
+  'volume_down': 'mdi:volume-medium',
+  'send': 'mdi:send',
+  'dropdown': 'mdi:chevron-down',
+  'mute': {
+    true: 'mdi:volume-off',
+    false: 'mdi:volume-high'
+  },
+  'playing': {
+    true: 'mdi:pause',
+    false: 'mdi:play'
+  }
+};
 
 class MiniMediaPlayer extends LitElement {
   constructor() {
     super();
-    this._icons = {
-      'prev': 'mdi:skip-previous',
-      'next': 'mdi:skip-next',
-      'power': 'mdi:power',
-      'volume_up': 'mdi:volume-high',
-      'volume_down': 'mdi:volume-medium',
-      'send': 'mdi:send',
-      'dropdown': 'mdi:chevron-down',
-      'mute': {
-        true: 'mdi:volume-off',
-        false: 'mdi:volume-high'
-      },
-      'playing': {
-        true: 'mdi:pause',
-        false: 'mdi:play'
-      }
-    }
-    this._media_info = [
-      { attr: 'media_title' },
-      { attr: 'media_artist' },
-      { attr: 'media_series_title' },
-      { attr: 'media_season', prefix: 'S' },
-      { attr: 'media_episode', prefix: 'E'}
-    ];
   }
 
   static get properties() {
@@ -57,6 +59,7 @@ class MiniMediaPlayer extends LitElement {
       background: false,
       group: false,
       hide_controls: false,
+      hide_icon: false,
       hide_info: false,
       hide_mute: false,
       hide_power: false,
@@ -103,21 +106,22 @@ class MiniMediaPlayer extends LitElement {
       ${this._style()}
       <ha-card ?group=${config.group}
         ?more-info=${config.more_info} ?has-title=${config.title !== ''}
-        artwork=${config.artwork} ?has-artwork=${artwork}
-        @click='${(e) => this._handleMore()}' state=${entity.state}>
-        <div id='artwork-cover' ?bg=${config.background}
+        artwork=${config.artwork} ?has-artwork=${artwork} state=${entity.state}
+        ?hide-icon=${config.hide_icon} ?hide-info=${this.config.hide_info}
+        @click='${(e) => this._handleMore()}'>
+        <div class='bg' ?bg=${config.background}
           style='background-image: url("${this._computeBackground()}")'>
         </div>
         <header>${config.title}</header>
-        <div class='entity flex' ?hide-info=${this.config.hide_info}>
-            ${this._renderIcon()}
-            <div class='info' ?short=${short}>
-              <div id='playername' ?has-info=${this._hasMediaInfo()}>
-                ${this._computeName()}
-              </div>
-              ${this._renderMediaInfo(short)}
+        <div class='entity flex'>
+          ${this._renderIcon()}
+          <div class='entity__info' ?short=${short}>
+            <div class='entity__info__name' ?has-info=${this._hasMediaInfo()}>
+              ${this._computeName()}
             </div>
-          <div class='power-state flex'>
+            ${this._renderMediaInfo(short)}
+          </div>
+          <div class='entity__control-row--top flex'>
             ${this._renderPowerStrip(entity)}
           </div>
         </div>
@@ -152,57 +156,61 @@ class MiniMediaPlayer extends LitElement {
 
   _hasOverflow() {
     const element = this.shadowRoot.querySelector('.marquee');
-    const status = element.clientWidth > (element.parentNode.clientWidth) ;
-    element.parentNode.setAttribute('scroll', status);
+    const status = element.clientWidth > (element.parentNode.clientWidth);
+    element.parentNode.parentNode.setAttribute('scroll', status);
   }
 
   _renderIcon() {
+    if (this.config.hide_icon) return;
     const artwork = this._computeArtwork();
     if (this._isActive() && artwork && this.config.artwork == 'default') {
       return html`
-        <div id='artwork' ?border=${this.config.artwork_border}
+        <div class='entity__artwork' ?border=${this.config.artwork_border}
           style='background-image: url("${artwork}")'
           state=${this.entity.state}>
         </div>`;
     }
     return html`
-      <div id='icon'><ha-icon icon='${this._computeIcon()}'></ha-icon></div>
+      <div class='entity__icon'>
+        <ha-icon icon='${this._computeIcon()}'></ha-icon>
+      </div>
     `;
   }
 
   _renderPower() {
     return html`
-      <paper-icon-button id='power-button'
-        .icon=${this._icons['power']}
+      <paper-icon-button class='power-button'
+        .icon=${ICON['power']}
         @click='${(e) => this._callService(e, "toggle")}'
         ?color=${this.config.power_color && this._isActive()}>
       </paper-icon-button>`;
   }
 
   _renderMediaInfo(short) {
-    const items = this._media_info.map(item => {
-      item.info = this._getAttribute(item.attr);
-      item.prefix = item.prefix || '';
-      return item;
+    const items = MEDIA_INFO.map(item => {
+      return Object.assign({
+        info: this._getAttribute(item.attr),
+        prefix: item.prefix || ''
+      }, item);
     }).filter(item => item.info !== '');
 
     return html`
-      <div id='mediainfo' ?short=${short}>
+      <div class='entity__info__media' ?short=${short}>
         ${this.config.scroll_info ? html`
-          <div class='marquee'>
-            ${items.map(item => html`<span>${item.prefix + item.info}</span>`)}
+          <div>
+            <div class='marquee'>
+              ${items.map(item => html`<span>${item.prefix + item.info}</span>`)}
+            </div>
           </div>` : '' }
-        <div>
           ${items.map(item => html`<span>${item.prefix + item.info}</span>`)}
-        </div>
       </div>`;
   }
 
   _renderProgress(entity) {
     const show = this._showProgress();
     return html`
-      <paper-progress id='progress' max=${entity.attributes.media_duration}
-        value=${this.position} class='transiting ${!show ? "hidden" : ""}'>
+      <paper-progress max=${entity.attributes.media_duration}
+        value=${this.position} class='progress transiting ${!show ? "hidden" : ""}'>
       </paper-progress>`;
   }
 
@@ -210,7 +218,7 @@ class MiniMediaPlayer extends LitElement {
     const active = this._isActive();
     if (entity.state == 'unavailable') {
       return html`
-        <span id='unavailable'>
+        <span class='unavailable'>
           ${this._getLabel('state.default.unavailable', 'Unavailable')}
         </span>`;
     }
@@ -232,16 +240,16 @@ class MiniMediaPlayer extends LitElement {
     if (sources) {
       const selected = sources.indexOf(source);
       return html`
-        <paper-menu-button id='source-menu' slot='dropdown-trigger'
-          .horizontalAlign=${'right'}
-          .verticalAlign=${'top'} .verticalOffset=${40}
+        <paper-menu-button class='source-menu' slot='dropdown-trigger'
+          .horizontalAlign=${'right'} .verticalAlign=${'top'}
+          .verticalOffset=${40} .noAnimations=${true}
           @click='${(e) => e.stopPropagation()}'>
-          <paper-button slot='dropdown-trigger'>
+          <paper-button class='source-menu__button' slot='dropdown-trigger'>
             ${this.config.show_source !== 'small' ? html`
-            <span id='source'>${this.source || source}</span>` : '' }
-            <iron-icon .icon=${this._icons['dropdown']}></iron-icon>
+            <span class='source-menu__source'>${this.source || source}</span>` : '' }
+            <iron-icon .icon=${ICON['dropdown']}></iron-icon>
           </paper-button>
-          <paper-listbox id='list' slot='dropdown-content' selected=${selected}
+          <paper-listbox slot='dropdown-content' selected=${selected}
             @click='${(e) => this._handleSource(e)}'>
             ${sources.map(item => html`<paper-item value=${item}>${item}</paper-item>`)}
           </paper-listbox>
@@ -251,7 +259,7 @@ class MiniMediaPlayer extends LitElement {
 
   _renderControlRow(entity) {
     return html`
-      <div id='mediacontrols' class='flex justify flex-wrap' ?wrap=${this.config.volume_stateless}>
+      <div class='control-row flex flex-wrap justify' ?wrap=${this.config.volume_stateless}>
         ${this._renderVolControls(entity)}
         ${this._renderMediaControls(entity)}
       </div>`;
@@ -261,14 +269,13 @@ class MiniMediaPlayer extends LitElement {
     const playing = entity.state == 'playing';
     return html`
       <div class='flex'>
-        <paper-icon-button id='prev-button' .icon=${this._icons["prev"]}
+        <paper-icon-button .icon=${ICON["prev"]}
           @click='${(e) => this._callService(e, "media_previous_track")}'>
         </paper-icon-button>
-        <paper-icon-button id='play-button'
-          .icon=${this._icons.playing[playing]}
+        <paper-icon-button .icon=${ICON.playing[playing]}
           @click='${(e) => this._callService(e, "media_play_pause")}'>
         </paper-icon-button>
-        <paper-icon-button id='next-button' .icon=${this._icons["next"]}
+        <paper-icon-button .icon=${ICON["next"]}
           @click='${(e) => this._callService(e, "media_next_track")}'>
         </paper-icon-button>
       </div>`;
@@ -286,7 +293,7 @@ class MiniMediaPlayer extends LitElement {
   _renderMuteButton(muted) {
     if (!this.config.hide_mute)
       return html`
-        <paper-icon-button id='mute-button' .icon=${this._icons.mute[muted]}
+        <paper-icon-button .icon=${ICON.mute[muted]}
           @click='${(e) => this._callService(e, "volume_mute", { is_volume_muted: !muted })}'>
         </paper-icon-button>`;
   }
@@ -299,7 +306,7 @@ class MiniMediaPlayer extends LitElement {
         <div>
           ${this._renderMuteButton(muted)}
         </div>
-        <paper-slider id='volume-slider' ?disabled=${muted}
+        <paper-slider ?disabled=${muted}
           @change='${(e) => this._handleVolumeChange(e)}'
           @click='${(e) => e.stopPropagation()}'
           min='0' max=${this.config.max_volume} value=${volumeSliderValue}
@@ -312,10 +319,10 @@ class MiniMediaPlayer extends LitElement {
     return html`
       <div class='flex'>
         ${this._renderMuteButton(muted)}
-        <paper-icon-button id='volume-down-button' .icon=${this._icons.volume_down}
+        <paper-icon-button .icon=${ICON.volume_down}
           @click='${(e) => this._callService(e, "volume_down")}'>
         </paper-icon-button>
-        <paper-icon-button id='volume-up-button' .icon=${this._icons.volume_up}
+        <paper-icon-button .icon=${ICON.volume_up}
           @click='${(e) => this._callService(e, "volume_up")}'>
         </paper-icon-button>
       </div>`;
@@ -323,13 +330,13 @@ class MiniMediaPlayer extends LitElement {
 
   _renderTts() {
     return html`
-      <div id='tts' class='flex justify'>
-        <paper-input id='tts-input' no-label-float
+      <div class='tts flex justify'>
+        <paper-input class='tts__input' no-label-float
           placeholder=${this._getLabel('ui.card.media_player.text_to_speak', 'Say')}...
           @click='${(e) => e.stopPropagation()}'>
         </paper-input>
         <div>
-          <paper-button id='tts-send' @click='${(e) => this._handleTts(e)}'>
+          <paper-button @click='${(e) => this._handleTts(e)}'>
             SEND
           </paper-button>
         </div>
@@ -393,9 +400,7 @@ class MiniMediaPlayer extends LitElement {
       clearInterval(this._positionTracker);
       this._positionTracker = null;
     }
-    if (this._showProgress) {
-      this.position = this._currentProgress();
-    }
+    if (this._showProgress) this.position = this._currentProgress();
   }
 
   _showProgress() {
@@ -409,7 +414,6 @@ class MiniMediaPlayer extends LitElement {
     let progress = this.entity.attributes.media_position;
     if (this._isPlaying()) {
       progress += (Date.now() - new Date(this.entity.attributes.media_position_updated_at).getTime()) / 1000.0;
-
     }
     return progress;
   }
@@ -427,8 +431,8 @@ class MiniMediaPlayer extends LitElement {
   }
 
   _hasMediaInfo() {
-    const items = this._media_info.map(item => {
-      return item.info = this._getAttribute(item.attr);
+    const items = MEDIA_INFO.map(item => {
+      return this._getAttribute(item.attr);
     }).filter(item => item !== '');
     return items.length == 0 ? false : true;
   }
@@ -451,57 +455,61 @@ class MiniMediaPlayer extends LitElement {
           padding: 16px;
           position: relative;
         }
-        ha-card header {
+        header {
           display: none;
         }
         ha-card[has-title] header {
           display: block;
-          position: relative;
           font-size: var(--paper-font-headline_-_font-size);
           font-weight: var(--paper-font-headline_-_font-weight);
           letter-spacing: var(--paper-font-headline_-_letter-spacing);
           line-height: var(--paper-font-headline_-_line-height);
           padding: 24px 16px 16px;
+          position: relative;
         }
         ha-card[has-title] {
           padding-top: 0px;
         }
         ha-card[group] {
-          padding: 0;
           background: none;
           box-shadow: none;
+          padding: 0;
         }
-        ha-card[group][artwork='cover'][has-artwork] .info {
+        ha-card[group][artwork='cover'][has-artwork] .entity__info {
           margin-top: 10px;
         }
         ha-card[more-info] {
           cursor: pointer;
         }
-        ha-card[artwork='cover'][has-artwork] #artwork-cover,
-        #artwork-cover[bg] {
-          display: block;
+        ha-card[artwork='cover'][has-artwork] .bg,
+        .bg[bg] {
+          opacity: 1;
+          transition: opacity .5s ease-in;
         }
         ha-card[artwork='cover'][has-artwork] paper-icon-button,
         ha-card[artwork='cover'][has-artwork] ha-icon,
-        ha-card[artwork='cover'][has-artwork] .info,
+        ha-card[artwork='cover'][has-artwork] .entity__info,
+        ha-card[artwork='cover'][has-artwork] .entity__info__name,
         ha-card[artwork='cover'][has-artwork] paper-button,
         ha-card[artwork='cover'][has-artwork] header,
-        ha-card[artwork='cover'][has-artwork] .select span {
+        ha-card[artwork='cover'][has-artwork] .select span,
+        ha-card[artwork='cover'][has-artwork] .source-menu__button[focused] iron-icon {
           color: #FFFFFF;
         }
         ha-card[artwork='cover'][has-artwork] paper-input {
           --paper-input-container-color: #FFFFFF;
           --paper-input-container-input-color: #FFFFFF;
         }
-        #artwork-cover {
+        .bg {
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center center;
-          display: none;
+          opacity: 0;
+          transition: opacity .5s ease-in;
           position: absolute;
-          top: 0; left: 0; bottom: 0; right: 0;
+          top: 0; right: 0; bottom: 0; left: 0;
         }
-        ha-card[artwork='cover'][has-artwork] #artwork-cover:before {
+        ha-card[artwork='cover'][has-artwork] .bg:before {
           background: #000000;
           content: '';
           opacity: .5;
@@ -514,6 +522,9 @@ class MiniMediaPlayer extends LitElement {
           display: -webkit-flex;
           flex-direction: row;
         }
+        .flex-wrap[wrap] {
+          flex-wrap: wrap;
+        }
         .justify {
           -webkit-justify-content: space-between;
           justify-content: space-between;
@@ -521,132 +532,145 @@ class MiniMediaPlayer extends LitElement {
         .hidden {
           display: none;
         }
-        .flex-wrap[wrap] {
-          flex-wrap: wrap;
-        }
-        .info {
-          margin-left: 16px;
+        .entity__info {
+          margin-left: 8px;
           display: block;
           position: relative;
         }
-        #mediacontrols, #tts {
+        .control-row, .tts {
           margin-left: 56px;
           position: relative;
+          transition: margin-left 0.25s;
         }
-        .info[short] {
+        ha-card[hide-icon] .control-row,
+        ha-card[hide-icon] .tts,
+        ha-card[hide-info] .control-row,
+        ha-card[hide-info] .tts {
+          margin-left: 0;
+        }
+        .entity__info[short] {
           max-height: 40px;
           overflow: hidden;
         }
-        #artwork, #icon {
-          min-width: 40px;
-          height: 40px;
-          width: 40px;
-          background-size: cover;
-          background-repeat: no-repeat;
+        .entity__icon {
+          color: var(--paper-item-icon-color, #44739e);
+        }
+        .entity__artwork, .entity__icon {
           background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
           border-radius: 100%;
+          height: 40px;
           line-height: 40px;
+          margin-right: 8px;
+          min-width: 40px;
           position: relative;
           text-align: center;
+          width: 40px;
         }
-        #artwork[border] {
+        .entity__artwork[border] {
           border: 2px solid var(--primary-text-color);
           box-sizing: border-box;
           -moz-box-sizing: border-box;
           -webkit-box-sizing: border-box;
         }
-        #artwork[state='playing'] {
+        .entity__artwork[state='playing'] {
           border-color: var(--accent-color);
         }
-        #playername, .power-state {
-          line-height: 40px;
+        .entity__info__name {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
-        #playername[has-info] {
+        .entity__info__name[has-info] {
           line-height: 20px;
         }
-        #icon {
-          color: var(--paper-item-icon-color, #44739e);
+        .entity__info__name, .entity__control-row--top {
+          line-height: 40px;
         }
-        #player-name,
+        .entity__info__name,
         paper-icon-button,
         paper-button,
         .select span {
           color: var(--primary-text-color);
           position: relative;
         }
-        #mediainfo {
+        .entity__info__media {
           color: var(--secondary-text-color);
         }
-        #mediainfo[short] {
-          word-wrap: break-word;
-          display: block;
-          display: -webkit-box;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-          max-height: 1.4rem;
+        .entity__info__media[short] {
           overflow: hidden;
           text-overflow: ellipsis;
+          white-space: nowrap;
         }
-        #mediainfo[scroll='true'] div {
+        .entity__info__media[scroll='true'] > span {
           visibility: hidden;
         }
-        #mediainfo[scroll='true'] {
+        .entity__info__media[scroll='true'] > div {
           animation: move 10s linear infinite;
           overflow: visible;
         }
-        #mediainfo[scroll='true'] .marquee {
+        .entity__info__media[scroll='true'] .marquee {
           animation: slide 10s linear infinite;
           visibility: visible;
         }
+        .entity__info__media[scroll='true'] {
+          text-overflow: clip;
+          mask-image: linear-gradient(to right, transparent 0%, var(--secondary-text-color) 5%, var(--secondary-text-color) 95%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to right, transparent 0%, var(--secondary-text-color) 5%, var(--secondary-text-color) 95%, transparent 100%);
+        }
         .marquee {
+          visibility: hidden;
           position: absolute;
           white-space: nowrap;
-          display: inline-block;
         }
-        ha-card[artwork='cover'][has-artwork] #mediainfo,
-        #power-button[color] {
-          color: var(--accent-color);
+        ha-card[artwork='cover'][has-artwork] .entity__info__media,
+        .power-button[color] {
+          color: var(--accent-color) !important;
+          transition: color .25s ease-in-out;
         }
-        #mediainfo span:before {
+        .entity__info__media span:before {
           content: ' - ';
         }
-        #mediainfo span:first-child:before {
+        .entity__info__media span:first-of-type:before {
           content: '';
         }
-        #mediainfo span:empty,
-        #source-menu span:empty {
+        .entity__info__media span:empty,
+        .source-menu span:empty {
           display: none;
         }
-        #tts paper-input {
+        .tts__input {
+          cursor: text;
           flex: 1;
           -webkit-flex: 1;
-          cursor: text;
         }
-        .power-state {
+        .entity__control-row--top {
           padding-left: 5px;
         }
-        .power-state,
+        .select .vol-control {
+          max-width: 200px;
+        }
+        .entity__control-row--top,
         .select {
-          width: auto;
+          justify-content: flex-end;
           margin-right: 0;
           margin-left: auto;
-          justify-content: flex-end;
+          width: auto;
         }
-        .power-state,
-        .select,
-        .power-state paper-slider {
+        .entity__control-row--top paper-slider {
           flex: 1;
         }
-        .power-state paper-slider {
+        .entity__control-row--top paper-slider {
           height: 40px;
         }
         .vol-control {
-          min-width: 120px;
           flex: 1;
+          min-width: 120px;
+          max-height: 40px;
         }
         paper-slider {
-          min-width: 80px;
           max-width: 400px;
+          min-width: 100px;
           width: 100%;
         }
         paper-input {
@@ -657,59 +681,74 @@ class MiniMediaPlayer extends LitElement {
         paper-input[focused] {
           opacity: 1;
         }
-        #source-menu {
+        .source-menu {
           padding: 0;
+          height: 40px;
         }
-        #source-menu paper-button {
-          margin: 0;
+        .source-menu[focused] iron-icon {
+          transform: rotate(180deg);
+            color: var(--accent-color);
+        }
+        .source-menu__button[focused] iron-icon {
+          color: var(--primary-text-color);
+          transform: rotate(0deg);
+        }
+        .source-menu__button {
           height: 40px;
           line-height: 20px;
-          text-transform: initial;
+          margin: 0;
           min-width: 0;
+          text-transform: initial;
         }
-        #source-menu span {
-          position: relative;
+        .source-menu__source {
           display: block;
           max-width: 60px;
+          overflow: hidden;
+          position: relative;
+          text-overflow: ellipsis;
           width: auto;
           white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
-        #progress {
-          position: absolute;
+        paper-progress {
           bottom: 0;
+          height: var(--paper-progress-height, 4px);
           left: 0;
+          position: absolute;
           right: 0;
           width: 100%;
-          height: var(--paper-progress-height, 4px);
           --paper-progress-active-color: var(--accent-color);
           --paper-progress-container-color: rgba(150,150,150,0.25);
           --paper-progress-transition-duration: 1s;
           --paper-progress-transition-timing-function: linear;
           --paper-progress-transition-delay: 0s;
         }
-        ha-card[state='paused'] #progress {
+        ha-card[state='paused'] paper-progress {
           --paper-progress-active-color: var(--disabled-text-color, rgba(150,150,150,.5));
         }
-        ha-card[group] #progress {
+        ha-card[group] paper-progress {
           position: relative
         }
-        #unavailable {
+        .unavailable {
           white-space: nowrap;
         }
-        .entity[hide-info] .info,
-        .entity[hide-info] #artwork,
-        .entity[hide-info] #icon {
+        ha-card[hide-info] .entity__info,
+        ha-card[hide-info] .entity__artwork,
+        ha-card[hide-info] .entity__icon {
           display: none;
         }
-        .entity[hide-info] .power-state,
-        .entity[hide-info] .select {
+        ha-card[hide-info] .entity__control-row--top,
+        ha-card[hide-info] .select {
           justify-content: space-between;
         }
-        .entity[hide-info] .right {
+        ha-card[hide-info] .right {
           justify-content: flex-end;
           margin-left: auto;
+        }
+        ha-card[hide-info] .entity__control-row--top,
+        .entity__control-row--top,
+        .select,
+        ha-card[hide-info] .select {
+          flex: 1
         }
         @keyframes slide {
           from {transform: translate(0, 0); }
@@ -718,6 +757,14 @@ class MiniMediaPlayer extends LitElement {
         @keyframes move {
           from {transform: translate(100%, 0); }
           to {transform: translate(0, 0); }
+        }
+        @media screen and (max-width: 325px) {
+          .control-row, .tts {
+            margin-left: 0;
+          }
+          .source-menu__source {
+            display: none;
+          }
         }
       </style>
     `;

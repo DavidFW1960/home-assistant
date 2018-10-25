@@ -20,7 +20,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -115,7 +115,7 @@ class Sonarr_UpcomingSensor(Entity):
                 pre['line2_default'] = '$release'
                 pre['line3_default'] = '$rating - $runtime'
                 pre['line4_default'] = '$number - $studio'
-                pre['icon'] = 'mdi:arrow-down-bold-circle'
+                pre['icon'] = 'mdi:arrow-down-bold'
             self.attribNum += 1
             pre['title'] = show.get('series',{}).get('title','')
             pre['episode'] = show['title']
