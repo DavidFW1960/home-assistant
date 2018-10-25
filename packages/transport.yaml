@@ -2,22 +2,22 @@
 sensor:
   - platform: transport_nsw
     name: 'Kariong-Gosford'
-    stopid: '2250275'
-    apikey: !secret trans_nsw
+    stop_id: '2250275'
+    api_key: !secret trans_nsw
   - platform: transport_nsw
     name: 'Gosford-Kariong'
-    stopid: '225042'
-    apikey: !secret trans_nsw
+    stop_id: '225042'
+    api_key: !secret trans_nsw
   - platform: transport_nsw
     name: 'Gosford-Central'
-    stopid: '10101139'
+    stop_id: '10101139'
     route: 'Central Coast & Newcastle Line'
-    apikey: !secret trans_nsw
+    api_key: !secret trans_nsw
   - platform: transport_nsw
     name: 'Central-Gosford'
-    stopid: '10101100'
+    stop_id: '10101100'
     route: 'Central Coast & Newcastle Line'
-    apikey: !secret trans_nsw
+    api_key: !secret trans_nsw
   - platform: template
     sensors:
       busmonitor1:

@@ -8,7 +8,8 @@ it can work with or without the default sonarr component.
 import logging
 import time
 import re
-from datetime import datetime
+import json
+from datetime import date, datetime
 
 import requests
 import voluptuous as vol
@@ -19,7 +20,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.0.8'
+__version__ = '0.1.0'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -80,6 +81,8 @@ class Sonarr_UpcomingSensor(Entity):
         self._tz = timezone(str(hass.config.time_zone))
         self.type = sensor_type
         self._name = SENSOR_TYPES[self.type][0]
+        self.attribNum = 0
+        self.now = str(get_date(self._tz))
 
     @property
     def name(self):
@@ -94,35 +97,59 @@ class Sonarr_UpcomingSensor(Entity):
     @property
     def device_state_attributes(self):
         """Return the state attributes of the sensor."""
+        data = []
         attributes = {}
-        attribNum = 0
+        self.attribNum = 0
         for show in self.data:
-            attribNum += 1
-            try: attributes['banner' + str(attribNum)] = show['series']['images'][1]['url']
-            except: attributes['banner' + str(attribNum)] = 'https://i.imgur.com/fxX01Ic.jpg'
-            try: attributes['poster' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
-            except: attributes['poster' + str(attribNum)] = 'https://i.imgur.com/GmAQyT5.jpg'
-            try:
-                if '.jpg' not in show['series']['images'][0]['url']:
-                    attributes['fanart' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
-                else: attributes['fanart' + str(attribNum)] = re.sub('banners/', 'banners/_cache/', show['series']['images'][0]['url'])
-            except: attributes['fanart' + str(attribNum)] = ''
-            try: studio = show['series']['network']
-            except: studio = ''
+            """Get number of days between now and air date."""
+            n=list(map(int, self.now.split("-")))
+            r=list(map(int, show['airDateUtc'][:-10].split("-")))
+            today = date(n[0],n[1],n[2])
+            airday = date(r[0],r[1],r[2])
+            daysBetween = (airday-today).days
+
+            pre = {}
+            if self.attribNum == 0:
+                pre['title_default'] = '$title'
+                pre['line1_default'] = '$episode'
+                pre['line2_default'] = '$release'
+                pre['line3_default'] = '$rating - $runtime'
+                pre['line4_default'] = '$number - $studio'
+                pre['icon'] = 'mdi:arrow-down-bold-circle'
+            self.attribNum += 1
+            pre['title'] = show.get('series',{}).get('title','')
+            pre['episode'] = show['title']
+            pre['flag'] = show['hasFile']
+            pre['airdate'] = show['airDateUtc']
+            pre['number'] = 'S{:02d}E{:02d}'.format(show['seasonNumber'], show['episodeNumber'])
+            pre['runtime'] = show['series']['runtime']
+            pre['studio'] = show['series']['network']
             try:
                 if show['series']['ratings']['value'] > 0:
-                    rating = "\N{BLACK STAR}"+' '+str(show['series']['ratings']['value'])
-                else: rating = ''
-            except: rating = ''
-            if all((studio,rating)): attributes['extrainfo' + str(attribNum)] = rating+' - '+studio
-            elif studio and not rating: attributes['extrainfo' + str(attribNum)] = studio
-            elif rating and not studio: attributes['extrainfo' + str(attribNum)] = rating
-            else: attributes['extrainfo' + str(attribNum)] = ''
-            attributes['title' + str(attribNum)] = show['series']['title']
-            attributes['subtitle' + str(attribNum)] = show['title']
-            attributes['airdate' + str(attribNum)] = show['airDateUtc']
-            attributes['hasFile' + str(attribNum)] = show['hasFile']
-            attributes['info' + str(attribNum)] = 'S{:02d}E{:02d}'.format(show['seasonNumber'], show['episodeNumber'])
+                    pre['rating'] = "\N{BLACK STAR}"+' '+str(show['series']['ratings']['value'])
+                else: pre['rating'] = ''
+            except: pre['rating'] = ''
+            if daysBetween <= 7: pre['release'] = '$day, $time'
+            else: pre['release'] = '$day, $date $time'
+            try: pre['poster'] = re.sub('banners/', 'banners/_cache/', show['series']['images'][2]['url'])
+            except: pre['poster'] = 'https://i.imgur.com/GmAQyT5.jpg'
+            try:
+                if '.jpg' not in show['series']['images'][0]['url']: pre['fanart'] = ''
+                else: pre['fanart'] = re.sub('banners/', 'banners/_cache/', show['series']['images'][0]['url'])
+            except: pre['fanart'] = ''
+            
+            i=0
+            genres = ''
+            for x in show['series']['genres']:
+                if i > 0: genres += ', '
+                genres += show['series']['genres'][i]
+                i += 1
+                if i == 3: break
+            pre['genres'] = genres
+
+            data.append(pre)
+            
+        attributes['data'] = json.dumps(data)
         return attributes
 
     def update(self):
@@ -150,7 +177,7 @@ class Sonarr_UpcomingSensor(Entity):
                     )
                 )
             else: self.data = res.json()
-            self._state = len(self.data)
+            self._state = self.attribNum
 
 def get_date(zone, offset=0):
     """Get date based on timezone and offset of days."""

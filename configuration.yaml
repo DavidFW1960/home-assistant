@@ -148,6 +148,7 @@ sensor:
     port: !secret my_radarr_port
     days: 100
     ssl: false
+    theaters: true
 
 # Artisan Software Version
 # Getting Artisan version from JSON

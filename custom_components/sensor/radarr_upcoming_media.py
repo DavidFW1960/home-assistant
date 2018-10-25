@@ -7,24 +7,27 @@ it can work with or without the default radarr component.
 """
 import logging
 import time
-from datetime import datetime
+import json
+from datetime import date, datetime
 
 import requests
 import voluptuous as vol
 
 import homeassistant.helpers.config_validation as cv
+from collections import defaultdict
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.1.5'
+__version__ = '0.1.8'
 
 _LOGGER = logging.getLogger(__name__)
 
 CONF_DAYS = 'days'
 CONF_INCLUDED = 'include_paths'
 CONF_URLBASE = 'urlbase'
+CONF_THEATERS = 'theaters'
 
 DEFAULT_HOST = 'localhost'
 DEFAULT_PORT = 7878
@@ -50,6 +53,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
     vol.Optional(CONF_SSL, default=False): cv.boolean,
     vol.Optional(CONF_URLBASE, default=DEFAULT_URLBASE): cv.string,
+    vol.Optional(CONF_THEATERS, default=True): cv.boolean,
 })
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
@@ -78,12 +82,14 @@ class Radarr_UpcomingSensor(Entity):
         self._tz = timezone(str(hass.config.time_zone))
         self.type = sensor_type
         self._name = SENSOR_TYPES[self.type][0]
-        self.attribNum = []
+        self.attribNum = 0
+        self.now = str(get_date(self._tz))
+        self.theaters = conf.get(CONF_THEATERS)
 
     @property
     def name(self):
         """Return the name of the sensor."""
-        return '{} {}'.format('Radarr_Upcoming', self._name)
+        return '{} {}'.format('Radarr Upcoming', self._name)
 
     @property
     def state(self):
@@ -93,41 +99,56 @@ class Radarr_UpcomingSensor(Entity):
     @property
     def device_state_attributes(self):
         """Return the state attributes of the sensor."""
+        data = []
         attributes = {}
         self.attribNum = 0
         for movie in sorted(self.data, key = lambda i: i['path']):
-            if movie['inCinemas'] > datetime.now().replace(microsecond=0).isoformat()+'Z':
+            """Get days between now and release"""
+            n=list(map(int, self.now.split("-")))
+            r=list(map(int, movie['path'][:-10].split("-")))
+            today = date(n[0],n[1],n[2])
+            airday = date(r[0],r[1],r[2])
+            daysBetween = (airday-today).days
+
+            pre = {}
+            if self.attribNum == 0:
+                pre['title_default'] = '$title'
+                pre['line1_default'] = '$release'
+                pre['line2_default'] = '$genres'
+                pre['line3_default'] = '$rating - $runtime'
+                pre['line4_default'] = '$studio'
+                pre['icon'] = 'mdi:arrow-down-bold-circle'
+            if movie['inCinemas'] > datetime.utcnow().isoformat()[:19]+'Z':
+                if not self.theaters: continue
                 self.attribNum += 1
-                attributes['airdate{}'.format(str(self.attribNum))] = movie['path']
-                attributes['info{}'.format(str(self.attribNum))] = 'In Theaters'
+                pre['airdate'] = movie['inCinemas']
+                if daysBetween <= 7: pre['release'] = 'In Theaters $day'
+                else: pre['release'] = 'In Theaters $day, $date'
             elif 'physicalRelease' in movie:
                 self.attribNum += 1
-                attributes['airdate{}'.format(str(self.attribNum))] = movie['path']
-                attributes['info{}'.format(str(self.attribNum))] = 'Available'
+                pre['airdate'] = movie['physicalRelease']
+                if daysBetween <= 7: pre['release'] = 'Available $day'
+                else: pre['release'] = 'Available $day, $date'
             else: continue
-            try: studio = movie['studio']
-            except: studio = ''
+            pre['title'] = movie.get('title','')
+            pre['flag'] = movie.get('hasFile','')
+            pre['runtime'] = movie.get('runtime','')
+            pre['genres'] = movie.get('genres','')
+            pre['studio'] = movie.get('studio','')
             try:
                 if movie['ratings']['value'] > 0:
-                    rating = "\N{BLACK STAR}"+' '+str(movie['ratings']['value'])
-                else: rating = ''
-            except: rating = ''
-            if all((studio,rating)): attributes['extrainfo{}'.format(str(self.attribNum))] = rating+' - '+studio
-            elif studio and not rating: attributes['extrainfo{}'.format(str(self.attribNum))] = studio
-            elif rating and not studio: attributes['extrainfo{}'.format(str(self.attribNum))] = rating
-            else: attributes['extrainfo{}'.format(str(self.attribNum))] = ''
-            try: attributes['poster{}'.format(str(self.attribNum))] = movie['images'][0]
-            except: attributes['poster{}'.format(str(self.attribNum))] = 'https://i.imgur.com/GmAQyT5.jpg'
+                    pre['rating'] = "\N{BLACK STAR}"+' '+str(movie['ratings']['value'])
+                else: pre['rating'] = ''
+            except: pre['rating'] = ''
+            try: pre['poster'] = movie['images'][0]
+            except: pre['poster'] = 'https://i.imgur.com/GmAQyT5.jpg'
             try:
-                if (movie['images'][1][-4:] != 'None'):
-                    attributes['fanart{}'.format(str(self.attribNum))] = movie['images'][1]
-                else:
-                    attributes['fanart{}'.format(str(self.attribNum))] = movie['images'][0]
-            except: attributes['fanart{}'.format(str(self.attribNum))] = ''
-            try: attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
-            except: attributes['banner{}'.format(str(self.attribNum))] = 'https://i.imgur.com/fxX01Ic.jpg'
-            attributes['title{}'.format(str(self.attribNum))] = movie['title']
-            attributes['hasFile{}'.format(str(self.attribNum))] = movie['hasFile']
+                if '.jpg' not in movie['images'][1]: pre['fanart'] = ''
+                else: pre['fanart'] = movie['images'][1]
+            except: pre['fanart'] = ''
+
+            data.append(pre)
+        attributes['data'] = json.dumps(data)
         return attributes
 
     def update(self):
@@ -150,7 +171,7 @@ class Radarr_UpcomingSensor(Entity):
             if self.days == 1:
                 self.data = list(
                     filter(
-                        lambda x: x['physicalRelease'] == str(start),
+                        lambda x: x['physicalRelease'][:-10] == str(start),
                         res.json()
                     )
                 )
@@ -158,22 +179,30 @@ class Radarr_UpcomingSensor(Entity):
                 self.data = res.json()
             self._state = self.attribNum
 
-# The Movie Database offers free API keys. The request rate limiting is only imposed by IP address, not API key and
-# is 40 calls per 10 seconds. No reason in stealing this one, just go get your own: www.themoviedb.org.
-
+            """Radarr's API isn't great, so we use tmdb to suppliment"""
             for movie in self.data:
                 session = requests.Session()
+                # The Movie Database offers free API keys.
+                # Limit is 40 calls every 10 seconds per IP not API key.
                 tmdburl = session.get('http://api.themoviedb.org/3/movie/{}?api_key=1f7708bb9a218ab891a5d438b1b63992'.format(str(movie['tmdbId'])))
                 tmdbjson = tmdburl.json()
                 try: movie['images'][0] = 'https://image.tmdb.org/t/p/w500{}'.format(tmdbjson['poster_path'])
                 except: movie['images'][0] = 'https://i.imgur.com/GmAQyT5.jpg'
                 try: movie['images'][1] = 'https://image.tmdb.org/t/p/w780{}'.format(tmdbjson['backdrop_path'])
                 except: movie['images'][1] = ''
-                if movie['inCinemas'] > datetime.now().replace(microsecond=0).isoformat()+'Z':
-                    movie['path'] = movie['inCinemas']
-                elif 'physicalRelease' in movie:
-                    movie['path'] = movie['physicalRelease']
+                if movie['inCinemas'] > datetime.utcnow().isoformat()[:19]+'Z': movie['path'] = movie['inCinemas']
+                elif 'physicalRelease' in movie: movie['path'] = movie['physicalRelease']
                 else: continue
+
+                i=0
+                genres = ''
+                for x in tmdbjson['genres']:
+                    if i > 0: genres += ', '
+                    genres += tmdbjson['genres'][i]['name'];
+                    i += 1
+                    if i == 4: break
+                movie['genres'] = genres
+                
 
 def get_date(zone, offset=0):
     """Get date based on timezone and offset of days."""

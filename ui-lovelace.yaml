@@ -2,19 +2,19 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.5
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.2.1
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.2.4
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
   - url: /local/mini-media-player.js?ver=0.8.7
     type: module
-  - url: /local/column-card.js?ver=e7fb09
-    type: js
 views:
-  - title: Home Assistant
+  - id: 0  # Automatically created id
+    title: Home Assistant
     icon: mdi:home-assistant
     cards:
-      - type: vertical-stack
+      - id: 570b1ee338e0434882b8a637db093ef4  # Automatically created id
+        type: vertical-stack
         cards:
           - type: entities
             title: System Information
@@ -53,7 +53,8 @@ views:
               - device_tracker.davids_ipad
               - sensor.davidsipad_battery_level
               - sensor.davidsipad_battery_state
-      - type: vertical-stack
+      - id: 198f650178d34ca886730c6e958d6a6c  # Automatically created id
+        type: vertical-stack
         cards:
           - type: entities
             title: Updates
@@ -78,7 +79,8 @@ views:
             trackers:
               - sensor.custom_card_tracker
               - sensor.custom_component_tracker
-      - type: vertical-stack
+      - id: 633e63caba664811acb2ab9ae0b18c20  # Automatically created id
+        type: vertical-stack
         cards:
           - type: entities
             title: Internet
@@ -109,10 +111,12 @@ views:
             camera_image: camera.aussie_broadband_cvc_capacity
             show_info: true
             tap_action: dialog
-  - title: Weather
+  - id: 1  # Automatically created id
+    title: Weather
     icon: mdi:weather-cloudy
     cards:
-      - type: vertical-stack
+      - id: 6d34ee13d8094174b43f2ee583954b0b  # Automatically created id
+        type: vertical-stack
         cards:
           - type: entities
             title: Season, Sun & Moon Phase
@@ -155,12 +159,13 @@ views:
               - sensor.dark_sky_summary
               - sensor.dark_sky_wind_speed
               - sensor.dark_sky_wind_speed_1
-      - type: vertical-stack
+      - id: 7d7ce0f46f84472096d8a421378600eb  # Automatically created id
+        type: vertical-stack
         cards:
           - type: custom:dark-sky-weather-card
             entity_sun: sun.sun
             entity_daily_summary: sensor.dark_sky_daily_summary
-            entity_current_conditions: sensor.dark_sky_icon  
+            entity_current_conditions: sensor.dark_sky_icon
             entity_humidity: sensor.dark_sky_humidity
             entity_pressure: sensor.dark_sky_pressure
             entity_temperature: sensor.dark_sky_temperature
@@ -209,7 +214,8 @@ views:
               - sensor.bom_gosford_wind_gust_kt
               - sensor.bom_gosford_wind_speed_kmh
               - sensor.bom_gosford_wind_speed_kt
-      - type: vertical-stack
+      - id: ecba97ddc4ab4a61b505ddf1da71922d  # Automatically created id
+        type: vertical-stack
         cards:
           - type: picture-entity
             title: BOM Satellite
@@ -229,10 +235,12 @@ views:
             camera_image: camera.bom_radar_newcastle
             show_info: true
             tap_action: dialog
-  - title: Lights & Switches
+  - id: 2  # Automatically created id
+    title: Lights & Switches
     icon: mdi:power
     cards:
-      - type: vertical-stack
+      - id: ee7b3d24961c41eb864349b2e37df0cb  # Automatically created id
+        type: vertical-stack
         cards:
           - type: entities
             title: Light
@@ -254,8 +262,9 @@ views:
               - switch.hifi
               - switch.vpn_router
               - switch.toothbrush
-      - type: vertical-stack
-        cards:      
+      - id: b92fa8937e374e6cae4e621e89ced345  # Automatically created id
+        type: vertical-stack
+        cards:
           - type: entities
             title: Automations
             entities:
@@ -276,7 +285,8 @@ views:
               - automation.coffee_maker_on
               - automation.toothbrush_on
               - automation.turn_lounge_light_on_elevation__25__after_4pm
-      - type: entities
+      - id: 3c60d589967d4e9f8b749e33a83965fd  # Automatically created id
+        type: entities
         title: Scenes
         entities:
           - scene.bedtime
@@ -295,172 +305,192 @@ views:
           - scene.desk_daylight
           - scene.desk_normal
           - scene.desk_warm
-  - title: Media
+  - id: 3  # Automatically created id
+    title: Media
     icon: mdi:vlc
     cards:
-      - type: media-control
+      - id: 5aa4098bb94b4d718179890120040eb2  # Automatically created id
+        type: media-control
         entity: media_player.all_speakers
-      - type: media-control
+      - id: b1c0e87601c44bf1946c9d585a185062  # Automatically created id
+        type: media-control
         entity: media_player.living_areas
-      - type: media-control
+      - id: 9295faec289f4ccdaa03c2a72305db40  # Automatically created id
+        type: media-control
         entity: media_player.bedroom_speaker
-      - type: media-control
+      - id: 96bfe67e7cb94fa5b4300d5a67ae39c5  # Automatically created id
+        type: media-control
         entity: media_player.office_speaker
-      - type: media-control
+      - id: 3730ad7ec2284484bfe825ac7c32af28  # Automatically created id
+        type: media-control
         entity: media_player.lounge_speaker
-      - type: media-control
+      - id: 833eb728bfe149fbaf4e53a14e98b2da  # Automatically created id
+        type: media-control
         entity: media_player.lounge_room_tv
-      - type: media-control
+      - id: 7d1375dc8b5f4d039b1444fea52a2e03  # Automatically created id
+        type: media-control
         entity: media_player.roku_5x46aj056306
-      - type: media-control
+      - id: e652039df88440149888a01175073d51  # Automatically created id
+        type: media-control
         entity: media_player.foxtel_7587
-      - type: media-control
+      - id: d0b2bcb2ddba45ffa5af72fd8531d0d0  # Automatically created id
+        type: media-control
         entity: media_player.kodi
-      - type: media-control
+      - id: 5c712f8b4d66406ca3ace8e00d169ede  # Automatically created id
+        type: media-control
         entity: media_player.osmc_vero4
-      - type: media-control
+      - id: 4ff8335e5ee54f4490fcd2f6606064fd  # Automatically created id
+        type: media-control
         entity: media_player.txnr1009
-  - title: Media Mini
+  - id: 4  # Automatically created id
+    title: Media Mini
     icon: mdi:boombox
     cards:
-      - type: entities
+      - id: 462a205b39114134b68895e6f08be7ce  # Automatically created id
+        type: entities
         title: Google Devices
         entities:
-        - entity: media_player.all_speakers
-          type: "custom:mini-media-player"
-          group: true
-          show_tts: google
-          artwork: cover
-          power_color: true
-          scroll_info: true
-        - entity: media_player.living_areas
-          type: "custom:mini-media-player"
-          group: true
-          show_tts: google
-          artwork: cover
-          power_color: true
-          scroll_info: true
-        - entity: media_player.bedroom_speaker
-          type: "custom:mini-media-player"
-          group: true
-          show_tts: google
-          artwork: cover
-          power_color: true
-          scroll_info: true
-        - entity: media_player.office_speaker
-          type: "custom:mini-media-player"
-          group: true
-          show_tts: google
-          artwork: cover
-          power_color: true
-          scroll_info: true
-        - entity: media_player.lounge_speaker
-          type: "custom:mini-media-player"
-          group: true
-          show_tts: google
-          artwork: cover
-          power_color: true
-          scroll_info: true
-        - entity: media_player.lounge_room_tv
-          type: "custom:mini-media-player"
-          group: true
-          artwork: cover
-          power_color: true
-      - type: entities
+          - entity: media_player.all_speakers
+            type: custom:mini-media-player
+            group: true
+            show_tts: google
+            artwork: cover
+            power_color: true
+            scroll_info: true
+          - entity: media_player.living_areas
+            type: custom:mini-media-player
+            group: true
+            show_tts: google
+            artwork: cover
+            power_color: true
+            scroll_info: true
+          - entity: media_player.bedroom_speaker
+            type: custom:mini-media-player
+            group: true
+            show_tts: google
+            artwork: cover
+            power_color: true
+            scroll_info: true
+          - entity: media_player.office_speaker
+            type: custom:mini-media-player
+            group: true
+            show_tts: google
+            artwork: cover
+            power_color: true
+            scroll_info: true
+          - entity: media_player.lounge_speaker
+            type: custom:mini-media-player
+            group: true
+            show_tts: google
+            artwork: cover
+            power_color: true
+            scroll_info: true
+          - entity: media_player.lounge_room_tv
+            type: custom:mini-media-player
+            group: true
+            artwork: cover
+            power_color: true
+      - id: 88193b17ead14a6b8da71c86726181bb  # Automatically created id
+        type: entities
         title: Other Media Players
         entities:
-        - entity: media_player.roku_5x46aj056306
-          type: "custom:mini-media-player"
-          group: true
-          artwork: cover
-          power_color: true
-          scroll_info: true
-        - entity: media_player.foxtel_7587
-          type: "custom:mini-media-player"
-          group: true
-          artwork: cover
-          power_color: true
-          scroll_info: true
-        - entity: media_player.kodi
-          type: "custom:mini-media-player"
-          group: true
-          artwork: cover
-          power_color: true
-          scroll_info: true
-        - entity: media_player.osmc_vero4
-          type: "custom:mini-media-player"
-          group: true
-          artwork: cover
-          power_color: true
-          scroll_info: true
-        - entity: media_player.txnr1009
-          type: "custom:mini-media-player"
-          group: true
-          artwork: cover
-          power_color: true
-          scroll_info: true
-          show_source: true
-  - title: TV & Movies
+          - entity: media_player.roku_5x46aj056306
+            type: custom:mini-media-player
+            group: true
+            artwork: cover
+            power_color: true
+            scroll_info: true
+          - entity: media_player.foxtel_7587
+            type: custom:mini-media-player
+            group: true
+            artwork: cover
+            power_color: true
+            scroll_info: true
+          - entity: media_player.kodi
+            type: custom:mini-media-player
+            group: true
+            artwork: cover
+            power_color: true
+            scroll_info: true
+          - entity: media_player.osmc_vero4
+            type: custom:mini-media-player
+            group: true
+            artwork: cover
+            power_color: true
+            scroll_info: true
+          - entity: media_player.txnr1009
+            type: custom:mini-media-player
+            group: true
+            artwork: cover
+            power_color: true
+            scroll_info: true
+            show_source: true
+  - id: 5  # Automatically created id
+    title: TV & Movies
     icon: mdi:kodi
-    panel: true
     cards:
-      - type: custom:column-card
-        cards:
-          - type: custom:upcoming-media-card
-            service: sonarr
-            title: Sonarr Upcoming
-            image_style: poster
-            clock: 12
-            date: 'ddmm'
-            max: 10
-            title_color: '#ffffff'
-            line1_color: '#000000'
-            line2_color: '#f41103'
-            line3_color: 'green'
-            download_color: '#000000'
-            accent_color: '#03a9f4'
-            border_color: 'grey'
-            text_shadows: 'off'
-            box_shadows: 'on'
-          - type: custom:upcoming-media-card
-            service: radarr
-            title: Radarr Upcoming
-            image_style: poster
-            clock: 12
-            date: 'ddmm'
-            max: 10
-            title_color: '#ffffff'
-            line1_color: '#000000'
-            line2_color: '#f41103'
-            line3_color: 'green'
-            download_color: '#000000'
-            accent_color: '#03a9f4'
-            border_color: 'grey'
-            text_shadows: 'off'
-            box_shadows: 'on'
-          - type: entities
-            title: Newsgroups
-            entities:
-              - sensor.sabnzbd_status
-              - sensor.sabnzbd_queue
-              - sensor.sabnzbd_queue_count
-              - sensor.sabnzbd_speed
-              - sensor.sabnzbd_left
-              - sensor.sabnzbd_disk
-              - sensor.sabnzbd_disk_free
-              - sensor.sabnzbd_daily_total
-              - sensor.sabnzbd_weekly_total
-              - sensor.sabnzbd_monthly_total
-              - sensor.sabnzbd_total
-              - sensor.sonarr_series
-              - sensor.sonarr_upcoming
-              - sensor.sonarr_wanted
-              - sensor.sonarr_queue
-              - sensor.sonarr_commands
-  - title: Buses, Trains & Fuel
+      - id: 5c797f7f74c144fb89426bcf44c5a3c4  # Automatically created id
+        type: custom:upcoming-media-card
+        entity: sensor.sonarr_upcoming_media
+        title: Sonarr Upcoming
+        image_style: poster
+        clock: 12
+        date: ddmm
+        max: 10
+        flag: true
+        title_color: '#ffffff'
+        line1_color: '#000000'
+        line2_color: '#f41103'
+        line3_color: green
+        accent_color: '#03a9f4'
+        border_color: grey
+        flag_color: green
+        text_shadows: false
+        box_shadows: true
+      - id: 39c066caee7f46ceafe266ef91ef1daa  # Automatically created id
+        type: custom:upcoming-media-card
+        entity: sensor.radarr_upcoming_media
+        title: Radarr Upcoming
+        image_style: poster
+        clock: 12
+        date: ddmm
+        max: 10
+        flag: true
+        title_color: '#ffffff'
+        line1_color: '#000000'
+        line2_color: '#f41103'
+        line3_color: green
+        accent_color: '#03a9f4'
+        border_color: grey
+        flag_color: green
+        text_shadows: false
+        box_shadows: true
+      - id: a9782b3ede1040daabcc38c2009a277e  # Automatically created id
+        type: entities
+        title: Newsgroups
+        entities:
+          - sensor.sabnzbd_status
+          - sensor.sabnzbd_queue
+          - sensor.sabnzbd_queue_count
+          - sensor.sabnzbd_speed
+          - sensor.sabnzbd_left
+          - sensor.sabnzbd_disk
+          - sensor.sabnzbd_disk_free
+          - sensor.sabnzbd_daily_total
+          - sensor.sabnzbd_weekly_total
+          - sensor.sabnzbd_monthly_total
+          - sensor.sabnzbd_total
+          - sensor.sonarr_series
+          - sensor.sonarr_upcoming
+          - sensor.sonarr_wanted
+          - sensor.sonarr_queue
+          - sensor.sonarr_commands
+  - id: 6  # Automatically created id
+    title: Buses, Trains & Fuel
     icon: mdi:train
     cards:
-      - type: vertical-stack
+      - id: 2f0d1d772ff94c83bafc2668be7564bf  # Automatically created id
+        type: vertical-stack
         cards:
           - type: entities
             title: Transport
@@ -478,7 +508,8 @@ views:
               - sensor.caltex_st_ives_north_pdl
               - sensor.caltex_woolworths_glenrose_pdl
               - sensor.caltex_belrose_pdl
-      - type: entities
+      - id: 88a7e41ae27d491fb01263c1ffec1f9b  # Automatically created id
+        type: entities
         title: NSW Fuel Watch - Central Coast
         entities:
           - sensor.caltex_kariong_pdl
