@@ -2,18 +2,18 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.5
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.2.5
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.2.6
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
   - url: /local/mini-media-player.js?ver=0.8.8
     type: module
 views:
-  - id: 0  # Automatically created id
+  - id: 0  
     title: Home Assistant
     icon: mdi:home-assistant
     cards:
-      - id: 570b1ee338e0434882b8a637db093ef4  # Automatically created id
+      - id: 570b1ee338e0434882b8a637db093ef4  
         type: vertical-stack
         cards:
           - type: entities
@@ -25,6 +25,16 @@ views:
               - sensor.sonoff_firmware_version_available
               - binary_sensor.sonoff_update_available
               - sensor.artisan_software_version
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                title: CPU Usage
+                unit_of_measurement: '%'
+                entity: sensor.processor_use
+              - type: gauge
+                title: Memory Usage
+                unit_of_measurement: '%'
+                entity: sensor.memory_use_percent
           - type: entities
             title: NUC Resources
             entities:
@@ -53,7 +63,7 @@ views:
               - device_tracker.davids_ipad
               - sensor.davidsipad_battery_level
               - sensor.davidsipad_battery_state
-      - id: 198f650178d34ca886730c6e958d6a6c  # Automatically created id
+      - id: 198f650178d34ca886730c6e958d6a6c  
         type: vertical-stack
         cards:
           - type: entities
@@ -79,7 +89,7 @@ views:
             trackers:
               - sensor.custom_card_tracker
               - sensor.custom_component_tracker
-      - id: 633e63caba664811acb2ab9ae0b18c20  # Automatically created id
+      - id: 633e63caba664811acb2ab9ae0b18c20  
         type: vertical-stack
         cards:
           - type: entities
@@ -111,11 +121,11 @@ views:
             camera_image: camera.aussie_broadband_cvc_capacity
             show_info: true
             tap_action: dialog
-  - id: 1  # Automatically created id
+  - id: 1  
     title: Weather
     icon: mdi:weather-cloudy
     cards:
-      - id: 6d34ee13d8094174b43f2ee583954b0b  # Automatically created id
+      - id: 6d34ee13d8094174b43f2ee583954b0b  
         type: vertical-stack
         cards:
           - type: entities
@@ -159,7 +169,7 @@ views:
               - sensor.dark_sky_summary
               - sensor.dark_sky_wind_speed
               - sensor.dark_sky_wind_speed_1
-      - id: 7d7ce0f46f84472096d8a421378600eb  # Automatically created id
+      - id: 7d7ce0f46f84472096d8a421378600eb  
         type: vertical-stack
         cards:
           - type: custom:dark-sky-weather-card
@@ -214,7 +224,7 @@ views:
               - sensor.bom_gosford_wind_gust_kt
               - sensor.bom_gosford_wind_speed_kmh
               - sensor.bom_gosford_wind_speed_kt
-      - id: ecba97ddc4ab4a61b505ddf1da71922d  # Automatically created id
+      - id: ecba97ddc4ab4a61b505ddf1da71922d  
         type: vertical-stack
         cards:
           - type: picture-entity
@@ -235,11 +245,11 @@ views:
             camera_image: camera.bom_radar_newcastle
             show_info: true
             tap_action: dialog
-  - id: 2  # Automatically created id
+  - id: 2  
     title: Lights & Switches
     icon: mdi:power
     cards:
-      - id: ee7b3d24961c41eb864349b2e37df0cb  # Automatically created id
+      - id: ee7b3d24961c41eb864349b2e37df0cb  
         type: vertical-stack
         cards:
           - type: entities
@@ -262,7 +272,7 @@ views:
               - switch.hifi
               - switch.vpn_router
               - switch.toothbrush
-      - id: b92fa8937e374e6cae4e621e89ced345  # Automatically created id
+      - id: b92fa8937e374e6cae4e621e89ced345  
         type: vertical-stack
         cards:
           - type: entities
@@ -280,12 +290,11 @@ views:
               - automation.turn_lounge_light_on_elevation__25__after_4pm
               - automation.update_available
           - type: entities
-            title: Holiday Automations
+            title: Home and Away Automations
+            show_header_toggle: false
             entities:
-              - automation.coffee_maker_on
-              - automation.toothbrush_on
-              - automation.turn_lounge_light_on_elevation__25__after_4pm
-      - id: 3c60d589967d4e9f8b749e33a83965fd  # Automatically created id
+              - input_boolean.homeandawayauto
+      - id: 3c60d589967d4e9f8b749e33a83965fd  
         type: entities
         title: Scenes
         entities:
@@ -305,48 +314,48 @@ views:
           - scene.desk_daylight
           - scene.desk_normal
           - scene.desk_warm
-  - id: 3  # Automatically created id
+  - id: 3  
     title: Media
     icon: mdi:vlc
     cards:
-      - id: 5aa4098bb94b4d718179890120040eb2  # Automatically created id
+      - id: 5aa4098bb94b4d718179890120040eb2  
         type: media-control
         entity: media_player.all_speakers
-      - id: b1c0e87601c44bf1946c9d585a185062  # Automatically created id
+      - id: b1c0e87601c44bf1946c9d585a185062  
         type: media-control
         entity: media_player.living_areas
-      - id: 9295faec289f4ccdaa03c2a72305db40  # Automatically created id
+      - id: 9295faec289f4ccdaa03c2a72305db40  
         type: media-control
         entity: media_player.bedroom_speaker
-      - id: 96bfe67e7cb94fa5b4300d5a67ae39c5  # Automatically created id
+      - id: 96bfe67e7cb94fa5b4300d5a67ae39c5  
         type: media-control
         entity: media_player.office_speaker
-      - id: 3730ad7ec2284484bfe825ac7c32af28  # Automatically created id
+      - id: 3730ad7ec2284484bfe825ac7c32af28  
         type: media-control
         entity: media_player.lounge_speaker
-      - id: 833eb728bfe149fbaf4e53a14e98b2da  # Automatically created id
+      - id: 833eb728bfe149fbaf4e53a14e98b2da  
         type: media-control
         entity: media_player.lounge_room_tv
-      - id: 7d1375dc8b5f4d039b1444fea52a2e03  # Automatically created id
+      - id: 7d1375dc8b5f4d039b1444fea52a2e03  
         type: media-control
         entity: media_player.roku_5x46aj056306
-      - id: e652039df88440149888a01175073d51  # Automatically created id
+      - id: e652039df88440149888a01175073d51  
         type: media-control
         entity: media_player.foxtel_7587
-      - id: d0b2bcb2ddba45ffa5af72fd8531d0d0  # Automatically created id
+      - id: d0b2bcb2ddba45ffa5af72fd8531d0d0  
         type: media-control
         entity: media_player.kodi
-      - id: 5c712f8b4d66406ca3ace8e00d169ede  # Automatically created id
+      - id: 5c712f8b4d66406ca3ace8e00d169ede  
         type: media-control
         entity: media_player.osmc_vero4
-      - id: 4ff8335e5ee54f4490fcd2f6606064fd  # Automatically created id
+      - id: 4ff8335e5ee54f4490fcd2f6606064fd  
         type: media-control
         entity: media_player.txnr1009
-  - id: 4  # Automatically created id
+  - id: 4  
     title: Media Mini
     icon: mdi:boombox
     cards:
-      - id: 462a205b39114134b68895e6f08be7ce  # Automatically created id
+      - id: 462a205b39114134b68895e6f08be7ce  
         type: entities
         title: Google Devices
         entities:
@@ -390,7 +399,7 @@ views:
             group: true
             artwork: cover
             power_color: true
-      - id: 88193b17ead14a6b8da71c86726181bb  # Automatically created id
+      - id: 88193b17ead14a6b8da71c86726181bb  
         type: entities
         title: Other Media Players
         entities:
@@ -425,11 +434,11 @@ views:
             power_color: true
             scroll_info: true
             show_source: true
-  - id: 5  # Automatically created id
+  - id: 5  
     title: TV & Movies
     icon: mdi:kodi
     cards:
-      - id: 5c797f7f74c144fb89426bcf44c5a3c4  # Automatically created id
+      - id: 5c797f7f74c144fb89426bcf44c5a3c4  
         type: custom:upcoming-media-card
         entity: sensor.sonarr_upcoming_media
         title: Sonarr Upcoming
@@ -444,10 +453,10 @@ views:
         line3_color: green
         accent_color: '#03a9f4'
         border_color: grey
-        flag_color: green
+        flag_color: red
         text_shadows: false
         box_shadows: true
-      - id: 39c066caee7f46ceafe266ef91ef1daa  # Automatically created id
+      - id: 39c066caee7f46ceafe266ef91ef1daa  
         type: custom:upcoming-media-card
         entity: sensor.radarr_upcoming_media
         title: Radarr Upcoming
@@ -462,10 +471,10 @@ views:
         line3_color: green
         accent_color: '#03a9f4'
         border_color: grey
-        flag_color: green
+        flag_color: red
         text_shadows: false
         box_shadows: true
-      - id: a9782b3ede1040daabcc38c2009a277e  # Automatically created id
+      - id: a9782b3ede1040daabcc38c2009a277e  
         type: entities
         title: Newsgroups
         entities:
@@ -485,11 +494,11 @@ views:
           - sensor.sonarr_wanted
           - sensor.sonarr_queue
           - sensor.sonarr_commands
-  - id: 6  # Automatically created id
+  - id: 6  
     title: Buses, Trains & Fuel
     icon: mdi:train
     cards:
-      - id: 2f0d1d772ff94c83bafc2668be7564bf  # Automatically created id
+      - id: 2f0d1d772ff94c83bafc2668be7564bf  
         type: vertical-stack
         cards:
           - type: entities
@@ -508,7 +517,7 @@ views:
               - sensor.caltex_st_ives_north_pdl
               - sensor.caltex_woolworths_glenrose_pdl
               - sensor.caltex_belrose_pdl
-      - id: 88a7e41ae27d491fb01263c1ffec1f9b  # Automatically created id
+      - id: 88a7e41ae27d491fb01263c1ffec1f9b  
         type: entities
         title: NSW Fuel Watch - Central Coast
         entities:

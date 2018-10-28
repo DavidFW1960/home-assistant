@@ -202,3 +202,7 @@ Scenes:
   - scene.desk_daylight
   - scene.desk_normal
   - scene.desk_warm
+HomeAway:
+  - automation.coffee_maker_on
+  - automation.toothbrush_on
+  - automation.turn_lounge_light_on_elevation__25__after_4pm

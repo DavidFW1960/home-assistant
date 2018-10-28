@@ -2,6 +2,9 @@ group.all_automations:
   friendly_name: Automations
   hidden: false
   control: hidden
+group.homeaway:
+  friendly_name: Home and Away Automations
+  hidden: false
 group.darkskyvisible:
   friendly_name: Dark Sky
 group.bom:

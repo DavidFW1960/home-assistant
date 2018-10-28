@@ -20,7 +20,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.1.9'
+__version__ = '0.2.0'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -104,14 +104,14 @@ class Radarr_UpcomingSensor(Entity):
         self.attribNum = 0
         for movie in sorted(self.data, key = lambda i: i['path']):
             
-            if "/" in movie['path']: continue
-        
-            """Get days between now and release"""
-            n=list(map(int, self.now.split("-")))
-            r=list(map(int, movie['path'][:-10].split("-")))
-            today = date(n[0],n[1],n[2])
-            airday = date(r[0],r[1],r[2])
-            daysBetween = (airday-today).days
+            if "/" not in movie['path']:
+                """Get days between now and release"""
+                n=list(map(int, self.now.split("-")))
+                r=list(map(int, movie['path'][:-10].split("-")))
+                today = date(n[0],n[1],n[2])
+                airday = date(r[0],r[1],r[2])
+                daysBetween = (airday-today).days
+            else: continue
 
             pre = {}
             if self.attribNum == 0:
@@ -121,7 +121,7 @@ class Radarr_UpcomingSensor(Entity):
                 pre['line3_default'] = '$rating - $runtime'
                 pre['line4_default'] = '$studio'
                 pre['icon'] = 'mdi:arrow-down-bold'
-            if movie['inCinemas'] > datetime.utcnow().isoformat()[:19]+'Z':
+            if movie['inCinemas'] >= datetime.utcnow().isoformat()[:19]+'Z':
                 if not self.theaters: continue
                 self.attribNum += 1
                 pre['airdate'] = movie['inCinemas']
@@ -193,7 +193,7 @@ class Radarr_UpcomingSensor(Entity):
                 except: movie['images'][0] = 'https://i.imgur.com/GmAQyT5.jpg'
                 try: movie['images'][1] = 'https://image.tmdb.org/t/p/w780{}'.format(tmdbjson['backdrop_path'])
                 except: movie['images'][1] = ''
-                if movie['inCinemas'] > datetime.utcnow().isoformat()[:19]+'Z': movie['path'] = movie['inCinemas']
+                if movie['inCinemas'] >= datetime.utcnow().isoformat()[:19]+'Z': movie['path'] = movie['inCinemas']
                 elif 'physicalRelease' in movie: movie['path'] = movie['physicalRelease']
                 else: continue
 

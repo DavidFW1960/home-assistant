@@ -76,26 +76,31 @@ sensor:
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/stable.json
     name: Hass Current Stable Version
+    scan_interval: 7200
     value_template: '{{ value_json.homeassistant.raspberrypi3 }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/beta.json
     name: Hass Current Beta Version
+    scan_interval: 7200
     value_template: '{{ value_json.homeassistant.raspberrypi3 }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/dev.json
     name: Hass Current Dev Version
+    scan_interval: 7200
     value_template: '{{ value_json.homeassistant.raspberrypi3 }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/stable.json
     name: Hass Current Supervisor Version
+    scan_interval: 7200
     value_template: '{{ value_json.supervisor }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/stable.json
     name: Hass Current HassOS Version
+    scan_interval: 7200
     value_template: '{{ value_json.hassos.rpi3 }}'
 
 ################################################

@@ -277,6 +277,11 @@ custom_updater:
   card_urls:
     - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
 
+# Binary Switch for Home and Away Automations
+input_boolean:
+  homeandawayauto:
+    name: Home and Away Automations
+
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml
 scene: !include scene.yaml
