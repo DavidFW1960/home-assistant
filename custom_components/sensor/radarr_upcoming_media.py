@@ -20,7 +20,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -197,15 +197,16 @@ class Radarr_UpcomingSensor(Entity):
                 elif 'physicalRelease' in movie: movie['path'] = movie['physicalRelease']
                 else: continue
 
-                i=0
-                genres = ''
-                for x in tmdbjson['genres']:
-                    if i > 0: genres += ', '
-                    genres += tmdbjson['genres'][i]['name'];
-                    i += 1
-                    if i == 4: break
-                movie['genres'] = genres
-                
+                try:
+                    i=0
+                    genres = ''
+                    for x in tmdbjson['genres']:
+                        if i > 0: genres += ', '
+                        genres += tmdbjson['genres'][i]['name'];
+                        i += 1
+                        if i == 4: break
+                    movie['genres'] = genres
+                except: movie['genres'] = ''
 
 def get_date(zone, offset=0):
     """Get date based on timezone and offset of days."""

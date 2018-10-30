@@ -20,7 +20,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -140,14 +140,16 @@ class Sonarr_UpcomingSensor(Entity):
                 else: pre['fanart'] = re.sub('banners/', 'banners/_cache/', show['series']['images'][0]['url'])
             except: pre['fanart'] = ''
             
-            i=0
-            genres = ''
-            for x in show['series']['genres']:
-                if i > 0: genres += ', '
-                genres += show['series']['genres'][i]
-                i += 1
-                if i == 3: break
-            pre['genres'] = genres
+            try:
+                i=0
+                genres = ''
+                for x in show['series']['genres']:
+                    if i > 0: genres += ', '
+                    genres += show['series']['genres'][i]
+                    i += 1
+                    if i == 3: break
+                pre['genres'] = genres
+            except: pre['genres'] = ''
 
             data.append(pre)
             
