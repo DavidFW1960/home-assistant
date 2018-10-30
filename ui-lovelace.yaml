@@ -94,11 +94,11 @@ views:
               - sensor.nuc_memory_used_filtered
               - sensor.processor_use
               - sensor.nuc_processor_used_filtered
-#         - type: custom:tracker-card
-#           title: Custom Card Updates
-#           trackers:
-#             - sensor.custom_card_tracker
-#             - sensor.custom_component_tracker
+          - type: custom:tracker-card
+            title: Custom Card Updates
+            trackers:
+              - sensor.custom_card_tracker
+              - sensor.custom_component_tracker
       - id: 633e63caba664811acb2ab9ae0b18c20
         type: vertical-stack
         cards:
@@ -182,31 +182,31 @@ views:
       - id: 7d7ce0f46f84472096d8a421378600eb
         type: vertical-stack
         cards:
-#         - type: custom:dark-sky-weather-card
-#           entity_sun: sun.sun
-#           entity_daily_summary: sensor.dark_sky_daily_summary
-#           entity_current_conditions: sensor.dark_sky_icon
-#           entity_humidity: sensor.dark_sky_humidity
-#           entity_pressure: sensor.dark_sky_pressure
-#           entity_temperature: sensor.dark_sky_temperature
-#           entity_visibility: sensor.dark_sky_visibility
-#           entity_wind_bearing: sensor.dark_sky_wind_bearing
-#           entity_wind_speed: sensor.dark_sky_wind_speed
-#           entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
-#           entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
-#           entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
-#           entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
-#           entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
-#           entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature
-#           entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
-#           entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
-#           entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
-#           entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
-#           entity_forecast_icon_1: sensor.dark_sky_icon_1
-#           entity_forecast_icon_2: sensor.dark_sky_icon_2
-#           entity_forecast_icon_3: sensor.dark_sky_icon_3
-#           entity_forecast_icon_4: sensor.dark_sky_icon_4
-#           entity_forecast_icon_5: sensor.dark_sky_icon_5
+          - type: custom:dark-sky-weather-card
+            entity_sun: sun.sun
+            entity_daily_summary: sensor.dark_sky_daily_summary
+            entity_current_conditions: sensor.dark_sky_icon
+            entity_humidity: sensor.dark_sky_humidity
+            entity_pressure: sensor.dark_sky_pressure
+            entity_temperature: sensor.dark_sky_temperature
+            entity_visibility: sensor.dark_sky_visibility
+            entity_wind_bearing: sensor.dark_sky_wind_bearing
+            entity_wind_speed: sensor.dark_sky_wind_speed
+            entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
+            entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
+            entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
+            entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
+            entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
+            entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature
+            entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
+            entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
+            entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
+            entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
+            entity_forecast_icon_1: sensor.dark_sky_icon_1
+            entity_forecast_icon_2: sensor.dark_sky_icon_2
+            entity_forecast_icon_3: sensor.dark_sky_icon_3
+            entity_forecast_icon_4: sensor.dark_sky_icon_4
+            entity_forecast_icon_5: sensor.dark_sky_icon_5
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 72
@@ -552,39 +552,3 @@ views:
           - sensor.caltex_wyong_pdl
           - sensor.caltex_wyong_pdl_2
           - sensor.coles_express_kariong_dl
-  - id: 7  # Automatically created id
-    title: Temp 0.81.0 Fix
-    icon: mdi:home-assistant
-    cards:
-      - id: 196ef2838dd94a0ba263ab2b750986c8  # Automatically created id
-        type: custom:tracker-card
-        title: Custom Card Updates
-        trackers:
-          - sensor.custom_card_tracker
-          - sensor.custom_component_tracker
-      - id: a63e30ec1cc146359560297be4470dfb  # Automatically created id
-        type: custom:dark-sky-weather-card
-        entity_sun: sun.sun
-        entity_daily_summary: sensor.dark_sky_daily_summary
-        entity_current_conditions: sensor.dark_sky_icon
-        entity_humidity: sensor.dark_sky_humidity
-        entity_pressure: sensor.dark_sky_pressure
-        entity_temperature: sensor.dark_sky_temperature
-        entity_visibility: sensor.dark_sky_visibility
-        entity_wind_bearing: sensor.dark_sky_wind_bearing
-        entity_wind_speed: sensor.dark_sky_wind_speed
-        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
-        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
-        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
-        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
-        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
-        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature
-        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
-        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
-        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
-        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
-        entity_forecast_icon_1: sensor.dark_sky_icon_1
-        entity_forecast_icon_2: sensor.dark_sky_icon_2
-        entity_forecast_icon_3: sensor.dark_sky_icon_3
-        entity_forecast_icon_4: sensor.dark_sky_icon_4
-        entity_forecast_icon_5: sensor.dark_sky_icon_5
