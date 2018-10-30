@@ -5,6 +5,7 @@ exposed_domains:
   - switch
   - light
   - scene
+  - input_boolean
 entity_config:
   light.yeelight_white_34ce00882e27:
     expose: false
@@ -62,3 +63,5 @@ entity_config:
     room: bathroom
   switch.home_assistant:
     expose: false
+  input_boolean.homeandawayauto:
+    room: house

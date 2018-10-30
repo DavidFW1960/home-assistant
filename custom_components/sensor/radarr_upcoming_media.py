@@ -20,7 +20,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -101,9 +101,17 @@ class Radarr_UpcomingSensor(Entity):
         """Return the state attributes of the sensor."""
         data = []
         attributes = {}
+        default = {}
+        default['title_default'] = '$title'
+        default['line1_default'] = '$release'
+        default['line2_default'] = '$genres'
+        default['line3_default'] = '$rating - $runtime'
+        default['line4_default'] = '$studio'
+        default['icon'] = 'mdi:arrow-down-bold'
+        data.append(default)
         self.attribNum = 0
         for movie in sorted(self.data, key = lambda i: i['path']):
-            
+            pre = {}
             if "/" not in movie['path']:
                 """Get days between now and release"""
                 n=list(map(int, self.now.split("-")))
@@ -113,14 +121,6 @@ class Radarr_UpcomingSensor(Entity):
                 daysBetween = (airday-today).days
             else: continue
 
-            pre = {}
-            if self.attribNum == 0:
-                pre['title_default'] = '$title'
-                pre['line1_default'] = '$release'
-                pre['line2_default'] = '$genres'
-                pre['line3_default'] = '$rating - $runtime'
-                pre['line4_default'] = '$studio'
-                pre['icon'] = 'mdi:arrow-down-bold'
             if movie['inCinemas'] >= datetime.utcnow().isoformat()[:19]+'Z':
                 if not self.theaters: continue
                 self.attribNum += 1

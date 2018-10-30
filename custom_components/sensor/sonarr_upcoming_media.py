@@ -20,7 +20,7 @@ from homeassistant.const import (
     CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_MONITORED_CONDITIONS, CONF_SSL)
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -99,8 +99,18 @@ class Sonarr_UpcomingSensor(Entity):
         """Return the state attributes of the sensor."""
         data = []
         attributes = {}
+        default = {}
+        default['title_default'] = '$title'
+        default['line1_default'] = '$episode'
+        default['line2_default'] = '$release'
+        default['line3_default'] = '$rating - $runtime'
+        default['line4_default'] = '$number - $studio'
+        default['icon'] = 'mdi:arrow-down-bold'
+        data.append(default)
         self.attribNum = 0
         for show in self.data:
+            pre = {}
+            
             """Get number of days between now and air date."""
             n=list(map(int, self.now.split("-")))
             r=list(map(int, show['airDateUtc'][:-10].split("-")))
@@ -108,14 +118,6 @@ class Sonarr_UpcomingSensor(Entity):
             airday = date(r[0],r[1],r[2])
             daysBetween = (airday-today).days
 
-            pre = {}
-            if self.attribNum == 0:
-                pre['title_default'] = '$title'
-                pre['line1_default'] = '$episode'
-                pre['line2_default'] = '$release'
-                pre['line3_default'] = '$rating - $runtime'
-                pre['line4_default'] = '$number - $studio'
-                pre['icon'] = 'mdi:arrow-down-bold'
             self.attribNum += 1
             pre['title'] = show.get('series',{}).get('title','')
             pre['episode'] = show['title']
