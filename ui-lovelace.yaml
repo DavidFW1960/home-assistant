@@ -111,6 +111,28 @@ views:
               - sensor.speedtest_upload_filtered
               - sensor.speedtest_ping
               - sensor.fritz_netmonitor
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                title: Download 
+                unit_of_measurement: 'Mbit/s'
+                min: 0
+                max: 50
+                severity:
+                  red: 0
+                  yellow: 35
+                  green: 40
+                entity: sensor.speedtest_download
+              - type: gauge
+                title: Upload
+                unit_of_measurement: 'Mbit/s'
+                min: 0
+                max: 50
+                severity:
+                  red: 0
+                  yellow: 10
+                  green: 14
+                entity: sensor.speedtest_upload
           - type: history-graph
             title: Speedtest Download Graph
             hours_to_show: 24
