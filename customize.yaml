@@ -347,3 +347,5 @@ sensor.since_last_boot:
   friendly_name: Since Last Boot
 sensor.hass_current_hassos_version:
   hidden: true
+media_player.tvua55d8000:
+  friendly_name: Samsung TV

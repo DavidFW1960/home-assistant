@@ -370,6 +370,9 @@ views:
       - id: 4ff8335e5ee54f4490fcd2f6606064fd
         type: media-control
         entity: media_player.txnr1009
+      - id: 4ff8335e5ee54f4490fcd2f6606064ff
+        type: media-control
+        entity: media_player.tvua55d8000
   - id: 4
     title: Media Mini
     icon: mdi:boombox
@@ -447,6 +450,13 @@ views:
             power_color: true
             scroll_info: true
           - entity: media_player.txnr1009
+            type: custom:mini-media-player
+            group: true
+            artwork: cover
+            power_color: true
+            scroll_info: true
+            show_source: true
+          - entity: media_player.tvua55d8000
             type: custom:mini-media-player
             group: true
             artwork: cover

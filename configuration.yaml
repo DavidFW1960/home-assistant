@@ -221,7 +221,7 @@ tts:
 ifttt:
   key: !secret ifttt_api
 
-# Kodi & Samsung TV
+# Kodi
 media_player:
   - platform: kodi
     host: !secret my_kodi_host
