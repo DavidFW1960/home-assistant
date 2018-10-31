@@ -76,15 +76,6 @@ views:
               - sensor.network_out_eno1
               - sensor.last_boot
               - sensor.since_last_boot
-          - type: entities
-            title: iOS Devices
-            entities:
-              - device_tracker.davids_iphone
-              - sensor.davidsiphone_battery_level
-              - sensor.davidsiphone_battery_state
-              - device_tracker.davids_ipad
-              - sensor.davidsipad_battery_level
-              - sensor.davidsipad_battery_state
       - id: 198f650178d34ca886730c6e958d6a6c
         type: vertical-stack
         cards:
@@ -111,6 +102,15 @@ views:
             trackers:
               - sensor.custom_card_tracker
               - sensor.custom_component_tracker
+          - type: entities
+            title: iOS Devices
+            entities:
+              - device_tracker.davids_iphone
+              - sensor.davidsiphone_battery_level
+              - sensor.davidsiphone_battery_state
+              - device_tracker.davids_ipad
+              - sensor.davidsipad_battery_level
+              - sensor.davidsipad_battery_state
       - id: 633e63caba664811acb2ab9ae0b18c20
         type: vertical-stack
         cards:
