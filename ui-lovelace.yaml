@@ -31,6 +31,10 @@ views:
                 title: CPU Temperature
                 unit_of_measurement: '°C'
                 entity: sensor.cpu_temperature
+                severity:
+                  green: 0
+                  yellow: 50
+                  red: 60
               - type: gauge
                 title: Disk Usage
                 unit_of_measurement: '%'
@@ -41,10 +45,18 @@ views:
                 title: CPU Usage
                 unit_of_measurement: '%'
                 entity: sensor.processor_use
+                severity:
+                  green: 0
+                  yellow: 20
+                  red: 30
               - type: gauge
                 title: Memory Usage
                 unit_of_measurement: '%'
                 entity: sensor.memory_use_percent
+                severity:
+                  green: 0
+                  yellow: 35
+                  red: 50
           - type: entities
             title: NUC Resources
             entities:
