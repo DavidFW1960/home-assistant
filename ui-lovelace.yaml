@@ -126,8 +126,8 @@ views:
           - type: horizontal-stack
             cards:
               - type: gauge
-                title: Download 
-                unit_of_measurement: 'Mbit/s'
+                title: Mbit/s Download 
+                unit_of_measurement: ' '
                 min: 0
                 max: 50
                 severity:
@@ -136,8 +136,8 @@ views:
                   green: 40
                 entity: sensor.speedtest_download
               - type: gauge
-                title: Upload
-                unit_of_measurement: 'Mbit/s'
+                title: Mbit/s Upload
+                unit_of_measurement: ' '
                 min: 0
                 max: 50
                 severity:
