@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player.js?ver=0.8.8
+  - url: /local/mini-media-player.js?ver=0.8.9
     type: module
 views:
   - id: 0
@@ -345,6 +345,7 @@ views:
               - automation.make_snapshot__copy_backups_to_dropbox
               - automation.sonoff_firmware_installed
               - automation.update_available
+              - automation.beta_update_available
               - automation.home_and_away_on
               - automation.home_and_away_off
       - id: 3c60d589967d4e9f8b749e33a83965fd

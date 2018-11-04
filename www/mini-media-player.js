@@ -1,4 +1,4 @@
-/* mini-media-player - version: v0.8.8 */
+/* mini-media-player - version: v0.8.9 */
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@^0.6.2/lit-element.js?module';
 
 const MEDIA_INFO = [
@@ -10,21 +10,22 @@ const MEDIA_INFO = [
 ];
 
 const ICON = {
-  'prev': 'mdi:skip-previous',
-  'next': 'mdi:skip-next',
-  'power': 'mdi:power',
-  'volume_up': 'mdi:volume-high',
-  'volume_down': 'mdi:volume-medium',
-  'send': 'mdi:send',
-  'dropdown': 'mdi:chevron-down',
-  'mute': {
+  dropdown: 'mdi:chevron-down',
+  mute: {
     true: 'mdi:volume-off',
     false: 'mdi:volume-high'
   },
-  'playing': {
+  next: 'mdi:skip-next',
+  playing: {
     true: 'mdi:pause',
     false: 'mdi:play'
-  }
+  },
+  power: 'mdi:power',
+  prev: 'mdi:skip-previous',
+  send: 'mdi:send',
+  shuffle: 'mdi:shuffle-variant',
+  volume_down: 'mdi:volume-medium',
+  volume_up: 'mdi:volume-high'
 };
 
 class MiniMediaPlayer extends LitElement {
@@ -38,7 +39,8 @@ class MiniMediaPlayer extends LitElement {
       config: Object,
       entity: Object,
       source: String,
-      position: Number
+      position: Number,
+      active: Boolean
     };
   }
 
@@ -53,10 +55,11 @@ class MiniMediaPlayer extends LitElement {
     if (!config.entity || config.entity.split('.')[0] !== 'media_player')
       throw new Error('Specify an entity from within the media_player domain.');
 
-    const conf = Object.assign({
+    const conf = {
       artwork: 'default',
       artwork_border: false,
       background: false,
+      consider_idle_after: false,
       group: false,
       hide_controls: false,
       hide_icon: false,
@@ -71,22 +74,29 @@ class MiniMediaPlayer extends LitElement {
       scroll_info: false,
       short_info: false,
       show_progress: false,
+      show_shuffle: false,
       show_source: false,
       show_tts: false,
       title: '',
-      volume_stateless: false
-    }, config);
+      toggle_power: true,
+      volume_stateless: false,
+      ...config
+    };
+    conf.consider_idle_after = Number(conf.consider_idle_after) * 60 || false;
     conf.max_volume = Number(conf.max_volume) || 100;
-    conf.short_info = (conf.short_info || conf.scroll_info ? true : false);
+    conf.collapse = (conf.hide_controls || conf.hide_volume)
+    conf.short_info = (conf.short_info || conf.scroll_info || conf.collapse);
 
     this.config = conf;
   }
 
   shouldUpdate(changedProps) {
-    const change = changedProps.has('entity')
+    const update = this.entity
+      && (changedProps.has('entity')
       || changedProps.has('source')
-      || changedProps.has('position');
-    if (change) {
+      || changedProps.has('position'));
+    if (update) {
+      this.active = this._isActive();
       if (this.config.show_progress) this._checkProgress();
       return true;
     }
@@ -97,10 +107,7 @@ class MiniMediaPlayer extends LitElement {
   }
 
   render({_hass, config, entity} = this) {
-    if (!entity) return;
     const artwork = this._computeArtwork();
-    const hide_controls = (config.hide_controls || config.hide_volume) || false;
-    const short = (hide_controls || config.short_info);
 
     return html`
       ${this._style()}
@@ -110,24 +117,28 @@ class MiniMediaPlayer extends LitElement {
         ?hide-icon=${config.hide_icon} ?hide-info=${this.config.hide_info}
         @click='${(e) => this._handleMore()}'>
         <div class='bg' ?bg=${config.background}
-          style='background-image: url("${this._computeBackground()}")'>
+          style='background-image: url("${this._computeCover(artwork)}")'>
         </div>
         <header>${config.title}</header>
         <div class='entity flex'>
-          ${this._renderIcon()}
-          <div class='entity__info' ?short=${short}>
+          ${this._renderIcon(artwork)}
+          <div class='entity__info' ?short=${config.short_info || !this.active}>
             <div class='entity__info__name' ?has-info=${this._hasMediaInfo()}>
               ${this._computeName()}
             </div>
-            ${this._renderMediaInfo(short)}
+            ${this._renderMediaInfo()}
           </div>
           <div class='entity__control-row--top flex'>
-            ${this._renderPowerStrip(entity)}
+            ${this._renderPowerStrip()}
           </div>
         </div>
-        ${this._isActive() && !hide_controls ? this._renderControlRow(entity) : html``}
-        ${config.show_tts ? this._renderTts() : html``}
-        ${config.show_progress ? this._renderProgress(entity) : ''}
+        <div class='rows'>
+          <div class='control-row flex flex-wrap justify' ?wrap=${this.config.volume_stateless}>
+            ${!config.collapse && this.active ? this._renderControlRow() : ''}
+          </div>
+          ${config.show_tts ? this._renderTts() : ''}
+        </div>
+        ${config.show_progress && this._showProgress ? this._renderProgress() : ''}
       </ha-card>`;
   }
 
@@ -135,15 +146,15 @@ class MiniMediaPlayer extends LitElement {
     return this.config.name || this.entity.attributes.friendly_name;
   }
 
-  _computeBackground() {
-    const artwork = this._computeArtwork();
-    return artwork && this.config.artwork == "cover" ? artwork : this.config.background;
+  _computeCover(artwork) {
+    return (artwork && this.config.artwork == 'cover') ? artwork : this.config.background;
   }
 
   _computeArtwork() {
     return (this.entity.attributes.entity_picture
       && this.entity.attributes.entity_picture != '')
       && this.config.artwork !== 'none'
+      && this.active
       ? this.entity.attributes.entity_picture
       : false;
   }
@@ -160,10 +171,9 @@ class MiniMediaPlayer extends LitElement {
     element.parentNode.parentNode.setAttribute('scroll', status);
   }
 
-  _renderIcon() {
+  _renderIcon(artwork) {
     if (this.config.hide_icon) return;
-    const artwork = this._computeArtwork();
-    if (this._isActive() && artwork && this.config.artwork == 'default') {
+    if (this.active && artwork && this.config.artwork == 'default') {
       return html`
         <div class='entity__artwork' ?border=${this.config.artwork_border}
           style='background-image: url("${artwork}")'
@@ -180,22 +190,30 @@ class MiniMediaPlayer extends LitElement {
   _renderPower() {
     return html`
       <paper-icon-button class='power-button'
-        .icon=${ICON['power']}
-        @click='${(e) => this._callService(e, "toggle")}'
-        ?color=${this.config.power_color && this._isActive()}>
+        .icon=${ICON.power}
+        @click='${e => this._handlePower(e)}'
+        ?color=${this.config.power_color && this.active}>
       </paper-icon-button>`;
   }
 
-  _renderMediaInfo(short) {
+  _renderPlayButton() {
+    return html`
+      <paper-icon-button .icon=${ICON.playing[this._isPlaying()]}
+        @click='${e => this._callService(e, "media_play_pause")}'>
+      </paper-icon-button>`;
+  }
+
+  _renderMediaInfo() {
     const items = MEDIA_INFO.map(item => {
-      return Object.assign({
+      return {
         info: this._getAttribute(item.attr),
-        prefix: item.prefix || ''
-      }, item);
+        prefix: item.prefix || '',
+        ...item
+      }
     }).filter(item => item.info !== '');
 
     return html`
-      <div class='entity__info__media' ?short=${short}>
+      <div class='entity__info__media' ?inactive=${!this.active}>
         ${this.config.scroll_info ? html`
           <div>
             <div class='marquee'>
@@ -206,34 +224,55 @@ class MiniMediaPlayer extends LitElement {
       </div>`;
   }
 
-  _renderProgress(entity) {
-    const show = this._showProgress();
+  _renderProgress() {
     return html`
-      <paper-progress max=${entity.attributes.media_duration}
-        value=${this.position} class='progress transiting ${!show ? "hidden" : ""}'>
+      <paper-progress class='progress transiting' value=${this.position}
+        max=${this.entity.attributes.media_duration}>
       </paper-progress>`;
   }
 
-  _renderPowerStrip(entity, {config} = this) {
-    const active = this._isActive();
-    if (entity.state == 'unavailable') {
-      return html`
-        <span class='unavailable'>
-          ${this._getLabel('state.default.unavailable', 'Unavailable')}
-        </span>`;
+  _renderString(label, fallback = 'Unknown') {
+    return html`
+      <span class='string'>
+        ${this._getLabel(label, fallback)}
+      </span>`;
+  }
+
+  _renderIdleStatus() {
+    if (this._isInactive()) {
+      if (this._isPaused())
+        return this._renderPlayButton();
+      else
+        return this._renderString('state.media_player.idle', 'Idle');
     }
+  }
+
+  _renderShuffle() {
+    const shuffle = this.entity.attributes.shuffle || false;
+    return html`
+      <paper-icon-button class='shuffle' .icon=${ICON.shuffle} ?color=${shuffle}
+        @click='${e => this._callService(e, "shuffle_set",
+          { shuffle: !shuffle })}'>
+      </paper-icon-button>`;
+  }
+
+  _renderPowerStrip({config} = this) {
+    const active = this.active;
+    if (this.entity.state == 'unavailable')
+      this._renderString('state.default.unavailable', 'Unavailable');
+
     return html`
       <div class='select flex'>
-        ${active && config.hide_controls && !config.hide_volume ? this._renderVolControls(entity) : html``}
-        ${active && config.hide_volume && !config.hide_controls ? this._renderMediaControls(entity) : html``}
+        ${active && config.collapse ? this._renderControlRow() : html``}
         <div class='flex right'>
-          ${config.show_source !== false ? this._renderSource(entity) : html``}
-          ${!config.hide_power ? this._renderPower(active) : html``}
+          ${config.show_source ? this._renderSource() : html``}
+          ${config.consider_idle_after ? this._renderIdleStatus() : html``}
+          ${!config.hide_power ? this._renderPower() : html``}
         <div>
       </div>`;
   }
 
-  _renderSource(entity) {
+  _renderSource({entity} = this) {
     const sources = entity.attributes['source_list'] || false;
     const source = entity.attributes['source'] || '';
 
@@ -247,7 +286,7 @@ class MiniMediaPlayer extends LitElement {
           <paper-button class='source-menu__button' slot='dropdown-trigger'>
             ${this.config.show_source !== 'small' ? html`
             <span class='source-menu__source'>${this.source || source}</span>` : '' }
-            <iron-icon .icon=${ICON['dropdown']}></iron-icon>
+            <iron-icon .icon=${ICON.dropdown}></iron-icon>
           </paper-button>
           <paper-listbox slot='dropdown-content' selected=${selected}
             @click='${(e) => this._handleSource(e)}'>
@@ -257,49 +296,45 @@ class MiniMediaPlayer extends LitElement {
     }
   }
 
-  _renderControlRow(entity) {
+  _renderControlRow() {
     return html`
-      <div class='control-row flex flex-wrap justify' ?wrap=${this.config.volume_stateless}>
-        ${this._renderVolControls(entity)}
-        ${this._renderMediaControls(entity)}
-      </div>`;
+      ${!this.config.hide_volume ? this._renderVolControls() : ''}
+      ${this.config.show_shuffle ? this._renderShuffle() : ''}
+      ${!this.config.hide_controls ? this._renderMediaControls() : ''}`;
   }
 
-  _renderMediaControls(entity) {
-    const playing = entity.state == 'playing';
+  _renderMediaControls() {
     return html`
       <div class='flex'>
-        <paper-icon-button .icon=${ICON["prev"]}
+        <paper-icon-button .icon=${ICON.prev}
           @click='${(e) => this._callService(e, "media_previous_track")}'>
         </paper-icon-button>
-        <paper-icon-button .icon=${ICON.playing[playing]}
-          @click='${(e) => this._callService(e, "media_play_pause")}'>
-        </paper-icon-button>
-        <paper-icon-button .icon=${ICON["next"]}
+        ${this._renderPlayButton()}
+        <paper-icon-button .icon=${ICON.next}
           @click='${(e) => this._callService(e, "media_next_track")}'>
         </paper-icon-button>
       </div>`;
   }
 
-  _renderVolControls(entity) {
-    const muted = entity.attributes.is_volume_muted || false;
-    if (this.config.volume_stateless) {
-      return this._renderVolButtons(entity, muted);
-    } else {
-      return this._renderVolSlider(entity, muted);
-    }
+  _renderVolControls() {
+    const muted = this.entity.attributes.is_volume_muted || false;
+    if (this.config.volume_stateless)
+      return this._renderVolButtons(muted);
+    else
+      return this._renderVolSlider(muted);
   }
 
   _renderMuteButton(muted) {
+    const data = { is_volume_muted: !muted }
     if (!this.config.hide_mute)
       return html`
         <paper-icon-button .icon=${ICON.mute[muted]}
-          @click='${(e) => this._callService(e, "volume_mute", { is_volume_muted: !muted })}'>
+          @click='${(e) => this._callService(e, "volume_mute", data)}'>
         </paper-icon-button>`;
   }
 
-  _renderVolSlider(entity, muted = false) {
-    const volumeSliderValue = entity.attributes.volume_level * 100;
+  _renderVolSlider(muted = false) {
+    const volSliderVal = this.entity.attributes.volume_level * 100;
 
     return html`
       <div class='vol-control flex'>
@@ -309,13 +344,13 @@ class MiniMediaPlayer extends LitElement {
         <paper-slider ?disabled=${muted}
           @change='${(e) => this._handleVolumeChange(e)}'
           @click='${(e) => e.stopPropagation()}'
-          min='0' max=${this.config.max_volume} value=${volumeSliderValue}
+          min='0' max=${this.config.max_volume} value=${volSliderVal}
           ignore-bar-touch pin>
         </paper-slider>
       </div>`;
   }
 
-  _renderVolButtons(entity, muted = false) {
+  _renderVolButtons(muted = false) {
     return html`
       <div class='flex'>
         ${this._renderMuteButton(muted)}
@@ -351,15 +386,24 @@ class MiniMediaPlayer extends LitElement {
   }
 
   _handleVolumeChange(e) {
-    e.stopPropagation();
     const volPercentage = parseFloat(e.target.value);
     const vol = volPercentage > 0 ? volPercentage / 100 : 0;
     this._callService(e, 'volume_set', { volume_level: vol })
   }
 
+  _handlePower(e) {
+    if (this.config.toggle_power) {
+      this._callService(e, 'toggle');
+    } else {
+      if (this.entity.state === 'off')
+        this._callService(e, 'turn_on');
+      else
+        this._callService(e, 'turn_off');
+    }
+  }
+
   _handleTts(e) {
-    e.stopPropagation();
-    const input = this.shadowRoot.querySelector('#tts paper-input');
+    const input = this.shadowRoot.querySelector('.tts paper-input');
     const options = { message: input.value };
     this._callService(e, this.config.show_tts + '_say' , options, 'tts');
     input.value = '';
@@ -371,7 +415,6 @@ class MiniMediaPlayer extends LitElement {
   }
 
   _handleSource(e) {
-    e.stopPropagation();
     const source = e.target.getAttribute('value');
     const options = { 'source': source };
     this._callService(e, 'select_source' , options);
@@ -391,31 +434,31 @@ class MiniMediaPlayer extends LitElement {
     return e;
   }
 
-  async _checkProgress() {
-    if (this._isPlaying() && this._showProgress()) {
+  _checkProgress() {
+    if (this._isPlaying() && this._showProgress) {
       if (!this._positionTracker) {
-        this._positionTracker = setInterval(() => this.position = this._currentProgress(), 1000);
+        this._positionTracker = setInterval(() =>
+          this.position = this._currentProgress, 1000);
       }
     } else if (this._positionTracker) {
       clearInterval(this._positionTracker);
       this._positionTracker = null;
     }
-    if (this._showProgress) this.position = this._currentProgress();
+    this.position = this._currentProgress;
   }
 
-  _showProgress() {
+  get _showProgress() {
     return (
-      (this._isPlaying() || this._isPaused())
+      (this._isPlaying() || this._isPaused()) && this.active
       && 'media_duration' in this.entity.attributes
       && 'media_position' in this.entity.attributes
       && 'media_position_updated_at' in this.entity.attributes);
   }
-  _currentProgress() {
-    let progress = this.entity.attributes.media_position;
-    if (this._isPlaying()) {
-      progress += (Date.now() - new Date(this.entity.attributes.media_position_updated_at).getTime()) / 1000.0;
-    }
-    return progress;
+
+  get _currentProgress() {
+    const updated = this.entity.attributes.media_position_updated_at;
+    const position = this.entity.attributes.media_position;
+    return position + (Date.now() - new Date(updated).getTime()) / 1000.0;
   }
 
   _isPaused() {
@@ -426,15 +469,34 @@ class MiniMediaPlayer extends LitElement {
     return this.entity.state === 'playing';
   }
 
-  _isActive() {
-    return (this.entity.state !== 'off' && this.entity.state !== 'unavailable') || false;
+  _isActive(inactive = false) {
+    if (this.config.consider_idle_after)
+      inactive = this._isInactive();
+    return ( this.entity.state !== 'off'
+      && this.entity.state !== 'unavailable'
+      && !inactive) || false;
+  }
+
+  _isInactive() {
+    const updated = this.entity.attributes.media_position_updated_at;
+    if (updated) {
+      const diff = (Date.now() - new Date(updated).getTime()) / 1000;
+      if (diff > this.config.consider_idle_after) return true;
+      if (!this._inactiveTracker) {
+        this._inactiveTracker = setTimeout(() => {
+          this.position = 0;
+          this._inactiveTracker = null;
+        }, (this.config.consider_idle_after - diff) * 1000)
+      }
+    }
+    return false;
   }
 
   _hasMediaInfo() {
     const items = MEDIA_INFO.map(item => {
       return this._getAttribute(item.attr);
     }).filter(item => item !== '');
-    return items.length == 0 ? false : true;
+    return items.length !== 0 ? true : false;
   }
 
   _getAttribute(attr, {entity} = this) {
@@ -537,15 +599,12 @@ class MiniMediaPlayer extends LitElement {
           display: block;
           position: relative;
         }
-        .control-row, .tts {
+        .rows {
           margin-left: 56px;
           position: relative;
           transition: margin-left 0.25s;
         }
-        ha-card[hide-icon] .control-row,
-        ha-card[hide-icon] .tts,
-        ha-card[hide-info] .control-row,
-        ha-card[hide-info] .tts {
+        ha-card[hide-icon] .rows {
           margin-left: 0;
         }
         .entity__info[short] {
@@ -598,10 +657,14 @@ class MiniMediaPlayer extends LitElement {
         .entity__info__media {
           color: var(--secondary-text-color);
         }
-        .entity__info__media[short] {
+        .entity__info[short] .entity__info__media {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+        }
+        .entity__info__media[inactive] {
+          color: var(--primary-text-color);
+          opacity: .5;
         }
         .entity__info__media[scroll='true'] > span {
           visibility: hidden;
@@ -615,7 +678,7 @@ class MiniMediaPlayer extends LitElement {
           visibility: visible;
         }
         .entity__info__media[scroll='true'] {
-          text-overflow: clip;
+          text-overflow: clip !important;
           mask-image: linear-gradient(to right, transparent 0%, var(--secondary-text-color) 5%, var(--secondary-text-color) 95%, transparent 100%);
           -webkit-mask-image: linear-gradient(to right, transparent 0%, var(--secondary-text-color) 5%, var(--secondary-text-color) 95%, transparent 100%);
         }
@@ -625,9 +688,18 @@ class MiniMediaPlayer extends LitElement {
           white-space: nowrap;
         }
         ha-card[artwork='cover'][has-artwork] .entity__info__media,
-        .power-button[color] {
+        paper-icon-button[color] {
           color: var(--accent-color) !important;
+        }
+        paper-icon-button {
           transition: color .25s ease-in-out;
+        }
+        paper-icon-button.shuffle {
+          align-self: center;
+          height: 36px;
+          min-width: 36px;
+          text-align: center;
+          width: 36px;
         }
         .entity__info__media span:before {
           content: ' - ';
@@ -643,9 +715,6 @@ class MiniMediaPlayer extends LitElement {
           cursor: text;
           flex: 1;
           -webkit-flex: 1;
-        }
-        .entity__control-row--top {
-          padding-left: 5px;
         }
         .select .vol-control {
           max-width: 200px;
@@ -665,7 +734,7 @@ class MiniMediaPlayer extends LitElement {
         }
         .vol-control {
           flex: 1;
-          min-width: 120px;
+          min-width: 140px;
           max-height: 40px;
         }
         paper-slider {
@@ -728,7 +797,8 @@ class MiniMediaPlayer extends LitElement {
         ha-card[group] paper-progress {
           position: relative
         }
-        .unavailable {
+        .string {
+          margin: 0 8px;
           white-space: nowrap;
         }
         ha-card[hide-info] .entity__info,
@@ -759,7 +829,7 @@ class MiniMediaPlayer extends LitElement {
           to {transform: translate(0, 0); }
         }
         @media screen and (max-width: 325px) {
-          .control-row, .tts {
+          .rows {
             margin-left: 0;
           }
           .source-menu__source {

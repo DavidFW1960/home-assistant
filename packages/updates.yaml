@@ -72,6 +72,9 @@ updater:
 sensor:
   - platform: version
     name: Hass Installed Version
+    beta: true
+    image: qemux86-64
+    source: hassio
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/stable.json
@@ -141,7 +144,20 @@ automation:
              states.sensor.hass_current_stable_version.state > states.sensor.hass_installed_version.state
              }}
     action:
-      - service: notify.admin
+      - service: notify.notify
         data:
           message: 'Home Assistant version {{ states.sensor.hass_current_stable_version.state }} is now available for Hass.io'
           title: Home Assistant Update
+  - alias: 'Beta Update Available'
+    initial_state: 'on'
+    trigger:
+      - platform: template
+        value_template: >-
+          {{ states.sensor.hass_current_beta_version.state != 'unavailable' and 
+             states.sensor.hass_current_beta_version.state > states.sensor.hass_installed_version.state
+             }}
+    action:
+      - service: notify.notify
+        data:
+          message: 'Home Assistant Beta version {{ states.sensor.hass_current_beta_version.state }} is now available for Hass.io'
+          title: Home Assistant Beta Update

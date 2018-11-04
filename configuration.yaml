@@ -90,6 +90,7 @@ panel_iframe:
 
 # Recorder
 recorder:
+  db_url:secret! mariadburl
   purge_interval: 1
   purge_keep_days: 7
 

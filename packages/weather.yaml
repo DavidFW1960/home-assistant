@@ -28,7 +28,6 @@ sensor:
   - platform: bom
     station: !secret my_bom_station
     name: !secret my_bom_name
-    scan_interval: 7200
     monitored_conditions:
       - apparent_t
       - delta_t
