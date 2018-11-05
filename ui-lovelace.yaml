@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player.js?ver=0.8.9
+  - url: /local/mini-media-player-bundle.js?ver=0.9.0
     type: module
 views:
   - id: 0
@@ -47,8 +47,8 @@ views:
                 entity: sensor.processor_use
                 severity:
                   green: 0
-                  yellow: 20
-                  red: 30
+                  yellow: 25
+                  red: 50
               - type: gauge
                 title: Memory Usage
                 unit_of_measurement: '%'
