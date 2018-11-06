@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player-bundle.js?ver=0.9.0
+  - url: /local/mini-media-player-bundle.js?ver=0.9.1
     type: module
 views:
   - id: 0

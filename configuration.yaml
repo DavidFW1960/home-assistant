@@ -259,11 +259,6 @@ switch:
 wemo:
   static:
     - !secret wemo_ip
-# MQTT
-mqtt:
-  broker: core-mosquitto
-  username: !secret mqtt_user_name
-  password: !secret mqtt_password
 
 # Custom Component Updater
 custom_updater:
