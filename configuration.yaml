@@ -238,22 +238,6 @@ switch:
     name: VPN Router
     host: !secret vpnrouter-ip
     token: !secret vpnrouter-token
-  - platform: mqtt
-    name: "Coffee Maker"
-    command_topic: "cmnd/sonoff1/power"
-    state_topic: "stat/sonoff1/POWER"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: false
-  - platform: mqtt
-    name: "Toothbrush"
-    command_topic: "cmnd/sonoff2/power"
-    state_topic: "stat/sonoff2/POWER"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: false
 
 # Wemo Switch
 wemo:

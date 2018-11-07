@@ -31,7 +31,7 @@
   action:
   - service: switch.turn_on
     data:
-      entity_id: switch.coffee_maker
+      entity_id: switch.sonoff12914
 - id: '1507434167221'
   alias: Coffee Maker Off
   initial_state: 'on'
@@ -60,7 +60,7 @@
   action:
   - service: switch.turn_off
     data:
-      entity_id: switch.coffee_maker
+      entity_id: switch.sonoff12914
 - id: '1505977024304'
   alias: Turn Lounge Light On Elevation < 25° & after 4PM
   trigger:
@@ -91,14 +91,14 @@
   action:
   - service: switch.turn_on
     data:
-      entity_id: switch.toothbrush
+      entity_id: switch.sonoff23110
 - id: '1523938046054'
   alias: Toothbrush Off
   initial_state: 'on'
   trigger:
   - platform: time
     at: '21:00:00'
-  - entity_id: switch.toothbrush
+  - entity_id: switch.sonoff23110
     from: 'off'
     platform: state
     to: 'on'
@@ -114,7 +114,7 @@
   action:
   - service: switch.turn_off
     data:
-      entity_id: switch.toothbrush
+      entity_id: switch.sonoff23110
 - id: '1519082437913'
   alias: Make Snapshot & Copy Backups to Dropbox
   initial_state: 'on'

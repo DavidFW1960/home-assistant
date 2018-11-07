@@ -311,11 +311,11 @@ views:
             title: Switch
             show_header_toggle: false
             entities:
-              - switch.coffee_maker
+              - switch.sonoff12914
               - switch.home_assistant
               - switch.hifi
               - switch.vpn_router
-              - switch.toothbrush
+              - switch.sonoff23110
       - id: b92fa8937e374e6cae4e621e89ced345
         type: vertical-stack
         cards:

@@ -19,7 +19,7 @@ group.nswfuel:
   friendly_name: NSW Fuel Watch
 group.hassio:
   friendly_name: System Information
-switch.toothbrush:
+switch.sonoff23110:
   friendly_name: Toothbrush
   icon: mdi:tooth
 switch.home_assistant:
@@ -36,7 +36,8 @@ sensor.toothbrush_firmware:
   icon: mdi:tooth
 sensor.coffee_maker_firmware:
   icon: mdi:coffee
-switch.coffee_maker:
+switch.sonoff12914:
+  friendly_name: Coffee Maker
   icon: mdi:coffee
 switch.vpn_router:
   icon: mdi:kodi
