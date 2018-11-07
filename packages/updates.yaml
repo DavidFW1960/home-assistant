@@ -72,6 +72,9 @@ updater:
 sensor:
   - platform: version
     name: Hass Installed Version
+    beta: true
+    image: qemux86-64
+    source: hassio
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/stable.json
