@@ -53,13 +53,13 @@ entity_config:
     room: office
   scene.desk_warm:
     room: office
-  switch.coffee_maker:
+  switch.sonoff12914:
     room: kitchen
   switch.hifi:
     expose: false
   switch.vpn_router:
     expose: false
-  switch.toothbrush:
+  switch.sonoff23110:
     room: bathroom
   switch.home_assistant:
     expose: false
