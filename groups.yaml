@@ -167,11 +167,11 @@ Light:
 Switch:
   control: hidden
   entities:
-    - switch.coffee_maker
+    - switch.sonoff12914
     - switch.home_assistant
     - switch.hifi
     - switch.vpn_router
-    - switch.toothbrush
+    - switch.sonoff23110
 Media:
   - media_player.all_speakers
   - media_player.living_areas
