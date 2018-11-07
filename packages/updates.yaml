@@ -30,6 +30,11 @@ homeassistant:
       friendly_name: 'Hass.io Installed Version'
       icon: mdi:check-decagram
 
+    sensor.hass_available_to_install_version:
+      <<: *customize
+      friendly_name: 'Hass.io Available to Install Version'
+      icon: mdi:check-decagram
+
     sensor.hass_current_stable_version:
       <<: *customize
       friendly_name: 'Hass.io Current Stable Version'
@@ -70,8 +75,12 @@ updater:
 ################################################
 
 sensor:
-  - platform: version
+  - platform: command_line
     name: Hass Installed Version
+    command: "cat /config/.HA_VERSION"
+
+  - platform: version
+    name: Hass Available to Install Version
     beta: true
     image: qemux86-64
     source: hassio
@@ -124,6 +133,7 @@ group:
     entities:
       - updater.updater
       - sensor.hass_installed_version
+      - sensor.hass_available_to_install_version
       - sensor.hass_current_stable_version
       - sensor.hass_current_beta_version
       - sensor.hass_current_dev_version

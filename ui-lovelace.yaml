@@ -83,6 +83,7 @@ views:
             title: Updates
             entities:
               - sensor.hass_installed_version
+              - sensor.hass_available_to_install_version
               - sensor.hass_current_stable_version
               - sensor.hass_current_beta_version
               - sensor.hass_current_dev_version
