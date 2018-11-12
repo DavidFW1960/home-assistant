@@ -141,15 +141,17 @@ sensor:
     api_key: !secret my_sonarr_api
     host: !secret my_sonarr_host
     port: !secret my_sonarr_port
-    days: 14
+    days: 60
     ssl: false
+    max: 10
   - platform: radarr_upcoming_media
     api_key: !secret my_radarr_api
     host: !secret my_radarr_host
     port: !secret my_radarr_port
-    days: 100
+    days: 120
     ssl: false
     theaters: true
+    max: 10
 
 # Artisan Software Version
 # Getting Artisan version from JSON
@@ -228,7 +230,7 @@ media_player:
     host: !secret my_kodi_host
     enable_websocket: true
 
-# Xiaomi & Sonoff Switches
+# Xiaomi Switches
 switch:
   - platform: xiaomi_miio
     name: Home Assistant

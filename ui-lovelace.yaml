@@ -1,4 +1,4 @@
-﻿title: Home
+title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.5
     type: js
@@ -6,7 +6,9 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player-bundle.js?v=0.9.1
+  - url: /local/mini-media-player-bundle.js?v=0.9.2
+    type: module
+  - url: /local/custom-lovelace/migrate-card/migrate-card.js
     type: module
 views:
   - id: 0
@@ -76,6 +78,7 @@ views:
               - sensor.network_out_eno1
               - sensor.last_boot
               - sensor.since_last_boot
+          - type: custom:migrate-card      
       - id: 198f650178d34ca886730c6e958d6a6c
         type: vertical-stack
         cards:
@@ -127,7 +130,7 @@ views:
           - type: horizontal-stack
             cards:
               - type: gauge
-                title: Mbit/s Download 
+                title: Mbit/s Download
                 unit_of_measurement: ' '
                 min: 0
                 max: 50
@@ -277,19 +280,19 @@ views:
             entity: camera.bom_satellite
             camera_image: camera.bom_satellite
             show_info: true
-            tap_action: dialog
+            tap_action: more-info
           - type: picture-entity
             title: BOM Radar Sydney
             entity: camera.bom_radar_sydney
             camera_image: camera.bom_radar_sydney
             show_info: true
-            tap_action: dialog
+            tap_action: more-info
           - type: picture-entity
             title: BOM Radar Newcastle
             entity: camera.bom_radar_newcastle
             camera_image: camera.bom_radar_newcastle
             show_info: true
-            tap_action: dialog
+            tap_action: more-info
   - id: 2
     title: Lights & Switches
     icon: mdi:power
