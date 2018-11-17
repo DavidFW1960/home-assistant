@@ -120,6 +120,10 @@ logbook:
 # Sensors
 sensor:
 
+# Authentication Sensor
+  - platform: authenticated
+    enable_notification: true
+
 # Certificate LetsEncrypt
   - platform: cert_expiry
     host: !secret my_letsencrypt

@@ -350,3 +350,5 @@ sensor.hass_current_hassos_version:
   hidden: true
 media_player.tvua55d8000:
   friendly_name: Samsung TV
+sensor.last_successful_authentication:
+  friendly_name: Last Successful Authentication

@@ -21,6 +21,7 @@ views:
           - type: entities
             title: System Information
             entities:
+              - sensor.last_successful_authentication
               - sensor.ssl_certificate_expiry
               - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
