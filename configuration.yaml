@@ -57,6 +57,12 @@ http:
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_http_url
 
+# Logger
+#logger:
+#  default: error
+#  logs:
+#    custom_components.sensor.authenticated: debug
+
 # iFrame Configurator, Terminal, Tasmoadmin & MDI Icon Files
 panel_iframe:
   configurator:
@@ -121,8 +127,8 @@ logbook:
 sensor:
 
 # Authentication Sensor
-  - platform: authenticated
-    enable_notification: true
+# - platform: authenticated
+#   enable_notification: true
 
 # Certificate LetsEncrypt
   - platform: cert_expiry

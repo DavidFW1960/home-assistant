@@ -95,8 +95,8 @@ Internet:
   - history_graph.speedtest_graph
   - camera.aussie_broadband_cvc_capacity
 Hassio:
-  - sensor.ssl_certificate_expiry
   - sensor.last_successful_authentication
+  - sensor.ssl_certificate_expiry
   - sensor.coffee_maker_firmware
   - sensor.toothbrush_firmware
   - sensor.sonoff_firmware_version_available

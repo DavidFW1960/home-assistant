@@ -2,7 +2,7 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.5
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.2.9
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.2
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
@@ -21,7 +21,7 @@ views:
           - type: entities
             title: System Information
             entities:
-              - sensor.last_successful_authentication
+#             - sensor.last_successful_authentication
               - sensor.ssl_certificate_expiry
               - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
@@ -191,6 +191,14 @@ views:
               - sensor.daylighttomorrow
               - sensor.yrwthr
               - sensor.moonphases
+          - type: sensor
+            entity: sensor.daylengthchange
+            icon: mdi:timer
+            name: Change in Day Length
+            graph: line
+            unit: secs
+            accuracy: 7
+            hours_to_show: 168
           - type: history-graph
             title: Change in Day Length
             hours_to_show: 168
