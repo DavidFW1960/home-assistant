@@ -2,11 +2,11 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.5
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.2
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.3
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player-bundle.js?v=0.9.2
+  - url: /local/mini-media-player-bundle.js?v=0.9.3
     type: module
   - url: /local/custom-lovelace/migrate-card/migrate-card.js
     type: module
@@ -79,7 +79,7 @@ views:
               - sensor.network_out_eno1
               - sensor.last_boot
               - sensor.since_last_boot
-          - type: custom:migrate-card      
+          - type: custom:migrate-card
       - id: 198f650178d34ca886730c6e958d6a6c
         type: vertical-stack
         cards:
@@ -433,41 +433,41 @@ views:
             type: custom:mini-media-player
             group: true
             show_tts: google
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.living_areas
             type: custom:mini-media-player
             group: true
             show_tts: google
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.bedroom_speaker
             type: custom:mini-media-player
             group: true
             show_tts: google
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.office_speaker
             type: custom:mini-media-player
             group: true
             show_tts: google
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.lounge_speaker
             type: custom:mini-media-player
             group: true
             show_tts: google
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.lounge_room_tv
             type: custom:mini-media-player
             group: true
-            artwork: cover
+            artwork: full-cover
             power_color: true
       - id: 88193b17ead14a6b8da71c86726181bb
         type: entities
@@ -476,38 +476,38 @@ views:
           - entity: media_player.roku_5x46aj056306
             type: custom:mini-media-player
             group: true
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.foxtel_7587
             type: custom:mini-media-player
             group: true
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.kodi
             type: custom:mini-media-player
             group: true
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.osmc_vero4
             type: custom:mini-media-player
             group: true
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.txnr1009
             type: custom:mini-media-player
             group: true
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
             show_source: true
           - entity: media_player.tvua55d8000
             type: custom:mini-media-player
             group: true
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
             show_source: true
