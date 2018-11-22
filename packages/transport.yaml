@@ -10,20 +10,22 @@ sensor:
     api_key: !secret trans_nsw
   - platform: transport_nsw
     name: 'Gosford-Central'
-    stop_id: '10101139'
+    stop_id: '2250791'
     route: 'Central Coast & Newcastle Line'
+    destination: 'Central via Strathfield'
     api_key: !secret trans_nsw
   - platform: transport_nsw
     name: 'Central-Gosford'
-    stop_id: '10101100'
+    stop_id: '2000329'
     route: 'Central Coast & Newcastle Line'
+    destination: 'Newcastle Interchange via Strathfield'
     api_key: !secret trans_nsw
   - platform: template
     sensors:
       busmonitor1:
         friendly_name: "Bus Kariong to Gosford"
         value_template: >-
-          {% if is_state_attr('sensor.karionggosford', 'due_in', 'n/a') %}
+          {% if is_state_attr('sensor.karionggosford', 'due', 'n/a') %}
             No schedule found
           {% else %}
             {{ states.sensor.karionggosford.attributes.route }} in {{ states.sensor.karionggosford.attributes.due }}m ({{ states.sensor.karionggosford.attributes.delay }}m delay)
@@ -33,7 +35,7 @@ sensor:
       busmonitor2:
         friendly_name: "Bus Gosford to Kariong"
         value_template: >-
-          {% if is_state_attr('sensor.gosfordkariong', 'due_in', 'n/a') %}
+          {% if is_state_attr('sensor.gosfordkariong', 'due', 'n/a') %}
             No schedule found
           {% else %}
             {{ states.sensor.gosfordkariong.attributes.route }} in {{ states.sensor.gosfordkariong.attributes.due }}m ({{ states.sensor.gosfordkariong.attributes.delay }}m delay)
@@ -43,7 +45,7 @@ sensor:
       trainmonitor1:
         friendly_name: "Train Gosford to Central"
         value_template: >-
-          {% if is_state_attr('sensor.gosfordcentral', 'due_in', 'n/a') %}
+          {% if is_state_attr('sensor.gosfordcentral', 'due', 'n/a') %}
             No schedule found
           {% else %}
             {{ states.sensor.gosfordcentral.attributes.route }} in {{ states.sensor.gosfordcentral.attributes.due }}m ({{ states.sensor.gosfordcentral.attributes.delay }}m delay)
@@ -53,7 +55,7 @@ sensor:
       trainmonitor2:
         friendly_name: "Train Central to Gosford"
         value_template: >-
-          {% if is_state_attr('sensor.centralgosford', 'due_in', 'n/a') %}
+          {% if is_state_attr('sensor.centralgosford', 'due', 'n/a') %}
             No schedule found
           {% else %}
             {{ states.sensor.centralgosford.attributes.route }} in {{ states.sensor.centralgosford.attributes.due }}m ({{ states.sensor.centralgosford.attributes.delay }}m delay)

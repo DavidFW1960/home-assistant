@@ -17,7 +17,7 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_SSL
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.2.3'
+__version__ = '0.2.4'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -63,7 +63,6 @@ class RadarrUpcomingMediaSensor(Entity):
         self.data = []
         self.card_json = []
         self.api_json = []
-        self.media_ids = []
 
     @property
     def name(self):
@@ -158,8 +157,8 @@ class RadarrUpcomingMediaSensor(Entity):
                 self.api_json = api.json()[:self.max_items]
 
             """Radarr's API isn't great, so we use tmdb to suppliment"""
-            if media_ids(self.api_json) != self.media_ids:
-                self.media_ids = media_ids(self.api_json)
+            if (media_ids(self.api_json) != media_ids(self.data) or
+                    view_count(self.api_json) != view_count(self.data)):
                 self.data = self.api_json
                 self.change_detected = True
                 for movie in self.data:
@@ -223,6 +222,20 @@ def media_ids(data):
     for media in data:
         if 'tmdbId' in media:
             ids.append(str(media['tmdbId']))
+            ids.append(str(media['hasFile']))
+        else:
+            continue
+    return ids
+
+
+def view_count(data):
+    ids = []
+    for media in data:
+        if 'tmdbId' in media:
+            if 'hasFile' in media:
+                ids.append(str(media['hasFile']))
+            else:
+                continue
         else:
             continue
     return ids

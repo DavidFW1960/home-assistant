@@ -140,7 +140,7 @@ sensor.bom_gosford_wind_speed_kmh:
 sensor.bom_gosford_wind_speed_kt:
   friendly_name: Wind Speed kt
   icon: mdi:weather-windy
-sensor.dark_sky_cloud_coverage:
+sensor.dark_sky_cloud_coverage_0:
   friendly_name: Cloud Coverage Today
 sensor.dark_sky_cloud_coverage_1:
   friendly_name: Cloud Coverage Tomorrow

@@ -98,7 +98,7 @@ group:
     icon: mdi:gas-station
     entities:
       - sensor.caltex_kariong_pdl
-      - sensor.caltex_woolworths_gosford_pdl
+      - sensor.caltex_woolworths_pdl
       - sensor.caltex_gosford_west_pdl
       - sensor.caltex_gosford_west_pdl_2
       - sensor.caltex_gosford_west_pdl_3
