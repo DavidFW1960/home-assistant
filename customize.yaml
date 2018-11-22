@@ -162,10 +162,12 @@ sensor.dark_sky_precip_probability:
 sensor.dark_sky_precip_probability_1:
   friendly_name: Probability Rain Tomorrow
   hidden: true
-sensor.dark_sky_summary:
-  friendly_name: Summary
-sensor.dark_sky_wind_speed:
-  friendly_name: Wind Speed
+sensor.dark_sky_summary_0:
+  friendly_name: Summary Today
+sensor.dark_sky_summary_1:
+  friendly_name: Summary Tomorrow
+sensor.dark_sky_wind_speed_0:
+  friendly_name: Wind Speed Today
 sensor.dark_sky_wind_speed_1:
   friendly_name: Wind Speed Tomorrow
 sensor.dark_sky_cloud_coverage_2:

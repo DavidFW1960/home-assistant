@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player-bundle.js?v=0.9.3
+  - url: /local/mini-media-player-bundle.js?v=0.9.4
     type: module
   - url: /local/custom-lovelace/migrate-card/migrate-card.js
     type: module
@@ -219,12 +219,13 @@ views:
           - type: entities
             title: Dark Sky
             entities:
-              - sensor.dark_sky_cloud_coverage
+              - sensor.dark_sky_cloud_coverage_0
               - sensor.dark_sky_cloud_coverage_1
               - sensor.dark_sky_daily_summary
               - sensor.dark_sky_hourly_summary
-              - sensor.dark_sky_summary
-              - sensor.dark_sky_wind_speed
+              - sensor.dark_sky_summary_0
+              - sensor.dark_sky_summary_1
+              - sensor.dark_sky_wind_speed_0
               - sensor.dark_sky_wind_speed_1
       - id: 7d7ce0f46f84472096d8a421378600eb
         type: vertical-stack
@@ -476,7 +477,7 @@ views:
           - entity: media_player.roku_5x46aj056306
             type: custom:mini-media-player
             group: true
-            artwork: full-cover
+            artwork: cover
             power_color: true
             scroll_info: true
           - entity: media_player.foxtel_7587
@@ -488,13 +489,13 @@ views:
           - entity: media_player.kodi
             type: custom:mini-media-player
             group: true
-            artwork: full-cover
+            artwork: cover
             power_color: true
             scroll_info: true
           - entity: media_player.osmc_vero4
             type: custom:mini-media-player
             group: true
-            artwork: full-cover
+            artwork: cover
             power_color: true
             scroll_info: true
           - entity: media_player.txnr1009

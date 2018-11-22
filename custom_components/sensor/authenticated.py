@@ -15,12 +15,14 @@ import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.3.1'
+__version__ = '0.4.0'
 
 _LOGGER = logging.getLogger(__name__)
 
 CONF_NOTIFY = 'enable_notification'
 CONF_EXCLUDE = 'exclude'
+CONF_PROVIDER = 'provider'
+CONF_LOG_LOCATION = 'log_location'
 
 ATTR_HOSTNAME = 'hostname'
 ATTR_COUNTRY = 'country'
@@ -37,7 +39,11 @@ PLATFORM_NAME = 'authenticated'
 LOGFILE = 'home-assistant.log'
 OUTFILE = '.ip_authenticated.yaml'
 
+PROVIDERS = ['ipapi', 'extreme', 'ipvigilante']
+
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
+    vol.Optional(CONF_PROVIDER, default='ipapi'): vol.In(PROVIDERS),
+    vol.Optional(CONF_LOG_LOCATION, default=''): cv.string,
     vol.Optional(CONF_NOTIFY, default=True): cv.boolean,
     vol.Optional(CONF_EXCLUDE, default='None'):
         vol.All(cv.ensure_list, [cv.string]),
@@ -51,15 +57,20 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     logs = {'homeassistant.components.http.view': 'info'}
     _LOGGER.debug('Making sure the logger is correctly setup.')
     hass.services.call('logger', 'set_level', logs)
+    if config[CONF_LOG_LOCATION] is None:
+        log = str(hass.config.path(LOGFILE))
+    else:
+        log = config[CONF_LOG_LOCATION]
     log = str(hass.config.path(LOGFILE))
     out = str(hass.config.path(OUTFILE))
-    add_devices([Authenticated(hass, notify, log, out, exclude)])
+    add_devices([Authenticated(hass, notify, log, out, exclude,
+                               config[CONF_PROVIDER])])
 
 
 class Authenticated(Entity):
     """Representation of a Sensor."""
 
-    def __init__(self, hass, notify, log, out, exclude):
+    def __init__(self, hass, notify, log, out, exclude, provider):
         """Initialize the sensor."""
         hass.data[PLATFORM_NAME] = {}
         self._state = None
@@ -67,6 +78,7 @@ class Authenticated(Entity):
         self._country = None
         self._region = None
         self._city = None
+        self._provider = provider
         self._new_ip = False
         self._LAT = None
         self._PAT = None
@@ -126,7 +138,7 @@ class Authenticated(Entity):
         """Add new IP to the file"""
         _LOGGER.info('Found new IP %s', ip_address)
         hostname = get_hostname(ip_address)
-        geo = get_geo_data(ip_address)
+        geo = get_geo_data(ip_address, self._provider)
         if geo['result']:
             country = geo['data']['country_name']
             region = geo['data']['region']
@@ -199,18 +211,51 @@ def get_log_content(file, exclude):
     return content
 
 
-def get_geo_data(ip_address):
+def get_geo_data(ip_address, provider):
     """Get geo data for an IP"""
-    api = 'https://ipapi.co/' + ip_address + '/json'
-    try:
-        geo = requests.get(api, timeout=5).json()
-    except Exception:
-        result = {"result": False, "data": "none"}
-    else:
-        if 'reserved' in str(geo) or 'reserved' in str(geo):
+    result = {"result": False, "data": "none"}
+    if provider == 'ipapi':
+        api = 'https://ipapi.co/' + ip_address + '/json'
+        try:
+            data = requests.get(api, timeout=5).json()
+            if 'reserved' in str(data):
+                result = {"result": False, "data": "none"}
+            else:
+                result = {"result": True, "data": {
+                    'country_name': data['country_name'],
+                    'region': data['region'],
+                    'city': data['city']
+                }}
+        except Exception:
             result = {"result": False, "data": "none"}
-        else:
-            result = {"result": True, "data": geo}
+    elif provider == 'extreme':
+        api = 'https://extreme-ip-lookup.com/json/' + ip_address
+        try:
+            data = requests.get(api, timeout=5).json()
+            if 'Private' in data['org']:
+                result = {"result": False, "data": "none"}
+            else:
+                result = {"result": True, "data": {
+                    'country_name': data['country'],
+                    'region': data['region'],
+                    'city': data['city']
+                }}
+        except Exception:
+            result = {"result": False, "data": "none"}
+    elif provider == 'ipvigilante':
+        api = 'https://ipvigilante.com/json/' + ip_address
+        try:
+            data = requests.get(api, timeout=5).json()
+            if data['status'] != 'success':
+                result = {"result": False, "data": "none"}
+            else:
+                result = {"result": True, "data": {
+                    'country_name': data['data']['country_name'],
+                    'region': data['data']['subdivision_1_name'],
+                    'city': data['data']['city_name']
+                }}
+        except Exception:
+            result = {"result": False, "data": "none"}
     return result
 
 
