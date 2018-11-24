@@ -12,6 +12,12 @@ sensor:
   - platform: fritzbox_netmonitor
     host: !secret my_fritz_host
 
+# Up since
+  - platform: command_line
+    name: System Uptime
+    command: /config/uptimemeas.sh
+    scan_interval: 60
+
 # Speedtest
   - platform: speedtest
     minute:
@@ -85,7 +91,6 @@ sensor:
     - type: network_out
       arg: 'eno1'
     - type: last_boot
-    - type: since_last_boot
   - platform: template
     sensors:
       load:
@@ -125,4 +130,4 @@ group:
       - sensor.network_in_eno1
       - sensor.network_out_eno1
       - sensor.last_boot
-      - sensor.since_last_boot
+      - sensor.system_uptime

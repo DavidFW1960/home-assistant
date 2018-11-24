@@ -78,7 +78,8 @@ views:
               - sensor.network_in_eno1
               - sensor.network_out_eno1
               - sensor.last_boot
-              - sensor.since_last_boot
+#               format: datetime  
+              - sensor.system_uptime
           - type: custom:migrate-card
       - id: 198f650178d34ca886730c6e958d6a6c
         type: vertical-stack
@@ -167,8 +168,6 @@ views:
           - type: picture-entity
             title: Aussie Broadband CVC Capacity
             entity: camera.aussie_broadband_cvc_capacity
-            camera_image: camera.aussie_broadband_cvc_capacity
-            show_info: true
             tap_action: more-info
   - id: 1
     title: Weather
@@ -288,20 +287,14 @@ views:
           - type: picture-entity
             title: BOM Satellite
             entity: camera.bom_satellite
-            camera_image: camera.bom_satellite
-            show_info: true
             tap_action: more-info
           - type: picture-entity
             title: BOM Radar Sydney
             entity: camera.bom_radar_sydney
-            camera_image: camera.bom_radar_sydney
-            show_info: true
             tap_action: more-info
           - type: picture-entity
             title: BOM Radar Newcastle
             entity: camera.bom_radar_newcastle
-            camera_image: camera.bom_radar_newcastle
-            show_info: true
             tap_action: more-info
   - id: 2
     title: Lights & Switches

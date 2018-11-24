@@ -346,8 +346,10 @@ sensor.network_out_eno1:
   friendly_name: Network Out
 sensor.last_boot:
   friendly_name: Last Boot
-sensor.since_last_boot:
+  icon: mdi:clock
+sensor.system_uptime:
   friendly_name: Since Last Boot
+  icon: mdi:clock
 sensor.hass_current_hassos_version:
   hidden: true
 media_player.tvua55d8000:
