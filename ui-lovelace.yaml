@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=1
     type: js
-  - url: /local/mini-media-player-bundle.js?v=0.9.4
+  - url: /local/mini-media-player-bundle.js?v=0.9.5
     type: module
   - url: /local/custom-lovelace/migrate-card/migrate-card.js
     type: module
@@ -21,18 +21,20 @@ views:
           - type: entities
             title: System Information
             entities:
-#             - sensor.last_successful_authentication
-              - sensor.ssl_certificate_expiry
+              - sensor.last_successful_authentication
+#             - sensor.ssl_certificate_expiry
               - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
               - sensor.sonoff_firmware_version_available
               - binary_sensor.sonoff_update_available
               - sensor.artisan_software_version
+              - sensor.memory_mean
+              - sensor.processor_mean
           - type: horizontal-stack
             cards:
               - type: gauge
                 title: CPU Temperature
-                unit_of_measurement: '°C'
+                unit_of_measurement: °C
                 entity: sensor.cpu_temperature
                 severity:
                   green: 0
@@ -63,6 +65,8 @@ views:
           - type: entities
             title: NUC Resources
             entities:
+              - sensor.nuc_memory_used_filtered
+              - sensor.nuc_processor_used_filtered
               - sensor.cpu_temperature
               - sensor.disk_use_
               - sensor.disk_free_
@@ -74,13 +78,13 @@ views:
               - sensor.load
               - sensor.processor_use
               - sensor.ipv4_address_eno1
+#     - sensor.ipv6_address_eno1
               - sensor.wan_ip_address
               - sensor.network_in_eno1
               - sensor.network_out_eno1
               - sensor.last_boot
 #               format: datetime  
               - sensor.system_uptime
-          - type: custom:migrate-card
       - id: 198f650178d34ca886730c6e958d6a6c
         type: vertical-stack
         cards:
@@ -169,6 +173,7 @@ views:
             title: Aussie Broadband CVC Capacity
             entity: camera.aussie_broadband_cvc_capacity
             tap_action: more-info
+          - type: custom:migrate-card
   - id: 1
     title: Weather
     icon: mdi:weather-cloudy

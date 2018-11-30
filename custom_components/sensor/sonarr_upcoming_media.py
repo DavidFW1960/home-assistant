@@ -18,7 +18,7 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_SSL
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.1.5'
+__version__ = '0.1.6'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -158,7 +158,6 @@ class SonarrUpcomingMediaSensor(Entity):
                 self.data = api.json()[:self.max_items]
         else:
             self._state = '%s cannot be reached' % self.host
-        overview = get_info(self.data[0]['series']['title'])
 
 
 def get_date(zone, offset=0):
@@ -177,11 +176,3 @@ def days_until(date, tz):
     now = time.strptime(now, '%Y-%m-%d')
     now = time.mktime(now)
     return int((date - now) / 86400)
-
-
-def get_info(title):
-    tmdb_url = requests.get('https://api.themoviedb.org/3/search/tv?'
-                            'api_key=1f7708bb9a218ab891a5d438b1b63992&query='
-                            + title)
-    tmdb_json = tmdb_url.json()
-    return tmdb_json['results'][0]['overview']

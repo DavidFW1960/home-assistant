@@ -80,14 +80,14 @@ sensor.speedtest_download_filtered:
   icon: mdi:speedometer
 sensor.speedtest_upload_filtered:
   icon: mdi:speedometer
-sensor.busmonitor1:
-  icon: mdi:bus
-sensor.busmonitor2:
-  icon: mdi:bus
 sensor.karionggosford:
   hidden: true
 sensor.gosfordkariong:
   hidden: true
+sensor.busmonitor1:
+  icon: mdi:bus
+sensor.busmonitor2:
+  icon: mdi:bus
 sensor.trainmonitor1:
   icon: mdi:train
 sensor.trainmonitor2:
@@ -356,3 +356,9 @@ media_player.tvua55d8000:
   friendly_name: Samsung TV
 sensor.last_successful_authentication:
   friendly_name: Last Successful Authentication
+sensor.memory_mean:
+  friendly_name: Memory % Use Stats
+  icon: mdi:memory
+sensor.processor_mean:
+  friendly_name: Processor % Use Stats
+  icon: mdi:memory

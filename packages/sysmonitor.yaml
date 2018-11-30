@@ -86,6 +86,8 @@ sensor:
     - type: processor_use
     - type: ipv4_address
       arg: 'eno1'
+    - type: ipv6_address
+      arg: 'eno1'
     - type: network_in
       arg: 'eno1'
     - type: network_out
@@ -96,6 +98,12 @@ sensor:
       load:
         friendly_name: "Load Averages"
         value_template: '{{states.sensor.load_1m.state|round(2)}}, {{states.sensor.load_5m.state|round(2)}}, {{states.sensor.load_15m.state|round(2)}} (1, 5, 15 min)'
+  - platform: statistics
+    entity_id: sensor.memory_use_percent
+    name: memory
+  - platform: statistics
+    entity_id: sensor.processor_use
+    name: processor
 
 # Graph Speedtest Download Filtered and Unfiltered
 history_graph:

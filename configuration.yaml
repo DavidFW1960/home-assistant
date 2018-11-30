@@ -50,6 +50,10 @@ http:
   # api_password: !secret http_password
   # ssl_certificate: /ssl/fullchain.pem
   # ssl_key: /ssl/privkey.pem
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - ::1
   # trusted_networks:
   #   - !secret trusted_network
   ip_ban_enabled: True
@@ -58,10 +62,12 @@ http:
   base_url: !secret base_http_url
 
 # Logger
-#logger:
-#  default: error
-#  logs:
-#    custom_components.sensor.authenticated: debug
+logger:
+  default: error
+  logs:
+#   TransportNSW.transportnsw: error
+    custom_components.sensor.authenticated: error
+#   homeassistant.components.http.view: error
 
 # iFrame Configurator, Terminal, Tasmoadmin & MDI Icon Files
 panel_iframe:
@@ -127,13 +133,13 @@ logbook:
 sensor:
 
 # Authentication Sensor
-# - platform: authenticated
-#   enable_notification: true
+  - platform: authenticated
+    enable_notification: true
 
 # Certificate LetsEncrypt
-  - platform: cert_expiry
-    host: !secret my_letsencrypt
-    port: !secret certificate_port
+# - platform: cert_expiry
+#   host: !secret my_letsencrypt
+#   port: !secret certificate_port
           
 # Sonarr
   - platform: sonarr
