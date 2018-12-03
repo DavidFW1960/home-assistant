@@ -137,9 +137,9 @@ sensor:
     enable_notification: true
 
 # Certificate LetsEncrypt
-# - platform: cert_expiry
-#   host: !secret my_letsencrypt
-#   port: !secret certificate_port
+  - platform: cert_expiry
+    host: !secret my_letsencrypt
+    port: !secret certificate_port
           
 # Sonarr
   - platform: sonarr
