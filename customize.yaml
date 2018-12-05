@@ -347,7 +347,9 @@ sensor.network_out_eno1:
 sensor.last_boot:
   friendly_name: Last Boot
   icon: mdi:clock
-sensor.system_uptime:
+sensor.last_boot_friendly:
+  icon: mdi:clock
+sensor.systemuptime:
   friendly_name: Since Last Boot
   icon: mdi:clock
 sensor.hass_current_hassos_version:

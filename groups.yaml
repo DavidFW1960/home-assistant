@@ -78,6 +78,10 @@ Newsgroups:
   - sensor.sonarr_wanted
   - sensor.sonarr_queue
   - sensor.sonarr_commands
+  - sensor.radarr_movies
+  - sensor.radarr_upcoming
+  - sensor.radarr_commands
+  - sensor.radarr_status
 iOS_Devices:
   - device_tracker.davids_iphone
   - sensor.davidsiphone_battery_level

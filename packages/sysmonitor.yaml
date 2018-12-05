@@ -13,10 +13,48 @@ sensor:
     host: !secret my_fritz_host
 
 # Up since
-  - platform: command_line
-    name: System Uptime
-    command: /config/uptimemeas.sh
-    scan_interval: 60
+  - platform: template
+    sensors:
+      systemuptime:
+        value_template: >-
+          {% set time = (as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) %}
+          {% set minutes = ((time % 3600) / 60) | int %}
+          {% set hours = ((time % 86400) / 3600) | int %}
+          {% set days = (time / 86400) | int %}
+          {%- if time < 60 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+
+#   command: /config/uptimemeas.sh
+#   scan_interval: 60
 
 # Speedtest
   - platform: speedtest
@@ -98,6 +136,9 @@ sensor:
       load:
         friendly_name: "Load Averages"
         value_template: '{{states.sensor.load_1m.state|round(2)}}, {{states.sensor.load_5m.state|round(2)}}, {{states.sensor.load_15m.state|round(2)}} (1, 5, 15 min)'
+      last_boot_friendly:
+        friendly_name: "Last Boot"
+        value_template: '{{ as_timestamp(states.sensor.last_boot.state) | timestamp_custom( "%d-%m-%Y %I:%M %p") }}'
   - platform: statistics
     entity_id: sensor.memory_use_percent
     name: memory
@@ -138,4 +179,15 @@ group:
       - sensor.network_in_eno1
       - sensor.network_out_eno1
       - sensor.last_boot
-      - sensor.system_uptime
+      - sensor.systemuptime
+
+automation:
+  - alias: 'System Runtime'
+    initial_state: 'on'
+    trigger:
+      platform: time
+      minutes: '/1'
+      seconds: 0
+    action:
+      - service: homeassistant.update_entity
+        entity_id: sensor.systemuptime

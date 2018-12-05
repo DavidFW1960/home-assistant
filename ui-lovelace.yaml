@@ -8,8 +8,6 @@ resources:
     type: js
   - url: /local/mini-media-player-bundle.js?v=0.9.5
     type: module
-  - url: /local/custom-lovelace/migrate-card/migrate-card.js
-    type: module
 views:
   - id: 0
     title: Home Assistant
@@ -78,13 +76,13 @@ views:
               - sensor.load
               - sensor.processor_use
               - sensor.ipv4_address_eno1
-#     - sensor.ipv6_address_eno1
               - sensor.wan_ip_address
               - sensor.network_in_eno1
               - sensor.network_out_eno1
-              - sensor.last_boot
-#               format: datetime  
-              - sensor.system_uptime
+              - sensor.last_boot_friendly
+#             - entity: sensor.last_boot
+#               format: datetime
+              - sensor.systemuptime
       - id: 198f650178d34ca886730c6e958d6a6c
         type: vertical-stack
         cards:
@@ -173,7 +171,6 @@ views:
             title: Aussie Broadband CVC Capacity
             entity: camera.aussie_broadband_cvc_capacity
             tap_action: more-info
-          - type: custom:migrate-card
   - id: 1
     title: Weather
     icon: mdi:weather-cloudy
@@ -353,6 +350,7 @@ views:
                   background: center / contain url("/local/images/divider.png") no-repeat
               - automation.lights_on_failsafe
               - automation.lights_off_failsafe
+              - automation.system_runtime
               - automation.power_state_sonoff_on_ha_startup
               - automation.make_snapshot__copy_backups_to_dropbox
               - automation.sonoff_firmware_installed
@@ -570,6 +568,10 @@ views:
           - sensor.sonarr_wanted
           - sensor.sonarr_queue
           - sensor.sonarr_commands
+          - sensor.radarr_movies
+          - sensor.radarr_upcoming
+          - sensor.radarr_commands
+          - sensor.radarr_status
   - id: 6
     title: Buses, Trains & Fuel
     icon: mdi:train
