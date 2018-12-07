@@ -18,9 +18,12 @@ views:
         cards:
           - type: entities
             title: System Information
+            show_header_toggle: false
             entities:
               - sensor.last_successful_authentication
               - sensor.ssl_certificate_expiry
+#             - entity: sensor.ssl_certificate_expiry
+#               type: custom:hui-text-entity-row
               - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
               - sensor.sonoff_firmware_version_available
@@ -31,30 +34,30 @@ views:
           - type: horizontal-stack
             cards:
               - type: gauge
-                title: CPU Temperature
-                unit_of_measurement: °C
+                name: CPU Temperature
+                unit: °C
                 entity: sensor.cpu_temperature
                 severity:
                   green: 0
                   yellow: 50
                   red: 60
               - type: gauge
-                title: Disk Usage
-                unit_of_measurement: '%'
+                name: Disk Usage
+                unit: '%'
                 entity: sensor.disk_use_percent_
           - type: horizontal-stack
             cards:
               - type: gauge
-                title: CPU Usage
-                unit_of_measurement: '%'
+                name: CPU Usage
+                unit: '%'
                 entity: sensor.processor_use
                 severity:
                   green: 0
                   yellow: 25
                   red: 50
               - type: gauge
-                title: Memory Usage
-                unit_of_measurement: '%'
+                name: Memory Usage
+                unit: '%'
                 entity: sensor.memory_use_percent
                 severity:
                   green: 0
@@ -62,6 +65,7 @@ views:
                   red: 50
           - type: entities
             title: NUC Resources
+            show_header_toggle: false
             entities:
               - sensor.nuc_memory_used_filtered
               - sensor.nuc_processor_used_filtered
@@ -88,6 +92,7 @@ views:
         cards:
           - type: entities
             title: Updates
+            show_header_toggle: false
             entities:
               - sensor.hass_installed_version
               - sensor.hass_available_to_install_version
@@ -112,6 +117,7 @@ views:
               - sensor.custom_component_tracker
           - type: entities
             title: iOS Devices
+            show_header_toggle: false
             entities:
               - device_tracker.davids_iphone
               - sensor.davidsiphone_battery_level
@@ -124,6 +130,7 @@ views:
         cards:
           - type: entities
             title: Internet
+            show_header_toggle: false
             entities:
               - sensor.speedtest_download
               - sensor.speedtest_download_filtered
@@ -134,8 +141,8 @@ views:
           - type: horizontal-stack
             cards:
               - type: gauge
-                title: Mbit/s Download
-                unit_of_measurement: ' '
+                name: Mbit/s Download
+                unit: ' '
                 min: 0
                 max: 50
                 severity:
@@ -144,8 +151,8 @@ views:
                   green: 40
                 entity: sensor.speedtest_download
               - type: gauge
-                title: Mbit/s Upload
-                unit_of_measurement: ' '
+                name: Mbit/s Upload
+                unit: ' '
                 min: 0
                 max: 50
                 severity:
@@ -170,7 +177,10 @@ views:
           - type: picture-entity
             title: Aussie Broadband CVC Capacity
             entity: camera.aussie_broadband_cvc_capacity
-            tap_action: more-info
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
   - id: 1
     title: Weather
     icon: mdi:weather-cloudy
@@ -180,6 +190,7 @@ views:
         cards:
           - type: entities
             title: Season, Sun & Moon Phase
+            show_header_toggle: false
             entities:
               - sensor.seasonname
               - sun.sun
@@ -208,6 +219,7 @@ views:
               - sensor.daylengthchange
           - type: entities
             title: Forecast
+            show_header_toggle: false
             entities:
               - sensor.forecast_0
               - sensor.forecast_1
@@ -219,6 +231,7 @@ views:
               - sensor.forecast_7
           - type: entities
             title: Dark Sky
+            show_header_toggle: false
             entities:
               - sensor.dark_sky_cloud_coverage_0
               - sensor.dark_sky_cloud_coverage_1
@@ -270,6 +283,7 @@ views:
               - sensor.bom_gosford_wind_speed_kmh
           - type: entities
             title: Weather from BOM Australia
+            show_header_toggle: false
             entities:
               - sensor.forecast_0
               - sensor.bom_gosford_air_temp_c
@@ -289,15 +303,24 @@ views:
           - type: picture-entity
             title: BOM Satellite
             entity: camera.bom_satellite
-            tap_action: more-info
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
           - type: picture-entity
             title: BOM Radar Sydney
             entity: camera.bom_radar_sydney
-            tap_action: more-info
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
           - type: picture-entity
             title: BOM Radar Newcastle
             entity: camera.bom_radar_newcastle
-            tap_action: more-info
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
   - id: 2
     title: Lights & Switches
     icon: mdi:power
@@ -361,6 +384,7 @@ views:
       - id: 3c60d589967d4e9f8b749e33a83965fd
         type: entities
         title: Scenes
+        show_header_toggle: false
         entities:
           - scene.bedtime
           - scene.dining_daylight
@@ -425,6 +449,7 @@ views:
       - id: 462a205b39114134b68895e6f08be7ce
         type: entities
         title: Google Devices
+        show_header_toggle: false
         entities:
           - entity: media_player.all_speakers
             type: custom:mini-media-player
@@ -469,6 +494,7 @@ views:
       - id: 88193b17ead14a6b8da71c86726181bb
         type: entities
         title: Other Media Players
+        show_header_toggle: false
         entities:
           - entity: media_player.roku_5x46aj056306
             type: custom:mini-media-player
@@ -551,6 +577,7 @@ views:
       - id: a9782b3ede1040daabcc38c2009a277e
         type: entities
         title: Newsgroups
+        show_header_toggle: false
         entities:
           - sensor.sabnzbd_status
           - sensor.sabnzbd_queue
@@ -581,6 +608,7 @@ views:
         cards:
           - type: entities
             title: Transport
+            show_header_toggle: false
             entities:
               - sensor.busmonitor1
               - sensor.busmonitor2
@@ -588,6 +616,7 @@ views:
               - sensor.trainmonitor2
           - type: entities
             title: NSW Fuel Watch - Sydney
+            show_header_toggle: false
             entities:
               - sensor.caltex_woolworths_waitara_pdl
               - sensor.caltex_woolworths_turramurra_pdl
@@ -598,6 +627,7 @@ views:
       - id: 88a7e41ae27d491fb01263c1ffec1f9b
         type: entities
         title: NSW Fuel Watch - Central Coast
+        show_header_toggle: false
         entities:
           - sensor.caltex_kariong_pdl
           - sensor.caltex_woolworths_pdl

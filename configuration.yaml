@@ -105,6 +105,21 @@ recorder:
   db_url: !secret mariadburl
   purge_interval: 1
   purge_keep_days: 7
+  exclude:
+    domains:
+      - automation
+      - binary_sensor
+      - camera
+      - geo_location
+    entities:
+      - sensor.busmonitor1
+      - sensor.busmonitor
+      - sensor.trainmonitor1
+      - sensor.trainmonitor2
+      - sensor.centralgosford
+      - sensor.gosfordcentral
+      - sensor.karionggosford
+      - sensor.gosfordkariong
 
 # Checks for available updates
 # Note: This component will send some information about your system to
