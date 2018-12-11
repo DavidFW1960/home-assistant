@@ -242,12 +242,16 @@ sensor:
     name: "Toothbrush Firmware"
     state_topic: "stat/sonoff2/STATUS2"
     value_template: "v{{ value_json.StatusFWR.Version }}"
+  - platform: mqtt
+    name: "Garage Door Firmware"
+    state_topic: "stat/sonoff5/STATUS2"
+    value_template: "v{{ value_json.StatusFWR.Version }}"
 binary_sensor:
   - platform: template
     sensors:
       sonoff_update_available:
         value_template: >-
-          {{ (states.sensor.sonoff_firmware_version_available.state > states.sensor.toothbrush_firmware.state) or (states.sensor.sonoff_firmware_version_available.state > states.sensor.coffee_maker_firmware.state)
+          {{ (states.sensor.sonoff_firmware_version_available.state > states.sensor.toothbrush_firmware.state) or (states.sensor.sonoff_firmware_version_available.state > states.sensor.coffee_maker_firmware.state) or (states.sensor.sonoff_firmware_version_available.state > states.sensor.garage_door_firmware.state)
               }}
 
 # SABnzbd

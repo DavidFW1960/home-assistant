@@ -157,6 +157,10 @@
     data:
       topic: cmnd/sonoff2/status
       payload: "2"
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoff5/status
+      payload: "2"
 - id: '1532478833426'
   alias: Lights Off Failsafe
   initial_state: 'on'

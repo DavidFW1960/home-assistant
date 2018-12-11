@@ -367,3 +367,5 @@ sensor.processor_mean:
 switch.sonoff51083:
   friendly_name: Garage Door
   icon: mdi:garage
+sensor.garage_door_firmware:
+  icon: mdi:garage
