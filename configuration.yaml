@@ -109,7 +109,6 @@ recorder:
     domains:
       - automation
       - binary_sensor
-      - camera
       - geo_location
     entities:
       - sensor.busmonitor1
@@ -140,6 +139,20 @@ conversation:
 
 # Enables support for tracking state changes over time
 history:
+  exclude:
+    domains:
+      - automation
+      - binary_sensor
+      - geo_location
+    entities:
+      - sensor.busmonitor1
+      - sensor.busmonitor
+      - sensor.trainmonitor1
+      - sensor.trainmonitor2
+      - sensor.centralgosford
+      - sensor.gosfordcentral
+      - sensor.karionggosford
+      - sensor.gosfordkariong
 
 # View all events in a logbook
 logbook:
@@ -264,12 +277,6 @@ tts:
 # IFTTT
 ifttt:
   key: !secret ifttt_api
-
-# Kodi
-media_player:
-  - platform: kodi
-    host: !secret my_kodi_host
-    enable_websocket: true
 
 # Xiaomi Switches
 switch:

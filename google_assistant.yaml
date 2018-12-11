@@ -1,7 +1,6 @@
 # Google Assistant
 project_id: !secret ga_project
 api_key: !secret api-ga
-expose_by_default: false
 exposed_domains:
   - switch
   - light
@@ -56,6 +55,8 @@ entity_config:
     room: office
   switch.sonoff12914:
     room: kitchen
+  switch.sonoff51083:
+    room: house
   switch.hifi:
     expose: false
   switch.vpn_router:

@@ -30,7 +30,7 @@ sensor.sonoff_firmware_version_available:
 sensor.artisan_software_version:
   icon: mdi:coffee
 binary_sensor.sonoff_update_available:
-  friendly_name: 'Update Available Sonoff'
+  friendly_name: Update Available Sonoff
   device_class: problem
 sensor.toothbrush_firmware:
   icon: mdi:tooth
@@ -103,7 +103,7 @@ media_player.foxtel_7587:
 media_player.txnr1009:
   friendly_name: Onkyo
 media_player.osmc_vero4:
-  friendly_name: OSMC Vero
+  friendly_name: Kodi OSMC Vero
 light.yeelight_white_34ce00882e27:
   friendly_name: Fan Light
 light.yeelight_white_34ce00887db6:
@@ -251,10 +251,10 @@ sensor.yrwthr:
 sensor.yr_symbol:
   hidden: true
 sensor.caltex_kariong_pdl:
-  friendly_name: Caltex Langford Drive Kariong 
+  friendly_name: Caltex Langford Drive Kariong
   icon: mdi:gas-station
 sensor.caltex_woolworths_pdl:
-  friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming 
+  friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
   icon: mdi:gas-station
 sensor.caltex_gosford_west_pdl:
   friendly_name: Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
@@ -266,10 +266,10 @@ sensor.caltex_gosford_west_pdl_3:
   friendly_name: Caltex 283 Manns Rd West Gosford
   icon: mdi:gas-station
 sensor.caltex_woolworths_erina_pdl:
-  friendly_name: Caltex Woolies 155 The Entrance Rd Erina 
+  friendly_name: Caltex Woolies 155 The Entrance Rd Erina
   icon: mdi:gas-station
 sensor.caltex_wyoming_pdl:
-  friendly_name: Caltex 465 Pacific Hwy Wyoming 
+  friendly_name: Caltex 465 Pacific Hwy Wyoming
   icon: mdi:gas-station
 sensor.caltex_woolworths_tuggerah_pdl:
   friendly_name: Caltex Woolies Westfield 24-26 Gavenlock Road
@@ -364,3 +364,6 @@ sensor.memory_mean:
 sensor.processor_mean:
   friendly_name: Processor % Use Stats
   icon: mdi:memory
+switch.sonoff51083:
+  friendly_name: Garage Door
+  icon: mdi:garage

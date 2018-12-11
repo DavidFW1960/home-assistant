@@ -15,14 +15,20 @@ camera:
   - platform: generic
     name: BOM Satellite
     still_image_url: !secret my_bom_sat
-  - platform: generic
+  - platform: bom_radar
     name: !secret my_bom_radar_name_1
-    still_image_url: !secret my_bom_1_radar
-    limit_refetch_to_url_change: true
-  - platform: generic
+    product_id: 'IDR714'
+  - platform: 'bom_radar'
     name: !secret my_bom_radar_name_2
-    still_image_url: !secret my_bom_2_radar 
-    limit_refetch_to_url_change: true
+    product_id: 'IDR043'
+# - platform: generic
+#   name: !secret my_bom_radar_name_1
+#   still_image_url: !secret my_bom_1_radar
+#   limit_refetch_to_url_change: true
+# - platform: generic
+#   name: !secret my_bom_radar_name_2
+#   still_image_url: !secret my_bom_2_radar 
+#   limit_refetch_to_url_change: true
 
 sensor:
   - platform: bom

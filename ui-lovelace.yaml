@@ -22,8 +22,6 @@ views:
             entities:
               - sensor.last_successful_authentication
               - sensor.ssl_certificate_expiry
-#             - entity: sensor.ssl_certificate_expiry
-#               type: custom:hui-text-entity-row
               - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
               - sensor.sonoff_firmware_version_available
@@ -348,6 +346,23 @@ views:
               - switch.hifi
               - switch.vpn_router
               - switch.sonoff23110
+              - type: divider
+                style:
+                  height: 30px
+                  margin: 4px 0
+                  background: center / contain url("/local/images/divider.png") no-repeat
+          - type: entity-button
+            entity: switch.sonoff51083
+            tap_action:
+              action: call-service
+              service: switch.turn_on
+              service_data: 
+                entity_id: switch.sonoff51083
+          - type: entities
+            title: Security
+            show_header_toggle: false
+            entities:
+              - switch.sonoff51083
       - id: b92fa8937e374e6cae4e621e89ced345
         type: vertical-stack
         cards:
@@ -430,9 +445,6 @@ views:
       - id: e652039df88440149888a01175073d51
         type: media-control
         entity: media_player.foxtel_7587
-      - id: d0b2bcb2ddba45ffa5af72fd8531d0d0
-        type: media-control
-        entity: media_player.kodi
       - id: 5c712f8b4d66406ca3ace8e00d169ede
         type: media-control
         entity: media_player.osmc_vero4
@@ -508,16 +520,10 @@ views:
             artwork: full-cover
             power_color: true
             scroll_info: true
-          - entity: media_player.kodi
-            type: custom:mini-media-player
-            group: true
-            artwork: cover
-            power_color: true
-            scroll_info: true
           - entity: media_player.osmc_vero4
             type: custom:mini-media-player
             group: true
-            artwork: cover
+            artwork: full-cover
             power_color: true
             scroll_info: true
           - entity: media_player.txnr1009
