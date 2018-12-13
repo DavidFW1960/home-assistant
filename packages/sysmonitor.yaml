@@ -136,9 +136,6 @@ sensor:
       load:
         friendly_name: "Load Averages"
         value_template: '{{states.sensor.load_1m.state|round(2)}}, {{states.sensor.load_5m.state|round(2)}}, {{states.sensor.load_15m.state|round(2)}} (1, 5, 15 min)'
-      last_boot_friendly:
-        friendly_name: "Last Boot"
-        value_template: '{{ as_timestamp(states.sensor.last_boot.state) | timestamp_custom( "%d-%m-%Y %I:%M %p") }}'
   - platform: statistics
     entity_id: sensor.memory_use_percent
     name: memory

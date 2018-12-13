@@ -346,8 +346,7 @@ sensor.network_out_eno1:
   friendly_name: Network Out
 sensor.last_boot:
   friendly_name: Last Boot
-  icon: mdi:clock
-sensor.last_boot_friendly:
+  device_class: timestamp
   icon: mdi:clock
 sensor.systemuptime:
   friendly_name: Since Last Boot
