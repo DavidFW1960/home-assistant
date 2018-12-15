@@ -22,6 +22,10 @@ homeassistant:
     - type: notify
     - type: totp
 
+#Lovelace
+#lovelace:
+#  mode: yaml
+
 # Python
 # python_script:
 
@@ -310,6 +314,7 @@ custom_updater:
     - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
   card_urls:
     - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+    - https://raw.githubusercontent.com/maykar/custom-lovelace/master/tracker.json
 
 # Binary Switch for Home and Away Automations
 input_boolean:

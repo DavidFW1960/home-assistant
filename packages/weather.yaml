@@ -4,6 +4,7 @@
 
 geo_location:
   - platform: nsw_rural_fire_service_feed
+    entity_namespace: 'nsw_fire_service_feed'
     radius: 100
     categories:
       - 'Emergency Warning'

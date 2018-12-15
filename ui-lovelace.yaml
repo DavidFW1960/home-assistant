@@ -8,6 +8,8 @@ resources:
     type: js
   - url: /local/mini-media-player-bundle.js?v=0.9.7
     type: module
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.7
+    type: js
 views:
   - id: 0
     title: Home Assistant
@@ -82,10 +84,10 @@ views:
               - sensor.wan_ip_address
               - sensor.network_in_eno1
               - sensor.network_out_eno1
-              - sensor.last_boot_friendly
-#             - entity: sensor.last_boot
-#               format: datetime
+              - entity: sensor.last_boot
+                format: datetime
               - sensor.systemuptime
+          - type: 'custom:compact-custom-header'
       - id: 198f650178d34ca886730c6e958d6a6c
         type: vertical-stack
         cards:
@@ -146,7 +148,7 @@ views:
                 max: 50
                 severity:
                   red: 0
-                  yellow: 35
+                  yellow: 30
                   green: 40
                 entity: sensor.speedtest_download
               - type: gauge
@@ -156,8 +158,8 @@ views:
                 max: 50
                 severity:
                   red: 0
-                  yellow: 10
-                  green: 14
+                  yellow: 9
+                  green: 13
                 entity: sensor.speedtest_upload
           - type: history-graph
             title: Speedtest Download Graph
