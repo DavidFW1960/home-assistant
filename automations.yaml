@@ -138,29 +138,6 @@
   - service: notify.notify
     data_template:
       message: Copied all new backups to Dropbox
-- id: 'sonoff_firmware_installed'
-  alias: Sonoff Firmware Installed
-  initial_state: 'on'
-  trigger:
-    - platform: time
-      at: '00:00:00'
-    - platform: time
-      at: '12:00:00'
-    - platform: homeassistant
-      event: start
-  action:
-  - service: mqtt.publish
-    data:
-      topic: sonoff1/cmnd/status
-      payload: "2"
-  - service: mqtt.publish
-    data:
-      topic: sonoff2/cmnd/status
-      payload: "2"
-  - service: mqtt.publish
-    data:
-      topic: sonoff5/cmnd/status
-      payload: "2"
 - id: '1532478833426'
   alias: Lights Off Failsafe
   initial_state: 'on'
@@ -253,29 +230,6 @@
         {%- endif -%}
       brightness_pct: 75
       kelvin: 3100
-- id: '1532478833428'
-  alias: "Power State Sonoff on HA Start-Up"
-  initial_state: 'on'
-  trigger:
-    platform: homeassistant
-    event: start
-  action:
-  - service: mqtt.publish
-    data:
-      topic: "cmnd/sonoffs/power1"
-      payload: ""
-  - service: mqtt.publish
-    data:
-      topic: "cmnd/sonoffs/power2"
-      payload: ""
-  - service: mqtt.publish
-    data:
-      topic: "cmnd/sonoffs/Power3"
-      payload: "" 
-  - service: mqtt.publish
-    data:
-      topic: "cmnd/sonoffs/power4"
-      payload: ""
 - id: 'homeawayinpboolturnon'
   alias: "Home and Away On"
   initial_state: 'on'
@@ -300,6 +254,56 @@
   - service: automation.turn_off
     data:
       entity_id: group.homeaway
+- id: 'sonoff_firmware_installed'
+  alias: "Sonoff Firmware Installed"
+  initial_state: 'on'
+  trigger:
+    - platform: time
+      at: '00:00:00'
+    - platform: time
+      at: '12:00:00'
+    - platform: homeassistant
+      event: start
+  action:
+  - service: mqtt.publish
+    data:
+      topic: sonoff1/cmnd/status
+      payload: "2"
+  - service: mqtt.publish
+    data:
+      topic: sonoff2/cmnd/status
+      payload: "2"
+  - service: mqtt.publish
+    data:
+      topic: sonoff5/cmnd/status
+      payload: "2"
+- id: '1532478833428'
+  alias: "Power State Sonoff on HA Start-Up"
+  initial_state: 'on'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/power1"
+      payload: ""
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/power2"
+      payload: ""
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/Power3"
+      payload: "" 
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/power4"
+      payload: ""
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/state"
+      payload: ""
 - id: 'SonoffMQTTAuto'
   alias: "Enable MQTT discovery for all devices"
   trigger:
@@ -314,13 +318,3 @@
       data:
         topic: "cmnd/sonoffs/SetOption55"
         payload: "1"
-- id: 'SonoffPowerState'
-  alias: "Power state on HA start-up"
-  trigger:
-    platform: homeassistant
-    event: start
-  action:
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/state"
-        payload: ""
