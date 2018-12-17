@@ -240,16 +240,16 @@ sensor:
       User-Agent: Home Assistant REST sensor
   - platform: mqtt
     name: "Coffee Maker Firmware"
-    state_topic: "stat/sonoff1/STATUS2"
-    value_template: "v{{ value_json.StatusFWR.Version }}"
+    state_topic: "sonoff1/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") }}'
   - platform: mqtt
     name: "Toothbrush Firmware"
-    state_topic: "stat/sonoff2/STATUS2"
-    value_template: "v{{ value_json.StatusFWR.Version }}"
+    state_topic: "sonoff2/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") }}'
   - platform: mqtt
     name: "Garage Door Firmware"
-    state_topic: "stat/sonoff5/STATUS2"
-    value_template: "v{{ value_json.StatusFWR.Version }}"
+    state_topic: "sonoff5/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") }}'
 binary_sensor:
   - platform: template
     sensors:

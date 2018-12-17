@@ -19,6 +19,8 @@ group.nswfuel:
   friendly_name: NSW Fuel Watch
 group.hassio:
   friendly_name: System Information
+group.all_geo_location_events:
+  icon: mdi:fire
 switch.sonoff23110:
   friendly_name: Toothbrush
   icon: mdi:tooth

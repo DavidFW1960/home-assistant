@@ -8,7 +8,7 @@ resources:
     type: js
   - url: /local/mini-media-player-bundle.js?v=0.9.7
     type: module
-  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.7
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.1.1
     type: js
 views:
   - id: 0
@@ -395,6 +395,8 @@ views:
               - automation.power_state_sonoff_on_ha_startup
               - automation.make_snapshot__copy_backups_to_dropbox
               - automation.sonoff_firmware_installed
+              - automation.power_state_on_ha_startup
+              - automation.enable_mqtt_discovery_for_all_devices
               - automation.update_available
               - automation.beta_update_available
               - automation.home_and_away_on

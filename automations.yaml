@@ -73,7 +73,7 @@
   condition:
   - condition: time
     after: '16:00:00'
-    before: '18:30:00'    
+    before: '18:00:00'    
   - condition: template
     value_template: '{{states.sun.sun.attributes.elevation < 25}}'
   action:
@@ -151,15 +151,15 @@
   action:
   - service: mqtt.publish
     data:
-      topic: cmnd/sonoff1/status
+      topic: sonoff1/cmnd/status
       payload: "2"
   - service: mqtt.publish
     data:
-      topic: cmnd/sonoff2/status
+      topic: sonoff2/cmnd/status
       payload: "2"
   - service: mqtt.publish
     data:
-      topic: cmnd/sonoff5/status
+      topic: sonoff5/cmnd/status
       payload: "2"
 - id: '1532478833426'
   alias: Lights Off Failsafe
@@ -300,3 +300,27 @@
   - service: automation.turn_off
     data:
       entity_id: group.homeaway
+- id: 'SonoffMQTTAuto'
+  alias: "Enable MQTT discovery for all devices"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/SetOption19"
+        payload: "1"
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/SetOption55"
+        payload: "1"
+- id: 'SonoffPowerState'
+  alias: "Power state on HA start-up"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/state"
+        payload: ""
