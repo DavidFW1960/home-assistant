@@ -73,7 +73,7 @@
   condition:
   - condition: time
     after: '16:00:00'
-    before: '18:00:00'    
+    before: '18:00:00'
   - condition: template
     value_template: '{{states.sun.sun.attributes.elevation < 25}}'
   action:
@@ -126,9 +126,10 @@
   - service: hassio.snapshot_full
     data_template:
       name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-  - service: notify.notify 
+  - service: notify.notify
     data_template:
-      message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d') }}"
+      message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d')
+        }}"
   - delay: '01:00:00'
   - service: hassio.addon_stdin
     data_template:
@@ -151,37 +152,25 @@
   - delay: '00:00:02'
   - service: light.turn_off
     data_template:
-      entity_id: >-
-        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 5) -%}
-        light.lounge, light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 5) -%}
-        light.office, light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 5) -%}
-        light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5) -%}
-        light.office
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5) -%}
-        light.lounge
-        {%- else -%}
-        light.dining
-        {%- endif -%}
+      entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+        < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 5) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+        < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 5) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 5) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+        < 5) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+        < 5) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
   - delay: '00:00:02'
   - service: light.turn_off
     data_template:
-      entity_id: >-
-        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 10) -%}
-        light.lounge, light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 10) -%}
-        light.office, light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 10) -%}
-        light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 10) -%}
-        light.office
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 10) -%}
-        light.lounge
-        {%- else -%}
-        light.dining
-        {%- endif -%}
+      entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+        < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+        < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 10) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 10) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+        < 10) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+        < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
 - id: '1532478833427'
   alias: Lights On Failsafe
   initial_state: 'on'
@@ -195,126 +184,115 @@
   - delay: '00:00:02'
   - service: light.turn_on
     data_template:
-      entity_id: >-
-        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 5) -%}
-        light.lounge, light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 5) -%}
-        light.office, light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 5) -%}
-        light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 5) -%}
-        light.office
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 5) -%}
-        light.lounge
-        {%- else -%}
-        light.dining
-        {%- endif -%}
+      entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+        < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 5) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+        < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 5) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 5) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+        < 5) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+        < 5) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
       brightness_pct: 75
       kelvin: 3100
   - delay: '00:00:05'
   - service: light.turn_on
     data_template:
-      entity_id: >-
-        {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 10) -%}
-        light.lounge, light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 10) -%}
-        light.office, light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed) < 10) -%}
-        light.desk
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed) < 10) -%}
-        light.office
-        {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed) < 10) -%}
-        light.lounge
-        {%- else -%}
-        light.dining
-        {%- endif -%}
+      entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+        < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+        < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 10) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+        < 10) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+        < 10) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+        < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
       brightness_pct: 75
       kelvin: 3100
 - id: 'homeawayinpboolturnon'
-  alias: "Home and Away On"
+  alias: Home and Away On
   initial_state: 'on'
   trigger:
-    - entity_id: input_boolean.homeandawayauto
-      from: 'off'
-      platform: state
-      to: 'on'
+  - entity_id: input_boolean.homeandawayauto
+    from: 'off'
+    platform: state
+    to: 'on'
   action:
   - service: automation.turn_on
     data:
       entity_id: group.homeaway
 - id: 'homeawayinpboolturnoff'
-  alias: "Home and Away Off"
+  alias: Home and Away Off
   initial_state: 'on'
   trigger:
-    - entity_id: input_boolean.homeandawayauto
-      from: 'on'
-      platform: state
-      to: 'off'
+  - entity_id: input_boolean.homeandawayauto
+    from: 'on'
+    platform: state
+    to: 'off'
   action:
   - service: automation.turn_off
     data:
       entity_id: group.homeaway
 - id: 'sonoff_firmware_installed'
-  alias: "Sonoff Firmware Installed"
-  initial_state: 'on'
+  alias: Sonoff Firmware Installed
   trigger:
-    - platform: time
-      at: '00:00:00'
-    - platform: time
-      at: '12:00:00'
-    - platform: homeassistant
-      event: start
+  - at: '00:00:00'
+    platform: time
+  - at: '12:00:00'
+    platform: time
+  - event: start
+    platform: homeassistant
   action:
-  - service: mqtt.publish
-    data:
+  - data:
+      payload: '2'
       topic: sonoff1/cmnd/status
-      payload: "2"
-  - service: mqtt.publish
-    data:
+    service: mqtt.publish
+  - data:
+      payload: '2'
       topic: sonoff2/cmnd/status
-      payload: "2"
-  - service: mqtt.publish
-    data:
+    service: mqtt.publish
+  - data:
+      payload: '2'
       topic: sonoff5/cmnd/status
-      payload: "2"
+    service: mqtt.publish
+  initial_state: 'on'
 - id: '1532478833428'
-  alias: "Power State Sonoff on HA Start-Up"
+  alias: Power State Sonoff on HA Start-Up
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/sonoffs/state
+    service: mqtt.publish
+  - data:
+      payload: ''
+      topic: cmnd/sonoffs/power1
+    service: mqtt.publish
+  - data:
+      payload: ''
+      topic: cmnd/sonoffs/power2
+    service: mqtt.publish
+  - data:
+      payload: ''
+      topic: cmnd/sonoffs/Power3
+    service: mqtt.publish
+  - data:
+      payload: ''
+      topic: cmnd/sonoffs/power4
+    service: mqtt.publish
+  initial_state: 'on'
+- id: 'SonoffMQTTAuto'
+  alias: Enable MQTT discovery for all devices
   initial_state: 'on'
   trigger:
-    platform: homeassistant
+  - platform: homeassistant
     event: start
   action:
   - service: mqtt.publish
     data:
-      topic: "cmnd/sonoffs/power1"
-      payload: ""
+      topic: cmnd/sonoffs/SetOption19
+      payload: '1'
   - service: mqtt.publish
     data:
-      topic: "cmnd/sonoffs/power2"
-      payload: ""
-  - service: mqtt.publish
-    data:
-      topic: "cmnd/sonoffs/Power3"
-      payload: "" 
-  - service: mqtt.publish
-    data:
-      topic: "cmnd/sonoffs/power4"
-      payload: ""
-  - service: mqtt.publish
-    data:
-      topic: "cmnd/sonoffs/state"
-      payload: ""
-- id: 'SonoffMQTTAuto'
-  alias: "Enable MQTT discovery for all devices"
-  trigger:
-    platform: homeassistant
-    event: start
-  action:
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/SetOption19"
-        payload: "1"
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/SetOption55"
-        payload: "1"
+      topic: cmnd/sonoffs/SetOption55
+      payload: '1'

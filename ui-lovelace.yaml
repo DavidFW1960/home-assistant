@@ -8,15 +8,14 @@ resources:
     type: js
   - url: /local/mini-media-player-bundle.js?v=0.9.7
     type: module
-  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.1.1
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.1.8
     type: js
 views:
-  - id: 0
-    title: Home Assistant
+  - title: Home Assistant
     icon: mdi:home-assistant
     cards:
-      - id: 570b1ee338e0434882b8a637db093ef4
-        type: vertical-stack
+      - type: 'custom:compact-custom-header'
+      - type: vertical-stack
         cards:
           - type: entities
             title: System Information
@@ -88,8 +87,7 @@ views:
                 format: datetime
               - sensor.systemuptime
           - type: 'custom:compact-custom-header'
-      - id: 198f650178d34ca886730c6e958d6a6c
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: entities
             title: Updates
@@ -126,8 +124,7 @@ views:
               - device_tracker.davids_ipad
               - sensor.davidsipad_battery_level
               - sensor.davidsipad_battery_state
-      - id: 633e63caba664811acb2ab9ae0b18c20
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: entities
             title: Internet
@@ -182,12 +179,10 @@ views:
               action: more-info
             hold_action:
               action: more-info
-  - id: 1
-    title: Weather
+  - title: Weather
     icon: mdi:weather-cloudy
     cards:
-      - id: 6d34ee13d8094174b43f2ee583954b0b
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: entities
             title: Season, Sun & Moon Phase
@@ -242,8 +237,7 @@ views:
               - sensor.dark_sky_summary_1
               - sensor.dark_sky_wind_speed_0
               - sensor.dark_sky_wind_speed_1
-      - id: 7d7ce0f46f84472096d8a421378600eb
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: custom:dark-sky-weather-card
             entity_sun: sun.sun
@@ -298,8 +292,7 @@ views:
               - sensor.bom_gosford_wind_gust_kt
               - sensor.bom_gosford_wind_speed_kmh
               - sensor.bom_gosford_wind_speed_kt
-      - id: ecba97ddc4ab4a61b505ddf1da71922d
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: picture-entity
             title: BOM Satellite
@@ -322,12 +315,15 @@ views:
               action: more-info
             hold_action:
               action: more-info
-  - id: 2
-    title: Lights & Switches
+          - type: entities
+            title: NSW Warnings & Events
+            show_header_toggle: false
+            entities:
+              - group.all_geo_location_events
+  - title: Lights & Switches
     icon: mdi:power
     cards:
-      - id: ee7b3d24961c41eb864349b2e37df0cb
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: entities
             title: Light
@@ -366,8 +362,7 @@ views:
             show_header_toggle: false
             entities:
               - switch.sonoff51083
-      - id: b92fa8937e374e6cae4e621e89ced345
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: entities
             title: Automations
@@ -392,17 +387,20 @@ views:
               - automation.lights_on_failsafe
               - automation.lights_off_failsafe
               - automation.system_runtime
-              - automation.power_state_sonoff_on_ha_startup
               - automation.make_snapshot__copy_backups_to_dropbox
-              - automation.sonoff_firmware_installed
-              - automation.power_state_on_ha_startup
-              - automation.enable_mqtt_discovery_for_all_devices
               - automation.update_available
               - automation.beta_update_available
               - automation.home_and_away_on
               - automation.home_and_away_off
-      - id: 3c60d589967d4e9f8b749e33a83965fd
-        type: entities
+              - type: divider
+                style:
+                  height: 30px
+                  margin: 4px 0
+                  background: center / contain url("/local/images/divider.png") no-repeat
+              - automation.sonoff_firmware_installed
+              - automation.power_state_sonoff_on_ha_startup
+              - automation.enable_mqtt_discovery_for_all_devices
+      - type: entities
         title: Scenes
         show_header_toggle: false
         entities:
@@ -422,49 +420,35 @@ views:
           - scene.desk_daylight
           - scene.desk_normal
           - scene.desk_warm
-  - id: 3
-    title: Media
+  - title: Media
     icon: mdi:vlc
     cards:
-      - id: 5aa4098bb94b4d718179890120040eb2
-        type: media-control
+      - type: media-control
         entity: media_player.all_speakers
-      - id: b1c0e87601c44bf1946c9d585a185062
-        type: media-control
+      - type: media-control
         entity: media_player.living_areas
-      - id: 9295faec289f4ccdaa03c2a72305db40
-        type: media-control
+      - type: media-control
         entity: media_player.bedroom_speaker
-      - id: 96bfe67e7cb94fa5b4300d5a67ae39c5
-        type: media-control
+      - type: media-control
         entity: media_player.office_speaker
-      - id: 3730ad7ec2284484bfe825ac7c32af28
-        type: media-control
+      - type: media-control
         entity: media_player.lounge_speaker
-      - id: 833eb728bfe149fbaf4e53a14e98b2da
-        type: media-control
+      - type: media-control
         entity: media_player.lounge_room_tv
-      - id: 7d1375dc8b5f4d039b1444fea52a2e03
-        type: media-control
+      - type: media-control
         entity: media_player.roku_5x46aj056306
-      - id: e652039df88440149888a01175073d51
-        type: media-control
+      - type: media-control
         entity: media_player.foxtel_7587
-      - id: 5c712f8b4d66406ca3ace8e00d169ede
-        type: media-control
+      - type: media-control
         entity: media_player.osmc_vero4
-      - id: 4ff8335e5ee54f4490fcd2f6606064fd
-        type: media-control
+      - type: media-control
         entity: media_player.txnr1009
-      - id: 4ff8335e5ee54f4490fcd2f6606064ff
-        type: media-control
+      - type: media-control
         entity: media_player.tvua55d8000
-  - id: 4
-    title: Media Mini
+  - title: Media Mini
     icon: mdi:boombox
     cards:
-      - id: 462a205b39114134b68895e6f08be7ce
-        type: entities
+      - type: entities
         title: Google Devices
         show_header_toggle: false
         entities:
@@ -508,8 +492,7 @@ views:
             group: true
             artwork: full-cover
             power_color: true
-      - id: 88193b17ead14a6b8da71c86726181bb
-        type: entities
+      - type: entities
         title: Other Media Players
         show_header_toggle: false
         entities:
@@ -545,12 +528,10 @@ views:
             power_color: true
             scroll_info: true
             show_source: true
-  - id: 5
-    title: TV & Movies
+  - title: TV & Movies
     icon: mdi:kodi
     cards:
-      - id: 5c797f7f74c144fb89426bcf44c5a3c4
-        type: custom:upcoming-media-card
+      - type: custom:upcoming-media-card
         entity: sensor.sonarr_upcoming_media
         title: Sonarr Upcoming
         image_style: poster
@@ -567,8 +548,7 @@ views:
         flag_color: red
         text_shadows: false
         box_shadows: true
-      - id: 39c066caee7f46ceafe266ef91ef1daa
-        type: custom:upcoming-media-card
+      - type: custom:upcoming-media-card
         entity: sensor.radarr_upcoming_media
         title: Radarr Upcoming
         image_style: poster
@@ -585,8 +565,7 @@ views:
         flag_color: red
         text_shadows: false
         box_shadows: true
-      - id: a9782b3ede1040daabcc38c2009a277e
-        type: entities
+      - type: entities
         title: Newsgroups
         show_header_toggle: false
         entities:
@@ -610,12 +589,10 @@ views:
           - sensor.radarr_upcoming
           - sensor.radarr_commands
           - sensor.radarr_status
-  - id: 6
-    title: Buses, Trains & Fuel
+  - title: Buses, Trains & Fuel
     icon: mdi:train
     cards:
-      - id: 2f0d1d772ff94c83bafc2668be7564bf
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: entities
             title: Transport
@@ -635,8 +612,7 @@ views:
               - sensor.caltex_st_ives_north_pdl
               - sensor.caltex_woolworths_glenrose_pdl
               - sensor.caltex_belrose_pdl
-      - id: 88a7e41ae27d491fb01263c1ffec1f9b
-        type: entities
+      - type: entities
         title: NSW Fuel Watch - Central Coast
         show_header_toggle: false
         entities:
