@@ -243,15 +243,7 @@
   action:
   - data:
       payload: '2'
-      topic: sonoff1/cmnd/status
-    service: mqtt.publish
-  - data:
-      payload: '2'
-      topic: sonoff2/cmnd/status
-    service: mqtt.publish
-  - data:
-      payload: '2'
-      topic: sonoff5/cmnd/status
+      topic: sonoffs/cmnd/status
     service: mqtt.publish
   initial_state: 'on'
 - id: '1532478833428'
@@ -262,37 +254,77 @@
   action:
   - data:
       payload: ''
-      topic: cmnd/sonoffs/state
+      topic: sonoffs/cmnd/state
     service: mqtt.publish
   - data:
       payload: ''
-      topic: cmnd/sonoffs/power1
+      topic: sonoffs/cmnd/power1
     service: mqtt.publish
   - data:
       payload: ''
-      topic: cmnd/sonoffs/power2
+      topic: sonoffs/cmnd/power2
     service: mqtt.publish
   - data:
       payload: ''
-      topic: cmnd/sonoffs/Power3
+      topic: sonoffs/cmnd/Power3
     service: mqtt.publish
   - data:
       payload: ''
-      topic: cmnd/sonoffs/power4
+      topic: sonoffs/cmnd/power4
     service: mqtt.publish
   initial_state: 'on'
 - id: 'SonoffMQTTAuto'
-  alias: Enable MQTT discovery for all devices
-  initial_state: 'on'
+  alias: Tasmota Initial Setup All Devices
+  initial_state: 'off'
   trigger:
   - platform: homeassistant
     event: start
   action:
   - service: mqtt.publish
     data:
-      topic: cmnd/sonoffs/SetOption19
+      topic: sonoffs/cmnd/SetOption19
       payload: '1'
   - service: mqtt.publish
     data:
-      topic: cmnd/sonoffs/SetOption55
+      topic: sonoffs/cmnd/SetOption55
       payload: '1'
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/SwitchRetain
+      payload: '0'
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/ButtonRetain
+      payload: '0'
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/PowerOnState
+      payload: '3'
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/PowerRetain
+      payload: '1'
+  - service: mqtt.publish
+    data:
+      topic: sonoff5/cmnd/PulseTime
+      payload: '20'
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/Latitude
+      payload: !secret my_latitude
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/Longitude
+      payload: !secret my_longitude
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/TimeZone
+      payload: '99'
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/TimeDST
+      payload: '1,1,10,1,2,660'
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/TimeStd
+      payload: '1,1,4,1,2,600'
