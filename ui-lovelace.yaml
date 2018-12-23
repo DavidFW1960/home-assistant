@@ -4,9 +4,9 @@ resources:
     type: js
   - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.3
     type: js
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=1
-    type: js
-  - url: /local/mini-media-player-bundle.js?v=0.9.7
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=7.1
+    type: module
+  - url: /local/mini-media-player-bundle.js?v=0.9.8
     type: module
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.1.8
     type: js
@@ -254,16 +254,32 @@ views:
             entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
             entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
             entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
-            entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_2
-            entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_3
-            entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_4
-            entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_5
-            entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_6
+            entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_0
+            entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
+            entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
+            entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
+            entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
             entity_forecast_icon_1: sensor.dark_sky_icon_1
             entity_forecast_icon_2: sensor.dark_sky_icon_2
             entity_forecast_icon_3: sensor.dark_sky_icon_3
             entity_forecast_icon_4: sensor.dark_sky_icon_4
             entity_forecast_icon_5: sensor.dark_sky_icon_5
+            entity_summary_1: sensor.dark_sky_summary_1
+            entity_summary_2: sensor.dark_sky_summary_2
+            entity_summary_3: sensor.dark_sky_summary_3
+            entity_summary_4: sensor.dark_sky_summary_4
+            entity_summary_5: sensor.dark_sky_summary_5
+            locale: en
+            static_icons: false
+            sunset: true
+            tooltips: true
+            tooltip_bg_color: 'rgb( 75,155,239)'
+            tooltip_border_color: orange
+            tooltip_border_width: 3
+            tooltip_caret_size: 10
+            tooltip_fg_color: '#fff'
+            tooltip_left_offset: -5
+            tooltip_width: 100
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 72
@@ -399,7 +415,7 @@ views:
                   background: center / contain url("/local/images/divider.png") no-repeat
               - automation.sonoff_firmware_installed
               - automation.power_state_sonoff_on_ha_startup
-              - automation.enable_mqtt_discovery_for_all_devices
+              - automation.tasmota_initial_setup_all_devices
       - type: entities
         title: Scenes
         show_header_toggle: false
