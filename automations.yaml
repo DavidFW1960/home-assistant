@@ -256,22 +256,6 @@
       payload: ''
       topic: sonoffs/cmnd/state
     service: mqtt.publish
-  - data:
-      payload: ''
-      topic: sonoffs/cmnd/power1
-    service: mqtt.publish
-  - data:
-      payload: ''
-      topic: sonoffs/cmnd/power2
-    service: mqtt.publish
-  - data:
-      payload: ''
-      topic: sonoffs/cmnd/Power3
-    service: mqtt.publish
-  - data:
-      payload: ''
-      topic: sonoffs/cmnd/power4
-    service: mqtt.publish
   initial_state: 'on'
 - id: 'SonoffMQTTAuto'
   alias: Tasmota Initial Setup All Devices
