@@ -270,10 +270,6 @@
       payload: '1'
   - service: mqtt.publish
     data:
-      topic: sonoffs/cmnd/SetOption55
-      payload: '1'
-  - service: mqtt.publish
-    data:
       topic: sonoffs/cmnd/SwitchRetain
       payload: '0'
   - service: mqtt.publish
