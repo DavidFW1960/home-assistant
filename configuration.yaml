@@ -123,6 +123,7 @@ recorder:
       - sensor.gosfordcentral
       - sensor.karionggosford
       - sensor.gosfordkariong
+      - sensor.systemuptime
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -157,6 +158,7 @@ history:
       - sensor.gosfordcentral
       - sensor.karionggosford
       - sensor.gosfordkariong
+      - sensor.systemuptime
 
 # View all events in a logbook
 logbook:
