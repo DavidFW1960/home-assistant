@@ -8,7 +8,7 @@ resources:
     type: module
   - url: /local/mini-media-player-bundle.js?v=0.9.8
     type: module
-  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.2
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.3
     type: js
 views:
   - title: Home Assistant
