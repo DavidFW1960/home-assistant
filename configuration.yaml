@@ -83,6 +83,10 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: !secret ide-cloud9    
+  jupyterlab:
+    title: JupyterLab
+    icon: mdi:flask
+    url: !secret jupyterlab
   portainer:
     title: Portainer
     icon: mdi:docker
