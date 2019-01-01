@@ -182,6 +182,7 @@ views:
   - title: Weather
     icon: mdi:weather-cloudy
     cards:
+      - type: 'custom:compact-custom-header'
       - type: vertical-stack
         cards:
           - type: entities
@@ -339,6 +340,7 @@ views:
   - title: Lights & Switches
     icon: mdi:power
     cards:
+      - type: 'custom:compact-custom-header'
       - type: vertical-stack
         cards:
           - type: entities
@@ -439,6 +441,7 @@ views:
   - title: Media
     icon: mdi:vlc
     cards:
+      - type: 'custom:compact-custom-header'
       - type: media-control
         entity: media_player.all_speakers
       - type: media-control
@@ -464,6 +467,7 @@ views:
   - title: Media Mini
     icon: mdi:boombox
     cards:
+      - type: 'custom:compact-custom-header'
       - type: entities
         title: Google Devices
         show_header_toggle: false
@@ -547,6 +551,7 @@ views:
   - title: TV & Movies
     icon: mdi:kodi
     cards:
+      - type: 'custom:compact-custom-header'
       - type: custom:upcoming-media-card
         entity: sensor.sonarr_upcoming_media
         title: Sonarr Upcoming
@@ -608,6 +613,7 @@ views:
   - title: Buses, Trains & Fuel
     icon: mdi:train
     cards:
+      - type: 'custom:compact-custom-header'
       - type: vertical-stack
         cards:
           - type: entities
