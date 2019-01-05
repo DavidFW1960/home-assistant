@@ -256,6 +256,10 @@ sensor:
     name: "Garage Door Firmware"
     state_topic: "sonoff5/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") }}'
+  - platform: mqtt
+    name: "Alarm Firmware"
+    state_topic: "sonoff6/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") }}'
 binary_sensor:
   - platform: template
     sensors:
@@ -320,7 +324,7 @@ custom_updater:
     - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
   card_urls:
     - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
-    - https://raw.githubusercontent.com/maykar/custom-lovelace/master/tracker.json
+    - https://raw.githubusercontent.com/maykar/compact-custom-header/master/tracker.json
 
 # Binary Switch for Home and Away Automations
 input_boolean:

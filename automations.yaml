@@ -290,6 +290,10 @@
       payload: '20'
   - service: mqtt.publish
     data:
+      topic: sonoff6/cmnd/PulseTime
+      payload: '20'
+  - service: mqtt.publish
+    data:
       topic: sonoffs/cmnd/Latitude
       payload: !secret my_latitude
   - service: mqtt.publish

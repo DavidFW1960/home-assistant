@@ -2,13 +2,13 @@ title: Home
 resources:
   - url: /local/tracker-card.js?v=0.1.5
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.3
+  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=7.1
     type: module
   - url: /local/mini-media-player-bundle.js?v=0.9.8
     type: module
-  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.4
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.6
     type: js
 views:
   - title: Home Assistant
@@ -26,6 +26,7 @@ views:
               - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
               - sensor.garage_door_firmware
+              - sensor.alarm_firmware
               - sensor.sonoff_firmware_version_available
               - binary_sensor.sonoff_update_available
               - sensor.artisan_software_version
@@ -44,7 +45,7 @@ views:
               - type: gauge
                 name: Disk Usage
                 unit: '%'
-                entity: sensor.disk_use_percent_
+                entity: sensor.disk_use_percent
           - type: horizontal-stack
             cards:
               - type: gauge
@@ -70,9 +71,9 @@ views:
               - sensor.nuc_memory_used_filtered
               - sensor.nuc_processor_used_filtered
               - sensor.cpu_temperature
-              - sensor.disk_use_
-              - sensor.disk_free_
-              - sensor.disk_use_percent_
+              - sensor.disk_use
+              - sensor.disk_free
+              - sensor.disk_use_percent
               - sensor.memory_use_percent
               - sensor.memory_use
               - sensor.memory_free
@@ -337,6 +338,11 @@ views:
             show_header_toggle: false
             entities:
               - group.all_geo_location_events
+          - type: map
+            geo_location_sources:
+              - nsw_rural_fire_service_feed
+            entities:
+              - zone.home
   - title: Lights & Switches
     icon: mdi:power
     cards:
@@ -368,18 +374,28 @@ views:
                   height: 30px
                   margin: 4px 0
                   background: center / contain url("/local/images/divider.png") no-repeat
-          - type: entity-button
-            entity: switch.sonoff51083
-            tap_action:
-              action: call-service
-              service: switch.turn_on
-              service_data: 
-                entity_id: switch.sonoff51083
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: switch.sonoff51083
+                tap_action:
+                  action: call-service
+                  service: switch.turn_on
+                  service_data: 
+                    entity_id: switch.sonoff51083
+              - type: entity-button
+                entity: switch.sonoff63719
+                tap_action:
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.sonoff63719
           - type: entities
             title: Security
             show_header_toggle: false
             entities:
               - switch.sonoff51083
+              - switch.sonoff63719
       - type: vertical-stack
         cards:
           - type: entities
@@ -396,7 +412,7 @@ views:
               - automation.coffee_maker_off
               - automation.toothbrush_on
               - automation.toothbrush_off
-              - automation.turn_lounge_light_on_elevation__25__after_4pm
+              - automation.turn_lounge_light_on_elevation_25deg_after_4pm
               - type: divider
                 style:
                   height: 30px
@@ -405,7 +421,7 @@ views:
               - automation.lights_on_failsafe
               - automation.lights_off_failsafe
               - automation.system_runtime
-              - automation.make_snapshot__copy_backups_to_dropbox
+              - automation.make_snapshot_copy_backups_to_dropbox
               - automation.update_available
               - automation.beta_update_available
               - automation.home_and_away_on
@@ -416,7 +432,7 @@ views:
                   margin: 4px 0
                   background: center / contain url("/local/images/divider.png") no-repeat
               - automation.sonoff_firmware_installed
-              - automation.power_state_sonoff_on_ha_startup
+              - automation.power_state_sonoff_on_ha_start_up
               - automation.tasmota_initial_setup_all_devices
       - type: entities
         title: Scenes

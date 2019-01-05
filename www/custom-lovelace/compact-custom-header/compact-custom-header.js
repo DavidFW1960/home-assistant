@@ -23,7 +23,7 @@ class CompactCustomHeader extends HTMLElement {
     let card_dir = dir.replace(/\/www\//gi, '/local/');
     // Empty agent for main config at start to keep index numbers consistant.
     let user_agent = ',' + this.config.user_agent;
-    user_agent = user_agent.split(',');
+    user_agent = user_agent.replace(/\s+/g, '').split(',');
     let uai = 0;  // user agent index
     // Find user agent's index number to grab it's config.
     for (let i = 1; i < user_agent.length; i++) {
@@ -51,7 +51,7 @@ class CompactCustomHeader extends HTMLElement {
     
     // Insert the main script in head, run, remove.
     const script = document.createElement('script');
-    script.src = card_dir + 'compact-custom-header.lib.js?v0.2.4';
+    script.src = card_dir + 'compact-custom-header.lib.js?v0.2.6';
     document.head.appendChild(script).parentNode.removeChild(script);
     // Resize the window to redraw header
     window.dispatchEvent(new Event('resize'));

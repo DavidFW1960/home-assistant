@@ -57,6 +57,8 @@ entity_config:
     room: kitchen
   switch.sonoff51083:
     room: house
+  switch.sonoff63719:
+    room: house
   switch.hifi:
     expose: false
   switch.vpn_router:

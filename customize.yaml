@@ -370,3 +370,8 @@ switch.sonoff51083:
   icon: mdi:garage
 sensor.garage_door_firmware:
   icon: mdi:garage
+switch.sonoff63719:
+  friendly_name: Alarm
+  icon: mdi:security-home
+sensor.alarm_firmware:
+  icon: mdi:security-home
