@@ -324,12 +324,13 @@ custom_updater:
     - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
   card_urls:
     - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
-    - https://raw.githubusercontent.com/maykar/compact-custom-header/master/tracker.json
 
-# Binary Switch for Home and Away Automations
+# Binary Switch for Home and Away Automations, Alarm & Garage Door
 input_boolean:
   homeandawayauto:
     name: Home and Away Automations
+  alarmgaragedoor:
+    name: Alarm arm/disarm and Garage door shut/open
 
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml

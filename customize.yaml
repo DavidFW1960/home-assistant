@@ -375,3 +375,5 @@ switch.sonoff63719:
   icon: mdi:security-home
 sensor.alarm_firmware:
   icon: mdi:security-home
+input_boolean.alarmgaragedoor:
+  friendly_name: Exit-Enter

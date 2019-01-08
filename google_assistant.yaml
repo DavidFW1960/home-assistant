@@ -69,3 +69,5 @@ entity_config:
     expose: false
   input_boolean.homeandawayauto:
     room: house
+  input_boolean.alarmgaragedoor:
+    room: house

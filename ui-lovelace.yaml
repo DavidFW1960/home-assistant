@@ -8,7 +8,7 @@ resources:
     type: module
   - url: /local/mini-media-player-bundle.js?v=0.9.8
     type: module
-  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.6
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.7
     type: js
 views:
   - title: Home Assistant
@@ -390,10 +390,19 @@ views:
                   service: switch.turn_on
                   service_data:
                     entity_id: switch.sonoff63719
+              - type: entity-button
+                entity: input_boolean.alarmgaragedoor
+                name: Exit-Enter
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.alarmgaragedoor
           - type: entities
             title: Security
             show_header_toggle: false
             entities:
+              - input_boolean.alarmgaragedoor
               - switch.sonoff51083
               - switch.sonoff63719
       - type: vertical-stack
@@ -403,6 +412,8 @@ views:
             show_header_toggle: false
             entities:
               - input_boolean.homeandawayauto
+              - automation.close_garage_and_set_alarm
+              - automation.deactivate_alarm_and_open_garage
               - type: divider
                 style:
                   height: 30px
