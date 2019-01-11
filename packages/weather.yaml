@@ -77,7 +77,6 @@ sensor:
       - pressure
       - visibility
       - ozone
-      - minutely_summary
       - hourly_summary
       - daily_summary
       - temperature_high

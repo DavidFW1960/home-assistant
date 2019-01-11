@@ -233,8 +233,8 @@ views:
             entities:
               - sensor.dark_sky_cloud_coverage_0
               - sensor.dark_sky_cloud_coverage_1
-              - sensor.dark_sky_daily_summary
               - sensor.dark_sky_hourly_summary
+              - sensor.dark_sky_daily_summary
               - sensor.dark_sky_summary_0
               - sensor.dark_sky_summary_1
               - sensor.dark_sky_wind_speed_0
