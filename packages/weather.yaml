@@ -60,31 +60,37 @@ sensor:
       - 6
       - 7
     monitored_conditions:
-      - hourly_summary
-      - cloud_cover
-      - icon
       - summary
-      - nearest_storm_distance
-      - nearest_storm_bearing
-      - humidity
-      - temperature
-      - temperature_high
-      - temperature_low
-      - apparent_temperature
-      - apparent_temperature_high
-      - apparent_temperature_low
-      - wind_speed
-      - wind_bearing
+      - icon
       - precip_type
+      - precip_intensity
       - precip_probability
       - precip_accumulation
-      - precip_intensity
+      - temperature
+      - apparent_temperature
+      - dew_point
+      - wind_speed
+      - wind_gust
+      - wind_bearing
+      - cloud_cover
+      - humidity
+      - pressure
+      - visibility
+      - ozone
+      - minutely_summary
+      - hourly_summary
+      - daily_summary
+      - temperature_high
+      - temperature_low
+      - apparent_temperature_high
+      - apparent_temperature_low
       - precip_intensity_max
       - uv_index
       - moon_phase
-      - daily_summary
-      - pressure
-      - visibility
+      - sunrise_time
+      - sunset_time
+      - nearest_storm_distance
+      - nearest_storm_bearing
     update_interval:
       minutes: 5
 

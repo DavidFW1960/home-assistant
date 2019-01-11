@@ -163,9 +163,9 @@ group:
     entities:
       - sensor.cpu_temperature
       - sensor.wan_ip_address
-      - sensor.disk_use_
+      - sensor.disk_use
       - sensor.disk_free_
-      - sensor.disk_use_percent_
+      - sensor.disk_use_percent
       - sensor.memory_use_percent
       - sensor.memory_use
       - sensor.memory_free
