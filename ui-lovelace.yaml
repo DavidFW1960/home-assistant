@@ -10,6 +10,10 @@ resources:
     type: module
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.7
     type: js
+  - url: /local/card-tools.js?v=0a97d3
+    type: js
+  - url: /local/fold-entity-row.js?v=f28e6e
+    type: js
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -271,6 +275,14 @@ views:
             entity_summary_3: sensor.dark_sky_summary_3
             entity_summary_4: sensor.dark_sky_summary_4
             entity_summary_5: sensor.dark_sky_summary_5
+            entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0
+            entity_apparent_temp: sensor.dark_sky_apparent_temperature
+            entity_pop: sensor.dark_sky_precip_probability
+            entity_pop_1: sensor.dark_sky_precip_probability_1
+            entity_pop_2: sensor.dark_sky_precip_probability_2
+            entity_pop_3: sensor.dark_sky_precip_probability_3
+            entity_pop_4: sensor.dark_sky_precip_probability_4
+            entity_pop_5: sensor.dark_sky_precip_probability_5
             locale: en
             static_icons: false
             sunset: true
@@ -280,8 +292,9 @@ views:
             tooltip_border_width: 3
             tooltip_caret_size: 10
             tooltip_fg_color: '#fff'
-            tooltip_left_offset: -5
+            tooltip_left_offset: -12
             tooltip_width: 100
+            old_daily_format: false
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 72
@@ -333,12 +346,9 @@ views:
               action: more-info
             hold_action:
               action: more-info
-          - type: entities
+          - type: map
             title: NSW Warnings & Events
             show_header_toggle: false
-            entities:
-              - group.all_geo_location_events
-          - type: map
             geo_location_sources:
               - nsw_rural_fire_service_feed
             entities:
@@ -350,30 +360,12 @@ views:
       - type: vertical-stack
         cards:
           - type: entities
-            title: Light
+            title: Security
             show_header_toggle: false
             entities:
-              - light.dining
-              - light.lounge
-              - light.yeelight_white_34ce00887db6
-              - light.yeelight_white_34ce00882e27
-              - light.office_light_group
-              - light.office
-              - light.desk
-          - type: entities
-            title: Switch
-            show_header_toggle: false
-            entities:
-              - switch.sonoff12914
-              - switch.home_assistant
-              - switch.hifi
-              - switch.vpn_router
-              - switch.sonoff23110
-              - type: divider
-                style:
-                  height: 30px
-                  margin: 4px 0
-                  background: center / contain url("/local/images/divider.png") no-repeat
+              - input_boolean.alarmgaragedoor
+              - switch.sonoff51083
+              - switch.sonoff63719
           - type: horizontal-stack
             cards:
               - type: entity-button
@@ -399,12 +391,25 @@ views:
                   service_data:
                     entity_id: input_boolean.alarmgaragedoor
           - type: entities
-            title: Security
+            title: Light
             show_header_toggle: false
             entities:
-              - input_boolean.alarmgaragedoor
-              - switch.sonoff51083
-              - switch.sonoff63719
+              - light.dining
+              - light.lounge
+              - light.yeelight_white_34ce00887db6
+              - light.yeelight_white_34ce00882e27
+              - light.office_light_group
+              - light.office
+              - light.desk
+          - type: entities
+            title: Switch
+            show_header_toggle: false
+            entities:
+              - switch.sonoff12914
+              - switch.home_assistant
+              - switch.hifi
+              - switch.vpn_router
+              - switch.sonoff23110
       - type: vertical-stack
         cards:
           - type: entities
@@ -445,26 +450,36 @@ views:
               - automation.sonoff_firmware_installed
               - automation.power_state_sonoff_on_ha_start_up
               - automation.tasmota_initial_setup_all_devices
-      - type: entities
-        title: Scenes
-        show_header_toggle: false
-        entities:
-          - scene.bedtime
-          - scene.dining_daylight
-          - scene.dining_normal
-          - scene.dining_warm
-          - scene.lounge_100
-          - scene.lounge_daylight
-          - scene.lounge_movie
-          - scene.lounge_normal
-          - scene.lounge_warm
-          - scene.office_all
-          - scene.office_daylight
-          - scene.office_main
-          - scene.office_warm
-          - scene.desk_daylight
-          - scene.desk_normal
-          - scene.desk_warm
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Scenes
+            show_header_toggle: false
+            entities:
+              - scene.bedtime
+              - scene.dining_daylight
+              - scene.dining_normal
+              - scene.dining_warm
+              - scene.lounge_100
+              - scene.lounge_daylight
+              - scene.lounge_movie
+              - scene.lounge_normal
+              - scene.lounge_warm
+              - scene.office_all
+              - scene.office_daylight
+              - scene.office_main
+              - scene.office_warm
+              - scene.desk_daylight
+              - scene.desk_normal
+              - scene.desk_warm
+          - type: entities
+            title: Folding Groups
+            show_header_toggle: false
+            entities:
+              - type: custom:fold-entity-row
+                head: group.all_automations
+              - type: custom:fold-entity-row
+                head: group.scenes
   - title: Media
     icon: mdi:vlc
     cards:
