@@ -10,9 +10,9 @@ resources:
     type: module
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.7
     type: js
-  - url: /local/card-tools.js?v=0a97d3
+  - url: /local/card-tools.js?v=6ce5d0
     type: js
-  - url: /local/fold-entity-row.js?v=f28e6e
+  - url: /local/fold-entity-row.js?v=9f30bd
     type: js
 views:
   - title: Home Assistant
@@ -295,6 +295,7 @@ views:
             tooltip_left_offset: -12
             tooltip_width: 100
             old_daily_format: false
+            time_format: 12
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 72
