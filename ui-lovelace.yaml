@@ -1,16 +1,16 @@
 title: Home
 resources:
+  - url: /local/card-tools.js?v=6ce5d0
+    type: js
   - url: /local/tracker-card.js?v=0.1.5
     type: js
   - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
     type: js
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=7.1
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.6.2
     type: module
   - url: /local/mini-media-player-bundle.js?v=0.9.8
     type: module
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.7
-    type: js
-  - url: /local/card-tools.js?v=6ce5d0
     type: js
   - url: /local/fold-entity-row.js?v=9f30bd
     type: js
@@ -283,6 +283,7 @@ views:
             entity_pop_3: sensor.dark_sky_precip_probability_3
             entity_pop_4: sensor.dark_sky_precip_probability_4
             entity_pop_5: sensor.dark_sky_precip_probability_5
+            entity_current_text: sensor.dark_sky_current_text
             locale: en
             static_icons: false
             sunset: true
@@ -294,6 +295,7 @@ views:
             tooltip_fg_color: '#fff'
             tooltip_left_offset: -12
             tooltip_width: 100
+            show_beaufort: false
             old_daily_format: false
             time_format: 12
           - type: history-graph

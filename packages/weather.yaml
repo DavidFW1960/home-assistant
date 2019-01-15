@@ -200,6 +200,22 @@ sensor:
         entity_picture_template: >-
           {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_7.state ~ '.png'}}
 
+      dark_sky_current_text:
+        value_template: '{% if is_state("sensor.dark_sky_icon","clear-day") %} Clear 
+                         {% elif is_state("sensor.dark_sky_icon","clear-night") %} Clear 
+                         {% elif is_state("sensor.dark_sky_icon","rain") %} Rain
+                         {% elif is_state("sensor.dark_sky_icon","snow") %} Snowy
+                         {% elif is_state("sensor.dark_sky_icon","fog") %} Foggy
+                         {% elif is_state("sensor.dark_sky_icon","sleet") %} Sleet
+                         {% elif is_state("sensor.dark_sky_icon","wind") %} Windy
+                         {% elif is_state("sensor.dark_sky_icon","cloudy") %} Cloudy
+                         {% elif is_state("sensor.dark_sky_icon","partly-cloudy-day") %} Partly Cloudy
+                         {% elif is_state("sensor.dark_sky_icon","partly-cloudy-night") %} Partly Cloudy
+                         {% elif is_state("sensor.dark_sky_icon","hail") %} Hailing
+                         {% elif is_state("sensor.dark_sky_icon","lightning") %} Lightning
+                         {% elif is_state("sensor.dark_sky_icon","thunderstorm") %} Thunderstorm
+                         {% endif %}'
+
 group:
   weather_card_forecast:
     name: Forecast
