@@ -378,9 +378,4 @@ sensor.alarm_firmware:
 input_boolean.alarmgaragedoor:
   friendly_name: Exit-Enter
   icon: mdi:security
-# templates:
-#   rgb_color: >
-#     if (state === 'on')
-#       return [251, 210, 41];
-#     else
-#       return [54, 95, 140];
+

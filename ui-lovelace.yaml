@@ -12,8 +12,10 @@ resources:
     type: module
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.7
     type: js
-  - url: /local/fold-entity-row.js?v=9f30bd
+  - url: /local/fold-entity-row.js?v=3ae2c4
     type: js
+  - url: /local/button-card.js?v=0.0.3
+    type: module
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -385,13 +387,19 @@ views:
                   service: switch.turn_on
                   service_data:
                     entity_id: switch.sonoff63719
-              - type: entity-button
+              - type: custom:button-card
                 entity: input_boolean.alarmgaragedoor
+                icon: mdi:security
+                color_type: icon
+                color: rgb(251, 210, 41)
+                color_off: rgb(54, 95, 140)
                 name: Exit-Enter
-                tap_action:
-                  action: call-service
-                  service: input_boolean.toggle
-                  service_data:
+                show_state: false
+                action: service
+                service: 
+                  domain: input_boolean
+                  action: toggle
+                  data:
                     entity_id: input_boolean.alarmgaragedoor
           - type: entities
             title: Light
