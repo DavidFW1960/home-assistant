@@ -1,6 +1,7 @@
 //import { LitElement, html, } from 'https://unpkg.com/@polymer/lit-element@^0.5.2/lit-element.js?module';
+//import { LitElement, html, } from 'https://unpkg-gcp.firebaseapp.com/@polymer/lit-element@0.5.2/lit-element.js?module';
 
-import { LitElement, html, } from 'https://unpkg-gcp.firebaseapp.com/@polymer/lit-element@0.5.2/lit-element.js?module';
+import { LitElement, html, } from '/local/local-lit/@polymer/lit-element/lit-element.js';
 
 // use Local Lit definition - This does not work (throws warning that customElements does not exist)
 /*
@@ -387,6 +388,7 @@ get style() {
         color: var(--primary-text-color);
         position: absolute;
         right: 1em;
+        margin-top: -20px;
       }
 
       .tempc {
@@ -404,7 +406,7 @@ get style() {
         color: var(--primary-text-color);
         position: absolute;
         right: 1em;
-        margin-top: 35px;
+        margin-top: 36px;
         margin-right: 1em;
       }
 

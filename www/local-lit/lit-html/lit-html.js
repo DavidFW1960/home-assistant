@@ -294,7 +294,7 @@ export class Template {
                 //
                 // TODO(justinfagnani): We should be able to use the previousNode here
                 // as the marker node and reduce the number of extra nodes we add to a
-                // template. See https://github.com/PolymerLabs//local/button-card-depends/lit-html/issues/147
+                // template. See https://github.com/PolymerLabs//local/local-lit/lit-html/issues/147
                 const previousSibling = node.previousSibling;
                 if (previousSibling === null || previousSibling !== previousNode ||
                     previousSibling.nodeType !== Node.TEXT_NODE) {
@@ -647,4 +647,4 @@ export const removeNodes = (container, startNode, endNode = null) => {
         node = n;
     }
 };
-//# sourceMappingURL=/local/button-card-depends/lit-html.js.map
+//# sourceMappingURL=/local/local-lit/lit-html.js.map

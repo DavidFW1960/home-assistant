@@ -16,7 +16,7 @@
 // NOTE: This is just enough typings to type-check lit-element. They've been
 // copied from polymer/types and minorly changed to describe Polymer 3.0.
 
-declare module '/local/button-card-depends/@polymer/polymer/lib/mixins/properties-changed.js' {
+declare module '/local/local-lit/@polymer/polymer/lib/mixins/properties-changed.js' {
   /**
    * Element class mixin that provides basic meta-programming for creating one
    * or more property accessors (getter/setter pair) that enqueue an async
@@ -305,10 +305,10 @@ declare module '/local/button-card-depends/@polymer/polymer/lib/mixins/propertie
   }
 }
 
-declare module '/local/button-card-depends/@polymer/polymer/lib/mixins/properties-mixin.js' {
+declare module '/local/local-lit/@polymer/polymer/lib/mixins/properties-mixin.js' {
 
-  import {PropertiesChangedConstructor} from '/local/button-card-depends/@polymer/polymer/lib/mixins/properties-changed.js';
-  export {PropertiesChangedConstructor} from '/local/button-card-depends/@polymer/polymer/lib/mixins/properties-changed.js';
+  import {PropertiesChangedConstructor} from '/local/local-lit/@polymer/polymer/lib/mixins/properties-changed.js';
+  export {PropertiesChangedConstructor} from '/local/local-lit/@polymer/polymer/lib/mixins/properties-changed.js';
 
   /**
    * Mixin that provides a minimal starting point to using the PropertiesChanged
@@ -373,7 +373,7 @@ declare module '/local/button-card-depends/@polymer/polymer/lib/mixins/propertie
   }
 }
 
-declare module '/local/button-card-depends/@polymer/polymer/lib/utils/case-map.js' {
+declare module '/local/local-lit/@polymer/polymer/lib/utils/case-map.js' {
 
   /**
    * Converts "dash-case" identifier (e.g. `foo-bar-baz`) to "camelCase"

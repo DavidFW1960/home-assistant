@@ -153,7 +153,7 @@ suite('LitElement', () => {
         assert.equal(el.__bar, 20);
         assert.equal(stripExpressionDelimeters(el.shadowRoot.innerHTML), '020');
     });
-    test('render attributes, properties, and event listeners via /local/button-card-depends/lit-html', function () {
+    test('render attributes, properties, and event listeners via /local/local-lit/lit-html', function () {
         class E extends LitElement {
             _render() {
                 const attr = 'attr';

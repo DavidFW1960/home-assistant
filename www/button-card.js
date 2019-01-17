@@ -1,6 +1,6 @@
 import {
   LitElement, html,
-} from '/local/button-card-depends/@polymer/lit-element/lit-element.js';
+} from '/local/local-lit/@polymer/lit-element/lit-element.js';
 
 class ButtonCard extends LitElement {
   static get properties() {

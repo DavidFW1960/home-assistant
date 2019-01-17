@@ -12,7 +12,7 @@
  * http://polymer.github.io/PATENTS.txt
  */
 
-import {TemplateResult} from '/local/button-card-depends/lit-html//local/button-card-depends/lit-html.js';
+import {TemplateResult} from '/local/local-lit/lit-html//local/local-lit/lit-html.js';
 
 import {
   classString,
@@ -194,7 +194,7 @@ suite('LitElement', () => {
     assert.equal(stripExpressionDelimeters(el.shadowRoot!.innerHTML), '020');
   });
 
-  test('render attributes, properties, and event listeners via /local/button-card-depends/lit-html',
+  test('render attributes, properties, and event listeners via /local/local-lit/lit-html',
        function() {
          class E extends LitElement {
            _event?: Event;

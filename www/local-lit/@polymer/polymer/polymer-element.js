@@ -19,7 +19,7 @@ export { version };
  * and property change observation.
  *
  * @customElement
- * /local/button-card-depends/@polymer
+ * /local/local-lit/@polymer
  * @constructor
  * @implements {Polymer_ElementMixin}
  * @extends HTMLElement

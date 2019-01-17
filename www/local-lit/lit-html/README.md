@@ -1,22 +1,22 @@
 > ## 🛠 Status: In Development
-> /local/button-card-depends/lit-html is currently in development. It's on the fast track to a 1.0 release, so we encourage you to use it and give us your feedback, but there are things that haven't been finalized yet and you can expect some changes.
+> /local/local-lit/lit-html is currently in development. It's on the fast track to a 1.0 release, so we encourage you to use it and give us your feedback, but there are things that haven't been finalized yet and you can expect some changes.
 
-# /local/button-card-depends/lit-html
+# /local/local-lit/lit-html
 HTML templates, via JavaScript template literals
 
-[![Build Status](https://travis-ci.org/Polymer//local/button-card-depends/lit-html.svg?branch=master)](https://travis-ci.org/Polymer//local/button-card-depends/lit-html)
-[![Published on npm](https://img.shields.io/npm/v//local/button-card-depends/lit-html.svg)](https://www.npmjs.com/package//local/button-card-depends/lit-html)
+[![Build Status](https://travis-ci.org/Polymer//local/local-lit/lit-html.svg?branch=master)](https://travis-ci.org/Polymer//local/local-lit/lit-html)
+[![Published on npm](https://img.shields.io/npm/v//local/local-lit/lit-html.svg)](https://www.npmjs.com/package//local/local-lit/lit-html)
 
 ## Overview
 
-`/local/button-card-depends/lit-html` lets you write [HTML templates](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) with JavaScript [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), and efficiently render and _re-render_ those templates to DOM.
+`/local/local-lit/lit-html` lets you write [HTML templates](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) with JavaScript [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), and efficiently render and _re-render_ those templates to DOM.
 
-Visit the [/local/button-card-depends/lit-html documentation](https://polymer.github.io//local/button-card-depends/lit-html).
+Visit the [/local/local-lit/lit-html documentation](https://polymer.github.io//local/local-lit/lit-html).
 
 ```javascript
-import {html, render} from '/local/button-card-depends/lit-html';
+import {html, render} from '/local/local-lit/lit-html';
 
-// This is a /local/button-card-depends/lit-html template function. It returns a /local/button-card-depends/lit-html template.
+// This is a /local/local-lit/lit-html template function. It returns a /local/local-lit/lit-html template.
 const helloTemplate = (name) => html`<div>Hello ${name}!</div>`;
 
 // Call the function with some data, and pass the result to render()
@@ -28,7 +28,7 @@ render(helloTemplate('Steve'), document.body);
 render(helloTemplate('Kevin'), document.body);
 ```
 
-`/local/button-card-depends/lit-html` provides two main exports:
+`/local/local-lit/lit-html` provides two main exports:
 
  * `html`: A JavaScript [template tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) used to produce a `TemplateResult`, which is a container for a template, and the values that should populate the template.
  * `render()`: A function that renders a `TemplateResult` to a DOM container, such as an element or shadow root.
@@ -45,7 +45,7 @@ render(helloTemplate('Kevin'), document.body);
 
 ## Motivation
 
-`/local/button-card-depends/lit-html` has four main goals:
+`/local/local-lit/lit-html` has four main goals:
 
 1. Efficient updates of previously rendered DOM.
 2. Expressiveness and easy access to the JavaScript state that needs to be injected into DOM.
@@ -55,12 +55,12 @@ render(helloTemplate('Kevin'), document.body);
 ## Installation
 
 ```bash
-$ npm install /local/button-card-depends/lit-html
+$ npm install /local/local-lit/lit-html
 ```
 
 ## How it Works
 
-`/local/button-card-depends/lit-html` utilizes some unique properties of HTML `<template>` elements and JavaScript template literals. So it's helpful to understand them first.
+`/local/local-lit/lit-html` utilizes some unique properties of HTML `<template>` elements and JavaScript template literals. So it's helpful to understand them first.
 
 ### Tagged Template Literals
 
@@ -95,13 +95,13 @@ Every call to `html` returns a `TemplateResult` which contains the template crea
 
 `render()` takes a `TemplateResult` and renders it to a DOM container. On the initial render it clones the template, then walks it using the remembered placeholder positions, to create `Part`s.
 
-A `Part` is a "hole" in the DOM where values can be injected. `/local/button-card-depends/lit-html` includes two type of parts by default: `NodePart` and `AttributePart`, which let you set text content and attribute values respectively. The `Part`s, container, and template they were created from are grouped together in an object called a `TemplateInstance`.
+A `Part` is a "hole" in the DOM where values can be injected. `/local/local-lit/lit-html` includes two type of parts by default: `NodePart` and `AttributePart`, which let you set text content and attribute values respectively. The `Part`s, container, and template they were created from are grouped together in an object called a `TemplateInstance`.
 
 Rendering can be customized by providing alternate `render()` implementations which create different kinds of `TemplateInstances` and `Part`s, like `PropertyPart` and `EventPart` included in `lib/lit-extended.ts` which let templates set properties and event handlers on elements.
 
 ## Performance
 
-`/local/button-card-depends/lit-html` is designed to be lightweight and fast (though performance benchmarking is just starting).
+`/local/local-lit/lit-html` is designed to be lightweight and fast (though performance benchmarking is just starting).
 
  * It utilizes the built-in JS and HTML parsers - it doesn't include any expression or markup parser of its own.
  * It only updates the dynamic parts of templates - static parts are untouched, not even walked for diffing, after the initial render.
@@ -140,7 +140,7 @@ const grid = svg`
 
 ### Safety
 
-Because `/local/button-card-depends/lit-html` templates are parsed before values are set, they are safer than generating HTML via string-concatenation. Attributes are set via `setAttribute()` and node text via `textContent`, so the structure of template instances cannot be accidentally changed by expression values, and values are automatically escaped.
+Because `/local/local-lit/lit-html` templates are parsed before values are set, they are safer than generating HTML via string-concatenation. Attributes are set via `setAttribute()` and node text via `textContent`, so the structure of template instances cannot be accidentally changed by expression values, and values are automatically escaped.
 
 _TODO: Add sanitization hooks to disallow inline event handlers, etc._
 
@@ -191,9 +191,9 @@ const render = () => html`
 
 ### Directives
 
-Directives are functions that can extend /local/button-card-depends/lit-html by directly interacting with the Part API.
+Directives are functions that can extend /local/local-lit/lit-html by directly interacting with the Part API.
 
-Directives will usually be created from factory functions that accept some arguments for values and configuration. Directives are created by passing a function to /local/button-card-depends/lit-html's `directive()` function:
+Directives will usually be created from factory functions that accept some arguments for values and configuration. Directives are created by passing a function to /local/local-lit/lit-html's `directive()` function:
 
 ```javascript
 html`<div>${directive((part) => { part.setValue('Hello')})}</div>`
@@ -229,7 +229,7 @@ const render = () => html`
   </div>`;
 ```
 
-/local/button-card-depends/lit-html includes a few directives:
+/local/local-lit/lit-html includes a few directives:
 
 #### `repeat(items, keyfn, template)`
 
@@ -266,7 +266,7 @@ const render = () => html`
 
 JavaScript asynchronous iterators provide a generic interface for asynchronous sequential access to data. Much like an iterator, a consumer requests the next data item with a a call to `next()`, but with asynchronous iterators `next()` returns a `Promise`, allowing the iterator to provide the item when it's ready.
 
-/local/button-card-depends/lit-html offers two directives to consume asynchronous iterators:
+/local/local-lit/lit-html offers two directives to consume asynchronous iterators:
 
  * `asyncAppend` renders the values of an [async iterable](https://github.com/tc39/proposal-async-iteration),
 appending each new value after the previous.
@@ -315,17 +315,17 @@ These features compose so you can render iterables of functions that return arra
 
 ### Extensibility
 
-`/local/button-card-depends/lit-html` is designed to be extended by more opinionated flavors of template syntaxes. For instance, `/local/button-card-depends/lit-html` doesn't support declarative event handlers or property setting out-of-the-box. A layer on top can add that while exposing the same API, by implementing a custom `render()` function.
+`/local/local-lit/lit-html` is designed to be extended by more opinionated flavors of template syntaxes. For instance, `/local/local-lit/lit-html` doesn't support declarative event handlers or property setting out-of-the-box. A layer on top can add that while exposing the same API, by implementing a custom `render()` function.
 
 Some examples of possible extensions:
 
  * Property setting: Attribute expressions in templates could set properties on node.
  * Event handlers: Specially named attributes can install event handlers.
- * HTML values: `/local/button-card-depends/lit-html` creates `Text` nodes by default. Extensions could allow setting `innerHTML`.
+ * HTML values: `/local/local-lit/lit-html` creates `Text` nodes by default. Extensions could allow setting `innerHTML`.
 
 ## Status
 
-`/local/button-card-depends/lit-html` is still under development.
+`/local/local-lit/lit-html` is still under development.
 
  * It uses JavaScript modules, and there's no build set up yet, so out-of-the-box it only runs in Safari 10.1, Chrome 61, and Firefox 60 and Edge.
  * It has a growing test suite, but it has only been run manually on Chrome Canary, Safari 10.1 and Firefox 54.
@@ -333,11 +333,11 @@ Some examples of possible extensions:
  * It has not been benchmarked thoroughly yet.
  * The API may change.
 
-Even without a build configuration, `/local/button-card-depends/lit-html` minified with `babili` and gzipped measures in at less than 1.7k. We will strive to keep the size extremely small.
+Even without a build configuration, `/local/local-lit/lit-html` minified with `babili` and gzipped measures in at less than 1.7k. We will strive to keep the size extremely small.
 
 ## Benefits over HTML templates
 
-`/local/button-card-depends/lit-html` has basically all of the benefits of HTML-in-JS systems like JSX, like:
+`/local/local-lit/lit-html` has basically all of the benefits of HTML-in-JS systems like JSX, like:
 
 ### Lighter weight
 
@@ -359,7 +359,7 @@ In a type-checking environment like TypeScript, expressions are checked because 
 
 ### Case-sensitive parsing
 
-Template literals preserve case, even though the HTML parser doesn't for attribute names. `/local/button-card-depends/lit-html` extracts the raw attribute names, which is useful for template syntaxes that use attribute syntax to set properties on elements.
+Template literals preserve case, even though the HTML parser doesn't for attribute names. `/local/local-lit/lit-html` extracts the raw attribute names, which is useful for template syntaxes that use attribute syntax to set properties on elements.
 
 ## Benefits over JSX
 
@@ -369,7 +369,7 @@ No tooling required. Understood by all JS editors and tools.
 
 ### No VDOM overhead
 
-`/local/button-card-depends/lit-html` only re-renders the dynamic parts of a template, so it doesn't produce a VDOM tree of the entire template contents, it just produces new values for each expression. By completely skipping static template parts, it saves work.
+`/local/local-lit/lit-html` only re-renders the dynamic parts of a template, so it doesn't produce a VDOM tree of the entire template contents, it just produces new values for each expression. By completely skipping static template parts, it saves work.
 
 ### Scoped
 
@@ -379,7 +379,7 @@ The `html` template tag is just a variable, probably an imported function. You c
 
 ### Templates are values
 
-JSX translates to function calls, and can't be manipulated on a per-template basis at runtime. `/local/button-card-depends/lit-html` produces a template object at runtime, which can be further processed by libraries like ShadyCSS.
+JSX translates to function calls, and can't be manipulated on a per-template basis at runtime. `/local/local-lit/lit-html` produces a template object at runtime, which can be further processed by libraries like ShadyCSS.
 
 ### CSS-compatible syntax
 

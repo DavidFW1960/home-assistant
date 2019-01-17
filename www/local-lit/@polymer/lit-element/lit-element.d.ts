@@ -11,12 +11,12 @@
  * subject to an additional IP rights grant found at
  * http://polymer.github.io/PATENTS.txt
  */
-import { PropertiesChangedConstructor } from '/local/button-card-depends/@polymer/polymer/lib/mixins/properties-changed.js';
-import { PropertiesMixinConstructor } from '/local/button-card-depends/@polymer/polymer/lib/mixins/properties-mixin.js';
-import { TemplateResult } from '/local/button-card-depends/lit-html//local/button-card-depends/lit-html.js';
-export { PropertiesChangedConstructor } from '/local/button-card-depends/@polymer/polymer/lib/mixins/properties-changed.js';
-export { PropertiesMixinConstructor } from '/local/button-card-depends/@polymer/polymer/lib/mixins/properties-mixin.js';
-export { html, svg } from '/local/button-card-depends/lit-html/lib/lit-extended.js';
+import { PropertiesChangedConstructor } from '/local/local-lit/@polymer/polymer/lib/mixins/properties-changed.js';
+import { PropertiesMixinConstructor } from '/local/local-lit/@polymer/polymer/lib/mixins/properties-mixin.js';
+import { TemplateResult } from '/local/local-lit/lit-html//local/local-lit/lit-html.js';
+export { PropertiesChangedConstructor } from '/local/local-lit/@polymer/polymer/lib/mixins/properties-changed.js';
+export { PropertiesMixinConstructor } from '/local/local-lit/@polymer/polymer/lib/mixins/properties-mixin.js';
+export { html, svg } from '/local/local-lit/lit-html/lib/lit-extended.js';
 export declare type __unused = PropertiesChangedConstructor & PropertiesMixinConstructor;
 /**
  * Renders attributes to the given element based on the `attrInfo` object where
@@ -119,25 +119,25 @@ export declare class LitElement extends LitElement_base {
     /**
      * Implement to describe the DOM which should be rendered in the element.
      * Ideally, the implementation is a pure function using only props to describe
-     * the element template. The implementation must return a `/local/button-card-depends/lit-html`
+     * the element template. The implementation must return a `/local/local-lit/lit-html`
      * TemplateResult. By default this template is rendered into the element's
      * shadowRoot. This can be customized by implementing `_createRoot`. This
      * method must be implemented.
      * @param {*} _props Current element properties
-     * @returns {TemplateResult} Must return a /local/button-card-depends/lit-html TemplateResult.
+     * @returns {TemplateResult} Must return a /local/local-lit/lit-html TemplateResult.
      */
     protected _render(_props: object): TemplateResult;
     /**
-     * Renders the given /local/button-card-depends/lit-html template `result` into the given `node`.
+     * Renders the given /local/local-lit/lit-html template `result` into the given `node`.
      * Implement to customize the way rendering is applied. This is should not
      * typically be needed and is provided for advanced use cases.
-     * @param result {TemplateResult} `/local/button-card-depends/lit-html` template result to render
+     * @param result {TemplateResult} `/local/local-lit/lit-html` template result to render
      * @param node {Element|DocumentFragment} node into which to render
      */
     protected _applyRender(result: TemplateResult, node: Element | DocumentFragment): void;
     /**
      * Called after element DOM has been rendered. Implement to
-     * directly control rendered DOM. Typically this is not needed as `/local/button-card-depends/lit-html`
+     * directly control rendered DOM. Typically this is not needed as `/local/local-lit/lit-html`
      * can be used in the `_render` method to set properties, attributes, and
      * event listeners. However, it is sometimes useful for calling methods on
      * rendered elements, like calling `focus()` on an element to focus it.

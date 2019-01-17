@@ -1272,9 +1272,9 @@
 
 - @mixes -> @appliesMixin ([commit](https://github.com/Polymer/polymer/commit/1f21ab1a))
 
-- /local/button-card-depends/@polymerMixin//local/button-card-depends/@polymerMixinClass -> @mixinFunction/@mixinClass ([commit](https://github.com/Polymer/polymer/commit/f7e8021e))
+- /local/local-lit/@polymerMixin//local/local-lit/@polymerMixinClass -> @mixinFunction/@mixinClass ([commit](https://github.com/Polymer/polymer/commit/f7e8021e))
 
-- /local/button-card-depends/@polymerElement -> @customElement//local/button-card-depends/@polymer ([commit](https://github.com/Polymer/polymer/commit/231b21c0))
+- /local/local-lit/@polymerElement -> @customElement//local/local-lit/@polymer ([commit](https://github.com/Polymer/polymer/commit/231b21c0))
 
 - fix lint error ([commit](https://github.com/Polymer/polymer/commit/e5de1782))
 

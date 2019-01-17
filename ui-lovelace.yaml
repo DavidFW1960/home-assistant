@@ -351,8 +351,12 @@ views:
               action: more-info
             hold_action:
               action: more-info
-          - type: map
+          - type: entities
             title: NSW Warnings & Events
+            show_header_toggle: false
+            entities:
+              - group.all_geolocation_events 
+          - type: map
             show_header_toggle: false
             geo_location_sources:
               - nsw_rural_fire_service_feed

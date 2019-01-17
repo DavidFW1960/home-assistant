@@ -1,8 +1,8 @@
 # Polymer
 
 [![Build Status](https://travis-ci.org/Polymer/polymer.svg?branch=master)](https://travis-ci.org/Polymer/polymer)
-[![Published on npm](https://img.shields.io/npm/v//local/button-card-depends/@polymer/polymer.svg)](https://www.npmjs.com/package//local/button-card-depends/@polymer/polymer)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element//local/button-card-depends/@polymer/polymer)
+[![Published on npm](https://img.shields.io/npm/v//local/local-lit/@polymer/polymer.svg)](https://www.npmjs.com/package//local/local-lit/@polymer/polymer)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element//local/local-lit/@polymer/polymer)
 
 > ℹ️ Note: This is the current stable version of the Polymer library.  At Google I/O 2018 we announced a new Web Component base class, [`LitElement`](https://github.com/Polymer/lit-element), as a successor to the `PolymerElement` base class in this library.
 >
@@ -14,7 +14,7 @@ Polymer lets you build encapsulated, reusable [Web Components](https://www.webco
 
 ```html
 <!-- Import a component -->
-<script src="https://unpkg.com//local/button-card-depends/@polymer/paper-checkbox@next/paper-checkbox.js?module" type="module" ></script>
+<script src="https://unpkg.com//local/local-lit/@polymer/paper-checkbox@next/paper-checkbox.js?module" type="module" ></script>
 
 <!-- Use it like any other HTML element -->
 <paper-checkbox>Web Components!</paper-checkbox>
@@ -38,7 +38,7 @@ Web Components are now implemented natively on Safari and Chrome (~70% of instal
 
     1. Add Polymer to your project:
 
-        ```npm i /local/button-card-depends/@polymer/polymer```
+        ```npm i /local/local-lit/@polymer/polymer```
 
     1. Create an element by extending PolymerElement and calling `customElements.define` with your class (see the examples below).
 
@@ -50,7 +50,7 @@ Web Components are now implemented natively on Safari and Chrome (~70% of instal
 
         ```polymer serve --npm```
 
-    > Polymer 3.0 is published on [npm](https://www.npmjs.com/package//local/button-card-depends/@polymer/polymer) using JavaScript Modules.
+    > Polymer 3.0 is published on [npm](https://www.npmjs.com/package//local/local-lit/@polymer/polymer) using JavaScript Modules.
     This means it can take advantage of the standard native JavaScript module loader available in all current major browsers.
     >
     > However, since Polymer uses npm conventions to reference dependencies by name, a light transform to rewrite specifiers to URLs is required to run in the browser. The polymer-cli's development server `polymer serve`, as well as `polymer build` (for building an optimized app for deployment)  automatically handles this transform.
@@ -68,7 +68,7 @@ Web Components are now implemented natively on Safari and Chrome (~70% of instal
 ```html
   <script src="node_modules/@webcomponents/webcomponents-loader.js"></script>
   <script type="module">
-    import {PolymerElement, html} from '/local/button-card-depends/@polymer/polymer';
+    import {PolymerElement, html} from '/local/local-lit/@polymer/polymer';
 
     class MyElement extends PolymerElement {
       static get properties() { return { mood: String }}

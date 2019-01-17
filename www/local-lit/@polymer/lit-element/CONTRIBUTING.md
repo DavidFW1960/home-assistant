@@ -117,7 +117,7 @@ You can also run tests in the browser:
 
 Navigate to:
 
-[`http://localhost:8080/components//local/button-card-depends/@polymer/lit-element/test/index.html`](http://localhost:8080/components//local/button-card-depends/@polymer/lit-element/test/index.html)
+[`http://localhost:8080/components//local/local-lit/@polymer/lit-element/test/index.html`](http://localhost:8080/components//local/local-lit/@polymer/lit-element/test/index.html)
 
 ### Configuring `web-component-tester`
 

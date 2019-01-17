@@ -182,7 +182,7 @@ automation:
   - alias: 'System Runtime'
     initial_state: 'on'
     trigger:
-      platform: time
+      platform: time_pattern
       minutes: '/1'
       seconds: 0
     action:
