@@ -12,9 +12,9 @@ resources:
     type: module
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.7
     type: js
-  - url: /local/fold-entity-row.js?v=3ae2c4
+  - url: /local/fold-entity-row.js?v=1cb484
     type: js
-  - url: /local/button-card.js?v=0.0.3
+  - url: /local/button-card.js?v=0.0.4
     type: module
 views:
   - title: Home Assistant

@@ -1,6 +1,6 @@
 import {
   LitElement, html,
-} from 'https://unpkg-gcp.firebaseapp.com/@polymer/lit-element@0.5.2/lit-element.js?module';
+} from '/local/button-card-depends/@polymer/lit-element/lit-element.js';
 
 class ButtonCard extends LitElement {
   static get properties() {
@@ -102,7 +102,7 @@ class ButtonCard extends LitElement {
     const fontColor = this.getFontColorBasedOnBackgroundColor(color);
     return html`
     <style>
-    ha-icon {  
+    ha-icon {
       display: flex;
       margin: auto;
     }
@@ -181,9 +181,8 @@ class ButtonCard extends LitElement {
     // if (!config.entity) {
     //   throw new Error('You need to define entity');
     // }
-    this.config = config;
+    this.config = {...config};
     this.config.color = config.color ? config.color : 'var(--primary-text-color)';
-    this.config.state = config.state;
     this.config.size = config.size ? config.size : '40%';
     let cardStyle = '';
     if (config.style) {
