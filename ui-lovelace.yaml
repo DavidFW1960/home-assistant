@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
     type: js
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.6.2
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.6.3.1
     type: module
   - url: /local/mini-media-player-bundle.js?v=0.9.8
     type: module
@@ -355,7 +355,8 @@ views:
             title: NSW Warnings & Events
             show_header_toggle: false
             entities:
-              - group.all_geolocation_events 
+              - type: custom:fold-entity-row
+                head: group.all_geolocation_events 
           - type: map
             show_header_toggle: false
             geo_location_sources:
