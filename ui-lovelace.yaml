@@ -6,13 +6,13 @@ resources:
     type: js
   - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
     type: js
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.6.3.1
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.7.1
     type: module
   - url: /local/mini-media-player-bundle.js?v=0.9.8
     type: module
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.7
     type: js
-  - url: /local/fold-entity-row.js?v=1cb484
+  - url: /local/fold-entity-row.js?v=5ab35c
     type: js
   - url: /local/button-card.js?v=0.0.4
     type: module
@@ -300,6 +300,21 @@ views:
             show_beaufort: false
             old_daily_format: false
             time_format: 12
+            temp_top_margin: -20px
+            temp_font_weight: 300
+            temp_font_size: 4em
+            temp_right_pos: 1em
+            temp_uom_top_margin: -14px
+            temp_uom_right_margin: 7px
+            apparent_top_margin: 45px
+            apparent_right_pos: 1em
+            apparent_right_margin: 1em
+            current_text_top_margin: 39px
+            current_text_left_pos: 5em
+            current_text_font_size: 1.5em
+            current_data_top_margin: 5em
+            large_icon_top_margin: -3.5em
+            large_icon_left_position: 0em
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 72
@@ -356,6 +371,7 @@ views:
             show_header_toggle: false
             entities:
               - type: custom:fold-entity-row
+                open: true
                 head: group.all_geolocation_events 
           - type: map
             show_header_toggle: false

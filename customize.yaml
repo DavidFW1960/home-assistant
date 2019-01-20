@@ -378,4 +378,7 @@ sensor.alarm_firmware:
 input_boolean.alarmgaragedoor:
   friendly_name: Exit-Enter
   icon: mdi:security
-
+group.all_geolocation_events:
+  icon: mdi:map
+switch.sonoff:
+  friendly_name: sonoff7-3474
