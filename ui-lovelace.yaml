@@ -14,7 +14,7 @@ resources:
     type: js
   - url: /local/fold-entity-row.js?v=5ab35c
     type: js
-  - url: /local/button-card.js?v=0.0.4
+  - url: /local/button-card.js?v=0.0.5
     type: module
 views:
   - title: Home Assistant
