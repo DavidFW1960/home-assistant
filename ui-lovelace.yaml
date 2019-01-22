@@ -303,9 +303,9 @@ views:
             temp_top_margin: -20px
             temp_font_weight: 300
             temp_font_size: 4em
-            temp_right_pos: 1em
+            temp_right_pos: 0.7em
             temp_uom_top_margin: -14px
-            temp_uom_right_margin: 7px
+            temp_uom_right_margin: 0px
             apparent_top_margin: 45px
             apparent_right_pos: 1em
             apparent_right_margin: 1em

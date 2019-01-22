@@ -60,14 +60,3 @@ sensor:
           {% else %}
             {{ states.sensor.central_gosford.attributes.route }} in {{ states.sensor.central_gosford.attributes.due }}m ({{ states.sensor.central_gosford.attributes.delay }}m delay)
           {% endif %}
-
-group:
-  transport:
-    name: Transport
-    view: no
-    icon: mdi:train
-    entities:
-      - sensor.busmonitor1
-      - sensor.busmonitor2
-      - sensor.trainmonitor1
-      - sensor.trainmonitor2

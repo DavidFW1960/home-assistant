@@ -111,22 +111,3 @@ history_graph:
       - sensor.daylengthchange        
     hours_to_show: 168
     refresh: 1800
-
-group:
-  time_tides:
-    name: Season, Sun & Moon Phase
-    view: no
-    icon: mdi:sun
-    entities:
-      - sensor.seasonname
-      - sun.sun
-      - sensor.sunrisetoday
-      - sensor.sunsettoday
-      - sensor.nextsunrise
-      - sensor.nextsunset
-      - sensor.daylightyesterday
-      - sensor.daylighttoday
-      - sensor.daylighttomorrow
-      - history_graph.day_length_change
-      - sensor.yrwthr
-      - sensor.moonphases

@@ -215,18 +215,3 @@ sensor:
                          {% elif is_state("sensor.dark_sky_icon","lightning") %} Lightning
                          {% elif is_state("sensor.dark_sky_icon","thunderstorm") %} Thunderstorm
                          {% endif %}'
-
-group:
-  weather_card_forecast:
-    name: Forecast
-    view: no
-    icon: mdi:sun
-    entities:
-      - sensor.forecast_0
-      - sensor.forecast_1
-      - sensor.forecast_2
-      - sensor.forecast_3
-      - sensor.forecast_4
-      - sensor.forecast_5
-      - sensor.forecast_6
-      - sensor.forecast_7

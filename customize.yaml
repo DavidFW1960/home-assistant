@@ -1,51 +1,47 @@
-group.all_automations:
-  friendly_name: Automations
-  hidden: false
-  control: hidden
-group.homeaway:
-  friendly_name: Home and Away Automations
-  hidden: false
-group.darkskyvisible:
-  friendly_name: Dark Sky
-group.bom:
-  friendly_name: Weather from BOM Australia
-group.bomradar:
-  friendly_name: BOM Satelite & Radar
-group.ios_devices:
-  friendly_name: iOS Devices
-group.nuc_resources:
-  friendly_name: NUC Resources
-group.nswfuel:
-  friendly_name: NSW Fuel Watch
-group.hassio:
-  friendly_name: System Information
-group.all_geo_location_events:
-  icon: mdi:fire
-switch.sonoff23110:
-  friendly_name: Toothbrush
-  icon: mdi:tooth
-switch.home_assistant:
-  friendly_name: Home Assistant
-  icon: mdi:home-assistant
-sensor.sonoff_firmware_version_available:
-  icon: mdi:script
-sensor.artisan_software_version:
-  icon: mdi:coffee
-binary_sensor.sonoff_update_available:
-  friendly_name: Update Available Sonoff
-  device_class: problem
-sensor.toothbrush_firmware:
-  icon: mdi:tooth
-sensor.coffee_maker_firmware:
-  icon: mdi:coffee
 switch.sonoff12914:
   friendly_name: Coffee Maker
   icon: mdi:coffee
+switch.sonoff23110:
+  friendly_name: Toothbrush
+  icon: mdi:tooth
+switch.sonoff0898:
+  friendly_name: sonoff3-0898
+switch.sonoff0851:
+  friendly_name: sonoff4-0851
+switch.sonoff51083:
+  friendly_name: Garage Door
+  icon: mdi:garage
+switch.sonoff63719:
+  friendly_name: Alarm
+  icon: mdi:security-home
+switch.sonoff73474:
+  friendly_name: sonoff7-3474
+switch.home_assistant:
+  friendly_name: Home Assistant
+  icon: mdi:home-assistant
 switch.vpn_router:
   icon: mdi:kodi
 switch.hifi:
   icon: mdi:television
   friendly_name: HiFi
+sensor.coffee_maker_firmware:
+  icon: mdi:coffee
+sensor.toothbrush_firmware:
+  icon: mdi:tooth
+sensor.garage_door_firmware:
+  icon: mdi:garage
+sensor.alarm_firmware:
+  icon: mdi:security-home
+sensor.sonoff_firmware_version_available:
+  icon: mdi:script
+binary_sensor.sonoff_update_available:
+  friendly_name: Update Available Sonoff
+  device_class: problem
+input_boolean.alarmgaragedoor:
+  friendly_name: Exit-Enter
+  icon: mdi:security
+sensor.artisan_software_version:
+  icon: mdi:coffee
 sensor.fritz_netmonitor:
   friendly_name: Fritz Net Monitor
 sensor.hass_current_beta_version:
@@ -82,10 +78,8 @@ sensor.speedtest_download_filtered:
   icon: mdi:speedometer
 sensor.speedtest_upload_filtered:
   icon: mdi:speedometer
-sensor.karionggosford:
-  hidden: true
-sensor.gosfordkariong:
-  hidden: true
+group.all_geolocation_events:
+  icon: mdi:map
 sensor.busmonitor1:
   icon: mdi:bus
 sensor.busmonitor2:
@@ -94,10 +88,6 @@ sensor.trainmonitor1:
   icon: mdi:train
 sensor.trainmonitor2:
   icon: mdi:train
-sensor.gosfordcentral:
-  hidden: true
-sensor.centralgosford:
-  hidden: true
 media_player.roku_5x46aj056306:
   friendly_name: Telstra TV
 media_player.foxtel_7587:
@@ -106,6 +96,8 @@ media_player.txnr1009:
   friendly_name: Onkyo
 media_player.osmc_vero4:
   friendly_name: Kodi OSMC Vero
+media_player.tvua55d8000:
+  friendly_name: Samsung TV
 light.yeelight_white_34ce00882e27:
   friendly_name: Fan Light
 light.yeelight_white_34ce00887db6:
@@ -158,12 +150,6 @@ sensor.dark_sky_daily_summary:
   friendly_name: Daily Summary
 sensor.dark_sky_hourly_summary:
   friendly_name: Hourly Summary
-sensor.dark_sky_precip_probability:
-  friendly_name: Probability Rain Today
-  hidden: true
-sensor.dark_sky_precip_probability_1:
-  friendly_name: Probability Rain Tomorrow
-  hidden: true
 sensor.dark_sky_summary_0:
   friendly_name: Summary Today
 sensor.dark_sky_summary_1:
@@ -172,82 +158,6 @@ sensor.dark_sky_wind_speed_0:
   friendly_name: Wind Speed Today
 sensor.dark_sky_wind_speed_1:
   friendly_name: Wind Speed Tomorrow
-sensor.dark_sky_cloud_coverage_2:
-  hidden: true
-sensor.dark_sky_cloud_coverage_3:
-  hidden: true
-sensor.dark_sky_cloud_coverage_4:
-  hidden: true
-sensor.dark_sky_cloud_coverage_5:
-  hidden: true
-sensor.dark_sky_cloud_coverage_6:
-  hidden: true
-sensor.dark_sky_cloud_coverage_7:
-  hidden: true
-sensor.dark_sky_daytime_high_temperature_2:
-  hidden: true
-sensor.dark_sky_daytime_high_temperature_3:
-  hidden: true
-sensor.dark_sky_daytime_high_temperature_4:
-  hidden: true
-sensor.dark_sky_daytime_high_temperature_5:
-  hidden: true
-sensor.dark_sky_daytime_high_temperature_6:
-  hidden: true
-sensor.dark_sky_daytime_high_temperature_7:
-  hidden: true
-sensor.dark_sky_overnight_low_temperature_2:
-  hidden: true
-sensor.dark_sky_overnight_low_temperature_3:
-  hidden: true
-sensor.dark_sky_overnight_low_temperature_4:
-  hidden: true
-sensor.dark_sky_overnight_low_temperature_5:
-  hidden: true
-sensor.dark_sky_overnight_low_temperature_6:
-  hidden: true
-sensor.dark_sky_overnight_low_temperature_7:
-  hidden: true
-sensor.dark_sky_icon:
-  hidden: true
-sensor.dark_sky_icon_1:
-  hidden: true
-sensor.dark_sky_icon_2:
-  hidden: true
-sensor.dark_sky_icon_3:
-  hidden: true
-sensor.dark_sky_icon_4:
-  hidden: true
-sensor.dark_sky_icon_5:
-  hidden: true
-sensor.dark_sky_icon_6:
-  hidden: true
-sensor.dark_sky_icon_7:
-  hidden: true
-sensor.dark_sky_precip_probability_2:
-  hidden: true
-sensor.dark_sky_precip_probability_3:
-  hidden: true
-sensor.dark_sky_precip_probability_4:
-  hidden: true
-sensor.dark_sky_precip_probability_5:
-  hidden: true
-sensor.dark_sky_precip_probability_6:
-  hidden: true
-sensor.dark_sky_precip_probability_7:
-  hidden: true
-sensor.dark_sky_wind_speed_2:
-  hidden: true
-sensor.dark_sky_wind_speed_3:
-  hidden: true
-sensor.dark_sky_wind_speed_4:
-  hidden: true
-sensor.dark_sky_wind_speed_5:
-  hidden: true
-sensor.dark_sky_wind_speed_6:
-  hidden: true
-sensor.dark_sky_wind_speed_7:
-  hidden: true
 sensor.yrwthr:
   friendly_name: Weather
 sensor.yr_symbol:
@@ -310,8 +220,6 @@ sensor.sunrisetoday:
   friendly_name: Sunrise (Today)
 sensor.sunsettoday:
   friendly_name: Sunset (Today)
-sensor.decimaldaylengthtoday:
-  hidden: true
 sensor.disk_use:
   friendly_name: Disk Used
 sensor.disk_free:
@@ -353,10 +261,6 @@ sensor.last_boot:
 sensor.systemuptime:
   friendly_name: Since Last Boot
   icon: mdi:clock
-sensor.hass_current_hassos_version:
-  hidden: true
-media_player.tvua55d8000:
-  friendly_name: Samsung TV
 sensor.last_successful_authentication:
   friendly_name: Last Successful Authentication
 sensor.memory_mean:
@@ -365,20 +269,3 @@ sensor.memory_mean:
 sensor.processor_mean:
   friendly_name: Processor % Use Stats
   icon: mdi:memory
-switch.sonoff51083:
-  friendly_name: Garage Door
-  icon: mdi:garage
-sensor.garage_door_firmware:
-  icon: mdi:garage
-switch.sonoff63719:
-  friendly_name: Alarm
-  icon: mdi:security-home
-sensor.alarm_firmware:
-  icon: mdi:security-home
-input_boolean.alarmgaragedoor:
-  friendly_name: Exit-Enter
-  icon: mdi:security
-group.all_geolocation_events:
-  icon: mdi:map
-switch.sonoff:
-  friendly_name: sonoff7-3474

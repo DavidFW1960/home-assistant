@@ -127,18 +127,6 @@ binary_sensor:
           {{ states.sensor.hass_current_stable_version.state != 'unavailable' and 
              states.sensor.hass_current_stable_version.state > states.sensor.hass_installed_version.state
               }}
-group:
-  host_updates:
-    name: 'Updates'
-    entities:
-      - updater.updater
-      - sensor.hass_installed_version
-      - sensor.hass_available_to_install_version
-      - sensor.hass_current_stable_version
-      - sensor.hass_current_beta_version
-      - sensor.hass_current_dev_version
-      - sensor.hass_current_supervisor_version
-      - binary_sensor.hass_update_available
 
 ################################################
 ## Automation

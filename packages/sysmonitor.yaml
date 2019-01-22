@@ -155,29 +155,6 @@ history_graph:
     hours_to_show: 24
     refresh: 1800
 
-group:
-  nuc_resources:
-    name: "NUC Resources"
-    view: no
-    icon: mdi:server
-    entities:
-      - sensor.cpu_temperature
-      - sensor.wan_ip_address
-      - sensor.disk_use
-      - sensor.disk_free
-      - sensor.disk_use_percent
-      - sensor.memory_use_percent
-      - sensor.memory_use
-      - sensor.memory_free
-      - sensor.swap_use_percent
-      - sensor.load
-      - sensor.processor_use
-      - sensor.ipv4_address
-      - sensor.network_in_eno1
-      - sensor.network_out_eno1
-      - sensor.last_boot
-      - sensor.systemuptime
-
 automation:
   - alias: 'System Runtime'
     initial_state: 'on'
