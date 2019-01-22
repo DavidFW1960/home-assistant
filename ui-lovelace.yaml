@@ -309,7 +309,7 @@ views:
             apparent_top_margin: 45px
             apparent_right_pos: 1em
             apparent_right_margin: 1em
-            current_text_top_margin: 39px
+            current_text_top_margin: -4px
             current_text_left_pos: 5em
             current_text_font_size: 1.5em
             current_data_top_margin: 5em

@@ -164,7 +164,7 @@ group:
       - sensor.cpu_temperature
       - sensor.wan_ip_address
       - sensor.disk_use
-      - sensor.disk_free_
+      - sensor.disk_free
       - sensor.disk_use_percent
       - sensor.memory_use_percent
       - sensor.memory_use

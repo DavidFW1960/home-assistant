@@ -312,11 +312,11 @@ sensor.sunsettoday:
   friendly_name: Sunset (Today)
 sensor.decimaldaylengthtoday:
   hidden: true
-sensor.disk_use_:
+sensor.disk_use:
   friendly_name: Disk Used
-sensor.disk_free_:
+sensor.disk_free:
   friendly_name: Disk Free
-sensor.disk_use_percent_:
+sensor.disk_use_percent:
   friendly_name: Percent Disk Used
 sensor.memory_use_percent:
   friendly_name: Percent Memory Used

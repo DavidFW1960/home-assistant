@@ -210,4 +210,4 @@ Scenes:
 HomeAway:
   - automation.coffee_maker_on
   - automation.toothbrush_on
-  - automation.turn_lounge_light_on_elevation__25__after_4pm
+  - automation.turn_lounge_light_on_elevation_25_after_4pm
