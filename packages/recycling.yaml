@@ -1,0 +1,67 @@
+# Download the Bin icons from my github https://github.com/DavidFW1960/home-assistant/tree/master/www/icons/recyclinggreenbin
+# and save them under /www/icons/recyclinggreenbin/ in your configuration folder.
+# Show Bins Sensors
+
+sensor:
+  - platform: template
+    sensors:
+      recycling_bin_tomorrow:
+        entity_id: []
+        friendly_name: "Recycling Bin Tomorrow"
+        value_template: "{{ ((as_timestamp(now()) - as_timestamp('2019-01-21 00:00:00'))) / 86400 |int % 14 < 1 }}"
+        entity_picture_template: >-
+          {{ '/local/icons/recyclinggreenbin/recycling_bin_tomorrow.png'}}
+      recycling_bin_today:
+        entity_id: []
+        friendly_name: "Recycling Bin Today"
+        value_template: "{{ ((as_timestamp(now()) - as_timestamp('2019-01-22 00:00:00'))) / 86400 |int % 14 < 1 }}"
+        entity_picture_template: >-
+          {{ '/local/icons/recyclinggreenbin/recycling_bin_today.png'}}
+      green_bin_tomorrow:
+        entity_id: []
+        friendly_name: "Green Bin Tomorrow"
+        value_template: "{{ ((as_timestamp(now()) - as_timestamp('2019-01-28 00:00:00'))) / 86400 |int % 14 < 1 }}"
+        entity_picture_template: >-
+          {{ '/local/icons/recyclinggreenbin/green_waste_bin_tomorrow.png'}}
+      green_bin_today:
+        entity_id: []
+        friendly_name: "Green Bin Today"
+        value_template: "{{ ((as_timestamp(now()) - as_timestamp('2019-01-29 00:00:00'))) / 86400 |int % 14 < 1 }}"
+        entity_picture_template: >-
+          {{ '/local/icons/recyclinggreenbin/green_waste_bin_today.png'}}
+
+automation:
+  - alias: 'Update Bin Night'
+    trigger:
+      - event: start
+        platform: homeassistant
+      - platform: time_pattern
+        hours: '/1'
+        minutes: 0
+        seconds: 0
+    action:
+      - service: homeassistant.update_entity
+        entity_id: sensor.recycling_bin_today, sensor.recycling_bin_tomorrow, sensor.green_bin_today, sensor.green_bin_tomorrow
+  - alias: 'Bin Night'
+    initial_state: 'on'
+    trigger:
+      - platform: time
+        at: '19:00:00'
+    condition:
+      condition: and
+      conditions:
+        - condition: template
+          value_template: '{{ now().strftime("%H:%M") == "19:00" and now().weekday() == 1 }}'
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: sensor.recycling_bin_today
+              state: 'True'
+            - condition: state
+              entity_id: sensor.green_bin_today
+              state: 'True'
+    action:
+      - service: notify.notify
+        data_template:
+          message: '{%- if (states.sensor.recycling_bin_today.state) == "True" -%} Recycling Bin Night {%- else -%} Green Bin Tonight {%- endif -%}'
+          title: Bins Out Tonight

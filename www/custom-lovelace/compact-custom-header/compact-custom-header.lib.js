@@ -1,48 +1,50 @@
-// Avoid "already defined" errors when navigating away from Lovelace and back.
-if (doc_root == undefined) {
-  var app_layout, card, chevron, div_view, doc_root, drawer_layout, edit_mode,
-      hui_root, icon, iron_icon, love_lace, main, menu_btn, menu_icon,
-      menu_iron_icon, notify_btn, notify_icon, notify_dot, notify_iron_icon,
-      options_btn, options_icon, options_iron_icon, pages, panel, proceed,
-      raw_config, tabs, tabs_container, tabs_count, toolbar, voice_btn,
-      voice_icon, voice_iron_icon;
-}
-// Try so that if we're not on a lovelace page it won't continue to run.
-try {
-  // Get the parents of the elements to style.
-  doc_root = document.querySelector('home-assistant').shadowRoot;
-  main = doc_root.querySelector('home-assistant-main').shadowRoot;
-  drawer_layout = main.querySelector('app-drawer-layout');
-  pages = drawer_layout.querySelector('partial-panel-resolver').shadowRoot;
-  panel = pages.querySelector('[id="panel"]');
-  love_lace = panel.querySelector('ha-panel-lovelace').shadowRoot;
-  hui_root = love_lace.querySelector('hui-root').shadowRoot;
-  proceed = true;
-} catch (e) {
-  proceed = false;
-  console.log(e);
-}
-// If parent elements exist proceed.
-if (proceed) {
-  // Get elements to style.
-  app_layout = hui_root.querySelector('ha-app-layout');
-  div_view = app_layout.querySelector('[id="view"]');
-  tabs = hui_root.querySelector('paper-tabs');
-  tabs_count = tabs.querySelectorAll('paper-tab');
-  tabs_container = tabs.shadowRoot.getElementById('tabsContainer');
-  chevron = tabs.shadowRoot.querySelectorAll('[icon^="paper-tabs:chevron"]');
-  toolbar = hui_root.querySelectorAll('app-toolbar');
+var config_views = window.cch_ua_views;
+var config_header = window.cch_header;
+var config_menu = window.cch_menu;
+var config_notify = window.cch_notify;
+var config_voice = window.cch_voice;
+var config_options = window.cch_options;
+var config_tabs = window.cch_tabs;
+var config_clock = window.cch_clock;
+var config_clock_form =window.cch_clock_format;
+var config_am_pm = window.cch_am_pm;
+var config_disable = window.cch_disable;
+var config_background = window.cch_background_image;
+var display_tabs = window.cch_tabs_display;
+var display_ua = window.cch_ua_display;
 
-  // Find the card element.
-  recursive_walk(app_layout, function(node) {
+// Avoid "already defined" error when navigating away from Lovelace and back.
+if (hui_root == undefined) var hui_root, card;
+
+// Find hui-root element
+recursive_walk(document, 'HUI-ROOT', function(node) {
+  hui_root = node.nodeName == 'HUI-ROOT' ? node.shadowRoot : null;
+});
+
+// If hui-root was found we're on a lovelace page.
+if (hui_root) {
+  let app_layout = hui_root.querySelector('ha-app-layout');
+  let div_view = app_layout.querySelector('[id="view"]');
+  let toolbar = hui_root.querySelectorAll('app-toolbar');
+  var tabs = hui_root.querySelector('paper-tabs');
+  if (tabs) {
+    let tabs_sr = tabs.shadowRoot;
+    var tabs_count = tabs.querySelectorAll('paper-tab');
+    var tabs_container = tabs_sr.getElementById('tabsContainer');
+    var arrows = tabs_sr.querySelectorAll('[icon^="paper-tabs:chevron"]');
+  }
+
+  // Find this card's element.
+  recursive_walk(app_layout, 'COMPACT-CUSTOM-HEADER', function(node) {
     card = node.nodeName == 'COMPACT-CUSTOM-HEADER' ? node : null;
   });
 
   // When exiting raw config editor buttons are hidden.
-  raw_config = hui_root.querySelector('ha-menu-button') == null;
+  let raw_config = hui_root.querySelector('ha-menu-button') == null;
+
   // If multiple toolbars exist & 2nd one is displayed, edit mode is active.
-  if (toolbar != null && toolbar.length > 1) {
-    edit_mode = toolbar[1].style.cssText != 'display: none;' ? true : false;
+  if (toolbar.length > 1) {
+    var edit_mode = toolbar[1].style.cssText != 'display: none;' ? true : false;
   } else {
     edit_mode = false;
   }
@@ -89,17 +91,11 @@ if (proceed) {
     width:100%;
   `;
 
-  // Hide whole column if this card is the only one it contains.
-  if (card != null) {
-    if (card.parentNode.children.length == 1) {
-      card.parentNode.style.cssText = 'display:none';
-    } else {
-      card.parentNode.style.cssText = '';
-    }
-    // Create and display card in edit & raw config modes.
+  if (card) {
+    // Create and display card if we're in edit or raw config modes.
     if (edit_mode || raw_config) {
-      let ua_text = window.cch_ua_display ? 'Hide' : 'Show';
-      let tabs_text = window.cch_tabs_display ? 'Revert' : 'Show';
+      let ua_text = display_ua ? 'Hide' : 'Show';
+      let tabs_text = display_tabs ? 'Revert' : 'Show';
       card.style.cssText = '';
       card.innerHTML = `
         <svg style="${svg_style}" viewBox="0 0 24 24">
@@ -125,7 +121,7 @@ if (proceed) {
       card.parentNode.style.cssText = `
         background-color:var(--paper-card-background-color);
       `;
-      if (!window.cch_ua_display) {
+      if (!display_ua) {
         card.querySelector('[id="cch_ua"]').style.display = 'none';
       }
       card.querySelector('[id="cch_ua"]').innerHTML = navigator.userAgent;
@@ -133,45 +129,36 @@ if (proceed) {
       // Hide card outside of edit mode.
       card.style.cssText = 'display:none';
       card.innerHTML = '';
+      // When not in edit mode hide whole column if this is the only card in it.
+      if (card.parentNode.children.length == 1) {
+        card.parentNode.style.cssText = 'display:none';
+      } else {
+        card.parentNode.style.cssText = '';
+      }
     }
   }
-  // Resize to update header.
+  // Resize to update.
   window.dispatchEvent(new Event('resize'));
 
   // Style header and icons.
-  if (!window.cch_disable && !raw_config) {
-    menu_btn = hui_root.querySelector('ha-menu-button');
-    menu_icon = menu_btn.shadowRoot.querySelector('paper-icon-button');
-    menu_iron_icon = menu_icon.shadowRoot.querySelector('iron-icon');
-    notify_btn = hui_root.querySelector('hui-notifications-button');
-    notify_icon = notify_btn.shadowRoot.querySelector('paper-icon-button');
-    notify_iron_icon = notify_icon.shadowRoot.querySelector('iron-icon');
-    notify_dot = notify_btn.shadowRoot.querySelector('[class="indicator"]');
-    voice_btn = hui_root.querySelector('ha-start-voice-button');
-    voice_icon = voice_btn.shadowRoot.querySelector('paper-icon-button');
-    voice_iron_icon = voice_icon.shadowRoot.querySelector('iron-icon');
-    options_btn = hui_root.querySelector('paper-menu-button');
-    options_icon = options_btn.querySelector('paper-icon-button');
-    options_iron_icon = options_icon.shadowRoot.querySelector('iron-icon');
+  if (!config_disable && !raw_config) {
+    let menu_btn = hui_root.querySelector('ha-menu-button');
+    let menu_icon = menu_btn.shadowRoot.querySelector('paper-icon-button');
+    let menu_iron_icon = menu_icon.shadowRoot.querySelector('iron-icon');
+    let notify_btn = hui_root.querySelector('hui-notifications-button');
+    let notify_icon = notify_btn.shadowRoot.querySelector('paper-icon-button');
+    let notify_iron_icon = notify_icon.shadowRoot.querySelector('iron-icon');
+    var notify_dot = notify_btn.shadowRoot.querySelector('[class="indicator"]');
+    let voice_btn = hui_root.querySelector('ha-start-voice-button');
+    let voice_icon = voice_btn.shadowRoot.querySelector('paper-icon-button');
+    let voice_iron_icon = voice_icon.shadowRoot.querySelector('iron-icon');
+    var options_btn = hui_root.querySelector('paper-menu-button');
+    let options_icon = options_btn.querySelector('paper-icon-button');
+    let options_iron_icon = options_icon.shadowRoot.querySelector('iron-icon');
 
-    if (window.cch_ua_views && !window.cch_tabs_display) {
-      // Hide or show tabs.
-      for (let i = 0; i < tabs_count.length; i++) {
-        if (window.cch_ua_views.indexOf(String(i+1)) > -1) {
-          element_style(window.cch_tabs, tabs_count[i], false);
-        } else {
-          tabs_count[i].style.cssText = 'display:none;';
-        }
-      }
-      // If user agent settings hide first tab, then redirect to new first tab.
-      if (!window.cch_tabs_display && window.cch_ua_views[0] > 1 &&
-          tabs_count[0].className == 'iron-selected') {
-        tabs_count[parseInt(window.cch_ua_views[0]) - 1].click();
-      }
-    } else {
-      for (let i = 0; i < tabs_count.length; i++) {
-          element_style(window.cch_tabs, tabs_count[i], false);
-        }
+    // Hide header completely if set to false in config.
+    if (!config_header) {
+      hui_root.querySelector('app-header').style.cssText = 'display:none;';
     }
 
     // Remove clock from element if no longer set.
@@ -179,148 +166,159 @@ if (proceed) {
     remove_clock('voice', voice_icon, voice_btn);
     remove_clock('options', options_icon, options_btn);
     remove_clock('menu', menu_icon, menu_btn);
-  
+
     // Hide or show buttons.
-    element_style(window.cch_menu, menu_btn, true);
-    element_style(window.cch_notify, notify_btn, true);
-    element_style(window.cch_voice, voice_btn, true);
-    element_style(window.cch_options, options_btn, true);
+    element_style(config_menu, menu_btn, true);
+    element_style(config_notify, notify_btn, true);
+    element_style(config_voice, voice_btn, true);
+    element_style(config_options, options_btn, true);
 
-    // Hide scroll arrows on tab bar to save space.
-    chevron[0].style.cssText = 'display:none;';
-    chevron[1].style.cssText = 'display:none;';
     // Pad bottom for image backgrounds as we're shifted -64px.
-    if (window.cch_background_image) {
-      div_view.style.paddingBottom = '64px';
-    } else {
-      div_view.style.paddingBottom = '';
-    }
-    // Hide header if set to false in config
-    if (!window.cch_header) {
-      hui_root.querySelector('app-header').style.cssText = 'display:none;';
-    }
+    div_view.style.paddingBottom = config_background ? '64px' : '';
 
-    // Shift the header up to hide unused portion, but only with multiple tabs.
-    // When there is only one tab the header is already collapsed.
-    if (tabs_count.length > 1) {
+    // Set clock width.
+    let clock_w = config_clock_form == 12 && config_am_pm ? 110 : 80;
+
+    if (tabs) {
+      // Add width of all visible elements on right side for tabs margin.
+      let pad = 0;
+      pad += config_notify && config_clock != 'notification' ? 45 : 0;
+      pad += config_voice && config_clock != 'voice' ? 45 : 0;
+      pad += config_options && config_clock != 'options' ? 45 : 0;
+      if (config_clock && config_clock != 'menu') {
+        pad += config_am_pm && config_clock_form == 12 ? 110 : 80;
+      }
+      tabs.style.cssText = `margin-right:${pad}px;`;
+
+      // Add margin to left side if menu button is the clock.
+      if (config_menu && config_clock != 'menu') {
+        tabs_container.style.cssText = 'margin-left:60px;';
+      } else if (config_menu && config_clock == 'menu') {
+        tabs_container.style.cssText = `margin-left:${clock_w + 15}px;`;
+      }
+
+      // Shift the header up to hide unused portion.
       hui_root.querySelector('app-toolbar').style.cssText = 'margin-top:-64px;';
-    }
 
-    // Add width of all visible elements on right side for tabs margin.
-    let pad = 20;
-    pad += window.cch_notify && window.cch_clock != 'notification' ? 40 : 0;
-    pad += window.cch_voice && window.cch_clock != 'voice' ? 40 : 0;
-    pad += window.cch_options && window.cch_clock != 'options' ? 56 : 0;
-    if (window.cch_clock) {
-      pad += window.cch_am_pm && window.ch_clock_format == 12 ? 30 : 0;
-      pad += 60;
-    }
-    tabs.style.cssText = `margin-right:${pad}px;`;
+      // Hide tab bar scroll arrows to save space since we can still swipe.
+      arrows[0].style.cssText = 'display:none;';
+      arrows[1].style.cssText = 'display:none;';
 
-    // Set width of clock based on format options.
-    let clock_width = window.cch_clock_format == 12 && window.cch_am_pm ?
-      90 : 70;
-    // Add margin to the left side if the menu button is a clock.
-    if (window.cch_menu && window.cch_clock != 'menu') {
-      tabs_container.style.cssText = 'margin-left:60px;';
-    } else if (window.cch_menu && window.cch_clock == 'menu') {
-      tabs_container.style.cssText = `margin-left:${clock_width + 15}px;`;
+      // Hide or show tabs.
+      if (config_views && !display_tabs) {
+        for (let i = 0; i < tabs_count.length; i++) {
+          if (config_views.indexOf(String(i)) > -1) {
+            element_style(config_tabs, tabs_count[i], false);
+          } else {
+            tabs_count[i].style.cssText = 'display:none;';
+          }
+        }
+        // If user agent hide's first tab, then redirect to new first tab.
+        if (!display_tabs && config_views[0] > 0 &&
+            tabs_count[0].className == 'iron-selected') {
+          tabs_count[parseInt(config_views[0])].click();
+        }
+      } else {
+        for (let i = 0; i < tabs_count.length; i++) {
+            element_style(config_tabs, tabs_count[i], false);
+        }
+      }
     }
 
     // Strings to compare config to. Avoids errors while typing in edit field.
     let clock_strings = ['notification','voice','options','menu'];
 
     // Get elements to style for clock choice.
-    if (clock_strings.indexOf(window.cch_clock) > -1) {
-      if (window.cch_clock == 'notification') {
-        icon = notify_icon;
-        iron_icon = notify_iron_icon;
+    if (clock_strings.indexOf(config_clock) > -1) {
+      if (config_clock == 'notification') {
+        var icon = notify_icon;
+        var iron_icon = notify_iron_icon;
         notify_dot.style.cssText = 'top:14.5px;left:-7px';
-      } else if (window.cch_clock == 'voice') {
+      } else if (config_clock == 'voice') {
         icon = voice_icon;
         iron_icon = voice_iron_icon;
-      } else if (window.cch_clock == 'options') {
+      } else if (config_clock == 'options') {
         icon = options_icon;
         iron_icon = options_iron_icon;
-      } else if (window.cch_clock == 'menu') {
+      } else if (config_clock == 'menu') {
         icon = menu_icon;
         iron_icon = menu_iron_icon;
       }
+
       // If the clock element doesn't exist yet, create & insert.
-      if (window.cch_clock && clock == null) {
+      if (config_clock && clock == null) {
         let create_clock = document.createElement('p');
         create_clock.setAttribute('id','cch_clock');
         create_clock.style.cssText = `
-          width:${clock_width}px;
+          width:${clock_w}px;
           margin-top:2px;
           margin-left:-8px;
         `;
         iron_icon.parentNode.insertBefore(create_clock, iron_icon);
       }
+
       // Style clock and insert time text.
       var clock = icon.shadowRoot.getElementById('cch_clock');
-      if (window.cch_clock && clock != null) {
+      if (config_clock && clock != null) {
         let clock_format = {
-          'hour12': (window.cch_clock_format != 24),
+          'hour12': (config_clock_form != 24),
           'hour': '2-digit',
           'minute': '2-digit'
         };
         let date = new Date();
         date = date.toLocaleTimeString([], clock_format);
-        if (!window.cch_am_pm && window.cch_clock_format == 12) {
+        if (!config_am_pm && config_clock_form == 12) {
           clock.innerHTML = date.slice(0, -3);
         } else {
           clock.innerHTML = date;
         }
         icon.style.cssText = `
           margin-right:-5px;
-          width:${clock_width}px;
+          width:${clock_w}px;
           text-align: center;
         `;
         iron_icon.style.cssText = 'display:none;';
-        window.dispatchEvent(new Event('resize'));
       }
     }
   }
-
   window.dispatchEvent(new Event('resize'));
 }
 
-// Walk the DOM to find card element.
-function recursive_walk(node, func) {
-    var done = func(node) || node.nodeName == 'COMPACT-CUSTOM-HEADER';
+// Walk the DOM to find element.
+function recursive_walk(node, element, func) {
+    var done = func(node) || node.nodeName == element;
     if (done) return true;
     if ('shadowRoot' in node && node.shadowRoot) {
-      done = recursive_walk(node.shadowRoot, func);
+      done = recursive_walk(node.shadowRoot, element, func);
       if (done) return true;
     }
     node = node.firstChild;
     while (node) {
-      done = recursive_walk(node, func);
+      done = recursive_walk(node, element, func);
       if (done) return true;
       node = node.nextSibling;
     }
 }
 
+// Style and hide buttons.
 function element_style(config, element, shift) {
   let top = edit_mode ? 240 : 111;
   let options_style = element == options_btn ?
     'margin-right:-5px; padding:0;' : '';
-  if (tabs_count.length > 1 && shift && !window.cch_disable) {
+  if (tabs && shift && !config_disable) {
     element.style.cssText = config ?
       `z-index:1; margin-top:${top}px;${options_style}` :
       'display:none' ;
-  } else if (!window.cch_disable){
-    element.style.cssText = config ?
-      '' :
-      'display:none' ;
+  } else if (!config_disable){
+    element.style.cssText = config ? '' : 'display:none' ;
   } else {
     element.style.cssText = '';
   }
 }
 
+// Revert button if previously a clock.
 function remove_clock(config, element, parent) {
-  if (window.cch_clock != config &&
+  if (config_clock != config &&
       element.shadowRoot.getElementById('cch_clock') != null) {
     let clock_element = element.shadowRoot.getElementById('cch_clock');
     clock_element.parentNode.querySelector('iron-icon').style.cssText = '';
@@ -336,38 +334,40 @@ function remove_clock(config, element, parent) {
   }
 }
 
+// Show user agent portion of card for button on card.
 function show_user_agent() {
   if (card.querySelector('[id="cch_ua"]') != null) {
-    if (window.cch_ua_display) {
+    if (display_ua) {
       card.querySelector('[id="cch_ua"]').style.display = 'none';
       card.querySelector('[id="btn_ua"]').innerHTML = 'Show user agent';
-      window.cch_ua_display = false;
-    } else if (!window.cch_ua_display) {
+      display_ua = false;
+    } else if (!display_ua) {
       card.querySelector('[id="cch_ua"]').style.display = 'initial';
       card.querySelector('[id="btn_ua"]').innerHTML = 'Hide user agent';
-      window.cch_ua_display = true;
+      display_ua = true;
     }
   }
 }
 
+// Display all tabs for button on card.
 function show_all_tabs() {
-  if (!window.cch_tabs_display) {
+  if (!display_tabs && tabs) {
     for (let i = 0; i < tabs_count.length; i++) {
       tabs_count[i].style.cssText = '';
     }
-    window.cch_tabs_display = true;
+    display_tabs = true;
     card.querySelector('[id="btn_tabs"]').innerHTML = 'Revert all tabs';
-  } else if (window.cch_tabs_display) {
+  } else if (display_tabs && tabs) {
     for (let i = 0; i < tabs_count.length; i++) {
-      if (window.cch_ua_views) {
-        if (window.cch_ua_views.indexOf(String(i+1)) > -1) {
+      if (config_views) {
+        if (config_views.indexOf(String(i+1)) > -1) {
           tabs_count[i].style.cssText = '';
         } else {
           tabs_count[i].style.cssText = 'display:none;';
         }
       }
     }
-    window.cch_tabs_display = false;
+    display_tabs = false;
     card.querySelector('[id="btn_tabs"]').innerHTML = 'Show all tabs';
   }
 }
