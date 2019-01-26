@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
     type: js
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.8.2.1
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.8.3
     type: module
   - url: /local/mini-media-player-bundle.js?v=0.9.8
     type: module
@@ -300,22 +300,22 @@ views:
             show_beaufort: false
             show_separator: false
             time_format: 12
-            temp_top_margin: -20px          #default 5px px or em
+            temp_top_margin: -.3em          #default -.3em px or em
             temp_font_weight: 300           #default 300 numeric
             temp_font_size: 4em             #default 4em em
-            temp_right_pos: 0.85em          #default .85em px or em
-            temp_uom_top_margin: -14px      #default -9px px or em
-            temp_uom_right_margin: 0px      #default 7px px or em
-            apparent_top_margin: 45px       #default 39px px or em
+            temp_right_pos: 0.85em           #default .85em px or em
+            temp_uom_top_margin: -9px      #default -9px px or em
+            temp_uom_right_margin: 7px      #default 7px px or em
+            apparent_top_margin: 45px       #default 45px px or em
             apparent_right_pos: 1em         #default 1em px or em
             apparent_right_margin: 1em      #default 1em px or em
-            current_text_top_margin: -4px   #default 39px px or em
-            current_text_left_pos: 7em      #default 5em px or em
-            current_text_font_size: 1.2em   #default 1.5em em
-            current_data_top_margin: 5em    #default 6em px or em
+            current_text_top_margin: 39px   #default 39px px or em
+            current_text_left_pos: 5em      #default 5em px or em
+            current_text_font_size: 1.5em   #default 1.5em em
+            current_data_top_margin: 7em    #default 7em px or em
             large_icon_top_margin: -3.5em   #default -3.5em px or em
             large_icon_left_position: 0em   #default 0em px or em
-            separator_top_margin: 5em       #default 5em px or em
+            separator_top_margin: 6em       #default 6em px or em
             slot_l1: daytime_high
             slot_l2: wind
             slot_l3: visibility
@@ -666,7 +666,7 @@ views:
             power_color: true
             scroll_info: true
             show_source: true
-          - entity: media_player.tvua55d8000
+          - entity: media_player.ua55d8000_ua55d8000
             type: custom:mini-media-player
             group: true
             artwork: full-cover
