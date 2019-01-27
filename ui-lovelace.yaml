@@ -16,6 +16,8 @@ resources:
     type: js
   - url: /local/button-card.js?v=0.0.5
     type: module
+  - url: /local/auto-entities.js?v=c098c9
+    type: js
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -375,13 +377,15 @@ views:
               action: more-info
             hold_action:
               action: more-info
-          - type: entities
-            title: NSW Warnings & Events
-            show_header_toggle: false
-            entities:
-              - type: custom:fold-entity-row
-                open: true
-                head: group.all_geolocation_events 
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: NSW Warnings & Events
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "geo_location.nsw_fire_service_feed_*"
+            show_empty: true
           - type: map
             show_header_toggle: false
             geo_location_sources:
@@ -588,7 +592,7 @@ views:
       - type: media-control
         entity: media_player.txnr1009
       - type: media-control
-        entity: media_player.tvua55d8000
+        entity: media_player.ua55d8000_ua55d8000
   - title: Media Mini
     icon: mdi:boombox
     cards:
