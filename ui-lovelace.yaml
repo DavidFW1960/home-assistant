@@ -2,7 +2,7 @@ title: Home
 resources:
   - url: /local/card-tools.js?v=297fcc
     type: js
-  - url: /local/tracker-card.js?v=0.1.5
+  - url: /local/tracker-card.js?v=0.2.0
     type: js
   - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
     type: js
@@ -16,7 +16,7 @@ resources:
     type: js
   - url: /local/button-card.js?v=0.0.5
     type: module
-  - url: /local/auto-entities.js?v=c098c9
+  - url: /local/auto-entities.js?v=3cfd04
     type: js
 views:
   - title: Home Assistant
@@ -72,6 +72,28 @@ views:
                   green: 0
                   yellow: 35
                   red: 50
+          - type: history-graph
+            title: Memory Docker
+            hours_to_show: 96
+            refresh_interval: 300
+            entities:
+              - sensor.sonarrmemoryuse
+              - sensor.radarrmemoryuse
+          - type: entities
+            title: Docker Containers
+            show_header_toggle: false
+            entities:
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
+                  label: Containers
+                items:
+                  - switch.hadockermonsabnzbd
+                  - switch.hadockermonsonarr
+                  - switch.hadockermonradarr
+                  - switch.hadockermonlazylibrarian
+                  - switch.hadockermonportainer
+                  - switch.hadockermonwatchtower
           - type: entities
             title: NUC Resources
             show_header_toggle: false
@@ -377,15 +399,21 @@ views:
               action: more-info
             hold_action:
               action: more-info
-          - type: custom:auto-entities
-            card:
-              type: entities
-              title: NSW Warnings & Events
-              show_header_toggle: false
-            filter:
-              include:
-                - entity_id: "geo_location.nsw_fire_service_feed_*"
-            show_empty: true
+          - type: entities
+            title: NSW Warnings & Events
+            show_header_toggle: false
+            entities: 
+              - type: custom:auto-entities
+                card:
+                  type: custom:fold-entity-row
+                  head:
+                    type: section
+                    label: Current Incidents
+                  open: true
+                filter:
+                  include:
+                    - entity_id: "geo_location.nsw_fire_service_feed_*"
+                show_empty: true
           - type: map
             show_header_toggle: false
             geo_location_sources:
@@ -403,8 +431,10 @@ views:
             show_header_toggle: false
             entities:
               - input_boolean.alarmgaragedoor
-              - switch.sonoff51083
-              - switch.sonoff63719
+              - entity: switch.sonoff51083
+                secondary_info: last-changed
+              - entity: switch.sonoff63719
+                secondary_info: last-changed
           - type: horizontal-stack
             cards:
               - type: entity-button
@@ -502,6 +532,7 @@ views:
             show_header_toggle: false
             entities:
               - input_boolean.homeandawayauto
+              - input_boolean.overtime
               - automation.close_garage_and_set_alarm
               - automation.deactivate_alarm_and_open_garage
               - type: divider
@@ -529,6 +560,7 @@ views:
               - automation.home_and_away_off
               - automation.bin_night
               - automation.update_bin_night
+              - automation.restart_docker_containers_when_memory_35
               - type: divider
                 style:
                   height: 30px

@@ -23,6 +23,9 @@ homeassistant:
     - type: notify
     - type: totp
 
+# System Health
+system_health:
+
 #Lovelace
 #lovelace:
 #  mode: yaml
@@ -107,8 +110,9 @@ panel_iframe:
   mdiindex:
     title: MDI Icon Index
     icon: mdi:vector-square
-    url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
-
+#   url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
+    url: https://dev.materialdesignicons.com/icons
+    
 # Recorder
 recorder:
   db_url: !secret mariadburl
@@ -297,7 +301,7 @@ tts:
 ifttt:
   key: !secret ifttt_api
 
-# Xiaomi Switches
+# Xiaomi Switches & Hadockermon
 switch:
   - platform: xiaomi_miio
     name: Home Assistant
@@ -307,6 +311,13 @@ switch:
     name: VPN Router
     host: !secret vpnrouter-ip
     token: !secret vpnrouter-token
+  - platform: hadockermon
+    host: !secret my_hadockermon_host
+    port: !secret my_hadockermon_port
+    stats: true
+    prefix: hadockermon
+    exclude:
+      - 'ha-dockermon'
 
 # Wemo Switch
 wemo:
@@ -334,6 +345,8 @@ input_boolean:
     name: Home and Away Automations
   alarmgaragedoor:
     name: Alarm arm/disarm and Garage door shut/open
+  overtime:
+    name: Overtime
 
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml

@@ -13,7 +13,7 @@ switch.sonoff51083:
   icon: mdi:garage
 switch.sonoff63719:
   friendly_name: Alarm
-  icon: mdi:security-home
+  icon: mdi:shield-home
 switch.sonoff73474:
   friendly_name: sonoff7-3474
 switch.home_assistant:
@@ -31,7 +31,7 @@ sensor.toothbrush_firmware:
 sensor.garage_door_firmware:
   icon: mdi:garage
 sensor.alarm_firmware:
-  icon: mdi:security-home
+  icon: mdi:shield-home
 sensor.sonoff_firmware_version_available:
   icon: mdi:script
 binary_sensor.sonoff_update_available:
@@ -40,6 +40,9 @@ binary_sensor.sonoff_update_available:
 input_boolean.alarmgaragedoor:
   friendly_name: Exit-Enter
   icon: mdi:security
+input_boolean.overtime:
+  friendly_name: Overtime
+  icon: mdi:clock
 sensor.artisan_software_version:
   icon: mdi:coffee
 sensor.fritz_netmonitor:
@@ -263,9 +266,32 @@ sensor.systemuptime:
   icon: mdi:clock
 sensor.last_successful_authentication:
   friendly_name: Last Successful Authentication
+  icon: mdi:shield-check
 sensor.memory_mean:
   friendly_name: Memory % Use Stats
   icon: mdi:memory
 sensor.processor_mean:
   friendly_name: Processor % Use Stats
   icon: mdi:memory
+switch.hadockermonsabnzbd:
+  friendly_name: Sabnzbd
+  icon: mdi:docker
+switch.hadockermonsonarr:
+  friendly_name: Sonarr
+  icon: mdi:docker
+switch.hadockermonradarr:
+  friendly_name: Radarr
+  icon: mdi:docker
+switch.hadockermonlazylibrarian:
+  friendly_name: Lazy Librarian
+  icon: mdi:docker
+switch.hadockermonportainer:
+  friendly_name: Portainer
+  icon: mdi:docker
+switch.hadockermonwatchtower:
+  friendly_name: Watchtower
+  icon: mdi:docker
+sensor.sonarrmemoryuse:
+  friendly_name: Sonarr Memory Used
+sensor.radarrmemoryuse:
+  friendly_name: Radarr Memory Used

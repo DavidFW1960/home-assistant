@@ -2,7 +2,6 @@
 project_id: !secret ga_project
 api_key: !secret api-ga
 exposed_domains:
-  - switch
   - light
   - scene
   - input_boolean
@@ -55,19 +54,25 @@ entity_config:
     room: office
   switch.sonoff12914:
     room: kitchen
+    expose: true
   switch.sonoff51083:
     room: house
+    expose: true
   switch.sonoff63719:
     room: house
+    expose: true
   switch.hifi:
     expose: false
   switch.vpn_router:
     expose: false
   switch.sonoff23110:
     room: bathroom
+    expose: true
   switch.home_assistant:
     expose: false
   input_boolean.homeandawayauto:
     room: house
   input_boolean.alarmgaragedoor:
     room: house
+  input_boolean.overtime:
+    room: kitchen

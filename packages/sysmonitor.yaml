@@ -1,4 +1,4 @@
-﻿# ABB CVC Capacity
+# ABB CVC Capacity
 camera:
   - platform: generic
     name: Aussie Broadband CVC Capacity
@@ -11,6 +11,16 @@ sensor:
 # FritzBox
   - platform: fritzbox_netmonitor
     host: !secret my_fritz_host
+
+# Docker Containers
+  - platform: template
+    sensors:
+      sonarrmemoryuse:
+        value_template: '{{ states.switch.hadockermonsonarr.attributes.memory | replace("MB", "")}}'
+        unit_of_measurement: "MB"
+      radarrmemoryuse:
+        value_template: '{{ states.switch.hadockermonradarr.attributes.memory | replace("MB", "")}}'
+        unit_of_measurement: "MB"
 
 # Up since
   - platform: template
