@@ -74,7 +74,7 @@ views:
                   red: 50
           - type: history-graph
             title: Memory Docker
-            hours_to_show: 96
+            hours_to_show: 24
             refresh_interval: 300
             entities:
               - sensor.sonarrmemoryuse
@@ -430,7 +430,8 @@ views:
             title: Security & Home
             show_header_toggle: false
             entities:
-              - input_boolean.alarmgaragedoor
+              - entity: input_boolean.alarmgaragedoor
+                secondary_info: last-changed
               - entity: switch.sonoff51083
                 secondary_info: last-changed
               - entity: switch.sonoff63719
