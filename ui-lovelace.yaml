@@ -561,7 +561,8 @@ views:
               - automation.home_and_away_off
               - automation.bin_night
               - automation.update_bin_night
-              - automation.restart_docker_containers_when_memory_35
+              - entity: automation.restart_docker_containers_when_memory_35
+                secondary_info: last-changed
               - type: divider
                 style:
                   height: 30px
