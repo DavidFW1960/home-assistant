@@ -24,7 +24,7 @@ sensor:
       fire_danger_level_today:
         friendly_name: "Danger Level Today"
         value_template: "{{ state_attr('sensor.fire_danger_in_greater_sydney_region', 'danger_level_today') | title }}"
-        icon_template: mdi:speedometer
+        icon_template: mdi:fire
 
 binary_sensor:
   - platform: template
