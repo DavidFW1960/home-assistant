@@ -2,16 +2,6 @@
 # and save them under /www/icons/dark_sky/ in your configuration directory.
 # Show BOM Satellite and Radar
 
-geo_location:
-  - platform: nsw_rural_fire_service_feed
-    entity_namespace: 'nsw_fire_service_feed'
-    radius: 100
-    categories:
-      - 'Emergency Warning'
-      - 'Watch and Act'
-      - 'Advice'
-      - 'Not Applicable'
-
 camera:
   - platform: generic
     name: BOM Satellite

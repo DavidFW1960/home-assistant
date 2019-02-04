@@ -1,0 +1,35 @@
+# Download the fire-danger icons from my github https://github.com/DavidFW1960/home-assistant/tree/master/www/icons/firedanger
+# and save them under /www/icons/firedanger/ in your configuration folder.
+
+homeassistant:
+  customize:
+    sensor.fire_danger_in_greater_sydney_region:
+      hidden: true
+
+geo_location:
+  - platform: nsw_rural_fire_service_feed
+    entity_namespace: 'nsw_fire_service_feed'
+    radius: 100
+    categories:
+      - 'Emergency Warning'
+      - 'Watch and Act'
+      - 'Advice'
+      - 'Not Applicable'
+
+sensor:
+  - platform: nsw_rural_fire_service_fire_danger
+    district_name: Greater Sydney Region
+  - platform: template
+    sensors:
+      fire_danger_level_today:
+        friendly_name: "Danger Level Today"
+        value_template: "{{ state_attr('sensor.fire_danger_in_greater_sydney_region', 'danger_level_today') | title }}"
+        icon_template: mdi:speedometer
+
+binary_sensor:
+  - platform: template
+    sensors:
+      fire_ban_today:
+        friendly_name: "Fire Ban Today"
+        value_template: "{{ state_attr('sensor.fire_danger_in_greater_sydney_region', 'fire_ban_today') }}"
+        device_class: safety

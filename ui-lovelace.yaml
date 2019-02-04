@@ -2,13 +2,13 @@ title: Home
 resources:
   - url: /local/card-tools.js?v=297fcc
     type: js
-  - url: /local/tracker-card.js?v=0.2.0
+  - url: /local/tracker-card.js?v=0.3.0
     type: js
   - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
     type: js
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.8.3
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.9.1
     type: module
-  - url: /local/mini-media-player-bundle.js?v=0.9.8
+  - url: /local/mini-media-player-bundle.js?v=1.0.0
     type: module
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.9
     type: js
@@ -402,6 +402,70 @@ views:
           - type: entities
             title: NSW Warnings & Events
             show_header_toggle: false
+            entities:
+              - binary_sensor.fire_ban_today
+              - sensor.fire_danger_level_today
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Low Moderate'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/low-moderate.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'High'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/high.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Very High'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/very-high.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Severe'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/severe.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Extreme'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/extreme.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Catastrophic'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/catastrophic.png
+          - type: entities
             entities: 
               - type: custom:auto-entities
                 card:
@@ -638,43 +702,55 @@ views:
           - entity: media_player.all_speakers
             type: custom:mini-media-player
             group: true
-            show_tts: google
+            tts: 
+              platform: google
             artwork: full-cover
-            power_color: true
-            scroll_info: true
+            hide: 
+              power_state: false
+            info: scroll
           - entity: media_player.living_areas
             type: custom:mini-media-player
             group: true
-            show_tts: google
+            tts: 
+              platform: google
             artwork: full-cover
-            power_color: true
-            scroll_info: true
+            hide: 
+              power_state: false
+            info: scroll
           - entity: media_player.bedroom_speaker
             type: custom:mini-media-player
             group: true
-            show_tts: google
+            tts: 
+              platform: google
             artwork: full-cover
-            power_color: true
-            scroll_info: true
+            hide: 
+              power_state: false
+            info: scroll
           - entity: media_player.office_speaker
             type: custom:mini-media-player
             group: true
-            show_tts: google
+            tts: 
+              platform: google
             artwork: full-cover
-            power_color: true
-            scroll_info: true
+            hide: 
+              power_state: false
+            info: scroll
           - entity: media_player.lounge_speaker
             type: custom:mini-media-player
             group: true
-            show_tts: google
+            tts: 
+              platform: google
             artwork: full-cover
-            power_color: true
-            scroll_info: true
+            hide: 
+              power_state: false
+            info: scroll
           - entity: media_player.lounge_room_tv
             type: custom:mini-media-player
             group: true
             artwork: full-cover
-            power_color: true
+            hide: 
+              power_state: false
+            info: scroll
       - type: entities
         title: Other Media Players
         show_header_toggle: false
@@ -683,34 +759,39 @@ views:
             type: custom:mini-media-player
             group: true
             artwork: cover
-            power_color: true
-            scroll_info: true
+            hide: 
+              power_state: false
+            info: scroll
           - entity: media_player.foxtel_7587
             type: custom:mini-media-player
             group: true
             artwork: full-cover
-            power_color: true
-            scroll_info: true
+            hide: 
+              power_state: false
+            info: scroll
           - entity: media_player.osmc_vero4
             type: custom:mini-media-player
             group: true
             artwork: full-cover
-            power_color: true
-            scroll_info: true
+            hide: 
+              power_state: false
+            info: scroll
           - entity: media_player.txnr1009
             type: custom:mini-media-player
             group: true
             artwork: full-cover
-            power_color: true
-            scroll_info: true
-            show_source: true
+            hide: 
+              power_state: false
+            info: scroll
+            source: full
           - entity: media_player.ua55d8000_ua55d8000
             type: custom:mini-media-player
             group: true
             artwork: full-cover
-            power_color: true
-            scroll_info: true
-            show_source: true
+            hide: 
+              power_state: false
+            info: scroll
+            source: full
   - title: TV & Movies
     icon: mdi:kodi
     cards:
