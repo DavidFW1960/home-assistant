@@ -254,26 +254,16 @@
   - service: notify.notify
     data_template:
       message: >
-        {%- set t = as_timestamp(now()) %}
-        {%- set sonoff63719 = t - as_timestamp(states.switch.sonoff63719.last_changed) %}
-        {%- set sonoff51083 = t - as_timestamp(states.switch.sonoff51083.last_changed) %}
-        {%- if sonoff63719 < 60 and sonoff51083 < 60 %}
-          Garage closed & Alarm armed Verified
-        {%- else %}
-          Error occurred arming 
-        {%- endif %}
+        {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
+        < 60 ) and (as_timestamp(now()) - as_timestamp(states.switch.sonoff51083.last_changed) 
+        < 60 ) %} Garage closed & Alarm armed Verified {%- else %} Error occurred arming {%- endif %}
       title: 'Home Arming Notification'
   - service: persistent_notification.create
     data_template:
       message: >
-        {%- set t = as_timestamp(now()) %}
-        {%- set sonoff63719 = t - as_timestamp(states.switch.sonoff63719.last_changed) %}
-        {%- set sonoff51083 = t - as_timestamp(states.switch.sonoff51083.last_changed) %}
-        {%- if sonoff63719 < 60 and sonoff51083 < 60 %}
-          Garage closed & Alarm armed Verified
-        {%- else %}
-          Error occurred arming 
-        {%- endif %}
+        {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
+        < 60 ) and (as_timestamp(now()) - as_timestamp(states.switch.sonoff51083.last_changed) 
+        < 60 ) %} Garage closed & Alarm armed Verified {%- else %} Error occurred arming {%- endif %}
 - id: 'deactivatealarmopengarage'
   alias: Deactivate Alarm and Open Garage
   trigger:
@@ -292,25 +282,16 @@
   - service: notify.notify
     data_template:
       message: >
-        {%- set t = as_timestamp(now()) %}
-        {%- set sonoff63719 = t - as_timestamp(states.switch.sonoff63719.last_changed) %}
-        {%- set sonoff51083 = t - as_timestamp(states.switch.sonoff51083.last_changed) %}
-        {%- if sonoff63719 < 60 and sonoff51083 < 60 %}
-          Alarm disabled & Garage opened Verified
-        {%- else %}
-          Error occurred disarming 
-        {%- endif %}
+        {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
+        < 60 ) and (as_timestamp(now()) - as_timestamp(states.switch.sonoff51083.last_changed) 
+        < 60 ) %} Alarm disabled & Garage opened Verified {%- else %} Error occurred disarming {%- endif %}
+      title: 'Home Disarming Notification'
   - service: persistent_notification.create
     data_template:
       message: >
-        {%- set t = as_timestamp(now()) %}
-        {%- set sonoff63719 = t - as_timestamp(states.switch.sonoff63719.last_changed) %}
-        {%- set sonoff51083 = t - as_timestamp(states.switch.sonoff51083.last_changed) %}
-        {%- if sonoff63719 < 60 and sonoff51083 < 60 %}
-          Alarm disabled & Garage opened Verified
-        {%- else %}
-          Error occurred disarming 
-        {%- endif %}
+        {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
+        < 60 ) and (as_timestamp(now()) - as_timestamp(states.switch.sonoff51083.last_changed) 
+        < 60 ) %} Alarm disabled & Garage opened Verified {%- else %} Error occurred disarming {%- endif %}
 - id: 'sonoff_firmware_installed'
   alias: Sonoff Firmware Installed
   trigger:
