@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
     type: js
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.9.1
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.9.3
     type: module
   - url: /local/mini-media-player-bundle.js?v=1.0.0
     type: module
