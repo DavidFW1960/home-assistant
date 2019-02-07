@@ -500,6 +500,14 @@ views:
                 secondary_info: last-changed
               - entity: switch.sonoff63719
                 secondary_info: last-changed
+          - type: conditional
+            conditions:
+              - entity: sensor.alarm_triggers
+                state_not: "0"
+            card:
+              type: entities
+              entities:
+              - entity: sensor.alarm_triggers
           - type: horizontal-stack
             cards:
               - type: entity-button
