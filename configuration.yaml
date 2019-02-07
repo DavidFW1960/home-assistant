@@ -87,6 +87,10 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: !secret ide-cloud9    
+  glances:
+    title: Glances
+    icon: mdi:speedometer
+    url: !secret glances
   jupyterlab:
     title: JupyterLab
     icon: mdi:flask
@@ -192,6 +196,7 @@ sensor:
     username: !secret outlooksyncuser
     password: !secret outlooksyncpass
     folder: inbox
+    search: !secret alarmnotification
           
 # Sonarr
   - platform: sonarr

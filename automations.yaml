@@ -390,3 +390,17 @@
   - service: switch.turn_on
     entity_id: switch.hadockermonradarr, switch.hadockermonsonarr
   initial_state: 'on'
+- id: 'alarmevent'
+  alias: Alarm Event Triggered
+  trigger:
+  - platform: state
+    entity_id: sensor.alarm_triggers
+  action:
+  - service: notify.notify
+    data:
+      message: 'Alarm Event Occurred'
+      title: 'Alarm Notification'
+  - service: persistent_notification.create
+    data:
+      message: 'Alarm Event Occurred'
+      title: 'Alarm Notification'
