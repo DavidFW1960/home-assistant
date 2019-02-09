@@ -23,3 +23,10 @@
   entities:
     - light.office
     - light.desk
+# Yeelights
+- platform: yeelight
+  devices:
+    10.90.11.47:
+      name: yeelight_white_34ce00882e27
+    10.90.11.7:
+      name: yeelight_white_34ce00887db6

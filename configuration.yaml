@@ -149,6 +149,8 @@ updater:
 
 # Discover some devices automatically
 discovery:
+  ignore:
+    - yeelight
   enable:
     - dlna_dmr
 
