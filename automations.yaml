@@ -395,6 +395,9 @@
   trigger:
   - platform: state
     entity_id: sensor.alarm_triggers
+  condition:
+    - condition: template
+      value_template: '{{ states.sensor.alarm_triggers.state != "0" and states.sensor.alarm_triggers.state != "unavailable" }}'
   action:
   - service: notify.notify
     data:
@@ -404,3 +407,13 @@
     data:
       message: 'Alarm Event Occurred'
       title: 'Alarm Notification'
+- id: 'alarmeventrefresh'
+  alias: 'Alarm Event Check'
+  trigger:
+  - event: start
+    platform: homeassistant
+  - platform: time_pattern
+    minutes: '/1'
+  action:
+  - service: homeassistant.update_entity
+    entity_id: sensor.alarm_triggers

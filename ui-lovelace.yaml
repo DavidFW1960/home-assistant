@@ -504,6 +504,8 @@ views:
             conditions:
               - entity: sensor.alarm_triggers
                 state_not: "0"
+              - entity: sensor.alarm_triggers
+                state_not: "unavailable"
             card:
               type: entities
               entities:
@@ -633,6 +635,8 @@ views:
               - automation.home_and_away_off
               - automation.bin_night
               - automation.update_bin_night
+              - automation.alarm_event_triggered
+              - automation.alarm_event_check
               - entity: automation.restart_docker_containers_when_memory_35
                 secondary_info: last-changed
               - type: divider
