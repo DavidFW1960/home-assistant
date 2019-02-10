@@ -16,6 +16,7 @@ switch.sonoff63719:
   icon: mdi:shield-home
 switch.sonoff73474:
   friendly_name: sonoff7-3474
+  icon: mdi:flash
 switch.home_assistant:
   friendly_name: Home Assistant
   icon: mdi:home-assistant
@@ -295,3 +296,17 @@ sensor.sonarrmemoryuse:
   friendly_name: Sonarr Memory Used
 sensor.radarrmemoryuse:
   friendly_name: Radarr Memory Used
+sensor.sonoff1_2914_status:
+  icon: mdi:coffee
+sensor.sonoff2_3110_status:
+  icon: mdi:tooth
+sensor.sonoff5_1083_status:
+  icon: mdi:garage
+sensor.sonoff6_3719_status:
+  icon: mdi:shield-home
+sensor.sonoff4_0851_status:
+  icon: mdi:flash
+sensor.sonoff3_0898_status:
+  icon: mdi:flash
+sensor.sonoff7_3474_status:
+  icon: mdi:flash

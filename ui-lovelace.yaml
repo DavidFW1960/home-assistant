@@ -10,8 +10,8 @@ resources:
     type: module
   - url: /local/mini-media-player-bundle.js?v=1.0.0
     type: module
-  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.9
-    type: js
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.1
+    type: module
   - url: /local/fold-entity-row.js?v=6d11d3
     type: js
   - url: /local/button-card.js?v=0.0.5
@@ -117,7 +117,6 @@ views:
               - entity: sensor.last_boot
                 format: datetime
               - sensor.systemuptime
-          - type: 'custom:compact-custom-header'
       - type: vertical-stack
         cards:
           - type: entities
