@@ -296,6 +296,8 @@ sensor.sonarrmemoryuse:
   friendly_name: Sonarr Memory Used
 sensor.radarrmemoryuse:
   friendly_name: Radarr Memory Used
+sensor.sabnzbdmemoryuse:
+  friendly_name: Sabnzbd Memory Used
 sensor.sonoff1_2914_status:
   icon: mdi:coffee
 sensor.sonoff2_3110_status:
@@ -310,3 +312,4 @@ sensor.sonoff3_0898_status:
   icon: mdi:flash
 sensor.sonoff7_3474_status:
   icon: mdi:flash
+

@@ -21,6 +21,9 @@ sensor:
       radarrmemoryuse:
         value_template: '{{ states.switch.hadockermonradarr.attributes.memory | replace("MB", "")}}'
         unit_of_measurement: "MB"
+      sabnzbdmemoryuse:
+        value_template: '{{ states.switch.hadockermonsabnzbd.attributes.memory | replace("MB", "")}}'
+        unit_of_measurement: "MB"
 
 # Up since
   - platform: template

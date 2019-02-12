@@ -79,6 +79,7 @@ views:
             entities:
               - sensor.sonarrmemoryuse
               - sensor.radarrmemoryuse
+              - sensor.sabnzbdmemoryuse
           - type: entities
             title: Docker Containers
             show_header_toggle: false
@@ -325,7 +326,7 @@ views:
             show_beaufort: false
             refresh_interval: 60
             show_separator: false
-            temp_top_margin: -0.3em         #default -.3em px or em
+            temp_top_margin: -0.3em         #default -0.3em px or em
             temp_font_weight: 300           #default 300 numeric
             temp_font_size: 4em             #default 4em em
             temp_right_pos: 0.85em          #default .85em px or em
