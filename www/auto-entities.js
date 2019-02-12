@@ -131,9 +131,16 @@ class AutoEntities extends cardTools.litElement() {
       if(this._config.filter.include){
         this._config.filter.include.forEach((f) => {
           const add = this.match_filter(this._hass, Object.keys(this._hass.states), f);
+          let toAdd = [];
           add.forEach((i) => {
-            entities.push({entity: Object.keys(this._hass.states)[i], ...f.options});
+            toAdd.push({entity: Object.keys(this._hass.states)[i], ...f.options});
           });
+          toAdd.sort((a,b) => {
+            if (a.entity < b.entity) return -1;
+            if (a.entity > b.entity) return 1;
+            return 0;
+          });
+          toAdd.forEach((i) => entities.push(i));
         });
       }
 
@@ -154,7 +161,7 @@ class AutoEntities extends cardTools.litElement() {
     if(this.entities.length === 0 && this._config.show_empty === false)
       return cardTools.litHtml()``;
     return cardTools.litHtml()`
-      ${this.card}
+      <div id="root">${this.card}</div>
     `;
   }
 
@@ -167,17 +174,34 @@ class AutoEntities extends cardTools.litElement() {
     }
   }
 
+  _compare_arrays(a,b) {
+    if(a === b) return true;
+    if(a == null || b == null) return false;
+    if(a.length != b.length) return false;
+    for(var i = 0; i < a.length; i++) {
+      if(a[i] !== b[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   set hass(hass) {
     this._hass = hass;
     this.get_data(hass).then(() => {
-      const oldlen = this.entities.length;
-      this.entities = this.get_entities() || [];
       if(this.card)
       {
         this.card.hass = this._hass;
-        this.card.setConfig({entities: this.entities, ...this._config.card});
       }
-      if(this.entities.length != oldlen) this.requestUpdate();
+
+      const oldEntities = this.entities.map((e) => e.entity);
+      this.entities = this.get_entities() || [];
+      const newEntities = this.entities.map((e) => e.entity);
+
+      if(!this._compare_arrays(oldEntities, newEntities)) {
+        this.card.setConfig({entities: this.entities, ...this._config.card});
+        this.requestUpdate();
+      }
     });
   }
 
