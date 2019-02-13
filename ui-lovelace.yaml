@@ -10,13 +10,15 @@ resources:
     type: module
   - url: /local/mini-media-player-bundle.js?v=1.0.0
     type: module
-  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.1
+  - url: /local/mini-graph-card-bundle.js?v=0.2.4
+    type: module
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.2
     type: module
   - url: /local/fold-entity-row.js?v=6d11d3
     type: js
   - url: /local/button-card.js?v=0.0.5
     type: module
-  - url: /local/auto-entities.js?v=b86cf3
+  - url: /local/auto-entities.js?v=1d85a8
     type: js
 views:
   - title: Home Assistant
@@ -189,20 +191,34 @@ views:
                   yellow: 9
                   green: 13
                 entity: sensor.speedtest_upload
-          - type: history-graph
-            title: Speedtest Download Graph
+          - type: custom:mini-graph-card
             hours_to_show: 24
-            refresh_interval: 1800
+            points_per_hour: 2	
             entities:
               - sensor.speedtest_download
-              - sensor.speedtest_download_filtered
-          - type: history-graph
-            title: Speedtest Upload Graph
+            show:
+              labels: true
+            color_thresholds:
+              - value: 0
+                color: red
+              - value: 30
+                color: orange
+              - value: 40
+                color: green
+          - type: custom:mini-graph-card
             hours_to_show: 24
-            refresh_interval: 1800
+            points_per_hour: 2	
             entities:
               - sensor.speedtest_upload
-              - sensor.speedtest_upload_filtered
+            show:
+              labels: true
+            color_thresholds:
+              - value: 0
+                color: red
+              - value: 9
+                color: orange
+              - value: 13
+                color: green
           - type: picture-entity
             title: Aussie Broadband CVC Capacity
             entity: camera.aussie_broadband_cvc_capacity
