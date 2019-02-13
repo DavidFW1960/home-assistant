@@ -8,7 +8,7 @@ resources:
     type: js
   - url: /local/custom_ui/dark-sky-weather-card.js?v=0.9.4
     type: module
-  - url: /local/mini-media-player-bundle.js?v=1.0.0
+  - url: /local/mini-media-player-bundle.js?v=1.0.1
     type: module
   - url: /local/mini-graph-card-bundle.js?v=0.2.4
     type: module
@@ -697,32 +697,6 @@ views:
                 head: group.scenes
   - title: Media
     icon: mdi:vlc
-    cards:
-      - type: 'custom:compact-custom-header'
-      - type: media-control
-        entity: media_player.all_speakers
-      - type: media-control
-        entity: media_player.living_areas
-      - type: media-control
-        entity: media_player.bedroom_speaker
-      - type: media-control
-        entity: media_player.office_speaker
-      - type: media-control
-        entity: media_player.lounge_speaker
-      - type: media-control
-        entity: media_player.lounge_room_tv
-      - type: media-control
-        entity: media_player.roku_5x46aj056306
-      - type: media-control
-        entity: media_player.foxtel_7587
-      - type: media-control
-        entity: media_player.osmc_vero4
-      - type: media-control
-        entity: media_player.txnr1009
-      - type: media-control
-        entity: media_player.ua55d8000_ua55d8000
-  - title: Media Mini
-    icon: mdi:boombox
     cards:
       - type: 'custom:compact-custom-header'
       - type: entities
