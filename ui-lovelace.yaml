@@ -1,24 +1,24 @@
 title: Home
 resources:
-  - url: /local/card-tools.js?v=297fcc
+  - url: /customcards/card-tools.js
     type: js
-  - url: /local/tracker-card.js?v=0.3.0
+  - url: /customcards/tracker-card.js
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
+  - url: /customcards/custom-lovelace/upcoming-media-card/upcoming-media-card.js
     type: js
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.9.4
+  - url: /customcards/custom_ui/dark-sky-weather-card.js
     type: module
-  - url: /local/mini-media-player-bundle.js?v=1.0.1
+  - url: /customcards/mini-media-player-bundle.js
     type: module
-  - url: /local/mini-graph-card-bundle.js?v=0.2.4
+  - url: /customcards/mini-graph-card-bundle.js
     type: module
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.2
     type: module
-  - url: /local/fold-entity-row.js?v=6d11d3
+  - url: /customcards/fold-entity-row.js
     type: js
-  - url: /local/button-card.js?v=0.0.5
+  - url: /customcards/button-card.js
     type: module
-  - url: /local/auto-entities.js?v=1d85a8
+  - url: /customcards/auto-entities.js
     type: js
 views:
   - title: Home Assistant
@@ -699,13 +699,13 @@ views:
     icon: mdi:vlc
     cards:
       - type: 'custom:compact-custom-header'
-      - type: entities
+      - type: markdown
+        content: ' '
         title: Google Devices
-        show_header_toggle: false
-        entities:
+      - type: vertical-stack
+        cards:
           - entity: media_player.all_speakers
             type: custom:mini-media-player
-            group: true
             tts: 
               platform: google
             artwork: full-cover
@@ -714,7 +714,6 @@ views:
             info: scroll
           - entity: media_player.living_areas
             type: custom:mini-media-player
-            group: true
             tts: 
               platform: google
             artwork: full-cover
@@ -723,7 +722,6 @@ views:
             info: scroll
           - entity: media_player.bedroom_speaker
             type: custom:mini-media-player
-            group: true
             tts: 
               platform: google
             artwork: full-cover
@@ -732,7 +730,6 @@ views:
             info: scroll
           - entity: media_player.office_speaker
             type: custom:mini-media-player
-            group: true
             tts: 
               platform: google
             artwork: full-cover
@@ -741,7 +738,6 @@ views:
             info: scroll
           - entity: media_player.lounge_speaker
             type: custom:mini-media-player
-            group: true
             tts: 
               platform: google
             artwork: full-cover
@@ -750,39 +746,37 @@ views:
             info: scroll
           - entity: media_player.lounge_room_tv
             type: custom:mini-media-player
-            group: true
             artwork: full-cover
             hide: 
               power_state: false
             info: scroll
-      - type: entities
+      - type: markdown
+        content: ' '
+        title: Other Devices
+      - type: vertical-stack
         title: Other Media Players
         show_header_toggle: false
-        entities:
+        cards:
           - entity: media_player.roku_5x46aj056306
             type: custom:mini-media-player
-            group: true
             artwork: cover
             hide: 
               power_state: false
             info: scroll
           - entity: media_player.foxtel_7587
             type: custom:mini-media-player
-            group: true
             artwork: full-cover
             hide: 
               power_state: false
             info: scroll
           - entity: media_player.osmc_vero4
             type: custom:mini-media-player
-            group: true
             artwork: full-cover
             hide: 
               power_state: false
             info: scroll
           - entity: media_player.txnr1009
             type: custom:mini-media-player
-            group: true
             artwork: full-cover
             hide: 
               power_state: false
@@ -790,7 +784,6 @@ views:
             source: full
           - entity: media_player.ua55d8000_ua55d8000
             type: custom:mini-media-player
-            group: true
             artwork: full-cover
             hide: 
               power_state: false

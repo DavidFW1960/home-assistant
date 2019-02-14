@@ -344,6 +344,7 @@ wemo:
 custom_updater:
   show_installable: false
   hide_sensor: false
+  mode: storage
   track:
     - components
     - cards
