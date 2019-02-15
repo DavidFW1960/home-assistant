@@ -91,6 +91,10 @@ panel_iframe:
     title: Glances
     icon: mdi:speedometer
     url: !secret glances
+  custom_components:
+    title: Custom Component Store
+    icon: mdi:package-variant
+    url: !secret customcomponent
   jupyterlab:
     title: JupyterLab
     icon: mdi:flask

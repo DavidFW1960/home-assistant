@@ -152,11 +152,11 @@ views:
             show_header_toggle: false
             entities:
               - device_tracker.davids_iphone
-              - sensor.davidsiphone_battery_level
-              - sensor.davidsiphone_battery_state
+              - sensor.davids_iphone_battery_level
+              - sensor.davids_iphone_battery_state
               - device_tracker.davids_ipad
-              - sensor.davidsipad_battery_level
-              - sensor.davidsipad_battery_state
+              - sensor.davids_ipad_battery_level
+              - sensor.davids_ipad_battery_state
       - type: vertical-stack
         cards:
           - type: entities
