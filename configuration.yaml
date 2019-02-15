@@ -36,6 +36,9 @@ system_health:
 # Map
 map:
 
+# Person
+person:
+
 # Show links to resources in log and frontend
 # introduction:
 
