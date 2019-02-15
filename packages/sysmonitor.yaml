@@ -6,7 +6,43 @@ camera:
 
 # CPU Resources Used & Temperature, Fritz!Box, Speedtest
 
+# Speedtest
+speedtestdotnet:
+  update_interval: '00:30:00'
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+# Graph Speedtest Download Filtered and Unfiltered
+history_graph:
+  speedtest:
+    name: Speedtest Graph
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_download_filtered
+      - sensor.speedtest_upload
+      - sensor.speedtest_upload_filtered
+    hours_to_show: 24
+    refresh: 1800
+
 sensor:
+
+# Speedtest Sensor Filters
+  - platform: filter
+    name: "Speedtest Download Filtered"
+    entity_id: sensor.speedtest_download
+    filters:
+      - filter: lowpass
+        time_constant: 20
+        precision: 2
+  - platform: filter
+    name: "Speedtest Upload Filtered"
+    entity_id: sensor.speedtest_upload
+    filters:
+      - filter: lowpass
+        time_constant: 20
+        precision: 2
 
 # FritzBox
   - platform: fritzbox_netmonitor
@@ -66,35 +102,6 @@ sensor:
             {%- endif -%}
           {%- endif -%}
 
-#   command: /config/uptimemeas.sh
-#   scan_interval: 60
-
-# Speedtest
-  - platform: speedtest
-    minute:
-      - 0
-      - 30
-    monitored_conditions:
-      - ping
-      - download
-      - upload
-
-# Speedtest Sensor Filters
-  - platform: filter
-    name: "Speedtest Download Filtered"
-    entity_id: sensor.speedtest_download
-    filters:
-      - filter: lowpass
-        time_constant: 20
-        precision: 2
-  - platform: filter
-    name: "Speedtest Upload Filtered"
-    entity_id: sensor.speedtest_upload
-    filters:
-      - filter: lowpass
-        time_constant: 20
-        precision: 2
-
 # NUC Resources
   - platform: filter
     name: "NUC Memory Used Filtered"
@@ -110,7 +117,6 @@ sensor:
       - filter: lowpass
         time_constant: 20
         precision: 2
-
   - platform: command_line
     name: "CPU Temperature"
     command: "cat /sys/class/thermal/thermal_zone0/temp"
@@ -156,18 +162,6 @@ sensor:
     entity_id: sensor.processor_use
     name: processor
 
-# Graph Speedtest Download Filtered and Unfiltered
-history_graph:
-  speedtest:
-    name: Speedtest Graph
-    entities:
-      - sensor.speedtest_download
-      - sensor.speedtest_download_filtered
-      - sensor.speedtest_upload
-      - sensor.speedtest_upload_filtered
-    hours_to_show: 24
-    refresh: 1800
-
 automation:
   - alias: 'System Runtime'
     initial_state: 'on'
@@ -178,3 +172,10 @@ automation:
     action:
       - service: homeassistant.update_entity
         entity_id: sensor.systemuptime
+  - alias: 'Update Speedtest'
+    initial_state: 'on'
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: speedtestdotnet.speedtest

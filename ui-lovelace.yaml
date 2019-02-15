@@ -12,7 +12,7 @@ resources:
     type: module
   - url: /customcards/mini-graph-card-bundle.js
     type: module
-  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.2
+  - url: /customcards/custom-lovelace/compact-custom-header/compact-custom-header.js
     type: module
   - url: /customcards/fold-entity-row.js
     type: js
@@ -143,7 +143,7 @@ views:
               - sensor.processor_use
               - sensor.nuc_processor_used_filtered
           - type: custom:tracker-card
-            title: Custom Card Updates
+            title: "\U0001F4E3 Custom Card Updates"
             trackers:
               - sensor.custom_card_tracker
               - sensor.custom_component_tracker
@@ -655,6 +655,7 @@ views:
               - automation.update_bin_night
               - automation.alarm_event_triggered
               - automation.alarm_event_check
+              - automation.update_speedtest
               - entity: automation.restart_docker_containers_when_memory_35
                 secondary_info: last-changed
               - type: divider
