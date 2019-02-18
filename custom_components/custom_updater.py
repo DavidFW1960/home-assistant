@@ -5,18 +5,20 @@ For more details about this component, please refer to the documentation at
 https://github.com/custom-components/custom_updater
 """
 import logging
+import os.path
 from datetime import timedelta
-from aiohttp import web
-import voluptuous as vol
-import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.event import track_time_interval
-from homeassistant.components.http import HomeAssistantView
 
-VERSION = '4.0.1'
+import voluptuous as vol
+from aiohttp import web
+import homeassistant.helpers.config_validation as cv
+from homeassistant.components.http import HomeAssistantView
+from homeassistant.helpers.event import track_time_interval
+
+VERSION = '4.0.5'
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['pyupdate==0.2.26']
+REQUIREMENTS = ['pyupdate==0.2.29']
 
 CONF_TRACK = 'track'
 CONF_HIDE_SENSOR = 'hide_sensor'
@@ -34,9 +36,11 @@ ATTR_CARD = 'card'
 ATTR_COMPONENT = 'component'
 ATTR_ELEMENT = 'element'
 
+DEFAULT_TRACK = ['components', 'cards']
+
 CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
-        vol.Optional(CONF_TRACK, default=['components']):
+        vol.Optional(CONF_TRACK, default=DEFAULT_TRACK):
             vol.All(cv.ensure_list, [cv.string]),
         vol.Optional(CONF_HIDE_SENSOR, default=False): cv.boolean,
         vol.Optional(CONF_SHOW_INSTALLABLE, default=False): cv.boolean,
@@ -65,6 +69,7 @@ def setup(hass, config):
                  ' https://github.com/custom-components/custom_updater')
 
     _LOGGER.debug('Version %s', VERSION)
+    _LOGGER.debug('Mode %s', conf_mode)
 
     if 'cards' in conf_track:
         card_controller = CustomCards(hass,
@@ -271,7 +276,6 @@ class CustomPythonScripts():
         self.pyupdate.install(self.ha_conf_dir, element, self.custom_url)
 
 
-
 class CustomCardsView(HomeAssistantView):
     """View to return a custom_card file."""
 
@@ -287,11 +291,14 @@ class CustomCardsView(HomeAssistantView):
 
     async def get(self, request, path):
         """Retrieve custom_card."""
-        msg = "Serving /customcards/{path} from /www/{path}".format(path=path)
-        _LOGGER.debug(msg)
-
         if '?' in path:
             path = path.split('?')[0]
         file = "{}/www/{}".format(self.hadir, path)
-        resp = web.FileResponse(file)
-        return resp
+        if os.path.exists(file):
+            msg = "Serving /customcards/{path} from /www/{path}".format(path=path)
+            _LOGGER.debug(msg)
+            resp = web.FileResponse(file)
+            return resp
+        else:
+            _LOGGER.error("Tried to serve up '%s' but it does not exist", file)
+            return None

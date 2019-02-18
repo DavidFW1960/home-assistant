@@ -81,7 +81,7 @@ sensor:
       - moon_phase
       - sunrise_time
       - sunset_time
-    update_interval:
+    scan_interval:
       minutes: 5
 
   - platform: season

@@ -8,7 +8,7 @@ camera:
 
 # Speedtest
 speedtestdotnet:
-  update_interval: '00:30:00'
+  scan_interval: '00:30:00'
   monitored_conditions:
     - ping
     - download

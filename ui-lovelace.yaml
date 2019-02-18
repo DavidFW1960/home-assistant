@@ -548,9 +548,28 @@ views:
                 entity: input_boolean.alarmgaragedoor
                 icon: mdi:security
                 color_type: icon
-                color: rgb(251, 210, 41)
-                color_off: rgb(54, 95, 140)
+                color: var(--paper-item-active-color)
+                color_off: var(--paper-item-icon-color)
                 name: Exit-Enter
+                size: 60px
+                style:
+                  - align-items: center
+                  - text-align: center
+                  - margin-left: auto
+                  - margin-right: auto
+                  - width: 50%
+                  - margin-top: auto
+                  - margin-bottom: auto
+                  - height: 80px
+                  - padding-top: 4%
+                  - padding-right: 0px
+                  - padding-bottom: 4%
+                  - padding-left: 0px
+                  - align-content: normal
+                  - align-self: auto
+                  - font-size: 1.2rem
+                  - font-weight: 400
+                  - position: relative
                 show_state: false
                 action: service
                 service: 
@@ -643,29 +662,43 @@ views:
                   height: 30px
                   margin: 4px 0
                   background: center / contain url("/local/images/divider.png") no-repeat
-              - automation.lights_on_failsafe
-              - automation.lights_off_failsafe
-              - automation.system_runtime
-              - automation.make_snapshot_copy_backups_to_dropbox
-              - automation.update_available
-              - automation.beta_update_available
-              - automation.home_and_away_on
-              - automation.home_and_away_off
-              - automation.bin_night
-              - automation.update_bin_night
-              - automation.alarm_event_triggered
-              - automation.alarm_event_check
-              - automation.update_speedtest
-              - entity: automation.restart_docker_containers_when_memory_35
-                secondary_info: last-changed
+              - type: custom:fold-entity-row
+                open: false
+                head: 
+                  type: section
+                  label: Not in Normal Use
+                items:
+                  - automation.lights_on_failsafe
+                  - automation.lights_off_failsafe
+                  - automation.system_runtime
+                  - automation.make_snapshot_copy_backups_to_dropbox
+                  - automation.update_available
+                  - automation.beta_update_available
+                  - automation.home_and_away_on
+                  - automation.home_and_away_off
+                  - automation.bin_night
+                  - automation.update_bin_night
+                  - automation.alarm_event_triggered
+                  - automation.alarm_event_check
+                  - automation.update_speedtest
+                  - entity: automation.restart_docker_containers_when_memory_35
+                    secondary_info: last-changed
+                  - automation.system_change_current_theme
+                  - automation.system_set_custom_theme_at_startup	
               - type: divider
                 style:
                   height: 30px
                   margin: 4px 0
                   background: center / contain url("/local/images/divider.png") no-repeat
-              - automation.sonoff_firmware_installed
-              - automation.power_state_sonoff_on_ha_start_up
-              - automation.tasmota_initial_setup_all_devices
+              - type: custom:fold-entity-row
+                open: true
+                head: 
+                  type: section
+                  label: Sonoff
+                items:
+                  - automation.sonoff_firmware_installed
+                  - automation.power_state_sonoff_on_ha_start_up
+                  - automation.tasmota_initial_setup_all_devices
       - type: vertical-stack
         cards:
           - type: entities
@@ -696,6 +729,38 @@ views:
                 head: group.all_automations
               - type: custom:fold-entity-row
                 head: group.scenes
+          - type: "custom:button-card"
+            entity: input_select.theme_switcher
+            icon: mdi:cube-outline
+            name: Theme -
+            size: 60px
+            style:
+              - align-items: center
+              - text-align: center
+              - margin-left: auto
+              - margin-right: auto
+              - width: 50%
+              - margin-top: auto
+              - margin-bottom: auto
+              - height: 80px
+              - padding-top: 4%
+              - padding-right: 0px
+              - padding-bottom: 4%
+              - padding-left: 0px
+              - align-content: normal
+              - align-self: auto
+              - font-size: 1.2rem
+              - font-weight: 400
+              - position: relative
+            show_state: true
+            action: service
+            service:
+              domain: input_select
+              action: select_next
+              data:
+                entity_id: input_select.theme_switcher
+            color_type: icon
+            color: 'var(--primary-background-color)'
   - title: Media
     icon: mdi:vlc
     cards:

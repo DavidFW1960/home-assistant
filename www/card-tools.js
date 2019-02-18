@@ -185,7 +185,7 @@ class {
 
   static parseTemplateString(str) {
     if(typeof(str) !== "string") return text;
-    var RE_entity = /^[a-z_.]+$/;
+    var RE_entity = /^[a-zA-Z0-9_.]+\.[a-zA-Z0-9_]+$/;
     var RE_if = /^if\(([^,]*),([^,]*),(.*)\)$/;
     var RE_expr = /([^=<>!]+)\s*(==|<|>|<=|>=|!=)\s*([^=<>!]+)/
 
@@ -240,7 +240,8 @@ class {
 
   static parseTemplate(text, error) {
     if(typeof(text) !== "string") return text;
-    var RE_template = /\[\[\s(.*)\s\]\]/g;
+    // Note: .*? is javascript regex syntax for NON-greedy matching
+    var RE_template = /\[\[\s(.*?)\s\]\]/g;
     text = text.replace(RE_template, (str, p1, offset, s) => this.parseTemplateString(p1));
     return text;
   }
