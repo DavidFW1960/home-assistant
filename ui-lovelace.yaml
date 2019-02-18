@@ -739,7 +739,7 @@ views:
               - text-align: center
               - margin-left: auto
               - margin-right: auto
-              - width: 50%
+              - width: 10%
               - margin-top: auto
               - margin-bottom: auto
               - height: 80px

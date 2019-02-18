@@ -539,7 +539,7 @@ input_select:
      - 'PmxMononight'
      - 'Dark - Orange'
      - 'Light - Orange'
-    initial: 'midnight'
+    initial: 'slate'
     icon: 'mdi:palette'
 
 ###############################################################################
@@ -549,14 +549,14 @@ input_select:
 automation:
 
   - alias: 'System - Set Custom Theme at Startup'
-    initial_state: 'off'
+    initial_state: 'on'
     trigger:
       platform: homeassistant
       event: start
     action:
       service: frontend.set_theme
       data:
-        name: midnight
+        name: slate
 
   - alias: 'System - Change Current Theme'
     initial_state: 'on'
