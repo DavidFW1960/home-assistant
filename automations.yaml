@@ -38,7 +38,7 @@
       entity_id: switch.sonoff12914
 - id: '1507434167221'
   alias: Coffee Maker Off
-  initial_state: 'on'
+  initial_state: 'true'
   trigger:
   - platform: time
     at: '08:30:00'
@@ -98,7 +98,7 @@
       entity_id: switch.sonoff23110
 - id: '1523938046054'
   alias: Toothbrush Off
-  initial_state: 'on'
+  initial_state: 'true'
   trigger:
   - platform: time
     at: '21:00:00'
@@ -121,7 +121,7 @@
       entity_id: switch.sonoff23110
 - id: '1519082437913'
   alias: Make Snapshot & Copy Backups to Dropbox
-  initial_state: 'on'
+  initial_state: 'true'
   trigger:
   - platform: time
     at: '03:00:00'
@@ -145,7 +145,7 @@
       message: Copied all new backups to Dropbox
 - id: '1532478833426'
   alias: Lights Off Failsafe
-  initial_state: 'on'
+  initial_state: 'true'
   trigger:
   - platform: state
     from: 'on'
@@ -177,7 +177,7 @@
         < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
 - id: '1532478833427'
   alias: Lights On Failsafe
-  initial_state: 'on'
+  initial_state: 'true'
   trigger:
   - platform: state
     from: 'off'
@@ -213,7 +213,7 @@
       kelvin: 3100
 - id: 'homeawayinpboolturnon'
   alias: Home and Away On
-  initial_state: 'on'
+  initial_state: 'true'
   trigger:
   - entity_id: input_boolean.homeandawayauto
     from: 'off'
@@ -225,7 +225,7 @@
       entity_id: group.homeaway
 - id: 'homeawayinpboolturnoff'
   alias: Home and Away Off
-  initial_state: 'on'
+  initial_state: 'true'
   trigger:
   - entity_id: input_boolean.homeandawayauto
     from: 'on'
@@ -306,7 +306,7 @@
       payload: '2'
       topic: sonoffs/cmnd/status
     service: mqtt.publish
-  initial_state: 'on'
+  initial_state: 'true'
 - id: '1532478833428'
   alias: Power State Sonoff on HA Start-Up
   trigger:
@@ -317,10 +317,10 @@
       payload: ''
       topic: sonoffs/cmnd/state
     service: mqtt.publish
-  initial_state: 'on'
+  initial_state: 'true'
 - id: 'SonoffMQTTAuto'
   alias: Tasmota Initial Setup All Devices
-  initial_state: 'off'
+  initial_state: 'false'
   trigger:
   - platform: homeassistant
     event: start
@@ -389,7 +389,7 @@
   - delay: '00:01:00'
   - service: switch.turn_on
     entity_id: switch.hadockermonradarr, switch.hadockermonsonarr, switch.hadockermonsabnzbd
-  initial_state: 'on'
+  initial_state: 'true'
 - id: 'alarmevent'
   alias: Alarm Event Triggered
   trigger:

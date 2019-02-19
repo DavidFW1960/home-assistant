@@ -164,7 +164,7 @@ sensor:
 
 automation:
   - alias: 'System Runtime'
-    initial_state: 'on'
+    initial_state: 'true'
     trigger:
       platform: time_pattern
       minutes: '/1'
@@ -173,7 +173,7 @@ automation:
       - service: homeassistant.update_entity
         entity_id: sensor.systemuptime
   - alias: 'Update Speedtest'
-    initial_state: 'on'
+    initial_state: 'true'
     trigger:
       platform: homeassistant
       event: start

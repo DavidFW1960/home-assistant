@@ -43,7 +43,7 @@ automation:
       - service: homeassistant.update_entity
         entity_id: sensor.recycling_bin_today, sensor.recycling_bin_tomorrow, sensor.green_bin_today, sensor.green_bin_tomorrow
   - alias: 'Bin Night'
-    initial_state: 'on'
+    initial_state: 'true'
     trigger:
       - platform: time
         at: '19:00:00'
