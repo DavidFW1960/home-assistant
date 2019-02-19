@@ -544,12 +544,16 @@ views:
                   service: switch.turn_on
                   service_data:
                     entity_id: switch.sonoff63719
+#             - type: entity-button
+#               entity: input_boolean.alarmgaragedoor
+#               tap_action:
+#                 action: toggle
               - type: custom:button-card
                 entity: input_boolean.alarmgaragedoor
                 icon: mdi:security
                 color_type: icon
-                color: var(--paper-item-active-color)
-                color_off: var(--paper-item-icon-color)
+                color: color: rgb(251, 210, 41)               # var(--secondary-text-color)
+                color_off: var(--paper-item-icon-color)       # rgb(54, 95, 140)
                 name: Exit-Enter
                 size: 60px
                 style:
@@ -628,6 +632,9 @@ views:
               - light.office_light_group
               - light.office
               - light.desk
+
+      - type: vertical-stack
+        cards:
           - type: entities
             title: Switch
             show_header_toggle: false
@@ -637,8 +644,6 @@ views:
               - switch.hifi
               - switch.vpn_router
               - switch.sonoff23110
-      - type: vertical-stack
-        cards:
           - type: entities
             title: Automations
             show_header_toggle: false
@@ -702,33 +707,19 @@ views:
       - type: vertical-stack
         cards:
           - type: entities
-            title: Scenes
+            title: Theme Switcher
             show_header_toggle: false
             entities:
-              - scene.bedtime
-              - scene.dining_daylight
-              - scene.dining_normal
-              - scene.dining_warm
-              - scene.lounge_100
-              - scene.lounge_daylight
-              - scene.lounge_movie
-              - scene.lounge_normal
-              - scene.lounge_warm
-              - scene.office_all
-              - scene.office_daylight
-              - scene.office_main
-              - scene.office_warm
-              - scene.desk_daylight
-              - scene.desk_normal
-              - scene.desk_warm
-          - type: entities
-            title: Automations & Scenes
-            show_header_toggle: false
-            entities:
-              - type: custom:fold-entity-row
-                head: group.all_automations
-              - type: custom:fold-entity-row
-                head: group.scenes
+              - input_select.theme_switcher
+#         - type: entity-button
+#           entity: input_select.theme_switcher
+#           icon: mdi:cube-outline
+#           name: Theme
+#           tap_action:
+#             action: call-service
+#             service: input_select.select_next
+#             service_data:
+#               entity_id: input_select.theme_switcher
           - type: "custom:button-card"
             entity: input_select.theme_switcher
             icon: mdi:cube-outline
@@ -761,6 +752,34 @@ views:
                 entity_id: input_select.theme_switcher
             color_type: icon
             color: 'var(--primary-background-color)'
+          - type: entities
+            title: Automations & Scenes
+            show_header_toggle: false
+            entities:
+              - type: custom:fold-entity-row
+                head: group.all_automations
+              - type: custom:fold-entity-row
+                head: group.scenes
+          - type: entities
+            title: Scenes
+            show_header_toggle: false
+            entities:
+              - scene.bedtime
+              - scene.dining_daylight
+              - scene.dining_normal
+              - scene.dining_warm
+              - scene.lounge_100
+              - scene.lounge_daylight
+              - scene.lounge_movie
+              - scene.lounge_normal
+              - scene.lounge_warm
+              - scene.office_all
+              - scene.office_daylight
+              - scene.office_main
+              - scene.office_warm
+              - scene.desk_daylight
+              - scene.desk_normal
+              - scene.desk_warm
   - title: Media
     icon: mdi:vlc
     cards:
