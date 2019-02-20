@@ -552,7 +552,7 @@ views:
                 entity: input_boolean.alarmgaragedoor
                 icon: mdi:security
                 color_type: icon
-                color: color: rgb(251, 210, 41)               # var(--secondary-text-color)
+                color: rgb(251, 210, 41)                      # var(--secondary-text-color)
                 color_off: var(--paper-item-icon-color)       # rgb(54, 95, 140)
                 name: Exit-Enter
                 size: 60px
@@ -723,23 +723,21 @@ views:
           - type: "custom:button-card"
             entity: input_select.theme_switcher
             icon: mdi:cube-outline
-            name: Theme -
-            size: 60px
+            name: Theme
+            size: 70px
+            align-content: center
             style:
-              - align-items: center
               - text-align: center
-              - margin-left: auto
-              - margin-right: auto
-              - width: 10%
-              - margin-top: auto
-              - margin-bottom: auto
-              - height: 80px
+              - margin: auto
+              - width: auto
+              - box-sizing: border-box
+              - height: auto
               - padding-top: 4%
-              - padding-right: 0px
+              - padding-right: 0%
               - padding-bottom: 4%
-              - padding-left: 0px
-              - align-content: normal
-              - align-self: auto
+              - padding-left: 40%
+              - align-content: center
+              - align-self: center
               - font-size: 1.2rem
               - font-weight: 400
               - position: relative
