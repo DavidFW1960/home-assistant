@@ -393,6 +393,10 @@ input_boolean:
   overtime:
     name: Overtime
 
+# Clear Out Gmail Alarm Notifications
+shell_command:
+  removealarm: python /config/emptyinbox.py
+
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml
 scene: !include scene.yaml
