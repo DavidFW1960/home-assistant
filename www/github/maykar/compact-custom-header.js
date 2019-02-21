@@ -1,4 +1,4 @@
-import "./compact-custom-header-editor.js?v=1.0.0b7";
+import "./compact-custom-header-editor.js?v=1.0.0b9";
 
 export const LitElement = Object.getPrototypeOf(
   customElements.get("ha-panel-lovelace")
@@ -25,7 +25,7 @@ export const defaultConfig = {
   notifications: "show",
   voice: "show",
   options: "show",
-  clockFormat: 12,
+  clock_format: 12,
   clock_am_pm: true,
   disable: false,
   background_image: false,
@@ -136,6 +136,11 @@ if (!customElements.get("compact-custom-header")) {
         };
       }
 
+      let retrievedCache = localStorage.getItem("cchCache");
+      if (!this.config.main_config && retrievedCache) {
+        this.config = JSON.parse(retrievedCache);
+      }
+
       let exceptionConfig = {};
       let highestMatch = 0;
       if (this.config.exceptions) {
@@ -148,12 +153,6 @@ if (!customElements.get("compact-custom-header")) {
         });
       }
 
-      this.cchCache = {};
-      let retrievedCache = localStorage.getItem("cchCache");
-      if (!this.config.main_config && retrievedCache) {
-        this.config = JSON.parse(retrievedCache);
-      }
-
       this.cchConfig = {
         ...defaultConfig,
         ...this.config,
@@ -161,9 +160,9 @@ if (!customElements.get("compact-custom-header")) {
       };
 
       if (this.config.main_config) {
-        localStorage.removeItem("cchCache");
-        delete this.cchConfig.main_config;
-        localStorage.setItem("cchCache", JSON.stringify(this.cchConfig));
+        let cache = this.config;
+        delete cache.main_config;
+        localStorage.setItem("cchCache", JSON.stringify(cache));
       }
 
       this.run();
@@ -439,12 +438,6 @@ if (!customElements.get("compact-custom-header")) {
     insertClock(buttons, clock_button, tabContainer, marginRight) {
       const clockIcon = clock_button.querySelector("paper-icon-button");
       const clockIronIcon = clockIcon.shadowRoot.querySelector("iron-icon");
-
-      buttons.notifications.shadowRoot.querySelector(
-        '[class="indicator"]'
-      ).style.cssText =
-        this.cchConfig.notifications == "clock" ? "top:14.5px;left:-7px" : "";
-
       const clockWidth =
         this.cchConfig.clock_format == 12 && this.cchConfig.clock_am_pm
           ? 110

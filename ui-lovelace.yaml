@@ -12,7 +12,7 @@ resources:
     type: module
   - url: /customcards/mini-graph-card-bundle.js
     type: module
-  - url: /customcards/custom-lovelace/compact-custom-header/compact-custom-header.js
+  - url: /customcards/github/maykar/compact-custom-header.js?track=true
     type: module
   - url: /customcards/fold-entity-row.js
     type: js
@@ -148,12 +148,12 @@ views:
             title: iOS Devices
             show_header_toggle: false
             entities:
-              - device_tracker.davidsiphone_beta
-              - sensor.davids_iphone_battery_level_beta
-              - sensor.davids_iphone_battery_state_beta
-              - device_tracker.davidsipad_beta
-              - sensor.davids_ipad_battery_level_beta
-              - sensor.davids_ipad_battery_state_beta
+              - device_tracker.davids_iphone
+              - sensor.davids_iphone_battery_level
+              - sensor.davids_iphone_battery_state
+              - device_tracker.davids_ipad
+              - sensor.davids_ipad_battery_level
+              - sensor.davids_ipad_battery_state
       - type: vertical-stack
         cards:
           - type: entities
@@ -564,7 +564,7 @@ views:
                 entity: input_boolean.alarmgaragedoor
                 icon: mdi:security
                 color_type: icon
-                color: rgb(251, 210, 41)                      # var(--secondary-text-color)
+                color: var(--secondary-text-color)            # rgb(251, 210, 41)
                 color_off: var(--paper-item-icon-color)       # rgb(54, 95, 140)
                 name: Exit-Enter
                 size: 60px

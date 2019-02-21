@@ -36,9 +36,9 @@ frontend:
     slate:
       # Main colors
       primary-color: '#2980b9'
-      accent-color: '#2980b9'
-      dark-primary-color: 'var(--accent-color)'
-      light-primary-color: 'var(--accent-color)'
+      accent-color: '#b58e31'
+      dark-primary-color: '#2980b9'
+      light-primary-color: '#2980b9'
       # Text colors
       primary-text-color: '#FFFFFF'
       text-primary-color: 'var(--primary-text-color)'
@@ -59,7 +59,7 @@ frontend:
       paper-grey-50: 'var(--primary-text-color)'
       paper-grey-200: '#222222'
       # Paper card
-      paper-card-header-color: 'var(--accent-color)'
+      paper-card-header-color: '#2980b9'
       paper-card-background-color: '#292929'
       paper-dialog-background-color: '#292929'
       paper-item-icon-color: 'var(--primary-text-color)'
@@ -72,17 +72,17 @@ frontend:
       label-badge-text-color: 'var(--primary-text-color)'
       label-badge-background-color: '#222222'
       # Switches
-      paper-toggle-button-checked-button-color: 'var(--accent-color)'
-      paper-toggle-button-checked-bar-color: 'var(--accent-color)'
-      paper-toggle-button-checked-ink-color: 'var(--accent-color)'
+      paper-toggle-button-checked-button-color: '#2980b9'
+      paper-toggle-button-checked-bar-color: '#2980b9'
+      paper-toggle-button-checked-ink-color: '#2980b9'
       paper-toggle-button-unchecked-button-color: 'var(--disabled-text-color)'
       paper-toggle-button-unchecked-bar-color: 'var(--disabled-text-color)'
       paper-toggle-button-unchecked-ink-color: 'var(--disabled-text-color)'
       # Sliders
-      paper-slider-knob-color: 'var(--accent-color)'
-      paper-slider-knob-start-color: 'var(--accent-color)'
-      paper-slider-pin-color: 'var(--accent-color)'
-      paper-slider-active-color: 'var(--accent-color)'
+      paper-slider-knob-color: '#2980b9'
+      paper-slider-knob-start-color: '#2980b9'
+      paper-slider-pin-color: '#2980b9'
+      paper-slider-active-color: '#2980b9'
       paper-slider-container-color: 'linear-gradient(var(--primary-background-color), var(--secondary-background-color)) no-repeat'
       paper-slider-secondary-color: 'var(--secondary-background-color)'
       paper-slider-disabled-active-color: 'var(--disabled-text-color)'
@@ -90,6 +90,30 @@ frontend:
       # Google colors
       google-red-500: '#b58e31'
       google-green-500: '#2980b9'
+      #Changes to fix history/logbook menus
+      lumo-primary-text-color: '#2980b9'
+      lumo-secondary-text-color: '#2980b9'
+      lumo-primary-color: '#2980b9'
+      #Calendar day numbers
+      lumo-body-text-color: '#b58e31'
+      #Calendar/Date-Picker Background
+      lumo-base-color: '#222222'
+      #Month/Year header
+      lumo-header-text-color: 'var(--lumo-body-text-color)'
+      #DayOfWeek Header
+      lumo-tertiary-text-color: 'var(--lumo-body-text-color)'
+      lumo-shade: '#222222'
+      lumo-shade-90pct: 'rgba(34, 34, 34, .9)'
+      lumo-shade-80pct: 'rgba(34, 34, 34, .8)'
+      lumo-shade-70pct: 'rgba(34, 34, 34, .7)'
+      lumo-shade-60pct: 'rgba(34, 34, 34, .6)'
+      lumo-shade-50pct: 'rgba(34, 34, 34, .5)'
+      lumo-shade-40pct: 'rgba(34, 34, 34, .4)'
+      lumo-shade-30pct: 'rgba(34, 34, 34, .3)'
+      lumo-shade-20pct: 'rgba(34, 34, 34, .2)'
+      lumo-shade-10pct: 'rgba(34, 34, 34, .1)'
+      lumo-shade-5pct: 'rgba(34, 34, 34, .05)'
+      lumo-tint-5pct: '#222222'
 
     darkblue:
       primary-color: "#396FB6"
