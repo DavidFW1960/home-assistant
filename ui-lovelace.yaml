@@ -16,7 +16,7 @@ resources:
     type: module
   - url: /customcards/fold-entity-row.js
     type: js
-  - url: /customcards/button-card.js
+  - url: /customcards/github/custom-cards/button-card.js?track=true
     type: module
   - url: /customcards/auto-entities.js
     type: js
@@ -25,6 +25,7 @@ views:
     icon: mdi:home-assistant
     cards:
       - type: 'custom:compact-custom-header'
+        main_config: true
       - type: vertical-stack
         cards:
           - type: entities
@@ -567,25 +568,6 @@ views:
                 color: var(--secondary-text-color)            # rgb(251, 210, 41)
                 color_off: var(--paper-item-icon-color)       # rgb(54, 95, 140)
                 name: Exit-Enter
-                size: 60px
-                style:
-                  - align-items: center
-                  - text-align: center
-                  - margin-left: auto
-                  - margin-right: auto
-                  - width: 50%
-                  - margin-top: auto
-                  - margin-bottom: auto
-                  - height: 80px
-                  - padding-top: 4%
-                  - padding-right: 0px
-                  - padding-bottom: 4%
-                  - padding-left: 0px
-                  - align-content: normal
-                  - align-self: auto
-                  - font-size: 1.2rem
-                  - font-weight: 400
-                  - position: relative
                 show_state: false
                 action: service
                 service: 
@@ -644,7 +626,6 @@ views:
               - light.office_light_group
               - light.office
               - light.desk
-
       - type: vertical-stack
         cards:
           - type: entities
@@ -736,23 +717,6 @@ views:
             entity: input_select.theme_switcher
             icon: mdi:cube-outline
             name: Theme
-            size: 70px
-            align-content: center
-            style:
-              - text-align: center
-              - margin: auto
-              - width: auto
-              - box-sizing: border-box
-              - height: auto
-              - padding-top: 4%
-              - padding-right: 0%
-              - padding-bottom: 4%
-              - padding-left: 40%
-              - align-content: center
-              - align-self: center
-              - font-size: 1.2rem
-              - font-weight: 400
-              - position: relative
             show_state: true
             action: service
             service:

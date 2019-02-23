@@ -320,6 +320,8 @@ binary_sensor:
 sabnzbd:
   api_key: !secret sabnzbd_api
   host: !secret my_sab_host
+  port: 8080
+  ssl: false
   sensors:
     - current_status
     - speed
