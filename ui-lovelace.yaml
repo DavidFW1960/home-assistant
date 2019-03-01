@@ -75,14 +75,46 @@ views:
                   green: 0
                   yellow: 35
                   red: 50
-          - type: history-graph
-            title: Memory Docker
-            hours_to_show: 24
-            refresh_interval: 300
-            entities:
-              - sensor.sonarrmemoryuse
-              - sensor.radarrmemoryuse
-              - sensor.sabnzbdmemoryuse
+#         - type: history-graph
+#           title: Memory Docker
+#           hours_to_show: 24
+#           refresh_interval: 300
+#           entities:
+#             - sensor.sonarrmemoryuse
+#             - sensor.radarrmemoryuse
+#             - sensor.sabnzbdmemoryuse
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                hours_to_show: 24
+                points_per_hour: 4	
+                show:
+                  labels: true
+                entities:
+                  - entity: sensor.sonarrmemoryuse
+                    name: Sonarr
+                    show_state: true
+                    color: yellow
+              - type: custom:mini-graph-card
+                hours_to_show: 24
+                points_per_hour: 4	
+                show:
+                  labels: true
+                entities:
+                  - entity: sensor.radarrmemoryuse
+                    name: Radarr
+                    show_state: true
+                    color: orange
+              - type: custom:mini-graph-card
+                hours_to_show: 24
+                points_per_hour: 4	
+                show:
+                  labels: true
+                entities:
+                  - entity: sensor.sabnzbdmemoryuse
+                    name: SabNZB
+                    show_state: true
+                    color: 'ADD8E6'
           - type: entities
             title: Docker Containers
             show_header_toggle: false
@@ -715,7 +747,7 @@ views:
 #               entity_id: input_select.theme_switcher
           - type: "custom:button-card"
             entity: input_select.theme_switcher
-            icon: mdi:cube-outline
+            icon: mdi:palette
             name: Theme
             show_state: true
             action: service

@@ -40,8 +40,8 @@
         button-card-button div {
           padding: 2.6%;
           text-transform: none;
-          font-size: 1.2rem;
-          font-weight: 400;
+          font-size: 1.1rem;
+          font-weight: 500;
           white-space: nowrap;
         }
       `;
