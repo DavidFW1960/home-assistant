@@ -14,24 +14,29 @@
   - platform: time
     at: '20:00:00'
   condition:
-    condition: or
+    condition: and
     conditions:
-    - condition: template
-      value_template: '{{ now().strftime(''%H:%M'') == ''07:00'' and now().weekday()
-        < 5 }}'
-    - condition: template
-      value_template: '{{ now().strftime(''%H:%M'') == ''08:00'' and now().weekday()
-        >= 5 }}'
-    - condition: template
-      value_template: '{{ now().strftime(''%H:%M'') == ''07:15'' and ((as_timestamp(now())
-        - as_timestamp(''2017-09-24 00:00:00'')) / 86400)|int % 28 == 0 }}'
-    - condition: template
-      value_template: '{{ now().strftime(''%H:%M'') == ''12:00'' and ((as_timestamp(now())
-        - as_timestamp(''2017-09-24 00:00:00'')) / 86400)|int % 28 == 0 }}'
-    - condition: template
-      value_template: '{{ now().strftime("%H:%M") == "19:00" and (states.input_boolean.overtime.state == "off") }}'
-    - condition: template
-      value_template: '{{ now().strftime("%H:%M") == "20:00" and (states.input_boolean.overtime.state == "on") }}'
+      - condition: state
+        entity_id: 'input_boolean.homeandawayauto'
+        state: 'on'
+      - condition: or
+        conditions:
+          - condition: template
+            value_template: '{{ now().strftime(''%H:%M'') == ''07:00'' and now().weekday()
+              < 5 }}'
+          - condition: template
+            value_template: '{{ now().strftime(''%H:%M'') == ''08:00'' and now().weekday()
+              >= 5 }}'
+          - condition: template
+            value_template: '{{ now().strftime(''%H:%M'') == ''07:15'' and ((as_timestamp(now())
+              - as_timestamp(''2017-09-24 00:00:00'')) / 86400)|int % 28 == 0 }}'
+          - condition: template
+            value_template: '{{ now().strftime(''%H:%M'') == ''12:00'' and ((as_timestamp(now())
+              - as_timestamp(''2017-09-24 00:00:00'')) / 86400)|int % 28 == 0 }}'
+          - condition: template
+            value_template: '{{ now().strftime("%H:%M") == "19:00" and (states.input_boolean.overtime.state == "off") }}'
+          - condition: template
+            value_template: '{{ now().strftime("%H:%M") == "20:00" and (states.input_boolean.overtime.state == "on") }}'
   action:
   - service: switch.turn_on
     data:
@@ -78,6 +83,9 @@
   - condition: time
     after: '16:00:00'
     before: '18:00:00'
+  - condition: state
+    entity_id: 'input_boolean.homeandawayauto'
+    state: 'on'
   - condition: template
     value_template: '{{states.sun.sun.attributes.elevation < 25}}'
   action:
@@ -91,7 +99,10 @@
   trigger:
   - platform: time
     at: '08:00:00'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: 'input_boolean.homeandawayauto'
+    state: 'on'
   action:
   - service: switch.turn_on
     data:
@@ -211,30 +222,6 @@
         < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
       brightness_pct: 75
       kelvin: 3100
-- id: 'homeawayinpboolturnon'
-  alias: Home and Away On
-  initial_state: 'true'
-  trigger:
-  - entity_id: input_boolean.homeandawayauto
-    from: 'off'
-    platform: state
-    to: 'on'
-  action:
-  - service: automation.turn_on
-    data:
-      entity_id: group.homeaway
-- id: 'homeawayinpboolturnoff'
-  alias: Home and Away Off
-  initial_state: 'true'
-  trigger:
-  - entity_id: input_boolean.homeandawayauto
-    from: 'on'
-    platform: state
-    to: 'off'
-  action:
-  - service: automation.turn_off
-    data:
-      entity_id: group.homeaway
 - id: 'closegaragesetalarm'
   alias: Close Garage and Set Alarm
   trigger:

@@ -15,8 +15,5 @@ Scenes:
   - scene.desk_daylight
   - scene.desk_normal
   - scene.desk_warm
-HomeAway:
-  - automation.coffee_maker_on
-  - automation.toothbrush_on
-  - automation.turn_lounge_light_on_elevation_25deg_after_4pm
+
 

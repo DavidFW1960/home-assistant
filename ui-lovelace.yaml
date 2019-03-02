@@ -704,8 +704,6 @@ views:
                   - automation.make_snapshot_copy_backups_to_dropbox
                   - automation.update_available
                   - automation.beta_update_available
-                  - automation.home_and_away_on
-                  - automation.home_and_away_off
                   - automation.bin_night
                   - automation.update_bin_night
                   - automation.alarm_event_triggered
