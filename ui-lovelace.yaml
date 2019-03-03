@@ -112,9 +112,9 @@ views:
                   labels: true
                 entities:
                   - entity: sensor.sabnzbdmemoryuse
-                    name: SabNZB
+                    name: Sabnzbd
                     show_state: true
-                    color: 'ADD8E6'
+                    color: '#73C2FB'
           - type: entities
             title: Docker Containers
             show_header_toggle: false
@@ -176,7 +176,7 @@ views:
               - sensor.processor_use
               - sensor.nuc_processor_used_filtered
           - type: custom:tracker-card
-            title: "\U0001F4E3 Custom Card Updates"
+            title: "í ½í±€ Custom Card Updates"
           - type: entities
             title: iOS Devices
             show_header_toggle: false
