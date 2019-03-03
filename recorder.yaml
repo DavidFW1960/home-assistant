@@ -231,3 +231,11 @@ exclude:
     - sensor.dark_sky_wind_speed_5
     - sensor.dark_sky_wind_speed_6
     - sensor.dark_sky_wind_speed_7
+    - sensor.forecast_0
+    - sensor.forecast_1
+    - sensor.forecast_2
+    - sensor.forecast_3
+    - sensor.forecast_4
+    - sensor.forecast_5
+    - sensor.forecast_6
+    - sensor.forecast_7
