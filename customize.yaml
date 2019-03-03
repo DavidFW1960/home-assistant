@@ -162,6 +162,8 @@ sensor.dark_sky_wind_speed_0:
   friendly_name: Wind Speed Today
 sensor.dark_sky_wind_speed_1:
   friendly_name: Wind Speed Tomorrow
+sensor.dark_sky_current_text:
+  friendly_name: Dark Sky Current Text
 sensor.yrwthr:
   friendly_name: Weather
 sensor.yr_symbol:
