@@ -736,7 +736,7 @@ views:
               - input_select.theme_switcher
 #         - type: entity-button
 #           entity: input_select.theme_switcher
-#           icon: mdi:cube-outline
+#           icon: mdi:palette
 #           name: Theme
 #           tap_action:
 #             action: call-service
@@ -891,7 +891,7 @@ views:
         max: 10
         flag: true
         title_color: '#ffffff'
-        line1_color: '#000000'
+        line1_color: 'var(--secondary-text-color)'
         line2_color: '#f41103'
         line3_color: green
         accent_color: '#03a9f4'
@@ -908,7 +908,7 @@ views:
         max: 10
         flag: true
         title_color: '#ffffff'
-        line1_color: '#000000'
+        line1_color: 'var(--secondary-text-color)'
         line2_color: '#f41103'
         line3_color: green
         accent_color: '#03a9f4'
