@@ -8,13 +8,13 @@ exclude:
     - geo_location
   entities:
     - sensor.busmonitor1
-    - sensor.busmonitor
+    - sensor.busmonitor2
     - sensor.trainmonitor1
     - sensor.trainmonitor2
-    - sensor.centralgosford
-    - sensor.gosfordcentral
-    - sensor.karionggosford
-    - sensor.gosfordkariong
+    - sensor.central_gosford
+    - sensor.gosford_central
+    - sensor.kariong_gosford
+    - sensor.gosford_kariong
     - sensor.systemuptime
 #    - sensor.dark_sky_apparent_temperature
 #    - sensor.dark_sky_cloud_coverage
