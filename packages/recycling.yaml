@@ -37,8 +37,6 @@ automation:
         platform: homeassistant
       - platform: time_pattern
         hours: '/1'
-        minutes: 0
-        seconds: 0
     action:
       - service: homeassistant.update_entity
         entity_id: sensor.recycling_bin_today, sensor.recycling_bin_tomorrow, sensor.green_bin_today, sensor.green_bin_tomorrow

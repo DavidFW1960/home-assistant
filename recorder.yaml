@@ -239,3 +239,8 @@ exclude:
     - sensor.forecast_5
     - sensor.forecast_6
     - sensor.forecast_7
+    - sensor.load
+    - sensor.load_1m
+    - sensor.load_5m
+    - sensor.load_15m
+    

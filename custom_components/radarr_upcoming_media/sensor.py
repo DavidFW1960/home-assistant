@@ -17,7 +17,7 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_SSL
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.2.4'
+__version__ = '0.2.5'
 
 _LOGGER = logging.getLogger(__name__)
 
