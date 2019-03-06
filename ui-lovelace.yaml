@@ -124,12 +124,12 @@ views:
                   type: section
                   label: Containers
                 items:
-                  - switch.hadockermonsabnzbd
-                  - switch.hadockermonsonarr
-                  - switch.hadockermonradarr
-                  - switch.hadockermonlazylibrarian
-                  - switch.hadockermonportainer
-                  - switch.hadockermonwatchtower
+                  - switch.ha_dockermon_sabnzbd
+                  - switch.ha_dockermon_sonarr
+                  - switch.ha_dockermon_radarr
+                  - switch.ha_dockermon_lazylibrarian
+                  - switch.ha_dockermon_portainer
+                  - switch.ha_dockermon_watchtower
           - type: entities
             title: NUC Resources
             show_header_toggle: false

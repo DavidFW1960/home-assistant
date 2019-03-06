@@ -337,10 +337,6 @@ switch:
   - platform: hadockermon
     host: !secret my_hadockermon_host
     port: !secret my_hadockermon_port
-    stats: true
-    prefix: hadockermon
-    exclude:
-      - 'ha-dockermon'
 
 # Wemo Switch
 wemo:

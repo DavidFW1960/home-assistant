@@ -372,10 +372,10 @@
       seconds: 0    
   action:
   - service: switch.turn_off
-    entity_id: switch.hadockermonradarr, switch.hadockermonsonarr, switch.hadockermonsabnzbd
+    entity_id: switch.ha_dockermon_radarr, switch.ha_dockermon_sonarr, switch.ha_dockermon_sabnzbd
   - delay: '00:01:00'
   - service: switch.turn_on
-    entity_id: switch.hadockermonradarr, switch.hadockermonsonarr, switch.hadockermonsabnzbd
+    entity_id: switch.ha_dockermon_radarr, switch.ha_dockermon_sonarr, switch.ha_dockermon_sabnzbd
   initial_state: 'true'
 - id: 'alarmevent'
   alias: Alarm Event Triggered

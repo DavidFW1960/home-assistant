@@ -276,22 +276,22 @@ sensor.memory_mean:
 sensor.processor_mean:
   friendly_name: Processor % Use Stats
   icon: mdi:memory
-switch.hadockermonsabnzbd:
+switch.ha_dockermon_sabnzbd:
   friendly_name: Sabnzbd
   icon: mdi:docker
-switch.hadockermonsonarr:
+switch.ha_dockermon_sonarr:
   friendly_name: Sonarr
   icon: mdi:docker
-switch.hadockermonradarr:
+switch.ha_dockermon_radarr:
   friendly_name: Radarr
   icon: mdi:docker
-switch.hadockermonlazylibrarian:
+switch.ha_dockermon_lazylibrarian:
   friendly_name: Lazy Librarian
   icon: mdi:docker
-switch.hadockermonportainer:
+switch.ha_dockermon_portainer:
   friendly_name: Portainer
   icon: mdi:docker
-switch.hadockermonwatchtower:
+switch.ha_dockermon_watchtower:
   friendly_name: Watchtower
   icon: mdi:docker
 sensor.sonarrmemoryuse:
