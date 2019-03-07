@@ -294,11 +294,11 @@ switch.ha_dockermon_portainer:
 switch.ha_dockermon_watchtower:
   friendly_name: Watchtower
   icon: mdi:docker
-sensor.sonarrmemoryuse:
+sensor.sonarr_memory:
   friendly_name: Sonarr Memory Used
-sensor.radarrmemoryuse:
+sensor.radarr_memory:
   friendly_name: Radarr Memory Used
-sensor.sabnzbdmemoryuse:
+sensor.sabnzbd_memory:
   friendly_name: Sabnzbd Memory Used
 sensor.sonoff1_2914_status:
   icon: mdi:coffee

@@ -80,9 +80,9 @@ views:
 #           hours_to_show: 24
 #           refresh_interval: 300
 #           entities:
-#             - sensor.sonarrmemoryuse
-#             - sensor.radarrmemoryuse
-#             - sensor.sabnzbdmemoryuse
+#             - sensor.sonarr_memory
+#             - sensor.radarr_memory
+#             - sensor.sabnzbd_memory
           - type: horizontal-stack
             cards:
               - type: custom:mini-graph-card
@@ -91,8 +91,8 @@ views:
                 show:
                   labels: true
                 entities:
-                  - entity: sensor.sonarrmemoryuse
-                    name: Sonarr
+                  - entity: sensor.sabnzbd_memory
+                    name: Sabnzbd
                     show_state: true
                     color: yellow
               - type: custom:mini-graph-card
@@ -101,7 +101,7 @@ views:
                 show:
                   labels: true
                 entities:
-                  - entity: sensor.radarrmemoryuse
+                  - entity: sensor.radarr_memory
                     name: Radarr
                     show_state: true
                     color: orange
@@ -111,8 +111,8 @@ views:
                 show:
                   labels: true
                 entities:
-                  - entity: sensor.sabnzbdmemoryuse
-                    name: Sabnzbd
+                  - entity: sensor.sonarr_memory
+                    name: Sonarr
                     show_state: true
                     color: '#73C2FB'
           - type: entities

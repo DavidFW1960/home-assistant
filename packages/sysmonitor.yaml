@@ -51,30 +51,22 @@ sensor:
 # Docker Containers
   - platform: rest
     resource: http://10.90.11.100:8126/container/sabnzbd/stats
-    name: Memory Sabnzbd
-    scan_interval: 1800
-    value_template: "{{ value_json.memory_stats.usage /1024/1024 }}"
+    name: Sabnzbd Memory
+    scan_interval: 900
+    value_template: "{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}"
+    unit_of_measurement: "MB"
   - platform: rest
     resource: http://10.90.11.100:8126/container/sonarr/stats
-    name: Memory Sonarr
-    scan_interval: 1800
-    value_template: "{{ value_json.memory_stats.usage /1024/1024 }}"
+    name: Sonarr Memory
+    scan_interval: 900
+    value_template: "{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}"
+    unit_of_measurement: "MB"
   - platform: rest
     resource: http://10.90.11.100:8126/container/radarr/stats
-    name: Memory Radarr
-    scan_interval: 1800
-    value_template: "{{ value_json.memory_stats.usage /1024/1024 }}"
-  - platform: template
-    sensors:
-      sonarrmemoryuse:
-        value_template: '{{ states.sensor.memory_sonarr.state |round (2) }}'
-        unit_of_measurement: "MB"
-      radarrmemoryuse:
-        value_template: '{{ states.sensor.memory_radarr.state |round (2) }}'
-        unit_of_measurement: "MB"
-      sabnzbdmemoryuse:
-        value_template: '{{ states.sensor.memory_sabnzbd.state |round (2) }}'
-        unit_of_measurement: "MB"
+    name: Radarr Memory
+    scan_interval: 900
+    value_template: "{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}"
+    unit_of_measurement: "MB"
 
 # Up since
   - platform: template
