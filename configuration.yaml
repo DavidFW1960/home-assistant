@@ -23,6 +23,16 @@ homeassistant:
     - type: notify
     - type: totp
 
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 127.0.0.1
+        - ::1
+        - 10.90.11.0/24
+        - fd00::/8
+        - !secret my_ipv6_network
+
 # System Health
 system_health:
 

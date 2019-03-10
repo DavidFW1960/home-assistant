@@ -75,46 +75,36 @@ views:
                   green: 0
                   yellow: 35
                   red: 50
-#         - type: history-graph
-#           title: Memory Docker
-#           hours_to_show: 24
-#           refresh_interval: 300
-#           entities:
-#             - sensor.sonarr_memory
-#             - sensor.radarr_memory
-#             - sensor.sabnzbd_memory
-          - type: horizontal-stack
-            cards:
-              - type: custom:mini-graph-card
-                hours_to_show: 24
-                points_per_hour: 4	
-                show:
-                  labels: true
-                entities:
-                  - entity: sensor.sabnzbd_memory
-                    name: Sabnzbd
-                    show_state: true
-                    color: yellow
-              - type: custom:mini-graph-card
-                hours_to_show: 24
-                points_per_hour: 4	
-                show:
-                  labels: true
-                entities:
-                  - entity: sensor.radarr_memory
-                    name: Radarr
-                    show_state: true
-                    color: orange
-              - type: custom:mini-graph-card
-                hours_to_show: 24
-                points_per_hour: 4	
-                show:
-                  labels: true
-                entities:
-                  - entity: sensor.sonarr_memory
-                    name: Sonarr
-                    show_state: true
-                    color: '#73C2FB'
+          - type: custom:mini-graph-card
+            hours_to_show: 24
+            points_per_hour: 4	
+            show:
+              labels: true
+            entities:
+              - entity: sensor.sabnzbd_memory
+                name: Sabnzbd
+                show_state: true
+                color: yellow
+          - type: custom:mini-graph-card
+            hours_to_show: 24
+            points_per_hour: 4	
+            show:
+              labels: true
+            entities:
+              - entity: sensor.sonarr_memory
+                name: Sonarr
+                show_state: true
+                color: orange
+          - type: custom:mini-graph-card
+            hours_to_show: 24
+            points_per_hour: 4	
+            show:
+              labels: true
+            entities:
+              - entity: sensor.radarr_memory
+                name: Radarr
+                show_state: true
+                color: '#73C2FB'
           - type: entities
             title: Docker Containers
             show_header_toggle: false
