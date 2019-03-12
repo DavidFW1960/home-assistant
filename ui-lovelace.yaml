@@ -120,6 +120,28 @@ views:
                   - switch.ha_dockermon_lazylibrarian
                   - switch.ha_dockermon_portainer
                   - switch.ha_dockermon_watchtower
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Updates
+            show_header_toggle: false
+            entities:
+              - sensor.hass_installed_version
+              - sensor.hass_available_to_install_version
+              - sensor.hass_current_stable_version
+              - sensor.hass_current_beta_version
+              - sensor.hass_current_dev_version
+              - sensor.hass_current_supervisor_version
+              - binary_sensor.hass_update_available
+          - type: history-graph
+            title: NUC Resources Graph
+            hours_to_show: 72
+            refresh_interval: 1800
+            entities:
+              - sensor.memory_use_percent
+              - sensor.nuc_memory_used_filtered
+              - sensor.processor_use
+              - sensor.nuc_processor_used_filtered
           - type: entities
             title: NUC Resources
             show_header_toggle: false
@@ -143,30 +165,6 @@ views:
               - entity: sensor.last_boot
                 format: datetime
               - sensor.systemuptime
-      - type: vertical-stack
-        cards:
-          - type: entities
-            title: Updates
-            show_header_toggle: false
-            entities:
-              - sensor.hass_installed_version
-              - sensor.hass_available_to_install_version
-              - sensor.hass_current_stable_version
-              - sensor.hass_current_beta_version
-              - sensor.hass_current_dev_version
-              - sensor.hass_current_supervisor_version
-              - binary_sensor.hass_update_available
-          - type: history-graph
-            title: NUC Resources Graph
-            hours_to_show: 72
-            refresh_interval: 1800
-            entities:
-              - sensor.memory_use_percent
-              - sensor.nuc_memory_used_filtered
-              - sensor.processor_use
-              - sensor.nuc_processor_used_filtered
-          - type: custom:tracker-card
-            title: "í ½í±€ Custom Card Updates"
           - type: entities
             title: iOS Devices
             show_header_toggle: false
@@ -246,6 +244,8 @@ views:
               action: more-info
             hold_action:
               action: more-info
+          - type: custom:tracker-card
+            title: "í ½í±€ Custom Card Updates"
   - title: Weather
     icon: mdi:weather-cloudy
     cards:
