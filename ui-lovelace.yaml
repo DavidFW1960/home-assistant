@@ -702,7 +702,8 @@ views:
                   - entity: automation.restart_docker_containers_when_memory_35
                     secondary_info: last-changed
                   - automation.system_change_current_theme
-                  - automation.system_set_custom_theme_at_startup	
+                  - automation.system_set_custom_theme_at_startup
+                  - automation.purge_history
               - type: divider
                 style:
                   height: 30px
@@ -751,7 +752,9 @@ views:
             show_header_toggle: false
             entities:
               - type: custom:fold-entity-row
-                head: group.all_automations
+                head: 
+                  type: custom:hui-text-entity-row
+                  entity: group.all_automations
               - type: custom:fold-entity-row
                 head: group.scenes
           - type: entities
