@@ -252,12 +252,25 @@ if (!customElements.get("compact-custom-header")) {
 
     get rootElement() {
       try {
-        return document
+        if (document
+          .querySelector("home-assistant")
+          .shadowRoot.querySelector("home-assistant-main")
+          .shadowRoot.querySelector("app-drawer-layout partial-panel-resolver")
+          .shadowRoot
+        ){
+          return document
           .querySelector("home-assistant")
           .shadowRoot.querySelector("home-assistant-main")
           .shadowRoot.querySelector("app-drawer-layout partial-panel-resolver")
           .shadowRoot.querySelector("ha-panel-lovelace")
           .shadowRoot.querySelector("hui-root").shadowRoot;
+        } else {
+          return document
+            .querySelector("home-assistant")
+            .shadowRoot.querySelector("home-assistant-main")
+            .shadowRoot.querySelector("ha-panel-lovelace")
+            .shadowRoot.querySelector("hui-root").shadowRoot;
+        }
       } catch(e) {
         console.log("Can't find 'hui-root', going to walk the DOM to find it.");
       }
