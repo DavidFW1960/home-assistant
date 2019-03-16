@@ -766,13 +766,13 @@ views:
               show_header_toggle: false
               entities:
                 - entity: sensor.sonoff1_2914_status
-                  name: "${'Coffee MQTT ' + states['sensor.sonoff1_2914_status'].attributes['MqttCount'] + ' WiFi ' + states['sensor.sonoff1_2914_status'].attributes['WiFi LinkCount']}"
+                  name: "${'Coffee' + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + 'MQTT ' + states['sensor.sonoff1_2914_status'].attributes['MqttCount'] + '\xa0\xa0\xa0\xa0' + 'WiFi ' + states['sensor.sonoff1_2914_status'].attributes['WiFi LinkCount']}"
                 - entity: sensor.sonoff2_3110_status
-                  name: "${'Toothbrush MQTT ' + states['sensor.sonoff2_3110_status'].attributes['MqttCount'] + ' WiFi ' + states['sensor.sonoff2_3110_status'].attributes['WiFi LinkCount']}"
+                  name: "${'Toothbrush' + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + 'MQTT ' + states['sensor.sonoff2_3110_status'].attributes['MqttCount'] + '\xa0\xa0\xa0\xa0' + 'WiFi ' + states['sensor.sonoff2_3110_status'].attributes['WiFi LinkCount']}"
                 - entity: sensor.sonoff5_1083_status
-                  name: "${'Garage MQTT ' + states['sensor.sonoff5_1083_status'].attributes['MqttCount'] + ' WiFi ' + states['sensor.sonoff5_1083_status'].attributes['WiFi LinkCount']}"
+                  name: "${'Garage' + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + 'MQTT ' + states['sensor.sonoff5_1083_status'].attributes['MqttCount'] + '\xa0\xa0\xa0\xa0' + 'WiFi ' + states['sensor.sonoff5_1083_status'].attributes['WiFi LinkCount']}"
                 - entity: sensor.sonoff6_3719_status
-                  name: "${'Alarm MQTT ' + states['sensor.sonoff6_3719_status'].attributes['MqttCount'] + ' WiFi ' + states['sensor.sonoff6_3719_status'].attributes['WiFi LinkCount']}"
+                  name: "${'Alarm' + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + 'MQTT ' + states['sensor.sonoff6_3719_status'].attributes['MqttCount'] + '\xa0\xa0\xa0\xa0' + 'WiFi ' + states['sensor.sonoff6_3719_status'].attributes['WiFi LinkCount']}"
   - title: Media
     icon: mdi:vlc
     cards:
