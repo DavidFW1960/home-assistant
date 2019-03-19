@@ -760,6 +760,11 @@ views:
               - type: custom:fold-entity-row
                 head: group.scenes
           - type: 'custom:config-template-card'
+            entities:
+              - sensor.sonoff1_2914_status
+              - sensor.sonoff2_3110_status
+              - sensor.sonoff5_1083_status
+              - sensor.sonoff6_3719_status
             config:
               type: 'custom:hui-entities-card'
               title: MQTT & Wifi Connections

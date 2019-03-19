@@ -35,7 +35,7 @@ frontend:
 
     slate:
       # Main colors
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: '#2980b9'
       accent-color: '#b58e31'
       dark-primary-color: '#2980b9'
@@ -117,7 +117,7 @@ frontend:
       lumo-tint-5pct: '#222222'
 
     darkblue:
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#396FB6"
       light-primary-color: "#77a0d4"
       dark-primary-color: "#3539ce"
@@ -157,7 +157,7 @@ frontend:
       table-row-alternative-background-color: "var(--sidebar-text_-_background)"
 
     darkred:
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       dark-primary-color: "#c66900"
       disabled-text-color: "#545454"
       divider-color: "rgba(255, 255, 255, 0.12)"
@@ -191,7 +191,7 @@ frontend:
 
     midnight:
       # Main colors
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: '#5294E2'                                                        # Header
       accent-color: '#E45E65'                                                         # Accent color
       dark-primary-color: 'var(--accent-color)'                                       # Hyperlinks                                         
@@ -265,7 +265,7 @@ frontend:
 
     Dark - Orange:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#FF8300"
       light-primary-color: "#FFA23F"
       primary-background-color: "#1F1F28"
@@ -310,7 +310,7 @@ frontend:
       
     Light - Orange:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#FF8300"
       light-primary-color: "#FFA23F"
       primary-background-color: "#F4F5F8"
@@ -355,7 +355,7 @@ frontend:
 
     PmxMononight:
       # MyVariables
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       base-hue: '220' #Controls the base (and accent) color hue (0-360) | 0=Red 60=Yellow 120=Green 180=Cyan 240=Blue 300=Magenta 360=Red
       base-sat: '16%' #Controls the saturation of the theme (0%-100%) | 0%=Grey 100%=Full Saturation
       # MyVar
@@ -422,7 +422,7 @@ frontend:
 
     Night_Theme:
       # Main Stuff #
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#0179d8" # Primary (most of the UI)
       primary-background-color: "#060606" # Primary background colour (dialogs, e.t.c)
       secondary-background-color: "#060606" # Secondary background colour (main UI background)
@@ -456,7 +456,7 @@ frontend:
       table-row-alternative-background-color: transparant
 
     oled:
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: 'black'
       accent-color: '#03A9F4'
       dark-primary-color: 'var(--accent-color)'
@@ -505,7 +505,7 @@ frontend:
 
     midnight-remake:
       # Main colors
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: '#2980b9'
       accent-color: '#f1c40f'
       dark-primary-color: 'var(--accent-color)'
@@ -579,7 +579,7 @@ frontend:
 ######### NEW THEMES ADDED BELOW THIS LINE FOR BETA TESTING PURPOSES... REMOVE LATER #########
 
     vintage: 
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       turmeric-color: "#DEB853"
       light-turmeric-color: "#E2D9A2"
       slate-color: "#0A373A" 
@@ -626,7 +626,7 @@ frontend:
       paper-font-title_-_font-family: "var(--primary-font-family)"   
     green_slate:
       #Color Variables
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       green-color: '#00b706'
       red-color: '#b70000'
       white-color: '#FFFFFF'
@@ -723,7 +723,7 @@ frontend:
       lumo-tint-5pct: 'var(--darker-grey-color)'
 
     solarized_dark:
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#586e75"
       accent-color: "#002b36"
       dark-primary-color: "#93a1a1"
@@ -775,7 +775,7 @@ frontend:
 
     solarized-light:
       # Main colors
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: '#586e75'                                                        # Header
       accent-color: '#fdf6e3'                                                         # Accent color
       dark-primary-color: '#586e75'                                                   # Hyperlinks                                         
@@ -833,7 +833,7 @@ frontend:
       google-green-500: '#859900'
 
     christmas:
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#B71515"
       disabled-text-color: "#1e7d1e"
       divider-color: "#1e7d1e"
@@ -856,7 +856,7 @@ frontend:
 
     teal:
       # Main Stuff #
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#1DE9B6" # Primary (most of the UI)
       primary-background-color: "#303030" # Primary background colour (dialogs, e.t.c)
       secondary-background-color: "#303030" # Secondary background colour (main UI background)
@@ -884,7 +884,7 @@ frontend:
 
     Dark - Yellow:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#FCB800"
       light-primary-color: "#FFCD44"
       primary-background-color: "#141414"
@@ -929,7 +929,7 @@ frontend:
 
     Light - Yellow:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#FCB800"
       light-primary-color: "#FFCD44"
       primary-background-color: "#F2F2F2"
@@ -974,7 +974,7 @@ frontend:
 
     Navy Blue & Yellow:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#FEB221"
       light-primary-color: "#FECA67"
       primary-background-color: "#1F2635"
@@ -1020,7 +1020,7 @@ frontend:
 
     Dark - Cyan:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#00E4D7"
       light-primary-color: "#71FFF7"
       primary-background-color: "#1F1F28"
@@ -1065,7 +1065,7 @@ frontend:
 
     Light - Cyan:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#00E4D7"
       light-primary-color: "#71FFF7"
       primary-background-color: "#F7F8FA"
@@ -1110,7 +1110,7 @@ frontend:
 
     Dark - Purple:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#4C3FF9"
       light-primary-color: "#6F64FA"
       primary-background-color: "#262938"
@@ -1155,7 +1155,7 @@ frontend:
 
     Light - Purple:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#4C3FF9"
       light-primary-color: "#6F64FA"
       primary-background-color: "#F7F8FA"
@@ -1200,7 +1200,7 @@ frontend:
 
     Light - Navy Blue:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#395274"
       light-primary-color: "#5F81B0"
       primary-background-color: "#F6F7F9"
@@ -1245,7 +1245,7 @@ frontend:
 
     Light - Blue:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#2F7EFD"
       light-primary-color: "#6FA6FE"
       primary-background-color: "#FEFEFE"
@@ -1290,7 +1290,7 @@ frontend:
 
     Dark - Light Red:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#FF6262"
       light-primary-color: "#FF8888"
       primary-background-color: "#20252F"
@@ -1335,7 +1335,7 @@ frontend:
 
     Light - Light Red:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#FF6262"
       light-primary-color: "#FF8888"
       primary-background-color: "#F6F7F9"
@@ -1380,7 +1380,7 @@ frontend:
 
     Dark - Blue/Purple:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#007AFF"
       light-primary-color: "#4DA3FF"
       primary-background-color: "#141A32"
@@ -1425,7 +1425,7 @@ frontend:
 
     Gray & Green:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#24E081"
       light-primary-color: "#6BEAAA"
       primary-background-color: "#494B58"
@@ -1471,7 +1471,7 @@ frontend:
 
     Dark - Gray:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#A3A3A3"
       light-primary-color: "#C5C5C5"
       primary-background-color: "#272727"
@@ -1516,7 +1516,7 @@ frontend:
 
     Light - Green:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#03B14B"
       light-primary-color: "#47FC92"
       primary-background-color: "#F6F7F9"
@@ -1561,7 +1561,7 @@ frontend:
 
     Dark - Green:
       ### Main Interface Colors ###
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#03B14B"
       light-primary-color: "#47FC92"
       primary-background-color: "#1F1F28"
@@ -1606,7 +1606,7 @@ frontend:
 
     halloween:
       # orange: dd5800; black: 000000; white: ffffff; coffee: 7a4901
-      ha-card-border-radius: '20px'
+      ha-card-border-radius: '10px'
       primary-color: "#dd5800"
       disabled-text-color: "#242424"
       divider-color: "rgba(255, 0, 0, 0.12)"
