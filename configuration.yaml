@@ -283,19 +283,19 @@ sensor:
   - platform: mqtt
     name: "Coffee Maker Firmware"
     state_topic: "sonoff1/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
   - platform: mqtt
     name: "Toothbrush Firmware"
     state_topic: "sonoff2/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
   - platform: mqtt
     name: "Garage Door Firmware"
     state_topic: "sonoff5/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
   - platform: mqtt
     name: "Alarm Firmware"
     state_topic: "sonoff6/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
 binary_sensor:
   - platform: template
     sensors:
