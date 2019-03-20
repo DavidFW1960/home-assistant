@@ -752,13 +752,27 @@ views:
           - type: entities
             title: Automations & Scenes
             show_header_toggle: false
-            entities:
-              - type: custom:fold-entity-row
-                head: 
-                  type: custom:hui-text-entity-row
-                  entity: group.all_automations
-              - type: custom:fold-entity-row
-                head: group.scenes
+            entities: 
+              - type: custom:auto-entities
+                card:
+                  type: custom:fold-entity-row
+                  head:
+                    type: section
+                    label: All Automations
+                  open: false
+                filter:
+                  include:
+                    - entity_id: "automation.*"
+              - type: custom:auto-entities
+                card:
+                  type: custom:fold-entity-row
+                  head:
+                    type: section
+                    label: Scenes
+                  open: false
+                filter:
+                  include:
+                    - entity_id: "scene.*"
           - type: 'custom:config-template-card'
             entities:
               - sensor.sonoff1_2914_status
