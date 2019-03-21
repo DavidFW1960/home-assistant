@@ -798,13 +798,13 @@ views:
               show_header_toggle: false
               entities:
                 - entity: sensor.sonoff1_2914_status
-                  name: "${'Coffee' + '\xa0'.repeat(16) + 'MQTT ' + vars[0] + '\xa0'.repeat(4) + 'WiFi ' + vars[1] + '\xa0'.repeat(3) + ( vars[2] >= 100 ? 'Excellent' : vars[2] >= 80 ? 'Good' : vars[2] >= 60 ? 'Fair' : 'Weak')}"
+                  name: "${'Coffee' + '\xa0'.repeat(16) + 'MQTT ' + vars[0] + '\xa0'.repeat(4) + 'WiFi ' + vars[1] + '\xa0'.repeat(3) + ((parseInt(vars[2]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[2] >= 100 ? 'Excellent' : vars[2] >= 80 ? 'Good' : vars[2] >= 60 ? 'Fair' : 'Weak' )}"
                 - entity: sensor.sonoff2_3110_status
-                  name: "${'Toothbrush' + '\xa0'.repeat(7) + 'MQTT ' + vars[3] + '\xa0'.repeat(4) + 'WiFi ' + vars[4] + '\xa0'.repeat(3) + ( vars[5] >= 100 ? 'Excellent' : vars[5] >= 80 ? 'Good' : vars[5] >= 60 ? 'Fair' : 'Weak')}"
+                  name: "${'Toothbrush' + '\xa0'.repeat(7) + 'MQTT ' + vars[3] + '\xa0'.repeat(4) + 'WiFi ' + vars[4] + '\xa0'.repeat(3) + ((parseInt(vars[5]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[5] >= 100 ? 'Excellent' : vars[5] >= 80 ? 'Good' : vars[5] >= 60 ? 'Fair' : 'Weak' )}"
                 - entity: sensor.sonoff5_1083_status
-                  name: "${'Garage' + '\xa0'.repeat(15) + 'MQTT ' + vars[6] + '\xa0'.repeat(4) + 'WiFi ' + vars[7] + '\xa0'.repeat(3) + ( vars[8] >= 100 ? 'Excellent' : vars[8] >= 80 ? 'Good' : vars[8] >= 60 ? 'Fair' : 'Weak')}"
+                  name: "${'Garage' + '\xa0'.repeat(15) + 'MQTT ' + vars[6] + '\xa0'.repeat(4) + 'WiFi ' + vars[7] + '\xa0'.repeat(3) + ((parseInt(vars[8]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[8] >= 100 ? 'Excellent' : vars[8] >= 80 ? 'Good' : vars[8] >= 60 ? 'Fair' : 'Weak' )}"
                 - entity: sensor.sonoff6_3719_status
-                  name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak')}"
+                  name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
   - title: Media
     icon: mdi:vlc
     cards:
