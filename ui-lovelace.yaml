@@ -809,11 +809,11 @@ views:
     icon: mdi:vlc
     cards:
       - type: 'custom:compact-custom-header'
-      - type: markdown
-        content: ' '
-        title: Google Devices
       - type: vertical-stack
         cards:
+          - type: markdown
+            content: ' '
+            title: Google Media Players
           - entity: media_player.all_speakers
             type: custom:mini-media-player
             tts: 
@@ -860,13 +860,11 @@ views:
             hide: 
               power_state: false
             info: scroll
-      - type: markdown
-        content: ' '
-        title: Other Devices
       - type: vertical-stack
-        title: Other Media Players
-        show_header_toggle: false
         cards:
+          - type: markdown
+            content: ' '
+            title: Other Media Players
           - entity: media_player.roku_5x46aj056306
             type: custom:mini-media-player
             artwork: cover
