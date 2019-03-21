@@ -380,6 +380,15 @@ input_boolean:
 shell_command:
   removealarm: python /config/emptyinbox.py
 
+# Home Assistant Podcasts on gpodder
+gpodder:
+  username: !secret gpodder_user
+  password: !secret gpodder_password
+  sensor:
+    - device: homeassistant
+      enabled: true
+      name: gPodder
+
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml
 scene: !include scene.yaml
