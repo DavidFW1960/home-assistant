@@ -423,4 +423,11 @@
       keep_days: 7
       repack: 'true'
     service: recorder.purge
-
+- id: 'cleanknowndevices'
+  alias: Clean out Known Devices
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - service: shell_command.clean_knowndevices
+  initial_state: 'true'

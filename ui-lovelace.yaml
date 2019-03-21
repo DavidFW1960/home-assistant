@@ -700,6 +700,7 @@ views:
                   - automation.beta_update_available
                   - automation.bin_night
                   - automation.update_bin_night
+                  - automation.clean_out_known_devices
                   - automation.alarm_event_triggered
                   - automation.alarm_event_check
                   - automation.update_speedtest
