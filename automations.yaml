@@ -431,3 +431,4 @@
   action:
   - service: shell_command.clean_knowndevices
   initial_state: 'true'
+

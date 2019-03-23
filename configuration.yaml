@@ -10,10 +10,12 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret my_timezone
+  # Whitelisted Directories
+  # whitelist_external_dirs:
   # Customization file
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
-  # Fuel Monitor, System Monitor, Sun, Moon, Transport Weather & Updates Packages
+  # Fuel Monitor, System Monitor, Sun, Moon, Transport, Weather, Updates, Fire Incidents, Recycling Night, Themes Packages
   packages: !include_dir_named packages
   # LimitlessLED
   customize_domain:
@@ -196,6 +198,14 @@ logbook:
 # Sensors
 sensor:
 
+# ABB Usage
+  - platform: mqtt
+    name: "ABB Last Updated"
+    state_topic: "abb/abbusage"
+    device_class: timestamp
+    value_template: "{{ value_json.updated }}"
+    json_attributes_topic: "abb/abbusage"
+
 # Authentication Sensor
   - platform: authenticated
     enable_notification: true
@@ -376,7 +386,7 @@ input_boolean:
   overtime:
     name: Overtime
 
-# Clear Out Gmail Alarm Notifications, Clean Known Devices file
+# Clear Out Gmail Alarm Notifications & Clean Known Devices file
 shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
