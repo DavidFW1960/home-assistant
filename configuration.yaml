@@ -202,6 +202,7 @@ sensor:
   - platform: mqtt
     name: "ABB Last Updated"
     state_topic: "abb/abbusage"
+    icon: mdi:calendar
     device_class: timestamp
     value_template: "{{ value_json.updated }}"
     json_attributes_topic: "abb/abbusage"

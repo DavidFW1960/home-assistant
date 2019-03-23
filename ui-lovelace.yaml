@@ -241,6 +241,33 @@ views:
                 color: orange
               - value: 13
                 color: green
+          - type: 'custom:config-template-card'
+            variables:
+              - states['sensor.abb_last_updated'].state
+              - states['sensor.abb_last_updated'].attributes['download']
+              - states['sensor.abb_last_updated'].attributes['upload']
+              - states['sensor.abb_last_updated'].attributes['allowance']
+              - states['sensor.abb_last_updated'].attributes['rollover']
+            entities:
+              - sensor.abb_last_updated
+            card:
+              type: 'custom:hui-entities-card'
+              title: ABB Usage
+              show_header_toggle: false
+              entities:
+                - entity: sensor.abb_last_updated
+                  format: datetime
+                - entity: sensor.abb_last_updated
+                  name: "${'Rollover Date ' +'\xa0'.repeat(2) + vars[4]}"
+                - entity: sensor.abb_last_updated
+                  name: "${'Downloaded ' + '\xa0'.repeat(4) + ((vars[1]/1E9).toFixed(2)) + ' GB' }"
+                  icon: mdi:file-download
+                - entity: sensor.abb_last_updated
+                  name: "${'Uploaded ' + '\xa0'.repeat(9) + ((vars[2]/1E9).toFixed(2)) + ' GB' }"
+                  icon: mdi:file-upload
+                - entity: sensor.abb_last_updated
+                  name: "${'Total ' + '\xa0'.repeat(17) + (((vars[1] +vars[2])/1E9).toFixed(2)) + ' GB of ' + (vars[3]/1E3 < 1E5 ? vars[3]/1E3 : 'Unlimited' + ' GB')}"
+                  icon: mdi:lan-connect
           - type: picture-entity
             title: Aussie Broadband CVC Capacity
             entity: camera.aussie_broadband_cvc_capacity
