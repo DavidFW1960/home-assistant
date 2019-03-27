@@ -116,6 +116,9 @@ frontend:
       lumo-shade-5pct: 'rgba(34, 34, 34, .05)'
       lumo-tint-5pct: '#222222'
 
+    slateicon:                                    # Only used for Exit-Enter Button when ON
+      paper-item-icon-color: '#b58e31'            # Set to var(--secondary-text-color) of current theme
+
     darkblue:
       ha-card-border-radius: '10px'
       primary-color: "#396FB6"

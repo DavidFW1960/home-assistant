@@ -24,6 +24,8 @@ resources:
     type: module
   - url: /customcards/github/custom-cards/podcast-card.js
     type: module
+  - url: /customcards/github/custom-cards/bar-card.js
+    type: module
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -243,31 +245,57 @@ views:
                 color: green
           - type: 'custom:config-template-card'
             variables:
-              - states['sensor.abb_last_updated'].state
-              - states['sensor.abb_last_updated'].attributes['download']
-              - states['sensor.abb_last_updated'].attributes['upload']
-              - states['sensor.abb_last_updated'].attributes['allowance']
-              - states['sensor.abb_last_updated'].attributes['rollover']
+              - states['sensor.abb_usage'].state
+              - states['sensor.abb_usage'].attributes['usedMb']
+              - states['sensor.abb_usage'].attributes['downloadedMb']
+              - states['sensor.abb_usage'].attributes['uploadedMb']
+              - states['sensor.abb_usage'].attributes['remainingMb']
+              - states['sensor.abb_usage'].attributes['daysTotal']
+              - states['sensor.abb_usage'].attributes['daysRemaining']
+              - states['sensor.abb_usage'].attributes['lastUpdated']
+              - states['sensor.abb_usage'].attributes['nextrollover']
             entities:
-              - sensor.abb_last_updated
+              - sensor.abb_usage
             card:
               type: 'custom:hui-entities-card'
               title: ABB Usage
               show_header_toggle: false
               entities:
-                - entity: sensor.abb_last_updated
-                  format: datetime
-                - entity: sensor.abb_last_updated
-                  name: "${'Rollover Date ' +'\xa0'.repeat(2) + vars[4]}"
-                - entity: sensor.abb_last_updated
-                  name: "${'Downloaded ' + '\xa0'.repeat(4) + ((vars[1]/1E9).toFixed(2)) + ' GB' }"
+                - entity: sensor.abb_usage
+                  name: "${'Last Update at' + '\xa0'.repeat(3) + new Date(vars[7]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'}) + '\xa0' + 'at' + '\xa0' + new Date(vars[7]).toLocaleTimeString('en-AU')}"
+                  icon: mdi:clock
+                - entity: sensor.abb_usage
+                  name: "${'Updated' + '\xa0'.repeat(14) + Number.parseInt((new Date().getTime() - new Date(vars[7])) / 60000) + '\xa0' + 'minutes ago'}"
+                  icon: mdi:clock
+                - entity: sensor.abb_usage
+                  name: "${var usedinfo= ((vars[5] - vars[6] + 1) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); 'Used' + '\xa0'.repeat(20) + usedinfo + '\xa0' + 'days' + '\xa0' + usedpercent + '%' + '\xa0' + 'of month'}"
+                  icon: mdi:calendar
+                - entity: sensor.abb_usage
+                  name: "${var usedinfo= ((vars[5] - vars[6] + 1) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); var projected= ((vars[1] / usedpercent) / 10 ).toFixed(2); 'Projected Use' + '\xa0'.repeat(4) + projected  + '\xa0' + 'GB'}"
+                  icon: mdi:calendar
+                - entity: sensor.abb_usage
+                  name: "${'Next Rollover' + '\xa0'.repeat(5) + new Date(vars[8]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'})}"
+                  icon: mdi:calendar
+                - entity: sensor.abb_usage
+                  name: "${'Today is Day' + '\xa0'.repeat(6) + (vars[5] - vars[6] + 1) + '\xa0'.repeat(2) + 'of' + '\xa0'.repeat(2) + vars[5] + '\xa0'.repeat(2) + 'days'}"
+                  icon: mdi:calendar
+                - entity: sensor.abb_usage
+                  name: "${'Downloaded' + '\xa0'.repeat(6) + ((vars[2]/1E3).toFixed(2)) + '\xa0' + 'GB' }"
                   icon: mdi:file-download
-                - entity: sensor.abb_last_updated
-                  name: "${'Uploaded ' + '\xa0'.repeat(9) + ((vars[2]/1E9).toFixed(2)) + ' GB' }"
+                - entity: sensor.abb_usage
+                  name: "${'Uploaded' + '\xa0'.repeat(11) + ((vars[3]/1E3).toFixed(2)) + '\xa0' + 'GB' }"
                   icon: mdi:file-upload
-                - entity: sensor.abb_last_updated
-                  name: "${'Total ' + '\xa0'.repeat(17) + (((vars[1] +vars[2])/1E9).toFixed(2)) + ' GB of ' + (vars[3]/1E3 < 1E5 ? vars[3]/1E3 : 'Unlimited' + ' GB')}"
+                - entity: sensor.abb_usage
+                  name: "${'Total' + '\xa0'.repeat(19) + (((vars[2] +vars[3]) / 1E3).toFixed(2)) + '\xa0' + 'GB of' + '\xa0' + (vars[4] =! 'null' ? vars[4] : 'Unlimited' + '\xa0' + 'GB')}"
                   icon: mdi:lan-connect
+          - type: 'custom:bar-card'
+            title: Month Left
+            entity: sensor.abb_usage
+            attribute: daysRemaining
+            min: 0
+            max: 31
+            height: 20px
+            direction: left
           - type: picture-entity
             title: Aussie Broadband CVC Capacity
             entity: camera.aussie_broadband_cvc_capacity
@@ -610,24 +638,29 @@ views:
                   service: switch.turn_on
                   service_data:
                     entity_id: switch.sonoff63719
-#             - type: entity-button
+              - type: 'custom:config-template-card'
+                entities: 
+                  - input_boolean.alarmgaragedoor
+                card:
+                  type: 'custom:hui-entity-button-card'
+                  entity: input_boolean.alarmgaragedoor
+                  theme: "${states['input_boolean.alarmgaragedoor'].state === 'on' ? 'slateicon' : 'slate'}"
+                  tap_action:
+                    action: toggle
+#             - type: custom:button-card
 #               entity: input_boolean.alarmgaragedoor
-#               tap_action:
+#               icon: mdi:security
+#               color_type: icon
+#               color: var(--secondary-text-color)            # rgb(251, 210, 41)
+#               color_off: var(--paper-item-icon-color)       # rgb(54, 95, 140)
+#               name: Exit-Enter
+#               show_state: false
+#               action: service
+#               service: 
+#                 domain: input_boolean
 #                 action: toggle
-              - type: custom:button-card
-                entity: input_boolean.alarmgaragedoor
-                icon: mdi:security
-                color_type: icon
-                color: var(--secondary-text-color)            # rgb(251, 210, 41)
-                color_off: var(--paper-item-icon-color)       # rgb(54, 95, 140)
-                name: Exit-Enter
-                show_state: false
-                action: service
-                service: 
-                  domain: input_boolean
-                  action: toggle
-                  data:
-                    entity_id: input_boolean.alarmgaragedoor
+#                 data:
+#                   entity_id: input_boolean.alarmgaragedoor
           - type: conditional
             conditions:
               - entity: sensor.recycling_bin_today
@@ -757,28 +790,15 @@ views:
             show_header_toggle: false
             entities:
               - input_select.theme_switcher
-#         - type: entity-button
-#           entity: input_select.theme_switcher
-#           icon: mdi:palette
-#           name: Theme
-#           tap_action:
-#             action: call-service
-#             service: input_select.select_next
-#             service_data:
-#               entity_id: input_select.theme_switcher
-          - type: "custom:button-card"
+          - type: entity-button
             entity: input_select.theme_switcher
             icon: mdi:palette
             name: Theme
-            show_state: true
-            action: service
-            service:
-              domain: input_select
-              action: select_next
-              data:
+            tap_action:
+              action: call-service
+              service: input_select.select_next
+              service_data:
                 entity_id: input_select.theme_switcher
-            color_type: icon
-            color: 'var(--primary-background-color)'
           - type: entities
             title: Automations & Scenes
             show_header_toggle: false

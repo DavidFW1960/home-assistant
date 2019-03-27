@@ -200,11 +200,10 @@ sensor:
 
 # ABB Usage
   - platform: mqtt
-    name: "ABB Last Updated"
+    name: "ABB Usage"
     state_topic: "abb/abbusage"
-    icon: mdi:calendar
-    device_class: timestamp
-    value_template: "{{ value_json.updated }}"
+    icon: mdi:blank
+    value_template: "{{ value_json.usage }}"
     json_attributes_topic: "abb/abbusage"
 
 # Authentication Sensor
