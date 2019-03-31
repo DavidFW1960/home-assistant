@@ -90,105 +90,105 @@ sensor:
     sensors:
       forecast_0:
         entity_id:
-          - sensor.dark_sky_daytime_high_temperature_0
-          - sensor.dark_sky_overnight_low_temperature_0
-          - sensor.dark_sky_precip_probability_0
+          - sensor.dark_sky_daytime_high_temperature_0d
+          - sensor.dark_sky_overnight_low_temperature_0d
+          - sensor.dark_sky_precip_probability_0d
         friendly_name: "Today"
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_0.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_0.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_0.state|round(0)}}%
+          {{states.sensor.dark_sky_daytime_high_temperature_0d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_0d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_0d.state|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_0.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_0d.state ~ '.png'}}
 
       forecast_1:
         entity_id:
-          - sensor.dark_sky_daytime_high_temperature_1
-          - sensor.dark_sky_overnight_low_temperature_1
-          - sensor.dark_sky_precip_probability_1
+          - sensor.dark_sky_daytime_high_temperature_1d
+          - sensor.dark_sky_overnight_low_temperature_1d
+          - sensor.dark_sky_precip_probability_1d
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (1 * 86400 ) -%}
           {{ date | timestamp_custom("Tomorrow (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_1.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_1.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_1.state|round(0)}}%
+          {{states.sensor.dark_sky_daytime_high_temperature_1d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_1d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_1d.state|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_1.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_1d.state ~ '.png'}}
 
       forecast_2:
         entity_id:
-          - sensor.dark_sky_daytime_high_temperature_2
-          - sensor.dark_sky_overnight_low_temperature_2
-          - sensor.dark_sky_precip_probability_2
+          - sensor.dark_sky_daytime_high_temperature_2d
+          - sensor.dark_sky_overnight_low_temperature_2d
+          - sensor.dark_sky_precip_probability_2d
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (2 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_2.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_2.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_2.state|round(0)}}%
+          {{states.sensor.dark_sky_daytime_high_temperature_2d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_2d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_2d.state|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_2.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_2d.state ~ '.png'}}
 
       forecast_3:
         entity_id:
-          - sensor.dark_sky_daytime_high_temperature_3
-          - sensor.dark_sky_overnight_low_temperature_3
-          - sensor.dark_sky_precip_probability_3
+          - sensor.dark_sky_daytime_high_temperature_3d
+          - sensor.dark_sky_overnight_low_temperature_3d
+          - sensor.dark_sky_precip_probability_3d
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (3 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_3.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_3.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_3.state|round(0)}}%
+          {{states.sensor.dark_sky_daytime_high_temperature_3d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_3d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_3d.state|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_3.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_3d.state ~ '.png'}}
 
       forecast_4:
         entity_id:
-          - sensor.dark_sky_daytime_high_temperature_4
-          - sensor.dark_sky_overnight_low_temperature_4
-          - sensor.dark_sky_precip_probability_4
+          - sensor.dark_sky_daytime_high_temperature_4d
+          - sensor.dark_sky_overnight_low_temperature_4d
+          - sensor.dark_sky_precip_probability_4d
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (4 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_4.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_4.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_4.state|round(0)}}%
+          {{states.sensor.dark_sky_daytime_high_temperature_4d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_4d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_4d.state|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_4.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_4d.state ~ '.png'}}
 
       forecast_5:
         entity_id:
-          - sensor.dark_sky_daytime_high_temperature_5
-          - sensor.dark_sky_overnight_low_temperature_5
-          - sensor.dark_sky_precip_probability_5
+          - sensor.dark_sky_daytime_high_temperature_5d
+          - sensor.dark_sky_overnight_low_temperature_5d
+          - sensor.dark_sky_precip_probability_5d
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (5 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_5.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_5.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_5.state|round(0)}}%
+          {{states.sensor.dark_sky_daytime_high_temperature_5d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_5d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_5d.state|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_5.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_5d.state ~ '.png'}}
 
       forecast_6:
         entity_id:
-          - sensor.dark_sky_daytime_high_temperature_6
-          - sensor.dark_sky_overnight_low_temperature_6
-          - sensor.dark_sky_precip_probability_6
+          - sensor.dark_sky_daytime_high_temperature_6d
+          - sensor.dark_sky_overnight_low_temperature_6d
+          - sensor.dark_sky_precip_probability_6d
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (6 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-            {{states.sensor.dark_sky_daytime_high_temperature_6.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_6.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_6.state|round(0)}}%
+            {{states.sensor.dark_sky_daytime_high_temperature_6d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_6d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_6d.state|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_6.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_6d.state ~ '.png'}}
 
       forecast_7:
         entity_id:
-          - sensor.dark_sky_daytime_high_temperature_7
-          - sensor.dark_sky_overnight_low_temperature_7
-          - sensor.dark_sky_precip_probability_7
+          - sensor.dark_sky_daytime_high_temperature_7d
+          - sensor.dark_sky_overnight_low_temperature_7d
+          - sensor.dark_sky_precip_probability_7d
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (7 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-            {{states.sensor.dark_sky_daytime_high_temperature_7.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_7.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_7.state|round(0)}}%
+            {{states.sensor.dark_sky_daytime_high_temperature_7d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_7d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_7d.state|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_7.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_7d.state ~ '.png'}}
 
       dark_sky_current_text:
         value_template: '{% if is_state("sensor.dark_sky_icon","clear-day") %} Clear 

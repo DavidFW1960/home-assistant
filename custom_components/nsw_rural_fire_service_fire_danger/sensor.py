@@ -11,7 +11,7 @@ import voluptuous as vol
 import xmltodict
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
-from homeassistant.components.sensor.rest import RestData
+from homeassistant.components.rest.sensor import RestData
 from homeassistant.const import (STATE_UNKNOWN, STATE_OK, ATTR_ATTRIBUTION)
 from homeassistant.exceptions import PlatformNotReady
 from homeassistant.helpers.entity import Entity

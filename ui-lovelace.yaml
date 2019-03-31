@@ -25,7 +25,7 @@ resources:
   - url: /customcards/github/custom-cards/podcast-card.js
     type: module
   - url: /customcards/github/custom-cards/bar-card.js
-    type: module
+    type: js
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -183,6 +183,60 @@ views:
               - sensor.davids_ipad_battery_state
       - type: vertical-stack
         cards:
+          - type: 'custom:config-template-card'
+            variables:
+              - states['sensor.abb_usage'].state
+              - states['sensor.abb_usage'].attributes['usedMb']
+              - states['sensor.abb_usage'].attributes['downloadedMb']
+              - states['sensor.abb_usage'].attributes['uploadedMb']
+              - states['sensor.abb_usage'].attributes['remainingMb']
+              - states['sensor.abb_usage'].attributes['daysTotal']
+              - states['sensor.abb_usage'].attributes['daysRemaining']
+              - states['sensor.abb_usage'].attributes['lastUpdated']
+              - states['sensor.abb_usage'].attributes['nextRollover']
+              - states['sensor.abb_usage'].attributes['daysUsed']
+            entities:
+              - sensor.abb_usage
+            card:
+              type: 'custom:hui-entities-card'
+              title: ABB Usage
+              show_header_toggle: false
+              entities:
+                - entity: sensor.abb_usage
+                  name: "${'Last Update at' + '\xa0'.repeat(3) + new Date(vars[7]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'}) + '\xa0' + 'at' + '\xa0' + new Date(vars[7]).toLocaleTimeString('en-AU')}"
+                - entity: sensor.abb_usage
+                  name: "${'Updated' + '\xa0'.repeat(14) + Number.parseInt((new Date().getTime() - new Date(vars[7])) / 60000) + '\xa0' + 'minutes ago'}"
+                  icon: mdi:clock
+                - entity: sensor.abb_usage
+                  name: "${var usedinfo= ((vars[5] - vars[6]) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); 'Used' + '\xa0'.repeat(20) + usedinfo + '\xa0' + 'days' + '\xa0'.repeat(2) + '-' + '\xa0'.repeat(2) + usedpercent + '%' + '\xa0' + 'of month'}"
+                  icon: mdi:calendar
+                - entity: sensor.abb_usage
+                  name: "${var usedinfo= ((vars[5] - vars[6]) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); var projected= ((vars[1] / usedpercent) / 10 ).toFixed(2); 'Projected Use' + '\xa0'.repeat(4) + projected  + '\xa0' + 'GB'}"
+                  icon: mdi:lan-connect
+                - entity: sensor.abb_usage
+                  name: "${'Next Rollover' + '\xa0'.repeat(5) + new Date(vars[8]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'})}"
+                  icon: mdi:calendar
+                - entity: sensor.abb_usage
+                  name: "${'Today is Day' + '\xa0'.repeat(6) + ((vars[9] + 1)) + '\xa0'.repeat(2) + 'of' + '\xa0'.repeat(2) + vars[5] + '\xa0'.repeat(2) + 'days'}"
+                  icon: mdi:calendar
+                - entity: sensor.abb_usage
+                  name: "${'Downloaded' + '\xa0'.repeat(6) + ((vars[2]/1E3).toFixed(2)) + '\xa0' + 'GB' }"
+                  icon: mdi:file-download
+                - entity: sensor.abb_usage
+                  name: "${'Uploaded' + '\xa0'.repeat(11) + ((vars[3]/1E3).toFixed(2)) + '\xa0' + 'GB' }"
+                  icon: mdi:file-upload
+                - entity: sensor.abb_usage
+                  name: "${'Total' + '\xa0'.repeat(19) + (((vars[2] +vars[3]) / 1E3).toFixed(2)) + '\xa0' + 'GB of' + '\xa0' + (vars[4] =! 'null' ? vars[4] : 'Unlimited' + '\xa0' + 'GB')}"
+                  icon: mdi:lan-connect
+          - type: 'custom:bar-card'
+            title: Month Used
+            entity: sensor.abb_usage
+            attribute: daysUsed
+            min: 1
+            max: sensor.abb_usage.attributes.daysTotal
+            height: 20px
+            direction: right
+            unit_of_measurement: days
           - type: entities
             title: Internet
             show_header_toggle: false
@@ -243,59 +297,6 @@ views:
                 color: orange
               - value: 13
                 color: green
-          - type: 'custom:config-template-card'
-            variables:
-              - states['sensor.abb_usage'].state
-              - states['sensor.abb_usage'].attributes['usedMb']
-              - states['sensor.abb_usage'].attributes['downloadedMb']
-              - states['sensor.abb_usage'].attributes['uploadedMb']
-              - states['sensor.abb_usage'].attributes['remainingMb']
-              - states['sensor.abb_usage'].attributes['daysTotal']
-              - states['sensor.abb_usage'].attributes['daysRemaining']
-              - states['sensor.abb_usage'].attributes['lastUpdated']
-              - states['sensor.abb_usage'].attributes['nextrollover']
-            entities:
-              - sensor.abb_usage
-            card:
-              type: 'custom:hui-entities-card'
-              title: ABB Usage
-              show_header_toggle: false
-              entities:
-                - entity: sensor.abb_usage
-                  name: "${'Last Update at' + '\xa0'.repeat(3) + new Date(vars[7]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'}) + '\xa0' + 'at' + '\xa0' + new Date(vars[7]).toLocaleTimeString('en-AU')}"
-                  icon: mdi:clock
-                - entity: sensor.abb_usage
-                  name: "${'Updated' + '\xa0'.repeat(14) + Number.parseInt((new Date().getTime() - new Date(vars[7])) / 60000) + '\xa0' + 'minutes ago'}"
-                  icon: mdi:clock
-                - entity: sensor.abb_usage
-                  name: "${var usedinfo= ((vars[5] - vars[6] + 1) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); 'Used' + '\xa0'.repeat(20) + usedinfo + '\xa0' + 'days' + '\xa0' + usedpercent + '%' + '\xa0' + 'of month'}"
-                  icon: mdi:calendar
-                - entity: sensor.abb_usage
-                  name: "${var usedinfo= ((vars[5] - vars[6] + 1) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); var projected= ((vars[1] / usedpercent) / 10 ).toFixed(2); 'Projected Use' + '\xa0'.repeat(4) + projected  + '\xa0' + 'GB'}"
-                  icon: mdi:calendar
-                - entity: sensor.abb_usage
-                  name: "${'Next Rollover' + '\xa0'.repeat(5) + new Date(vars[8]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'})}"
-                  icon: mdi:calendar
-                - entity: sensor.abb_usage
-                  name: "${'Today is Day' + '\xa0'.repeat(6) + (vars[5] - vars[6] + 1) + '\xa0'.repeat(2) + 'of' + '\xa0'.repeat(2) + vars[5] + '\xa0'.repeat(2) + 'days'}"
-                  icon: mdi:calendar
-                - entity: sensor.abb_usage
-                  name: "${'Downloaded' + '\xa0'.repeat(6) + ((vars[2]/1E3).toFixed(2)) + '\xa0' + 'GB' }"
-                  icon: mdi:file-download
-                - entity: sensor.abb_usage
-                  name: "${'Uploaded' + '\xa0'.repeat(11) + ((vars[3]/1E3).toFixed(2)) + '\xa0' + 'GB' }"
-                  icon: mdi:file-upload
-                - entity: sensor.abb_usage
-                  name: "${'Total' + '\xa0'.repeat(19) + (((vars[2] +vars[3]) / 1E3).toFixed(2)) + '\xa0' + 'GB of' + '\xa0' + (vars[4] =! 'null' ? vars[4] : 'Unlimited' + '\xa0' + 'GB')}"
-                  icon: mdi:lan-connect
-          - type: 'custom:bar-card'
-            title: Month Left
-            entity: sensor.abb_usage
-            attribute: daysRemaining
-            min: 0
-            max: 31
-            height: 20px
-            direction: left
           - type: picture-entity
             title: Aussie Broadband CVC Capacity
             entity: camera.aussie_broadband_cvc_capacity
@@ -356,42 +357,42 @@ views:
             title: Dark Sky
             show_header_toggle: false
             entities:
-              - sensor.dark_sky_cloud_coverage_0
-              - sensor.dark_sky_cloud_coverage_1
+              - sensor.dark_sky_cloud_coverage_0d
+              - sensor.dark_sky_cloud_coverage_1d
               - sensor.dark_sky_hourly_summary
               - sensor.dark_sky_daily_summary
-              - sensor.dark_sky_summary_0
-              - sensor.dark_sky_summary_1
-              - sensor.dark_sky_wind_speed_0
-              - sensor.dark_sky_wind_speed_1
+              - sensor.dark_sky_summary_0d
+              - sensor.dark_sky_summary_1d
+              - sensor.dark_sky_wind_speed_0d
+              - sensor.dark_sky_wind_speed_1d
       - type: vertical-stack
         cards:
           - type: custom:dark-sky-weather-card
             entity_current_conditions: sensor.dark_sky_icon
             entity_temperature: sensor.dark_sky_temperature
-            entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
-            entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
-            entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
-            entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
-            entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
-            entity_forecast_icon_1: sensor.dark_sky_icon_1
-            entity_forecast_icon_2: sensor.dark_sky_icon_2
-            entity_forecast_icon_3: sensor.dark_sky_icon_3
-            entity_forecast_icon_4: sensor.dark_sky_icon_4
-            entity_forecast_icon_5: sensor.dark_sky_icon_5
-            entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_0
-            entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
-            entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
-            entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
-            entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
-            entity_summary_1: sensor.dark_sky_summary_1
-            entity_summary_2: sensor.dark_sky_summary_2
-            entity_summary_3: sensor.dark_sky_summary_3
-            entity_summary_4: sensor.dark_sky_summary_4
-            entity_summary_5: sensor.dark_sky_summary_5
+            entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1d
+            entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2d
+            entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3d
+            entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4d
+            entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5d
+            entity_forecast_icon_1: sensor.dark_sky_icon_1d
+            entity_forecast_icon_2: sensor.dark_sky_icon_2d
+            entity_forecast_icon_3: sensor.dark_sky_icon_3d
+            entity_forecast_icon_4: sensor.dark_sky_icon_4d
+            entity_forecast_icon_5: sensor.dark_sky_icon_5d
+            entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_0d
+            entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1d
+            entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2d
+            entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3d
+            entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4d
+            entity_summary_1: sensor.dark_sky_summary_1d
+            entity_summary_2: sensor.dark_sky_summary_2d
+            entity_summary_3: sensor.dark_sky_summary_3d
+            entity_summary_4: sensor.dark_sky_summary_4d
+            entity_summary_5: sensor.dark_sky_summary_5d
             entity_sun: sun.sun
             entity_visibility: sensor.dark_sky_visibility
-            entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0
+            entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
             entity_wind_bearing: sensor.dark_sky_wind_bearing
             entity_wind_speed: sensor.dark_sky_wind_speed
             entity_humidity: sensor.dark_sky_humidity
@@ -400,11 +401,11 @@ views:
             entity_daily_summary: sensor.dark_sky_daily_summary
             entity_pop: sensor.dark_sky_precip_probability
             entity_pop_intensity: sensor.dark_sky_precip_intensity
-            entity_pop_1: sensor.dark_sky_precip_probability_1
-            entity_pop_2: sensor.dark_sky_precip_probability_2
-            entity_pop_3: sensor.dark_sky_precip_probability_3
-            entity_pop_4: sensor.dark_sky_precip_probability_4
-            entity_pop_5: sensor.dark_sky_precip_probability_5
+            entity_pop_1: sensor.dark_sky_precip_probability_1d
+            entity_pop_2: sensor.dark_sky_precip_probability_2d
+            entity_pop_3: sensor.dark_sky_precip_probability_3d
+            entity_pop_4: sensor.dark_sky_precip_probability_4d
+            entity_pop_5: sensor.dark_sky_precip_probability_5d
             entity_current_text: sensor.dark_sky_current_text
             locale: en
             static_icons: false

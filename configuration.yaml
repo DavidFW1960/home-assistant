@@ -80,10 +80,11 @@ frontend:
 
 # HTML5 Push Notifications
 notify:
-  - name: html5_notify
-    platform: html5
-    gcm_api_key: !secret gcm_api
-    gcm_sender_id: !secret gcm_sender
+  - platform: html5
+    name: html5_notify
+    vapid_pub_key: !secret vapid_pub
+    vapid_prv_key: !secret vapid_priv
+    vapid_email: !secret vapid_email
 
 # Enables configuration UI
 config:
@@ -151,6 +152,10 @@ panel_iframe:
     icon: mdi:vector-square
 #   url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
     url: https://dev.materialdesignicons.com/icons
+  vscode:
+    title: Visual Studio Code
+    icon: mdi:visual-studio-code
+    url: !secret vscode
     
 # Recorder
 recorder: !include recorder.yaml
@@ -170,6 +175,14 @@ discovery:
     - yeelight
   enable:
     - dlna_dmr
+    
+# Yeelights
+yeelight:
+  devices:
+    10.90.11.47:
+      name: yeelight_white_34ce00882e27
+    10.90.11.7:
+      name: yeelight_white_34ce00887db6
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -197,14 +210,6 @@ logbook:
 
 # Sensors
 sensor:
-
-# ABB Usage
-  - platform: mqtt
-    name: "ABB Usage"
-    state_topic: "abb/abbusage"
-    icon: mdi:blank
-    value_template: "{{ value_json.usage }}"
-    json_attributes_topic: "abb/abbusage"
 
 # Authentication Sensor
   - platform: authenticated

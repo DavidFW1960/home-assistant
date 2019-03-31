@@ -316,5 +316,3 @@ sensor.sonoff7_3474_status:
   icon: mdi:flash
 group.all_automations:
   friendly_name: All Automations
-sensor.abb_usage:
-  entity_picture: '/local/icons/abb/abb.png'
