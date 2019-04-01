@@ -8,9 +8,9 @@ resources:
     type: js
   - url: /customcards/custom_ui/dark-sky-weather-card.js
     type: module
-  - url: /customcards/mini-media-player-bundle.js
+  - url: /customcards/github/kalkih/mini-media-player-bundle.js
     type: module
-  - url: /customcards/mini-graph-card-bundle.js
+  - url: /customcards/github/kalkih/mini-graph-card-bundle.js
     type: module
   - url: /customcards/github/maykar/compact-custom-header.js?track=true
     type: module
@@ -209,6 +209,9 @@ views:
                   icon: mdi:clock
                 - entity: sensor.abb_usage
                   name: "${var usedinfo= ((vars[5] - vars[6]) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); 'Used' + '\xa0'.repeat(20) + usedinfo + '\xa0' + 'days' + '\xa0'.repeat(2) + '-' + '\xa0'.repeat(2) + usedpercent + '%' + '\xa0' + 'of month'}"
+                  icon: mdi:calendar
+                - entity: sensor.abb_usage
+                  name: "${var remaininfo= ((vars[5] - vars[9]) - Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var remainpercent= ((remaininfo / vars[5])*100).toFixed(2); 'Remaining' + '\xa0'.repeat(10) + remaininfo + '\xa0' + 'days' + '\xa0'.repeat(2) + '-' + '\xa0'.repeat(2) + remainpercent + '%' + '\xa0' + 'of month'}"
                   icon: mdi:calendar
                 - entity: sensor.abb_usage
                   name: "${var usedinfo= ((vars[5] - vars[6]) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); var projected= ((vars[1] / usedpercent) / 10 ).toFixed(2); 'Projected Use' + '\xa0'.repeat(4) + projected  + '\xa0' + 'GB'}"

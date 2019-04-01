@@ -103,10 +103,10 @@ http:
 
 # Logger
 logger:
-  default: error
+  default: warn
   logs:
 #   TransportNSW.transportnsw: error
-    custom_components.sensor.authenticated: error
+    custom_components.sensor.authenticated: debug
 #   homeassistant.components.http.view: error
 
 # iFrame Configurator, Terminal, Tasmoadmin & MDI Icon Files

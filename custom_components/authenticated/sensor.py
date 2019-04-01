@@ -15,7 +15,7 @@ import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.4.0'
+__version__ = '0.4.1'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -54,7 +54,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     """Create the sensor"""
     notify = config.get(CONF_NOTIFY)
     exclude = config.get(CONF_EXCLUDE)
-    logs = {'homeassistant.components.http.view': 'info'}
+    logs = {'homeassistant.components.http.view': 'debug'}
     _LOGGER.debug('Making sure the logger is correctly setup.')
     hass.services.call('logger', 'set_level', logs)
     if config[CONF_LOG_LOCATION] is None:
