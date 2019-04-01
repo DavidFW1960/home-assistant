@@ -50,9 +50,14 @@ homeassistant:
       friendly_name: 'Hass.io Dev Release'
       icon: mdi:alpha
 
-    sensor.hass_current_supervisor_version:
+    sensor.hass_current_supervisor_stable_version:
       <<: *customize
-      friendly_name: 'Hass.io Current Supervisor Version'
+      friendly_name: 'Hass.io Current Supervisor Stable Version'
+      icon: mdi:check-decagram
+
+    sensor.hass_current_supervisor_beta_version:
+      <<: *customize
+      friendly_name: 'Hass.io Current Supervisor Beta Version'
       icon: mdi:check-decagram
 
     sensor.hass_current_hassos_version:
@@ -105,7 +110,13 @@ sensor:
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/stable.json
-    name: Hass Current Supervisor Version
+    name: Hass Current Supervisor Stable Version
+    scan_interval: 7200
+    value_template: '{{ value_json.supervisor }}'
+
+  - platform: rest
+    resource: https://s3.amazonaws.com/hassio-version/beta.json
+    name: Hass Current Supervisor Beta Version
     scan_interval: 7200
     value_template: '{{ value_json.supervisor }}'
 

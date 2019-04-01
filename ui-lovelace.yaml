@@ -137,7 +137,8 @@ views:
               - sensor.hass_current_stable_version
               - sensor.hass_current_beta_version
               - sensor.hass_current_dev_version
-              - sensor.hass_current_supervisor_version
+              - sensor.hass_current_supervisor_stable_version
+              - sensor.hass_current_supervisor_beta_version
               - binary_sensor.hass_update_available
           - type: history-graph
             title: NUC Resources Graph
