@@ -391,10 +391,11 @@ input_boolean:
   overtime:
     name: Overtime
 
-# Clear Out Gmail Alarm Notifications & Clean Known Devices file
+# Clear Out Gmail Alarm Notifications & Clean Known Devices file, ABB usage
 shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
+  abbusage: /bin/bash /config/abbusage_ha.sh
 
 # Home Assistant Podcasts on gpodder
 gpodder:

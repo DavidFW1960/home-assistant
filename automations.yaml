@@ -431,3 +431,13 @@
   action:
   - service: shell_command.clean_knowndevices
   initial_state: 'true'
+- id: 'updateabbusage'
+  alias: Update ABB Usage
+  trigger:
+  - event: start
+    platform: homeassistant
+  - platform: time_pattern
+    minutes: '/15'
+  action:
+  - service: shell_command.abbusage
+  initial_state: 'true'

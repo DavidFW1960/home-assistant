@@ -774,6 +774,7 @@ views:
                   - automation.system_change_current_theme
                   - automation.system_set_custom_theme_at_startup
                   - automation.purge_history
+                  - automation.update_abb_usage
               - type: divider
                 style:
                   height: 30px
