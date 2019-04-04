@@ -23,9 +23,8 @@ zones.yaml
 *.err
 .storage
 *.html
-creds.data
 g-actions
 entity_registry.yaml
 delete-gmail-email.sh
 emptyinbox.py
-abbusage_ha.sh
+abb*.*
