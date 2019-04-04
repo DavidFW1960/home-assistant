@@ -27,4 +27,6 @@ g-actions
 entity_registry.yaml
 delete-gmail-email.sh
 emptyinbox.py
-abb*.*
+abbcookie.txt
+abbcreds.json
+abbtoken.json
