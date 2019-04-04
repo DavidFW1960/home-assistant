@@ -34,11 +34,11 @@ homeassistant:
         - fd00::/8
         - !secret my_ipv6_network
       trusted_users:
-        127.0.0.1: b4292f3ca376413f994033d491cf57ce
-        "::1": b4292f3ca376413f994033d491cf57ce
-        10.90.11.0/24: b4292f3ca376413f994033d491cf57ce
-        "fd00::/8": b4292f3ca376413f994033d491cf57ce
-        !secret trusted_user: b4292f3ca376413f994033d491cf57ce
+        127.0.0.1: !secret user_id
+        "::1": !secret user_id
+        10.90.11.0/24: !secret user_id
+        "fd00::/8": !secret user_id
+        !secret trusted_user: !secret user_id
       allow_bypass_login: true
     - type: homeassistant
 
