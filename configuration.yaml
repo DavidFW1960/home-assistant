@@ -26,7 +26,6 @@ homeassistant:
     - type: totp
 
   auth_providers:
-    - type: homeassistant
     - type: trusted_networks
       trusted_networks:
         - 127.0.0.1
@@ -34,6 +33,14 @@ homeassistant:
         - 10.90.11.0/24
         - fd00::/8
         - !secret my_ipv6_network
+      trusted_users:
+        127.0.0.1: b4292f3ca376413f994033d491cf57ce
+        "::1": b4292f3ca376413f994033d491cf57ce
+        10.90.11.0/24: b4292f3ca376413f994033d491cf57ce
+        "fd00::/8": b4292f3ca376413f994033d491cf57ce
+        !secret trusted_user: b4292f3ca376413f994033d491cf57ce
+      allow_bypass_login: true
+    - type: homeassistant
 
 # System Health
 system_health:
