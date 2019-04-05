@@ -188,9 +188,9 @@ discovery:
 yeelight:
   devices:
     10.90.11.47:
-      name: yeelight_white_34ce00882e27
+      name: Fan Light
     10.90.11.7:
-      name: yeelight_white_34ce00887db6
+      name: Meals Area Light
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:

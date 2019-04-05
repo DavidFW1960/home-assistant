@@ -712,8 +712,8 @@ views:
             entities:
               - light.dining
               - light.lounge
-              - light.yeelight_white_34ce00887db6
-              - light.yeelight_white_34ce00882e27
+              - light.meals_area_light
+              - light.fan_light
               - light.office_light_group
               - light.office
               - light.desk

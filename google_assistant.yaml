@@ -6,9 +6,9 @@ exposed_domains:
   - scene
   - input_boolean
 entity_config:
-  light.yeelight_white_34ce00882e27:
+  light.fan_light:
     expose: false
-  light.yeelight_white_34ce00887db6:
+  light.meals_area_light:
     expose: false
   light.office_light_group:
     expose: false

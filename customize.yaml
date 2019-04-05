@@ -102,10 +102,6 @@ media_player.osmc_vero4:
   friendly_name: Kodi OSMC Vero
 media_player.tvua55d8000:
   friendly_name: Samsung TV
-light.yeelight_white_34ce00882e27:
-  friendly_name: Fan Light
-light.yeelight_white_34ce00887db6:
-  friendly_name: Meals Area Light
 sensor.bom_gosford_air_temp_c:
   friendly_name: Air Temp
 sensor.bom_gosford_delta_temp_c:
