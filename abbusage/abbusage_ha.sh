@@ -25,7 +25,7 @@ daysleftcookie=$(($epoch_expire - $todaydatetime - $refreshTokenExpires))
 if [[ $daysleftcookie < 0 ]]
 then 
   refreshToken=$(echo "$abbtoken" | jq -r '.refreshToken')
-  curl -c abbcookie.txt -b abbcookie.txt -d "refreshToken=$refreshToken" -d "refresh_token=$refreshToken" -X PUT --url 'https://myaussie-auth.aussiebroadband.com.au/login' > abbtoken.json
+  curl -c abbcookie.txt -b abbcookie.txt -d "refreshToken=$refreshToken" -X PUT --url 'https://myaussie-auth.aussiebroadband.com.au/login' > abbtoken.json
 fi
 
 # Home Assistant Config
