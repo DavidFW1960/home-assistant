@@ -796,15 +796,24 @@ views:
             show_header_toggle: false
             entities:
               - input_select.theme_switcher
-          - type: entity-button
-            entity: input_select.theme_switcher
-            icon: mdi:palette
-            name: Theme
-            tap_action:
-              action: call-service
-              service: input_select.select_next
-              service_data:
-                entity_id: input_select.theme_switcher
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: input_select.theme_switcher
+                icon: mdi:palette
+                name: Theme
+                tap_action:
+                  action: call-service
+                  service: input_select.select_next
+                  service_data:
+                    entity_id: input_select.theme_switcher
+              - type: entity-button
+                entity: sensor.abb_usage
+                icon: mdi:lan-connect
+                name: Update ABB
+                tap_action:
+                  action: call-service
+                  service: shell_command.abbusage
           - type: entities
             title: Automations & Scenes
             show_header_toggle: false

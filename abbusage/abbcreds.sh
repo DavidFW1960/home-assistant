@@ -10,30 +10,22 @@ then
 fi
 
 echo "Enter your ABB Username, followed by [ENTER]:"
-abblogin=$(echo "$abbcreds" | jq '.["abblogin"]')
-abblogin=$(echo "$abblogin" | sed 's/.$//g')
-abblogin=$(echo $abblogin | cut -c2-)
+abblogin=$(echo "$abbcreds" | jq -r '.abblogin')
 read -e -i "$abblogin" -p "ABB Username: " input
 abblogin="${input:-$abblogin}"
 
 echo "Enter your ABB Password, followed by [ENTER]:"
-abbpassword=$(echo "$abbcreds" | jq '.["abbpassword"]')
-abbpassword=$(echo "$abbpassword" | sed 's/.$//g')
-abbpassword=$(echo $abbpassword | cut -c2-)
+abbpassword=$(echo "$abbcreds" | jq -r '.abbpassword')
 read -e -i "$abbpassword" -p "ABB Password: " input
 abbpassword="${input:-$abbpassword}"
 
 echo "Enter your ABB Service ID, followed by [ENTER]:"
-usageid=$(echo "$abbcreds" | jq '.["usageid"]')
-usageid=$(echo "$usageid" | sed 's/.$//g')
-usageid=$(echo $usageid | cut -c2-)
+usageid=$(echo "$abbcreds" | jq -r '.usageid')
 read -e -i "$usageid" -p "ABB Service ID: " input
 usageid="${input:-$usageid}"
 
 echo "Enter your Home Assistant Server IP/URL and port eg http://10.90.11.100:8123, followed by [ENTER]:"
-server=$(echo "$abbcreds" | jq '.["server"]')
-server=$(echo "$server" | sed 's/.$//g')
-server=$(echo $server | cut -c2-)
+server=$(echo "$abbcreds" | jq -r '.server')
 if [ -z "$server" ] 
 then 
   server=http://10.90.11.100:8123
@@ -44,16 +36,12 @@ read -e -i "$server" -p "Home Assistant Server: " input
 server="${input:-$server}"
 
 echo "Enter your Home Assistant Long Access Token (184 characters), followed by [ENTER]:"
-token=$(echo "$abbcreds" | jq '.["token"]')
-token=$(echo "$token" | sed 's/.$//g')
-token=$(echo $token | cut -c2-)
+token=$(echo "$abbcreds" | jq -r '.token')
 read -e -i "$token" -p "HA Long Lived Token: " input
 token="${input:-$token}"
 
 echo "Enter your Home Assistant Server Entity Picture eg /local/icons/abb/abb.png (default) followed by [ENTER]:"
-entitypicture=$(echo "$abbcreds" | jq '.["entitypicture"]')
-entitypicture=$(echo "$entitypicture" | sed 's/.$//g')
-entitypicture=$(echo $entitypicture | cut -c2-)
+entitypicture=$(echo "$abbcreds" | jq -r '.entitypicture')
 if [ -z "$entitypicture" ]
 then
   entitypicture=/local/icons/abb/abb.png

@@ -119,7 +119,7 @@
       transition: 2
       brightness_pct: 75
       kelvin: 3100
-    light.yeelight_white_34ce00887db6:
+    light.meals_area_light:
       state: on
-    light.yeelight_white_34ce00882e27:
+    light.fan_light:
       state: on

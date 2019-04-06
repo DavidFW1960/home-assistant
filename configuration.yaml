@@ -346,8 +346,9 @@ sabnzbd:
     - month_size
     - total_size
 
-# iOS Component
+# iOS & Mobile App Component
 ios:
+mobile_app:
 
 # Text to speech
 tts:
