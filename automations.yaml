@@ -141,7 +141,7 @@
   - service: hassio.snapshot_full
     data_template:
       name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-  - service: notify.notify
+  - service: notify.david_ios_notify
     data_template:
       message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d')
         }}"
@@ -151,7 +151,7 @@
       addon: 7be23ff5_dropbox_sync
       input:
         command: upload
-  - service: notify.notify
+  - service: notify.david_ios_notify
     data_template:
       message: Copied all new backups to Dropbox
 - id: '1532478833426'
@@ -238,7 +238,7 @@
     data:
       entity_id: switch.sonoff63719
   - delay: "00:00:10"
-  - service: notify.notify
+  - service: notify.david_ios_notify
     data_template:
       message: >
         {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
@@ -266,7 +266,7 @@
     data:
       entity_id: switch.sonoff51083
   - delay: "00:00:10"
-  - service: notify.notify
+  - service: notify.david_ios_notify
     data_template:
       message: >
         {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
@@ -394,7 +394,7 @@
     - condition: template
       value_template: '{{ states.sensor.alarm_triggers.state != "0" and states.sensor.alarm_triggers.state != "unavailable" }}'
   action:
-  - service: notify.notify
+  - service: notify.david_ios_notify
     data:
       message: 'Alarm Event Occurred'
       title: 'Alarm Notification'

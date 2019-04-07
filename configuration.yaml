@@ -93,6 +93,21 @@ notify:
     vapid_pub_key: !secret vapid_pub
     vapid_prv_key: !secret vapid_priv
     vapid_email: !secret vapid_email
+  - platform: group
+    name: David iOS Notify
+    services:
+      - service: mobile_app_davids_iphone
+        data:
+          data:
+            push:
+              sound:
+                name: default
+      - service: mobile_app_davids_ipad
+        data:
+          data:
+            push:
+              sound:
+                name: default
 
 # Enables configuration UI
 config:
