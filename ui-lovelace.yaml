@@ -81,6 +81,69 @@ views:
                   green: 0
                   yellow: 35
                   red: 50
+          - type: history-graph
+            title: NUC Resources Graph
+            hours_to_show: 72
+            refresh_interval: 1800
+            entities:
+              - sensor.memory_use_percent
+              - sensor.nuc_memory_used_filtered
+              - sensor.processor_use
+              - sensor.nuc_processor_used_filtered
+          - type: entities
+            title: NUC Resources
+            show_header_toggle: false
+            entities:
+              - sensor.nuc_memory_used_filtered
+              - sensor.nuc_processor_used_filtered
+              - sensor.cpu_temperature
+              - sensor.disk_use
+              - sensor.disk_free
+              - sensor.disk_use_percent
+              - sensor.memory_use_percent
+              - sensor.memory_use
+              - sensor.memory_free
+              - sensor.swap_use_percent
+              - sensor.load
+              - sensor.processor_use
+              - sensor.ipv4_address_eno1
+              - sensor.wan_ip_address
+              - sensor.network_in_eno1
+              - sensor.network_out_eno1
+              - entity: sensor.last_boot
+                format: datetime
+              - sensor.systemuptime
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Updates
+            show_header_toggle: false
+            entities:
+              - sensor.hass_installed_version
+              - sensor.hass_available_to_install_version
+              - sensor.hass_current_stable_version
+              - sensor.hass_current_beta_version
+              - sensor.hass_current_dev_version
+              - sensor.hass_current_supervisor_stable_version
+              - sensor.hass_current_supervisor_beta_version
+              - binary_sensor.hass_update_available
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: automation.make_snapshot_copy_backups_to_dropbox
+                icon: mdi:dropbox
+                name: Dropbox Backup
+                tap_action:
+                  action: call-service
+                  service: hassio.addon_stdin
+                  service_data: {"addon":"7be23ff5_dropbox_sync","input":{"command":"upload"}}
+              - type: entity-button
+                entity: sensor.abb_usage
+                icon: mdi:lan-connect
+                name: Update ABB
+                tap_action:
+                  action: call-service
+                  service: shell_command.abbusage
           - type: custom:mini-graph-card
             hours_to_show: 24
             points_per_hour: 4	
@@ -126,52 +189,6 @@ views:
                   - switch.ha_dockermon_lazylibrarian
                   - switch.ha_dockermon_portainer
                   - switch.ha_dockermon_watchtower
-      - type: vertical-stack
-        cards:
-          - type: entities
-            title: Updates
-            show_header_toggle: false
-            entities:
-              - sensor.hass_installed_version
-              - sensor.hass_available_to_install_version
-              - sensor.hass_current_stable_version
-              - sensor.hass_current_beta_version
-              - sensor.hass_current_dev_version
-              - sensor.hass_current_supervisor_stable_version
-              - sensor.hass_current_supervisor_beta_version
-              - binary_sensor.hass_update_available
-          - type: history-graph
-            title: NUC Resources Graph
-            hours_to_show: 72
-            refresh_interval: 1800
-            entities:
-              - sensor.memory_use_percent
-              - sensor.nuc_memory_used_filtered
-              - sensor.processor_use
-              - sensor.nuc_processor_used_filtered
-          - type: entities
-            title: NUC Resources
-            show_header_toggle: false
-            entities:
-              - sensor.nuc_memory_used_filtered
-              - sensor.nuc_processor_used_filtered
-              - sensor.cpu_temperature
-              - sensor.disk_use
-              - sensor.disk_free
-              - sensor.disk_use_percent
-              - sensor.memory_use_percent
-              - sensor.memory_use
-              - sensor.memory_free
-              - sensor.swap_use_percent
-              - sensor.load
-              - sensor.processor_use
-              - sensor.ipv4_address_eno1
-              - sensor.wan_ip_address
-              - sensor.network_in_eno1
-              - sensor.network_out_eno1
-              - entity: sensor.last_boot
-                format: datetime
-              - sensor.systemuptime
           - type: entities
             title: iOS Devices
             show_header_toggle: false
@@ -241,6 +258,13 @@ views:
             height: 20px
             direction: right
             unit_of_measurement: days
+          - type: picture-entity
+            title: Aussie Broadband CVC Capacity
+            entity: camera.aussie_broadband_cvc_capacity
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
           - type: entities
             title: Internet
             show_header_toggle: false
@@ -301,13 +325,6 @@ views:
                 color: orange
               - value: 13
                 color: green
-          - type: picture-entity
-            title: Aussie Broadband CVC Capacity
-            entity: camera.aussie_broadband_cvc_capacity
-            tap_action:
-              action: more-info
-            hold_action:
-              action: more-info
           - type: custom:tracker-card
             title: "í ½í±€ Custom Card Updates"
   - title: Weather
@@ -796,24 +813,15 @@ views:
             show_header_toggle: false
             entities:
               - input_select.theme_switcher
-          - type: horizontal-stack
-            cards:
-              - type: entity-button
-                entity: input_select.theme_switcher
-                icon: mdi:palette
-                name: Theme
-                tap_action:
-                  action: call-service
-                  service: input_select.select_next
-                  service_data:
-                    entity_id: input_select.theme_switcher
-              - type: entity-button
-                entity: sensor.abb_usage
-                icon: mdi:lan-connect
-                name: Update ABB
-                tap_action:
-                  action: call-service
-                  service: shell_command.abbusage
+          - type: entity-button
+            entity: input_select.theme_switcher
+            icon: mdi:palette
+            name: Theme
+            tap_action:
+              action: call-service
+              service: input_select.select_next
+              service_data:
+                entity_id: input_select.theme_switcher
           - type: entities
             title: Automations & Scenes
             show_header_toggle: false
