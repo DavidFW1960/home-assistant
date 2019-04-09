@@ -1,5 +1,6 @@
 - id: '1507434167220'
   alias: Coffee Maker On
+  initial_state: 'true'
   trigger:
   - platform: time
     at: '07:00:00'
@@ -41,6 +42,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.sonoff12914
+  initial_state: 'true'
 - id: '1507434167221'
   alias: Coffee Maker Off
   initial_state: 'true'
@@ -72,6 +74,7 @@
       entity_id: switch.sonoff12914
 - id: '1505977024304'
   alias: Turn Lounge Light On Elevation < 25° & after 4PM
+  initial_state: 'true'  
   trigger:
   - platform: numeric_state
     below: 25
@@ -96,6 +99,7 @@
       kelvin: 3100
 - id: '1523937971401'
   alias: Toothbrush On
+  initial_state: 'true'
   trigger:
   - platform: time
     at: '08:00:00'
@@ -224,6 +228,7 @@
       kelvin: 3100
 - id: 'closegaragesetalarm'
   alias: Close Garage and Set Alarm
+  initial_state: 'true'
   trigger:
   - entity_id: input_boolean.alarmgaragedoor
     from: 'off'
@@ -253,6 +258,7 @@
         < 60 ) %} Garage closed & Alarm armed Verified {%- else %} Error occurred arming {%- endif %}
 - id: 'deactivatealarmopengarage'
   alias: Deactivate Alarm and Open Garage
+  initial_state: 'true'
   trigger:
   - entity_id: input_boolean.alarmgaragedoor
     from: 'on'
@@ -281,6 +287,7 @@
         < 60 ) %} Alarm disabled & Garage opened Verified {%- else %} Error occurred disarming {%- endif %}
 - id: 'sonoff_firmware_installed'
   alias: Sonoff Firmware Installed
+  initial_state: 'true'  
   trigger:
   - at: '00:00:00'
     platform: time
@@ -293,9 +300,9 @@
       payload: '2'
       topic: sonoffs/cmnd/status
     service: mqtt.publish
-  initial_state: 'true'
 - id: '1532478833428'
   alias: Power State Sonoff on HA Start-Up
+  initial_state: 'true'
   trigger:
   - event: start
     platform: homeassistant
@@ -304,7 +311,6 @@
       payload: ''
       topic: sonoffs/cmnd/state
     service: mqtt.publish
-  initial_state: 'true'
 - id: 'SonoffMQTTAuto'
   alias: Tasmota Initial Setup All Devices
   initial_state: 'false'
@@ -370,6 +376,7 @@
       payload: '1,1,4,1,2,600'
 - id: 'dockercontainers'
   alias: Restart Docker Containers when memory > 35%
+  initial_state: 'true'
   trigger:
   - platform: numeric_state
     entity_id: sensor.memory_use_percent
@@ -384,9 +391,9 @@
   - delay: '00:01:00'
   - service: switch.turn_on
     entity_id: switch.ha_dockermon_radarr, switch.ha_dockermon_sonarr, switch.ha_dockermon_sabnzbd
-  initial_state: 'true'
 - id: 'alarmevent'
   alias: Alarm Event Triggered
+  initial_state: 'true'
   trigger:
   - platform: state
     entity_id: sensor.alarm_triggers
@@ -404,6 +411,7 @@
       title: 'Alarm Notification'
 - id: 'alarmeventrefresh'
   alias: 'Alarm Event Check'
+  initial_state: 'true'
   trigger:
   - event: start
     platform: homeassistant
@@ -414,6 +422,7 @@
     entity_id: sensor.alarm_triggers
 - id: '1552527487165'
   alias: Purge History
+  initial_state: 'true'
   trigger:
   - at: '00:00:00'
     platform: time
@@ -425,14 +434,15 @@
     service: recorder.purge
 - id: 'cleanknowndevices'
   alias: Clean out Known Devices
+  initial_state: 'true'
   trigger:
   - event: start
     platform: homeassistant
   action:
   - service: shell_command.clean_knowndevices
-  initial_state: 'true'
 - id: 'updateabbusage'
   alias: Update ABB Usage
+  initial_state: 'true'
   trigger:
   - event: start
     platform: homeassistant
@@ -440,4 +450,3 @@
     minutes: '/15'
   action:
   - service: shell_command.abbusage
-  initial_state: 'true'

@@ -200,11 +200,11 @@ views:
               entities:
                 - entity: device_tracker.e05603a1f7b1483faa3b1b5378be26fa
                 - entity: sensor.battery
-                  name: "${'Battery:' + '\xa0'.repeat(35) + states['device_tracker.e05603a1f7b1483faa3b1b5378be26fa'].attributes['battery']}"
+                  name: "${'Battery:' + '\xa0'.repeat(30) + states['device_tracker.e05603a1f7b1483faa3b1b5378be26fa'].attributes['battery']}"
                   icon: mdi:battery
                 - entity: device_tracker.2f8148d281b54990843f41e7216860f0
                 - entity: sensor.battery_2
-                  name: "${'Battery:' + '\xa0'.repeat(35) + states['device_tracker.2f8148d281b54990843f41e7216860f0'].attributes['battery']}"
+                  name: "${'Battery:' + '\xa0'.repeat(30) + states['device_tracker.2f8148d281b54990843f41e7216860f0'].attributes['battery']}"
                   icon: mdi:battery
       - type: vertical-stack
         cards:
