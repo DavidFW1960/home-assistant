@@ -310,5 +310,8 @@ sensor.sonoff3_0898_status:
   icon: mdi:flash
 sensor.sonoff7_3474_status:
   icon: mdi:flash
-group.all_automations:
-  friendly_name: All Automations
+device_tracker.2f8148d281b54990843f41e7216860f0:
+  friendly_name: David's iPad
+device_tracker.e05603a1f7b1483faa3b1b5378be26fa:
+  friendly_name: David's iPhone
+  

@@ -362,7 +362,7 @@ sabnzbd:
     - total_size
 
 # iOS & Mobile App Component
-ios:
+#ios:
 mobile_app:
 
 # Text to speech

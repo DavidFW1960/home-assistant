@@ -189,16 +189,23 @@ views:
                   - switch.ha_dockermon_lazylibrarian
                   - switch.ha_dockermon_portainer
                   - switch.ha_dockermon_watchtower
-          - type: entities
-            title: iOS Devices
-            show_header_toggle: false
+          - type: 'custom:config-template-card'
             entities:
-              - device_tracker.davids_iphone
-              - sensor.davids_iphone_battery_level
-              - sensor.davids_iphone_battery_state
-              - device_tracker.davids_ipad
-              - sensor.davids_ipad_battery_level
-              - sensor.davids_ipad_battery_state
+              - device_tracker.e05603a1f7b1483faa3b1b5378be26fa
+              - device_tracker.2f8148d281b54990843f41e7216860f0
+            card:
+              type: 'custom:hui-entities-card'
+              title: iOS Devices
+              show_header_toggle: false
+              entities:
+                - entity: device_tracker.e05603a1f7b1483faa3b1b5378be26fa
+                - entity: sensor.battery
+                  name: "${'Battery:' + '\xa0'.repeat(35) + states['device_tracker.e05603a1f7b1483faa3b1b5378be26fa'].attributes['battery']}"
+                  icon: mdi:battery
+                - entity: device_tracker.2f8148d281b54990843f41e7216860f0
+                - entity: sensor.battery_2
+                  name: "${'Battery:' + '\xa0'.repeat(35) + states['device_tracker.2f8148d281b54990843f41e7216860f0'].attributes['battery']}"
+                  icon: mdi:battery
       - type: vertical-stack
         cards:
           - type: 'custom:config-template-card'
@@ -221,7 +228,7 @@ views:
               show_header_toggle: false
               entities:
                 - entity: sensor.abb_usage
-                  name: "${'Last Update at' + '\xa0'.repeat(3) + new Date(vars[7]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'}) + '\xa0' + 'at' + '\xa0' + new Date(vars[7]).toLocaleTimeString('en-AU')}"
+                  name: "${'Last Update on' + '\xa0'.repeat(3) + new Date(vars[7]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'}) + '\xa0' + 'at' + '\xa0' + new Date(vars[7]).toLocaleTimeString('en-AU')}"
                 - entity: sensor.abb_usage
                   name: "${'Updated' + '\xa0'.repeat(14) + Number.parseInt((new Date().getTime() - new Date(vars[7])) / 60000) + '\xa0' + 'minutes ago'}"
                   icon: mdi:clock
