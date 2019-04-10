@@ -314,4 +314,5 @@ device_tracker.2f8148d281b54990843f41e7216860f0:
   friendly_name: David's iPad
 device_tracker.e05603a1f7b1483faa3b1b5378be26fa:
   friendly_name: David's iPhone
-  
+automation.update_abb_usage:
+  entity_picture: /local/icons/abb/abb.png
