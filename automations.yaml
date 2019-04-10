@@ -42,7 +42,6 @@
   - service: switch.turn_on
     data:
       entity_id: switch.sonoff12914
-  initial_state: 'true'
 - id: '1507434167221'
   alias: Coffee Maker Off
   initial_state: 'true'
