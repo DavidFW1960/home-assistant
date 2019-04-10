@@ -889,6 +889,25 @@ views:
                 - entity: sensor.sonoff6_3719_status
                   name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: automation.power_state_sonoff_on_ha_start_up
+                icon: mdi:windows
+                name: Update Sonoff Status
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  service_data: {"topic":"sonoffs/cmnd/state","payload":""}
+              - type: entity-button
+                entity: script.1554866239072
+                icon: mdi:script
+                name: Initial Sonoff Setup
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.1554866239072
   - title: Media
     icon: mdi:vlc
     cards:
