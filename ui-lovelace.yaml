@@ -799,13 +799,8 @@ views:
                   - automation.system_set_custom_theme_at_startup
                   - automation.purge_history
                   - automation.update_abb_usage
-              - type: divider
-                style:
-                  height: 30px
-                  margin: 4px 0
-                  background: center / contain url("/local/images/divider.png") no-repeat
               - type: custom:fold-entity-row
-                open: true
+                open: false
                 head: 
                   type: section
                   label: Sonoff
@@ -892,13 +887,14 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
-                entity: automation.power_state_sonoff_on_ha_start_up
+                entity: script.1554869777557
                 icon: mdi:windows
                 name: Update Sonoff Status
                 tap_action:
                   action: call-service
-                  service: mqtt.publish
-                  service_data: {"topic":"sonoffs/cmnd/state","payload":""}
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.1554869777557
               - type: entity-button
                 entity: script.1554866239072
                 icon: mdi:script
