@@ -60,24 +60,24 @@ map:
 person:
 
 # Device Tracker
-#device_tracker:
-#  - platform: fritz
-#    host: !secret my_fritz_host
-#    consider_home: 180
-#    new_device_defaults:
-#      track_new_devices: false
-#      hide_if_away: false
-#  - platform: fritz
-#    host: !secret my_fritz_repeater
-#    consider_home: 180
-#    new_device_defaults:
-#      track_new_devices: false
-#      hide_if_away: false
-#googlehome:
-#  devices:
-#    - host: !secret gh_lounge
-#    - host: !secret gh_bed
-#    - host: !secret gh_office
+device_tracker:
+  - platform: fritz
+    host: !secret my_fritz_host
+    consider_home: 180
+    new_device_defaults:
+      track_new_devices: false
+      hide_if_away: false
+  - platform: fritz
+    host: !secret my_fritz_repeater
+    consider_home: 180
+    new_device_defaults:
+      track_new_devices: false
+      hide_if_away: false
+googlehome:
+  devices:
+    - host: !secret gh_lounge
+    - host: !secret gh_bed
+    - host: !secret gh_office
 
 # Show links to resources in log and frontend
 # introduction:
@@ -426,9 +426,9 @@ gpodder:
   username: !secret gpodder_user
   password: !secret gpodder_password
   sensor:
-    - device: homeassistant
-      enabled: true
+    - enabled: true
       name: gPodder
+      device: homeassistant
 
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml

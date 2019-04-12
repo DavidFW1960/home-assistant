@@ -2,7 +2,7 @@
 # Base component constants
 DOMAIN = "gpodder"
 DOMAIN_DATA = "{}_data".format(DOMAIN)
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 PLATFORMS = ["sensor"]
 REQUIRED_FILES = ["const.py", "sensor.py"]
 REQUIREMENTS = ["mygpoclient==1.8", "podcastparser==0.6.4"]
@@ -33,4 +33,4 @@ CONF_PASSWORD = "password"
 CONF_DEVICE = "device"
 
 # Defaults
-DEAFULT_NAME = DOMAIN
+DEFAULT_NAME = DOMAIN

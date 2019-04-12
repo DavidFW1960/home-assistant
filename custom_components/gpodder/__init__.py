@@ -26,7 +26,7 @@ from .const import (
     CONF_USERNAME,
     CONF_PASSWORD,
     CONF_DEVICE,
-    DEAFULT_NAME,
+    DEFAULT_NAME,
     REQUIREMENTS
 )
 
@@ -37,7 +37,7 @@ _LOGGER = logging.getLogger(__name__)
 SENSOR_SCHEMA = vol.Schema(
     {
         vol.Optional(CONF_ENABLED, default=True): cv.boolean,
-        vol.Optional(CONF_NAME, default=DEAFULT_NAME): cv.string,
+        vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
         vol.Optional(CONF_DEVICE, default="homeassistant"): cv.string,
     }
 )
@@ -158,7 +158,6 @@ def update_using_feedservice(urls):
 
         podcasts.append(podcast)
 
-    _LOGGER.info(podcasts)
     return podcasts
 
 
