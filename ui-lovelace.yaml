@@ -198,6 +198,8 @@ views:
               title: iOS Devices
               show_header_toggle: false
               entities:
+                - entity: person.david
+                - entity: person.liz
                 - entity: device_tracker.e05603a1f7b1483faa3b1b5378be26fa
                 - entity: sensor.battery
                   name: "${'Battery Level:' + '\xa0'.repeat(5) + states['sensor.battery'].attributes['Level'] + '\xa0'.repeat(5) + 'Status:'}"

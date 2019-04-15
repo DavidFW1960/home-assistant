@@ -316,3 +316,7 @@ device_tracker.e05603a1f7b1483faa3b1b5378be26fa:
   friendly_name: David's iPhone
 automation.update_abb_usage:
   entity_picture: /local/icons/abb/abb.png
+person.david:
+  entity_picture: /local/images/david.jpg
+person.liz:
+  entity_picture: /local/images/liz.jpg

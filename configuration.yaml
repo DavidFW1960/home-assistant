@@ -22,10 +22,11 @@ homeassistant:
   customize_domain:
     light:
       assumed_state: false
+
+# Auth & 2FA
   auth_mfa_modules:
     - type: notify
     - type: totp
-
   auth_providers:
     - type: trusted_networks
       trusted_networks:
@@ -132,12 +133,8 @@ logger:
     custom_components.sensor.authenticated: debug
 #   homeassistant.components.http.view: error
 
-# iFrame Configurator, Terminal, Tasmoadmin & MDI Icon Files
+# iFrame/Panel Custom 
 panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: !secret configurator
   ide:
     title: IDE
     icon: mdi:code-braces
@@ -158,28 +155,48 @@ panel_iframe:
     title: Portainer
     icon: mdi:docker
     url: !secret portainer
-  terminal:
-    title: Terminal
-    icon: mdi:console
-    url: !secret terminal
   tasmoadmin:
     title: Tasmo Admin
     icon: mdi:lightbulb-on
     url: !secret tasmoadmin
   logviewer:
     title: Log Viewer
-    icon: mdi:script
+    icon: mdi:bug-check
     url: !secret logviewer
   mdiindex:
     title: MDI Icon Index
     icon: mdi:vector-square
 #   url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
     url: https://dev.materialdesignicons.com/icons
-  vscode:
-    title: Visual Studio Code
-    icon: mdi:visual-studio-code
-    url: !secret vscode
-    
+panel_custom:
+  - name: hassio-main
+    sidebar_title: Configurator
+    sidebar_icon: hass:settings
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: configurator
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: core_configurator
+  - name: hassio-main
+    sidebar_title: Terminal
+    sidebar_icon: mdi:console
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: terminal
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: a0d7b954_ssh
+  - name: hassio-main
+    sidebar_title: Visual Studio Code
+    sidebar_icon: mdi:visual-studio-code
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: vscode
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: a0d7b954_vscode
+ 
 # Recorder
 recorder: !include recorder.yaml
 
