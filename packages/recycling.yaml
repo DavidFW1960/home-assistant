@@ -59,7 +59,7 @@ automation:
               entity_id: sensor.green_bin_today
               state: 'True'
     action:
-      - service: notify.notify
+      - service: notify.david_ios_notify
         data_template:
           message: '{%- if (states.sensor.recycling_bin_today.state) == "True" -%} Recycling Bin Night {%- else -%} Green Bin Tonight {%- endif -%}'
           title: Bins Out Tonight

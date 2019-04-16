@@ -153,7 +153,7 @@ automation:
              states.sensor.hass_current_stable_version.state > states.sensor.hass_installed_version.state
              }}
     action:
-      - service: notify.notify
+      - service: notify.david_ios_notify
         data:
           message: 'Home Assistant version {{ states.sensor.hass_current_stable_version.state }} is now available for Hass.io'
           title: Home Assistant Update
@@ -166,7 +166,7 @@ automation:
              states.sensor.hass_current_beta_version.state > states.sensor.hass_installed_version.state
              }}
     action:
-      - service: notify.notify
+      - service: notify.david_ios_notify
         data:
           message: 'Home Assistant Beta version {{ states.sensor.hass_current_beta_version.state }} is now available for Hass.io'
           title: Home Assistant Beta Update
