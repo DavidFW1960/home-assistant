@@ -26,7 +26,7 @@ __version__ = '1.1.0'
 
 _LOGGER = logging.getLogger(__name__)
 
-DOMAIN = 'sun'
+DOMAIN = 'sun_pb'
 
 ENTITY_ID = 'sun.sun'
 

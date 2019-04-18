@@ -5,7 +5,7 @@
 # See that the jpg files all start with an 'S'. For Northern Hemisphere, change these to 'N'
 
 # Track the sun
-sun:
+sun_pb:
   monitored_conditions:
     - azimuth
     - elevation

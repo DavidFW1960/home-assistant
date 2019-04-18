@@ -265,6 +265,10 @@ views:
             height: 20px
             direction: right
             unit_of_measurement: days
+            tap_action: service
+            service_options:
+              domain: shell_command
+              service: abbusage
           - type: picture-entity
             title: Aussie Broadband CVC Capacity
             entity: camera.aussie_broadband_cvc_capacity
@@ -513,14 +517,14 @@ views:
               action: more-info
           - type: picture-entity
             title: BOM Radar Sydney
-            entity: camera.bom_radar_sydney
+            entity: camera.sydney
             tap_action:
               action: more-info
             hold_action:
               action: more-info
           - type: picture-entity
             title: BOM Radar Newcastle
-            entity: camera.bom_radar_newcastle
+            entity: camera.newcastle
             tap_action:
               action: more-info
             hold_action:
@@ -667,29 +671,31 @@ views:
                   service: switch.turn_on
                   service_data:
                     entity_id: switch.sonoff63719
-              - type: 'custom:config-template-card'
-                entities: 
-                  - input_boolean.alarmgaragedoor
-                card:
-                  type: 'custom:hui-entity-button-card'
-                  entity: input_boolean.alarmgaragedoor
-                  theme: "${states['input_boolean.alarmgaragedoor'].state === 'on' ? 'slateicon' : 'slate'}"
-                  tap_action:
-                    action: toggle
-#             - type: custom:button-card
-#               entity: input_boolean.alarmgaragedoor
-#               icon: mdi:security
-#               color_type: icon
-#               color: var(--secondary-text-color)            # rgb(251, 210, 41)
-#               color_off: var(--paper-item-icon-color)       # rgb(54, 95, 140)
-#               name: Exit-Enter
-#               show_state: false
-#               action: service
-#               service: 
-#                 domain: input_boolean
-#                 action: toggle
-#                 data:
-#                   entity_id: input_boolean.alarmgaragedoor
+#             - type: 'custom:config-template-card'
+#               entities: 
+#                 - input_boolean.alarmgaragedoor
+#               card:
+#                 type: 'custom:hui-entity-button-card'
+#                 entity: input_boolean.alarmgaragedoor
+#                 theme: "${states['input_boolean.alarmgaragedoor'].state === 'on' ? 'slateicon' : 'slate'}"
+#                 tap_action:
+#                   action: toggle
+              - type: custom:button-card
+                entity: input_boolean.alarmgaragedoor
+                icon: mdi:security
+                color_type: icon
+                state:
+                  - value: 'off'
+                    color: var(--paper-item-icon-color)       # rgb(54, 95, 140)
+                  - value: 'on'
+                    color: var(--secondary-text-color)        # rgb(251, 210, 41)
+                name: Exit-Enter
+                show_state: false
+                tap_action:
+                  action: service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.alarmgaragedoor
           - type: conditional
             conditions:
               - entity: sensor.recycling_bin_today

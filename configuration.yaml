@@ -80,9 +80,6 @@ googlehome:
     - host: !secret gh_bed
     - host: !secret gh_office
 
-# Show links to resources in log and frontend
-# introduction:
-
 # Enables the frontend
 frontend:
   javascript_version: latest
@@ -384,7 +381,8 @@ mobile_app:
 
 # Text to speech
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
 
 # IFTTT
 ifttt:

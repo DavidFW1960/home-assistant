@@ -5,13 +5,17 @@
 camera:
   - platform: generic
     name: BOM Satellite
-    still_image_url: !secret my_bom_sat
-  - platform: bom_radar
-    name: !secret my_bom_radar_name_1
-    product_id: 'IDR714'
-  - platform: 'bom_radar'
-    name: !secret my_bom_radar_name_2
-    product_id: 'IDR043'
+    still_image_url: http://www.bom.gov.au/gms/IDE00135.jpg
+  - platform: bom
+    name: Sydney
+    id: 714   
+    frames: 6
+    delta: 360
+  - platform: bom
+    name: Newcastle
+    id: '043'
+    frames: 6
+    delta: 360
 
 sensor:
   - platform: bom
