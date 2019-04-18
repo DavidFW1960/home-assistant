@@ -130,6 +130,15 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
+                entity: script.1554771236987
+                icon: mdi:check-decagram
+                name: Sonoff Firmware
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.1554771236987
+              - type: entity-button
                 entity: automation.make_snapshot_copy_backups_to_dropbox
                 icon: mdi:dropbox
                 name: Dropbox Backup
@@ -893,9 +902,18 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
+                entity: script.1554771236987
+                icon: mdi:check-decagram
+                name: Sonoff Firmware
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.1554771236987
+              - type: entity-button
                 entity: script.1554869777557
                 icon: mdi:windows
-                name: Update Sonoff Status
+                name: Sonoff Status
                 tap_action:
                   action: call-service
                   service: script.turn_on
@@ -904,7 +922,7 @@ views:
               - type: entity-button
                 entity: script.1554866239072
                 icon: mdi:script
-                name: Initial Sonoff Setup
+                name: Sonoff Setup
                 tap_action:
                   action: call-service
                   service: script.turn_on
