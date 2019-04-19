@@ -146,13 +146,6 @@ views:
                   action: call-service
                   service: hassio.addon_stdin
                   service_data: {"addon":"7be23ff5_dropbox_sync","input":{"command":"upload"}}
-              - type: entity-button
-                entity: sensor.abb_usage
-                icon: mdi:lan-connect
-                name: Update ABB
-                tap_action:
-                  action: call-service
-                  service: shell_command.abbusage
           - type: custom:mini-graph-card
             hours_to_show: 24
             points_per_hour: 4	
@@ -899,12 +892,15 @@ views:
                 - entity: sensor.sonoff6_3719_status
                   name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+          - type: markdown
+            content: ' '
+            title: Sonoff
           - type: horizontal-stack
             cards:
               - type: entity-button
                 entity: script.1554771236987
                 icon: mdi:check-decagram
-                name: Sonoff Firmware
+                name: Firmware
                 tap_action:
                   action: call-service
                   service: script.turn_on
@@ -913,7 +909,7 @@ views:
               - type: entity-button
                 entity: script.1554869777557
                 icon: mdi:windows
-                name: Sonoff Status
+                name: Status
                 tap_action:
                   action: call-service
                   service: script.turn_on
@@ -922,7 +918,7 @@ views:
               - type: entity-button
                 entity: script.1554866239072
                 icon: mdi:script
-                name: Sonoff Setup
+                name: Setup
                 tap_action:
                   action: call-service
                   service: script.turn_on
