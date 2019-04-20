@@ -1,6 +1,5 @@
 *.pid
 *.xml
-*.json
 *.csr
 *.crt
 *.key

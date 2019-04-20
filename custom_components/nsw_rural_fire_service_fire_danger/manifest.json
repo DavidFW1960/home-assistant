@@ -1,0 +1,11 @@
+{
+  "domain": "nsw_rural_fire_service_fire_danger",
+  "name": "NSW Rural Fire Service - Fire Danger",
+  "requirements": [
+    "xmltodict>=0.11.0"
+  ],
+  "dependencies": [],
+  "codeowners": [
+    "@exxamalte"
+  ]
+}
