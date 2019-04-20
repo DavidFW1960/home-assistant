@@ -34,13 +34,17 @@ homeassistant:
         - ::1
         - 10.90.11.0/24
         - fd00::/8
+        - !secret zerotier_iphone
+        - !secret zerotier_ipad
         - !secret my_ipv6_network
       trusted_users:
         127.0.0.1: !secret user_id
         "::1": !secret user_id
         10.90.11.0/24: !secret user_id
         "fd00::/8": !secret user_id
-        !secret trusted_user: !secret user_id
+        !secret zerotier_iphone: !secret user_id
+        !secret zerotier_ipad: !secret user_id
+        !secret trusted_ipv6: !secret user_id
       allow_bypass_login: true
     - type: homeassistant
 
