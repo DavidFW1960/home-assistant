@@ -76,3 +76,5 @@ entity_config:
     room: house
   input_boolean.overtime:
     room: kitchen
+  input_boolean.holiday:
+    room: kitchen

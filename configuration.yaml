@@ -136,10 +136,6 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: !secret ide-cloud9    
-  glances:
-    title: Glances
-    icon: mdi:speedometer
-    url: !secret glances
   custom_components:
     title: Custom Component Store
     icon: mdi:package-variant
@@ -175,6 +171,15 @@ panel_custom:
     require_admin: true
     config:
       ingress: core_configurator
+  - name: hassio-main
+    sidebar_title: Glances
+    sidebar_icon: mdi:speedometer
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: glances
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: a0d7b954_glances
   - name: hassio-main
     sidebar_title: Terminal
     sidebar_icon: mdi:console
@@ -421,7 +426,7 @@ custom_updater:
     - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
     - https://raw.githubusercontent.com/iammexx/home-assistant-config/master/ui/darksky/version.json
 
-# Binary Switch for Home and Away Automations, Alarm & Garage Door
+# Binary Switch for Home and Away Automations, Alarm & Garage Door, Overtime & Holiday
 input_boolean:
   homeandawayauto:
     name: Home and Away Automations
@@ -429,6 +434,8 @@ input_boolean:
     name: Alarm arm/disarm and Garage door shut/open
   overtime:
     name: Overtime
+  holiday:
+    name: Holiday
 
 # Clear Out Gmail Alarm Notifications & Clean Known Devices file, ABB usage
 shell_command:

@@ -24,10 +24,9 @@
         conditions:
           - condition: template
             value_template: '{{ now().strftime(''%H:%M'') == ''07:00'' and now().weekday()
-              < 5 }}'
+              < 5  and (states.input_boolean.holiday.state == "off") }}'
           - condition: template
-            value_template: '{{ now().strftime(''%H:%M'') == ''08:00'' and now().weekday()
-              >= 5 }}'
+            value_template: '{{ now().strftime(''%H:%M'') == ''08:00'' }}'
           - condition: template
             value_template: '{{ now().strftime(''%H:%M'') == ''07:15'' and ((as_timestamp(now())
               - as_timestamp(''2017-09-24 00:00:00'')) / 86400)|int % 28 == 0 }}'
@@ -62,7 +61,7 @@
         - as_timestamp(''2017-09-24 00:00:00'')) / 86400)|int % 28 == 0 }}'
     - condition: template
       value_template: '{{ now().strftime(''%H:%M'') == ''14:00'' and now().weekday()
-        < 5 }}'
+        < 5  and (states.input_boolean.holiday.state == "off") }}'
     - condition: template
       value_template: '{{ now().strftime(''%H:%M'') == ''16:00'' }}'
     - condition: template

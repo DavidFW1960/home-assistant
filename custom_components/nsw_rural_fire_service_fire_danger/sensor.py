@@ -8,7 +8,6 @@ from datetime import timedelta
 from pyexpat import ExpatError
 
 import voluptuous as vol
-import xmltodict
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.components.rest.sensor import RestData
@@ -127,6 +126,8 @@ class NswFireServiceFireDangerSensor(Entity):
         self._state = STATE_UNKNOWN
         if value:
             try:
+                import xmltodict
+
                 value = xmltodict.parse(value)
                 districts = self._attribute_in_structure(
                     value, [XML_FIRE_DANGER_MAP, XML_DISTRICT])

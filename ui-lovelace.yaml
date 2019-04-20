@@ -766,6 +766,7 @@ views:
             entities:
               - input_boolean.homeandawayauto
               - input_boolean.overtime
+              - input_boolean.holiday
               - automation.close_garage_and_set_alarm
               - automation.deactivate_alarm_and_open_garage
               - type: divider

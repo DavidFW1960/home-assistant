@@ -2451,13 +2451,13 @@ let PodcastCard = class PodcastCard extends LitElement {
               <div class="divider"></div>
               <paper-item
                 @click="${this._togglePodcastEpisodes}"
-                .podcast="${podcast.title.replace(/[ )(]/g, "-")}"
+                .podcast="${podcast.title.replace(/[ )(]/g, "-").replace(/[^\w\s]/gi, '')}"
               >
                 ${podcast.title}
               </paper-item>
               <div
                 class="episodes"
-                id="${podcast.title.replace(/[ )(]/g, "-")}"
+                id="${podcast.title.replace(/[ )(]/g, "-").replace(/[^\w\s]/gi, '')}"
               >
                 ${podcast.episodes.map(episode => html `
                       <paper-item
@@ -2591,7 +2591,7 @@ let PodcastCard = class PodcastCard extends LitElement {
     _togglePodcastEpisodes(ev) {
         const target = ev.target;
         target.classList.toggle("active");
-        const list = this.shadowRoot.querySelector(`#${target.podcast.replace(/[ )(]/g, "-")}`);
+        const list = this.shadowRoot.querySelector(`#${target.podcast.replace(/[ )(]/g, "-").replace(/[^\w\s]/gi, '')}`);
         if (list) {
             if (list.style.display === "block") {
                 list.style.display = "none";

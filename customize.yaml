@@ -320,3 +320,7 @@ person.david:
   entity_picture: /local/images/david.jpg
 person.liz:
   entity_picture: /local/images/liz.jpg
+input_boolean.holiday:
+  icon: mdi:font-awesome
+input_boolean.homeandawayauto:
+  icon: mdi:home
