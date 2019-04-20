@@ -83,7 +83,6 @@
   condition:
   - condition: time
     after: '16:00:00'
-    before: '18:00:00'
   - condition: state
     entity_id: 'input_boolean.homeandawayauto'
     state: 'on'
@@ -309,69 +308,6 @@
       payload: ''
       topic: sonoffs/cmnd/state
     service: mqtt.publish
-- id: 'SonoffMQTTAuto'
-  alias: Tasmota Initial Setup All Devices
-  initial_state: 'false'
-  trigger:
-  - platform: homeassistant
-    event: start
-  action:
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/SetOption19
-      payload: '1'
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/SetOption56
-      payload: '1'
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/SetOption57
-      payload: '1'
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/SwitchRetain
-      payload: '0'
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/ButtonRetain
-      payload: '0'
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/PowerOnState
-      payload: '3'
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/PowerRetain
-      payload: '1'
-  - service: mqtt.publish
-    data:
-      topic: sonoff5/cmnd/PulseTime
-      payload: '20'
-  - service: mqtt.publish
-    data:
-      topic: sonoff6/cmnd/PulseTime
-      payload: '20'
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/Latitude
-      payload: !secret my_latitude
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/Longitude
-      payload: !secret my_longitude
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/TimeZone
-      payload: '99'
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/TimeDST
-      payload: '1,1,10,1,2,660'
-  - service: mqtt.publish
-    data:
-      topic: sonoffs/cmnd/TimeStd
-      payload: '1,1,4,1,2,600'
 - id: 'dockercontainers'
   alias: Restart Docker Containers when memory > 35%
   initial_state: 'true'

@@ -26,6 +26,8 @@ resources:
     type: module
   - url: /customcards/github/custom-cards/bar-card.js
     type: js
+  - url: /customcards/github/custom-cards/text-divider-row.js
+    type: js
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -761,29 +763,27 @@ views:
               - switch.vpn_router
               - switch.sonoff23110
           - type: entities
-            title: Automations
+            title: Overrides
             show_header_toggle: false
             entities:
               - input_boolean.homeandawayauto
               - input_boolean.overtime
               - input_boolean.holiday
+          - type: entities
+            title: Automations
+            show_header_toggle: false
+            entities:
               - automation.close_garage_and_set_alarm
               - automation.deactivate_alarm_and_open_garage
-              - type: divider
-                style:
-                  height: 30px
-                  margin: 4px 0
-                  background: center / contain url("/local/images/divider.png") no-repeat
+              - type: 'custom:text-divider-row'
+                text: Household
               - automation.coffee_maker_on
               - automation.coffee_maker_off
               - automation.toothbrush_on
               - automation.toothbrush_off
               - automation.turn_lounge_light_on_elevation_25deg_after_4pm
-              - type: divider
-                style:
-                  height: 30px
-                  margin: 4px 0
-                  background: center / contain url("/local/images/divider.png") no-repeat
+              - type: 'custom:text-divider-row'
+                text: Other
               - type: custom:fold-entity-row
                 open: false
                 head: 
@@ -816,7 +816,6 @@ views:
                 items:
                   - automation.sonoff_firmware_installed
                   - automation.power_state_sonoff_on_ha_start_up
-                  - automation.tasmota_initial_setup_all_devices
       - type: vertical-stack
         cards:
           - type: entities
@@ -893,9 +892,8 @@ views:
                 - entity: sensor.sonoff6_3719_status
                   name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-          - type: markdown
-            content: ' '
-            title: Sonoff
+          - type: 'custom:text-divider-row'
+            text: Sonoff
           - type: horizontal-stack
             cards:
               - type: entity-button
