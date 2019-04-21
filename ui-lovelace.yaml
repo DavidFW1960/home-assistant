@@ -341,16 +341,14 @@ views:
               - value: 13
                 color: green
           - type: custom:tracker-card
-            title: "í ½í±€ Custom Card Updates"
+            title: "ðŸ‘€ Custom Card Updates"
   - title: Weather
     icon: mdi:weather-cloudy
     cards:
       - type: 'custom:compact-custom-header'
       - type: vertical-stack
         cards:
-          - type: entities
-            title: Season, Sun & Moon Phase
-            show_header_toggle: false
+          - type: 'custom:config-template-card'
             entities:
               - sensor.seasonname
               - sun.sun
@@ -363,6 +361,23 @@ views:
               - sensor.daylighttomorrow
               - sensor.yrwthr
               - sensor.moonphases
+            card:
+              type: 'custom:hui-entities-card'
+              title: Season, Sun & Moon Phase
+              show_header_toggle: false
+              entities:
+                - entity: sensor.seasonname
+                - entity: sun.sun
+                  name: "${'Sun Elevation:' + '\xa0'.repeat(2) + states['sun.sun'].attributes['elevation'] + 'Â°' }"
+                - entity: sensor.sunrisetoday
+                - entity: sensor.sunsettoday
+                - entity: sensor.nextsunrise
+                - entity: sensor.nextsunset
+                - entity: sensor.daylightyesterday
+                - entity: sensor.daylighttoday
+                - entity: sensor.daylighttomorrow
+                - entity: sensor.yrwthr
+                - entity: sensor.moonphases
           - type: sensor
             entity: sensor.daylengthchange
             icon: mdi:timer
@@ -772,16 +787,28 @@ views:
           - type: entities
             title: Automations
             show_header_toggle: false
-            entities:
-              - automation.close_garage_and_set_alarm
-              - automation.deactivate_alarm_and_open_garage
+            entities:            
+              - type: custom:fold-entity-row
+                open: false
+                head: 
+                  type: section
+                  label: Security
+                items:
+                  - automation.close_garage_and_set_alarm
+                  - automation.deactivate_alarm_and_open_garage
               - type: 'custom:text-divider-row'
                 text: Household
-              - automation.coffee_maker_on
-              - automation.coffee_maker_off
-              - automation.toothbrush_on
-              - automation.toothbrush_off
-              - automation.turn_lounge_light_on_elevation_25deg_after_4pm
+              - type: custom:fold-entity-row
+                open: false
+                head: 
+                  type: section
+                  label: Lights & Switches
+                items:
+                  - automation.coffee_maker_on
+                  - automation.coffee_maker_off
+                  - automation.toothbrush_on
+                  - automation.toothbrush_off
+                  - automation.turn_lounge_light_on_elevation_25deg_after_4pm
               - type: 'custom:text-divider-row'
                 text: Other
               - type: custom:fold-entity-row

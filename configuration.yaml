@@ -156,10 +156,6 @@ panel_iframe:
     title: Tasmo Admin
     icon: mdi:lightbulb-on
     url: !secret tasmoadmin
-  logviewer:
-    title: Log Viewer
-    icon: mdi:bug-check
-    url: !secret logviewer
   mdiindex:
     title: MDI Icon Index
     icon: mdi:vector-square
@@ -184,6 +180,15 @@ panel_custom:
     require_admin: true
     config:
       ingress: a0d7b954_glances
+  - name: hassio-main
+    sidebar_title: Log Viewer
+    sidebar_icon: mdi:bug-check
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: logviewer
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: a0d7b954_logviewer
   - name: hassio-main
     sidebar_title: Terminal
     sidebar_icon: mdi:console
