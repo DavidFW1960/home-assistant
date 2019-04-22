@@ -42,12 +42,12 @@ class TextDividerRow extends LitElement {
         }
         .text-divider span {
           padding: 1em;
-          color: var(--secondary-text-color);
+          color: var(--primary-text-color);
         }
         .text-divider:before,
         .text-divider:after  {
           content: '';
-          background: var(--secondary-text-color);
+          background: var(--primary-text-color);
           display: block;
           height: 1px;
           width: 100%;

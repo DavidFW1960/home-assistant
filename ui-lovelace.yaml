@@ -668,12 +668,30 @@ views:
                   - entity: sensor.alarm_triggers
                     state_not: "unavailable"
                 card:
-                  type: entity-button
-                  name: Clear Alarm
+#                 type: entity-button
+#                 name: Clear Alarm
+#                 tap_action:
+#                   action: call-service
+#                   service: shell_command.removealarm
+#                 entity: sensor.alarm_triggers
+                  type: 'custom:button-card'
+                  color_type: card
+                  entity: sensor.alarm_triggers
+                  name: Alarm Event
+                  state:
+                    - value: 0
+                      operator: '>'
+                      color: red
+                      icon: mdi:alert
+                      style:
+                        - animation: blink 2s ease infinite
+                      spin: false
+                    - operator: default
+                      color: green
+                      icon: mdi:shield-check
                   tap_action:
                     action: call-service
                     service: shell_command.removealarm
-                  entity: sensor.alarm_triggers
           - type: horizontal-stack
             cards:
               - type: entity-button
@@ -1028,6 +1046,13 @@ views:
             hide: 
               power_state: false
             info: scroll
+          - entity: media_player.wdtvlive
+            type: custom:mini-media-player
+            artwork: full-cover
+            hide: 
+              power_state: false
+            info: scroll
+            source: full
           - entity: media_player.txnr1009
             type: custom:mini-media-player
             artwork: full-cover
