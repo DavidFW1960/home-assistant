@@ -118,6 +118,7 @@ export default function domainIcon(domain, state) {
       return css`
         ha-card {
           cursor: pointer;
+          overflow: hidden;
         }
         ha-card.disabled {
           pointer-events: none;
@@ -189,10 +190,19 @@ export default function domainIcon(domain, state) {
     longpress(element) {
       customElements.whenDefined("long-press").then(() => {
         const longpress = document.body.querySelector("long-press");
-        longpress.bind(element);
+        if (longpress) {
+          longpress.bind(element);
+        } else {
+          console.warn("Longpress support not found, only simple clicks are supported. Either add an entity-button in the view, or wait for us to make the card work without. Thanks :)")
+          element.addEventListener("click", this._fallbackClick);
+        }
       });
       return element;
     }
+
+    _fallbackClick() {
+      this.dispatchEvent(new Event("ha-click"));
+    };
 
     firstUpdated() {
       this.longpress(this.shadowRoot.querySelector('ha-card'));
@@ -412,7 +422,8 @@ export default function domainIcon(domain, state) {
       const color = this.buildCssColorAttribute(state, config);
       const fontColor = this.getFontColorBasedOnBackgroundColor(color);
       return html`
-      <ha-card class="disabled" style="color: ${fontColor}; background-color: ${color}; position: relative;">
+      <ha-card class="disabled">
+        <div class="button-card-background-color" style="color: ${fontColor}; background-color: ${color};"></div>
       </ha-card>
       `;
     }
@@ -424,8 +435,8 @@ export default function domainIcon(domain, state) {
       const style = this.buildStyle(state, config, configState);
       const name = this.buildName(state, configState);
       return html`
-      <ha-card class="${this.isClickable(state, config) ? '' : "disabled"}" style="color: ${fontColor}; position: relative;" @ha-click="${ev => this._handleTap(state, config, false)}" @ha-hold="${ev => this._handleTap(state, config, true)}">
-        <div class="button-card-background-color" style="background-color: ${color};">
+      <ha-card class="${this.isClickable(state, config) ? '' : "disabled"}" @ha-click="${ev => this._handleTap(state, config, false)}" @ha-hold="${ev => this._handleTap(state, config, true)}">
+        <div class="button-card-background-color" style="color: ${fontColor}; background-color: ${color};">
           <div class="button-card-main" style="${style}">
             ${config.show_icon && icon ? html`<ha-icon style="width: ${config.size}; height: auto;" icon="${icon}" class="${this.rotate(configState)}"></ha-icon>` : ''}
             ${config.show_name && name ? html`<div>${name}</div>` : ''}
@@ -443,8 +454,8 @@ export default function domainIcon(domain, state) {
       const style = this.buildStyle(state, config, configState);
       const name = this.buildName(state, configState);
       return html`
-      <ha-card class="${this.isClickable(state, config) ? '' : "disabled"}" style="color: ${fontColor}; position: relative;" @ha-click="${ev => this._handleTap(state, config, false)}" @ha-hold="${ev => this._handleTap(state, config, true)}">
-        <div class="button-card-background-color" style="background-color: ${color};">
+      <ha-card class="${this.isClickable(state, config) ? '' : "disabled"}" @ha-click="${ev => this._handleTap(state, config, false)}" @ha-hold="${ev => this._handleTap(state, config, true)}">
+        <div class="button-card-background-color" style="color: ${fontColor}; background-color: ${color};">
           <div class="button-card-main" style="${style}">
             ${config.show_icon && icon ? html`<ha-icon style="width: ${config.size}; height: auto;" icon="${icon}" class="${this.rotate(configState)}"></ha-icon>` : ''}
             ${config.show_name && name ? html`<div>${name}</div>` : ''}
@@ -462,7 +473,7 @@ export default function domainIcon(domain, state) {
       const style = this.buildStyle(state, config, configState);
       const name = this.buildName(state, configState);
       return html`
-      <ha-card class="${this.isClickable(state, config) ? '' : "disabled"}" style="position: relative;" @ha-click="${ev => this._handleTap(state, config, false)}" @ha-hold="${ev => this._handleTap(state, config, true)}">
+      <ha-card class="${this.isClickable(state, config) ? '' : "disabled"}" @ha-click="${ev => this._handleTap(state, config, false)}" @ha-hold="${ev => this._handleTap(state, config, true)}">
         <div class="button-card-main" style="${style}">
           ${config.show_icon && icon ? html`<ha-icon style="color: ${color}; width: ${config.size}; height: auto;" icon="${icon}" class="${this.rotate(configState)}"></ha-icon>` : ''}
           ${config.show_name && name ? html`<div>${name}</div>` : ''}
@@ -496,7 +507,7 @@ export default function domainIcon(domain, state) {
 
     _handleTap(state, config, hold) {
       if (config.confirmation &&
-        !confirm("Confirm tap")) {
+        !confirm(config.confirmation)) {
         return;
       }
 
