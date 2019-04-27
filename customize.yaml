@@ -324,3 +324,15 @@ input_boolean.holiday:
   icon: mdi:font-awesome
 input_boolean.homeandawayauto:
   icon: mdi:home
+sensor.dark_sky_cloud_coverage_0d:
+  friendly_name: Dark Sky Cloud Coverage Today
+sensor.dark_sky_cloud_coverage_1d:
+  friendly_name: Dark Sky Cloud Coverage Tomorrow
+sensor.dark_sky_summary_0d:
+  friendly_name: Dark Sky Summary Today
+sensor.dark_sky_summary_1d:
+  friendly_name: Dark Sky Summary Tomorrow
+sensor.dark_sky_wind_speed_0d:
+  friendly_name: Dark Sky Wind Speed Today
+sensor.dark_sky_wind_speed_1d:
+  friendly_name: Dark Sky Wind Speed Tomorrow

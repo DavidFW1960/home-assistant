@@ -161,52 +161,6 @@ panel_iframe:
     icon: mdi:vector-square
 #   url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
     url: https://dev.materialdesignicons.com/icons
-panel_custom:
-  - name: hassio-main
-    sidebar_title: Configurator
-    sidebar_icon: hass:settings
-    js_url: /api/hassio/app/entrypoint.js
-    url_path: configurator
-    embed_iframe: true
-    require_admin: true
-    config:
-      ingress: core_configurator
-  - name: hassio-main
-    sidebar_title: Glances
-    sidebar_icon: mdi:speedometer
-    js_url: /api/hassio/app/entrypoint.js
-    url_path: glances
-    embed_iframe: true
-    require_admin: true
-    config:
-      ingress: a0d7b954_glances
-  - name: hassio-main
-    sidebar_title: Log Viewer
-    sidebar_icon: mdi:bug-check
-    js_url: /api/hassio/app/entrypoint.js
-    url_path: logviewer
-    embed_iframe: true
-    require_admin: true
-    config:
-      ingress: a0d7b954_logviewer
-  - name: hassio-main
-    sidebar_title: Terminal
-    sidebar_icon: mdi:console
-    js_url: /api/hassio/app/entrypoint.js
-    url_path: terminal
-    embed_iframe: true
-    require_admin: true
-    config:
-      ingress: a0d7b954_ssh
-  - name: hassio-main
-    sidebar_title: Visual Studio Code
-    sidebar_icon: mdi:visual-studio-code
-    js_url: /api/hassio/app/entrypoint.js
-    url_path: vscode
-    embed_iframe: true
-    require_admin: true
-    config:
-      ingress: a0d7b954_vscode
  
 # Recorder
 recorder: !include recorder.yaml
