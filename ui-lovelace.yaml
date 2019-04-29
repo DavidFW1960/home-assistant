@@ -1,6 +1,6 @@
 title: Home
 resources:
-  - url: /customcards/github/thomasloven/card-tools.js
+  - url: /customcards/github/thomasloven/card-tools.js?track=true
     type: js
   - url: /customcards/github/custom-cards/tracker-card.js?track=true
     type: module
@@ -14,19 +14,19 @@ resources:
     type: module
   - url: /customcards/github/maykar/compact-custom-header.js?track=true
     type: module
-  - url: /customcards/github/thomasloven/fold-entity-row.js
+  - url: /customcards/github/thomasloven/fold-entity-row.js?track=true
     type: js
   - url: /customcards/github/custom-cards/button-card.js?track=true
     type: module
-  - url: /customcards/github/thomasloven/auto-entities.js
-    type: js
-  - url: /customcards/github/custom-cards/config-template-card.js
+  - url: /customcards/github/thomasloven/auto-entities.js?track=true
     type: module
-  - url: /customcards/github/custom-cards/podcast-card.js
+  - url: /customcards/github/custom-cards/config-template-card.js?track=true
     type: module
-  - url: /customcards/github/custom-cards/bar-card.js
+  - url: /customcards/github/custom-cards/podcast-card.js?track=true
+    type: module
+  - url: /customcards/github/custom-cards/bar-card.js?track=true
     type: js
-  - url: /customcards/github/custom-cards/text-divider-row.js
+  - url: /customcards/github/custom-cards/text-divider-row.js?track=true
     type: js
 views:
   - title: Home Assistant
@@ -729,7 +729,7 @@ views:
                 name: Exit-Enter
                 show_state: false
                 tap_action:
-                  action: service
+                  action: call-service
                   service: input_boolean.toggle
                   service_data:
                     entity_id: input_boolean.alarmgaragedoor

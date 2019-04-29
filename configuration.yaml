@@ -346,6 +346,7 @@ sabnzbd:
 # iOS & Mobile App Component
 #ios:
 mobile_app:
+zeroconf:
 
 # Text to speech
 tts:
