@@ -86,7 +86,6 @@ googlehome:
 
 # Enables the frontend
 frontend:
-  javascript_version: latest
 
 # HTML5 Push Notifications
 notify:

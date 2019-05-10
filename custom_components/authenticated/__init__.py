@@ -1,1 +1,1 @@
-
+"""The authenticated component."""

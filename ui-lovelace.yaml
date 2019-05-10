@@ -28,6 +28,8 @@ resources:
     type: js
   - url: /customcards/github/custom-cards/text-divider-row.js?track=true
     type: js
+  - url: /customcards/github/maykar/lovelace-swipe-navigation.js?track=true
+    type: js
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -150,7 +152,7 @@ views:
                   service_data: {"addon":"7be23ff5_dropbox_sync","input":{"command":"upload"}}
           - type: custom:mini-graph-card
             hours_to_show: 24
-            points_per_hour: 4	
+            points_per_hour: 4
             show:
               labels: true
             entities:
@@ -160,7 +162,7 @@ views:
                 color: yellow
           - type: custom:mini-graph-card
             hours_to_show: 24
-            points_per_hour: 4	
+            points_per_hour: 4
             show:
               labels: true
             entities:
@@ -170,7 +172,7 @@ views:
                 color: orange
           - type: custom:mini-graph-card
             hours_to_show: 24
-            points_per_hour: 4	
+            points_per_hour: 4
             show:
               labels: true
             entities:
@@ -204,12 +206,12 @@ views:
               entities:
                 - entity: person.david
                 - entity: person.liz
-                - entity: device_tracker.e05603a1f7b1483faa3b1b5378be26fa
-                - entity: sensor.battery
-                  name: "${'Battery Level:' + '\xa0'.repeat(5) + states['sensor.battery'].attributes['Level'] + '\xa0'.repeat(5) + 'Status:'}"
-                - entity: device_tracker.2f8148d281b54990843f41e7216860f0
-                - entity: sensor.battery_2
-                  name: "${'Battery Level:' + '\xa0'.repeat(5) + states['sensor.battery_2'].attributes['Level'] + '\xa0'.repeat(5) + 'Status:'}"
+                - entity: device_tracker.e05603a1f7b1483faa3b1b5378be26fa        # iPhone
+                - entity: sensor.battery_level_2
+                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state_2'].state + '\xa0'.repeat(5) + 'Level:'}"
+                - entity: device_tracker.2f8148d281b54990843f41e7216860f0        # iPad
+                - entity: sensor.battery_level
+                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
       - type: vertical-stack
         cards:
           - type: 'custom:config-template-card'
@@ -314,7 +316,7 @@ views:
                 entity: sensor.speedtest_upload
           - type: custom:mini-graph-card
             hours_to_show: 24
-            points_per_hour: 2	
+            points_per_hour: 2
             entities:
               - sensor.speedtest_download
             show:
@@ -328,7 +330,7 @@ views:
                 color: green
           - type: custom:mini-graph-card
             hours_to_show: 24
-            points_per_hour: 2	
+            points_per_hour: 2
             entities:
               - sensor.speedtest_upload
             show:
