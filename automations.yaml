@@ -133,7 +133,6 @@
       entity_id: switch.sonoff23110
 - id: '1519082437913'
   alias: Make Snapshot & Copy Backups to Dropbox
-  initial_state: 'true'
   trigger:
   - platform: time
     at: '03:00:00'

@@ -797,13 +797,72 @@ views:
               - switch.hifi
               - switch.vpn_router
               - switch.sonoff23110
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: input_boolean.homeandawayauto
+                icon: mdi:home
+                color_type: icon
+                state:
+                  - value: 'off'
+                    color: red
+                    name: Away
+                  - value: 'on'
+                    color: green
+                    name: Home
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.homeandawayauto
+              - type: custom:button-card
+                entity: input_boolean.overtime
+                icon: mdi:clock
+                color_type: icon
+                state:
+                  - value: 'off'
+                    color: red
+                    name: Normal
+                  - value: 'on'
+                    color: green
+                    name: Overtime
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.overtime
+              - type: custom:button-card
+                entity: input_boolean.holiday
+                icon: mdi:font-awesome
+                color_type: icon
+                state:
+                  - value: 'off'
+                    color: red
+                    name: No Holiday
+                  - value: 'on'
+                    color: green
+                    name: Holiday Mode
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.holiday
           - type: entities
             title: Overrides
             show_header_toggle: false
             entities:
-              - input_boolean.homeandawayauto
-              - input_boolean.overtime
-              - input_boolean.holiday
+              - type: custom:fold-entity-row
+                open: false
+                head: 
+                  type: section
+                  label: Overrides
+                items:
+                  - input_boolean.homeandawayauto
+                  - input_boolean.overtime
+                  - input_boolean.holiday
           - type: entities
             title: Automations
             show_header_toggle: false
