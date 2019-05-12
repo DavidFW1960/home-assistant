@@ -2370,12 +2370,12 @@ let TextDividerRow = class TextDividerRow extends LitElement {
         }
         .text-divider span {
           padding: 1em;
-          color: var(--primary-text-color);
+          color: var(--secondary-text-color);
         }
         .text-divider:before,
         .text-divider:after  {
           content: '';
-          background: var(--primary-text-color);
+          background: var(--secondary-text-color);
           display: block;
           height: 1px;
           width: 100%;
