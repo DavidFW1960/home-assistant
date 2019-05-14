@@ -317,9 +317,9 @@ device_tracker.e05603a1f7b1483faa3b1b5378be26fa:
 automation.update_abb_usage:
   entity_picture: /local/icons/abb/abb.png
 person.david:
-  entity_picture: /local/images/david.jpg
+  entity_picture: /local/images/david.png
 person.liz:
-  entity_picture: /local/images/liz.jpg
+  entity_picture: /local/images/liz.png
 input_boolean.holiday:
   icon: mdi:font-awesome
 input_boolean.homeandawayauto:
