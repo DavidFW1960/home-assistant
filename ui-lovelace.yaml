@@ -222,13 +222,12 @@ views:
               - states['sensor.abb_usage'].attributes['usedMb']
               - states['sensor.abb_usage'].attributes['downloadedMb']
               - states['sensor.abb_usage'].attributes['uploadedMb']
-              - states['sensor.abb_usage'].attributes['remainingMb']
+              - states['sensor.abb_usage'].attributes['allowanceMb']
               - states['sensor.abb_usage'].attributes['daysTotal']
               - states['sensor.abb_usage'].attributes['daysRemaining']
               - states['sensor.abb_usage'].attributes['lastUpdated']
               - states['sensor.abb_usage'].attributes['nextRollover']
               - states['sensor.abb_usage'].attributes['daysUsed']
-              - states['sensor.abb_usage'].attributes['allowanceMb']
             entities:
               - sensor.abb_usage
             card:
@@ -263,7 +262,7 @@ views:
                   name: "${'Uploaded' + '\xa0'.repeat(11) + ((vars[3]/1E3).toFixed(2)) + '\xa0' + 'GB' }"
                   icon: mdi:file-upload
                 - entity: sensor.abb_usage
-                  name: "${'Total' + '\xa0'.repeat(19) + (((vars[2] +vars[3]) / 1E3).toFixed(2)) + '\xa0' + 'GB of' + '\xa0' + (vars[10] < 100000000 ? Math.floor(vars[10] / 1000) : 'Unlimited') + '\xa0' + 'GB'}"
+                  name: "${'Total' + '\xa0'.repeat(19) + (((vars[2] +vars[3]) / 1E3).toFixed(2)) + '\xa0' + 'GB of' + '\xa0' + (vars[4] < 100000000 ? Math.floor(vars[4] / 1000) : 'Unlimited') + '\xa0' + 'GB'}"
                   icon: mdi:lan-connect
           - type: 'custom:bar-card'
             title: Month Used
