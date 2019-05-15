@@ -46,6 +46,14 @@ daysTotal=$(echo "$abbusagestring" | jq '.daysTotal')
 daysRemaining=$(echo "$abbusagestring" | jq '.daysRemaining')
 lastUpdated=$(echo "$abbusagestring" | jq -r '.lastUpdated')
 
+# Calculate Data Limit
+if [ "$remainingMb" == "null" ]
+then
+  allowanceMb=100000000
+else
+  allowanceMb=$(echo "$(($usedMb + $remainingMb))")
+fi
+
 # Calculate Dates
 todaydatetime=$(date -Is)
 lastUpdatedISO=$(echo "$todaydatetime" |sed "s/${todaydatetime:11:8}/${lastUpdated:11:8}/g")
@@ -64,7 +72,7 @@ lastUpdated=$(echo "$lastUpdated" | sed "s/::/:/g")
 daysUsed=$(echo "$(($daysTotal - $daysRemaining))")
 
 # Build JSON output
-abbusagestring='{"state":"","attributes":{"usage":"","usedMb":'"$usedMb"',"downloadedMb":'"$downloadedMb"',"uploadedMb":'"$uploadedMb"',"remainingMb":'"$remainingMb"',"daysTotal":'"$daysTotal"',"daysRemaining":'"$daysRemaining"',"lastUpdated":"'"$lastUpdated"'","nextRollover":"'"$nextRollover"'","daysUsed":'"$daysUsed"',"friendly_name":"ABB Usage","icon":"mdi:blank","entity_picture":"'"$entitypicture"'"}}'
+abbusagestring='{"state":"","attributes":{"usage":"","usedMb":'"$usedMb"',"downloadedMb":'"$downloadedMb"',"uploadedMb":'"$uploadedMb"',"remainingMb":'"$remainingMb"',"daysTotal":'"$daysTotal"',"daysRemaining":'"$daysRemaining"',"lastUpdated":"'"$lastUpdated"'","nextRollover":"'"$nextRollover"'","daysUsed":'"$daysUsed"',"allowanceMb":'"$allowanceMb"',"friendly_name":"ABB Usage","icon":"mdi:blank","entity_picture":"'"$entitypicture"'"}}'
 
 # Publish to HA with token
 
