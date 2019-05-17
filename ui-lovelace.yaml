@@ -28,16 +28,17 @@ resources:
     type: js
   - url: /customcards/github/custom-cards/text-divider-row.js?track=true
     type: js
-  - url: /customcards/github/maykar/lovelace-swipe-navigation.js?track=true
-    type: js
   - url: /customcards/github/thomasloven/card-modder.js?track=true
     type: js
+  - url: /customcards/github/custom-cards/secondaryinfo-entity-row.js
+    type: module
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
     cards:
       - type: 'custom:compact-custom-header'
         main_config: true
+        swipe: true
       - type: vertical-stack
         cards:
           - type: entities
@@ -228,6 +229,7 @@ views:
               - states['sensor.abb_usage'].attributes['lastUpdated']
               - states['sensor.abb_usage'].attributes['nextRollover']
               - states['sensor.abb_usage'].attributes['daysUsed']
+              - states['automation.update_abb_usage'].attributes['last_triggered']
             entities:
               - sensor.abb_usage
             card:
@@ -264,6 +266,9 @@ views:
                 - entity: sensor.abb_usage
                   name: "${'Total' + '\xa0'.repeat(19) + (((vars[2] +vars[3]) / 1E3).toFixed(2)) + '\xa0' + 'GB of' + '\xa0' + (vars[4] < 100000000 ? Math.floor(vars[4] / 1000) : 'Unlimited') + '\xa0' + 'GB'}"
                   icon: mdi:lan-connect
+                - entity: sensor.abb_usage
+                  name: "${'Last Update Requested' +'\xa0'.repeat(5) + Number.parseInt((new Date().getTime() - new Date(vars[10])) / 60000)+ '\xa0' + 'minutes ago'}"
+                  icon: mdi:clock
           - type: 'custom:bar-card'
             title: Month Used
             entity: sensor.abb_usage
@@ -933,7 +938,9 @@ views:
                   - automation.system_change_current_theme
                   - automation.system_set_custom_theme_at_startup
                   - automation.purge_history
-                  - automation.update_abb_usage
+                  - entity: automation.update_abb_usage
+                    type: 'custom:secondaryinfo-entity-row'
+                    secondary_info: "[[ automation.update_abb_usage.attributes.last_triggered ]]"
               - type: custom:fold-entity-row
                 open: false
                 head: 
