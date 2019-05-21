@@ -956,9 +956,13 @@ views:
             show_header_toggle: false
             entities:
               - input_select.theme_switcher
-          - type: entity-button
+          - type: custom:button-card
             entity: input_select.theme_switcher
             icon: mdi:palette
+            styles:
+              card:
+                - width: 100px
+                - height: 100px
             name: Theme
             tap_action:
               action: call-service
