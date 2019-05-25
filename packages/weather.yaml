@@ -34,6 +34,21 @@ sensor:
       - wind_spd_kmh
       - wind_spd_kt
 
+  - platform: bom_forecast
+    product_id: IDN11052
+    name: Gosford
+    forecast_days: 6
+    rest_of_today: true
+    friendly: false
+    friendly_state_format: '{max}, {summary}'
+    monitored_conditions:
+      - 'max'
+      - 'min'
+      - 'chance_of_rain'
+      - 'possible_rainfall'
+      - 'summary'
+      - 'detailed_summary'
+
   - platform: darksky
     api_key: !secret darksky_key
     forecast:

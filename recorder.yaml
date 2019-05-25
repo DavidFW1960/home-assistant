@@ -243,4 +243,45 @@ exclude:
     - sensor.load_1m
     - sensor.load_5m
     - sensor.load_15m
-    
+    - sensor.bom_gosford_chance_of_rain_0
+    - sensor.bom_gosford_chance_of_rain_1
+    - sensor.bom_gosford_chance_of_rain_2
+    - sensor.bom_gosford_chance_of_rain_3
+    - sensor.bom_gosford_chance_of_rain_4
+    - sensor.bom_gosford_chance_of_rain_5
+    - sensor.bom_gosford_chance_of_rain_6
+    - sensor.bom_gosford_detailed_summary_0
+    - sensor.bom_gosford_detailed_summary_1
+    - sensor.bom_gosford_detailed_summary_2
+    - sensor.bom_gosford_detailed_summary_3
+    - sensor.bom_gosford_detailed_summary_4
+    - sensor.bom_gosford_detailed_summary_5
+    - sensor.bom_gosford_detailed_summary_6
+    - sensor.bom_gosford_max_temp_c_0
+    - sensor.bom_gosford_max_temp_c_1
+    - sensor.bom_gosford_max_temp_c_2
+    - sensor.bom_gosford_max_temp_c_3
+    - sensor.bom_gosford_max_temp_c_4
+    - sensor.bom_gosford_max_temp_c_5
+    - sensor.bom_gosford_max_temp_c_6
+    - sensor.bom_gosford_min_temp_c_0
+    - sensor.bom_gosford_min_temp_c_1
+    - sensor.bom_gosford_min_temp_c_2
+    - sensor.bom_gosford_min_temp_c_3
+    - sensor.bom_gosford_min_temp_c_4
+    - sensor.bom_gosford_min_temp_c_5
+    - sensor.bom_gosford_min_temp_c_6
+    - sensor.bom_gosford_possible_rainfall_0
+    - sensor.bom_gosford_possible_rainfall_1
+    - sensor.bom_gosford_possible_rainfall_2
+    - sensor.bom_gosford_possible_rainfall_3
+    - sensor.bom_gosford_possible_rainfall_4
+    - sensor.bom_gosford_possible_rainfall_5
+    - sensor.bom_gosford_possible_rainfall_6
+    - sensor.bom_gosford_summary_0
+    - sensor.bom_gosford_summary_1
+    - sensor.bom_gosford_summary_2
+    - sensor.bom_gosford_summary_3
+    - sensor.bom_gosford_summary_4
+    - sensor.bom_gosford_summary_5
+    - sensor.bom_gosford_summary_6    
