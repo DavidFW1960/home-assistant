@@ -139,10 +139,6 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: !secret ide-cloud9    
-  custom_components:
-    title: Custom Component Store
-    icon: mdi:package-variant
-    url: !secret customcomponent
   jupyterlab:
     title: JupyterLab
     icon: mdi:flask
@@ -376,19 +372,8 @@ wemo:
     - !secret wemo_ip
 
 # Custom Component Updater
-custom_updater:
-  hide_sensor: false
-  track:
-    - components
-    - cards
-    - python_scripts
-  component_urls:
-    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
-  card_urls:
-    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
-    - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
-    - https://raw.githubusercontent.com/iammexx/home-assistant-config/master/ui/darksky/version.json
-    - https://raw.githubusercontent.com/MizterB/lovelace-secondaryinfo-entity-row/master/custom_cards.json
+hacs:
+  token: !secret hacs_github_token
 
 # Binary Switch for Home and Away Automations, Alarm & Garage Door, Overtime & Holiday
 input_boolean:
@@ -406,6 +391,7 @@ shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
   abbusage: /bin/bash /config/abbusage/abbusage_ha.sh
+  lovelace_installed: /bin/bash /config/card_version.sh
 
 # Home Assistant Podcasts on gpodder
 gpodder:

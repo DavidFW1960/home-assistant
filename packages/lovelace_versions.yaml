@@ -1,0 +1,57 @@
+sensor:
+# Getting Lovelace Card versions from JSON
+  - platform: rest
+    resource: https://api.github.com/repos/kalkih/mini-media-player/releases/latest
+    name: Mini Media Player Card
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
+    value_template: '{{ value_json.tag_name | replace("v", "") }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://api.github.com/repos/kalkih/mini-graph-card/releases/latest
+    name: Mini Graph Card
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
+    value_template: '{{ value_json.tag_name | replace("v", "") }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://api.github.com/repos/custom-cards/button-card/releases/latest
+    name: Button Card
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://api.github.com/repos/custom-cards/config-template-card/releases/latest
+    name: Config Template Card
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://api.github.com/repos/custom-cards/podcast-card/releases/latest
+    name: Podcast Card
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
