@@ -281,6 +281,12 @@ sensor:
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
+# Artisan Charge
+  - platform: mqtt
+    name: "Artisan Charge"
+    state_topic: "artisan/charge"
+    icon: mdi:blank
+    value_template: "{{ value_json.charge }}"
 
 # Tasmota Firmware
 # Getting Firmware from JSON for Tasmota

@@ -393,4 +393,17 @@
     minutes: '/30'
   action:
   - service: shell_command.lovelace_installed
-  
+- id: 'artisancharge'
+  alias: Roaster Needs Attention
+  initial_state: 'true'
+  trigger:
+  - entity_id: sensor.artisan_charge
+    platform: state
+  action:
+  - service: notify.david_ios_notify
+    data_template:
+      message: 'Roaster Needs Attention NOW!'
+      title: 'Artisan Notification'
+  - service: persistent_notification.create
+    data_template:
+      message: 'Roaster Needs Attention NOW!'

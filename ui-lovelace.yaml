@@ -229,29 +229,30 @@ views:
               - sensor.mini_graph_card
               - sensor.mini_media_player_card
               - sensor.podcast_card
+              - sensor.darksky
             card:
               type: 'custom:hui-entities-card'
               title: "👀 Available Card Versions"
               show_header_toggle: false
               entities:
-                - entity: sensor.lovelace_card_installed
-                  name: "${'Darksky installed:' + '\xa0'.repeat(14) + vars[1] + '\xa0'.repeat(5) + 'Available:'}"
-                  icon: mdi:weather-partlycloudy
                 - entity: sensor.button_card
-                  name: "${'Button installed:' + '\xa0'.repeat(16) + vars[4] + '\xa0'.repeat(5) + 'Available:'}"
+                  name: "${'Button installed:' + '\xa0'.repeat(14) + vars[4] + '\xa0'.repeat(5) + 'Available:'}"
                   icon: mdi:radiobox-marked
                 - entity: sensor.config_template_card
-                  name: "${'Template installed:' + '\xa0'.repeat(12) + vars[5] + '\xa0'.repeat(6) + 'Available:'}"
+                  name: "${'Template installed:' + '\xa0'.repeat(9) + vars[5] + '\xa0'.repeat(6) + 'Available:'}"
                   icon: mdi:language-javascript
-                - entity: sensor.mini_graph_card
-                  name: "${'Mini Graph installed:' + '\xa0'.repeat(9) + vars[3] + '\xa0'.repeat(6) + 'Available:'}"
-                  icon: mdi:trending-up
-                - entity: sensor.mini_media_player_card
-                  name: "${'Mini Media installed:' + '\xa0'.repeat(8) + vars[2] + '\xa0'.repeat(6) + 'Available:'}"
-                  icon: mdi:google-play
                 - entity: sensor.podcast_card
-                  name: "${'Podcast installed:' + '\xa0'.repeat(13) + vars[6] + '\xa0'.repeat(6) + 'Available:'}"
+                  name: "${'Podcast installed:' + '\xa0'.repeat(11) + vars[6] + '\xa0'.repeat(6) + 'Available:'}"
                   icon: mdi:podcast
+                - entity: sensor.mini_media_player_card
+                  name: "${'Mini Media installed:' + '\xa0'.repeat(6) + vars[2] + '\xa0'.repeat(6) + 'Available:'}"
+                  icon: mdi:google-play
+                - entity: sensor.mini_graph_card
+                  name: "${'Mini Graph installed:' + '\xa0'.repeat(7) + vars[3] + '\xa0'.repeat(6) + 'Available:'}"
+                  icon: mdi:trending-up
+                - entity: sensor.darksky
+                  name: "${'Darksky installed:' + '\xa0'.repeat(12) + vars[1] + '\xa0'.repeat(5) + 'Available:'}"
+                  icon: mdi:weather-partlycloudy
       - type: vertical-stack
         cards:
           - type: 'custom:config-template-card'

@@ -1,28 +1,6 @@
 sensor:
 # Getting Lovelace Card versions from JSON
   - platform: rest
-    resource: https://api.github.com/repos/kalkih/mini-media-player/releases/latest
-    name: Mini Media Player Card
-    username: !secret githubuser
-    password: !secret githubpass
-    authentication: basic
-    value_template: '{{ value_json.tag_name | replace("v", "") }}'
-    headers:
-      Accept: application/vnd.github.v3+json
-      Content-Type: application/json
-      User-Agent: Home Assistant REST sensor
-  - platform: rest
-    resource: https://api.github.com/repos/kalkih/mini-graph-card/releases/latest
-    name: Mini Graph Card
-    username: !secret githubuser
-    password: !secret githubpass
-    authentication: basic
-    value_template: '{{ value_json.tag_name | replace("v", "") }}'
-    headers:
-      Accept: application/vnd.github.v3+json
-      Content-Type: application/json
-      User-Agent: Home Assistant REST sensor
-  - platform: rest
     resource: https://api.github.com/repos/custom-cards/button-card/releases/latest
     name: Button Card
     username: !secret githubuser
@@ -55,3 +33,29 @@ sensor:
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://api.github.com/repos/kalkih/mini-media-player/releases/latest
+    name: Mini Media Player Card
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
+    value_template: '{{ value_json.tag_name | replace("v", "") }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://api.github.com/repos/kalkih/mini-graph-card/releases/latest
+    name: Mini Graph Card
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
+    value_template: '{{ value_json.tag_name | replace("v", "") }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://raw.githubusercontent.com/iammexx/home-assistant-config/master/ui/darksky/version.json
+    name: Darksky
+    value_template: "{{ value_json['dark-sky-weather-card'].version }}"
