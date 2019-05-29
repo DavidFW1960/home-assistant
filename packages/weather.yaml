@@ -216,3 +216,92 @@ sensor:
                          {% elif is_state("sensor.dark_sky_icon","lightning") %} Lightning
                          {% elif is_state("sensor.dark_sky_icon","thunderstorm") %} Thunderstorm
                          {% endif %}'
+
+      bom_forecast_0:
+        entity_id:
+          - sensor.bom_gosford_max_temp_c_0
+          - sensor.bom_gosford_min_temp_c_0
+          - sensor.bom_gosford_chance_of_rain_0
+        friendly_name: "Today"
+        value_template: >
+          {{states.sensor.bom_gosford_max_temp_c_0.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_0.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_0.state|round(0)}}%
+        entity_picture_template: >-
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_0d.state ~ '.png'}}
+
+      bom_forecast_1:
+        entity_id:
+          - sensor.bom_gosford_max_temp_c_1
+          - sensor.bom_gosford_min_temp_c_1
+          - sensor.bom_gosford_chance_of_rain_1
+        friendly_name_template: >
+          {%- set date = as_timestamp(now()) + (1 * 86400 ) -%}
+          {{ date | timestamp_custom("Tomorrow (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
+        value_template: >
+          {{states.sensor.bom_gosford_max_temp_c_1.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_1.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_1.state|round(0)}}%
+        entity_picture_template: >-
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_1d.state ~ '.png'}}
+
+      bom_forecast_2:
+        entity_id:
+          - sensor.bom_gosford_max_temp_c_2
+          - sensor.bom_gosford_min_temp_c_2
+          - sensor.bom_gosford_chance_of_rain_2
+        friendly_name_template: >
+          {%- set date = as_timestamp(now()) + (2 * 86400 ) -%}
+          {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
+        value_template: >
+          {{states.sensor.bom_gosford_max_temp_c_2.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_2.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_2.state|round(0)}}%
+        entity_picture_template: >-
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_2d.state ~ '.png'}}
+
+      bom_forecast_3:
+        entity_id:
+          - sensor.bom_gosford_max_temp_c_3
+          - sensor.bom_gosford_min_temp_c_3
+          - sensor.bom_gosford_chance_of_rain_3
+        friendly_name_template: >
+          {%- set date = as_timestamp(now()) + (3 * 86400 ) -%}
+          {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
+        value_template: >
+          {{states.sensor.bom_gosford_max_temp_c_3.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_3.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_3.state|round(0)}}%
+        entity_picture_template: >-
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_3d.state ~ '.png'}}
+
+      bom_forecast_4:
+        entity_id:
+          - sensor.bom_gosford_max_temp_c_4
+          - sensor.bom_gosford_min_temp_c_4
+          - sensor.bom_gosford_chance_of_rain_4
+        friendly_name_template: >
+          {%- set date = as_timestamp(now()) + (4 * 86400 ) -%}
+          {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
+        value_template: >
+          {{states.sensor.bom_gosford_max_temp_c_4.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_4.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_4.state|round(0)}}%
+        entity_picture_template: >-
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_4d.state ~ '.png'}}
+
+      bom_forecast_5:
+        entity_id:
+          - sensor.bom_gosford_max_temp_c_5
+          - sensor.bom_gosford_min_temp_c_5
+          - sensor.bom_gosford_chance_of_rain_5
+        friendly_name_template: >
+          {%- set date = as_timestamp(now()) + (5 * 86400 ) -%}
+          {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
+        value_template: >
+          {{states.sensor.bom_gosford_max_temp_c_5.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_5.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_5.state|round(0)}}%
+        entity_picture_template: >-
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_5d.state ~ '.png'}}
+
+      bom_forecast_6:
+        entity_id:
+          - sensor.bom_gosford_max_temp_c_6
+          - sensor.bom_gosford_min_temp_c_6
+          - sensor.bom_gosford_chance_of_rain_6
+        friendly_name_template: >
+          {%- set date = as_timestamp(now()) + (6 * 86400 ) -%}
+          {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
+        value_template: >
+          {{states.sensor.bom_gosford_max_temp_c_6.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_6.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_6.state|round(0)}}%
+        entity_picture_template: >-
+          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_6d.state ~ '.png'}}

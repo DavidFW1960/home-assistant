@@ -474,11 +474,11 @@ views:
             entity_forecast_icon_3: sensor.dark_sky_icon_3d
             entity_forecast_icon_4: sensor.dark_sky_icon_4d
             entity_forecast_icon_5: sensor.dark_sky_icon_5d
-            entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_0d
-            entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1d
-            entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2d
-            entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3d
-            entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4d
+            entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_1d
+            entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_2d
+            entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_3d
+            entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_4d
+            entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_5d
             entity_summary_1: sensor.dark_sky_summary_1d
             entity_summary_2: sensor.dark_sky_summary_2d
             entity_summary_3: sensor.dark_sky_summary_3d
@@ -636,9 +636,21 @@ views:
               - sensor.bom_gosford_wind_gust_kmh
               - sensor.bom_gosford_wind_speed_kmh
           - type: entities
+            title: BOM Forecast
+            show_header_toggle: false
+            entities:
+              - sensor.bom_forecast_0
+              - sensor.bom_forecast_1
+              - sensor.bom_forecast_2
+              - sensor.bom_forecast_3
+              - sensor.bom_forecast_4
+              - sensor.bom_forecast_5
+              - sensor.bom_forecast_6
+          - type: entities
             title: Weather from BOM Australia
             show_header_toggle: false
             entities:
+              - sensor.bom_forecast_0
               - sensor.bom_gosford_air_temp_c
               - sensor.bom_gosford_delta_temp_c
               - sensor.bom_gosford_dew_point_c
