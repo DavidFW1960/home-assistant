@@ -219,12 +219,12 @@ sensor:
 
       bom_forecast_0:
         entity_id:
-          - sensor.bom_gosford_max_temp_c_0
-          - sensor.bom_gosford_min_temp_c_0
+          - sensor.bom_today_max
+          - sensor.bom_today_min
           - sensor.bom_gosford_chance_of_rain_0
         friendly_name: "Today"
         value_template: >
-          {{states.sensor.bom_gosford_max_temp_c_0.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_0.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_0.state|round(0)}}%
+          {{states.sensor.bom_today_max.state|round(0)}}°/{{states.sensor.bom_today_min.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_0.state|round(0)}}%
         entity_picture_template: >-
           {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_0d.state ~ '.png'}}
 
@@ -305,3 +305,31 @@ sensor:
           {{states.sensor.bom_gosford_max_temp_c_6.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_6.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_6.state|round(0)}}%
         entity_picture_template: >-
           {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_6d.state ~ '.png'}}
+
+      bom_today_max:
+        entity_id:
+          - sensor.bom_gosford_max_temp_c_0
+          - sensor.today_temp_bom_mean
+        value_template: >
+          {%- if states('sensor.bom_gosford_max_temp_c_0') == 'n/a' -%} 
+            {{ state_attr('sensor.today_temp_bom_mean', 'max_value') }}
+          {% else %}
+            {{ states('sensor.bom_gosford_max_temp_c_0') }}
+          {% endif %}
+      bom_today_min:
+        entity_id:
+          - sensor.bom_gosford_min_temp_c_0
+          - sensor.today_temp_bom_mean
+        value_template: >
+          {%- if states('sensor.bom_gosford_min_temp_c_0') == 'n/a' -%} 
+            {{ state_attr('sensor.today_temp_bom_mean', 'min_value') }}
+          {% else %}
+            {{ states('sensor.bom_gosford_min_temp_c_0') }}
+          {% endif %}
+
+  - platform: statistics
+    name: today_temp_bom
+    sampling_size: 150
+    entity_id: sensor.bom_gosford_air_temp_c
+    max_age:
+      hours: 24

@@ -1,15 +1,15 @@
 homeassistant:
   # Name of the location where Home Assistant is running
-  name: Home
+  # name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: !secret my_latitude
-  longitude: !secret my_longitude
+  # latitude: !secret my_latitude
+  # longitude: !secret my_longitude
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: !secret my_elevation
+  # elevation: !secret my_elevation
   # metric for Metric, imperial for Imperial
-  unit_system: metric
+  # unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: !secret my_timezone
+  # time_zone: !secret my_timezone
   # Whitelisted Directories
   # whitelist_external_dirs:
   #   - /config/abbusage
@@ -176,6 +176,12 @@ discovery:
   enable:
     - dlna_dmr
     
+# iOS & Mobile App Component
+#ios:
+mobile_app:
+zeroconf:
+ssdp:
+
 # Yeelights
 yeelight:
   devices:
@@ -343,11 +349,6 @@ sabnzbd:
     - week_size
     - month_size
     - total_size
-
-# iOS & Mobile App Component
-#ios:
-mobile_app:
-#zeroconf:
 
 # Text to speech
 tts:

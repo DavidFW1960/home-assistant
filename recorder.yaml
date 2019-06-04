@@ -291,4 +291,7 @@ exclude:
     - sensor.bom_gosford_summary_3
     - sensor.bom_gosford_summary_4
     - sensor.bom_gosford_summary_5
-    - sensor.bom_gosford_summary_6    
+    - sensor.bom_gosford_summary_6
+    - sensor.bom_today_max
+    - sensor.bom_today_min
+    - sensor.today_temp_bom_mean

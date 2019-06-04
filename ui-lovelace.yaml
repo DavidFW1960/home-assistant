@@ -18,17 +18,17 @@ resources:
     type: js
   - url: /community_plugin/compact-custom-header/compact-custom-header.js
     type: module
+  - url: /community_plugin/button-card/button-card.js
+    type: module
+  - url: /community_plugin/config-template-card/config-template-card.js
+    type: module
+  - url: /community_plugin/podcast-card/podcast-card.js
+    type: module
+  - url: /community_plugin/mini-graph-card/mini-graph-card.js
+    type: module
+  - url: /community_plugin/mini-media-player/mini-media-player.js
+    type: module
   - url: /local/custom_ui/dark-sky-weather-card.js?v=0.10.2
-    type: module
-  - url: /local/github/kalkih/mini-media-player-bundle.js?v=1.1.3
-    type: module
-  - url: /local/github/kalkih/mini-graph-card-bundle.js?v=0.4.2
-    type: module
-  - url: /local/github/custom-cards/button-card.js?v=1.10.2
-    type: module
-  - url: /local/github/custom-cards/config-template-card.js?v=1.0.6
-    type: module
-  - url: /local/github/custom-cards/podcast-card.js?v=1.0.3
     type: module
 views:
   - title: Home Assistant
@@ -198,8 +198,8 @@ views:
                   - switch.ha_dockermon_watchtower
           - type: 'custom:config-template-card'
             entities:
-              - device_tracker.e05603a1f7b1483faa3b1b5378be26fa
-              - device_tracker.2f8148d281b54990843f41e7216860f0
+              - device_tracker.davids_iphone_2
+              - device_tracker.davids_ipad_2
             card:
               type: 'custom:hui-entities-card'
               title: iOS Devices
@@ -207,51 +207,26 @@ views:
               entities:
                 - entity: person.david
                 - entity: person.liz
-                - entity: device_tracker.e05603a1f7b1483faa3b1b5378be26fa        # iPhone
+                - entity: device_tracker.davids_iphone_2
                 - entity: sensor.battery_level_2
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state_2'].state + '\xa0'.repeat(5) + 'Level:'}"
-                - entity: device_tracker.2f8148d281b54990843f41e7216860f0        # iPad
+                - entity: device_tracker.davids_ipad_2
                 - entity: sensor.battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
           - type: 'custom:config-template-card'
             variables:
               - states['sensor.lovelace_card_installed'].state
               - states['sensor.lovelace_card_installed'].attributes['darksky']
-              - states['sensor.lovelace_card_installed'].attributes['minimedia']
-              - states['sensor.lovelace_card_installed'].attributes['minigraph']
-              - states['sensor.lovelace_card_installed'].attributes['button_card']
-              - states['sensor.lovelace_card_installed'].attributes['template_card']
-              - states['sensor.lovelace_card_installed'].attributes['podcast']
             entities:
               - sensor.lovelace_card_installed
-              - sensor.button_card
-              - sensor.config_template_card
-              - sensor.mini_graph_card
-              - sensor.mini_media_player_card
-              - sensor.podcast_card
               - sensor.darksky
             card:
               type: 'custom:hui-entities-card'
               title: "👀 Available Card Versions"
               show_header_toggle: false
               entities:
-                - entity: sensor.button_card
-                  name: "${'Button installed:' + '\xa0'.repeat(14) + vars[4] + '\xa0'.repeat(5) + 'Available:'}"
-                  icon: mdi:radiobox-marked
-                - entity: sensor.config_template_card
-                  name: "${'Template installed:' + '\xa0'.repeat(9) + vars[5] + '\xa0'.repeat(6) + 'Available:'}"
-                  icon: mdi:language-javascript
-                - entity: sensor.podcast_card
-                  name: "${'Podcast installed:' + '\xa0'.repeat(11) + vars[6] + '\xa0'.repeat(6) + 'Available:'}"
-                  icon: mdi:podcast
-                - entity: sensor.mini_media_player_card
-                  name: "${'Mini Media installed:' + '\xa0'.repeat(6) + vars[2] + '\xa0'.repeat(6) + 'Available:'}"
-                  icon: mdi:google-play
-                - entity: sensor.mini_graph_card
-                  name: "${'Mini Graph installed:' + '\xa0'.repeat(7) + vars[3] + '\xa0'.repeat(6) + 'Available:'}"
-                  icon: mdi:trending-up
                 - entity: sensor.darksky
-                  name: "${'Darksky installed:' + '\xa0'.repeat(12) + vars[1] + '\xa0'.repeat(5) + 'Available:'}"
+                  name: "${'Darksky installed:' + '\xa0'.repeat(8) + vars[1] + '\xa0'.repeat(5) + 'Available:'}"
                   icon: mdi:weather-partlycloudy
       - type: vertical-stack
         cards:
@@ -368,11 +343,11 @@ views:
               labels: true
             color_thresholds:
               - value: 0
-                color: red
+                color: "#ff0000"        #red
               - value: 30
-                color: orange
+                color: "#ffa500"        #orange
               - value: 40
-                color: green
+                color: "#00ff00"        #green
           - type: custom:mini-graph-card
             hours_to_show: 24
             points_per_hour: 2
@@ -382,11 +357,11 @@ views:
               labels: true
             color_thresholds:
               - value: 0
-                color: red
+                color: "#ff0000"        #red
               - value: 9
-                color: orange
+                color: "#ffa500"        #orange
               - value: 13
-                color: green
+                color: "#00ff00"        #green
   - title: Weather
     icon: mdi:weather-cloudy
     cards:
@@ -568,7 +543,7 @@ views:
             entity_summary_5: sensor.bom_gosford_summary_5
             entity_sun: sun.sun
             entity_visibility: sensor.dark_sky_visibility
-            entity_daytime_high: sensor.bom_gosford_max_temp_c_0
+            entity_daytime_high: sensor.bom_today_max
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
             entity_humidity: sensor.dark_sky_humidity
@@ -1070,19 +1045,33 @@ views:
             show_header_toggle: false
             entities:
               - input_select.theme_switcher
-          - type: custom:button-card
-            entity: input_select.theme_switcher
-            icon: mdi:palette
-            styles:
-              card:
-                - width: 100px
-                - height: 100px
-            name: Theme
-            tap_action:
-              action: call-service
-              service: input_select.select_next
-              service_data:
-                entity_id: input_select.theme_switcher
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                icon: mdi:home-assistant
+                lock: true
+                styles:
+                  card:
+                    - width: 100px
+                    - height: 100px
+                name: Restart
+                tap_action:
+                  action: call-service
+                  service: homeassistant.restart
+              - type: custom:button-card
+                entity: input_select.theme_switcher
+                icon: mdi:palette
+                lock: true
+                styles:
+                  card:
+                    - width: 100px
+                    - height: 100px
+                name: Theme
+                tap_action:
+                  action: call-service
+                  service: input_select.select_next
+                  service_data:
+                    entity_id: input_select.theme_switcher
           - type: entities
             title: Automations & Scenes
             show_header_toggle: false
