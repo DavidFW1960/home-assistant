@@ -2,11 +2,18 @@
 
 cd "$(dirname "$0")"
 lovelace_cards=$(cat ui-lovelace.yaml)
-
 darksky_card=$(echo "$lovelace_cards" | grep "dark-sky-weather-card" | head -1 | sed "s/.*\/dark-sky-weather-card.js?v=//")
 
+custom_component_authenticated=$(cat custom_components/authenticated/sensor.py)
+authenticated_card=$(echo "$custom_component_authenticated" | grep "version" | head -1 | sed "s/.*\__version__ = //" )
+authenticated_card=$(echo "${authenticated_card:1:${#authenticated_card}-2}")
+
+custom_component_sun=$(cat custom_components/sun/__init__.py)
+sun_card=$(echo "$custom_component_sun" | grep "version" | head -1 | sed "s/.*\__version__ = //" )
+sun_card=$(echo "${sun_card:1:${#sun_card}-2}")
+
 # Build JSON output
-card_installed_string='{"state":"","attributes":{"darksky":"'"$darksky_card"'"}}'
+card_installed_string='{"state":"","attributes":{"darksky":"'"$darksky_card"'","authenticated":"'"$authenticated_card"'","sun":"'"$sun_card"'"}}'
 # echo $card_installed_string
 
 # Home Assistant Config

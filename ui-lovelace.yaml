@@ -217,17 +217,27 @@ views:
             variables:
               - states['sensor.lovelace_card_installed'].state
               - states['sensor.lovelace_card_installed'].attributes['darksky']
+              - states['sensor.lovelace_card_installed'].attributes['authenticated']
+              - states['sensor.lovelace_card_installed'].attributes['sun']
             entities:
               - sensor.lovelace_card_installed
               - sensor.darksky
+              - sensor.authenticated_sensor
+              - sensor.sun
             card:
               type: 'custom:hui-entities-card'
               title: "👀 Available Card Versions"
               show_header_toggle: false
               entities:
                 - entity: sensor.darksky
-                  name: "${'Darksky installed:' + '\xa0'.repeat(8) + vars[1] + '\xa0'.repeat(5) + 'Available:'}"
+                  name: "${'Darksky installed:' + '\xa0'.repeat(13) + vars[1] + '\xa0'.repeat(3) + 'Available:'}"
                   icon: mdi:weather-partlycloudy
+                - entity: sensor.authenticated_sensor
+                  name: "${'Authenticated installed:' + '\xa0'.repeat(2) + vars[2] + '\xa0'.repeat(5) + 'Available:'}"
+                  icon: mdi:lock-question
+                - entity: sensor.sun
+                  name: "${'Sun installed:' + '\xa0'.repeat(20) + vars[3] + '\xa0'.repeat(5) + 'Available:'}"
+                  icon: mdi:weather-sunny
       - type: vertical-stack
         cards:
           - type: 'custom:config-template-card'
