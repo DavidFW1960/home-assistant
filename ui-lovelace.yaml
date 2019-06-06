@@ -1019,6 +1019,7 @@ views:
                   type: section
                   label: Not in Normal Use
                 items:
+                  - automation.start_all_automations
                   - automation.lights_on_failsafe
                   - automation.lights_off_failsafe
                   - automation.system_runtime
@@ -1036,6 +1037,7 @@ views:
                   - automation.system_change_current_theme
                   - automation.system_set_custom_theme_at_startup
                   - automation.purge_history
+                  - automation.roaster_needs_attention
                   - entity: automation.update_abb_usage
                     type: 'custom:secondaryinfo-entity-row'
                     secondary_info: "[[ automation.update_abb_usage.attributes.last_triggered ]]"
