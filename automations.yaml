@@ -1,6 +1,5 @@
 - id: '1507434167220'
   alias: Coffee Maker On
-  initial_state: 'true'
   trigger:
   - platform: time
     at: '07:00:00'
@@ -43,7 +42,6 @@
       entity_id: switch.sonoff12914
 - id: '1507434167221'
   alias: Coffee Maker Off
-  initial_state: 'true'
   trigger:
   - platform: time
     at: '08:30:00'
@@ -72,7 +70,6 @@
       entity_id: switch.sonoff12914
 - id: '1505977024304'
   alias: Turn Lounge Light On Elevation < 25° & after 4PM
-  initial_state: 'true'  
   trigger:
   - platform: numeric_state
     below: 25
@@ -96,7 +93,6 @@
       kelvin: 3100
 - id: '1523937971401'
   alias: Toothbrush On
-  initial_state: 'true'
   trigger:
   - platform: time
     at: '08:00:00'
@@ -110,7 +106,6 @@
       entity_id: switch.sonoff23110
 - id: '1523938046054'
   alias: Toothbrush Off
-  initial_state: 'true'
   trigger:
   - platform: time
     at: '21:00:00'
@@ -156,7 +151,6 @@
       message: Copied all new backups to Dropbox
 - id: '1532478833426'
   alias: Lights Off Failsafe
-  initial_state: 'true'
   trigger:
   - platform: state
     from: 'on'
@@ -188,7 +182,6 @@
         < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
 - id: '1532478833427'
   alias: Lights On Failsafe
-  initial_state: 'true'
   trigger:
   - platform: state
     from: 'off'
@@ -224,7 +217,6 @@
       kelvin: 3100
 - id: 'closegaragesetalarm'
   alias: Close Garage and Set Alarm
-  initial_state: 'true'
   trigger:
   - entity_id: input_boolean.alarmgaragedoor
     from: 'off'
@@ -254,7 +246,6 @@
         < 60 ) %} Garage closed & Alarm armed Verified {%- else %} Error occurred arming {%- endif %}
 - id: 'deactivatealarmopengarage'
   alias: Deactivate Alarm and Open Garage
-  initial_state: 'true'
   trigger:
   - entity_id: input_boolean.alarmgaragedoor
     from: 'on'
@@ -283,7 +274,6 @@
         < 60 ) %} Alarm disabled & Garage opened Verified {%- else %} Error occurred disarming {%- endif %}
 - id: 'sonoff_firmware_installed'
   alias: Sonoff Firmware Installed
-  initial_state: 'true'  
   trigger:
   - at: '00:00:00'
     platform: time
@@ -298,7 +288,6 @@
     service: mqtt.publish
 - id: '1532478833428'
   alias: Power State Sonoff on HA Start-Up
-  initial_state: 'true'
   trigger:
   - event: start
     platform: homeassistant
@@ -309,7 +298,6 @@
     service: mqtt.publish
 - id: 'dockercontainers'
   alias: Restart Docker Containers when memory > 35%
-  initial_state: 'true'
   trigger:
   - platform: numeric_state
     entity_id: sensor.memory_use_percent
@@ -326,7 +314,6 @@
     entity_id: switch.ha_dockermon_radarr, switch.ha_dockermon_sonarr, switch.ha_dockermon_sabnzbd
 - id: 'alarmevent'
   alias: Alarm Event Triggered
-  initial_state: 'true'
   trigger:
   - platform: state
     entity_id: sensor.alarm_triggers
@@ -344,7 +331,6 @@
       title: 'Alarm Notification'
 - id: 'alarmeventrefresh'
   alias: 'Alarm Event Check'
-  initial_state: 'true'
   trigger:
   - event: start
     platform: homeassistant
@@ -355,7 +341,6 @@
     entity_id: sensor.alarm_triggers
 - id: '1552527487165'
   alias: Purge History
-  initial_state: 'true'
   trigger:
   - at: '00:00:00'
     platform: time
@@ -367,7 +352,6 @@
     service: recorder.purge
 - id: 'cleanknowndevices'
   alias: Clean out Known Devices
-  initial_state: 'true'
   trigger:
   - event: start
     platform: homeassistant
@@ -375,7 +359,6 @@
   - service: shell_command.clean_knowndevices
 - id: 'updateabbusage'
   alias: Update ABB Usage
-  initial_state: 'true'
   trigger:
   - event: start
     platform: homeassistant
@@ -385,7 +368,6 @@
   - service: shell_command.abbusage
 - id: 'updatelovelacecards'
   alias: Update Lovelace Card Versions
-  initial_state: 'true'
   trigger:
   - event: start
     platform: homeassistant
@@ -395,7 +377,6 @@
   - service: shell_command.lovelace_installed
 - id: 'artisancharge'
   alias: Roaster Needs Attention
-  initial_state: 'true'
   trigger:
   - entity_id: sensor.artisan_charge
     platform: state
@@ -407,3 +388,12 @@
   - service: persistent_notification.create
     data_template:
       message: 'Roaster Needs Attention NOW!'
+- id: 'initialautostate'
+  alias: 'Start All Automations'
+  initial_state: 'true'
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - service: automation.turn_on
+    entity_id: all

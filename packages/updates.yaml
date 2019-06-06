@@ -145,7 +145,6 @@ binary_sensor:
 
 automation:
   - alias: 'Update Available'
-    initial_state: 'true'
     trigger:
       - platform: template
         value_template: >-
@@ -158,7 +157,6 @@ automation:
           message: 'Home Assistant version {{ states.sensor.hass_current_stable_version.state }} is now available for Hass.io'
           title: Home Assistant Update
   - alias: 'Beta Update Available'
-    initial_state: 'true'
     trigger:
       - platform: template
         value_template: >-

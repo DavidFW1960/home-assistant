@@ -1696,7 +1696,6 @@ input_select:
 automation:
 
   - alias: 'System - Set Custom Theme at Startup'
-    initial_state: 'true'
     trigger:
       platform: homeassistant
       event: start
@@ -1706,7 +1705,6 @@ automation:
         name: slate
 
   - alias: 'System - Change Current Theme'
-    initial_state: 'true'
     hide_entity: true
     trigger:
       - platform: state
