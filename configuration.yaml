@@ -13,12 +13,15 @@ homeassistant:
   # Whitelisted Directories
   # whitelist_external_dirs:
   #   - /config/abbusage
-  # Customization file
+
+# Customization file
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
-  # Fuel Monitor, System Monitor, Sun, Moon, Transport, Weather, Updates, Fire Incidents, Recycling Night, Themes Packages
+
+# Fuel Monitor, System Monitor, Sun, Moon, Transport, Weather, Updates, Fire Incidents, Recycling Night, Themes Packages
   packages: !include_dir_named packages
-  # LimitlessLED
+
+# LimitlessLED
   customize_domain:
     light:
       assumed_state: false
@@ -64,7 +67,7 @@ map:
 # Person
 person:
 
-# Device Tracker
+# Device Trackers - Fritz!Box & Google Home
 device_tracker:
   - platform: fritz
     host: !secret my_fritz_host
@@ -236,7 +239,7 @@ sensor:
     folder: inbox
     search: !secret alarmnotification
           
-# Sonarr
+# Sonarr, Radarr and Upcoming Media
   - platform: sonarr
     api_key: !secret my_sonarr_api
     host: !secret my_sonarr_host
@@ -374,11 +377,12 @@ switch:
     port: !secret my_hadockermon_port
 
 # Wemo Switch
-wemo:
-  static:
-    - !secret wemo_ip
+# wemo:
+# discovery: false
+# static:
+#   - !secret wemo_ip
 
-# Custom Component Updater
+# Custom Component/Card Updater
 hacs:
   token: !secret hacs_github_token
 
@@ -393,7 +397,7 @@ input_boolean:
   holiday:
     name: Holiday
 
-# Clear Out Gmail Alarm Notifications & Clean Known Devices file, ABB usage
+# Clear Out Gmail Alarm Notifications & Clean Known Devices file, ABB usage, Component/Card Versions
 shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh

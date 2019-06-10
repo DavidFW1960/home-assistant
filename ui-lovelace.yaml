@@ -2,8 +2,8 @@ title: Home
 resources:
   - url: /community_plugin/lovelace-card-tools/card-tools.js
     type: js
-  - url: /community_plugin/lovelace-card-modder/card-modder.js
-    type: js
+  - url: /community_plugin/lovelace-card-mod/card-mod.js
+    type: module
   - url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
     type: js
   - url: /community_plugin/lovelace-auto-entities/auto-entities.js
@@ -990,12 +990,16 @@ views:
                 items:
                   - automation.close_garage_and_set_alarm
                   - automation.deactivate_alarm_and_open_garage
-              - type: 'custom:card-modder'
-                style:
-                  --secondary-text-color: 'var(--primary-text-color)'
-                card:
-                  type: 'custom:text-divider-row'
-                  text: Household
+          - type: entities
+            style: |
+              ha-card {
+                background: none;
+                box-shadow: none;
+                --secondary-text-color: var(--primary-text-color);
+              }
+            entities:
+              - type: 'custom:text-divider-row'
+                text: Household
               - type: custom:fold-entity-row
                 open: false
                 head: 
@@ -1007,12 +1011,8 @@ views:
                   - automation.toothbrush_on
                   - automation.toothbrush_off
                   - automation.turn_lounge_light_on_elevation_25deg_after_4pm
-              - type: 'custom:card-modder'
-                style:
-                  --secondary-text-color: 'var(--primary-text-color)'
-                card:
-                  type: 'custom:text-divider-row'
-                  text: Other
+              - type: 'custom:text-divider-row'
+                text: Other
               - type: custom:fold-entity-row
                 open: false
                 head: 
@@ -1144,12 +1144,16 @@ views:
                 - entity: sensor.sonoff6_3719_status
                   name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-          - type: 'custom:card-modder'
-            style:
-              --secondary-text-color: 'var(--primary-text-color)'
-            card:
-              type: 'custom:text-divider-row'
-              text: Sonoff
+          - type: entities
+            style: |
+              ha-card {
+                background: none;
+                box-shadow: none;
+                --secondary-text-color: var(--primary-text-color);
+              }
+            entities:
+              - type: 'custom:text-divider-row'
+                text: Sonoff
           - type: horizontal-stack
             cards:
               - type: entity-button
