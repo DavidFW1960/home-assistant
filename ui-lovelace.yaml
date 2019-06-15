@@ -140,9 +140,7 @@ views:
                 name: Sonoff Firmware
                 tap_action:
                   action: call-service
-                  service: script.turn_on
-                  service_data:
-                    entity_id: script.1554771236987
+                  service: script.1554771236987
               - type: entity-button
                 entity: automation.make_snapshot_copy_backups_to_dropbox
                 icon: mdi:dropbox
@@ -151,6 +149,13 @@ views:
                   action: call-service
                   service: hassio.addon_stdin
                   service_data: {"addon":"7be23ff5_dropbox_sync","input":{"command":"upload"}}
+              - type: entity-button
+                entity: script.updateversions
+                icon: mdi:check-decagram
+                name: Update Versions
+                tap_action:
+                  action: call-service
+                  service: script.updateversions
           - type: custom:mini-graph-card
             hours_to_show: 24
             points_per_hour: 4
@@ -217,26 +222,23 @@ views:
             variables:
               - states['sensor.lovelace_card_installed'].state
               - states['sensor.lovelace_card_installed'].attributes['darksky']
-              - states['sensor.lovelace_card_installed'].attributes['authenticated']
               - states['sensor.lovelace_card_installed'].attributes['sun']
             entities:
-              - sensor.lovelace_card_installed
+              - sensor.hacs
               - sensor.darksky
-              - sensor.authenticated_sensor
               - sensor.sun
             card:
               type: 'custom:hui-entities-card'
               title: "👀 Available Card Versions"
               show_header_toggle: false
               entities:
+                - entity: sensor.hacs
+                  name: HACS
                 - entity: sensor.darksky
-                  name: "${'Darksky installed:' + '\xa0'.repeat(13) + vars[1] + '\xa0'.repeat(3) + 'Available:'}"
+                  name: "${'Darksky installed:' + '\xa0'.repeat(6) + vars[1] + '\xa0'.repeat(3) + 'Available:'}"
                   icon: mdi:weather-partlycloudy
-                - entity: sensor.authenticated_sensor
-                  name: "${'Authenticated installed:' + '\xa0'.repeat(2) + vars[2] + '\xa0'.repeat(5) + 'Available:'}"
-                  icon: mdi:lock-question
                 - entity: sensor.sun
-                  name: "${'Sun installed:' + '\xa0'.repeat(20) + vars[3] + '\xa0'.repeat(5) + 'Available:'}"
+                  name: "${'Sun installed:' + '\xa0'.repeat(13) + vars[2] + '\xa0'.repeat(5) + 'Available:'}"
                   icon: mdi:weather-sunny
       - type: vertical-stack
         cards:
@@ -1162,27 +1164,21 @@ views:
                 name: Firmware
                 tap_action:
                   action: call-service
-                  service: script.turn_on
-                  service_data:
-                    entity_id: script.1554771236987
+                  service: script.1554771236987
               - type: entity-button
                 entity: script.1554869777557
                 icon: mdi:windows
                 name: Status
                 tap_action:
                   action: call-service
-                  service: script.turn_on
-                  service_data:
-                    entity_id: script.1554869777557
+                  service: script.1554869777557
               - type: entity-button
                 entity: script.1554866239072
                 icon: mdi:script
                 name: Setup
                 tap_action:
                   action: call-service
-                  service: script.turn_on
-                  service_data:
-                    entity_id: script.1554866239072
+                  service: script.1554866239072
   - title: Media
     icon: mdi:vlc
     cards:
@@ -1195,7 +1191,7 @@ views:
           - entity: media_player.all_speakers
             type: custom:mini-media-player
             tts: 
-              platform: google
+              platform: google_translate
             artwork: full-cover
             hide: 
               power_state: false
@@ -1203,7 +1199,7 @@ views:
           - entity: media_player.living_areas
             type: custom:mini-media-player
             tts: 
-              platform: google
+              platform: google_translate
             artwork: full-cover
             hide: 
               power_state: false
@@ -1211,7 +1207,7 @@ views:
           - entity: media_player.bedroom_speaker
             type: custom:mini-media-player
             tts: 
-              platform: google
+              platform: google_translate
             artwork: full-cover
             hide: 
               power_state: false
@@ -1219,7 +1215,7 @@ views:
           - entity: media_player.office_speaker
             type: custom:mini-media-player
             tts: 
-              platform: google
+              platform: google_translate
             artwork: full-cover
             hide: 
               power_state: false
@@ -1227,7 +1223,7 @@ views:
           - entity: media_player.lounge_speaker
             type: custom:mini-media-player
             tts: 
-              platform: google
+              platform: google_translate
             artwork: full-cover
             hide: 
               power_state: false

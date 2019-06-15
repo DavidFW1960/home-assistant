@@ -356,7 +356,6 @@ sabnzbd:
 # Text to speech
 tts:
   - platform: google_translate
-    service_name: google_say
 
 # IFTTT
 ifttt:
@@ -375,12 +374,6 @@ switch:
   - platform: hadockermon
     host: !secret my_hadockermon_host
     port: !secret my_hadockermon_port
-
-# Wemo Switch
-# wemo:
-# discovery: false
-# static:
-#   - !secret wemo_ip
 
 # Custom Component/Card Updater
 hacs:

@@ -2,7 +2,7 @@
 A platform which allows you to get information
 about successfull logins to Home Assistant.
 For more details about this component, please refer to the documentation at
-https://github.com/custom-components/sensor.authenticated
+https://github.com/custom-components/authenticated
 """
 import logging
 import os
@@ -15,7 +15,7 @@ import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.4.2'
+__version__ = '0.5.0'
 
 _LOGGER = logging.getLogger(__name__)
 
