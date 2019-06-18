@@ -37,7 +37,7 @@
           - condition: template
             value_template: '{{ now().strftime("%H:%M") == "19:00" and now().weekday() > 4 }}'
           - condition: template
-            value_template: '{{ now().strftime("%H:%M") == "20:00" and (states.input_boolean.overtime.state == "on") }}'
+            value_template: '{{ now().strftime("%H:%M") == "20:00" and (states.input_boolean.overtime.state == "on") and now().weekday() < 5 }}'
   action:
   - service: switch.turn_on
     data:

@@ -39,6 +39,7 @@ homeassistant:
         - fd00::/8
         - !secret zerotier_iphone
         - !secret zerotier_ipad
+        - !secret zerotier_pc
         - !secret my_ipv6_network
       trusted_users:
         127.0.0.1: !secret user_id
