@@ -6,22 +6,18 @@
 
 # Track the sun
 sun:
-  monitored_conditions:
-    - azimuth
-    - elevation
-    - next_dawn
-    - next_dusk
-    - next_midnight
-    - next_noon
-    - daylight
-    - next_daylight
-    - prev_daylight
-    - sunrise
-    - sunset
-  scan_interval:
-    minutes: 1
 
 sensor:
+  - platform: sun2
+    monitored_conditions:
+      - dawn
+      - daylight
+      - dusk
+      - night
+      - solar_noon
+      - sunrise
+      - sunset
+    entity_namespace: solar
   - platform: moon
   - platform: yr
   - platform: template
@@ -43,48 +39,49 @@ sensor:
           {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       sunrisetoday:
-        entity_id: sun.sun
+        entity_id: sensor.sunrisesunset
         friendly_name: 'Sunrise'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.sunrise) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+          {{ as_timestamp(states.sensor.sunrisesunset.attributes.sunrise_today) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-up
       sunsettoday:
-        entity_id: sun.sun
+        entity_id: sensor.sunrisesunset
         friendly_name: 'Sunset'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.sunset) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+          {{ as_timestamp(states.sensor.sunrisesunset.attributes.sunset_today) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       daylightyesterday:
-        entity_id: sun.sun
+        entity_id: sensor.sunrisesunset
         friendly_name: 'Day Length Yesterday'
         value_template: >
-          {{ (states.sun.sun.attributes.prev_daylight) | timestamp_custom(' %H:%M:%S',false) | replace(" 0", "") }}
+          {{ states.sensor.sunrisesunset.attributes.daylength_yesterday }}
         icon_template: mdi:weather-sunny
       daylighttoday:
-        entity_id: sun.sun
+        entity_id: sensor.sunrisesunset
         friendly_name: 'Day Length Today'
         value_template: >
-          {{ (states.sun.sun.attributes.daylight) | timestamp_custom(' %H:%M:%S',false) | replace(" 0", "") }}
+          {{ states.sensor.sunrisesunset.attributes.daylength_today }}
         icon_template: mdi:weather-sunny
       decimaldaylengthtoday:
-        entity_id: sun.sun
+        entity_id: sensor.sunrisesunset
         friendly_name: 'Decimal Hours Daylength Today'
         unit_of_measurement: "hours"
         value_template: >
-          {{ (state_attr('sun.sun', 'daylight') / (60*60)) | round(2) }}
+          {% set val = states.sensor.sunrisesunset.attributes.daylength_today %}
+          {{ (val.split(':')[0]|int + val.split(':')[1]|int/60 + val.split(':')[2]|int/60/60) | round(2) }}
         icon_template: mdi:weather-sunny
       daylighttomorrow:
-        entity_id: sun.sun
+        entity_id: sensor.sunrisesunset
         friendly_name: 'Day Length Tomorrow'
         value_template: >
-          {{ (states.sun.sun.attributes.next_daylight) | timestamp_custom(' %H:%M:%S',false) | replace(" 0", "") }}
+          {{ states.sensor.sunrisesunset.attributes.daylength_tomorrow }}
         icon_template: mdi:weather-sunny
       daylengthchange:
-        entity_id: sun.sun
+        entity_id: sensor.sunrisesunset
         friendly_name: 'Change in Day Length'
         unit_of_measurement: "sec"
         value_template: >
-          {{ (states.sun.sun.attributes.daylight) - (states.sun.sun.attributes.prev_daylight) }}
+          {{ ( as_timestamp(states.sensor.sunrisesunset.attributes.sunset_today) - as_timestamp(states.sensor.sunrisesunset.attributes.sunrise_today)) - ( as_timestamp(states.sensor.sunrisesunset.attributes.sunset_yesterday) - as_timestamp(states.sensor.sunrisesunset.attributes.sunrise_yesterday)) }}
         icon_template: mdi:weather-sunny
       moonphases:
         entity_id: sensor.moon

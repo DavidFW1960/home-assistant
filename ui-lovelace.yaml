@@ -222,11 +222,9 @@ views:
             variables:
               - states['sensor.lovelace_card_installed'].state
               - states['sensor.lovelace_card_installed'].attributes['darksky']
-              - states['sensor.lovelace_card_installed'].attributes['sun']
             entities:
               - sensor.hacs
               - sensor.darksky
-              - sensor.sun
             card:
               type: 'custom:hui-entities-card'
               title: "👀 Available Card Versions"
@@ -237,9 +235,6 @@ views:
                 - entity: sensor.darksky
                   name: "${'Darksky installed:' + '\xa0'.repeat(6) + vars[1] + '\xa0'.repeat(3) + 'Available:'}"
                   icon: mdi:weather-partlycloudy
-                - entity: sensor.sun
-                  name: "${'Sun installed:' + '\xa0'.repeat(13) + vars[2] + '\xa0'.repeat(5) + 'Available:'}"
-                  icon: mdi:weather-sunny
       - type: vertical-stack
         cards:
           - type: 'custom:config-template-card'

@@ -1,17 +1,17 @@
 sensor:
 # Getting Lovelace Card versions from JSON
 # Custom Components
-  - platform: rest
-    resource: https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
-    name: Sun 
-    username: !secret githubuser
-    password: !secret githubpass
-    authentication: basic
-    value_template: '{{ value_json.sun.version }}'
-    headers:
-      Accept: application/vnd.github.v3+json
-      Content-Type: application/json
-      User-Agent: Home Assistant REST sensor
+# - platform: rest
+#   resource: https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
+#   name: Sun 
+#   username: !secret githubuser
+#   password: !secret githubpass
+#   authentication: basic
+#   value_template: '{{ value_json.sun.version }}'
+#   headers:
+#     Accept: application/vnd.github.v3+json
+#     Content-Type: application/json
+#     User-Agent: Home Assistant REST sensor
 
 # Custom Cards
   - platform: rest

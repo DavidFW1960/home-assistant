@@ -377,6 +377,15 @@
     minutes: '/30'
   action:
   - service: shell_command.lovelace_installed
+- id: 'updatesuninformation'
+  alias: Update Sun Information
+  trigger:
+  - event: start
+    platform: homeassistant
+  - platform: time
+    at: '00:00:00'
+  action:
+  - service: shell_command.suninfo
 - id: 'artisancharge'
   alias: Roaster Needs Attention
   trigger:
@@ -399,3 +408,14 @@
   action:
   - service: automation.turn_on
     entity_id: all
+- id: 'hacspersistentnotification'
+  alias: HACS Persistent Notification
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.hacs
+    above: 0
+  action:
+    - service: persistent_notification.create
+      data:
+        message: "Update available!"
+        title: "HACS"

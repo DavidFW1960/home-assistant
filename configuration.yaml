@@ -393,6 +393,7 @@ shell_command:
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
   abbusage: /bin/bash /config/abbusage/abbusage_ha.sh
   lovelace_installed: /bin/bash /config/card_version.sh
+  suninfo: /bin/bash /config/suntimes.sh
 
 # Home Assistant Podcasts on gpodder
 gpodder:
