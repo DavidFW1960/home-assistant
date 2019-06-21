@@ -336,3 +336,5 @@ sensor.dark_sky_wind_speed_0d:
   friendly_name: Dark Sky Wind Speed Today
 sensor.dark_sky_wind_speed_1d:
   friendly_name: Dark Sky Wind Speed Tomorrow
+sensor.hacs:
+  friendly_name: HACS

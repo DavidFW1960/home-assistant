@@ -24,64 +24,65 @@ sensor:
     sensors:
       yrwthr:
         entity_id: sensor.yr_symbol
-        value_template: '{%set list2 = "0","Clear Sky","Fair","Partly Cloudy","Cloudy","Rain Showers","Rain Showers And Thunder","Sleet Showers","Snow Showers","Rain","Heavy Rain","Heavy Rain And Thunder","Sleet","Snow","Snow And Thunder","Fog","0","0","0","0","Sleet Showers And Thunder","Snow Showers And Thunder","Rain And Thunder","Sleet And Thunder","Light Rain Showers And Thunder","Heavy Rain Showers And Thunder","Light Sleet Showers And Thunder","Heavy Sleet Showers And Thunder","Light Snow Showers And Thunder","Heavy Snow Showers And Thunder","Light Rain And Thunder","Light Sleet And Thunder","Heavy Sleet And Thunder","Light Snow And Thunder","Heavy Snow And Thunder","0","0","0","0","0","Light Rain Showers","Heavy Rain Showers","Light Sleet Showers","Heavy Sleet Showers","Light Snow Showers","Heavy Snow Showers","Light Rain","Light Sleet","Heavy Sleet","Light Snow","Heavy Snow"%}{{list2[states.sensor.yr_symbol.state|int]}}'
+        value_template: '{%set list2 = "0","Clear Sky","Fair","Partly Cloudy","Cloudy","Rain Showers","Rain Showers And Thunder","Sleet Showers","Snow Showers","Rain","Heavy Rain","Heavy Rain And Thunder","Sleet","Snow","Snow And Thunder","Fog","0","0","0","0","Sleet Showers And Thunder","Snow Showers And Thunder","Rain And Thunder","Sleet And Thunder","Light Rain Showers And Thunder","Heavy Rain Showers And Thunder","Light Sleet Showers And Thunder","Heavy Sleet Showers And Thunder","Light Snow Showers And Thunder","Heavy Snow Showers And Thunder","Light Rain And Thunder","Light Sleet And Thunder","Heavy Sleet And Thunder","Light Snow And Thunder","Heavy Snow And Thunder","0","0","0","0","0","Light Rain Showers","Heavy Rain Showers","Light Sleet Showers","Heavy Sleet Showers","Light Snow Showers","Heavy Snow Showers","Light Rain","Light Sleet","Heavy Sleet","Light Snow","Heavy Snow"%}{{list2[states("sensor.yr_symbol")|int]}}'
         entity_picture_template: "{{ state_attr('sensor.yr_symbol','entity_picture') }}"
       nextsunrise:
         entity_id: sun.sun
         friendly_name: 'Next Sunrise'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+          {{ as_timestamp(state_attr('sun.sun', 'next_rising')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-up
       nextsunset:
         entity_id: sun.sun
         friendly_name: 'Next Sunset'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+          {{ as_timestamp(state_attr('sun.sun', 'next_setting')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       sunrisetoday:
         entity_id: sensor.sunrisesunset
         friendly_name: 'Sunrise'
         value_template: >
-          {{ as_timestamp(states.sensor.sunrisesunset.attributes.sunrise_today) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+          {{ as_timestamp(state_attr('sensor.sunrisesunset', 'sunrise_today')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-up
       sunsettoday:
         entity_id: sensor.sunrisesunset
         friendly_name: 'Sunset'
         value_template: >
-          {{ as_timestamp(states.sensor.sunrisesunset.attributes.sunset_today) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+          {{ as_timestamp(state_attr('sensor.sunrisesunset', 'sunset_today')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       daylightyesterday:
         entity_id: sensor.sunrisesunset
         friendly_name: 'Day Length Yesterday'
         value_template: >
-          {{ states.sensor.sunrisesunset.attributes.daylength_yesterday }}
+          {{ state_attr('sensor.sunrisesunset', 'daylength_yesterday') }}
         icon_template: mdi:weather-sunny
       daylighttoday:
         entity_id: sensor.sunrisesunset
         friendly_name: 'Day Length Today'
         value_template: >
-          {{ states.sensor.sunrisesunset.attributes.daylength_today }}
+          {{ state_attr('sensor.sunrisesunset', 'daylength_today') }}
         icon_template: mdi:weather-sunny
       decimaldaylengthtoday:
-        entity_id: sensor.sunrisesunset
+        entity_id: 
+          - sensor.sunrisesunset
         friendly_name: 'Decimal Hours Daylength Today'
         unit_of_measurement: "hours"
         value_template: >
-          {% set val = states.sensor.sunrisesunset.attributes.daylength_today %}
+          {% set val = state_attr('sensor.sunrisesunset', 'daylength_today') %}
           {{ (val.split(':')[0]|int + val.split(':')[1]|int/60 + val.split(':')[2]|int/60/60) | round(2) }}
         icon_template: mdi:weather-sunny
       daylighttomorrow:
         entity_id: sensor.sunrisesunset
         friendly_name: 'Day Length Tomorrow'
         value_template: >
-          {{ states.sensor.sunrisesunset.attributes.daylength_tomorrow }}
+          {{ state_attr('sensor.sunrisesunset', 'daylength_tomorrow') }}
         icon_template: mdi:weather-sunny
       daylengthchange:
         entity_id: sensor.sunrisesunset
         friendly_name: 'Change in Day Length'
-        unit_of_measurement: "sec"
+        unit_of_measurement: "seconds"
         value_template: >
-          {{ ( as_timestamp(states.sensor.sunrisesunset.attributes.sunset_today) - as_timestamp(states.sensor.sunrisesunset.attributes.sunrise_today)) - ( as_timestamp(states.sensor.sunrisesunset.attributes.sunset_yesterday) - as_timestamp(states.sensor.sunrisesunset.attributes.sunrise_yesterday)) }}
+          {{ (as_timestamp(state_attr('sensor.sunrisesunset', 'sunset_today')) - as_timestamp(state_attr('sensor.sunrisesunset', 'sunrise_today'))) - (as_timestamp(state_attr('sensor.sunrisesunset', 'sunset_yesterday')) - as_timestamp(state_attr('sensor.sunrisesunset', 'sunrise_yesterday'))) }}
         icon_template: mdi:weather-sunny
       moonphases:
         entity_id: sensor.moon
@@ -108,3 +109,18 @@ history_graph:
       - sensor.daylengthchange        
     hours_to_show: 168
     refresh: 1800
+
+# Shell Command to get the sun information
+shell_command:
+  suninfo: /bin/bash /config/suntimes.sh
+
+# Automation for Sun
+automation:
+  - alias: Update Sun Information
+    trigger:
+    - event: start
+      platform: homeassistant
+    - platform: time
+      at: '00:00:00'
+    action:
+    - service: shell_command.suninfo

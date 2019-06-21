@@ -132,6 +132,7 @@ views:
               - sensor.hass_current_supervisor_stable_version
               - sensor.hass_current_supervisor_beta_version
               - binary_sensor.hass_update_available
+              - sensor.hacs
           - type: horizontal-stack
             cards:
               - type: entity-button
@@ -218,23 +219,6 @@ views:
                 - entity: device_tracker.davids_ipad_2
                 - entity: sensor.battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
-          - type: 'custom:config-template-card'
-            variables:
-              - states['sensor.lovelace_card_installed'].state
-              - states['sensor.lovelace_card_installed'].attributes['darksky']
-            entities:
-              - sensor.hacs
-              - sensor.darksky
-            card:
-              type: 'custom:hui-entities-card'
-              title: "👀 Available Card Versions"
-              show_header_toggle: false
-              entities:
-                - entity: sensor.hacs
-                  name: HACS
-                - entity: sensor.darksky
-                  name: "${'Darksky installed:' + '\xa0'.repeat(6) + vars[1] + '\xa0'.repeat(3) + 'Available:'}"
-                  icon: mdi:weather-partlycloudy
       - type: vertical-stack
         cards:
           - type: 'custom:config-template-card'

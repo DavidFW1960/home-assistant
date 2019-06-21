@@ -368,24 +368,6 @@
     minutes: '/10'
   action:
   - service: shell_command.abbusage
-- id: 'updatelovelacecards'
-  alias: Update Lovelace Card Versions
-  trigger:
-  - event: start
-    platform: homeassistant
-  - platform: time_pattern
-    minutes: '/30'
-  action:
-  - service: shell_command.lovelace_installed
-- id: 'updatesuninformation'
-  alias: Update Sun Information
-  trigger:
-  - event: start
-    platform: homeassistant
-  - platform: time
-    at: '00:00:00'
-  action:
-  - service: shell_command.suninfo
 - id: 'artisancharge'
   alias: Roaster Needs Attention
   trigger:

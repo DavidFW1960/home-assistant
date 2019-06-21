@@ -135,8 +135,8 @@ binary_sensor:
     sensors:
       hass_update_available:
         value_template: >-
-          {{ states.sensor.hass_current_stable_version.state != 'unavailable' and 
-             states.sensor.hass_current_stable_version.state > states.sensor.hass_installed_version.state
+          {{ states('sensor.hass_current_stable_version') != 'unavailable' and 
+             states('sensor.hass_current_stable_version') > states('sensor.hass_installed_version')
               }}
 
 ################################################
@@ -148,23 +148,23 @@ automation:
     trigger:
       - platform: template
         value_template: >-
-          {{ states.sensor.hass_current_stable_version.state != 'unavailable' and 
-             states.sensor.hass_current_stable_version.state > states.sensor.hass_installed_version.state
+          {{ states('sensor.hass_current_stable_version') != 'unavailable' and 
+             states('sensor.hass_current_stable_version') > states('sensor.hass_installed_version')
              }}
     action:
       - service: notify.david_ios_notify
         data:
-          message: 'Home Assistant version {{ states.sensor.hass_current_stable_version.state }} is now available for Hass.io'
+          message: "Home Assistant version {{ states('sensor.hass_current_stable_version') }} is now available for Hass.io"
           title: Home Assistant Update
   - alias: 'Beta Update Available'
     trigger:
       - platform: template
         value_template: >-
-          {{ states.sensor.hass_current_beta_version.state != 'unavailable' and 
-             states.sensor.hass_current_beta_version.state > states.sensor.hass_installed_version.state
+          {{ states('sensor.hass_current_beta_version') != 'unavailable' and 
+             states('sensor.hass_current_beta_version') > states('sensor.hass_installed_version')
              }}
     action:
       - service: notify.david_ios_notify
         data:
-          message: 'Home Assistant Beta version {{ states.sensor.hass_current_beta_version.state }} is now available for Hass.io'
+          message: "Home Assistant Beta version {{ states('sensor.hass_current_beta_version') }} is now available for Hass.io"
           title: Home Assistant Beta Update

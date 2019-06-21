@@ -73,7 +73,7 @@ sensor:
     sensors:
       systemuptime:
         value_template: >-
-          {% set time = (as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) %}
+          {% set time = (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) %}
           {% set minutes = ((time % 3600) / 60) | int %}
           {% set hours = ((time % 86400) / 3600) | int %}
           {% set days = (time / 86400) | int %}
@@ -161,7 +161,7 @@ sensor:
     sensors:
       load:
         friendly_name: "Load Averages"
-        value_template: '{{states.sensor.load_1m.state|round(2)}}, {{states.sensor.load_5m.state|round(2)}}, {{states.sensor.load_15m.state|round(2)}} (1, 5, 15 min)'
+        value_template: "{{states('sensor.load_1m')|round(2)}}, {{states('sensor.load_5m')|round(2)}}, {{states('sensor.load_15m')|round(2)}} (1, 5, 15 min)"
   - platform: statistics
     entity_id: sensor.memory_use_percent
     name: memory

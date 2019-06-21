@@ -12,6 +12,8 @@ longitude = float(sys.argv[2])
 elevation = float(sys.argv[3])
 timezone = sys.argv[4]
 
+astral.solar_depression = 'civil'
+
 loc = astral.Location(('Location', 'Region', latitude, longitude, timezone, elevation))
 
 yesterday = date.today() - timedelta(days = 1)

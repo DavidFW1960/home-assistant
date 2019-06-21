@@ -106,9 +106,9 @@ sensor:
           - sensor.dark_sky_precip_probability_0d
         friendly_name: "Today"
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_0d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_0d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_0d.state|round(0)}}%
+          {{states('sensor.dark_sky_daytime_high_temperature_0d')|round(0)}}°/{{states('sensor.dark_sky_overnight_low_temperature_0d')|round(0)}}°/{{states('sensor.dark_sky_precip_probability_0d')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_0d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_0d') ~ '.png'}}
 
       forecast_1:
         entity_id:
@@ -119,9 +119,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (1 * 86400 ) -%}
           {{ date | timestamp_custom("Tomorrow (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_1d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_1d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_1d.state|round(0)}}%
+          {{states('sensor.dark_sky_daytime_high_temperature_1d')|round(0)}}°/{{states('sensor.dark_sky_overnight_low_temperature_1d')|round(0)}}°/{{states('sensor.dark_sky_precip_probability_1d')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_1d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_1d') ~ '.png'}}
 
       forecast_2:
         entity_id:
@@ -132,9 +132,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (2 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_2d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_2d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_2d.state|round(0)}}%
+          {{states('sensor.dark_sky_daytime_high_temperature_2d')|round(0)}}°/{{states('sensor.dark_sky_overnight_low_temperature_2d')|round(0)}}°/{{states('sensor.dark_sky_precip_probability_2d')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_2d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_2d') ~ '.png'}}
 
       forecast_3:
         entity_id:
@@ -145,9 +145,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (3 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_3d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_3d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_3d.state|round(0)}}%
+          {{states('sensor.dark_sky_daytime_high_temperature_3d')|round(0)}}°/{{states('sensor.dark_sky_overnight_low_temperature_3d')|round(0)}}°/{{states('sensor.dark_sky_precip_probability_3d')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_3d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_3d') ~ '.png'}}
 
       forecast_4:
         entity_id:
@@ -158,9 +158,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (4 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_4d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_4d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_4d.state|round(0)}}%
+          {{states('sensor.dark_sky_daytime_high_temperature_4d')|round(0)}}°/{{states('sensor.dark_sky_overnight_low_temperature_4d')|round(0)}}°/{{states('sensor.dark_sky_precip_probability_4d')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_4d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_4d') ~ '.png'}}
 
       forecast_5:
         entity_id:
@@ -171,9 +171,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (5 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_5d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_5d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_5d.state|round(0)}}%
+          {{states('sensor.dark_sky_daytime_high_temperature_5d')|round(0)}}°/{{states('sensor.dark_sky_overnight_low_temperature_5d')|round(0)}}°/{{states('sensor.dark_sky_precip_probability_5d')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_5d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_5d') ~ '.png'}}
 
       forecast_6:
         entity_id:
@@ -184,9 +184,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (6 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-            {{states.sensor.dark_sky_daytime_high_temperature_6d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_6d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_6d.state|round(0)}}%
+            {{states('sensor.dark_sky_daytime_high_temperature_6d')|round(0)}}°/{{states('sensor.dark_sky_overnight_low_temperature_6d')|round(0)}}°/{{states('sensor.dark_sky_precip_probability_6d')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_6d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_6d') ~ '.png'}}
 
       forecast_7:
         entity_id:
@@ -197,9 +197,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (7 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-            {{states.sensor.dark_sky_daytime_high_temperature_7d.state|round(0)}}°/{{states.sensor.dark_sky_overnight_low_temperature_7d.state|round(0)}}°/{{states.sensor.dark_sky_precip_probability_7d.state|round(0)}}%
+            {{states('sensor.dark_sky_daytime_high_temperature_7d')|round(0)}}°/{{states('sensor.dark_sky_overnight_low_temperature_7d')|round(0)}}°/{{states('sensor.dark_sky_precip_probability_7d')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_7d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_7d') ~ '.png'}}
 
       dark_sky_current_text:
         value_template: '{% if is_state("sensor.dark_sky_icon","clear-day") %} Clear 
@@ -224,9 +224,9 @@ sensor:
           - sensor.bom_gosford_chance_of_rain_0
         friendly_name: "Today"
         value_template: >
-          {{states.sensor.bom_today_max.state|round(0)}}°/{{states.sensor.bom_today_min.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_0.state|round(0)}}%
+          {{states('sensor.bom_today_max')|round(0)}}°/{{states('sensor.bom_today_min')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_0')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_0d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_0d') ~ '.png'}}
 
       bom_forecast_1:
         entity_id:
@@ -237,9 +237,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (1 * 86400 ) -%}
           {{ date | timestamp_custom("Tomorrow (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.bom_gosford_max_temp_c_1.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_1.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_1.state|round(0)}}%
+          {{states('sensor.bom_gosford_max_temp_c_1')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_1')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_1')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_1d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_1d') ~ '.png'}}
 
       bom_forecast_2:
         entity_id:
@@ -250,9 +250,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (2 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.bom_gosford_max_temp_c_2.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_2.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_2.state|round(0)}}%
+          {{states('sensor.bom_gosford_max_temp_c_2')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_2')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_2')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_2d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_2d') ~ '.png'}}
 
       bom_forecast_3:
         entity_id:
@@ -263,9 +263,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (3 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.bom_gosford_max_temp_c_3.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_3.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_3.state|round(0)}}%
+          {{states('sensor.bom_gosford_max_temp_c_3')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_3')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_3')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_3d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_3d') ~ '.png'}}
 
       bom_forecast_4:
         entity_id:
@@ -276,9 +276,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (4 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.bom_gosford_max_temp_c_4.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_4.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_4.state|round(0)}}%
+          {{states('sensor.bom_gosford_max_temp_c_4')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_4')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_4')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_4d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_4d') ~ '.png'}}
 
       bom_forecast_5:
         entity_id:
@@ -289,9 +289,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (5 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.bom_gosford_max_temp_c_5.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_5.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_5.state|round(0)}}%
+          {{states('sensor.bom_gosford_max_temp_c_5')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_5')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_5')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_5d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_5d') ~ '.png'}}
 
       bom_forecast_6:
         entity_id:
@@ -302,9 +302,9 @@ sensor:
           {%- set date = as_timestamp(now()) + (6 * 86400 ) -%}
           {{ date | timestamp_custom("%A (%d/%m)") | replace("(0", "(") | replace("/0", "/") }}
         value_template: >
-          {{states.sensor.bom_gosford_max_temp_c_6.state|round(0)}}°/{{states.sensor.bom_gosford_min_temp_c_6.state|round(0)}}°/{{states.sensor.bom_gosford_chance_of_rain_6.state|round(0)}}%
+          {{states('sensor.bom_gosford_max_temp_c_6')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_6')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_6')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/dark_sky/' ~ states.sensor.dark_sky_icon_6d.state ~ '.png'}}
+          {{ '/local/icons/dark_sky/' ~ states('sensor.dark_sky_icon_6d') ~ '.png'}}
 
       bom_today_max:
         entity_id:
