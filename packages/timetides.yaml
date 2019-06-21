@@ -7,6 +7,10 @@
 # Track the sun
 sun:
 
+# https://www.met.no
+weather:
+  - platform: met
+
 sensor:
   - platform: sun2
     monitored_conditions:
@@ -19,6 +23,7 @@ sensor:
       - sunset
     entity_namespace: solar
   - platform: moon
+# https://www.yr.no/
   - platform: yr
   - platform: template
     sensors:
