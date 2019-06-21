@@ -21,7 +21,7 @@ homeassistant:
 # Fuel Monitor, System Monitor, Sun, Moon, Transport, Weather, Updates, Fire Incidents, Recycling Night, Themes Packages
   packages: !include_dir_named packages
 
-# LimitlessLED
+# LimitlessLED use slider switch
   customize_domain:
     light:
       assumed_state: false
