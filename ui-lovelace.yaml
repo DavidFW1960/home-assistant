@@ -736,6 +736,7 @@ views:
                 show_empty: true
           - type: map
             show_header_toggle: false
+            dark_mode: true
             geo_location_sources:
               - nsw_rural_fire_service_feed
             entities:
