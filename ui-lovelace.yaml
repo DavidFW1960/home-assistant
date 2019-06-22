@@ -397,6 +397,12 @@ views:
             unit: seconds
             accuracy: 7
             hours_to_show: 168
+          - type: history-graph
+            title: Change in Day Length
+            hours_to_show: 168
+            refresh_interval: 1800
+            entities:
+              - sensor.daylengthchange
           - type: entities
             title: Darksky Forecast
             show_header_toggle: false

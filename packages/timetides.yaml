@@ -14,13 +14,24 @@ weather:
 sensor:
   - platform: sun2
     monitored_conditions:
+      - solar_midnight
+      - astronomical_dawn
+      - nautical_dawn
       - dawn
-      - daylight
-      - dusk
-      - night
-      - solar_noon
       - sunrise
+      - solar_noon
       - sunset
+      - dusk
+      - nautical_dusk
+      - astronomical_dusk
+      - daylight
+      - civil_daylight
+      - nautical_daylight
+      - astronomical_daylight
+      - night
+      - civil_night
+      - nautical_night
+      - astronomical_night
     entity_namespace: solar
   - platform: moon
 # https://www.yr.no/
@@ -44,50 +55,53 @@ sensor:
           {{ as_timestamp(state_attr('sun.sun', 'next_setting')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       sunrisetoday:
-        entity_id: sensor.sunrisesunset
+        entity_id: sensor.solar_sunrise
         friendly_name: 'Sunrise'
         value_template: >
-          {{ as_timestamp(state_attr('sensor.sunrisesunset', 'sunrise_today')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+          {{ as_timestamp(states('sensor.solar_sunrise')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-up
       sunsettoday:
-        entity_id: sensor.sunrisesunset
+        entity_id: sensor.solar_sunset
         friendly_name: 'Sunset'
         value_template: >
-          {{ as_timestamp(state_attr('sensor.sunrisesunset', 'sunset_today')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+          {{ as_timestamp(states('sensor.solar_sunset')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       daylightyesterday:
-        entity_id: sensor.sunrisesunset
+        entity_id: sensor.solar_daylight
         friendly_name: 'Day Length Yesterday'
         value_template: >
-          {{ state_attr('sensor.sunrisesunset', 'daylength_yesterday') }}
+          {% set val = state_attr('sensor.solar_daylight', 'yesterday') %}
+          {% set hour = val | int %}
+          {% set min = ((val - hour) * 60) | int %}
+          {% set sec = ((((val - hour) * 60) - min) * 60) | round(0) %}
+          {{ hour }}:{{ min }}:{{ sec }}
         icon_template: mdi:weather-sunny
       daylighttoday:
-        entity_id: sensor.sunrisesunset
+        entity_id: sensor.solar_daylight
         friendly_name: 'Day Length Today'
         value_template: >
-          {{ state_attr('sensor.sunrisesunset', 'daylength_today') }}
-        icon_template: mdi:weather-sunny
-      decimaldaylengthtoday:
-        entity_id: 
-          - sensor.sunrisesunset
-        friendly_name: 'Decimal Hours Daylength Today'
-        unit_of_measurement: "hours"
-        value_template: >
-          {% set val = state_attr('sensor.sunrisesunset', 'daylength_today') %}
-          {{ (val.split(':')[0]|int + val.split(':')[1]|int/60 + val.split(':')[2]|int/60/60) | round(2) }}
+          {% set val = state_attr('sensor.solar_daylight', 'today') %}
+          {% set hour = val | int %}
+          {% set min = ((val - hour) * 60) | int %}
+          {% set sec = ((((val - hour) * 60) - min) * 60) | round(0) %}
+          {{ hour }}:{{ min }}:{{ sec }}
         icon_template: mdi:weather-sunny
       daylighttomorrow:
-        entity_id: sensor.sunrisesunset
+        entity_id: sensor.solar_daylight
         friendly_name: 'Day Length Tomorrow'
         value_template: >
-          {{ state_attr('sensor.sunrisesunset', 'daylength_tomorrow') }}
+          {% set val = state_attr('sensor.solar_daylight', 'tomorrow') %}
+          {% set hour = val | int %}
+          {% set min = ((val - hour) * 60) | int %}
+          {% set sec = ((((val - hour) * 60) - min) * 60) | round(0) %}
+          {{ hour }}:{{ min }}:{{ sec }}
         icon_template: mdi:weather-sunny
       daylengthchange:
-        entity_id: sensor.sunrisesunset
+        entity_id: sensor.solar_daylight
         friendly_name: 'Change in Day Length'
         unit_of_measurement: "seconds"
         value_template: >
-          {{ (as_timestamp(state_attr('sensor.sunrisesunset', 'sunset_today')) - as_timestamp(state_attr('sensor.sunrisesunset', 'sunrise_today'))) - (as_timestamp(state_attr('sensor.sunrisesunset', 'sunset_yesterday')) - as_timestamp(state_attr('sensor.sunrisesunset', 'sunrise_yesterday'))) }}
+          {{ ((state_attr('sensor.solar_daylight', 'today') - state_attr('sensor.solar_daylight', 'yesterday')) * 3600) | round(0) }}
         icon_template: mdi:weather-sunny
       moonphases:
         entity_id: sensor.moon
@@ -114,18 +128,3 @@ history_graph:
       - sensor.daylengthchange        
     hours_to_show: 168
     refresh: 1800
-
-# Shell Command to get the sun information
-shell_command:
-  suninfo: /bin/bash /config/suntimes.sh
-
-# Automation for Sun
-automation:
-  - alias: Update Sun Information
-    trigger:
-    - event: start
-      platform: homeassistant
-    - platform: time
-      at: '00:00:00'
-    action:
-    - service: shell_command.suninfo
