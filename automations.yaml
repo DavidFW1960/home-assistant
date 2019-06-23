@@ -368,19 +368,19 @@
     minutes: '/10'
   action:
   - service: shell_command.abbusage
-- id: 'artisancharge'
+- id: 'artisanevents'
   alias: Roaster Needs Attention
   trigger:
-  - entity_id: sensor.artisan_charge
+  - entity_id: sensor.artisan_events
     platform: state
   action:
   - service: notify.david_ios_notify
     data_template:
-      message: 'Roaster Needs Attention NOW!'
+      message: '{{ states("sensor.artisan_events") }}'
       title: 'Artisan Notification'
   - service: persistent_notification.create
     data_template:
-      message: 'Roaster Needs Attention NOW!'
+      message: '{{ states("sensor.artisan_events") }}'
 - id: 'initialautostate'
   alias: 'Start All Automations'
   initial_state: 'true'

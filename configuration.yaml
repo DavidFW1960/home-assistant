@@ -289,10 +289,10 @@ sensor:
       User-Agent: Home Assistant REST sensor
 # Artisan Charge
   - platform: mqtt
-    name: "Artisan Charge"
-    state_topic: "artisan/charge"
-    icon: mdi:blank
-    value_template: "{{ value_json.charge }}"
+    name: "Artisan Events"
+    state_topic: "artisan"
+    icon: mdi:coffee
+    value_template: "{{ value_json.state }}"
 
 # Tasmota Firmware
 # Getting Firmware from JSON for Tasmota
