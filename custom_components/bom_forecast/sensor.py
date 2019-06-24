@@ -177,21 +177,23 @@ SENSOR_TYPES = {
 }
 
 ICON_MAPPING = {
-    '1': 'mdi:weather-sunny',
-    '2': 'mdi:weather-night',
-    '3': 'mdi:weather-partlycloudy',
-    '4': 'mdi:weather-cloudy',
-    '6': 'mdi:weather-sunset',
-    '8': 'mdi:weather-rainy',
-    '9': 'mdi:weather-windy',
-    '10': 'mdi:weather-sunset',
-    '11': 'mdi:weather-rainy',
-    '12': 'mdi:weather-pouring',
-    '13': 'mdi:weather-sunset',
-    '14': 'mdi:weather-snowy',
-    '15': 'mdi:weather-snowy',
-    '16': 'mdi:weather-lightning',
-    '17': 'mdi:weather-rainy'
+    '1': 'sunny',
+    '2': 'clear',
+    '3': 'partly-cloudy',
+    '4': 'cloudy',
+    '6': 'haze',
+    '8': 'light-rain',
+    '9': 'wind',
+    '10': 'fog',
+    '11': 'showers',
+    '12': 'rain',
+    '13': 'dust',
+    '14': 'frost',
+    '15': 'snow',
+    '16': 'storm',
+    '17': 'light-showers',
+	'18': 'heavy-showers',
+	'19': 'tropicalcyclone'
 }
 
 def validate_days(days):

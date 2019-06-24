@@ -72,12 +72,12 @@ device_tracker:
     new_device_defaults:
       track_new_devices: false
       hide_if_away: false
-  - platform: fritz
-    host: !secret my_fritz_repeater
-    consider_home: 180
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: false
+# - platform: fritz
+#   host: !secret my_fritz_repeater
+#   consider_home: 180
+#   new_device_defaults:
+#     track_new_devices: false
+#     hide_if_away: false
 googlehome:
   devices:
     - host: !secret gh_lounge
