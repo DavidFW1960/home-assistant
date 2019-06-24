@@ -389,20 +389,16 @@ views:
                 - entity: sensor.daylighttomorrow
                 - entity: sensor.yrwthr
                 - entity: sensor.moonphases
-          - type: sensor
-            entity: sensor.daylengthchange
-            icon: mdi:timer
-            name: Change in Day Length
-            graph: line
-            unit: seconds
-            accuracy: 7
+          - type: custom:mini-graph-card
             hours_to_show: 168
-          - type: history-graph
-            title: Change in Day Length
-            hours_to_show: 168
-            refresh_interval: 1800
+            points_per_hour: 1
+            show:
+              labels: true
             entities:
-              - sensor.daylengthchange
+              - entity: sensor.daylengthchange
+                name: Change in Day Length
+                show_state: true
+                color: orange
           - type: entities
             title: Darksky Forecast
             show_header_toggle: false
