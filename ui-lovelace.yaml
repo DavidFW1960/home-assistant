@@ -533,18 +533,18 @@ views:
             entity_daytime_high: sensor.bom_today_max
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
-            entity_humidity: sensor.dark_sky_humidity
+            entity_humidity: sensor.bom_gosford_relative_humidity
             entity_pressure: sensor.dark_sky_pressure
             entity_apparent_temp: sensor.bom_gosford_feels_like_c
             entity_daily_summary: sensor.bom_gosford_detailed_summary_0
-            entity_pop: sensor.dark_sky_precip_probability
-            entity_pop_intensity: sensor.dark_sky_precip_intensity
+            entity_pop: sensor.bom_gosford_chance_of_rain_0
+            entity_pop_intensity: sensor.bom_gosford_rain_today
             entity_pop_1: sensor.bom_gosford_chance_of_rain_1
             entity_pop_2: sensor.bom_gosford_chance_of_rain_2
             entity_pop_3: sensor.bom_gosford_chance_of_rain_3
             entity_pop_4: sensor.bom_gosford_chance_of_rain_4
             entity_pop_5: sensor.bom_gosford_chance_of_rain_5
-            entity_current_text: sensor.dark_sky_current_text
+            entity_current_text: sensor.bom_current_text
             locale: en
             sunset: true
             static_icons: false

@@ -218,6 +218,11 @@ sensor:
                          {% elif is_state("sensor.dark_sky_icon","thunderstorm") %} Thunderstorm
                          {% endif %}'
 
+      bom_current_text:
+        value_template: >
+            {% set val = states("sensor.bom_gosford_detailed_summary_0") %} 
+            {{ val.split('.')[0] | title }}
+
       bom_forecast_0:
         entity_id:
           - sensor.bom_today_max
@@ -229,9 +234,9 @@ sensor:
           {{states('sensor.bom_today_max')|round(0)}}°/{{states('sensor.bom_today_min')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_0')|round(0)}}%
         entity_picture_template: >-
           {%- if now().strftime('%H:%M') > '18:00' and (states('sensor.bom_gosford_icon_0') == 'fog' or states('sensor.bom_gosford_icon_0') == 'haze' or states('sensor.bom_gosford_icon_0') == ' light-showers' or states('sensor.bom_gosford_icon_0') == 'partly-cloudy' or states('sensor.bom_gosford_icon_0') == 'showers') -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_0') ~ '-night.png'}}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_0') ~ '-night.png' }}
           {%- else -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_0') ~ '.png'}}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_0') ~ '.png' }}
           {%- endif -%}
 
       bom_forecast_1:
@@ -246,11 +251,7 @@ sensor:
         value_template: >
           {{states('sensor.bom_gosford_max_temp_c_1')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_1')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_1')|round(0)}}%
         entity_picture_template: >-
-          {%- if now().strftime('%H:%M') > '18:00' and (states('sensor.bom_gosford_icon_1') == 'fog' or states('sensor.bom_gosford_icon_1') == 'haze' or states('sensor.bom_gosford_icon_1') == ' light-showers' or states('sensor.bom_gosford_icon_1') == 'partly-cloudy' or states('sensor.bom_gosford_icon_1') == 'showers') -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_1') ~ '-night.png'}}
-          {%- else -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_1') ~ '.png'}}
-          {%- endif -%}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_1') ~ '.png' }}
 
       bom_forecast_2:
         entity_id:
@@ -264,11 +265,7 @@ sensor:
         value_template: >
           {{states('sensor.bom_gosford_max_temp_c_2')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_2')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_2')|round(0)}}%
         entity_picture_template: >-
-          {%- if now().strftime('%H:%M') > '18:00' and (states('sensor.bom_gosford_icon_2') == 'fog' or states('sensor.bom_gosford_icon_2') == 'haze' or states('sensor.bom_gosford_icon_2') == ' light-showers' or states('sensor.bom_gosford_icon_2') == 'partly-cloudy' or states('sensor.bom_gosford_icon_2') == 'showers') -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_2') ~ '-night.png'}}
-          {%- else -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_2') ~ '.png'}}
-          {%- endif -%}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_2') ~ '.png' }}
 
       bom_forecast_3:
         entity_id:
@@ -282,11 +279,7 @@ sensor:
         value_template: >
           {{states('sensor.bom_gosford_max_temp_c_3')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_3')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_3')|round(0)}}%
         entity_picture_template: >-
-          {%- if now().strftime('%H:%M') > '18:00' and (states('sensor.bom_gosford_icon_3') == 'fog' or states('sensor.bom_gosford_icon_3') == 'haze' or states('sensor.bom_gosford_icon_3') == ' light-showers' or states('sensor.bom_gosford_icon_3') == 'partly-cloudy' or states('sensor.bom_gosford_icon_3') == 'showers') -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_3') ~ '-night.png'}}
-          {%- else -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_3') ~ '.png'}}
-          {%- endif -%}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_3') ~ '.png' }}
 
       bom_forecast_4:
         entity_id:
@@ -300,11 +293,7 @@ sensor:
         value_template: >
           {{states('sensor.bom_gosford_max_temp_c_4')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_4')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_4')|round(0)}}%
         entity_picture_template: >-
-          {%- if now().strftime('%H:%M') > '18:00' and (states('sensor.bom_gosford_icon_4') == 'fog' or states('sensor.bom_gosford_icon_4') == 'haze' or states('sensor.bom_gosford_icon_4') == ' light-showers' or states('sensor.bom_gosford_icon_4') == 'partly-cloudy' or states('sensor.bom_gosford_icon_4') == 'showers') -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_4') ~ '-night.png'}}
-          {%- else -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_4') ~ '.png'}}
-          {%- endif -%}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_4') ~ '.png' }}
 
       bom_forecast_5:
         entity_id:
@@ -318,11 +307,7 @@ sensor:
         value_template: >
           {{states('sensor.bom_gosford_max_temp_c_5')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_5')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_5')|round(0)}}%
         entity_picture_template: >-
-          {%- if now().strftime('%H:%M') > '18:00' and (states('sensor.bom_gosford_icon_5') == 'fog' or states('sensor.bom_gosford_icon_5') == 'haze' or states('sensor.bom_gosford_icon_5') == ' light-showers' or states('sensor.bom_gosford_icon_5') == 'partly-cloudy' or states('sensor.bom_gosford_icon_5') == 'showers') -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_5') ~ '-night.png'}}
-          {%- else -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_5') ~ '.png'}}
-          {%- endif -%}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_5') ~ '.png' }}
 
       bom_forecast_6:
         entity_id:
@@ -336,11 +321,7 @@ sensor:
         value_template: >
           {{states('sensor.bom_gosford_max_temp_c_6')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_6')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_6')|round(0)}}%
         entity_picture_template: >-
-          {%- if now().strftime('%H:%M') > '18:00' and (states('sensor.bom_gosford_icon_6') == 'fog' or states('sensor.bom_gosford_icon_6') == 'haze' or states('sensor.bom_gosford_icon_6') == ' light-showers' or states('sensor.bom_gosford_icon_6') == 'partly-cloudy' or states('sensor.bom_gosford_icon_6') == 'showers') -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_6') ~ '-night.png'}}
-          {%- else -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_6') ~ '.png'}}
-          {%- endif -%}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_6') ~ '.png' }}
 
       bom_today_max:
         entity_id:
@@ -369,3 +350,14 @@ sensor:
     entity_id: sensor.bom_gosford_air_temp_c
     max_age:
       hours: 24
+
+automation:
+- alias: 'Update BOM Icons'
+  trigger:
+    - event: start
+      platform: homeassistant
+    - platform: time
+      at: '18:00:00'
+  action:
+    - service: homeassistant.update_entity
+      entity_id: sensor.bom_forecast_0, sensor.bom_forecast_1, sensor.bom_forecast_2, sensor.bom_forecast_3, sensor.bom_forecast_4, sensor.bom_forecast_5, sensor.bom_forecast_6
