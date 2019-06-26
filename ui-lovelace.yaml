@@ -30,6 +30,8 @@ resources:
     type: module
   - url: /local/custom_ui/dark-sky-weather-card.js?v=0.10.2
     type: module
+  - url: /local/custom_ui/bom-weather-card.js?v=0.1
+    type: module
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
@@ -214,11 +216,11 @@ views:
                 - entity: person.david
                 - entity: person.liz
                 - entity: device_tracker.davids_iphone_2
-                - entity: sensor.battery_level_2
-                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state_2'].state + '\xa0'.repeat(5) + 'Level:'}"
-                - entity: device_tracker.davids_ipad_2
                 - entity: sensor.battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
+                - entity: device_tracker.davids_ipad_2
+                - entity: sensor.battery_level_2
+                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state_2'].state + '\xa0'.repeat(5) + 'Level:'}"
       - type: vertical-stack
         cards:
           - type: 'custom:config-template-card'
@@ -504,20 +506,20 @@ views:
             slot_r4: sun_following
       - type: vertical-stack
         cards:
-          - type: custom:dark-sky-weather-card
+          - type: custom:bom-weather-card
             title: BOM Weather
-            entity_current_conditions: sensor.dark_sky_icon
+            entity_current_conditions: sensor.bom_gosford_icon_0
             entity_temperature: sensor.bom_gosford_air_temp_c
             entity_forecast_high_temp_1: sensor.bom_gosford_max_temp_c_1
             entity_forecast_high_temp_2: sensor.bom_gosford_max_temp_c_2
             entity_forecast_high_temp_3: sensor.bom_gosford_max_temp_c_3
             entity_forecast_high_temp_4: sensor.bom_gosford_max_temp_c_4
             entity_forecast_high_temp_5: sensor.bom_gosford_max_temp_c_5
-            entity_forecast_icon_1: sensor.dark_sky_icon_1d
-            entity_forecast_icon_2: sensor.dark_sky_icon_2d
-            entity_forecast_icon_3: sensor.dark_sky_icon_3d
-            entity_forecast_icon_4: sensor.dark_sky_icon_4d
-            entity_forecast_icon_5: sensor.dark_sky_icon_5d
+            entity_forecast_icon_1: sensor.bom_gosford_icon_1
+            entity_forecast_icon_2: sensor.bom_gosford_icon_2
+            entity_forecast_icon_3: sensor.bom_gosford_icon_3
+            entity_forecast_icon_4: sensor.bom_gosford_icon_4
+            entity_forecast_icon_5: sensor.bom_gosford_icon_5
             entity_forecast_low_temp_1: sensor.bom_gosford_min_temp_c_1
             entity_forecast_low_temp_2: sensor.bom_gosford_min_temp_c_2
             entity_forecast_low_temp_3: sensor.bom_gosford_min_temp_c_3
@@ -529,12 +531,12 @@ views:
             entity_summary_4: sensor.bom_gosford_summary_4
             entity_summary_5: sensor.bom_gosford_summary_5
             entity_sun: sun.sun
-            entity_visibility: sensor.dark_sky_visibility
+#           entity_visibility: sensor.dark_sky_visibility
             entity_daytime_high: sensor.bom_today_max
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
             entity_humidity: sensor.bom_gosford_relative_humidity
-            entity_pressure: sensor.dark_sky_pressure
+#           entity_pressure: sensor.dark_sky_pressure
             entity_apparent_temp: sensor.bom_gosford_feels_like_c
             entity_daily_summary: sensor.bom_gosford_detailed_summary_0
             entity_pop: sensor.bom_gosford_chance_of_rain_0
@@ -579,11 +581,11 @@ views:
             separator_top_margin: 6em       #default 6em px or em
             slot_l1: daytime_high
             slot_l2: wind
-            slot_l3: visibility
+            slot_l3: remove                 #visibility but BOM has no visibility reported
             slot_l4: sun_next
             slot_r1: pop
             slot_r2: humidity
-            slot_r3: pressure
+            slot_r3: remove                 #pressure but BOM has no visibility reported
             slot_r4: sun_following
           - type: history-graph
             title: Weather BOM Gosford
