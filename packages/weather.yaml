@@ -35,8 +35,8 @@ sensor:
       - wind_spd_kt
 
   - platform: bom_forecast
-    product_id: IDN11052
-    name: Gosford
+    product_id: !secret my_bom_product_id
+    name: !secret my_bom_name
     forecast_days: 6
     rest_of_today: true
     friendly: false
