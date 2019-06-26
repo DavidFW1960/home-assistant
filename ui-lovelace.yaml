@@ -28,8 +28,6 @@ resources:
     type: module
   - url: /community_plugin/mini-media-player/mini-media-player.js
     type: module
-  - url: /local/custom_ui/dark-sky-weather-card.js?v=0.10.2
-    type: module
   - url: /local/custom_ui/bom-weather-card.js?v=0.1
     type: module
 views:

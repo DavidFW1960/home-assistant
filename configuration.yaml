@@ -375,6 +375,8 @@ switch:
 # Custom Component/Card Updater
 hacs:
   token: !secret hacs_github_token
+  python_script: true
+  theme: true
 
 # Binary Switch for Home and Away Automations, Alarm & Garage Door, Overtime & Holiday
 input_boolean:

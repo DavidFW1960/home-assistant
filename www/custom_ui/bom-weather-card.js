@@ -225,7 +225,7 @@ class BOMWeatherCard extends LitElement {
     return {
 	  'sunny': 'day',
 	  'clear': 'day',
-	  'mostly-sunny': 'cloudy-day-3',
+	  'mostly-sunny': 'day',
 	  'partly-cloudy': 'cloudy-day-3',
       'cloudy': 'cloudy',
 	  'hazy': 'cloudy-day-1',
