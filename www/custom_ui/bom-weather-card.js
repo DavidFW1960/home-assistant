@@ -94,6 +94,7 @@ class BOMWeatherCard extends LitElement {
     var sunNext = this.config.alt_sun_next ? html`<li><span id="alt-sun-next">${this._hass.states[this.config.alt_sun_next].state}</span></li>` : this.config.entity_sun ? this.sunSet.next : "";
     var sunFollowing = this.config.alt_sun_following ? html`<li><span id="alt-sun-following">${this._hass.states[this.config.alt_sun_following].state}</span></li>` : this.config.entity_sun ? this.sunSet.following : "";
     var daytimeHigh = this.config.alt_daytime_high ? html`<li><span class="ha-icon"><ha-icon icon="mdi:thermometer"></ha-icon></span><span id="alt-daytime-high">${this._hass.states[this.config.alt_daytime_high].state}</span></li>` : this.config.entity_daytime_high ? html`<li><span class="ha-icon"><ha-icon icon="mdi:thermometer"></ha-icon></span>${this.localeText.maxToday} <span id="daytime-high-text">${Math.round(this._hass.states[this.config.entity_daytime_high].state)}</span><span> ${this.getUOM('temperature')}</span></li>` : ``;
+    var daytimeLow = this.config.alt_daytime_low ? html`<li><span class="ha-icon"><ha-icon icon="mdi:thermometer"></ha-icon></span><span id="alt-daytime-low">${this._hass.states[this.config.alt_daytime_low].state}</span></li>` : this.config.entity_daytime_low ? html`<li><span class="ha-icon"><ha-icon icon="mdi:thermometer"></ha-icon></span>${this.localeText.minToday} <span id="daytime-low-text">${Math.round(this._hass.states[this.config.entity_daytime_low].state)}</span><span> ${this.getUOM('temperature')}</span></li>` : ``;
     var intensity = this.config.entity_pop_intensity ? html`<span id="intensity-text"> - ${this._hass.states[this.config.entity_pop_intensity].state}</span><span class="unit"> ${this.getUOM('precipitation')}</span>` : ``;
     var pop = this.config.alt_pop ? html`<li><span class="ha-icon"><ha-icon icon="mdi:weather-rainy"></ha-icon></span><span id="alt-pop">${this._hass.states[this.config.alt_pop].state}</span></li>` : this.config.entity_pop ? html`<li><span class="ha-icon"><ha-icon icon="mdi:weather-rainy"></ha-icon></span><span id="pop-text">${Math.round(this._hass.states[this.config.entity_pop].state)}</span> %<span id="pop-intensity-text">${intensity}</span></li>` : ``;
     var visibility = this.config.alt_visibility ? html`<li><span class="ha-icon"><ha-icon icon="mdi:weather-fog"></ha-icon></span><span id="alt-visibility">${this._hass.states[this.config.alt_visibility].state}</span></li>` : this.config.entity_visibility ? html`<li><span class="ha-icon"><ha-icon icon="mdi:weather-fog"></ha-icon></span><span id="visibility-text">${this.current.visibility}</span><span class="unit"> ${this.getUOM('length')}</span></li>` : ``;
@@ -108,6 +109,7 @@ class BOMWeatherCard extends LitElement {
       case 'pressure': return pressure;
       case 'sun_following': return sunFollowing;
       case 'daytime_high': return daytimeHigh;
+	  case 'daytime_low': return daytimeLow;
       case 'wind': return wind;
       case 'visibility': return visibility;
       case 'sun_next': return sunNext;
@@ -203,6 +205,7 @@ class BOMWeatherCard extends LitElement {
         return {
           feelsLike: "Feels like",
           maxToday: "Today's High",
+		  minToday: "Today's Low",
         }
     }
   }
@@ -757,6 +760,7 @@ style() {
       if (this.config.entity_pop && !this.config.alt_pop) { root.getElementById("pop-text").textContent = `${Math.round(this._hass.states[this.config.entity_pop].state)}` }
       if (this.config.entity_pop_intensity && !this.config.alt_pop) { root.getElementById("pop-intensity-text").textContent = ` - ${this._hass.states[this.config.entity_pop_intensity].state} ${this.getUOM('precipitation')}` }
       if (this.config.entity_daytime_high && !this.config.alt_daytime_high) { root.getElementById("daytime-high-text").textContent = `${Math.round(this._hass.states[this.config.entity_daytime_high].state)}` }
+      if (this.config.entity_daytime_low && !this.config.alt_daytime_low) { root.getElementById("daytime-low-text").textContent = `${Math.round(this._hass.states[this.config.entity_daytime_low].state)}` }
       if (this.config.entity_sun && !this.config.alt_sun_next) { root.getElementById("sun-next-text").textContent = `${this.sunSet.nextText}` }
       if (this.config.entity_sun && !this.config.alt_sun_following) { root.getElementById("sun-following-text").textContent = `${this.sunSet.followingText}` }
       if (this.config.entity_daily_summary) { root.getElementById("daily-summary-text").textContent = `${this._hass.states[this.config.entity_daily_summary].state}` }

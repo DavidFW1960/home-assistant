@@ -30,13 +30,12 @@ resources:
     type: module
   - url: /local/custom_ui/bom-weather-card.js?v=0.1
     type: module
+cch:
+  swipe: true
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
     cards:
-      - type: 'custom:compact-custom-header'
-        main_config: true
-        swipe: true
       - type: vertical-stack
         cards:
           - type: entities
@@ -356,7 +355,6 @@ views:
   - title: Weather
     icon: mdi:weather-cloudy
     cards:
-      - type: 'custom:compact-custom-header'
       - type: vertical-stack
         cards:
           - type: 'custom:config-template-card'
@@ -444,6 +442,7 @@ views:
             entity_sun: sun.sun
 #           entity_visibility: sensor.dark_sky_visibility
             entity_daytime_high: sensor.bom_today_max
+            entity_daytime_low: sensor.bom_today_min
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
             entity_humidity: sensor.bom_gosford_relative_humidity
@@ -491,13 +490,13 @@ views:
             large_icon_left_position: 0em   #default 0em px or em
             separator_top_margin: 6em       #default 6em px or em
             slot_l1: daytime_high
-            slot_l2: wind
-            slot_l3: remove                 #visibility but BOM has no visibility reported
-            slot_l4: sun_next
+            slot_l2: daytime_low            #wind
+            slot_l3: sun_next               #visibility but BOM has no visibility reported
+            slot_l4: wind                   #sun_next
             slot_r1: pop
             slot_r2: humidity
-            slot_r3: remove                 #pressure but BOM has no visibility reported
-            slot_r4: sun_following
+            slot_r3: sun_following          #pressure but BOM has no visibility reported
+            slot_r4: remove                 #sun_following
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 72
@@ -643,7 +642,6 @@ views:
   - title: Lights & Switches
     icon: mdi:power
     cards:
-      - type: 'custom:compact-custom-header'
       - type: vertical-stack
         cards:
           - type: entities
@@ -1055,7 +1053,6 @@ views:
   - title: Media
     icon: mdi:vlc
     cards:
-      - type: 'custom:compact-custom-header'
       - type: vertical-stack
         cards:
           - type: markdown
@@ -1160,7 +1157,6 @@ views:
   - title: TV & Movies
     icon: mdi:kodi
     cards:
-      - type: 'custom:compact-custom-header'
       - type: custom:upcoming-media-card
         entity: sensor.sonarr_upcoming_media
         title: Sonarr Upcoming
@@ -1222,7 +1218,6 @@ views:
   - title: Buses, Trains & Fuel
     icon: mdi:train
     cards:
-      - type: 'custom:compact-custom-header'
       - type: vertical-stack
         cards:
           - type: entities

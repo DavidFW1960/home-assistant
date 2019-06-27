@@ -7,10 +7,6 @@
 # Track the sun
 sun:
 
-# https://www.met.no
-weather:
-  - platform: met
-
 sensor:
   - platform: sun2
     monitored_conditions:
