@@ -48,7 +48,7 @@ automation:
       condition: and
       conditions:
         - condition: template
-          value_template: '{{ now().strftime("%H:%M") == "19:00" and now().weekday() == 1 }}'
+          value_template: "{{ now().strftime('%H:%M') == '19:00' and now().weekday() == 1 }}"
         - condition: or
           conditions:
             - condition: state

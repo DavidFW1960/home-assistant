@@ -53,20 +53,20 @@ sensor:
     resource: http://10.90.11.100:8126/container/sabnzbd/stats
     name: Sabnzbd Memory
     scan_interval: 900
-    value_template: "{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}"
-    unit_of_measurement: "MB"
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
   - platform: rest
     resource: http://10.90.11.100:8126/container/sonarr/stats
     name: Sonarr Memory
     scan_interval: 900
-    value_template: "{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}"
-    unit_of_measurement: "MB"
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
   - platform: rest
     resource: http://10.90.11.100:8126/container/radarr/stats
     name: Radarr Memory
     scan_interval: 900
-    value_template: "{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}"
-    unit_of_measurement: "MB"
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
 
 # Up since
   - platform: template

@@ -22,22 +22,22 @@
       - condition: or
         conditions:
           - condition: template
-            value_template: '{{ now().strftime("%H:%M") == "07:00" and now().weekday()
-              < 5  and (states("input_boolean.holiday") == "off") }}'
+            value_template: "{{ now().strftime('%H:%M') == '07:00' and now().weekday()
+              < 5  and (states('input_boolean.holiday') == 'off') }}"
           - condition: template
-            value_template: '{{ now().strftime("%H:%M") == "08:00" }}'
+            value_template: "{{ now().strftime('%H:%M') == '08:00' }}"
           - condition: template
-            value_template: '{{ now().strftime("%H:%M") == "07:15" and ((as_timestamp(now())
-              - as_timestamp("2017-09-24 00:00:00")) / 86400)|int % 28 == 0 }}'
+            value_template: "{{ now().strftime('%H:%M') == '07:15' and ((as_timestamp(now())
+              - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
           - condition: template
-            value_template: '{{ now().strftime("%H:%M") == "12:00" and ((as_timestamp(now())
-              - as_timestamp("2017-09-24 00:00:00")) / 86400)|int % 28 == 0 }}'
+            value_template: "{{ now().strftime('%H:%M') == '12:00' and ((as_timestamp(now())
+              - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
           - condition: template
-            value_template: '{{ now().strftime("%H:%M") == "19:00" and (states("input_boolean.overtime") == "off") }}'
+            value_template: "{{ now().strftime('%H:%M') == '19:00' and (states('input_boolean.overtime') == 'off') }}"
           - condition: template
-            value_template: '{{ now().strftime("%H:%M") == "19:00" and now().weekday() > 4 }}'
+            value_template: "{{ now().strftime('%H:%M') == '19:00' and now().weekday() > 4 }}"
           - condition: template
-            value_template: '{{ now().strftime("%H:%M") == "20:00" and (states("input_boolean.overtime") == "on") and now().weekday() < 5 }}'
+            value_template: "{{ now().strftime('%H:%M') == '20:00' and (states('input_boolean.overtime') == 'on') and now().weekday() < 5 }}"
   action:
   - service: switch.turn_on
     data:
@@ -57,15 +57,15 @@
     condition: or
     conditions:
     - condition: template
-      value_template: '{{ now().strftime("%H:%M") == "08:30" and ((as_timestamp(now())
-        - as_timestamp("2017-09-24 00:00:00")) / 86400)|int % 28 == 0 }}'
+      value_template: "{{ now().strftime('%H:%M') == '08:30' and ((as_timestamp(now())
+        - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
     - condition: template
-      value_template: '{{ now().strftime("%H:%M") == "14:00" and now().weekday()
-        < 5  and (states("input_boolean.holiday") == "off") }}'
+      value_template: "{{ now().strftime('%H:%M') == '14:00' and now().weekday()
+        < 5  and (states('input_boolean.holiday') == 'off') }}"
     - condition: template
-      value_template: '{{ now().strftime("%H:%M") == "16:00" }}'
+      value_template: "{{ now().strftime('%H:%M') == '16:00' }}"
     - condition: template
-      value_template: '{{ now().strftime("%H:%M") == "22:00" }}'
+      value_template: "{{ now().strftime('%H:%M') == '22:00' }}"
   action:
   - service: switch.turn_off
     data:
@@ -86,7 +86,7 @@
     entity_id: 'input_boolean.homeandawayauto'
     state: 'on'
   - condition: template
-    value_template: '{{state_attr("sun.sun", "elevation") < 25}}'
+    value_template: "{{state_attr('sun.sun', 'elevation') < 25}}"
   action:
   - service: light.turn_on
     data:
@@ -232,7 +232,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.sonoff63719
-  - delay: "00:00:10"
+  - delay: '00:00:10'
   - service: notify.david_ios_notify
     data_template:
       message: >
@@ -321,7 +321,7 @@
     entity_id: sensor.alarm_triggers
   condition:
     - condition: template
-      value_template: '{{ states("sensor.alarm_triggers") != "0" and states("sensor.alarm_triggers") != "unavailable" }}'
+      value_template: "{{ states('sensor.alarm_triggers') != '0' and states('sensor.alarm_triggers') != 'unavailable' }}"
   action:
   - service: notify.david_ios_notify
     data:
@@ -401,5 +401,3 @@
       data:
         message: "Update available!"
         title: "HACS"
-    
-
