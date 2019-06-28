@@ -3,18 +3,13 @@ import {
   html,
   fireEvent,
   defaultConfig,
-  huiRoot,
+  lovelace,
   hass
 } from "./compact-custom-header.js";
 
-const lovelace = huiRoot().lovelace;
 const buttonOptions = ["show", "hide", "clock", "overflow"];
 const overflowOptions = ["show", "hide", "clock"];
 const swipeAnimation = ["none", "swipe", "fade", "flip"];
-const previousConfig = JSON.parse(JSON.stringify(lovelace.config));
-const cchConfig = lovelace.config.cch
-  ? JSON.parse(JSON.stringify(lovelace.config.cch))
-  : {};
 
 export class CompactCustomHeaderEditor extends LitElement {
   static get properties() {
@@ -23,60 +18,14 @@ export class CompactCustomHeaderEditor extends LitElement {
     };
   }
 
+  firstUpdated() {
+    this._config = deepcopy(lovelace.config.cch);
+  }
+
   render() {
-    if (this._config == undefined) this._config = cchConfig;
-    const mwc_button = customElements.get("mwc-button") ? true : false;
-
-    const close = () => {
-      let editor = this.parentNode.parentNode.parentNode.querySelector(
-        "editor"
-      );
-      this.parentNode.parentNode.parentNode.removeChild(editor);
-    };
-    
-    const save = () => {
-      for (var key in this._config) {
-        if (this._config[key] == defaultConfig[key]) {
-          delete this._config[key];
-        }
-      }
-      let newConfig = {
-        ...lovelace.config,
-        ...{ cch: this._config }
-      };
-      if (previousConfig.resources) {
-        try {
-          lovelace.saveConfig(newConfig).then(() => {
-            if (huiRoot().lovelace.config != newConfig) {
-              console.log("Save failed, reverting.");
-              lovelace.saveConfig(previousConfig);
-            } else {
-              location.reload(true);
-            }
-          });
-        } catch (e) {
-          console.log("Save failed: " + e);
-        }
-      }
-    };
-
-    const save_button = mwc_button
-      ? html`
-          <mwc-button raised @click="${save}">Save and Reload</mwc-button>
-        `
-      : html`
-          <paper-button raised @click="${save}">Save and Reload</paper-button>
-        `;
-    const cancel_button = mwc_button
-      ? html`
-          <mwc-button raised @click="${close}">Cancel</mwc-button>
-        `
-      : html`
-          <paper-button raised @click="${close}">Cancel</paper-button>
-        `;
-
+    if (!this._config) return html``;
     return html`
-      <div @click="${close}" class="title_control">
+      <div @click="${this._close}" class="title_control">
         X
       </div>
       ${this.renderStyle()}
@@ -103,7 +52,7 @@ export class CompactCustomHeaderEditor extends LitElement {
           })
         : ""}
       <br />
-      ${mwc_button
+      ${this._mwc_button
         ? html`
             <mwc-button @click="${this._addException}"
               >Add Exception
@@ -128,16 +77,65 @@ export class CompactCustomHeaderEditor extends LitElement {
       >
         ${!this.exception
           ? html`
-              ${save_button}
+              ${this._save_button}
             `
           : ""}
         ${!this.exception
           ? html`
-              ${cancel_button}
+              ${this._cancel_button}
             `
           : ""}
       </h4>
     `;
+  }
+
+  get _mwc_button() {
+    return customElements.get("mwc-button") ? true : false;
+  }
+
+  _close = () => {
+    let editor = this.parentNode.parentNode.parentNode.querySelector("editor");
+    this.parentNode.parentNode.parentNode.removeChild(editor);
+  };
+
+  _save = () => {
+    for (var key in this._config) {
+      if (this._config[key] == defaultConfig[key]) {
+        delete this._config[key];
+      }
+    }
+    let newConfig = {
+      ...lovelace.config,
+      ...{ cch: this._config }
+    };
+    try {
+      lovelace.saveConfig(newConfig).then(() => {
+        location.reload(true);
+      });
+    } catch (e) {
+      alert("Save failed: " + e);
+    }
+  };
+
+  get _save_button() {
+    return this._mwc_button
+      ? html`
+          <mwc-button raised @click="${this._save}">Save and Reload</mwc-button>
+        `
+      : html`
+          <paper-button raised @click="${this._save}"
+            >Save and Reload</paper-button
+          >
+        `;
+  }
+  get _cancel_button() {
+    return this._mwc_button
+      ? html`
+          <mwc-button raised @click="${this._close}">Cancel</mwc-button>
+        `
+      : html`
+          <paper-button raised @click="${this._close}">Cancel</paper-button>
+        `;
   }
 
   _addException() {
@@ -346,6 +344,23 @@ export class CchConfigEditor extends LitElement {
                 Forums</a
               >
             </h4>
+            ${this.getConfig("warning")
+              ? html`
+                  <br />
+                  <div class="warning">
+                    Modifying options marked with a
+                    <iron-icon
+                      icon="hass:alert"
+                      style="width:20px;margin-top:-6px;"
+                    ></iron-icon
+                    >or hiding the options button will remove your ability to
+                    edit from the UI. You can disable CCH by adding
+                    "?disable_cch" to the end of your URL to temporarily restore
+                    the default header.
+                  </div>
+                  <br />
+                `
+              : ""}
           `
         : ""}
       ${this.renderStyle()}
@@ -372,17 +387,27 @@ export class CchConfigEditor extends LitElement {
           title="Turn off to hide the header completely."
         >
           Display Header
+          ${this.getConfig("warning")
+            ? html`
+                <iron-icon icon="hass:alert" class="alert"></iron-icon>
+              `
+            : ""}
         </paper-toggle-button>
         <paper-toggle-button
-          class="${this.exception && this.config.chevrons === undefined
+          class="${this.exception && this.config.kiosk_mode === undefined
             ? "inherited"
             : ""}"
-          ?checked="${this.getConfig("chevrons") !== false}"
-          .configValue="${"chevrons"}"
+          ?checked="${this.getConfig("kiosk_mode") !== false}"
+          .configValue="${"kiosk_mode"}"
           @change="${this._valueChanged}"
-          title="Tab/view scrolling controls in header."
+          title="Hide the header, close the sidebar, and disable sidebar swipe."
         >
-          Display Tab Chevrons
+          Kiosk Mode
+          ${this.getConfig("warning")
+            ? html`
+                <iron-icon icon="hass:alert" class="alert"></iron-icon>
+              `
+            : ""}
         </paper-toggle-button>
         <paper-toggle-button
           class="${this.exception && this.config.redirect === undefined
@@ -396,15 +421,15 @@ export class CchConfigEditor extends LitElement {
           Hidden Tab Redirect
         </paper-toggle-button>
         <paper-toggle-button
-          class="${this.exception && this.config.kiosk_mode === undefined
+          class="${this.exception && this.config.chevrons === undefined
             ? "inherited"
             : ""}"
-          ?checked="${this.getConfig("kiosk_mode") !== false}"
-          .configValue="${"kiosk_mode"}"
+          ?checked="${this.getConfig("chevrons") !== false}"
+          .configValue="${"chevrons"}"
           @change="${this._valueChanged}"
-          title="Hide the header, close the sidebar, and disable sidebar swipe."
+          title="Tab/view scrolling controls in header."
         >
-          Kiosk Mode
+          Display Tab Chevrons
         </paper-toggle-button>
         <paper-toggle-button
           class="${this.exception && this.config.hide_help === undefined
@@ -415,7 +440,7 @@ export class CchConfigEditor extends LitElement {
           @change="${this._valueChanged}"
           title='Hide "Help" in options menu.'
         >
-          Hide Help
+          Hide "Help"
         </paper-toggle-button>
         <paper-toggle-button
           class="${this.exception && this.config.sidebar_closed === undefined
@@ -430,6 +455,22 @@ export class CchConfigEditor extends LitElement {
           Close Sidebar
         </paper-toggle-button>
         <paper-toggle-button
+          class="${this.exception && this.config.hide_config === undefined
+            ? "inherited"
+            : ""}"
+          ?checked="${this.getConfig("hide_config") !== false}"
+          .configValue="${"hide_config"}"
+          @change="${this._valueChanged}"
+          title='Hide "Configure UI" in options menu.'
+        >
+          Hide "Configure UI"
+          ${this.getConfig("warning")
+            ? html`
+                <iron-icon icon="hass:alert" class="alert"></iron-icon>
+              `
+            : ""}
+        </paper-toggle-button>
+        <paper-toggle-button
           class="${this.exception && this.config.sidebar_swipe === undefined
             ? "inherited"
             : ""}"
@@ -441,6 +482,21 @@ export class CchConfigEditor extends LitElement {
         >
           Swipe Open Sidebar
         </paper-toggle-button>
+        ${!this.exception
+          ? html`
+              <paper-toggle-button
+                class="${this.exception && this.config.warning === undefined
+                  ? "inherited"
+                  : ""}"
+                ?checked="${this.getConfig("warning") !== false}"
+                .configValue="${"warning"}"
+                @change="${this._valueChanged}"
+                title="Toggle warnings in this editor."
+              >
+                Display CCH Warnings
+              </paper-toggle-button>
+            `
+          : ""}
       </div>
 
       <h4 class="underline">Buttons</h4>
@@ -852,11 +908,9 @@ export class CchConfigEditor extends LitElement {
           border-radius: 5px;
         }
         .alert {
-          margin-top: 5px;
-          background-color: #eb5f59;
-          padding: 10px;
-          color: #fff;
-          border-radius: 5px;
+          color: #ffcd4c;
+          width: 20px;
+          margin-top: -6px;
         }
         [closed] {
           overflow: hidden;
@@ -1089,3 +1143,20 @@ export class CchConditionsEditor extends LitElement {
 }
 
 customElements.define("cch-conditions-editor", CchConditionsEditor);
+
+function deepcopy(value) {
+  if (!(!!value && typeof value == "object")) {
+    return value;
+  }
+  if (Object.prototype.toString.call(value) == "[object Date]") {
+    return new Date(value.getTime());
+  }
+  if (Array.isArray(value)) {
+    return value.map(deepcopy);
+  }
+  var result = {};
+  Object.keys(value).forEach(function(key) {
+    result[key] = deepcopy(value[key]);
+  });
+  return result;
+}

@@ -39,6 +39,7 @@ export const defaultConfig = {
   tab_color: {},
   button_color: {},
   hide_help: false,
+  hide_config: false,
   swipe: false,
   swipe_amount: "15",
   swipe_animate: "none",
@@ -46,29 +47,28 @@ export const defaultConfig = {
   swipe_wrap: true,
   swipe_prevent_default: false,
   date_locale: document.querySelector("home-assistant").hass.language,
-  default_tab: []
+  default_tab: [],
+  warning: true
 };
 
-export const huiRoot = () => {
-  let ll = document.querySelector("home-assistant");
-  ll = ll && ll.shadowRoot;
-  ll = ll && ll.querySelector("home-assistant-main");
-  ll = ll && ll.shadowRoot;
-  ll = ll && ll.querySelector("app-drawer-layout partial-panel-resolver");
-  ll = (ll && ll.shadowRoot) || ll;
-  ll = ll && ll.querySelector("ha-panel-lovelace");
-  ll = ll && ll.shadowRoot;
-  return ll && ll.querySelector("hui-root");
-};
+let ll = document.querySelector("home-assistant");
+ll = ll && ll.shadowRoot;
+ll = ll && ll.querySelector("home-assistant-main");
+ll = ll && ll.shadowRoot;
+ll = ll && ll.querySelector("app-drawer-layout partial-panel-resolver");
+ll = (ll && ll.shadowRoot) || ll;
+ll = ll && ll.querySelector("ha-panel-lovelace");
+ll = ll && ll.shadowRoot;
+const huiRoot = ll && ll.querySelector("hui-root");
 
 export const hass = document.querySelector("home-assistant").hass;
-const lovelace = huiRoot().lovelace;
-const root = huiRoot().shadowRoot;
+export const lovelace = huiRoot.lovelace;
+const root = huiRoot.shadowRoot;
 const config = lovelace.config.cch || {};
 const header = root.querySelector("app-header");
 const view = root.querySelector("ha-app-layout").querySelector('[id="view"]');
-const notifDrawer = huiRoot()
-  .shadowRoot.querySelector("hui-notification-drawer")
+const notifDrawer = huiRoot.shadowRoot
+  .querySelector("hui-notification-drawer")
   .shadowRoot.querySelector(".notifications");
 let notifications = notifDrawer.querySelectorAll(".notification").length;
 let editMode, cchConfig;
@@ -77,23 +77,19 @@ let sidebarClosed = false;
 let firstRun = true;
 
 if (
+  firstRun &&
   lovelace.config.cch == undefined &&
   JSON.stringify(lovelace.config.views).includes("custom:compact-custom-header")
 ) {
   breakingChangeNotification();
 }
 
-buildConfig();
+if (firstRun) buildConfig();
 run();
-
-if (lovelace.mode == "storage") {
-  import("./compact-custom-header-editor.js").then(() => {
-    document.createElement("compact-custom-header-editor");
-  });
-}
 
 function run() {
   const disable = cchConfig.disable;
+  const urlDisable = window.location.href.includes("disable_cch");
   const buttons = getButtonElements();
   const tabContainer = root.querySelector("paper-tabs");
   const tabs = tabContainer
@@ -103,7 +99,7 @@ function run() {
   if (editMode) {
     if (!disable) removeStyles(tabContainer, tabs);
     insertEditMenu(buttons, tabs);
-  } else if (!disable && !window.location.href.includes("disable_cch")) {
+  } else if (!disable && !urlDisable) {
     styleButtons(buttons, tabs);
     styleHeader(tabContainer, tabs);
     restoreTabs(tabs, hideTabs(tabContainer, tabs));
@@ -123,30 +119,32 @@ function run() {
       }
     }
 
-    if (firstRun) {
+    if (firstRun && !disable && !urlDisable) {
       window.hassConnection.then(({ conn }) => {
         conn.socket.onmessage = () => {
-          if (!editMode && huiRoot()) conditionalStyling(buttons, tabs);
+          if (!editMode && huiRoot) conditionalStyling(buttons, tabs);
         };
       });
     }
 
-    if (cchConfig.hide_help) {
+    if (cchConfig.hide_help || cchConfig.hide_config) {
       let menuItems = buttons.options
         .querySelector("paper-listbox")
         .querySelectorAll("paper-item");
       [].forEach.call(menuItems, function(item) {
-        if (item.innerHTML == "<!---->Help<!---->") {
+        if (item.innerHTML == "<!---->Help<!---->" && cchConfig.hide_help) {
           item.parentNode.removeChild(item);
-          return;
+        } else if (
+          item.innerHTML == "<!---->Configure UI<!---->" &&
+          cchConfig.hide_config
+        ) {
+          item.parentNode.removeChild(item);
         }
       });
     }
-
     window.dispatchEvent(new Event("resize"));
-
   }
-  if (firstRun) monitorElements(tabs);
+  if (firstRun && !disable) monitorElements(tabs, urlDisable);
   firstRun = false;
 }
 
@@ -199,18 +197,18 @@ function buildConfig() {
   }
 }
 
-function monitorElements(tabs) {
+function monitorElements(tabs, urlDisable) {
   const callback = function(mutations) {
     mutations.forEach(mutation => {
       if (mutation.target.className == "empty") {
         notifications = mutation.target.style.display == "none" ? true : false;
-        if (!editMode && !firstRun && huiRoot()) {
+        if (!editMode && !firstRun && huiRoot && !urlDisable) {
           conditionalStyling(getButtonElements(), tabs);
         }
         return;
       } else if (mutation.attributeName === "class") {
         editMode = mutation.target.className == "edit-mode";
-        if (huiRoot()) run();
+        if (huiRoot) run();
       } else if (mutation.addedNodes.length) {
         if (mutation.addedNodes[0].nodeName == "HUI-UNUSED-ENTITIES") {
           return;
@@ -219,7 +217,9 @@ function monitorElements(tabs) {
           ? root.querySelector("ha-app-layout").querySelector("editor")
           : null;
         if (editor) root.querySelector("ha-app-layout").removeChild(editor);
-        if (!editMode) conditionalStyling(getButtonElements(), tabs);
+        if (!editMode && !urlDisable) {
+          conditionalStyling(getButtonElements(), tabs);
+        }
       }
     });
   };
@@ -299,9 +299,10 @@ function removeStyles(tabContainer, tabs) {
     tabContainer.style.marginRight = "";
   }
   header.style.background = null;
-  view.style.marginTop = "0px";
-  if (view.querySelectorAll("*")[0])
-    view.querySelectorAll("*")[0].style.display = "initial";
+  view.style.minHeight = "";
+  view.style.marginTop = "";
+  view.style.paddingTop = "";
+  view.style.boxSizing = "";
   if (root.querySelector('[id="cch_iron_selected"]')) {
     root.querySelector('[id="cch_iron_selected"]').outerHTML = "";
   }
@@ -315,12 +316,15 @@ function styleHeader(tabContainer, tabs) {
   if ((!cchConfig.header && !editMode) || cchConfig.kiosk_mode) {
     header.style.display = "none";
   } else if (!editMode) {
+    view.style.minHeight = "100vh";
+    view.style.marginTop = "-48.5px";
+    view.style.paddingTop = "48.5px";
+    view.style.boxSizing = "border-box";
     let cchThemeBg = getComputedStyle(document.body).getPropertyValue(
       "--cch-background"
     );
     header.style.background =
       cchConfig.background || cchThemeBg || "var(--primary-color)";
-    view.style.minHeight = "calc(100vh - 48.5px)";
   }
 
   let indicator = cchConfig.tab_indicator_color;
@@ -839,7 +843,7 @@ function templates(template, buttons, tabs, _hass) {
       }
     } catch (e) {
       console.log("CCH styling template failed.");
-      console.log(e)
+      console.log(e);
     }
   };
 
@@ -911,6 +915,9 @@ function buildRanges(array) {
 
 function showEditor() {
   if (!root.querySelector("ha-app-layout").querySelector("editor")) {
+    import("./compact-custom-header-editor.js").then(() => {
+      document.createElement("compact-custom-header-editor");
+    });
     const container = document.createElement("editor");
     const nest = document.createElement("div");
     const cchEditor = document.createElement("compact-custom-header-editor");
