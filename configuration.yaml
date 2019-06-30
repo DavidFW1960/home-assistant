@@ -78,11 +78,11 @@ device_tracker:
 #   new_device_defaults:
 #     track_new_devices: false
 #     hide_if_away: false
-googlehome:
-  devices:
-    - host: !secret gh_lounge
-    - host: !secret gh_bed
-    - host: !secret gh_office
+#googlehome:
+#  devices:
+#    - host: !secret gh_lounge
+#    - host: !secret gh_bed
+#    - host: !secret gh_office
 
 # Enables the frontend
 frontend:

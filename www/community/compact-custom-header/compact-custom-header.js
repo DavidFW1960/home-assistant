@@ -71,26 +71,27 @@ const notifDrawer = huiRoot.shadowRoot
   .querySelector("hui-notification-drawer")
   .shadowRoot.querySelector(".notifications");
 let notifications = notifDrawer.querySelectorAll(".notification").length;
-let editMode, cchConfig;
+let editMode;
+let cchConfig = buildConfig();
 let redirectedToDefaultTab = false;
 let sidebarClosed = false;
 let firstRun = true;
+let waitForButtons = 0;
+
 
 if (
-  firstRun &&
   lovelace.config.cch == undefined &&
   JSON.stringify(lovelace.config.views).includes("custom:compact-custom-header")
 ) {
   breakingChangeNotification();
 }
 
-if (firstRun) buildConfig();
 run();
 
 function run() {
   const disable = cchConfig.disable;
   const urlDisable = window.location.href.includes("disable_cch");
-  const buttons = getButtonElements();
+  let buttons = getButtonElements();
   const tabContainer = root.querySelector("paper-tabs");
   const tabs = tabContainer
     ? Array.from(tabContainer.querySelectorAll("paper-tab"))
@@ -122,7 +123,9 @@ function run() {
     if (firstRun && !disable && !urlDisable) {
       window.hassConnection.then(({ conn }) => {
         conn.socket.onmessage = () => {
-          if (!editMode && huiRoot) conditionalStyling(buttons, tabs);
+          if (!editMode && huiRoot) {
+            conditionalStyling(getButtonElements(), tabs);
+          }
         };
       });
     }
@@ -144,7 +147,9 @@ function run() {
     }
     window.dispatchEvent(new Event("resize"));
   }
-  if (firstRun && !disable) monitorElements(tabs, urlDisable);
+  if (!disable && firstRun) {
+    monitorElements(tabs, urlDisable);
+  }
   firstRun = false;
 }
 
@@ -177,7 +182,7 @@ function buildConfig() {
     delete config.hide_tabs;
   }
 
-  cchConfig = { ...defaultConfig, ...config, ...exceptionConfig };
+  return { ...defaultConfig, ...config, ...exceptionConfig };
 
   function countMatches(conditions) {
     const userVars = { user: hass.user.name, user_agent: navigator.userAgent };
@@ -208,7 +213,7 @@ function monitorElements(tabs, urlDisable) {
         return;
       } else if (mutation.attributeName === "class") {
         editMode = mutation.target.className == "edit-mode";
-        if (huiRoot) run();
+        run();
       } else if (mutation.addedNodes.length) {
         if (mutation.addedNodes[0].nodeName == "HUI-UNUSED-ENTITIES") {
           return;
@@ -415,13 +420,22 @@ function styleButtons(buttons, tabs) {
               ${button == "options" ? "margin-right:-5px; padding:0;" : ""}
             `;
     } else if (cchConfig[button] == "overflow") {
+      const menu_items = buttons.options.querySelector("paper-listbox");
       const paperIconButton = buttons[button].querySelector("paper-icon-button")
         ? buttons[button].querySelector("paper-icon-button")
         : buttons[button].shadowRoot.querySelector("paper-icon-button");
+      if (!paperIconButton && waitForButtons < 10) {
+        setTimeout(function() {
+          styleButtons(buttons, tabs);
+        }, 500);
+        waitForButtons++;
+        break;
+      } else if (!paperIconButton) {
+        throw new Error("CCH: Cannot find button element.");
+      }
       if (paperIconButton.hasAttribute("hidden")) {
         continue;
       }
-      const menu_items = buttons.options.querySelector("paper-listbox");
       const id = `menu_item_${button}`;
       if (!menu_items.querySelector(`[id="${id}"]`)) {
         const wrapper = document.createElement("paper-item");
@@ -500,7 +514,7 @@ function getTranslation(button) {
 }
 
 function defaultTab(tabs, tabContainer) {
-  if (cchConfig.default_tab && !redirectedToDefaultTab) {
+  if (cchConfig.default_tab && !redirectedToDefaultTab && tabContainer) {
     let default_tab = cchConfig.default_tab;
     let activeTab = tabs.indexOf(tabContainer.querySelector(".iron-selected"));
     if (
@@ -567,7 +581,7 @@ function hideTabs(tabContainer, tabs) {
     tabs[tab].style.display = "none";
   }
 
-  if (cchConfig.redirect) {
+  if (cchConfig.redirect && tabContainer) {
     const activeTab = tabContainer.querySelector("paper-tab.iron-selected");
     const activeTabIndex = tabs.indexOf(activeTab);
     // Is the current tab hidden and is there at least one tab is visible.
@@ -914,12 +928,15 @@ function buildRanges(array) {
 }
 
 function showEditor() {
+  import("./compact-custom-header-editor.js?v=1.1.7").then(() => {
+    document.createElement("compact-custom-header-editor");
+  });
   if (!root.querySelector("ha-app-layout").querySelector("editor")) {
-    import("./compact-custom-header-editor.js").then(() => {
-      document.createElement("compact-custom-header-editor");
-    });
     const container = document.createElement("editor");
     const nest = document.createElement("div");
+    const loader = document.createElement("div");
+    loader.classList.add("lds-ring");
+    loader.innerHTML = "<div></div><div></div><div></div><div></div>";
     const cchEditor = document.createElement("compact-custom-header-editor");
     nest.style.cssText = `
       padding: 20px;
@@ -937,8 +954,50 @@ function showEditor() {
       z-index: 1;
       padding: 5px;
     `;
+    nest.innerHTML += `
+      <style>
+      .lds-ring {
+        left: 50%;
+        margin-left: -32px;
+        display: inline-block;
+        position: relative;
+        width: 64px;
+        height: 64px;
+      }
+      .lds-ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 51px;
+        height: 51px;
+        margin: 6px;
+        border: 6px solid #fff;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: var(--primary-color) transparent transparent transparent;
+      }
+      .lds-ring div:nth-child(1) {
+        animation-delay: -0.45s;
+      }
+      .lds-ring div:nth-child(2) {
+        animation-delay: -0.3s;
+      }
+      .lds-ring div:nth-child(3) {
+        animation-delay: -0.15s;
+      }
+      @keyframes lds-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      </style>
+      `;
     root.querySelector("ha-app-layout").insertBefore(container, view);
     container.appendChild(nest);
+    nest.appendChild(loader);
     nest.appendChild(cchEditor);
   }
 }
@@ -946,6 +1005,7 @@ function showEditor() {
 function breakingChangeNotification() {
   hass.callService("persistent_notification", "create", {
     title: "CCH Breaking Change",
+    notification_id: "CCH_Breaking_Change",
     message:
       "Compact-Custom-Header's configuration method has changed. You are " +
       "receiving this notification because you have updated CCH, but are " +
