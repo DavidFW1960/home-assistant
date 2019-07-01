@@ -70,7 +70,7 @@ sensor:
           {% set hour = val | int %}
           {% set min = ((val - hour) * 60) | int %}
           {% set sec = ((((val - hour) * 60) - min) * 60) | round(0) %}
-          {{ hour }}:{{ min }}:{{ sec }}
+          {{ hour }}:{{ '{:02d}'.format(min) }}:{{ '{:02d}'.format(sec) }}
         icon_template: mdi:weather-sunny
       daylighttoday:
         entity_id: sensor.solar_daylight
@@ -80,7 +80,7 @@ sensor:
           {% set hour = val | int %}
           {% set min = ((val - hour) * 60) | int %}
           {% set sec = ((((val - hour) * 60) - min) * 60) | round(0) %}
-          {{ hour }}:{{ min }}:{{ sec }}
+          {{ hour }}:{{ '{:02d}'.format(min) }}:{{ '{:02d}'.format(sec) }}
         icon_template: mdi:weather-sunny
       daylighttomorrow:
         entity_id: sensor.solar_daylight
@@ -90,7 +90,7 @@ sensor:
           {% set hour = val | int %}
           {% set min = ((val - hour) * 60) | int %}
           {% set sec = ((((val - hour) * 60) - min) * 60) | round(0) %}
-          {{ hour }}:{{ min }}:{{ sec }}
+          {{ hour }}:{{ '{:02d}'.format(min) }}:{{ '{:02d}'.format(sec) }}
         icon_template: mdi:weather-sunny
       daylengthchange:
         entity_id: sensor.solar_daylight

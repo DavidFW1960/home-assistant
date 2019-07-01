@@ -907,7 +907,8 @@ views:
                   - automation.alarm_event_check
                   - automation.update_speedtest
                   - entity: automation.restart_docker_containers_when_memory_35
-                    secondary_info: last-changed
+                    type: 'custom:secondaryinfo-entity-row'
+                    secondary_info: "[[ automation.restart_docker_containers_when_memory_35.attributes.last_triggered ]]"
                   - automation.system_change_current_theme
                   - automation.system_set_custom_theme_at_startup
                   - automation.purge_history
@@ -915,7 +916,6 @@ views:
                   - entity: automation.update_abb_usage
                     type: 'custom:secondaryinfo-entity-row'
                     secondary_info: "[[ automation.update_abb_usage.attributes.last_triggered ]]"
-                  - entity: automation.update_lovelace_card_versions
               - type: custom:fold-entity-row
                 open: false
                 head: 
