@@ -83,6 +83,12 @@ device_tracker:
 #    - host: !secret gh_lounge
 #    - host: !secret gh_bed
 #    - host: !secret gh_office
+  - platform: iphonedetect
+    consider_home: 60
+    hosts:
+      hostname1: !secret david_iphone
+      hostname2: !secret david_ipad
+      hostname3: !secret liz_iphone
 
 # Enables the frontend
 frontend:
