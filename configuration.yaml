@@ -137,6 +137,7 @@ logger:
   logs:
 #   TransportNSW.transportnsw: error
     custom_components.sensor.authenticated: debug
+#   custom_components.iphonedetect: debug
 #   homeassistant.components.http.view: error
 
 # iFrame/Panel Custom 

@@ -56,10 +56,8 @@ sensor:
     sensors:
       bom_current_text:
         value_template: >
-            {% set val = states('sensor.bom_gosford_detailed_summary_0').split('.')[0] %} 
-            {% set val1 = val.split(' ')[0] | title %}
-            {% set val2 = val.split(' ')[1] | title %}
-            {{ val1 }} {{ val2 }}
+            {% set val = states('sensor.bom_gosford_summary_0').split('.')[0] %} 
+            {{ val | title }}
       bom_forecast_0:
         entity_id:
           - sensor.bom_today_max

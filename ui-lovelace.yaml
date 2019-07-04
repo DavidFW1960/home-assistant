@@ -321,8 +321,8 @@ views:
                 max: 20
                 severity:
                   red: 0
-                  yellow: 9
-                  green: 13
+                  yellow: 11
+                  green: 15
                 entity: sensor.speedtest_upload
           - type: custom:mini-graph-card
             hours_to_show: 24
@@ -348,9 +348,9 @@ views:
             color_thresholds:
               - value: 0
                 color: "#ff0000"        #red
-              - value: 7
+              - value: 11
                 color: "#ffa500"        #orange
-              - value: 13
+              - value: 15
                 color: "#00ff00"        #green
   - title: Weather
     icon: mdi:weather-cloudy
@@ -936,10 +936,6 @@ views:
               - type: custom:button-card
                 icon: mdi:home-assistant
                 lock: true
-                styles:
-                  card:
-                    - width: 100px
-                    - height: 100px
                 name: Restart
                 tap_action:
                   action: call-service
@@ -948,10 +944,6 @@ views:
                 entity: input_select.theme_switcher
                 icon: mdi:palette
                 lock: true
-                styles:
-                  card:
-                    - width: 100px
-                    - height: 100px
                 name: Theme
                 tap_action:
                   action: call-service
