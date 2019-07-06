@@ -192,8 +192,8 @@ ICON_MAPPING = {
     '15': 'snow',
     '16': 'storm',
     '17': 'light-showers',
-	'18': 'heavy-showers',
-	'19': 'tropicalcyclone'
+    '18': 'heavy-showers',
+    '19': 'tropicalcyclone'
 }
 
 def validate_days(days):

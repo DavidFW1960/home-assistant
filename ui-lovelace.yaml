@@ -28,7 +28,7 @@ resources:
     type: module
   - url: /community_plugin/mini-media-player/mini-media-player.js
     type: module
-  - url: /local/custom_ui/bom-weather-card.js?v=0.1
+  - url: /community_plugin/bom-weather-card/bom-weather-card.js
     type: module
 cch:
   swipe: true

@@ -1,8 +1,8 @@
 {
 	"domain": "bom_forecast",
 	"name": "BOM Forecast",
-	"documentation": "https://github.com/bremor/bom_forecast",
+	"documentation": "https://github.com/DavidFW1960/bom_forecast",
 	"dependencies": [],
-	"codeowners": [],
+	"codeowners": ["@davidfw1960"],
 	"requirements": []
 }

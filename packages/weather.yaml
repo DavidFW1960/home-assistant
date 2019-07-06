@@ -1,5 +1,5 @@
-# Download the Dark Sky icons from https://www.dr-lex.be/software/download/DarkSky-icons.zip
-# and save them under /www/icons/dark_sky/ in your configuration directory.
+# Download the BOM icons from https://github.com/DavidFW1960/bom_forecast/blob/master/bom_icons.zip
+# and save them under /www/icons/bom_icons/
 # Show BOM Satellite and Radar
 
 camera:
@@ -54,10 +54,12 @@ sensor:
 
   - platform: template
     sensors:
+
       bom_current_text:
         value_template: >
             {% set val = states('sensor.bom_gosford_summary_0').split('.')[0] %} 
             {{ val | title }}
+
       bom_forecast_0:
         entity_id:
           - sensor.bom_today_max
@@ -168,6 +170,7 @@ sensor:
           {% else %}
             {{ states('sensor.bom_gosford_max_temp_c_0') }}
           {% endif %}
+
       bom_today_min:
         entity_id:
           - sensor.bom_gosford_min_temp_c_0
