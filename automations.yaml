@@ -397,7 +397,7 @@
     entity_id: sensor.hacs
     above: 0
     for:
-      minutes: 5
+      minutes: 30
   condition:
     - condition: template
       value_template: "{{ not is_state('sensor.hacs', 'unknown') }}"

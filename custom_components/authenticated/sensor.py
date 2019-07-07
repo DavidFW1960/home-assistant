@@ -131,6 +131,8 @@ class Authenticated(Entity):
         updated = False
         users, tokens = load_authentications(self.hass.config.path(".storage/auth"))
         for access in tokens:
+            if access["last_used_ip"] is None:
+                continue
             if access["last_used_ip"] in self.hass.data[PLATFORM_NAME]:
                 ipaddress = self.hass.data[PLATFORM_NAME][access["last_used_ip"]]
                 if access["last_used_at"] == ipaddress.last_used_at:
