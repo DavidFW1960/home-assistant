@@ -8,6 +8,9 @@
 sun:
 
 sensor:
+
+  - platform: season
+
   - platform: sun2
     monitored_conditions:
       - solar_midnight
@@ -29,9 +32,12 @@ sensor:
       - nautical_night
       - astronomical_night
     entity_namespace: solar
+
   - platform: moon
+
 # https://www.yr.no/
   - platform: yr
+
   - platform: template
     sensors:
       yrwthr:

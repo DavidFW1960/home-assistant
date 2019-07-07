@@ -50,8 +50,6 @@ sensor:
       - 'detailed_summary'
       - 'icon'
 
-  - platform: season
-
   - platform: template
     sensors:
 

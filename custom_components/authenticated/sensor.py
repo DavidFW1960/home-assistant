@@ -4,6 +4,7 @@ about successfull logins to Home Assistant.
 For more details about this component, please refer to the documentation at
 https://github.com/custom-components/authenticated
 """
+import json
 import logging
 import os
 import socket
@@ -11,11 +12,10 @@ from datetime import timedelta
 import requests
 import voluptuous as vol
 import yaml
+
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.entity import Entity
-
-__version__ = '0.5.0'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -31,6 +31,7 @@ ATTR_CITY = 'city'
 ATTR_NEW_IP = 'new_ip'
 ATTR_LAST_AUTHENTICATE_TIME = 'last_authenticated_time'
 ATTR_PREVIOUS_AUTHENTICATE_TIME = 'previous_authenticated_time'
+ATTR_USER = "username"
 
 SCAN_INTERVAL = timedelta(minutes=1)
 
@@ -54,110 +55,106 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     """Create the sensor"""
     notify = config.get(CONF_NOTIFY)
     exclude = config.get(CONF_EXCLUDE)
-    logs = {'homeassistant.components.http.view': 'debug'}
-    _LOGGER.debug('Making sure the logger is correctly setup.')
-    hass.services.call('logger', 'set_level', logs)
-    if config[CONF_LOG_LOCATION] is None:
-        log = str(hass.config.path(LOGFILE))
-    else:
-        log = config[CONF_LOG_LOCATION]
-    log = str(hass.config.path(LOGFILE))
+    hass.data[PLATFORM_NAME] = {}
+
+    if not load_authentications(hass.config.path(".storage/auth")):
+        return False
+
     out = str(hass.config.path(OUTFILE))
-    add_devices([Authenticated(hass, notify, log, out, exclude,
-                               config[CONF_PROVIDER])])
+
+    sensor = Authenticated(hass, notify, out, exclude, config[CONF_PROVIDER])
+    sensor.initial_run()
+
+    add_devices([sensor], True)
 
 
 class Authenticated(Entity):
     """Representation of a Sensor."""
 
-    def __init__(self, hass, notify, log, out, exclude, provider):
+    def __init__(self, hass, notify, out, exclude, provider):
         """Initialize the sensor."""
-        hass.data[PLATFORM_NAME] = {}
+        self.hass = hass
         self._state = None
-        self._hostname = None
-        self._country = None
-        self._region = None
-        self._city = None
-        self._provider = provider
-        self._new_ip = False
-        self._LAT = None
-        self._PAT = None
-        self._exclude = exclude
-        self._notify = notify
-        self._log = log
-        self._out = out
-        self._data = hass.data[PLATFORM_NAME]
-        self.initial_run()
-        self.update()
+        self.provider = provider
+        self.stored = {}
+        self.last_ip = None
+        self.exclude = exclude
+        self.notify = notify
+        self.out = out
 
     def initial_run(self):
         """Run this at startup to initialize the platform data."""
-        if os.path.isfile(self._out):
-            file_content = get_outfile_content(self._out)
-            for ip_address in file_content:
-                accesstime = file_content[ip_address]['last_authenticated']
-                self._data[ip_address] = {'accesstime': accesstime}
+        users, tokens = load_authentications(self.hass.config.path(".storage/auth"))
+
+        if os.path.isfile(self.out):
+            self.stored = get_outfile_content(self.out)
         else:
             _LOGGER.debug('File has not been created, no data pressent.')
 
+        for access in tokens:
+            if access["last_used_ip"] in self.exclude:
+                continue
+
+            if access["last_used_ip"] in self.stored:
+                store = self.stored[access["last_used_ip"]]
+                access_data = {}
+                access_data["last_used_ip"] = access["last_used_ip"]
+                access_data["user_id"] = store.get("user_id")
+
+                if store.get("last_used_at") is not None:
+                    access_data["last_used_at"] = store["last_used_at"]
+                elif store.get("last_authenticated") is not None:
+                    access_data["last_used_at"] = store["last_authenticated"]
+                else:
+                    access_data["last_used_at"] = None
+
+                if store.get("prev_used_at") is not None:
+                    access_data["prev_used_at"] = store["prev_used_at"]
+                elif store.get("previous_authenticated_time") is not None:
+                    access_data["prev_used_at"] = store["previous_authenticated_time"]
+                else:
+                    access_data["prev_used_at"] = None
+                new = False
+
+            else:
+                access_data = {
+                    "last_used_ip": access["last_used_ip"],
+                    "user_id": access["user_id"],
+                    "last_used_at": access["last_used_at"],
+                    "prev_used_at": None
+                }
+                new = True
+            self.hass.data[PLATFORM_NAME][access["last_used_ip"]] = IPAddress(access_data, users, self.provider, new)
+
     def update(self):
         """Method to update sensor value"""
-        log_content = get_log_content(self._log, self._exclude)
-        count = len(log_content)
-        if count != 0:
-            last_ip = list(log_content)[-1]
-            for ip_address in log_content:
-                self.process_ip(ip_address, log_content[ip_address]['access'])
-            known_ips = get_outfile_content(self._out)
-            self._state = last_ip
-            self._hostname = known_ips[last_ip]['hostname']
-            self._country = known_ips[last_ip]['country']
-            self._region = known_ips[last_ip]['region']
-            self._city = known_ips[last_ip]['city']
-            self._LAT = known_ips[last_ip]['last_authenticated']
-            self._PAT = known_ips[last_ip]['previous_authenticated_time']
+        updated = False
+        users, tokens = load_authentications(self.hass.config.path(".storage/auth"))
+        for access in tokens:
+            if access["last_used_ip"] in self.hass.data[PLATFORM_NAME]:
+                ipaddress = self.hass.data[PLATFORM_NAME][access["last_used_ip"]]
+                if access["last_used_at"] == ipaddress.last_used_at:
+                    continue
+                elif access["last_used_at"] > ipaddress.last_used_at:
+                    updated = True
+                    _LOGGER.info("New login from %s", access["last_used_ip"])
+                    ipaddress.prev_used_at = ipaddress.last_used_at
+                    ipaddress.new_ip = False
+                    ipaddress.last_used_at = access["last_used_at"]
+                    ipaddress.lookup()
+            else:
+                updated = True
+                _LOGGER.info('Found new IP %s', access["last_used_ip"])
+                ipaddress = IPAddress(access, users, self.provider)
+                ipaddress.lookup()
+                if self.notify:
+                    if ipaddress.new_ip:
+                        ipaddress.notify(self.hass)
 
-    def process_ip(self, ip_address, accesstime):
-        """Process the IP found in the log"""
-        if not os.path.isfile(self._out):
-            # First IP
-            self.add_new_ip(ip_address, accesstime)
-            self._new_ip = True
-        elif ip_address not in self._data:
-            # New ip_address
-            self.add_new_ip(ip_address, accesstime)
-            self._new_ip = True
-        elif self._data[ip_address]['accesstime'] != accesstime:
-            # Update timestamp
-            update_ip(self._out, ip_address, accesstime)
-            self._new_ip = False
-            self._data[ip_address] = {'accesstime': accesstime}
-        self._data[ip_address] = {'accesstime': accesstime}
-
-    def add_new_ip(self, ip_address, access_time):
-        """Add new IP to the file"""
-        _LOGGER.info('Found new IP %s', ip_address)
-        hostname = get_hostname(ip_address)
-        geo = get_geo_data(ip_address, self._provider)
-        if geo['result']:
-            country = geo['data']['country_name']
-            region = geo['data']['region']
-            city = geo['data']['city']
-        else:
-            country = 'none'
-            region = 'none'
-            city = 'none'
-        write_to_file(self._out, ip_address, access_time,
-                      access_time, hostname, country, region, city)
-        self._new_ip = 'true'
-        if self._notify:
-            notify = self.hass.components.persistent_notification.create
-            notify('{}'.format(ip_address + ' (' +
-                               str(country) + ', ' +
-                               str(region) + ', ' +
-                               str(city) + ')'), 'New successful login from')
-        else:
-            _LOGGER.debug('persistent_notifications is disabled in config')
+        self.last_ip = self.hass.data[PLATFORM_NAME][tokens[0]["last_used_ip"]]
+        self._state = self.last_ip.ip_address
+        if updated:
+            self.write_to_file()
 
     @property
     def name(self):
@@ -172,20 +169,43 @@ class Authenticated(Entity):
     @property
     def icon(self):
         """Return the icon of the sensor."""
-        return 'mdi:security-lock'
+        return 'mdi:lock-alert'
 
     @property
     def device_state_attributes(self):
         """Return attributes for the sensor."""
+        if self.last_ip is None:
+            return None
         return {
-            ATTR_HOSTNAME: self._hostname,
-            ATTR_COUNTRY: self._country,
-            ATTR_REGION: self._region,
-            ATTR_CITY: self._city,
-            ATTR_NEW_IP: self._new_ip,
-            ATTR_LAST_AUTHENTICATE_TIME: self._LAT,
-            ATTR_PREVIOUS_AUTHENTICATE_TIME: self._PAT,
+            ATTR_HOSTNAME: self.last_ip.hostname,
+            ATTR_COUNTRY: self.last_ip.country,
+            ATTR_REGION: self.last_ip.region,
+            ATTR_CITY: self.last_ip.city,
+            ATTR_USER: self.last_ip.username,
+            ATTR_NEW_IP:self.last_ip.new_ip,
+            ATTR_LAST_AUTHENTICATE_TIME: self.last_ip.last_used_at,
+            ATTR_PREVIOUS_AUTHENTICATE_TIME: self.last_ip.prev_used_at,
         }
+
+    def write_to_file(self):
+        """Write data to file."""
+        if os.path.exists(self.out):
+            info = get_outfile_content(self.out)
+        else:
+            info = {}
+
+        for known in self.hass.data[PLATFORM_NAME]:
+            known = self.hass.data[PLATFORM_NAME][known]
+            info[known.ip_address] = {
+                "user_id": known.user_id,
+                "last_used_at": known.last_used_at,
+                "prev_used_at": known.prev_used_at,
+                "country": known.country,
+                "region": known.region,
+                "city": known.city
+            }
+        with open(self.out, 'w') as out_file:
+            yaml.dump(info, out_file, default_flow_style=False, explicit_start=True)
 
 
 def get_outfile_content(file):
@@ -194,22 +214,6 @@ def get_outfile_content(file):
         content = yaml.load(out_file)
     out_file.close()
     return content
-
-
-def get_log_content(file, exclude):
-    """Get the content of the logfile"""
-    _LOGGER.debug('Searching log file for IP addresses.')
-    content = {}
-    with open(file) as log_file:
-        for line in log_file.readlines():
-            if '(auth: True)' in line or 'Serving /auth/token' in line:
-                ip_address = line.split(' ')[8]
-                if ip_address not in exclude:
-                    access = line.split(' ')[0] + ' ' + line.split(' ')[1]
-                    content[ip_address] = {"access": access}
-    log_file.close()
-    return content
-
 
 def get_geo_data(ip_address, provider):
     """Get geo data for an IP"""
@@ -261,43 +265,68 @@ def get_geo_data(ip_address, provider):
 
 def get_hostname(ip_address):
     """Return hostname for an IP"""
-    return socket.getfqdn(ip_address)
+    hostname = None
+    try:
+        hostname = socket.getfqdn(ip_address)
+    except Exception:
+        pass
+    return hostname
 
 
-def update_ip(file, ip_address, access_time):
-    """Update the timestamp for an IP"""
-    hostname = get_hostname(ip_address)
-    _LOGGER.debug('Found known IP %s, updating timestamps.', ip_address)
-    info = get_outfile_content(file)
+def load_authentications(authfile):
+    """Load info from auth file."""
+    if not os.path.exists(authfile):
+        _LOGGER.critical("File is missing %s", authfile)
+        return False
+    with open(authfile, "r") as authfile:
+        auth = json.loads(authfile.read())
 
-    last = info[ip_address]['last_authenticated']
-    info[ip_address]['previous_authenticated_time'] = last
-    info[ip_address]['last_authenticated'] = access_time
-    info[ip_address]['hostname'] = hostname
+    users = {}
+    for user in auth["data"]["users"]:
+        users[user["id"]] = user["name"]
 
-    with open(file, 'w') as out_file:
-        yaml.dump(info, out_file, default_flow_style=False)
-    out_file.close()
+    tokens = auth["data"]["refresh_tokens"]
+
+    return users, sorted(tokens, key=lambda i: i['last_used_at'], reverse=True)
 
 
-def write_to_file(file, ip_address, last_authenticated,
-                  previous_authenticated_time,
-                  hostname, country, region, city):
-    """Writes info to out control file"""
-    with open(file, 'a') as out_file:
-        out_file.write(ip_address + ':')
-    out_file.close()
+class IPAddress:
+    """IP Address class."""
+    def __init__(self, access_data, users, provider, new=True):
+        self.all_users = users
+        self.access_data = access_data
+        self.provider = provider
+        self.ip_address = access_data["last_used_ip"]
+        self.last_used_at = access_data["last_used_at"]
+        self.prev_used_at = access_data["prev_used_at"]
+        self.user_id = access_data.get("user_id")
+        self.hostname = None
+        self.city = None
+        self.region = None
+        self.country = None
+        self.new_ip = new
 
-    info = get_outfile_content(file)
+    @property
+    def username(self):
+        """Return the username used for the login."""
+        if self.user_id is None:
+            return "Unknown"
+        elif self.user_id in self.all_users:
+            return self.all_users[self.access_data["user_id"]]
+        return "Unknown"
 
-    info[ip_address] = dict(
-        hostname=hostname,
-        last_authenticated=last_authenticated,
-        previous_authenticated_time=previous_authenticated_time,
-        country=country,
-        region=region,
-        city=city
-    )
-    with open(file, 'w') as out_file:
-        yaml.dump(info, out_file, default_flow_style=False)
-    out_file.close()
+    def lookup(self):
+        """Look up data for the IP address."""
+        self.hostname = get_hostname(self.ip_address)
+        geo = get_geo_data(self.ip_address, self.provider)
+        if geo["result"]:
+            self.country = geo.get("data", {}).get("country_name")
+            self.region = geo.get("data", {}).get("region")
+            self.city = geo.get("data", {}).get("city")
+
+    def notify(self, hass):
+        """Create persistant notification."""
+        notify = hass.components.persistent_notification.create
+        notify('{} ({}, {}, {})'.format(
+            self.ip_address, str(self.country), str(self.region), str(self.city)),
+               'New successful login from')
