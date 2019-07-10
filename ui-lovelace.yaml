@@ -451,8 +451,8 @@ views:
             entity_daily_summary: sensor.bom_gosford_detailed_summary_0
             entity_pop: sensor.bom_gosford_chance_of_rain_0
             entity_pop_intensity: sensor.bom_gosford_rain_today
-            entity_pop_possibleToday: sensor.bom_gosford_possible_rainfall_0
-            entity_pop_possibleTomorrow: sensor.bom_gosford_possible_rainfall_1
+#           entity_possibleToday: sensor.bom_gosford_possible_rainfall_0
+#           entity_possibleTomorrow: sensor.bom_gosford_possible_rainfall_1
             entity_pop_1: sensor.bom_gosford_chance_of_rain_1
             entity_pop_2: sensor.bom_gosford_chance_of_rain_2
             entity_pop_3: sensor.bom_gosford_chance_of_rain_3
@@ -498,7 +498,7 @@ views:
             slot_r1: pop
             slot_r2: humidity
             slot_r3: sun_following          #pressure but BOM has no visibility reported
-            slot_r4: possible_today          #sun_following
+            slot_r4: empty                  #sun_following
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 72
