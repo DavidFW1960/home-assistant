@@ -498,7 +498,7 @@ views:
             slot_r1: pop
             slot_r2: humidity
             slot_r3: sun_following          #pressure but BOM has no visibility reported
-            slot_r4: remove                 #sun_following
+            slot_r4: possible_0             #sun_following
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 72
