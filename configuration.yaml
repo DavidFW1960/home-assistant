@@ -227,6 +227,7 @@ sensor:
 # Authentication Sensor
   - platform: authenticated
     enable_notification: true
+    provider: 'ipapi'
 
 # Certificate LetsEncrypt
   - platform: cert_expiry

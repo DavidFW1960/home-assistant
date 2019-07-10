@@ -63,13 +63,20 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
     out = str(hass.config.path(OUTFILE))
 
-    sensor = Authenticated(hass, notify, out, exclude, config[CONF_PROVIDER])
+    sensor = AuthenticatedSensor(hass, notify, out, exclude, config[CONF_PROVIDER])
     sensor.initial_run()
 
     add_devices([sensor], True)
 
 
-class Authenticated(Entity):
+class AuthenticatedBaseException(Exception):
+    """Base exception for Authenticated."""
+
+class AuthenticatedRateLimitException(AuthenticatedBaseException):
+    """Ratelimit exception."""
+
+
+class AuthenticatedSensor(Entity):
     """Representation of a Sensor."""
 
     def __init__(self, hass, notify, out, exclude, provider):
@@ -93,7 +100,6 @@ class Authenticated(Entity):
             _LOGGER.debug('File has not been created, no data pressent.')
 
         for access in tokens:
-            accessdata = tokens[access]
             if access in self.exclude:
                 continue
 
@@ -102,35 +108,40 @@ class Authenticated(Entity):
             except ValueError:
                 continue
 
-            if access in self.stored:
-                store = self.stored[access]
-                access_data = {}
-                access_data["last_used_ip"] = access
-                access_data["user_id"] = store.get("user_id")
+            accessdata = AuthenticatedData(access, tokens[access])
 
-                if store.get("last_used_at") is not None:
-                    access_data["last_used_at"] = store["last_used_at"]
-                elif store.get("last_authenticated") is not None:
-                    access_data["last_used_at"] = store["last_authenticated"]
-                else:
-                    access_data["last_used_at"] = None
+            if accessdata.ipaddr in self.stored:
+                store = AuthenticatedData(accessdata.ipaddr, self.stored[access])
+                accessdata.ipaddr = access
 
-                if store.get("prev_used_at") is not None:
-                    access_data["prev_used_at"] = store["prev_used_at"]
-                elif store.get("previous_authenticated_time") is not None:
-                    access_data["prev_used_at"] = store["previous_authenticated_time"]
-                else:
-                    access_data["prev_used_at"] = None
+                if store.user_id is not None:
+                    accessdata.user_id = store.user_id
 
-            else:
-                access_data = {
-                    "last_used_ip": access,
-                    "user_id": accessdata["user_id"],
-                    "last_used_at": accessdata["last_used_at"],
-                    "prev_used_at": None
-                }
-            ipaddress =  IPAddress(access_data, users, self.provider, False)
-            ipaddress.lookup()
+                if store.hostname is not None:
+                    accessdata.hostname = store.hostname
+
+                if store.country is not None:
+                    accessdata.country = store.country
+
+                if store.region is not None:
+                    accessdata.region = store.region
+
+                if store.city is not None:
+                    accessdata.city = store.city
+
+                if store.last_access is not None:
+                    accessdata.last_access = store.last_access
+                elif store.attributes.get("last_authenticated") is not None:
+                    accessdata.last_access = store.attributes["last_authenticated"]
+
+                if store.prev_access is not None:
+                    accessdata.prev_access = store.prev_access
+                elif store.attributes.get("previous_authenticated_time") is not None:
+                    accessdata.prev_access = store.attributes["last_authenticated"]
+
+            ipaddress = IPData(accessdata, users, self.provider, False)
+            if accessdata.ipaddr not in self.stored:
+                ipaddress.lookup()
             self.hass.data[PLATFORM_NAME][access] = ipaddress
         self.write_to_file()
 
@@ -139,7 +150,6 @@ class Authenticated(Entity):
         updated = False
         users, tokens = load_authentications(self.hass.config.path(".storage/auth"))
         for access in tokens:
-            accessdata = tokens[access]
             try:
                 ValidateIP(access)
             except ValueError:
@@ -163,22 +173,20 @@ class Authenticated(Entity):
             else:
                 updated = True
                 _LOGGER.warning("New successfull login from unknown IP (%s)", access)
-                access_data = {
-                    "last_used_ip": access,
-                    "user_id": accessdata["user_id"],
-                    "last_used_at": accessdata["last_used_at"],
-                    "prev_used_at": None
-                }
-                ipaddress = IPAddress(access_data, users, self.provider)
+                accessdata = AuthenticatedData(access, tokens[access])
+                ipaddress = IPData(accessdata, users, self.provider)
                 ipaddress.lookup()
                 if ipaddress.new_ip:
                     if self.notify:
                         ipaddress.notify(self.hass)
                     ipaddress.new_ip = False
 
+            if ipaddress.hostname is None:
+                ipaddress.hostname = get_hostname(ipaddress.ip_address)
+
             self.hass.data[PLATFORM_NAME][access] = ipaddress
 
-        for ipaddr in sorted(tokens,key=lambda x:tokens[x]['last_used_at'], reverse=True):
+        for ipaddr in sorted(tokens, key=lambda x:tokens[x]['last_used_at'], reverse=True):
             self.last_ip = self.hass.data[PLATFORM_NAME][ipaddr]
             break
         self._state = self.last_ip.ip_address
@@ -230,6 +238,7 @@ class Authenticated(Entity):
                 "last_used_at": known.last_used_at,
                 "prev_used_at": known.prev_used_at,
                 "country": known.country,
+                "hostname": known.hostname,
                 "region": known.region,
                 "city": known.city
             }
@@ -308,20 +317,35 @@ def load_authentications(authfile):
     return users, tokens_cleaned
 
 
-class IPAddress:
+class AuthenticatedData:
+    """Data class for autenticated values."""
+
+    def __init__(self, ipaddr, attributes):
+        """Initialize."""
+        self.ipaddr = ipaddr
+        self.attributes = attributes
+        self.last_access = attributes.get("last_used_at")
+        self.prev_access = attributes.get("prev_used_at")
+        self.country = attributes.get("country")
+        self.region = attributes.get("region")
+        self.city = attributes.get("city")
+        self.user_id = attributes.get("user_id")
+        self.hostname = attributes.get("hostname")
+
+
+class IPData:
     """IP Address class."""
     def __init__(self, access_data, users, provider, new=True):
         self.all_users = users
-        self.access_data = access_data
         self.provider = provider
-        self.ip_address = access_data.get("last_used_ip")
-        self.last_used_at = access_data.get("last_used_at")
-        self.prev_used_at = access_data.get("prev_used_at")
-        self.user_id = access_data.get("user_id")
-        self.hostname = None
-        self.city = None
-        self.region = None
-        self.country = None
+        self.ip_address = access_data.ipaddr
+        self.last_used_at = access_data.last_access
+        self.prev_used_at = access_data.prev_access
+        self.user_id = access_data.user_id
+        self.hostname = access_data.hostname
+        self.city = access_data.city
+        self.region = access_data.region
+        self.country = access_data.country
         self.new_ip = new
 
     @property
@@ -330,12 +354,11 @@ class IPAddress:
         if self.user_id is None:
             return "Unknown"
         elif self.user_id in self.all_users:
-            return self.all_users[self.access_data["user_id"]]
+            return self.all_users[self.user_id]
         return "Unknown"
 
     def lookup(self):
         """Look up data for the IP address."""
-        self.hostname = get_hostname(self.ip_address)
         geo = get_geo_data(self.ip_address, self.provider)
         if geo["result"]:
             self.country = geo.get("data", {}).get("country")
@@ -363,11 +386,12 @@ class IPAddress:
             last_used_at = ""
         message = """
         **IP Address:**   {}
+        **Username:**    {}
         {}
         {}
         {}
         {}
-        """.format(self.ip_address, country, region, city, last_used_at)
+        """.format(self.ip_address, self.username, country, region, city, last_used_at.replace("T", " "))
         notify(message, title='New successful login', notification_id=self.ip_address)
 
 
@@ -385,9 +409,7 @@ class GeoProvider:
     def country(self):
         """Return country name or None."""
         if self.result:
-            if "country_name" in self.result:
-                return self.result["country_name"]
-            elif "country" in self.result:
+            if self.result.get("country") is not None:
                 return self.result["country"]
         return None
 
@@ -395,9 +417,7 @@ class GeoProvider:
     def region(self):
         """Return region name or None."""
         if self.result:
-            if "subdivision_1_name" in self.result:
-                return self.result["subdivision_1_name"]
-            elif "region" in self.result:
+            if self.result.get("region") is not None:
                 return self.result["region"]
         return None
 
@@ -405,9 +425,7 @@ class GeoProvider:
     def city(self):
         """Return city name or None."""
         if self.result:
-            if "city_name" in self.result:
-                return self.result["city_name"]
-            elif "city" in self.result:
+            if self.result.get("city") is not None:
                 return self.result["city"]
         return None
 
@@ -427,26 +445,50 @@ class GeoProvider:
         self.result = {}
         try:
             api = self.url.format(self.ipaddr)
-            data = requests.get(api, timeout=5).json()
+            header = {
+                "user-agent": "Home Assistant/Python"
+            }
+            data = requests.get(api, headers=header, timeout=5).json()
 
-            if 'reserved' in str(data):
-                return
-            elif data.get('status') != 'success':
-                return
-            elif 'Private' in data.get('org'):
+            if data.get("error"):
+                if data.get("reason") == "RateLimited":
+                    raise AuthenticatedRateLimitException(
+                        "RatelimitError, try a different provider.")
+
+            elif data.get("status", "success") == "error":
                 return
 
-            if data.get('data') is not None:
-                data = data["data"]
+            elif data.get("reserved"):
+                return
+
+            elif data.get("status", "success") == "fail":
+                raise AuthenticatedBaseException(
+                    "[{}] - {}".format(self.ipaddr, data.get("message", "Unkown error.")))
+
             self.result = data
-        except Exception:  # pylint: disable=broad-except
-            return
+            self.parse_data()
+        except AuthenticatedRateLimitException as exception:
+            _LOGGER.error(exception)
+        except AuthenticatedBaseException as exception:
+            _LOGGER.error(exception)
+        except requests.exceptions.ConnectionError:
+            pass
 
+    def parse_data(self):
+        """Parse data from geoprovider."""
+        self.result = self.result
 
 class IPApi(GeoProvider):
     """IPApi class."""
     url = "https://ipapi.co/{}/json"
 
+    @property
+    def country(self):
+        """Return country name or None."""
+        if self.result:
+            if self.result.get("country_name") is not None:
+                return self.result["country_name"]
+        return None
 
 class ExtremeIPLookup(GeoProvider):
     """IPApi class."""
@@ -456,3 +498,31 @@ class ExtremeIPLookup(GeoProvider):
 class IPVigilante(GeoProvider):
     """IPVigilante class."""
     url = "https://ipvigilante.com/json/{}"
+
+    def parse_data(self):
+        """Parse data from geoprovider."""
+        self.result = self.result.get("data", {})
+
+    @property
+    def country(self):
+        """Return country name or None."""
+        if self.result:
+            if self.result.get("country_name") is not None:
+                return self.result["country_name"]
+        return None
+
+    @property
+    def region(self):
+        """Return region name or None."""
+        if self.result:
+            if self.result.get("subdivision_1_name") is not None:
+                return self.result["subdivision_1_name"]
+        return None
+
+    @property
+    def city(self):
+        """Return city name or None."""
+        if self.result:
+            if self.result.get("city_name") is not None:
+                return self.result["city_name"]
+        return None
