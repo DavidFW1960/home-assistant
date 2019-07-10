@@ -763,8 +763,8 @@ style() {
       if (this.config.entity_visibility && !this.config.alt_visibility) { root.getElementById("visibility-text").textContent = `${this.current.visibility}` }
       if (this.config.entity_pop && !this.config.alt_pop) { root.getElementById("pop-text").textContent = `${Math.round(this._hass.states[this.config.entity_pop].state)}` }
       if (this.config.entity_pop_intensity && !this.config.alt_pop) { root.getElementById("pop-intensity-text").textContent = ` - ${this._hass.states[this.config.entity_pop_intensity].state} ${this.getUOM('precipitation')}` }
-      if (this.config.entity_pop_possibleToday && !this.config.alt_pop_possibleToday) { root.getElementById("pop-possibleToday-text").textContent = ` - ${this._hass.states[this.config.entity_pop_possibleToday].state} ${this.getUOM('precipitation')}` }
-      if (this.config.entity_pop_possibleTomorrow && !this.config.alt_pop_possibleTomorrow) { root.getElementById("pop-possibleTomorrow-text").textContent = ` - ${this._hass.states[this.config.entity_pop_possibleTomorrow].state} ${this.getUOM('precipitation')}` }
+      if (this.config.entity_pop_possibleToday && !this.config.alt_pop_possibleToday) { root.getElementById("pop-possibleToday-text").textContent = ` - ${this._hass.states[this.config.entity_pop_possible_0].state} ${this.getUOM('precipitation')}` }
+      if (this.config.entity_pop_possibleTomorrow && !this.config.alt_pop_possibleTomorrow) { root.getElementById("pop-possibleTomorrow-text").textContent = ` - ${this._hass.states[this.config.entity_pop_possible_1].state} ${this.getUOM('precipitation')}` }
       if (this.config.entity_daytime_high && !this.config.alt_daytime_high) { root.getElementById("daytime-high-text").textContent = `${Math.round(this._hass.states[this.config.entity_daytime_high].state)}` }
       if (this.config.entity_daytime_low && !this.config.alt_daytime_low) { root.getElementById("daytime-low-text").textContent = `${Math.round(this._hass.states[this.config.entity_daytime_low].state)}` }
       if (this.config.entity_sun && !this.config.alt_sun_next) { root.getElementById("sun-next-text").textContent = `${this.sunSet.nextText}` }
