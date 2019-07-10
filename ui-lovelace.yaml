@@ -451,6 +451,8 @@ views:
             entity_daily_summary: sensor.bom_gosford_detailed_summary_0
             entity_pop: sensor.bom_gosford_chance_of_rain_0
             entity_pop_intensity: sensor.bom_gosford_rain_today
+            entity_pop_possible_0: sensor.bom_gosford_possible_rainfall_0
+            entity_pop_possible_1: sensor.bom_gosford_possible_rainfall_1
             entity_pop_1: sensor.bom_gosford_chance_of_rain_1
             entity_pop_2: sensor.bom_gosford_chance_of_rain_2
             entity_pop_3: sensor.bom_gosford_chance_of_rain_3
