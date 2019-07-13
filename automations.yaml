@@ -381,6 +381,7 @@
   - service: persistent_notification.create
     data_template:
       message: '{{ states("sensor.artisan_events") }}'
+      title: 'Artisan Notification'
 - id: 'initialautostate'
   alias: 'Start All Automations'
   initial_state: 'true'
