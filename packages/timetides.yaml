@@ -72,31 +72,19 @@ sensor:
         entity_id: sensor.solar_daylight
         friendly_name: 'Day Length Yesterday'
         value_template: >
-          {% set val = state_attr('sensor.solar_daylight', 'yesterday') %}
-          {% set hour = val | int %}
-          {% set min = ((val - hour) * 60) | int %}
-          {% set sec = ((((val - hour) * 60) - min) * 60) | round(0) %}
-          {{ hour }}:{{ '{:02d}'.format(min) }}:{{ '{:02d}'.format(sec) }}
+          {{ state_attr('sensor.solar_daylight', 'yesterday_hms') }}
         icon_template: mdi:weather-sunny
       daylighttoday:
         entity_id: sensor.solar_daylight
         friendly_name: 'Day Length Today'
         value_template: >
-          {% set val = state_attr('sensor.solar_daylight', 'today') %}
-          {% set hour = val | int %}
-          {% set min = ((val - hour) * 60) | int %}
-          {% set sec = ((((val - hour) * 60) - min) * 60) | round(0) %}
-          {{ hour }}:{{ '{:02d}'.format(min) }}:{{ '{:02d}'.format(sec) }}
+          {{ state_attr('sensor.solar_daylight', 'today_hms') }}
         icon_template: mdi:weather-sunny
       daylighttomorrow:
         entity_id: sensor.solar_daylight
         friendly_name: 'Day Length Tomorrow'
         value_template: >
-          {% set val = state_attr('sensor.solar_daylight', 'tomorrow') %}
-          {% set hour = val | int %}
-          {% set min = ((val - hour) * 60) | int %}
-          {% set sec = ((((val - hour) * 60) - min) * 60) | round(0) %}
-          {{ hour }}:{{ '{:02d}'.format(min) }}:{{ '{:02d}'.format(sec) }}
+          {{ state_attr('sensor.solar_daylight', 'tomorrow_hms') }}
         icon_template: mdi:weather-sunny
       daylengthchange:
         entity_id: sensor.solar_daylight

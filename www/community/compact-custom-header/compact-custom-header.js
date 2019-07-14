@@ -98,7 +98,7 @@ function run() {
     insertEditMenu(tabs);
     styleButtons(tabs);
     styleHeader(tabContainer, tabs, header);
-    restoreTabs(tabs, hideTabs(tabContainer, tabs));
+    hideTabs(tabContainer, tabs);
     defaultTab(tabs, tabContainer);
     if (firstRun) sidebarMod();
     hideMenuItems();
@@ -352,7 +352,6 @@ function styleHeader(tabContainer, tabs, header) {
   }
 
   let indicator = cchConfig.tab_indicator_color;
-  let all_tabs_color = cchConfig.all_tabs_color || "var(--cch-all-tabs-color)";
   if (
     indicator &&
     !root.querySelector('[id="cch_header_colors"]') &&
@@ -394,8 +393,11 @@ function styleHeader(tabContainer, tabs, header) {
           `;
     tabContainer.appendChild(style);
   }
-
-  if (cchConfig.tab_color && Object.keys(cchConfig.tab_color).length) {
+  let all_tabs_color = cchConfig.all_tabs_color || "var(--cch-all-tabs-color)";
+  if (
+    (cchConfig.tab_color && Object.keys(cchConfig.tab_color).length) ||
+    all_tabs_color
+  ) {
     for (let i = 0; i < tabs.length; i++) {
       tabs[i].style.color = cchConfig.tab_color[i] || all_tabs_color;
     }
@@ -583,15 +585,6 @@ function sidebarMod() {
       document.createTextNode(":host {--app-drawer-width: 0px !important;}")
     );
     main.shadowRoot.appendChild(style);
-  }
-}
-
-function restoreTabs(tabs, hidden_tabs) {
-  for (let i = 0; i < tabs.length; i++) {
-    let hidden = hidden_tabs.includes(i);
-    if (tabs[i].style.display == "none" && !hidden) {
-      tabs[i].style.removeProperty("display");
-    }
   }
 }
 
@@ -908,6 +901,9 @@ function templates(template, tabs, _hass, header) {
   for (const condition in template) {
     if (condition == "tab") {
       for (const tab in template[condition]) {
+        if (!template[condition][tab].length) {
+          template[condition][tab] = [template[condition][tab]];
+        }
         for (let i = 0; i < template[condition][tab].length; i++) {
           let tabIndex = parseInt(Object.keys(template[condition]));
           let styleTarget = Object.keys(template[condition][tab][i]);
@@ -927,14 +923,17 @@ function templates(template, tabs, _hass, header) {
       }
     } else if (condition == "button") {
       for (const button in template[condition]) {
-        if (newSidebar && button == "notifications") continue;
+        if (!template[condition][button].length) {
+          template[condition][button] = [template[condition][button]];
+        }
         for (let i = 0; i < template[condition][button].length; i++) {
-          let buttonName = Object.keys(template[condition]);
-          let styleTarget = Object.keys(template[condition][button][i]);
+          let buttonName = Object.keys(template[condition])[0];
+          if (newSidebar && buttonName == "notifications") continue;
+          let styleTarget = Object.keys(template[condition][button][i])[0];
           let buttonElem = buttons[buttonName];
-          let iconTarget = buttonElem.shadowRoot
-            ? buttonElem.shadowRoot.querySelector("paper-icon-button")
-            : buttonElem.querySelector("paper-icon-button");
+          let iconTarget = buttonElem.querySelector("paper-icon-button")
+            ? buttonElem.querySelector("paper-icon-button")
+            : buttonElem.shadowRoot.querySelector("paper-icon-button")
           let target = iconTarget.shadowRoot.querySelector("iron-icon");
           let tempCond = template[condition][button][i][styleTarget];
           if (styleTarget == "icon") {
@@ -974,7 +973,7 @@ function buildRanges(array) {
 
 function showEditor() {
   window.scrollTo(0, 0);
-  import("./compact-custom-header-editor.js?v=1.2.3").then(() => {
+  import("./compact-custom-header-editor.js?v=1.2.6").then(() => {
     document.createElement("compact-custom-header-editor");
   });
   if (!root.querySelector("ha-app-layout").querySelector("editor")) {

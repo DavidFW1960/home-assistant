@@ -51,6 +51,12 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
         vol.All(cv.ensure_list, [cv.string]),
     })
 
+PROVIDERS = {}
+
+def register_provider(classname):
+    """Decorator used to register providers."""
+    PROVIDERS[classname.name] = classname
+    return classname
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Create the sensor"""
@@ -133,11 +139,15 @@ class AuthenticatedSensor(Entity):
                     accessdata.last_access = store.last_access
                 elif store.attributes.get("last_authenticated") is not None:
                     accessdata.last_access = store.attributes["last_authenticated"]
+                elif store.attributes.get("last_used_at") is not None:
+                    accessdata.last_access = store.attributes["last_used_at"]
 
                 if store.prev_access is not None:
                     accessdata.prev_access = store.prev_access
                 elif store.attributes.get("previous_authenticated_time") is not None:
-                    accessdata.prev_access = store.attributes["last_authenticated"]
+                    accessdata.prev_access = store.attributes["previous_authenticated_time"]
+                elif store.attributes.get("prev_used_at") is not None:
+                    accessdata.prev_access = store.attributes["prev_used_at"]
 
             ipaddress = IPData(accessdata, users, self.provider, False)
             if accessdata.ipaddr not in self.stored:
@@ -145,6 +155,7 @@ class AuthenticatedSensor(Entity):
             self.hass.data[PLATFORM_NAME][access] = ipaddress
         self.write_to_file()
 
+    
     def update(self):
         """Method to update sensor value"""
         updated = False
@@ -223,7 +234,7 @@ class AuthenticatedSensor(Entity):
             ATTR_LAST_AUTHENTICATE_TIME: self.last_ip.last_used_at,
             ATTR_PREVIOUS_AUTHENTICATE_TIME: self.last_ip.prev_used_at,
         }
-
+    
     def write_to_file(self):
         """Write data to file."""
         if os.path.exists(self.out):
@@ -259,12 +270,7 @@ def get_outfile_content(file):
 def get_geo_data(ip_address, provider):
     """Get geo data for an IP"""
     result = {"result": False, "data": "none"}
-    providers = {
-        "ipapi": "IPApi",
-        "extreme": "ExtremeIPLookup",
-        "ipvigilante": "IPVigilante"
-    }
-    geo_data = globals()[providers[provider]](ip_address)
+    geo_data = PROVIDERS[provider](ip_address)
     geo_data.update_geo_info()
 
     if geo_data.computed_result is not None:
@@ -478,9 +484,11 @@ class GeoProvider:
         """Parse data from geoprovider."""
         self.result = self.result
 
+@register_provider
 class IPApi(GeoProvider):
     """IPApi class."""
     url = "https://ipapi.co/{}/json"
+    name = "ipapi"
 
     @property
     def country(self):
@@ -490,14 +498,18 @@ class IPApi(GeoProvider):
                 return self.result["country_name"]
         return None
 
+@register_provider
 class ExtremeIPLookup(GeoProvider):
     """IPApi class."""
     url = "https://extreme-ip-lookup.com/json/{}"
+    name = "extreme"
 
 
+@register_provider
 class IPVigilante(GeoProvider):
     """IPVigilante class."""
     url = "https://ipvigilante.com/json/{}"
+    name = "ipvigilante"
 
     def parse_data(self):
         """Parse data from geoprovider."""
@@ -526,3 +538,5 @@ class IPVigilante(GeoProvider):
             if self.result.get("city_name") is not None:
                 return self.result["city_name"]
         return None
+
+
