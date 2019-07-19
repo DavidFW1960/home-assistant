@@ -69,7 +69,7 @@ frontend:
       paper-item-selected_-_background-color: '#292929'
       paper-tabs-selection-bar-color: 'green'
       # Labels
-      label-badge-red: 'var(--accent-color)'
+      label-badge-red: 'var(--primary-color)'
       label-badge-text-color: 'var(--primary-text-color)'
       label-badge-background-color: '#222222'
       # Switches
@@ -89,7 +89,7 @@ frontend:
       paper-slider-disabled-active-color: 'var(--disabled-text-color)'
       paper-slider-disabled-secondary-color: 'var(--disabled-text-color)'
       # Google colors
-      google-red-500: '#b58e31'
+      google-red-500: '#b93829'
       google-green-500: '#2980b9'
       #Changes to fix history/logbook menus
       lumo-primary-text-color: '#2980b9'
@@ -1641,7 +1641,6 @@ frontend:
       paper-item-icon-active-color: "#ff0000" #var(--primary-color)
       paper-item-icon_-_color: "var(--primary-text-color)"
       paper-toggle-button-unchecked-bar-color: "var(--primary-text-color)"
-
 ###############################################################################
 #                               Other
 ###############################################################################
@@ -1713,3 +1712,4 @@ automation:
       - service: frontend.set_theme
         data_template:
           name: "{{states('input_select.theme_switcher')}}"
+

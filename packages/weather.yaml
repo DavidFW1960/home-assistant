@@ -17,6 +17,9 @@ camera:
     frames: 6
     delta: 360
 
+wwlln:
+  radius: 100
+
 sensor:
   - platform: bom
     station: !secret my_bom_station
