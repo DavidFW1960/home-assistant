@@ -15,7 +15,7 @@ fi
 usageid=$(echo "$abbcreds" | jq -r '.usageid')
 
 # Check Cookie has more than half life till expiry
-epoch_expire=$(grep 'TRUE' abbcookie.txt)
+epoch_expire=$(grep 'myaussie_cookie' abbcookie.txt)
 epoch_expire=$(echo $epoch_expire | cut -d' ' -f5 -)
 todaydatetime=$(date +%s)
 abbtoken=$(cat abbtoken.json)
