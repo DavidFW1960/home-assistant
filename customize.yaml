@@ -338,3 +338,5 @@ sensor.dark_sky_wind_speed_1d:
   friendly_name: Dark Sky Wind Speed Tomorrow
 sensor.hacs:
   friendly_name: HACS
+sensor.config_result:
+  icon: mdi:home-assistant

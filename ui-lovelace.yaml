@@ -649,7 +649,6 @@ views:
                 dark_mode: true
                 geo_location_sources:
                   - nsw_rural_fire_service_feed
-                  - wwlln
                 entities:
                   - zone.home
   - title: Lights & Switches
@@ -946,6 +945,12 @@ views:
               - input_select.theme_switcher
           - type: horizontal-stack
             cards:
+              - type: 'custom:button-card'
+                icon: mdi:home-assistant
+                name: Reset HACS
+                tap_action:
+                  action: call-service
+                  service: shell_command.resethacs
               - type: custom:button-card
                 icon: mdi:home-assistant
                 lock: true
@@ -963,6 +968,43 @@ views:
                   service: input_select.select_next
                   service_data:
                     entity_id: input_select.theme_switcher
+          - type: entities
+            title: Check Configuration
+            show_header_toggle: false
+            entities:
+              - entity: script.check_config
+              - entity: sensor.config_result
+                icon: mdi:home-assistant
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-source-code-80.png
+                show_entity_picture: true
+                name: Core
+                tap_action:
+                  action: call-service
+                  service: homeassistant.reload_core_config
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-variation-80.png
+                show_entity_picture: true
+                name: Groups
+                tap_action:
+                  action: call-service
+                  service: group.reload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-automation-80.png
+                show_entity_picture: true
+                name: Automations
+                tap_action:
+                  action: call-service
+                  service: automation.reload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-note-80.png
+                show_entity_picture: true
+                name: Scripts
+                tap_action:
+                  action: call-service
+                  service: script.reload
           - type: entities
             title: Automations & Scenes
             show_header_toggle: false

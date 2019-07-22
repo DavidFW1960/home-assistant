@@ -44,6 +44,7 @@ homeassistant:
         "::1": !secret user_id
         10.90.11.0/24: !secret user_id
         "fd00::/8": !secret user_id
+        !secret my_ipv6_network: !secret user_id
         !secret zerotier_network: !secret user_id
       allow_bypass_login: true
     - type: homeassistant
@@ -189,12 +190,17 @@ mobile_app:
 zeroconf:
 ssdp:
 
+# Wemo
+wemo:
+  discovery: false
+  static:
+    - !secret wemo_ip
 # Yeelights
 yeelight:
   devices:
-    10.90.11.47:
+    !secret yeelight_fan:
       name: Fan Light
-    10.90.11.7:
+    !secret yeelight_meals:
       name: Meals Area Light
 
 # Allows you to issue voice commands from the frontend in enabled browsers
@@ -383,6 +389,9 @@ switch:
 # Custom Component/Card Updater
 hacs:
   token: !secret hacs_github_token
+  sidepanel_title: HACS
+  sidepanel_icon: 'mdi:application'
+  appdaemon: true
   python_script: true
   theme: true
 
@@ -402,6 +411,7 @@ shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
   abbusage: /bin/bash /config/abbusage/abbusage_ha.sh
+  resethacs: /bin/bash /config/reset_new_hacs.sh
 
 # Home Assistant Podcasts on gpodder
 gpodder:
