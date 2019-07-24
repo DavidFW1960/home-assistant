@@ -390,7 +390,7 @@ switch:
 hacs:
   token: !secret hacs_github_token
   sidepanel_title: HACS
-  sidepanel_icon: 'mdi:application'
+  sidepanel_icon: mdi:package
   appdaemon: true
   python_script: true
   theme: true
