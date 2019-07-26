@@ -71,7 +71,7 @@ sensor:
         value_template: >
           {{states('sensor.bom_today_max')|round(0)}}°/{{states('sensor.bom_today_min')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_0')|round(0)}}%
         entity_picture_template: >-
-          {%- if now().strftime('%H:%M') > '18:00' and (states('sensor.bom_gosford_icon_0') == 'fog' or states('sensor.bom_gosford_icon_0') == 'haze' or states('sensor.bom_gosford_icon_0') == ' light-showers' or states('sensor.bom_gosford_icon_0') == 'partly-cloudy' or states('sensor.bom_gosford_icon_0') == 'showers') -%}
+          {%- if states('sun.sun') == 'below_horizon' and (states('sensor.bom_gosford_icon_0') == 'fog' or states('sensor.bom_gosford_icon_0') == 'haze' or states('sensor.bom_gosford_icon_0') == ' light-showers' or states('sensor.bom_gosford_icon_0') == 'partly-cloudy' or states('sensor.bom_gosford_icon_0') == 'showers') -%}
           {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_0') ~ '-night.png' }}
           {%- else -%}
           {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_0') ~ '.png' }}
@@ -196,7 +196,7 @@ automation:
     - event: start
       platform: homeassistant
     - platform: time
-      at: '18:01:00'
+      at: '18:00:00'
   action:
     - service: homeassistant.update_entity
       entity_id: sensor.bom_forecast_0, sensor.bom_forecast_1, sensor.bom_forecast_2, sensor.bom_forecast_3, sensor.bom_forecast_4, sensor.bom_forecast_5, sensor.bom_forecast_6
