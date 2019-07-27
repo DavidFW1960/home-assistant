@@ -19,7 +19,7 @@ class BOMWeatherCard extends LitElement {
 //    var icons = this.config.static_icons ? "static" : "animated";
     var currentText = this.config.entity_current_text ? html`<span class="currentText" id="current-text">${this._hass.states[this.config.entity_current_text].state}</span>` : ``;
     var apparentTemp = this.config.entity_apparent_temp ? html`<span class="apparent">${this.localeText.feelsLike} <span id="apparent-text">${this.current.apparent}</span> ${this.getUOM("temperature")}</span>` : ``;
-    var summary = this.config.entity_daily_summary ? html`<br><span class="unit" id="daily-summary-text">${this._hass.states[this.config.entity_daily_summary].state}</span></br>` : ``;
+    var summary = this.config.entity_daily_summary ? html`<br><span class="summary" id="daily-summary-text">${this._hass.states[this.config.entity_daily_summary].state}</span>` : ``;
     var separator = this.config.show_separator ? html`<hr class=line>` : ``;
     
     
@@ -64,7 +64,9 @@ class BOMWeatherCard extends LitElement {
                   <div class="fcasttooltiptext" id="fcast-summary-${daily.dayIndex}">${ this.config.tooltips ? this._hass.states[daily.summary].state : ""}</div>
                 </div>`)}
               </div>
-        ${summary}
+			<div class="summary text">
+			  ${summary}
+			  </div>
       </ha-card>
     `;
   }
@@ -211,8 +213,8 @@ class BOMWeatherCard extends LitElement {
           feelsLike: "Feels like",
           maxToday: "Today's High",
           minToday: "Today's Low",
-          posToday: "Possible Today",
-          posTomorrow: "Possible Tomorrow",
+          posToday: "Forecast",
+          posTomorrow: "Fore Tom",
         }
     }
   }
@@ -306,7 +308,7 @@ class BOMWeatherCard extends LitElement {
   										templow:  this.config.entity_forecast_low_temp_2,
   										pop: this.config.entity_pop_2,
   										pos: this.config.entity_pos_2,
-  										summary: this.config.entity_summary_2,  };
+  										summary: this.config.entity_summary_2, };
     const forecast3 = { date: forecastDate3,
                       dayIndex: '3',
   	                  condition: this.config.entity_forecast_icon_3,
@@ -373,7 +375,7 @@ get sunSet() {
     var nextSunRise;
     if (this.config.time_format) {
       nextSunSet = new Date(this._hass.states[this.config.entity_sun].attributes.next_setting).toLocaleTimeString(this.config.locale, {hour: '2-digit', minute:'2-digit',hour12: this.is12Hour});
-      nextSunRise = new Date(this._hass.states[this.config.entity_sun].attributes.next_rising).toLocaleTimeString(this.config.locale, {hour: '2-digit', minute:'2-digit', hour12: this.is12Hour});
+      nextSunRise = new Date(this._hass.states[this.config.entity_sun].attributes.next_rising).toLocaleTimeString(this.config.locale, {hour: '2-digit', minute:'2-digit',hour12: this.is12Hour});
     }
     else {
       nextSunSet = new Date(this._hass.states[this.config.entity_sun].attributes.next_setting).toLocaleTimeString(this.config.locale, {hour: '2-digit', minute:'2-digit'});
@@ -489,9 +491,11 @@ style() {
   var largeIconLeftPos = this.config.large_icon_left_pos || "0em";
   var currentDataTopMargin = this.config.current_data_top_margin ? this.config.current_data_top_margin : this.config.show_separator ? "1em" : "7em";
   var separatorTopMargin = this.config.separator_top_margin || "6em";
+  var summaryTopMargin = this.config.summary_top_margin || "0.2em";
+  var summaryFontSize = this.config.summary_font_size || "0.8em";
   
   return html`
-        .clear {
+      .clear {
         clear: both;
       }
 
@@ -575,6 +579,11 @@ style() {
 
       .unit {
         font-size: 0.8em;
+      }
+
+      .summary {
+        font-size: ${summaryFontSize};
+		margin-top: ${summaryTopMargin};
       }
 
       .forecast {

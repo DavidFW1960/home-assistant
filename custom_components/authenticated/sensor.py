@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 import json
 import logging
 import os
-from ipaddress import ip_address as ValidateIP
+from ipaddress import ip_address as ValidateIP, ip_network
 import socket
 import requests
 import voluptuous as vol
@@ -320,23 +320,25 @@ def load_authentications(authfile, exclude):
 
     for token in tokens:
         try:
-            if token["last_used_ip"] in exclude:
-                continue
-            if token["last_used_ip"] in tokens_cleaned:
-                if (
-                    token["last_used_at"]
-                    > tokens_cleaned[token["last_used_ip"]]["last_used_at"]
-                ):
+            for excludeaddress in exclude:
+                if ValidateIP(token["last_used_ip"]) in ip_network(excludeaddress, False):
+                    break
+            else:
+                if token["last_used_ip"] in tokens_cleaned:
+                    if (
+                        token["last_used_at"]
+                        > tokens_cleaned[token["last_used_ip"]]["last_used_at"]
+                    ):
+                        tokens_cleaned[token["last_used_ip"]]["last_used_at"] = token[
+                            "last_used_at"
+                        ]
+                        tokens_cleaned[token["last_used_ip"]]["user_id"] = token["user_id"]
+                else:
+                    tokens_cleaned[token["last_used_ip"]] = {}
                     tokens_cleaned[token["last_used_ip"]]["last_used_at"] = token[
                         "last_used_at"
                     ]
                     tokens_cleaned[token["last_used_ip"]]["user_id"] = token["user_id"]
-            else:
-                tokens_cleaned[token["last_used_ip"]] = {}
-                tokens_cleaned[token["last_used_ip"]]["last_used_at"] = token[
-                    "last_used_at"
-                ]
-                tokens_cleaned[token["last_used_ip"]]["user_id"] = token["user_id"]
         except Exception:  # Gotta Catch 'Em All
             pass
 
