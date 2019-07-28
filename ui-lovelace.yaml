@@ -910,6 +910,10 @@ views:
                   - automation.make_snapshot_copy_backups_to_dropbox
                   - automation.update_available
                   - automation.beta_update_available
+                  - automation.hacs_persistent_notification
+                  - entity: automation.update_bom_icons
+                    type: 'custom:secondaryinfo-entity-row'
+                    secondary_info: "[[ automation.update_bom_icons.attributes.last_triggered ]]"
                   - automation.bin_night
                   - automation.update_bin_night
                   - automation.clean_out_known_devices
