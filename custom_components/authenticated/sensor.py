@@ -48,9 +48,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Optional(CONF_PROVIDER, default="ipapi"): vol.In(PROVIDERS),
         vol.Optional(CONF_LOG_LOCATION, default=""): cv.string,
         vol.Optional(CONF_NOTIFY, default=True): cv.boolean,
-        vol.Optional(CONF_EXCLUDE, default="None"): vol.All(
-            cv.ensure_list, [cv.string]
-        ),
+        vol.Optional(CONF_EXCLUDE, default=[]): vol.All(cv.ensure_list, [cv.string]),
     }
 )
 
@@ -321,7 +319,9 @@ def load_authentications(authfile, exclude):
     for token in tokens:
         try:
             for excludeaddress in exclude:
-                if ValidateIP(token["last_used_ip"]) in ip_network(excludeaddress, False):
+                if ValidateIP(token["last_used_ip"]) in ip_network(
+                    excludeaddress, False
+                ):
                     break
             else:
                 if token["last_used_ip"] in tokens_cleaned:
@@ -332,7 +332,9 @@ def load_authentications(authfile, exclude):
                         tokens_cleaned[token["last_used_ip"]]["last_used_at"] = token[
                             "last_used_at"
                         ]
-                        tokens_cleaned[token["last_used_ip"]]["user_id"] = token["user_id"]
+                        tokens_cleaned[token["last_used_ip"]]["user_id"] = token[
+                            "user_id"
+                        ]
                 else:
                     tokens_cleaned[token["last_used_ip"]] = {}
                     tokens_cleaned[token["last_used_ip"]]["last_used_at"] = token[
