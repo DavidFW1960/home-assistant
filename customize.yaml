@@ -1,3 +1,17 @@
+sensor.sonoff1_2914_status:
+  icon: mdi:coffee
+sensor.sonoff2_3110_status:
+  icon: mdi:tooth
+sensor.sonoff5_1083_status:
+  icon: mdi:garage
+sensor.sonoff6_3719_status:
+  icon: mdi:shield-home
+sensor.sonoff4_0851_status:
+  icon: mdi:flash
+sensor.sonoff3_0898_status:
+  icon: mdi:flash
+sensor.sonoff7_3474_status:
+  icon: mdi:flash
 switch.sonoff12914:
   friendly_name: Coffee Maker
   icon: mdi:coffee
@@ -44,54 +58,8 @@ input_boolean.alarmgaragedoor:
 input_boolean.overtime:
   friendly_name: Overtime
   icon: mdi:clock
-sensor.artisan_software_version:
-  icon: mdi:coffee
-sensor.fritz_netmonitor:
-  friendly_name: Fritz Net Monitor
-sensor.hass_current_beta_version:
-  icon: mdi:beta
-sensor.hass_current_dev_version:
-  icon: mdi:alpha
-sensor.hass_installed_version:
-  icon: mdi:approval
-sensor.cpu_temperature:
-  icon: mdi:thermometer
-sensor.sabnzbd_status:
-  icon: mdi:download
-sensor.sabnzbd_queue:
-  icon: mdi:download
-sensor.sabnzbd_queue_count:
-  icon: mdi:download
-sensor.sabnzbd_speed:
-  icon: mdi:speedometer
-sensor.sabnzbd_left:
-  icon: mdi:download
-sensor.sabnzbd_disk:
-  icon: mdi:harddisk
-sensor.sabnzbd_disk_free:
-  icon: mdi:harddisk
-sensor.sabnzbd_daily_total:
-  icon: mdi:disc
-sensor.sabnzbd_weekly_total:
-  icon: mdi:disc
-sensor.sabnzbd_monthly_total:
-  icon: mdi:disc
-sensor.sabnzbd_total:
-  icon: mdi:disc
-sensor.speedtest_download_filtered:
-  icon: mdi:speedometer
-sensor.speedtest_upload_filtered:
-  icon: mdi:speedometer
 group.all_geolocation_events:
   icon: mdi:map
-sensor.busmonitor1:
-  icon: mdi:bus
-sensor.busmonitor2:
-  icon: mdi:bus
-sensor.trainmonitor1:
-  icon: mdi:train
-sensor.trainmonitor2:
-  icon: mdi:train
 media_player.roku_5x46aj056306:
   friendly_name: Telstra TV
 media_player.foxtel_7587:
@@ -102,176 +70,6 @@ media_player.osmc_vero4:
   friendly_name: Kodi OSMC Vero
 media_player.tvua55d8000:
   friendly_name: Samsung TV
-sensor.bom_gosford_air_temp_c:
-  friendly_name: Air Temp
-sensor.bom_gosford_delta_temp_c:
-  friendly_name: Delta Temp
-sensor.bom_gosford_dew_point_c:
-  friendly_name: Dew Point
-sensor.bom_gosford_feels_like_c:
-  friendly_name: Feels Like
-sensor.bom_gosford_rain_today:
-  friendly_name: Rain Today
-  icon: mdi:weather-rainy
-sensor.bom_gosford_relative_humidity:
-  friendly_name: Relative Humidity
-  icon: mdi:water-percent
-sensor.bom_gosford_wind_direction:
-  friendly_name: Wind Direction
-  entity_picture: /local/icons/MoonPhases/rooster.png
-sensor.bom_gosford_wind_direction_kt:
-  friendly_name: Wind Direction kt
-  icon: mdi:weather-windy
-sensor.bom_gosford_wind_gust_kmh:
-  friendly_name: Wind Gust
-  icon: mdi:weather-windy
-sensor.bom_gosford_wind_gust_kt:
-  friendly_name: Wind Gust kt
-  icon: mdi:weather-windy
-sensor.bom_gosford_wind_speed_kmh:
-  friendly_name: Wind Speed
-  icon: mdi:weather-windy
-sensor.bom_gosford_wind_speed_kt:
-  friendly_name: Wind Speed kt
-  icon: mdi:weather-windy
-sensor.dark_sky_cloud_coverage_0:
-  friendly_name: Cloud Coverage Today
-sensor.dark_sky_cloud_coverage_1:
-  friendly_name: Cloud Coverage Tomorrow
-sensor.dark_sky_daytime_high_temperature:
-  friendly_name: High Today
-sensor.dark_sky_daytime_high_temperature_1:
-  friendly_name: High Tomorrow
-sensor.dark_sky_overnight_low_temperature:
-  friendly_name: Low Today
-sensor.dark_sky_overnight_low_temperature_1:
-  friendly_name: Low Tomorrow
-sensor.dark_sky_daily_summary:
-  friendly_name: Daily Summary
-sensor.dark_sky_hourly_summary:
-  friendly_name: Hourly Summary
-sensor.dark_sky_summary_0:
-  friendly_name: Summary Today
-sensor.dark_sky_summary_1:
-  friendly_name: Summary Tomorrow
-sensor.dark_sky_wind_speed_0:
-  friendly_name: Wind Speed Today
-sensor.dark_sky_wind_speed_1:
-  friendly_name: Wind Speed Tomorrow
-sensor.dark_sky_current_text:
-  friendly_name: Dark Sky Current Text
-sensor.yrwthr:
-  friendly_name: Weather
-sensor.yr_symbol:
-  hidden: true
-sensor.caltex_kariong_pdl:
-  friendly_name: Caltex Langford Drive Kariong
-  icon: mdi:gas-station
-sensor.caltex_woolworths_pdl:
-  friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
-  icon: mdi:gas-station
-sensor.caltex_gosford_west_pdl:
-  friendly_name: Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
-  icon: mdi:gas-station
-sensor.caltex_gosford_west_pdl_2:
-  friendly_name: Caltex 30A Pacific Hwy West Gosford (From Gosford)
-  icon: mdi:gas-station
-sensor.caltex_gosford_west_pdl_3:
-  friendly_name: Caltex 283 Manns Rd West Gosford
-  icon: mdi:gas-station
-sensor.caltex_woolworths_erina_pdl:
-  friendly_name: Caltex Woolies 155 The Entrance Rd Erina
-  icon: mdi:gas-station
-sensor.caltex_wyoming_pdl:
-  friendly_name: Caltex 465 Pacific Hwy Wyoming
-  icon: mdi:gas-station
-sensor.caltex_woolworths_tuggerah_pdl:
-  friendly_name: Caltex Woolies Westfield 24-26 Gavenlock Road
-  icon: mdi:gas-station
-sensor.caltex_woolworths_tuggerah_north_pdl:
-  friendly_name: Caltex Woolies 186 Pacific Hwy Tuggerah
-  icon: mdi:gas-station
-sensor.caltex_wyong_pdl:
-  friendly_name: Caltex M1 Northbound
-  icon: mdi:gas-station
-sensor.caltex_wyong_pdl_2:
-  friendly_name: Caltex M1 Southbound
-  icon: mdi:gas-station
-sensor.coles_express_kariong_dl:
-  friendly_name: Shell 6-8 Pacific Hwy Kariong (Diesel)
-  icon: mdi:gas-station
-sensor.caltex_woolworths_waitara_pdl:
-  friendly_name: Caltex Woolies 59-61 Pacific Hwy Waitara
-  icon: mdi:gas-station
-sensor.caltex_woolworths_turramurra_pdl:
-  friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
-  icon: mdi:gas-station
-sensor.caltex_st_ives_north_pdl:
-  friendly_name: Caltex 363 Mona Vale Rd St Ives North
-  icon: mdi:gas-station
-sensor.caltex_st_ives_pdl:
-  friendly_name: Caltex 164 Mona Vale Rd St Ives
-  icon: mdi:gas-station
-sensor.caltex_woolworths_glenrose_pdl:
-  friendly_name: Caltex Woolies 60 Glenn St Belrose
-  icon: mdi:gas-station
-sensor.caltex_belrose_pdl:
-  friendly_name: Caltex 153 Forest Way Belrose
-  icon: mdi:gas-station
-sensor.sunrisetoday:
-  friendly_name: Sunrise (Today)
-sensor.sunsettoday:
-  friendly_name: Sunset (Today)
-sensor.disk_use:
-  friendly_name: Disk Used
-sensor.disk_free:
-  friendly_name: Disk Free
-sensor.disk_use_percent:
-  friendly_name: Percent Disk Used
-sensor.memory_use_percent:
-  friendly_name: Percent Memory Used
-sensor.memory_use:
-  friendly_name: Memory Used
-sensor.memory_free:
-  friendly_name: Memory Free
-sensor.swap_use_percent:
-  friendly_name: Percent Swap Used
-sensor.load_1m:
-  friendly_name: 1m Load
-sensor.load_5m:
-  friendly_name: 5m Load
-sensor.load_15m:
-  friendly_name: 15m Load
-sensor.load:
-  friendly_name: Load Averages
-  icon: mdi:memory
-sensor.processor_use:
-  friendly_name: Processor Used
-sensor.ipv4_address:
-  friendly_name: IPv4 Address
-sensor.wan_ip_address:
-  friendly_name: WAN IP Address
-  icon: mdi:server-network
-sensor.network_in_eno1:
-  friendly_name: Network In
-sensor.network_out_eno1:
-  friendly_name: Network Out
-sensor.last_boot:
-  friendly_name: Last Boot
-  device_class: timestamp
-  icon: mdi:clock
-sensor.systemuptime:
-  friendly_name: Since Last Boot
-  icon: mdi:clock
-sensor.last_successful_authentication:
-  friendly_name: Last Successful Authentication
-  icon: mdi:shield-check
-sensor.memory_mean:
-  friendly_name: Memory % Use Stats
-  icon: mdi:memory
-sensor.processor_mean:
-  friendly_name: Processor % Use Stats
-  icon: mdi:memory
 switch.ha_dockermon_sabnzbd:
   friendly_name: Sabnzbd
   icon: mdi:docker
@@ -290,26 +88,6 @@ switch.ha_dockermon_portainer:
 switch.ha_dockermon_watchtower:
   friendly_name: Watchtower
   icon: mdi:docker
-sensor.sonarr_memory:
-  friendly_name: Sonarr Memory Used
-sensor.radarr_memory:
-  friendly_name: Radarr Memory Used
-sensor.sabnzbd_memory:
-  friendly_name: Sabnzbd Memory Used
-sensor.sonoff1_2914_status:
-  icon: mdi:coffee
-sensor.sonoff2_3110_status:
-  icon: mdi:tooth
-sensor.sonoff5_1083_status:
-  icon: mdi:garage
-sensor.sonoff6_3719_status:
-  icon: mdi:shield-home
-sensor.sonoff4_0851_status:
-  icon: mdi:flash
-sensor.sonoff3_0898_status:
-  icon: mdi:flash
-sensor.sonoff7_3474_status:
-  icon: mdi:flash
 device_tracker.2f8148d281b54990843f41e7216860f0:
   friendly_name: David's iPad
 device_tracker.e05603a1f7b1483faa3b1b5378be26fa:
@@ -324,19 +102,13 @@ input_boolean.holiday:
   icon: mdi:font-awesome
 input_boolean.homeandawayauto:
   icon: mdi:home
-sensor.dark_sky_cloud_coverage_0d:
-  friendly_name: Dark Sky Cloud Coverage Today
-sensor.dark_sky_cloud_coverage_1d:
-  friendly_name: Dark Sky Cloud Coverage Tomorrow
-sensor.dark_sky_summary_0d:
-  friendly_name: Dark Sky Summary Today
-sensor.dark_sky_summary_1d:
-  friendly_name: Dark Sky Summary Tomorrow
-sensor.dark_sky_wind_speed_0d:
-  friendly_name: Dark Sky Wind Speed Today
-sensor.dark_sky_wind_speed_1d:
-  friendly_name: Dark Sky Wind Speed Tomorrow
 sensor.hacs:
   friendly_name: HACS
 sensor.config_result:
   icon: mdi:home-assistant
+sensor.sabnzbd_memory:
+  icon: mdi:kodi
+sensor.sonarr_memory:
+  icon: mdi:television-classic
+sensor.radarr_memory:
+  icon: mdi:movie

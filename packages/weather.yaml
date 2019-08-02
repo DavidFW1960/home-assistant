@@ -204,3 +204,77 @@ automation:
   action:
     - service: homeassistant.update_entity
       entity_id: sensor.bom_forecast_0, sensor.bom_forecast_1, sensor.bom_forecast_2, sensor.bom_forecast_3, sensor.bom_forecast_4, sensor.bom_forecast_5, sensor.bom_forecast_6
+
+homeassistant:
+  customize:
+
+    sensor.bom_gosford_air_temp_c:
+      friendly_name: Air Temp
+    sensor.bom_gosford_delta_temp_c:
+      friendly_name: Delta Temp
+    sensor.bom_gosford_dew_point_c:
+      friendly_name: Dew Point
+    sensor.bom_gosford_feels_like_c:
+      friendly_name: Feels Like
+    sensor.bom_gosford_rain_today:
+      friendly_name: Rain Today
+      icon: mdi:weather-rainy
+    sensor.bom_gosford_relative_humidity:
+      friendly_name: Relative Humidity
+      icon: mdi:water-percent
+    sensor.bom_gosford_wind_direction:
+      friendly_name: Wind Direction
+      entity_picture: /local/icons/MoonPhases/rooster.png
+    sensor.bom_gosford_wind_direction_kt:
+      friendly_name: Wind Direction kt
+      icon: mdi:weather-windy
+    sensor.bom_gosford_wind_gust_kmh:
+      friendly_name: Wind Gust
+      icon: mdi:weather-windy
+    sensor.bom_gosford_wind_gust_kt:
+      friendly_name: Wind Gust kt
+      icon: mdi:weather-windy
+    sensor.bom_gosford_wind_speed_kmh:
+      friendly_name: Wind Speed
+      icon: mdi:weather-windy
+    sensor.bom_gosford_wind_speed_kt:
+      friendly_name: Wind Speed kt
+      icon: mdi:weather-windy
+    sensor.dark_sky_cloud_coverage_0:
+      friendly_name: Cloud Coverage Today
+    sensor.dark_sky_cloud_coverage_1:
+      friendly_name: Cloud Coverage Tomorrow
+    sensor.dark_sky_daytime_high_temperature:
+      friendly_name: High Today
+    sensor.dark_sky_daytime_high_temperature_1:
+      friendly_name: High Tomorrow
+    sensor.dark_sky_overnight_low_temperature:
+      friendly_name: Low Today
+    sensor.dark_sky_overnight_low_temperature_1:
+      friendly_name: Low Tomorrow
+    sensor.dark_sky_daily_summary:
+      friendly_name: Daily Summary
+    sensor.dark_sky_hourly_summary:
+      friendly_name: Hourly Summary
+    sensor.dark_sky_summary_0:
+      friendly_name: Summary Today
+    sensor.dark_sky_summary_1:
+      friendly_name: Summary Tomorrow
+    sensor.dark_sky_wind_speed_0:
+      friendly_name: Wind Speed Today
+    sensor.dark_sky_wind_speed_1:
+      friendly_name: Wind Speed Tomorrow
+    sensor.dark_sky_current_text:
+      friendly_name: Dark Sky Current Text
+    sensor.dark_sky_cloud_coverage_0d:
+      friendly_name: Dark Sky Cloud Coverage Today
+    sensor.dark_sky_cloud_coverage_1d:
+      friendly_name: Dark Sky Cloud Coverage Tomorrow
+    sensor.dark_sky_summary_0d:
+      friendly_name: Dark Sky Summary Today
+    sensor.dark_sky_summary_1d:
+      friendly_name: Dark Sky Summary Tomorrow
+    sensor.dark_sky_wind_speed_0d:
+      friendly_name: Dark Sky Wind Speed Today
+    sensor.dark_sky_wind_speed_1d:
+      friendly_name: Dark Sky Wind Speed Tomorrow

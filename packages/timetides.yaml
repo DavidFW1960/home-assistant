@@ -4,6 +4,18 @@
 # Note also that for the Moon Icons, by default these are set for the Southern Hemisphere.
 # See that the jpg files all start with an 'S'. For Northern Hemisphere, change these to 'N'
 
+homeassistant:
+  customize:
+  
+    sensor.yrwthr:
+      friendly_name: Weather
+    sensor.yr_symbol:
+      hidden: true
+    sensor.sunrisetoday:
+      friendly_name: Sunrise (Today)
+    sensor.sunsettoday:
+      friendly_name: Sunset (Today)
+
 # Track the sun
 sun:
 

@@ -1,4 +1,18 @@
 # Public Transport NSW
+
+homeassistant:
+  customize:
+
+    sensor.busmonitor1:
+      icon: mdi:bus
+    sensor.busmonitor2:
+      icon: mdi:bus
+    sensor.trainmonitor1:
+      icon: mdi:train
+    sensor.trainmonitor2:
+      icon: mdi:train
+
+
 sensor:
   - platform: transport_nsw
     name: 'Kariong-Gosford'

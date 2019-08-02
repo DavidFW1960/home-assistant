@@ -164,6 +164,7 @@ views:
             entities:
               - entity: sensor.sabnzbd_memory
                 name: Sabnzbd
+                icon: mdi:kodi
                 show_state: true
                 color: yellow
           - type: custom:mini-graph-card
@@ -174,6 +175,7 @@ views:
             entities:
               - entity: sensor.sonarr_memory
                 name: Sonarr
+                icon: mdi:television-classic
                 show_state: true
                 color: orange
           - type: custom:mini-graph-card
@@ -184,6 +186,7 @@ views:
             entities:
               - entity: sensor.radarr_memory
                 name: Radarr
+                icon: mdi:movie-open-outline
                 show_state: true
                 color: '#73C2FB'
           - type: entities
@@ -488,14 +491,16 @@ views:
             apparent_top_margin: 45px       #default 45px px or em
             apparent_right_pos: 1em         #default 1em px or em
             apparent_right_margin: 1em      #default 1em px or em
-            current_text_top_margin: 39px   #default 39px px or em
-            current_text_left_pos: 5em      #default 5em px or em
+            current_text_top_margin: 4.5em  #default 39px px or em
+            current_text_left_pos: 0em      #default 5em px or em
             current_text_font_size: 1.5em   #default 1.5em em
-            current_data_top_margin: 7em    #default 7em px or em
+            current_text_alignment: center  #default center
+            current_text_width: 100%        #default 100%
+            current_data_top_margin: 10em   #default 7em px or em
             large_icon_top_margin: -3.5em   #default -3.5em px or em
             large_icon_left_position: 0em   #default 0em px or em
             separator_top_margin: 6em       #default 6em px or em
-            summary_top_padding: 0.5em      #default 1em px or em
+            summary_top_padding: 2em        #default 1em px or em
             summary_font_size: 0.8em        #default 0.8em px or em
             slot_l1: daytime_high           #daytime_high
             slot_l2: daytime_low            #wind
@@ -1282,25 +1287,25 @@ views:
             title: NSW Fuel Watch - Sydney
             show_header_toggle: false
             entities:
-              - sensor.caltex_woolworths_waitara_pdl
-              - sensor.caltex_woolworths_turramurra_pdl
-              - sensor.caltex_st_ives_pdl
-              - sensor.caltex_st_ives_north_pdl
-              - sensor.caltex_woolworths_glenrose_pdl
-              - sensor.caltex_belrose_pdl
+              - sensor.caltex_2436
+              - sensor.caltex_663
+              - sensor.caltex_861
+              - sensor.caltex_17310
+              - sensor.caltex_643
+              - sensor.caltex_721
       - type: entities
         title: NSW Fuel Watch - Central Coast
         show_header_toggle: false
         entities:
-          - sensor.caltex_kariong_pdl
-          - sensor.caltex_woolworths_pdl
-          - sensor.caltex_gosford_west_pdl
-          - sensor.caltex_gosford_west_pdl_2
-          - sensor.caltex_gosford_west_pdl_3
-          - sensor.caltex_woolworths_erina_pdl
-          - sensor.caltex_wyoming_pdl
-          - sensor.caltex_woolworths_tuggerah_pdl
-          - sensor.caltex_woolworths_tuggerah_north_pdl
-          - sensor.caltex_wyong_pdl
-          - sensor.caltex_wyong_pdl_2
-          - sensor.coles_express_kariong_dl
+          - sensor.caltex_17340
+          - sensor.caltex_622
+          - sensor.caltex_874
+          - sensor.caltex_845
+          - sensor.caltex_819
+          - sensor.caltex_17249
+          - sensor.caltex_2263
+          - sensor.caltex_620
+          - sensor.caltex_523
+          - sensor.caltex_907
+          - sensor.caltex_906
+          - sensor.shell_902

@@ -184,3 +184,101 @@ automation:
       event: start
     action:
       - service: speedtestdotnet.speedtest
+
+homeassistant:
+  customize:
+
+    sensor.disk_use:
+      friendly_name: Disk Used
+    sensor.disk_free:
+      friendly_name: Disk Free
+    sensor.disk_use_percent:
+      friendly_name: Percent Disk Used
+    sensor.memory_use_percent:
+      friendly_name: Percent Memory Used
+    sensor.memory_use:
+      friendly_name: Memory Used
+    sensor.memory_free:
+      friendly_name: Memory Free
+    sensor.swap_use_percent:
+      friendly_name: Percent Swap Used
+    sensor.load_1m:
+      friendly_name: 1m Load
+    sensor.load_5m:
+      friendly_name: 5m Load
+    sensor.load_15m:
+      friendly_name: 15m Load
+    sensor.load:
+      friendly_name: Load Averages
+      icon: mdi:memory
+    sensor.processor_use:
+      friendly_name: Processor Used
+    sensor.ipv4_address:
+      friendly_name: IPv4 Address
+    sensor.wan_ip_address:
+      friendly_name: WAN IP Address
+      icon: mdi:server-network
+    sensor.network_in_eno1:
+      friendly_name: Network In
+    sensor.network_out_eno1:
+      friendly_name: Network Out
+    sensor.last_boot:
+      friendly_name: Last Boot
+      device_class: timestamp
+      icon: mdi:clock
+    sensor.systemuptime:
+      friendly_name: Since Last Boot
+      icon: mdi:clock
+    sensor.last_successful_authentication:
+      friendly_name: Last Successful Authentication
+      icon: mdi:shield-check
+    sensor.memory_mean:
+      friendly_name: Memory % Use Stats
+      icon: mdi:memory
+    sensor.processor_mean:
+      friendly_name: Processor % Use Stats
+      icon: mdi:memory
+    sensor.artisan_software_version:
+      icon: mdi:coffee
+    sensor.fritz_netmonitor:
+      friendly_name: Fritz Net Monitor
+    sensor.hass_current_beta_version:
+      icon: mdi:beta
+    sensor.hass_current_dev_version:
+      icon: mdi:alpha
+    sensor.hass_installed_version:
+      icon: mdi:approval
+    sensor.cpu_temperature:
+      icon: mdi:thermometer
+    sensor.sonarr_memory:
+      friendly_name: Sonarr Memory Used
+    sensor.radarr_memory:
+      friendly_name: Radarr Memory Used
+    sensor.sabnzbd_memory:
+      friendly_name: Sabnzbd Memory Used
+    sensor.sabnzbd_status:
+      icon: mdi:download
+    sensor.sabnzbd_queue:
+      icon: mdi:download
+    sensor.sabnzbd_queue_count:
+      icon: mdi:download
+    sensor.sabnzbd_speed:
+      icon: mdi:speedometer
+    sensor.sabnzbd_left:
+      icon: mdi:download
+    sensor.sabnzbd_disk:
+      icon: mdi:harddisk
+    sensor.sabnzbd_disk_free:
+      icon: mdi:harddisk
+    sensor.sabnzbd_daily_total:
+      icon: mdi:disc
+    sensor.sabnzbd_weekly_total:
+      icon: mdi:disc
+    sensor.sabnzbd_monthly_total:
+      icon: mdi:disc
+    sensor.sabnzbd_total:
+      icon: mdi:disc
+    sensor.speedtest_download_filtered:
+      icon: mdi:speedometer
+    sensor.speedtest_upload_filtered:
+      icon: mdi:speedometer

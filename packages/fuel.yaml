@@ -1,94 +1,302 @@
 # NSW Fuel Watch Search for /FuelCheckApp/v1/fuel/prices/bylocation
 # Site: https://www.fuelcheck.nsw.gov.au/App/
+
 sensor:
   - platform: nsw_fuel_station
     station_id: 17340
 #   friendly_name: Caltex Langford Drive Kariong
+#   sensor.caltex_kariong_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 622
 #   friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
+#   sensor.caltex_woolworths_gosford_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 819
 #   friendly_name: Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
+#   sensor.caltex_gosford_west_pdl_3
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 874
 #   friendly_name: Caltex 283 Manns Rd West Gosford
+#   sensor.caltex_gosford_west_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 845
 #   friendly_name: Caltex 30A Pacific Hwy West Gosford (From Gosford)
+#   sensor.caltex_gosford_west_pdl_2
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 17249
 #   friendly_name: Caltex Woolies 155 The Entrance Rd Erina
+#   sensor.caltex_woolworths_erina_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 2263
 #   friendly_name: Caltex 465 Pacific Hwy Wyoming
+#   sensor.caltex_wyoming_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 620
 #   friendly_name: Caltex Woolies Westfield 24-26 Gavenlock Road
+#   sensor.caltex_woolworths_tuggerah_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 523
 #   friendly_name: Caltex Woolies 186 Pacific Hwy Tuggerah
+#   sensor.caltex_woolworths_tuggerah_north_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 907
 #   friendly_name: Caltex M1 Southbound
+#   sensor.caltex_wyong_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 906
 #   friendly_name: Caltex M1 Northbound
+#   sensor.caltex_wyong_pdl_2
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 902
 #   friendly_name: Shell 6-8 Pacific Hwy Kariong
+#   sensor.coles_express_kariong_dl
     fuel_types:
       - DL
   - platform: nsw_fuel_station
     station_id: 2436
 #   friendly_name: Caltex Woolies 59-61 Pacific Hwy Waitara
+#   sensor.caltex_woolworths_waitara_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 663
 #   friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
+#   sensor.caltex_woolworths_turramurra_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 861
 #   friendly_name: Caltex 164 Mona Vale Rd St Ives
+#   sensor.caltex_st_ives_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 17310
-#   friendle_name: Caltex 363 Mona Vale Rd St Ives North
+#   friendly_name: Caltex 363 Mona Vale Rd St Ives North
+#   sensor.caltex_st_ives_north_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 643
 #   friendly_name: Caltex Woolies 60 Glenn St Belrose
+#   sensor.caltex_woolworths_glenrose_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 721
 #   friendly_name: Caltex 153 Forest Way Belrose
+#   sensor.caltex_belrose_pdl
     fuel_types:
       - PDL
 
+#### Setup Template Sensors in case sensor not created (out-of-fuel)
+
+  - platform: template
+    sensors:
+
+      caltex_17340:
+        value_template: >
+          {% if states('sensor.caltex_kariong_pdl') != 'unknown' %} {{ states('sensor.caltex_kariong_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex Langford Drive Kariong
+ 
+      caltex_622:
+        value_template: >
+          {% if states('sensor.caltex_woolworths_gosford_pdl') != 'unknown' %} {{ states('sensor.caltex_woolworths_gosford_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
+
+      caltex_819:
+        value_template: >
+          {% if states('sensor.caltex_gosford_west_pdl_3') != 'unknown' %} {{ states('sensor.caltex_gosford_west_pdl_3') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
+
+      caltex_874:
+        value_template: >
+          {% if states('sensor.caltex_gosford_west_pdl') != 'unknown' %} {{ states('sensor.caltex_gosford_west_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex 283 Manns Rd West Gosford
+
+      caltex_845:
+        value_template: >
+          {% if states('sensor.caltex_gosford_west_pdl_2') != 'unknown' %} {{ states('sensor.caltex_gosford_west_pdl_2') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex 30A Pacific Hwy West Gosford (From Gosford)
+
+      caltex_17249:
+        value_template: >
+          {% if states('sensor.caltex_woolworths_erina_pdl') != 'unknown' %} {{ states('sensor.caltex_woolworths_erina_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex Woolies 155 The Entrance Rd Erina
+
+      caltex_2263:
+        value_template: >
+          {% if states('sensor.caltex_wyoming_pdl') != 'unknown' %} {{ states('sensor.caltex_wyoming_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex 465 Pacific Hwy Wyoming
+
+      caltex_620:
+        value_template: >
+          {% if states('sensor.caltex_woolworths_tuggerah_pdl') != 'unknown' %} {{ states('sensor.caltex_woolworths_tuggerah_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex Woolies Westfield 24-26 Gavenlock Road
+
+      caltex_523:
+        value_template: >
+          {% if states('sensor.caltex_woolworths_tuggerah_north_pdl') != 'unknown' %} {{ states('sensor.caltex_woolworths_tuggerah_north_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex Woolies 186 Pacific Hwy Tuggerah
+
+      caltex_907:
+        value_template: >
+          {% if states('sensor.caltex_wyong_pdl') != 'unknown' %} {{ states('sensor.caltex_wyong_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex M1 Southbound
+
+      caltex_906:
+        value_template: >
+          {% if states('sensor.caltex_wyong_pdl_2') != 'unknown' %} {{ states('sensor.caltex_wyong_pdl_2') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex M1 Northbound
+
+      shell_902:
+        value_template: >
+          {% if states('sensor.coles_express_kariong_dl') != 'unknown' %} {{ states('sensor.coles_express_kariong_dl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Shell 6-8 Pacific Hwy Kariong
+
+      caltex_2436:
+        value_template: >
+          {% if states('sensor.caltex_woolworths_waitara_pdl') != 'unknown' %} {{ states('sensor.caltex_woolworths_waitara_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex Woolies 59-61 Pacific Hwy Waitara
+
+      caltex_663:
+        value_template: >
+          {% if states('sensor.caltex_woolworths_turramurra_pdl') != 'unknown' %} {{ states('sensor.caltex_woolworths_turramurra_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
+
+      caltex_861:
+        value_template: >
+          {% if states('sensor.caltex_st_ives_pdl') != 'unknown' %} {{ states('sensor.caltex_st_ives_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex 164 Mona Vale Rd St Ives
+
+      caltex_17310:
+        value_template: >
+          {% if states('sensor.caltex_st_ives_north_pdl') != 'unknown' %} {{ states('sensor.caltex_st_ives_north_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex 363 Mona Vale Rd St Ives North
+
+      caltex_643:
+        value_template: >
+          {% if states('sensor.caltex_woolworths_glenrose_pdl') != 'unknown' %} {{ states('sensor.caltex_woolworths_glenrose_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex Woolies 60 Glenn St Belrose
+
+      caltex_721:
+        value_template: >
+          {% if states('sensor.caltex_belrose_pdl') != 'unknown' %} {{ states('sensor.caltex_belrose_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex 153 Forest Way Belrose
+
+homeassistant:
+  customize:
+
+    sensor.caltex_kariong_pdl:
+      friendly_name: Caltex Langford Drive Kariong
+      icon: mdi:gas-station
+    sensor.caltex_woolworths_gosford_pdl:
+      friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
+      icon: mdi:gas-station
+    sensor.caltex_gosford_west_pdl:
+      friendly_name: Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
+      icon: mdi:gas-station
+    sensor.caltex_gosford_west_pdl_2:
+      friendly_name: Caltex 30A Pacific Hwy West Gosford (From Gosford)
+      icon: mdi:gas-station
+    sensor.caltex_gosford_west_pdl_3:
+      friendly_name: Caltex 283 Manns Rd West Gosford
+      icon: mdi:gas-station
+    sensor.caltex_woolworths_erina_pdl:
+      friendly_name: Caltex Woolies 155 The Entrance Rd Erina
+      icon: mdi:gas-station
+    sensor.caltex_wyoming_pdl:
+      friendly_name: Caltex 465 Pacific Hwy Wyoming
+      icon: mdi:gas-station
+    sensor.caltex_woolworths_tuggerah_pdl:
+      friendly_name: Caltex Woolies Westfield 24-26 Gavenlock Road
+      icon: mdi:gas-station
+    sensor.caltex_woolworths_tuggerah_north_pdl:
+      friendly_name: Caltex Woolies 186 Pacific Hwy Tuggerah
+      icon: mdi:gas-station
+    sensor.caltex_wyong_pdl:
+      friendly_name: Caltex M1 Northbound
+      icon: mdi:gas-station
+    sensor.caltex_wyong_pdl_2:
+      friendly_name: Caltex M1 Southbound
+      icon: mdi:gas-station
+    sensor.coles_express_kariong_dl:
+      friendly_name: Shell 6-8 Pacific Hwy Kariong (Diesel)
+      icon: mdi:gas-station
+    sensor.caltex_woolworths_waitara_pdl:
+      friendly_name: Caltex Woolies 59-61 Pacific Hwy Waitara
+      icon: mdi:gas-station
+    sensor.caltex_woolworths_turramurra_pdl:
+      friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
+      icon: mdi:gas-station
+    sensor.caltex_st_ives_north_pdl:
+      friendly_name: Caltex 363 Mona Vale Rd St Ives North
+      icon: mdi:gas-station
+    sensor.caltex_st_ives_pdl:
+      friendly_name: Caltex 164 Mona Vale Rd St Ives
+      icon: mdi:gas-station
+    sensor.caltex_woolworths_glenrose_pdl:
+      friendly_name: Caltex Woolies 60 Glenn St Belrose
+      icon: mdi:gas-station
+    sensor.caltex_belrose_pdl:
+      friendly_name: Caltex 153 Forest Way Belrose
+      icon: mdi:gas-station
+    sensor.caltex_17340:
+      icon: mdi:gas-station
+    sensor.caltex_622:
+      icon: mdi:gas-station
+    sensor.caltex_819:
+      icon: mdi:gas-station
+    sensor.caltex_874:
+      icon: mdi:gas-station
+    sensor.caltex_845:
+      icon: mdi:gas-station
+    sensor.caltex_17249:
+      icon: mdi:gas-station
+    sensor.caltex_2263:
+      icon: mdi:gas-station
+    sensor.caltex_620:
+      icon: mdi:gas-station
+    sensor.caltex_523:
+      icon: mdi:gas-station
+    sensor.caltex_907:
+      icon: mdi:gas-station
+    sensor.caltex_906:
+      icon: mdi:gas-station
+    sensor.shell_902:
+      icon: mdi:gas-station
+    sensor.caltex_2436:
+      icon: mdi:gas-station
+    sensor.caltex_663:
+      icon: mdi:gas-station
+    sensor.caltex_861:
+      icon: mdi:gas-station
+    sensor.caltex_17310:
+      icon: mdi:gas-station
+    sensor.caltex_643:
+      icon: mdi:gas-station
+    sensor.caltex_721:
+      icon: mdi:gas-station
+    
