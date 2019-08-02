@@ -106,9 +106,4 @@ sensor.hacs:
   friendly_name: HACS
 sensor.config_result:
   icon: mdi:home-assistant
-sensor.sabnzbd_memory:
-  icon: mdi:kodi
-sensor.sonarr_memory:
-  icon: mdi:television-classic
-sensor.radarr_memory:
-  icon: mdi:movie
+

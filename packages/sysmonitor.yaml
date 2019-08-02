@@ -252,10 +252,13 @@ homeassistant:
       icon: mdi:thermometer
     sensor.sonarr_memory:
       friendly_name: Sonarr Memory Used
+      icon: mdi:television-classic
     sensor.radarr_memory:
       friendly_name: Radarr Memory Used
+      icon: mdi:movie
     sensor.sabnzbd_memory:
       friendly_name: Sabnzbd Memory Used
+      icon: mdi:kodi
     sensor.sabnzbd_status:
       icon: mdi:download
     sensor.sabnzbd_queue:
