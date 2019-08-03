@@ -2,15 +2,22 @@
 
 homeassistant:
   customize:
+    package.node_anchors:
+      common: &common
+        package: "transport"
 
     sensor.busmonitor1:
       icon: mdi:bus
+      <<: *common
     sensor.busmonitor2:
       icon: mdi:bus
+      <<: *common
     sensor.trainmonitor1:
       icon: mdi:train
+      <<: *common
     sensor.trainmonitor2:
       icon: mdi:train
+      <<: *common
 
 
 sensor:

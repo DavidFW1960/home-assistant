@@ -6,15 +6,22 @@
 
 homeassistant:
   customize:
-  
+    package.node_anchors:
+      common: &common
+        package: "timetides"
+        
     sensor.yrwthr:
       friendly_name: Weather
+      <<: *common
     sensor.yr_symbol:
       hidden: true
+      <<: *common
     sensor.sunrisetoday:
       friendly_name: Sunrise (Today)
+      <<: *common
     sensor.sunsettoday:
       friendly_name: Sunset (Today)
+      <<: *common
 
 # Track the sun
 sun:

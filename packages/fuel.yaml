@@ -208,95 +208,133 @@ sensor:
 
 homeassistant:
   customize:
+    package.node_anchors:
+      common: &common
+        package: "fuel"
 
     sensor.caltex_kariong_pdl:
       friendly_name: Caltex Langford Drive Kariong
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_woolworths_gosford_pdl:
       friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_gosford_west_pdl:
       friendly_name: Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_gosford_west_pdl_2:
       friendly_name: Caltex 30A Pacific Hwy West Gosford (From Gosford)
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_gosford_west_pdl_3:
       friendly_name: Caltex 283 Manns Rd West Gosford
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_woolworths_erina_pdl:
       friendly_name: Caltex Woolies 155 The Entrance Rd Erina
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_wyoming_pdl:
       friendly_name: Caltex 465 Pacific Hwy Wyoming
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_woolworths_tuggerah_pdl:
       friendly_name: Caltex Woolies Westfield 24-26 Gavenlock Road
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_woolworths_tuggerah_north_pdl:
       friendly_name: Caltex Woolies 186 Pacific Hwy Tuggerah
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_wyong_pdl:
       friendly_name: Caltex M1 Northbound
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_wyong_pdl_2:
       friendly_name: Caltex M1 Southbound
       icon: mdi:gas-station
+      <<: *common
     sensor.coles_express_kariong_dl:
       friendly_name: Shell 6-8 Pacific Hwy Kariong (Diesel)
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_woolworths_waitara_pdl:
       friendly_name: Caltex Woolies 59-61 Pacific Hwy Waitara
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_woolworths_turramurra_pdl:
       friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_st_ives_north_pdl:
       friendly_name: Caltex 363 Mona Vale Rd St Ives North
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_st_ives_pdl:
       friendly_name: Caltex 164 Mona Vale Rd St Ives
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_woolworths_glenrose_pdl:
       friendly_name: Caltex Woolies 60 Glenn St Belrose
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_belrose_pdl:
       friendly_name: Caltex 153 Forest Way Belrose
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_17340:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_622:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_819:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_874:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_845:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_17249:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_2263:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_620:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_523:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_907:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_906:
       icon: mdi:gas-station
+      <<: *common
     sensor.shell_902:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_2436:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_663:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_861:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_17310:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_643:
       icon: mdi:gas-station
+      <<: *common
     sensor.caltex_721:
       icon: mdi:gas-station
-    
+      <<: *common

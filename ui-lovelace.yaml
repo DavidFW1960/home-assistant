@@ -186,7 +186,7 @@ views:
             entities:
               - entity: sensor.radarr_memory
                 name: Radarr
-                icon: mdi:movie-open-outline
+                icon: mdi:filmstrip
                 show_state: true
                 color: '#73C2FB'
           - type: entities

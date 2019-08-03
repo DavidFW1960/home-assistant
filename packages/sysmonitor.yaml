@@ -255,7 +255,7 @@ homeassistant:
       icon: mdi:television-classic
     sensor.radarr_memory:
       friendly_name: Radarr Memory Used
-      icon: mdi:movie
+      icon: mdi:filmstrip
     sensor.sabnzbd_memory:
       friendly_name: Sabnzbd Memory Used
       icon: mdi:kodi

@@ -207,74 +207,108 @@ automation:
 
 homeassistant:
   customize:
+    package.node_anchors:
+      common: &common
+        package: "weather"
 
     sensor.bom_gosford_air_temp_c:
       friendly_name: Air Temp
+      <<: *common
     sensor.bom_gosford_delta_temp_c:
       friendly_name: Delta Temp
+      <<: *common
     sensor.bom_gosford_dew_point_c:
       friendly_name: Dew Point
+      <<: *common
     sensor.bom_gosford_feels_like_c:
       friendly_name: Feels Like
+      <<: *common
     sensor.bom_gosford_rain_today:
       friendly_name: Rain Today
       icon: mdi:weather-rainy
+      <<: *common
     sensor.bom_gosford_relative_humidity:
       friendly_name: Relative Humidity
       icon: mdi:water-percent
+      <<: *common
     sensor.bom_gosford_wind_direction:
       friendly_name: Wind Direction
       entity_picture: /local/icons/MoonPhases/rooster.png
+      <<: *common
     sensor.bom_gosford_wind_direction_kt:
       friendly_name: Wind Direction kt
       icon: mdi:weather-windy
+      <<: *common
     sensor.bom_gosford_wind_gust_kmh:
       friendly_name: Wind Gust
       icon: mdi:weather-windy
+      <<: *common
     sensor.bom_gosford_wind_gust_kt:
       friendly_name: Wind Gust kt
       icon: mdi:weather-windy
+      <<: *common
     sensor.bom_gosford_wind_speed_kmh:
       friendly_name: Wind Speed
       icon: mdi:weather-windy
+      <<: *common
     sensor.bom_gosford_wind_speed_kt:
       friendly_name: Wind Speed kt
       icon: mdi:weather-windy
+      <<: *common
     sensor.dark_sky_cloud_coverage_0:
       friendly_name: Cloud Coverage Today
+      <<: *common
     sensor.dark_sky_cloud_coverage_1:
       friendly_name: Cloud Coverage Tomorrow
+      <<: *common
     sensor.dark_sky_daytime_high_temperature:
       friendly_name: High Today
+      <<: *common
     sensor.dark_sky_daytime_high_temperature_1:
       friendly_name: High Tomorrow
+      <<: *common
     sensor.dark_sky_overnight_low_temperature:
       friendly_name: Low Today
+      <<: *common
     sensor.dark_sky_overnight_low_temperature_1:
       friendly_name: Low Tomorrow
+      <<: *common
     sensor.dark_sky_daily_summary:
       friendly_name: Daily Summary
+      <<: *common
     sensor.dark_sky_hourly_summary:
       friendly_name: Hourly Summary
+      <<: *common
     sensor.dark_sky_summary_0:
       friendly_name: Summary Today
+      <<: *common
     sensor.dark_sky_summary_1:
       friendly_name: Summary Tomorrow
+      <<: *common
     sensor.dark_sky_wind_speed_0:
       friendly_name: Wind Speed Today
+      <<: *common
     sensor.dark_sky_wind_speed_1:
       friendly_name: Wind Speed Tomorrow
+      <<: *common
     sensor.dark_sky_current_text:
       friendly_name: Dark Sky Current Text
+      <<: *common
     sensor.dark_sky_cloud_coverage_0d:
       friendly_name: Dark Sky Cloud Coverage Today
+      <<: *common
     sensor.dark_sky_cloud_coverage_1d:
       friendly_name: Dark Sky Cloud Coverage Tomorrow
+      <<: *common
     sensor.dark_sky_summary_0d:
       friendly_name: Dark Sky Summary Today
+      <<: *common
     sensor.dark_sky_summary_1d:
       friendly_name: Dark Sky Summary Tomorrow
+      <<: *common
     sensor.dark_sky_wind_speed_0d:
       friendly_name: Dark Sky Wind Speed Today
+      <<: *common
     sensor.dark_sky_wind_speed_1d:
       friendly_name: Dark Sky Wind Speed Tomorrow
+      <<: *common
