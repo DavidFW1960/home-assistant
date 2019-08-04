@@ -449,7 +449,7 @@ views:
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
             entity_humidity: sensor.bom_gosford_relative_humidity
-#           entity_pressure: sensor.dark_sky_pressure
+            entity_pressure: sensor.bme280_pressure
             entity_apparent_temp: sensor.bom_gosford_feels_like_c
             entity_daily_summary: sensor.bom_gosford_detailed_summary_0
             entity_pop: sensor.bom_gosford_chance_of_rain_0
@@ -508,7 +508,7 @@ views:
             slot_l4: sun_next               #sun_next
             slot_r1: pop                    #pop
             slot_r2: humidity               #humidity
-            slot_r3: possible_today         #pressure but BOM has no pressure reported
+            slot_r3: pressure         #pressure but BOM has no pressure reported
             slot_r4: sun_following          #sun_following
           - type: history-graph
             title: Weather BOM Gosford
@@ -516,6 +516,7 @@ views:
             refresh_interval: 300
             entities:
               - sensor.bom_gosford_air_temp_c
+              - sensor.bme280_temperature
               - sensor.bom_gosford_feels_like_c
               - sensor.bom_gosford_dew_point_c
               - sensor.bom_gosford_rain_today
@@ -533,6 +534,54 @@ views:
               - sensor.bom_forecast_4
               - sensor.bom_forecast_5
               - sensor.bom_forecast_6
+          - type: entities
+            title: NodeMCU Lounge
+            show_header_toggle: false
+            entities:
+              - entity: sensor.bme280_temperature
+              - entity: sensor.bme280_pressure
+              - entity: sensor.bme280_humidity
+              - entity: sensor.bh1750_illuminance
+          - type: custom:mini-graph-card
+            hours_to_show: 168
+            points_per_hour: 30
+            show:
+              labels: true
+            entities:
+              - entity: sensor.bme280_temperature
+                name: Temperature
+                show_state: true
+                color: orange
+          - type: custom:mini-graph-card
+            hours_to_show: 168
+            points_per_hour: 30
+            show:
+              labels: true
+            entities:
+              - entity: sensor.bme280_pressure
+                name: Pressure
+                show_state: true
+                color: green
+          - type: custom:mini-graph-card
+            hours_to_show: 168
+            points_per_hour: 30
+            show:
+              labels: true
+            entities:
+              - entity: sensor.bme280_humidity
+                name: Humidity
+                show_state: true
+                color: yellow
+          - type: custom:mini-graph-card
+            hours_to_show: 168
+            points_per_hour: 30
+            show:
+              labels: true
+            entities:
+              - entity: sensor.bh1750_illuminance
+                name: Illuminance
+                show_state: true
+                color: blue
       - type: vertical-stack
         cards:
           - type: picture-entity
