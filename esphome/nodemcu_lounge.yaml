@@ -4,8 +4,8 @@ esphome:
   board: nodemcuv2
 
 wifi:
-  ssid: "WILLIAMS"
-  password: "ztfW5KKjv%5j@c&s"
+  ssid: !secret ssid
+  password: !secret ssidpassword
   manual_ip:
     static_ip: 10.90.11.59
     gateway: 10.90.11.1
@@ -30,12 +30,12 @@ sensor:
     humidity:
       name: "BME280 Humidity"
     address: 0x76 
-    update_interval: 10s
+    update_interval: 30s
 
   - platform: bh1750
     name: "BH1750 Illuminance"
     address: 0x23
-    update_interval: 2s    
+    update_interval: 30s    
     
 i2c:
   sda: D2
