@@ -521,6 +521,7 @@ views:
               - sensor.bom_gosford_dew_point_c
               - sensor.bom_gosford_rain_today
               - sensor.bom_gosford_relative_humidity
+              - sensor.bme280_humidity
               - sensor.bom_gosford_wind_gust_kmh
               - sensor.bom_gosford_wind_speed_kmh
           - type: entities
