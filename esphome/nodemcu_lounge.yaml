@@ -1,0 +1,43 @@
+esphome:
+  name: nodemcu_lounge
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: !secret ssid
+  password: !secret ssidpassword
+  manual_ip:
+    static_ip: 10.90.11.59
+    gateway: 10.90.11.1
+    subnet: 255.255.255.0
+    dns1: 10.90.11.1
+    dns2: 10.90.11.1
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+sensor:
+  - platform: bme280
+    temperature:
+      name: "BME280 Temperature"
+      oversampling: 16x
+    pressure:
+      name: "BME280 Pressure"
+    humidity:
+      name: "BME280 Humidity"
+    address: 0x76 
+    update_interval: 30s
+
+  - platform: bh1750
+    name: "BH1750 Illuminance"
+    address: 0x23
+    update_interval: 30s    
+    
+i2c:
+  sda: D2
+  scl: D1
+  scan: True
