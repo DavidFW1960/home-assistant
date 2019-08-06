@@ -1064,7 +1064,7 @@ views:
                   action: call-service
                   service: script.reload
           - type: entities
-            title: Automations & Scenes
+            title: Automations, Scenes & Scripts
             show_header_toggle: false
             entities: 
               - type: custom:auto-entities
@@ -1087,6 +1087,16 @@ views:
                 filter:
                   include:
                     - entity_id: "scene.*"
+              - type: custom:auto-entities
+                card:
+                  type: custom:fold-entity-row
+                  head:
+                    type: section
+                    label: Scripts
+                  open: false
+                filter:
+                  include:
+                    - entity_id: "script.*"
           - type: 'custom:config-template-card'
             variables:
               - states['sensor.sonoff1_2914_status'].attributes['MqttCount']
