@@ -48,6 +48,7 @@ views:
               - sensor.toothbrush_firmware
               - sensor.garage_door_firmware
               - sensor.alarm_firmware
+              - sensor.nodemcu_lounge_firmware
               - sensor.sonoff_firmware_version_available
               - binary_sensor.sonoff_update_available
               - sensor.artisan_software_version
@@ -135,12 +136,12 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
-                entity: script.1554771236987
+                entity: script.alltasmotafirmware
                 icon: mdi:check-decagram
-                name: Sonoff Firmware
+                name: Tasmota Firmware
                 tap_action:
                   action: call-service
-                  service: script.1554771236987
+                  service: script.alltasmotafirmware
               - type: entity-button
                 entity: automation.make_snapshot_copy_backups_to_dropbox
                 icon: mdi:dropbox
@@ -449,7 +450,7 @@ views:
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
             entity_humidity: sensor.bom_gosford_relative_humidity
-            entity_pressure: sensor.bme280_pressure
+            entity_pressure: sensor.nodemcu_lounge_bme280_pressure
             entity_apparent_temp: sensor.bom_gosford_feels_like_c
             entity_daily_summary: sensor.bom_gosford_detailed_summary_0
             entity_pop: sensor.bom_gosford_chance_of_rain_0
@@ -516,12 +517,12 @@ views:
             refresh_interval: 300
             entities:
               - sensor.bom_gosford_air_temp_c
-              - sensor.bme280_temperature
+              - sensor.nodemcu_lounge_bme280_temperature
               - sensor.bom_gosford_feels_like_c
               - sensor.bom_gosford_dew_point_c
               - sensor.bom_gosford_rain_today
               - sensor.bom_gosford_relative_humidity
-              - sensor.bme280_humidity
+              - sensor.nodemcu_lounge_bme280_humidity
               - sensor.bom_gosford_wind_gust_kmh
               - sensor.bom_gosford_wind_speed_kmh
           - type: entities
@@ -539,17 +540,17 @@ views:
             title: NodeMCU Lounge
             show_header_toggle: false
             entities:
-              - entity: sensor.bme280_temperature
-              - entity: sensor.bme280_pressure
-              - entity: sensor.bme280_humidity
-              - entity: sensor.bh1750_illuminance
+              - entity: sensor.nodemcu_lounge_bme280_temperature
+              - entity: sensor.nodemcu_lounge_bme280_pressure
+              - entity: sensor.nodemcu_lounge_bme280_humidity
+              - entity: sensor.nodemcu_lounge_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 168
             points_per_hour: 30
             show:
               labels: true
             entities:
-              - entity: sensor.bme280_temperature
+              - entity: sensor.nodemcu_lounge_bme280_temperature
                 name: Temperature
                 show_state: true
                 color: orange
@@ -559,7 +560,7 @@ views:
             show:
               labels: true
             entities:
-              - entity: sensor.bme280_pressure
+              - entity: sensor.nodemcu_lounge_bme280_pressure
                 name: Pressure
                 show_state: true
                 color: green
@@ -569,7 +570,7 @@ views:
             show:
               labels: true
             entities:
-              - entity: sensor.bme280_humidity
+              - entity: sensor.nodemcu_lounge_bme280_humidity
                 name: Humidity
                 show_state: true
                 color: yellow
@@ -579,7 +580,7 @@ views:
             show:
               labels: true
             entities:
-              - entity: sensor.bh1750_illuminance
+              - entity: sensor.nodemcu_lounge_bh1750_illuminance
                 name: Illuminance
                 show_state: true
                 color: blue
@@ -991,8 +992,8 @@ views:
                   type: section
                   label: Sonoff
                 items:
-                  - automation.sonoff_firmware_installed
-                  - automation.power_state_sonoff_on_ha_start_up
+                  - automation.tasmota_firmware_installed
+                  - automation.power_state_tasmota_on_ha_start_up
       - type: vertical-stack
         cards:
           - type: entities
@@ -1100,11 +1101,15 @@ views:
               - states['sensor.sonoff6_3719_status'].attributes['MqttCount']
               - states['sensor.sonoff6_3719_status'].attributes['WiFi LinkCount']
               - states['sensor.sonoff6_3719_status'].state
+              - states['sensor.nodemcu_lounge_status'].attributes['MqttCount']
+              - states['sensor.nodemcu_lounge_status'].attributes['WiFi LinkCount']
+              - states['sensor.nodemcu_lounge_status'].state
             entities:
               - sensor.sonoff1_2914_status
               - sensor.sonoff2_3110_status
               - sensor.sonoff5_1083_status
               - sensor.sonoff6_3719_status
+              - sensor.nodemcu_lounge_status
             card:
               type: 'custom:hui-entities-card'
               title: MQTT & Wifi Connections
@@ -1122,6 +1127,9 @@ views:
                 - entity: sensor.sonoff6_3719_status
                   name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                - entity: sensor.nodemcu_lounge_status
+                  name: "${'Weather' + '\xa0'.repeat(13) + 'MQTT ' + vars[12] + '\xa0'.repeat(4) + 'WiFi ' + vars[13] + '\xa0'.repeat(3) + ((parseInt(vars[14]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[14] >= 100 ? 'Excellent' : vars[14] >= 80 ? 'Good' : vars[14] >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${vars[14] >= 100 ? 'mdi:wifi' : vars[14] >= 80 ? 'mdi:wifi-strength-3' : vars[14] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
           - type: entities
             style: |
               ha-card {
@@ -1135,26 +1143,26 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
-                entity: script.1554771236987
+                entity: script.alltasmotafirmware
                 icon: mdi:check-decagram
                 name: Firmware
                 tap_action:
                   action: call-service
-                  service: script.1554771236987
+                  service: script.alltasmotafirmware
               - type: entity-button
-                entity: script.1554869777557
+                entity: script.alltasmotastartup
                 icon: mdi:windows
                 name: Status
                 tap_action:
                   action: call-service
-                  service: script.1554869777557
+                  service: script.alltasmotastartup
               - type: entity-button
-                entity: script.1554866239072
+                entity: script.alltasmotadevices
                 icon: mdi:script
                 name: Setup
                 tap_action:
                   action: call-service
-                  service: script.1554866239072
+                  service: script.alltasmotadevices
   - title: Media
     icon: mdi:vlc
     cards:

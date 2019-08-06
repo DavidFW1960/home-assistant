@@ -337,6 +337,10 @@ sensor:
     name: "Alarm Firmware"
     state_topic: "sonoff6/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
+  - platform: mqtt
+    name: "Nodemcu Lounge Firmware"
+    state_topic: "nodemcu_lounge/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
 binary_sensor:
   - platform: template
     sensors:
@@ -385,15 +389,6 @@ switch:
   - platform: hadockermon
     host: !secret my_hadockermon_host
     port: !secret my_hadockermon_port
-
-# Custom Component/Card Updater
-hacs:
-  token: !secret hacs_github_token
-  sidepanel_title: HACS
-  sidepanel_icon: mdi:package
-  appdaemon: true
-  python_script: true
-  theme: true
 
 # Binary Switch for Home and Away Automations, Alarm & Garage Door, Overtime & Holiday
 input_boolean:

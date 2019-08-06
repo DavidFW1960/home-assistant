@@ -47,6 +47,8 @@ sensor.garage_door_firmware:
   icon: mdi:garage
 sensor.alarm_firmware:
   icon: mdi:shield-home
+sensor.nodemcu_lounge_firmware:
+  icon: mdi:thermometer
 sensor.sonoff_firmware_version_available:
   icon: mdi:script
 binary_sensor.sonoff_update_available:
@@ -106,3 +108,15 @@ sensor.hacs:
   friendly_name: HACS
 sensor.config_result:
   icon: mdi:home-assistant
+sensor.nodemcu_lounge_bh1750_illuminance:
+  unit_of_measurement: lx
+  friendly_name: BH1750 Illuminance
+  icon: mdi:brightness-5
+sensor.nodemcu_lounge_bme280_temperature:
+  friendly_name: BME280 Temperature
+sensor.nodemcu_lounge_bme280_pressure:
+  friendly_name: BME280 Pressure
+sensor.nodemcu_lounge_bme280_humidity:
+  friendly_name: BME280 Humidity
+sensor.nodemcu_lounge_status:
+  icon: mdi:thermometer
