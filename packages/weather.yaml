@@ -19,6 +19,8 @@ camera:
 
 wwlln:
   radius: 100
+  latitude: !secret wwlln_latitude
+  longitude: !secret wwlln_longitude
 
 sensor:
   - platform: bom

@@ -136,12 +136,12 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
-                entity: script.alltasmotafirmware
+                entity: script.firmwarealltasmota
                 icon: mdi:check-decagram
                 name: Tasmota Firmware
                 tap_action:
                   action: call-service
-                  service: script.alltasmotafirmware
+                  service: script.firmwarealltasmota
               - type: entity-button
                 entity: automation.make_snapshot_copy_backups_to_dropbox
                 icon: mdi:dropbox
@@ -1003,12 +1003,6 @@ views:
               - input_select.theme_switcher
           - type: horizontal-stack
             cards:
-              - type: 'custom:button-card'
-                icon: mdi:home-assistant
-                name: Reset HACS
-                tap_action:
-                  action: call-service
-                  service: shell_command.resethacs
               - type: custom:button-card
                 icon: mdi:home-assistant
                 lock: true
@@ -1153,26 +1147,26 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
-                entity: script.alltasmotafirmware
+                entity: script.firmwarealltasmota
                 icon: mdi:check-decagram
                 name: Firmware
                 tap_action:
                   action: call-service
-                  service: script.alltasmotafirmware
+                  service: script.firmwarealltasmota
               - type: entity-button
-                entity: script.alltasmotastartup
+                entity: script.startupalltasmota
                 icon: mdi:windows
                 name: Status
                 tap_action:
                   action: call-service
-                  service: script.alltasmotastartup
+                  service: script.startupalltasmota
               - type: entity-button
-                entity: script.alltasmotadevices
+                entity: script.setupalltasmotadevices
                 icon: mdi:script
                 name: Setup
                 tap_action:
                   action: call-service
-                  service: script.alltasmotadevices
+                  service: script.setupalltasmotadevices
   - title: Media
     icon: mdi:vlc
     cards:

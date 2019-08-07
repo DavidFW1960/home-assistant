@@ -406,7 +406,6 @@ shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
   abbusage: /bin/bash /config/abbusage/abbusage_ha.sh
-  resethacs: /bin/bash /config/reset_new_hacs.sh
 
 # Home Assistant Podcasts on gpodder
 gpodder:
