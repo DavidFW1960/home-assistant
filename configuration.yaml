@@ -192,7 +192,7 @@ ssdp:
 
 # Wemo
 wemo:
-  discovery: false
+# discovery: false
   static:
     - !secret wemo_ip
 # Yeelights
