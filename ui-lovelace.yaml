@@ -417,6 +417,17 @@ views:
               - sensor.bom_gosford_wind_gust_kt
               - sensor.bom_gosford_wind_speed_kmh
               - sensor.bom_gosford_wind_speed_kt
+          - type: entities
+            title: BOM Forecast
+            show_header_toggle: false
+            entities:
+              - sensor.bom_forecast_0
+              - sensor.bom_forecast_1
+              - sensor.bom_forecast_2
+              - sensor.bom_forecast_3
+              - sensor.bom_forecast_4
+              - sensor.bom_forecast_5
+              - sensor.bom_forecast_6
       - type: vertical-stack
         cards:
           - type: custom:bom-weather-card
@@ -450,7 +461,7 @@ views:
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
             entity_humidity: sensor.bom_gosford_relative_humidity
-            entity_pressure: sensor.nodemcu_lounge_bme280_pressure
+            entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
             entity_apparent_temp: sensor.bom_gosford_feels_like_c
             entity_daily_summary: sensor.bom_gosford_detailed_summary_0
             entity_pop: sensor.bom_gosford_chance_of_rain_0
@@ -509,7 +520,7 @@ views:
             slot_l4: sun_next               #sun_next
             slot_r1: pop                    #pop
             slot_r2: humidity               #humidity
-            slot_r3: pressure         #pressure but BOM has no pressure reported
+            slot_r3: pressure               #pressure but BOM has no pressure reported
             slot_r4: sun_following          #sun_following
           - type: history-graph
             title: Weather BOM Gosford
@@ -521,31 +532,23 @@ views:
               - sensor.bom_gosford_feels_like_c
               - sensor.bom_gosford_dew_point_c
               - sensor.bom_gosford_rain_today
+              - sensor.nodemcu_lounge_bme280_pressure
+              - sensor.nodemcu_lounge_bme280_seapressure
               - sensor.bom_gosford_relative_humidity
               - sensor.nodemcu_lounge_bme280_humidity
               - sensor.bom_gosford_wind_gust_kmh
               - sensor.bom_gosford_wind_speed_kmh
-          - type: entities
-            title: BOM Forecast
-            show_header_toggle: false
-            entities:
-              - sensor.bom_forecast_0
-              - sensor.bom_forecast_1
-              - sensor.bom_forecast_2
-              - sensor.bom_forecast_3
-              - sensor.bom_forecast_4
-              - sensor.bom_forecast_5
-              - sensor.bom_forecast_6
           - type: entities
             title: NodeMCU Lounge
             show_header_toggle: false
             entities:
               - entity: sensor.nodemcu_lounge_bme280_temperature
               - entity: sensor.nodemcu_lounge_bme280_pressure
+              - entity: sensor.nodemcu_lounge_bme280_seapressure
               - entity: sensor.nodemcu_lounge_bme280_humidity
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
           - type: custom:mini-graph-card
-            hours_to_show: 168
+            hours_to_show: 48
             points_per_hour: 30
             show:
               labels: true
@@ -555,7 +558,7 @@ views:
                 show_state: true
                 color: orange
           - type: custom:mini-graph-card
-            hours_to_show: 168
+            hours_to_show: 48
             points_per_hour: 30
             show:
               labels: true
@@ -564,8 +567,12 @@ views:
                 name: Pressure
                 show_state: true
                 color: green
+              - entity: sensor.nodemcu_lounge_bme280_seapressure
+                name: Sea Pressure
+                show_state: true
+                color: cyan
           - type: custom:mini-graph-card
-            hours_to_show: 168
+            hours_to_show: 48
             points_per_hour: 30
             show:
               labels: true
@@ -575,7 +582,7 @@ views:
                 show_state: true
                 color: yellow
           - type: custom:mini-graph-card
-            hours_to_show: 168
+            hours_to_show: 48
             points_per_hour: 30
             show:
               labels: true
@@ -583,7 +590,7 @@ views:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
                 name: Illuminance
                 show_state: true
-                color: blue
+                color: cyan
       - type: vertical-stack
         cards:
           - type: picture-entity

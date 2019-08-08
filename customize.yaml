@@ -116,6 +116,12 @@ sensor.nodemcu_lounge_bme280_temperature:
   friendly_name: BME280 Temperature
 sensor.nodemcu_lounge_bme280_pressure:
   friendly_name: BME280 Pressure
+  icon: mdi:gauge
+sensor.nodemcu_lounge_bme280_seapressure:
+  friendly_name: BME280 Sea Pressure
+  unit_of_measurement: hPa
+  icon: mdi:gauge
+  device_class: pressure
 sensor.nodemcu_lounge_bme280_humidity:
   friendly_name: BME280 Humidity
 sensor.nodemcu_lounge_status:
