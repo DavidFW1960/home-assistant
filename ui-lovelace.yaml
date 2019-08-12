@@ -566,11 +566,11 @@ views:
               - entity: sensor.nodemcu_lounge_bme280_pressure
                 name: Pressure
                 show_state: true
-                color: green
+                color: cyan
               - entity: sensor.nodemcu_lounge_bme280_seapressure
                 name: Sea Pressure
                 show_state: true
-                color: cyan
+                color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 30
@@ -1053,7 +1053,7 @@ views:
               - type: custom:button-card
                 entity_picture: /local/images/icons8-automation-80.png
                 show_entity_picture: true
-                name: Automations
+                name: Auto
                 tap_action:
                   action: call-service
                   service: automation.reload
@@ -1064,6 +1064,13 @@ views:
                 tap_action:
                   action: call-service
                   service: script.reload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-landscape-80.png
+                show_entity_picture: true
+                name: Scenes
+                tap_action:
+                  action: call-service
+                  service: scene.reload
           - type: entities
             title: Automations, Scenes & Scripts
             show_header_toggle: false
