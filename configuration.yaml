@@ -44,7 +44,7 @@ homeassistant:
         "::1": !secret user_id
         10.90.11.0/24: !secret user_id
         "fd00::/8": !secret user_id
-        !secret my_ipv6_network: !secret user_id
+        !secret trusted_ipv6: !secret user_id
         !secret zerotier_network: !secret user_id
       allow_bypass_login: true
     - type: homeassistant
@@ -127,7 +127,7 @@ http:
   trusted_proxies:
     - 127.0.0.1
     - ::1
-  ip_ban_enabled: True
+  ip_ban_enabled: true
   login_attempts_threshold: 5
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_http_url
