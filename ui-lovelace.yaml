@@ -1235,6 +1235,32 @@ views:
             hide: 
               power_state: false
             info: scroll
+          - type: entities            
+            entities:
+              - type: cast
+                name: System
+                view: "0"
+                hide_if_unavailable: true
+              - type: cast
+                name: Weather
+                view: "1"
+                hide_if_unavailable: true
+              - type: cast
+                name: Switches
+                view: "2"
+                hide_if_unavailable: true
+              - type: cast
+                name: Media
+                view: "3"
+                hide_if_unavailable: true
+              - type: cast
+                name: Sabnzbd
+                view: "4"
+                hide_if_unavailable: true
+              - type: cast
+                name: Transport
+                view: "5"
+                hide_if_unavailable: true
       - type: vertical-stack
         cards:
           - type: markdown
