@@ -35,6 +35,7 @@ cch:
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
+    path: home_assistant
     cards:
       - type: vertical-stack
         cards:
@@ -357,6 +358,7 @@ views:
               - value: 15
                 color: "#00ff00"        #green
   - title: Weather
+    path: weather
     icon: mdi:weather-cloudy
     cards:
       - type: vertical-stack
@@ -713,6 +715,7 @@ views:
             entities:
               - zone.home
   - title: Lights & Switches
+    path: lights_and_switches
     icon: mdi:power
     cards:
       - type: vertical-stack
@@ -1182,6 +1185,7 @@ views:
                   action: call-service
                   service: script.setupalltasmotadevices
   - title: Media
+    path: media
     icon: mdi:vlc
     cards:
       - type: vertical-stack
@@ -1235,31 +1239,33 @@ views:
             hide: 
               power_state: false
             info: scroll
-          - type: entities            
+          - type: entities
+            title: Chromecast Control
+            show_header_toggle: false
             entities:
               - type: cast
                 name: System
-                view: "0"
+                view: "home_assistant"
                 hide_if_unavailable: true
               - type: cast
                 name: Weather
-                view: "1"
+                view: "weather"
                 hide_if_unavailable: true
               - type: cast
                 name: Switches
-                view: "2"
+                view: "lights_and_switches"
                 hide_if_unavailable: true
               - type: cast
                 name: Media
-                view: "3"
+                view: "media"
                 hide_if_unavailable: true
               - type: cast
-                name: Sabnzbd
-                view: "4"
+                name: TV & Movies
+                view: "tv_and_movies"
                 hide_if_unavailable: true
               - type: cast
                 name: Transport
-                view: "5"
+                view: "transport"
                 hide_if_unavailable: true
       - type: vertical-stack
         cards:
@@ -1312,6 +1318,7 @@ views:
             show_player: true
             custom_player: true
   - title: TV & Movies
+    path: tv_and_movies
     icon: mdi:kodi
     cards:
       - type: custom:upcoming-media-card
@@ -1373,6 +1380,7 @@ views:
           - sensor.radarr_commands
           - sensor.radarr_status
   - title: Buses, Trains & Fuel
+    path: transport
     icon: mdi:train
     cards:
       - type: vertical-stack
