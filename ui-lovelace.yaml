@@ -961,6 +961,7 @@ views:
                   - automation.toothbrush_on
                   - automation.toothbrush_off
                   - automation.turn_lounge_light_on_elevation_25deg_after_4pm
+                  - automation.turn_coffee_maker_on_when_liz_gets_home_after_6
               - type: 'custom:text-divider-row'
                 text: Other
               - type: custom:fold-entity-row

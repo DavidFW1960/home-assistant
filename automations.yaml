@@ -415,3 +415,17 @@
       data:
         message: "Update available!"
         title: "HACS"
+- id: '1566288420174'
+  alias: Turn Coffee Maker on when Liz gets home after 6
+  trigger:
+  - entity_id: person.liz
+    from: 'not_home'
+    platform: state
+    to: 'home'
+  condition:
+  - after: '18:00:00'
+    condition: time
+  action:
+  - data:
+      entity_id: switch.sonoff12914
+    service: switch.turn_on
