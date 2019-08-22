@@ -2,8 +2,6 @@ title: Home
 resources:
   - url: /community_plugin/lovelace-card-tools/card-tools.js
     type: js
-  - url: /community_plugin/lovelace-card-mod/card-mod.js
-    type: module
   - url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
     type: js
   - url: /community_plugin/lovelace-auto-entities/auto-entities.js
@@ -13,8 +11,6 @@ resources:
   - url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
     type: module
   - url: /community_plugin/bar-card/bar-card.js
-    type: js
-  - url: /community_plugin/text-divider-row/text-divider-row.js
     type: js
   - url: /community_plugin/compact-custom-header/compact-custom-header.js
     type: module
@@ -852,6 +848,32 @@ views:
               - light.office_light_group
               - light.office
               - light.desk
+          - type: markdown
+            content: >
+              ## Sonoff Scripts
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: script.firmwarealltasmota
+                icon: mdi:check-decagram
+                name: Firmware
+                tap_action:
+                  action: call-service
+                  service: script.firmwarealltasmota
+              - type: entity-button
+                entity: script.startupalltasmota
+                icon: mdi:windows
+                name: Status
+                tap_action:
+                  action: call-service
+                  service: script.startupalltasmota
+              - type: entity-button
+                entity: script.setupalltasmotadevices
+                icon: mdi:script
+                name: Setup
+                tap_action:
+                  action: call-service
+                  service: script.setupalltasmotadevices
       - type: vertical-stack
         cards:
           - type: entities
@@ -930,7 +952,7 @@ views:
                   - input_boolean.overtime
                   - input_boolean.holiday
           - type: entities
-            title: Automations
+            title: Security Automations
             show_header_toggle: false
             entities:            
               - type: custom:fold-entity-row
@@ -942,15 +964,9 @@ views:
                   - automation.close_garage_and_set_alarm
                   - automation.deactivate_alarm_and_open_garage
           - type: entities
-            style: |
-              ha-card {
-                background: none;
-                box-shadow: none;
-                --secondary-text-color: var(--primary-text-color);
-              }
+            title: Household
+            show_header_toggle: false
             entities:
-              - type: 'custom:text-divider-row'
-                text: Household
               - type: custom:fold-entity-row
                 open: false
                 head: 
@@ -963,8 +979,6 @@ views:
                   - automation.toothbrush_off
                   - automation.turn_lounge_light_on_elevation_25deg_after_4pm
                   - automation.turn_coffee_maker_on_when_liz_gets_home_after_6
-              - type: 'custom:text-divider-row'
-                text: Other
               - type: custom:fold-entity-row
                 open: false
                 head: 
@@ -1153,94 +1167,62 @@ views:
                 - entity: sensor.nodemcu_lounge_status
                   name: "${'Weather' + '\xa0'.repeat(13) + 'MQTT ' + vars[12] + '\xa0'.repeat(4) + 'WiFi ' + vars[13] + '\xa0'.repeat(3) + ((parseInt(vars[14]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[14] >= 100 ? 'Excellent' : vars[14] >= 80 ? 'Good' : vars[14] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[14] >= 100 ? 'mdi:wifi' : vars[14] >= 80 ? 'mdi:wifi-strength-3' : vars[14] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-          - type: entities
-            style: |
-              ha-card {
-                background: none;
-                box-shadow: none;
-                --secondary-text-color: var(--primary-text-color);
-              }
-            entities:
-              - type: 'custom:text-divider-row'
-                text: Sonoff
-          - type: horizontal-stack
-            cards:
-              - type: entity-button
-                entity: script.firmwarealltasmota
-                icon: mdi:check-decagram
-                name: Firmware
-                tap_action:
-                  action: call-service
-                  service: script.firmwarealltasmota
-              - type: entity-button
-                entity: script.startupalltasmota
-                icon: mdi:windows
-                name: Status
-                tap_action:
-                  action: call-service
-                  service: script.startupalltasmota
-              - type: entity-button
-                entity: script.setupalltasmotadevices
-                icon: mdi:script
-                name: Setup
-                tap_action:
-                  action: call-service
-                  service: script.setupalltasmotadevices
   - title: Media
     path: media
     icon: mdi:vlc
     cards:
       - type: vertical-stack
         cards:
-          - type: markdown
-            content: ' '
+          - type: entities
             title: Google Media Players
-          - entity: media_player.all_speakers
-            type: custom:mini-media-player
-            tts: 
-              platform: google_translate
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-          - entity: media_player.living_areas
-            type: custom:mini-media-player
-            tts: 
-              platform: google_translate
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-          - entity: media_player.bedroom_speaker
-            type: custom:mini-media-player
-            tts: 
-              platform: google_translate
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-          - entity: media_player.office_speaker
-            type: custom:mini-media-player
-            tts: 
-              platform: google_translate
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-          - entity: media_player.lounge_speaker
-            type: custom:mini-media-player
-            tts: 
-              platform: google_translate
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-          - entity: media_player.lounge_room_tv
-            type: custom:mini-media-player
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
+            show_header_toggle: false
+            entities:
+              - entity: media_player.all_speakers
+                type: custom:mini-media-player
+                tts: 
+                  platform: google_translate
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.living_areas
+                type: custom:mini-media-player
+                tts: 
+                  platform: google_translate
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.bedroom_speaker
+                type: custom:mini-media-player
+                tts: 
+                  platform: google_translate
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.office_speaker
+                type: custom:mini-media-player
+                tts: 
+                  platform: google_translate
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.lounge_speaker
+                type: custom:mini-media-player
+                tts: 
+                  platform: google_translate
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.lounge_room_tv
+                type: custom:mini-media-player
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
           - type: entities
             title: Chromecast Control
             show_header_toggle: false
@@ -1271,54 +1253,55 @@ views:
                 hide_if_unavailable: false
       - type: vertical-stack
         cards:
-          - type: markdown
-            content: ' '
+          - type: entities
             title: Other Media Players
-          - entity: media_player.roku_5x46aj056306
-            type: custom:mini-media-player
-            artwork: cover
-            hide: 
-              power_state: false
-            info: scroll
-          - entity: media_player.foxtel_7587
-            type: custom:mini-media-player
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-          - entity: media_player.osmc_vero4
-            type: custom:mini-media-player
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-          - entity: media_player.wdtvlive
-            type: custom:mini-media-player
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-            source: full
-          - entity: media_player.txnr1009
-            type: custom:mini-media-player
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-            source: full
-          - entity: media_player.ua55d8000_ua55d8000
-            type: custom:mini-media-player
-            artwork: full-cover
-            hide: 
-              power_state: false
-            info: scroll
-            source: full
-          - entity: sensor.gpodder
-            type: custom:podcast-card
-            name: Home Assistant Podcasts
-            default_target: media_player.office_speaker
-            show_player: true
-            custom_player: true
+            show_header_toggle: false
+            entities:
+              - entity: media_player.roku_5x46aj056306
+                type: custom:mini-media-player
+                artwork: cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.foxtel_7587
+                type: custom:mini-media-player
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.osmc_vero4
+                type: custom:mini-media-player
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.wdtvlive
+                type: custom:mini-media-player
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+                source: full
+              - entity: media_player.txnr1009
+                type: custom:mini-media-player
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+                source: full
+              - entity: media_player.ua55d8000_ua55d8000
+                type: custom:mini-media-player
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+                source: full
+              - entity: sensor.gpodder
+                type: custom:podcast-card
+                name: Home Assistant Podcasts
+                default_target: media_player.office_speaker
+                show_player: true
+                custom_player: true
   - title: TV & Movies
     path: tv_and_movies
     icon: mdi:kodi
