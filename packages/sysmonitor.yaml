@@ -232,10 +232,10 @@ homeassistant:
     sensor.last_successful_authentication:
       friendly_name: Last Successful Authentication
       icon: mdi:shield-check
-    sensor.memory_mean:
+    sensor.memory:
       friendly_name: Memory % Use Stats
       icon: mdi:memory
-    sensor.processor_mean:
+    sensor.processor:
       friendly_name: Processor % Use Stats
       icon: mdi:memory
     sensor.artisan_software_version:
