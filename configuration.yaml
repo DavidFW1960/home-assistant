@@ -229,6 +229,14 @@ sensor:
     host: !secret my_letsencrypt
     port: !secret certificate_port
 
+# HERE Travel Time
+  - platform: here_travel_time
+    app_id: !secret here_app_id
+    app_code: !secret here_app_code
+    name: Travel to Home
+    origin_entity_id: person.david
+    destination_entity_id : zone.home
+
 # Alarm Emails
   - platform: imap
     name: Alarm Triggers

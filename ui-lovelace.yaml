@@ -213,6 +213,7 @@ views:
               show_header_toggle: false
               entities:
                 - entity: person.david
+                - entity: sensor.travel_to_home
                 - entity: person.liz
                 - entity: device_tracker.davids_iphone_2
                 - entity: sensor.battery_level
