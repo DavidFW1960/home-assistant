@@ -26,6 +26,8 @@ resources:
     type: module
   - url: /community_plugin/bom-weather-card/bom-weather-card.js
     type: module
+  - url: /community_plugin/list-card/list-card.js
+    type: js
 cch:
   swipe: true
 views:
@@ -131,6 +133,14 @@ views:
               - binary_sensor.hass_update_available
               - binary_sensor.updater
               - sensor.hacs
+          - type: custom:list-card
+            entity: sensor.hacs
+            title: HA Community Store
+            columns:
+              - {field: name, title: 'Name'}
+              - {field: installed version, title: 'Installed'}
+              - {field: available version, title: 'Latest'}
+            feed_attribute: repositories
           - type: horizontal-stack
             cards:
               - type: entity-button
