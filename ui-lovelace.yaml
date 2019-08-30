@@ -28,6 +28,8 @@ resources:
     type: module
   - url: /community_plugin/list-card/list-card.js
     type: js
+  - url: /community_plugin/lovelace-card-mod/card-mod.js
+    type: module
 cch:
   swipe: true
 views:
@@ -734,6 +736,10 @@ views:
             entities:
               - entity: input_boolean.alarmgaragedoor
                 secondary_info: last-changed
+#               style: |
+#                 :host {
+#                   --paper-item-icon-color: {% if is_state('input_boolean.alarmgaragedoor', 'on') %} var(--paper-item-active-color) {% else %} var(--paper-item-color) {% endif %};
+#                  }
               - entity: switch.sonoff51083
                 secondary_info: last-changed
               - entity: switch.sonoff63719
