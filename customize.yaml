@@ -126,3 +126,8 @@ sensor.nodemcu_lounge_bme280_humidity:
   friendly_name: BME280 Humidity
 sensor.nodemcu_lounge_status:
   icon: mdi:thermometer
+sensor.sonoff1_2914_si7021_temperature:
+  friendly_name: Si7021 Temperature
+sensor.sonoff1_2914_si7021_humidity:
+  friendly_name: Si7021 Humidity
+  

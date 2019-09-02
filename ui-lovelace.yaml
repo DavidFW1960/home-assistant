@@ -28,8 +28,6 @@ resources:
     type: module
   - url: /community_plugin/list-card/list-card.js
     type: js
-  - url: /community_plugin/lovelace-card-mod/card-mod.js
-    type: module
 cch:
   swipe: true
 views:
@@ -541,6 +539,7 @@ views:
             entities:
               - sensor.bom_gosford_air_temp_c
               - sensor.nodemcu_lounge_bme280_temperature
+              - sensor.sonoff1_2914_si7021_temperature
               - sensor.bom_gosford_feels_like_c
               - sensor.bom_gosford_dew_point_c
               - sensor.bom_gosford_rain_today
@@ -548,6 +547,7 @@ views:
               - sensor.nodemcu_lounge_bme280_seapressure
               - sensor.bom_gosford_relative_humidity
               - sensor.nodemcu_lounge_bme280_humidity
+              - sensor.sonoff1_2914_si7021_humidity
               - sensor.bom_gosford_wind_gust_kmh
               - sensor.bom_gosford_wind_speed_kmh
           - type: entities
@@ -555,9 +555,11 @@ views:
             show_header_toggle: false
             entities:
               - entity: sensor.nodemcu_lounge_bme280_temperature
+              - entity: sensor.sonoff1_2914_si7021_temperature
               - entity: sensor.nodemcu_lounge_bme280_pressure
               - entity: sensor.nodemcu_lounge_bme280_seapressure
               - entity: sensor.nodemcu_lounge_bme280_humidity
+              - entity: sensor.sonoff1_2914_si7021_humidity
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
@@ -566,9 +568,13 @@ views:
               labels: true
             entities:
               - entity: sensor.nodemcu_lounge_bme280_temperature
-                name: Temperature
+                name: Lounge Temperature
                 show_state: true
                 color: orange
+              - entity: sensor.sonoff1_2914_si7021_temperature
+                name: Office Temperature
+                show_state: true
+                color: red
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 30
@@ -590,9 +596,13 @@ views:
               labels: true
             entities:
               - entity: sensor.nodemcu_lounge_bme280_humidity
-                name: Humidity
+                name: Lounge Humidity
                 show_state: true
                 color: yellow
+              - entity: sensor.sonoff1_2914_si7021_humidity
+                name: Office Humidity
+                show_state: true
+                color: orange
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 30
@@ -714,7 +724,7 @@ views:
                 filter:
                   include:
                     - entity_id: "geo_location.nsw_fire_service_feed_*"
-                    - entity_id: "geo_location.wwlln*"
+                    - entity_id: "geo_location.lightning_strike_*"
                 show_empty: true
           - type: map
             show_header_toggle: false
@@ -736,10 +746,6 @@ views:
             entities:
               - entity: input_boolean.alarmgaragedoor
                 secondary_info: last-changed
-#               style: |
-#                 :host {
-#                   --paper-item-icon-color: {% if is_state('input_boolean.alarmgaragedoor', 'on') %} var(--paper-item-active-color) {% else %} var(--paper-item-color) {% endif %};
-#                  }
               - entity: switch.sonoff51083
                 secondary_info: last-changed
               - entity: switch.sonoff63719
