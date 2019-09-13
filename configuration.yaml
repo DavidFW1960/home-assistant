@@ -16,7 +16,7 @@ homeassistant:
 
 # Customization file
   customize: !include customize.yaml
-  customize_glob: !include customize_glob.yaml
+# customize_glob: !include customize_glob.yaml
 
 # Fuel Monitor, System Monitor, Sun, Moon, Transport, Weather, Updates, Fire Incidents, Recycling Night, Themes Packages
   packages: !include_dir_named packages
@@ -224,11 +224,6 @@ sensor:
     enable_notification: true
     provider: 'ipapi'
 
-# Certificate LetsEncrypt
-  - platform: cert_expiry
-    host: !secret my_letsencrypt
-    port: !secret certificate_port
-
 # HERE Travel Time
   - platform: here_travel_time
     app_id: !secret here_app_id
@@ -298,6 +293,7 @@ sensor:
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
+
 # Artisan Charge
   - platform: mqtt
     name: "Artisan Events"

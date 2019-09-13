@@ -551,7 +551,7 @@ views:
               - sensor.bom_gosford_wind_gust_kmh
               - sensor.bom_gosford_wind_speed_kmh
           - type: entities
-            title: NodeMCU Lounge
+            title: Sensors
             show_header_toggle: false
             entities:
               - entity: sensor.nodemcu_lounge_bme280_temperature

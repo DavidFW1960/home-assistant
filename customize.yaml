@@ -130,4 +130,5 @@ sensor.sonoff1_2914_si7021_temperature:
   friendly_name: Si7021 Temperature
 sensor.sonoff1_2914_si7021_humidity:
   friendly_name: Si7021 Humidity
-  
+sensor.ssl_certificate_expiry:
+  friendly_name: SSL Certificate Expiry
