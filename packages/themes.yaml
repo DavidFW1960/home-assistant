@@ -115,6 +115,11 @@ frontend:
       lumo-shade-10pct: 'rgba(34, 34, 34, .1)'
       lumo-shade-5pct: 'rgba(34, 34, 34, .05)'
       lumo-tint-5pct: '#222222'
+      
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     slateicon:                                    # Only used for Exit-Enter Button when ON
       paper-item-icon-color: '#b58e31'            # Set to var(--secondary-text-color) of current theme
@@ -158,6 +163,10 @@ frontend:
       label-badge-grey: "var(--paper-grey-500)"
       table-row-background-color: "var(--paper-card-background-color)"
       table-row-alternative-background-color: "var(--sidebar-text_-_background)"
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     darkred:
       ha-card-border-radius: '10px'
@@ -191,6 +200,10 @@ frontend:
       secondary-text-color: "var(--primary-color)"
       table-row-background-color: "var(--paper-card-background-color)"
       table-row-alternative-background-color: "var(--sidebar-text_-_background)"
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     midnight:
       # Main colors
@@ -266,6 +279,11 @@ frontend:
       google-red-500: '#E45E65'
       google-green-500: '#39E949'
 
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
+
     Dark - Orange:
       ### Main Interface Colors ###
       ha-card-border-radius: '10px'
@@ -302,6 +320,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#23232E"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#FF8300"
       paper-toggle-button-checked-bar-color: "#FFA23F"
@@ -347,6 +366,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#FFFFFF"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#FF8300"
       paper-toggle-button-checked-bar-color: "#FFA23F"
@@ -422,6 +442,10 @@ frontend:
       paper-slider-disabled-active-color: 'hsl(var(--base-hue), 80%, 25%)'
       paper-slider-disabled-secondary-color: 'hsl(var(--base-hue), 80%, 25%)'
       paper-dialog-color: 'hsl(var(--base-hue), 20%, 80%)'  
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     Night_Theme:
       # Main Stuff #
@@ -457,6 +481,11 @@ frontend:
       # Tables #
       table-row-background-color: transparant
       table-row-alternative-background-color: transparant
+
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     oled:
       ha-card-border-radius: '10px'
@@ -505,6 +534,10 @@ frontend:
       paper-slider-disabled-active-color: 'var(--disabled-text-color)'
       google-red-500: '#b58e31'
       google-green-500: '#2980b9'
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     midnight-remake:
       # Main colors
@@ -578,6 +611,10 @@ frontend:
       google-red-500: 'var(--accent-color)'
       google-green-500: '#27ae60'
 
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
 ######### NEW THEMES ADDED BELOW THIS LINE FOR BETA TESTING PURPOSES... REMOVE LATER #########
 
@@ -627,6 +664,11 @@ frontend:
       paper-font-headline_-_font-family: "var(--primary-font-family)"
       paper-font-caption_-_font-family: "var(--primary-font-family)"    
       paper-font-title_-_font-family: "var(--primary-font-family)"   
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
+
     green_slate:
       #Color Variables
       ha-card-border-radius: '10px'
@@ -724,6 +766,10 @@ frontend:
       lumo-shade-5pct: 'rgba(41, 41, 41, .05)'
       #Removes Gradient in Calendar/Date-Picker and Drop-down lists
       lumo-tint-5pct: 'var(--darker-grey-color)'
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     solarized_dark:
       ha-card-border-radius: '10px'
@@ -775,6 +821,10 @@ frontend:
       sidebar-icon-color: 'var(--primary-text-color)'
       google-red-500: "#dc322f"
       google-green-500: "#859900"
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     solarized-light:
       # Main colors
@@ -834,6 +884,10 @@ frontend:
       # Google colors
       google-red-500: '#dc322f'
       google-green-500: '#859900'
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     christmas:
       ha-card-border-radius: '10px'
@@ -856,6 +910,10 @@ frontend:
       paper-toggle-button-checked-bar-color: "#DCD736"
       paper-slider-knob-color: "#DCD736"
       paper-slider-active-color: "#DCD736"
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     teal:
       # Main Stuff #
@@ -884,6 +942,10 @@ frontend:
       paper-slider-pin-color: "#1DE9B6"
       paper-slider-active-color: "#1DE9B6"
       paper-slider-secondary-color: "#33F2D8"
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     Dark - Yellow:
       ### Main Interface Colors ###
@@ -921,6 +983,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#1A1A1A"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#FCB800"
       paper-toggle-button-checked-bar-color: "#FFD45D"
@@ -966,6 +1029,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#FBFBFB"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#FCB800"
       paper-toggle-button-checked-bar-color: "#FFD45D"
@@ -1011,6 +1075,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#252D40"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#FEB221"
       paper-toggle-button-checked-bar-color: "#FECA67"
@@ -1057,6 +1122,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#23232E"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#00E2D8"
       paper-toggle-button-checked-bar-color: "#00EDE0"
@@ -1102,6 +1168,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#FBFBFD"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#00E2D8"
       paper-toggle-button-checked-bar-color: "#00EDE0"
@@ -1147,6 +1214,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#2E2F40"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#4C3FF9"
       paper-toggle-button-checked-bar-color: "#262938"
@@ -1192,6 +1260,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#FBFBFD"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#4C3FF9"
       paper-toggle-button-checked-bar-color: "#262938"
@@ -1237,6 +1306,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#FFFFFF"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#FF6262"
       paper-toggle-button-checked-bar-color: "#FFA3A3"
@@ -1282,6 +1352,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#FCFCFC"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#2F7EFD"
       paper-toggle-button-checked-bar-color: "#6FA6FE"
@@ -1327,6 +1398,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#252B36"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#FF6262"
       paper-toggle-button-checked-bar-color: "#FFA3A3"
@@ -1372,6 +1444,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#FFFFFF"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#FF6262"
       paper-toggle-button-checked-bar-color: "#FFA3A3"
@@ -1417,6 +1490,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#1E2747"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#FCFCFC"
       paper-toggle-button-checked-bar-color: "#4DA3FF"
@@ -1463,6 +1537,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#555766"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#24E081"
       paper-toggle-button-checked-bar-color: "#6BEAAA"
@@ -1508,6 +1583,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#2D2D2D"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#87BF50"
       paper-toggle-button-checked-bar-color: "#598330"
@@ -1553,6 +1629,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#FFFFFF"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#03B14B"
       paper-toggle-button-checked-bar-color: "#12D289"
@@ -1598,6 +1675,7 @@ frontend:
       ### Cards ###
       paper-card-background-color: "#23232E"
       paper-listbox-background-color: var(--primary-background-color)
+      card-background-color: 'var(--paper-card-background-color)'
       ### Toggles ###
       paper-toggle-button-checked-button-color: "#04E762"
       paper-toggle-button-checked-bar-color: "#47FC92"
@@ -1641,6 +1719,10 @@ frontend:
       paper-item-icon-active-color: "#ff0000" #var(--primary-color)
       paper-item-icon_-_color: "var(--primary-text-color)"
       paper-toggle-button-unchecked-bar-color: "var(--primary-text-color)"
+      #Make Backwards Compatible
+      card-background-color: 'var(--paper-card-background-color)'
+      state-icon-color: 'var(paper-item-icon-color)'
+      state-icon-active-color: 'var(paper-item-icon-active-color)'
 
     discord:
 
@@ -1702,6 +1784,7 @@ frontend:
       paper-listbox-color: "#ffffff"
       paper-listbox-background-color: "#202225"
       paper-tabs-selection-bar-color: "#ffffff"
+      card-background-color: 'var(--paper-card-background-color)'
 
       paper-toggle-button-checked-button-color: "var(--accent-color)"
       paper-toggle-button-checked-bar-color: "var(--accent-color)"

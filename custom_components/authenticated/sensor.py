@@ -257,6 +257,7 @@ class AuthenticatedSensor(Entity):
             known = self.hass.data[PLATFORM_NAME][known]
             info[known.ip_address] = {
                 "user_id": known.user_id,
+                "username": known.username,
                 "last_used_at": known.last_used_at,
                 "prev_used_at": known.prev_used_at,
                 "country": known.country,
