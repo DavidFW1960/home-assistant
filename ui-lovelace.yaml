@@ -1325,6 +1325,90 @@ views:
                 default_target: media_player.office_speaker
                 show_player: true
                 custom_player: true
+          - type: markdown
+            content: >
+              Samsung TV
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                icon: mdi:home-assistant
+                name: Main
+                tap_action:
+                  action: call-service
+                  service: script.casthomeassistant
+              - type: custom:button-card
+                icon: mdi:weather-cloudy
+                name: Weather
+                tap_action:
+                  action: call-service
+                  service: script.castweather
+              - type: custom:button-card
+                icon: mdi:power
+                name: Switches
+                tap_action:
+                  action: call-service
+                  service: script.castswitches
+              - type: custom:button-card
+                icon: mdi:vlc
+                name: Media
+                tap_action:
+                  action: call-service
+                  service: script.castmedia
+              - type: custom:button-card
+                icon: mdi:kodi
+                name: TV
+                tap_action:
+                  action: call-service
+                  service: script.casttvandmovies
+              - type: custom:button-card
+                icon: mdi:train
+                show_entity_picture: true
+                name: Transport
+                tap_action:
+                  action: call-service
+                  service: script.casttransport
+          - type: markdown
+            content: >
+              Foxtel
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                icon: mdi:home-assistant
+                name: Main
+                tap_action:
+                  action: call-service
+                  service: script.casthomeassistantfox
+              - type: custom:button-card
+                icon: mdi:weather-cloudy
+                name: Weather
+                tap_action:
+                  action: call-service
+                  service: script.castweatherfox
+              - type: custom:button-card
+                icon: mdi:power
+                name: Switches
+                tap_action:
+                  action: call-service
+                  service: script.castswitchesfox
+              - type: custom:button-card
+                icon: mdi:vlc
+                name: Media
+                tap_action:
+                  action: call-service
+                  service: script.castmediafox
+              - type: custom:button-card
+                icon: mdi:kodi
+                name: TV
+                tap_action:
+                  action: call-service1
+                  service: script.casttvandmoviesfox
+              - type: custom:button-card
+                icon: mdi:train
+                show_entity_picture: true
+                name: Transport
+                tap_action:
+                  action: call-service
+                  service: script.casttransportfox
   - title: TV & Movies
     path: tv_and_movies
     icon: mdi:kodi
