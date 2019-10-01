@@ -435,3 +435,22 @@
   - data:
       entity_id: switch.sonoff12914
     service: switch.turn_on
+- id: 'themestartup'
+  alias: 'System - Set Custom Theme at Startup'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: frontend.set_theme
+    data:
+      name: slate
+- id: 'changetheme'
+  alias: 'System - Change Current Theme'
+  hide_entity: true
+  trigger:
+    - platform: state
+      entity_id: input_select.theme_switcher
+  action:
+    - service: frontend.set_theme
+      data_template:
+        name: "{{states('input_select.theme_switcher')}}"

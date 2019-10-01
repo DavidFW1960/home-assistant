@@ -1,0 +1,3 @@
+# State Icon
+# Only used for Exit-Enter Button when ON
+paper-item-icon-color: '#b58e31'            # Set to var(--secondary-text-color) of current theme
