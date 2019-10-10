@@ -435,6 +435,10 @@
   - data:
       entity_id: switch.sonoff12914
     service: switch.turn_on
+  - service: notify.david_ios_notify
+    data_template:
+      message: 'Coffee Maker On'
+      title: 'Liz Home'
 - id: 'themestartup'
   alias: 'System - Set Custom Theme at Startup'
   trigger:
