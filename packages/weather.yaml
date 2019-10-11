@@ -180,12 +180,41 @@ sensor:
             {{ states('sensor.bom_gosford_min_temp_c_0') }}
           {% endif %}
 
+      bom_today_max_average:
+        entity_id:
+          - sensor.bom_gosford_max_temp_c_0
+          - sensor.today_temp_bom_average
+        value_template: >
+          {%- if states('sensor.bom_gosford_max_temp_c_0') == 'n/a' -%} 
+            {{ state_attr('sensor.today_temp_bom_average', 'max_value') }}
+          {% else %}
+            {{ states('sensor.bom_gosford_max_temp_c_0') }}
+          {% endif %}
+
+      bom_today_min_average:
+        entity_id:
+          - sensor.bom_gosford_min_temp_c_0
+          - sensor.today_temp_bom_average
+        value_template: >
+          {%- if states('sensor.bom_gosford_min_temp_c_0') == 'n/a' -%} 
+            {{ state_attr('sensor.today_temp_bom_average', 'min_value') }}
+          {% else %}
+            {{ states('sensor.bom_gosford_min_temp_c_0') }}
+          {% endif %}
+
   - platform: statistics
     name: today_temp_bom
     sampling_size: 150
     entity_id: sensor.bom_gosford_air_temp_c
     max_age:
       hours: 24
+
+  - platform: average
+    name: today_temp_bom_average
+    entities:
+      - sensor.bom_gosford_air_temp_c
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
 
 automation:
 - alias: 'Update BOM Icons'

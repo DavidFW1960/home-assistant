@@ -468,8 +468,8 @@ views:
             entity_summary_5: sensor.bom_gosford_summary_5
             entity_sun: sun.sun
 #           entity_visibility: sensor.dark_sky_visibility
-            entity_daytime_high: sensor.bom_today_max
-            entity_daytime_low: sensor.bom_today_min
+            entity_daytime_high: sensor.bom_today_max_average
+            entity_daytime_low: sensor.bom_today_min_average
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
             entity_humidity: sensor.bom_gosford_relative_humidity
