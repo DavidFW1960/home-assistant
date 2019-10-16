@@ -307,6 +307,13 @@ views:
               action: more-info
             hold_action:
               action: more-info
+          - type: picture-entity
+            title: Unofficial Aussie Broadband CVC Capacity
+            entity: camera.unofficial_aussie_broadband_cvc_capacity
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
           - type: entities
             title: Internet
             show_header_toggle: false
