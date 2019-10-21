@@ -20,9 +20,9 @@ resources:
     type: module
   - url: /community_plugin/podcast-card/podcast-card.js
     type: module
-  - url: /community_plugin/mini-graph-card/mini-graph-card.js
+  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
     type: module
-  - url: /community_plugin/mini-media-player/mini-media-player.js
+  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
     type: module
   - url: /community_plugin/bom-weather-card/bom-weather-card.js
     type: module
@@ -816,7 +816,9 @@ views:
                 entity: input_boolean.alarmgaragedoor
                 icon: mdi:security
                 color_type: icon
-                lock: true
+                lock:
+                  enabled: true
+                  duration: 2
                 state:
                   - value: 'off'
                     color: var(--paper-item-icon-color)       # rgb(54, 95, 140)
@@ -1056,7 +1058,9 @@ views:
             cards:
               - type: custom:button-card
                 icon: mdi:home-assistant
-                lock: true
+                lock:
+                  enabled: true
+                  duration: 5
                 name: Restart
                 tap_action:
                   action: call-service
