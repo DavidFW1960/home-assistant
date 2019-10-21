@@ -1,6 +1,8 @@
+---
+#
+# Dark Red
+#
 dark-red:
-  # Dark Red
-  ha-card-border-radius: '10px'
   dark-primary-color: '#c66900'
   disabled-text-color: '#545454'
   divider-color: 'rgba(255, 255, 255, 0.12)'

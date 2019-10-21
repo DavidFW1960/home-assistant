@@ -1,6 +1,8 @@
+---
+#
+# Solarized Dark
+#
 solarized-dark:
-  # Solarized Dark
-  ha-card-border-radius: '10px'
   primary-color: '#586e75'
   accent-color: '#002b36'
   dark-primary-color: '#93a1a1'

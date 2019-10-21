@@ -1,5 +1,4 @@
 synthwave:
-  ha-card-border-radius: '10px'
   # text
   primary-text-color: '#fff'
   secondary-text-color: '#ffffffca'
@@ -21,7 +20,7 @@ synthwave:
   paper-card-background-color: 'var(--card-background-color)'
   primary-background-color: 'var(--primary-color)' 
   secondary-background-color: 'var(--light-primary-color)' # behind the cards on state
-  # ha-card-border-radius: '0'
+  ha-card-border-radius: '0'
   
   # sidebar menu
   sidebar-text-color: 'var(--secondary-text-color)'

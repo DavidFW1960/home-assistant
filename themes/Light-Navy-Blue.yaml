@@ -1,7 +1,9 @@
+---
+#
+# Light Navy Blue
+#
 light-navy-blue:
-  # Light Navy Blue
   # Main Interface Colors
-  ha-card-border-radius: '10px'
   primary-color: '#395274'
   light-primary-color: '#5F81B0'
   primary-background-color: '#F6F7F9'

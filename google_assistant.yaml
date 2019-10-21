@@ -78,3 +78,11 @@ entity_config:
     room: kitchen
   input_boolean.holiday:
     room: kitchen
+  sensor.nodemcu_lounge_bme280_temperature:
+    room: lounge room
+    name: Lounge Temperature
+    expose: true
+  sensor.sonoff1_2914_si7021_temperature:
+    room: meals area
+    name: Meals Area Temperature
+    expose: true

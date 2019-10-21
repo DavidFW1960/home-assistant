@@ -1,5 +1,8 @@
+---
+#
+# Discord
+#
 discord:
-  # Discord
   primary-color: '#202225'
   accent-color: '#7289DA'
   dark-primary-color: '#888f9c'

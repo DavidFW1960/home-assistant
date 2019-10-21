@@ -1,7 +1,9 @@
+---
+#
+# Light Blue
+#
 light-blue:
-  # Light Blue
   # Main Interface Colors
-  ha-card-border-radius: '10px'
   primary-color: '#2F7EFD'
   light-primary-color: '#6FA6FE'
   primary-background-color: '#FEFEFE'

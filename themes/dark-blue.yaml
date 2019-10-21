@@ -1,6 +1,8 @@
+---
+#
+# Dark Blue
+#
 dark-blue:
-  # Dark Blue
-  ha-card-border-radius: '10px'
   primary-color: '#396FB6'
   light-primary-color: '#77a0d4'
   dark-primary-color: '#3539ce'

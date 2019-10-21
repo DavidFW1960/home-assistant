@@ -1,27 +1,24 @@
+---
+#
+# Christmas Theme
+#
 christmas:
-  # Christmas
-  ha-card-border-radius: '10px'
-  primary-color: '#B71515'
-  disabled-text-color: '#1e7d1e'
-  divider-color: '#1e7d1e'
-  paper-card-background-color: '#B71515'
-  paper-grey-200: '#1e7d1e'
-  paper-item-icon-color: '#1e7d1e'
-  paper-listbox-background-color: '#B71515'
-  paper-listbox-color: '#1e7d1e'
-  primary-background-color: '#1e7d1e' # For dialogs and popups...etc
-  primary-text-color: '#FFFFFF'      
-  secondary-background-color: '#1e7d1e'
-  secondary-text-color: '#000000'
-  text-primary-color: '#FFFFFF'
-  dark-primary-color: '#000000'
-  light-primary-color: '#B71515'
-  paper-toggle-button-checked-button-color: '#dcd736'
-  paper-toggle-button-checked-bar-color: '#DCD736'
-  paper-slider-knob-color: '#DCD736'
-  paper-slider-active-color: '#DCD736'
-  # Make Backwards Compatible
-  card-background-color: 'var(--paper-card-background-color)'
-  state-icon-color: 'var(--paper-item-icon-color)'
-  state-icon-active-color: 'var(--paper-item-icon-active-color)'
-  
+  dark-primary-color: "#000000"
+  disabled-text-color: "#1e7d1e"
+  divider-color: "#1e7d1e"
+  light-primary-color: "#B71515"
+  paper-card-background-color: "#B71515"
+  paper-grey-200: "#1e7d1e"
+  paper-item-icon-color: "#1e7d1e"
+  paper-listbox-background-color: "#B71515"
+  paper-listbox-color: "#1e7d1e"
+  paper-slider-active-color: "#DCD736"
+  paper-slider-knob-color: "#DCD736"
+  paper-toggle-button-checked-bar-color: "#DCD736"
+  paper-toggle-button-checked-button-color: "#dcd736"
+  primary-background-color: "#1e7d1e"
+  primary-color: "#B71515"
+  primary-text-color: "#FFFFFF"
+  secondary-background-color: "#1e7d1e"
+  secondary-text-color: "#000000"
+  text-primary-color: "#FFFFFF"

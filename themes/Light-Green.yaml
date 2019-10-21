@@ -1,7 +1,9 @@
+---
+#
+# Light Green
+#
 light-green:
-  # Light Green
   # Main Interface Colors
-  ha-card-border-radius: '10px'
   primary-color: '#03B14B'
   light-primary-color: '#47FC92'
   primary-background-color: '#F6F7F9'

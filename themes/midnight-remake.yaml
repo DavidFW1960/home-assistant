@@ -1,7 +1,9 @@
+---
+#
+# Midnight Remake
+#
 midnight-remake:
-  # Midnight Remake
   # Main colors
-  ha-card-border-radius: '10px'
   primary-color: '#2980b9'
   accent-color: '#f1c40f'
   dark-primary-color: 'var(--accent-color)'

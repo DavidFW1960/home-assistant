@@ -49,9 +49,6 @@ homeassistant:
       allow_bypass_login: true
     - type: homeassistant
 
-# Input Select
-input_select: !include input_select.yaml
-
 # System Health
 system_health:
 
@@ -86,6 +83,8 @@ device_tracker:
 # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /local/ThemeOverride.js
 
 # HTML5 Push Notifications
 notify:

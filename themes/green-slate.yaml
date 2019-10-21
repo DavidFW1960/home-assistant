@@ -1,7 +1,9 @@
+---
+#
+# Green Slate
+#
 green-slate:
-  # Green Slate
   # Color Variables
-  ha-card-border-radius: '10px'
   green-color: '#00b706'
   red-color: '#b70000'
   white-color: '#FFFFFF'

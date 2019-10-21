@@ -1,6 +1,8 @@
+---
+#
+# Vintage
+#
 vintage:
-  # Vintage
-  ha-card-border-radius: '10px'
   turmeric-color: '#DEB853'
   light-turmeric-color: '#E2D9A2'
   slate-color: '#0A373A' 

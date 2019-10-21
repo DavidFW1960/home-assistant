@@ -1,7 +1,9 @@
+---
+#
+# Dark Orange
+#
 dark-orange:
-  # Dark Orange
   # Main Interface Colors
-  ha-card-border-radius: '10px'
   primary-color: '#FF8300'
   light-primary-color: '#FFA23F'
   primary-background-color: '#1F1F28'

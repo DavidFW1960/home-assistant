@@ -1037,8 +1037,6 @@ views:
                   - entity: automation.restart_docker_containers_when_memory_35
                     type: 'custom:secondaryinfo-entity-row'
                     secondary_info: "[[ automation.restart_docker_containers_when_memory_35.attributes.last_triggered ]]"
-                  - automation.system_change_current_theme
-                  - automation.system_set_custom_theme_at_startup
                   - automation.purge_history
                   - automation.roaster_needs_attention
                   - entity: automation.update_abb_usage
@@ -1054,11 +1052,6 @@ views:
                   - automation.power_state_tasmota_on_ha_start_up
       - type: vertical-stack
         cards:
-          - type: entities
-            title: Theme Switcher
-            show_header_toggle: false
-            entities:
-              - input_select.theme_switcher
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -1068,16 +1061,9 @@ views:
                 tap_action:
                   action: call-service
                   service: homeassistant.restart
-              - type: custom:button-card
-                entity: input_select.theme_switcher
-                icon: mdi:palette
-                lock: true
-                name: Theme
-                tap_action:
-                  action: call-service
-                  service: input_select.select_next
-                  service_data:
-                    entity_id: input_select.theme_switcher
+                styles:
+                  card:
+                    - width: 50%
           - type: entities
             title: Check Configuration
             show_header_toggle: false

@@ -1,7 +1,9 @@
+---
+#
+# Dark Green
+#
 dark-green:
-  # Dark Green
   # Main Interface Colors
-  ha-card-border-radius: '10px'
   primary-color: '#03B14B'
   light-primary-color: '#47FC92'
   primary-background-color: '#1F1F28'

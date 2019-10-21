@@ -1,7 +1,9 @@
+---
+#
+# Halloween
+#
 halloween:
-  # Halloween
   # orange: dd5800; black: 000000; white: ffffff; coffee: 7a4901
-  ha-card-border-radius: '10px'
   primary-color: '#dd5800'
   disabled-text-color: '#242424'
   divider-color: 'rgba(255, 0, 0, 0.12)'

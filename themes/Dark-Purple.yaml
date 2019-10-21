@@ -1,7 +1,9 @@
+---
+#
+# Dark Purple
+#
 dark-purple:
-  # Dark Purple
   # Main Interface Colors
-  ha-card-border-radius: '10px'
   primary-color: '#4C3FF9'
   light-primary-color: '#6F64FA'
   primary-background-color: '#262938'
