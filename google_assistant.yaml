@@ -86,3 +86,7 @@ entity_config:
     room: meals area
     name: Meals Area Temperature
     expose: true
+  sensor.bom_gosford_air_temp_c:
+    room: house
+    name: Outside Temperature
+    expose: true

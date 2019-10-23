@@ -1065,9 +1065,20 @@ views:
                 tap_action:
                   action: call-service
                   service: homeassistant.restart
-                styles:
-                  card:
-                    - width: 50%
+              - type: custom:button-card
+                icon: mdi:palette-outline
+                name: Theme Slate
+                tap_action:
+                  action: call-service
+                  service: frontend.set_theme
+                  service_data: {"name": "slate"}
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-camera-addon-identification-80.png
+                show_entity_picture: true
+                name: Start Addons
+                tap_action:
+                  action: call-service
+                  service: script.startalladdons
           - type: entities
             title: Check Configuration
             show_header_toggle: false
@@ -1075,6 +1086,9 @@ views:
               - entity: script.check_config
               - entity: sensor.config_result
                 icon: mdi:home-assistant
+          - type: markdown
+            content: >
+              ## Reload Components
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -1098,6 +1112,8 @@ views:
                 tap_action:
                   action: call-service
                   service: automation.reload
+          - type: horizontal-stack
+            cards:
               - type: custom:button-card
                 entity_picture: /local/images/icons8-note-80.png
                 show_entity_picture: true
@@ -1112,6 +1128,13 @@ views:
                 tap_action:
                   action: call-service
                   service: scene.reload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-change-theme-80.png
+                show_entity_picture: true
+                name: Themes
+                tap_action:
+                  action: call-service
+                  service: frontend.reload_themes
           - type: entities
             title: Automations, Scenes & Scripts
             show_header_toggle: false
