@@ -30,6 +30,8 @@ resources:
     type: js
   - url: /community_plugin/synthwave-hass-extras/synthwave-hass-extras.js
     type: js
+  - url: /community_plugin/lovelace-card-mod/card-mod.js
+    type: module
 cch:
   swipe: true
 views:
@@ -883,6 +885,17 @@ views:
               - light.office
               - light.desk
           - type: markdown
+            style: |
+              h2 {
+              	display: block;
+                letter-spacing: -0.012em;
+                line-height: 32px;
+                font-size: 24px;
+                margin-block-start: 0.83em;
+                margin-block-end: 0.83em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                font-weight: normal;
             content: >
               ## Sonoff Scripts
           - type: horizontal-stack
@@ -1054,6 +1067,13 @@ views:
                   - automation.power_state_tasmota_on_ha_start_up
       - type: vertical-stack
         cards:
+          - type: entities
+            title: Check Configuration
+            show_header_toggle: false
+            entities:
+              - entity: script.check_config
+              - entity: sensor.config_result
+                icon: mdi:home-assistant
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -1079,14 +1099,18 @@ views:
                 tap_action:
                   action: call-service
                   service: script.startalladdons
-          - type: entities
-            title: Check Configuration
-            show_header_toggle: false
-            entities:
-              - entity: script.check_config
-              - entity: sensor.config_result
-                icon: mdi:home-assistant
           - type: markdown
+            style: |
+              h2 {
+              	display: block;
+                letter-spacing: -0.012em;
+                line-height: 32px;
+                font-size: 24px;
+                margin-block-start: 0.83em;
+                margin-block-end: 0.83em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                font-weight: normal;
             content: >
               ## Reload Components
           - type: horizontal-stack
@@ -1348,8 +1372,19 @@ views:
                 show_player: true
                 custom_player: true
           - type: markdown
+            style: |
+              h2 {
+              	display: block;
+                letter-spacing: -0.012em;
+                line-height: 32px;
+                font-size: 24px;
+                margin-block-start: 0.83em;
+                margin-block-end: 0.83em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                font-weight: normal;
             content: >
-              Samsung TV
+              ## Samsung TV
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -1390,8 +1425,19 @@ views:
                   action: call-service
                   service: script.casttransport
           - type: markdown
+            style: |
+              h2 {
+              	display: block;
+                letter-spacing: -0.012em;
+                line-height: 32px;
+                font-size: 24px;
+                margin-block-start: 0.83em;
+                margin-block-end: 0.83em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                font-weight: normal;
             content: >
-              Foxtel
+              ## Foxtel
           - type: horizontal-stack
             cards:
               - type: custom:button-card
