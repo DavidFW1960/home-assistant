@@ -1,0 +1,71 @@
+input_select:
+  theme_switcher:
+    name: 'Switch Theme'
+    options:
+     - 'default'
+     - 'amoled'
+     - 'another-dark'
+     - 'blue_night'
+     - 'christmas'
+     - 'dark_mint'
+     - 'dark-blue'
+     - 'dark-blue-purple'
+     - 'dark-cyan'
+     - 'dark-gray'
+     - 'dark-green'
+     - 'dark-light-red'
+     - 'dark-orange'
+     - 'dark-purple'
+     - 'dark-red'
+     - 'dark-yellow'
+     - 'discord'
+     - 'gray-green'
+     - 'green-slate'
+     - 'grey_night'
+     - 'halloween'
+     - 'light-blue'
+     - 'light-cyan'
+     - 'light-green'
+     - 'light-navy-blue'
+     - 'light-orange'
+     - 'light-purple'
+     - 'light-red'
+     - 'light-yellow'
+     - 'material_dark_green'
+     - 'material_dark_pink'
+     - 'midnight'
+     - 'midnight-orig'
+     - 'midnight-remake'
+     - 'navy-blue-yellow'
+     - 'night-theme'
+     - 'oled'
+     - 'pmxmononight'
+     - 'slate'
+     - 'solarized_light'
+     - 'solarized-dark'
+     - 'synthwave'
+     - 'teal'
+     - 'vintage'
+    initial: 'slate'
+    icon: 'mdi:palette'
+
+automation:
+  - id: 'themestartup'
+    alias: 'System - Set Custom Theme at Startup'
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      service: frontend.set_theme
+      data:
+        name: slate
+  - id: 'changetheme'
+    alias: 'System - Change Current Theme'
+    hide_entity: true
+    trigger:
+      - platform: state
+        entity_id: input_select.theme_switcher
+    action:
+      - service: frontend.set_theme
+        data_template:
+          name: "{{states('input_select.theme_switcher')}}"
