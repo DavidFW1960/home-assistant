@@ -921,11 +921,6 @@ views:
                 tap_action:
                   action: call-service
                   service: script.setupalltasmotadevices
-          - type: entities
-            title: Theme Switcher
-            show_header_toggle: false
-            entities:
-              - input_select.theme_switcher
       - type: vertical-stack
         cards:
           - type: entities
@@ -1109,6 +1104,11 @@ views:
                 tap_action:
                   action: call-service
                   service: script.startalladdons
+          - type: entities
+            title: Theme Switcher
+            show_header_toggle: false
+            entities:
+              - input_select.theme_switcher
           - type: markdown
             style: |
               h2 {
