@@ -49,10 +49,10 @@ sensor.alarm_firmware:
   icon: mdi:shield-home
 sensor.nodemcu_lounge_firmware:
   icon: mdi:thermometer
-sensor.sonoff_firmware_version_available:
+sensor.tasmota_firmware_version_available:
   icon: mdi:script
-binary_sensor.sonoff_update_available:
-  friendly_name: Update Available Sonoff
+binary_sensor.tasmota_update_available:
+  friendly_name: Update Available Tasmota
   device_class: problem
 input_boolean.alarmgaragedoor:
   friendly_name: Exit-Enter

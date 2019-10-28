@@ -3,8 +3,8 @@
 # Material Dark Pink Theme
 #
 material_dark_pink:
-  accent-color: "var(--accent)"
   accent: "#FF4081"
+  accent-color: "var(--accent)"
   card-background-color: "#1D1D1D"
   dark-primary-color: "var(--accent)"
   disabled-text-color: "#FFFFFF61"
@@ -17,9 +17,9 @@ material_dark_pink:
   lumo-body-text-color: "var(--primary-text-color)"
   lumo-box-shadow-m: "none"
   lumo-header-text-color: "var(--primary-text-color)"
+  lumo-primary-color: "var(--accent)"
   lumo-primary-color-10pct: "#2D2D2D"
   lumo-primary-color-50pct: "none"
-  lumo-primary-color: "var(--accent)"
   lumo-primary-contrast-color: "var(--primary-text-color)"
   lumo-shade-5pct: "#272727"
   lumo-tertiary-text-color: "var(--secondary-text-color)"

@@ -307,8 +307,8 @@ sensor:
 # Tasmota Firmware
 # Getting Firmware from JSON for Tasmota
   - platform: rest
-    resource: https://api.github.com/repos/arendst/Sonoff-Tasmota/releases/latest
-    name: Sonoff Firmware Version Available
+    resource: https://api.github.com/repos/arendst/Tasmota/releases/latest
+    name: Tasmota Firmware Version Available
     username: !secret githubuser
     password: !secret githubpass
     authentication: basic
@@ -320,29 +320,29 @@ sensor:
   - platform: mqtt
     name: "Coffee Maker Firmware"
     state_topic: "sonoff1/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
   - platform: mqtt
     name: "Toothbrush Firmware"
     state_topic: "sonoff2/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
   - platform: mqtt
     name: "Garage Door Firmware"
     state_topic: "sonoff5/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
   - platform: mqtt
     name: "Alarm Firmware"
     state_topic: "sonoff6/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
   - platform: mqtt
     name: "Nodemcu Lounge Firmware"
     state_topic: "nodemcu_lounge/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(sonoff)", "") | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
 binary_sensor:
   - platform: template
     sensors:
-      sonoff_update_available:
+      tasmota_update_available:
         value_template: >-
-          {{ (states('sensor.sonoff_firmware_version_available') > states('sensor.toothbrush_firmware')) or (states('sensor.sonoff_firmware_version_available') > states('sensor.coffee_maker_firmware')) or (states('sensor.sonoff_firmware_version_available') > states('sensor.garage_door_firmware')) or (states('sensor.sonoff_firmware_version_available') > states('sensor.alarm_firmware'))
+          {{ (states('sensor.tasmota_firmware_version_available') > states('sensor.toothbrush_firmware')) or (states('sensor.tasmota_firmware_version_available') > states('sensor.coffee_maker_firmware')) or (states('sensor.tasmota_firmware_version_available') > states('sensor.garage_door_firmware')) or (states('sensor.tasmota_firmware_version_available') > states('sensor.alarm_firmware'))
               }}
 
 # SABnzbd

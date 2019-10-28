@@ -52,8 +52,8 @@ views:
               - sensor.garage_door_firmware
               - sensor.alarm_firmware
               - sensor.nodemcu_lounge_firmware
-              - sensor.sonoff_firmware_version_available
-              - binary_sensor.sonoff_update_available
+              - sensor.tasmota_firmware_version_available
+              - binary_sensor.tasmota_update_available
               - sensor.artisan_software_version
               - sensor.memory
               - sensor.processor
@@ -897,7 +897,7 @@ views:
                 margin-inline-end: 0px;
                 font-weight: normal;
             content: >
-              ## Sonoff Scripts
+              ## Tasmota Scripts
           - type: horizontal-stack
             cards:
               - type: entity-button
@@ -1061,7 +1061,7 @@ views:
                 open: false
                 head: 
                   type: section
-                  label: Sonoff
+                  label: Tasmota
                 items:
                   - automation.tasmota_firmware_installed
                   - automation.power_state_tasmota_on_ha_start_up
