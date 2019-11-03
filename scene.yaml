@@ -1,125 +1,52 @@
 # Lounge Light Scenes 
 - name: Lounge 100
   entities:
-    light.lounge:
-      state: on
-      transition: 2
-      brightness_pct: 100
-      kelvin: 3100
+    script.lounge100: on
 - name: Lounge Normal
   entities:
-    light.lounge:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 3100
+    script.loungenormal: on
 - name: Lounge Movie
   entities:
-    light.lounge:
-      state: on
-      transition: 2
-      brightness_pct: 30
-      rgb_color: [0,0,255]
+    script.loungemovie: on
 - name: Lounge Daylight
   entities:
-    light.lounge:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 6500
+    script.loungedaylight: on
 - name: Lounge Warm
   entities:
-    light.lounge:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 2700
+    script.loungewarm: on
 # Office Light Scenes 
-- name: Desk Normal
-  entities:
-    light.desk:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 3100
 - name: Office Main
   entities:
-    light.office:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 3100
+    script.officemain: on
 - name: Office All
   entities:
-    light.desk:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 3100
-    light.office:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 3100
+    script.officeall: on
 - name: Office Daylight
   entities:
-    light.office:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 6500
+    script.officedaylight: on
 - name: Office Warm
   entities:
-    light.office:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 2700
+    script.officewarm: on
+- name: Desk Normal
+  entities:
+    script.desknormal: on
 - name: Desk Daylight
   entities:
-    light.desk:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 6500
+    script.deskdaylight: on
 - name: Desk Warm
   entities:
-    light.desk:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 2700
+    script.deskwarm: on
 # Dining Light Scenes 
 - name: Dining Normal
   entities:
-    light.dining:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 3100
+    script.diningnormal: on
 - name: Dining Daylight
   entities:
-    light.dining:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 6500
+    script.diningdaylight: on
 - name: Dining Warm
   entities:
-    light.dining:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 2700
+    script.diningwarm: on
 # Bedtime Scenes
 - name: Bedtime
   entities:
-    light.desk:
-      state: on
-      transition: 2
-      brightness_pct: 75
-      kelvin: 3100
-    light.meals_area_light:
-      state: on
-    light.fan_light:
-      state: on
+    script.bedtime: on
