@@ -2829,8 +2829,12 @@ fecha.parse = function (dateStr, format, i18nSettings) {
   return date;
 };
 
-var a=function(){try{(new Date).toLocaleDateString("i");}catch(e){return "RangeError"===e.name}return !1}()?function(e,t){return e.toLocaleDateString(t,{year:"numeric",month:"long",day:"numeric"})}:function(t){return fecha.format(t,"mediumDate")},n=function(){try{(new Date).toLocaleString("i");}catch(e){return "RangeError"===e.name}return !1}()?function(e,t){return e.toLocaleString(t,{year:"numeric",month:"long",day:"numeric",hour:"numeric",minute:"2-digit"})}:function(t){return fecha.format(t,"haDateTime")},r=function(){try{(new Date).toLocaleTimeString("i");}catch(e){return "RangeError"===e.name}return !1}()?function(e,t){return e.toLocaleTimeString(t,{hour:"numeric",minute:"2-digit"})}:function(t){return fecha.format(t,"shortTime")};var L=function(e,t,a,n){n=n||{},a=null==a?{}:a;var r=new Event(t,{bubbles:void 0===n.bubbles||n.bubbles,cancelable:Boolean(n.cancelable),composed:void 0===n.composed||n.composed});return r.detail=a,e.dispatchEvent(r),r};String(Math.random()).slice(2);try{const e={get capture(){return !1}};window.addEventListener("test",e,e),window.removeEventListener("test",e,e);}catch(e){}(window.litHtmlVersions||(window.litHtmlVersions=[])).push("1.0.0");var H="ontouchstart"in window||navigator.maxTouchPoints>0||navigator.msMaxTouchPoints>0,N=function(e){function t(){e.call(this),this.holdTime=500,this.ripple=document.createElement("paper-ripple"),this.timer=void 0,this.held=!1,this.cooldownStart=!1,this.cooldownEnd=!1,this.nbClicks=0;}return e&&(t.__proto__=e),(t.prototype=Object.create(e&&e.prototype)).constructor=t,t.prototype.connectedCallback=function(){var e=this;Object.assign(this.style,{borderRadius:"50%",position:"absolute",width:H?"100px":"50px",height:H?"100px":"50px",transform:"translate(-50%, -50%)",pointerEvents:"none"}),this.appendChild(this.ripple),this.ripple.style.color="#03a9f4",this.ripple.style.color="var(--primary-color)",["touchcancel","mouseout","mouseup","touchmove","mousewheel","wheel","scroll"].forEach(function(t){document.addEventListener(t,function(){clearTimeout(e.timer),e.stopAnimation(),e.timer=void 0;},{passive:!0});});},t.prototype.bind=function(e){var t=this;if(!e.longPress){e.longPress=!0,e.addEventListener("contextmenu",function(e){var t=e||window.event;return t.preventDefault&&t.preventDefault(),t.stopPropagation&&t.stopPropagation(),t.cancelBubble=!0,t.returnValue=!1,!1});var a=function(a){var n,r;t.cooldownStart||(t.held=!1,a.touches?(n=a.touches[0].pageX,r=a.touches[0].pageY):(n=a.pageX,r=a.pageY),t.timer=window.setTimeout(function(){t.startAnimation(n,r),t.held=!0,e.repeat&&!e.isRepeating&&(e.isRepeating=!0,t.repeatTimeout=setInterval(function(){e.dispatchEvent(new Event("ha-hold"));},e.repeat));},t.holdTime),t.cooldownStart=!0,window.setTimeout(function(){return t.cooldownStart=!1},100));},n=function(a){t.cooldownEnd||["touchend","touchcancel"].includes(a.type)&&void 0===t.timer?e.isRepeating&&t.repeatTimeout&&(clearInterval(t.repeatTimeout),e.isRepeating=!1):(clearTimeout(t.timer),e.isRepeating&&t.repeatTimeout&&clearInterval(t.repeatTimeout),e.isRepeating=!1,t.stopAnimation(),t.timer=void 0,t.held?e.repeat||e.dispatchEvent(new Event("ha-hold")):e.hasDblClick?0===t.nbClicks?(t.nbClicks+=1,t.dblClickTimeout=window.setTimeout(function(){1===t.nbClicks&&(t.nbClicks=0,e.dispatchEvent(new Event("ha-click")));},250)):(t.nbClicks=0,clearTimeout(t.dblClickTimeout),e.dispatchEvent(new Event("ha-dblclick"))):e.dispatchEvent(new Event("ha-click")),t.cooldownEnd=!0,window.setTimeout(function(){return t.cooldownEnd=!1},100));};e.addEventListener("touchstart",a,{passive:!0}),e.addEventListener("touchend",n),e.addEventListener("touchcancel",n),e.addEventListener("mousedown",a,{passive:!0}),e.addEventListener("click",n);}},t.prototype.startAnimation=function(e,t){Object.assign(this.style,{left:e+"px",top:t+"px",display:null}),this.ripple.holdDown=!0,this.ripple.simulatedRipple();},t.prototype.stopAnimation=function(){this.ripple.holdDown=!1,this.style.display="none";},t}(HTMLElement);customElements.get("long-press-custom-card-helpers")||customElements.define("long-press-custom-card-helpers",N);
+var a=function(){try{(new Date).toLocaleDateString("i");}catch(e){return "RangeError"===e.name}return !1}()?function(e,t){return e.toLocaleDateString(t,{year:"numeric",month:"long",day:"numeric"})}:function(t){return fecha.format(t,"mediumDate")},n=function(){try{(new Date).toLocaleString("i");}catch(e){return "RangeError"===e.name}return !1}()?function(e,t){return e.toLocaleString(t,{year:"numeric",month:"long",day:"numeric",hour:"numeric",minute:"2-digit"})}:function(t){return fecha.format(t,"haDateTime")},r=function(){try{(new Date).toLocaleTimeString("i");}catch(e){return "RangeError"===e.name}return !1}()?function(e,t){return e.toLocaleTimeString(t,{hour:"numeric",minute:"2-digit"})}:function(t){return fecha.format(t,"shortTime")};var A=function(e,t,a,n){n=n||{},a=null==a?{}:a;var r=new Event(t,{bubbles:void 0===n.bubbles||n.bubbles,cancelable:Boolean(n.cancelable),composed:void 0===n.composed||n.composed});return r.detail=a,e.dispatchEvent(r),r};
 
+const CARD_VERSION = '1.0.6';
+
+/* eslint no-console: 0 */
+console.info(`%c  PODCAST-CARD  \n%c  Version ${CARD_VERSION} `, "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");
 let PodcastCard = class PodcastCard extends LitElement {
     setConfig(config) {
         if (!config || !config.entity) {
@@ -3019,7 +3023,7 @@ let PodcastCard = class PodcastCard extends LitElement {
     `;
     }
     _moreInfo() {
-        L(this, "hass-more-info", {
+        A(this, "hass-more-info", {
             entityId: this._config.entity
         });
     }
@@ -3059,7 +3063,7 @@ let PodcastCard = class PodcastCard extends LitElement {
         // Remove error if element is defined later
         customElements.whenDefined(cardConfig.type).then(() => {
             clearTimeout(timer);
-            L(this, "ll-rebuild", {}, element);
+            A(this, "ll-rebuild", {}, element);
         });
         return element;
     }

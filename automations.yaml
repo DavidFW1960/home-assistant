@@ -88,11 +88,9 @@
   - condition: template
     value_template: "{{state_attr('sun.sun', 'elevation') < 25}}"
   action:
-  - service: light.turn_on
+  - service: script.turn_on
     data:
-      brightness_pct: 75
-      entity_id: light.lounge
-      kelvin: 3100
+      entity_id: script.loungenormal
 - id: '1523937971401'
   alias: Toothbrush On
   trigger:
