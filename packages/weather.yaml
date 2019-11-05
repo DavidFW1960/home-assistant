@@ -1,5 +1,6 @@
 # Download the BOM icons from https://github.com/DavidFW1960/bom_forecast/blob/master/bom_icons.zip
-# and save them under /www/icons/bom_icons/
+# and save them under <config-dir>/www/icons/bom_icons/ (Note this is for the example in the ftp component. This is different to the animated card.)
+# For the animated card follow the instructions and put the icons in <config-dir>/www/icons/weather_icons. This is a DIFFERENT icon file to the above.
 # Show BOM Satellite and Radar
 
 camera:
