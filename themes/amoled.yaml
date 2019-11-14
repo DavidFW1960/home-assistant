@@ -4,6 +4,7 @@
 #
 amoled:
   accent-color: "#E45E65"
+  card-background-color: "var(--paper-card-background-color)"
   dark-primary-color: "var(--accent-color)"
   disabled-text-color: "#7F848E"
   divider-color: "rgba(0, 0, 0, .12)"

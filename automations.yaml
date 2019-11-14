@@ -200,8 +200,8 @@
         < 5) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
         < 5) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
         < 5) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
-      brightness_pct: 75
-      kelvin: 3100
+      brightness: 191   #brightness_pct: 75
+      color_temp: 322   #kelvin: 3100
   - delay: '00:00:05'
   - service: light.turn_on
     data_template:
@@ -213,8 +213,8 @@
         < 10) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
         < 10) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
         < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
-      brightness_pct: 75
-      kelvin: 3100
+      brightness: 191   #brightness_pct: 75
+      color_temp: 322   #kelvin: 3100
 - id: 'closegaragesetalarm'
   alias: Close Garage and Set Alarm
   trigger:
