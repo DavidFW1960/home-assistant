@@ -3,8 +3,8 @@ project_id: !secret ga_project
 api_key: !secret api-ga
 exposed_domains:
   - light
-  - scene
   - input_boolean
+  - script
 entity_config:
   light.fan_light:
     expose: false
@@ -19,38 +19,6 @@ entity_config:
   light.office:
     room: office
   light.desk:
-    room: office
-  scene.bedtime:
-    room: bedroom
-  scene.dining_daylight:
-    room: dining room
-  scene.dining_normal:
-    room: dining room
-  scene.dining_warm:
-    room: dining room
-  scene.lounge_100:
-    room: lounge room
-  scene.lounge_daylight:
-    room: lounge room
-  scene.lounge_movie:
-    room: lounge room
-  scene.lounge_normal:
-    room: lounge room
-  scene.lounge_warm:
-    room: lounge room
-  scene.office_all:
-    room: office
-  scene.office_daylight:
-    room: office
-  scene.office_main:
-    room: office
-  scene.office_warm:
-    room: office
-  scene.desk_daylight:
-    room: office
-  scene.desk_normal:
-    room: office
-  scene.desk_warm:
     room: office
   switch.sonoff12914:
     room: kitchen
@@ -90,3 +58,87 @@ entity_config:
     room: house
     name: Outside Temperature
     expose: true
+  script.bedtime:
+    room: bedroom
+  script.diningdaylight:
+    room: dining room
+  script.diningnormal:
+    room: dining room
+  script.diningwarm:
+    room: dining room
+  script.lounge100:
+    room: lounge room
+  script.loungedaylight:
+    room: lounge room
+  script.loungemovie:
+    room: lounge room
+  script.loungenormal:
+    room: lounge room
+  script.loungewarm:
+    room: lounge room
+  script.officeall:
+    room: office
+  script.officedaylight:
+    room: office
+  script.officemain:
+    room: office
+  script.officewarm:
+    room: office
+  script.deskdaylight:
+    room: office
+  script.desknormal:
+    room: office
+  script.deskwarm:
+    room: office
+  script.casthomeassistant:
+    expose: false
+  script.casthomeassistantfox:
+    expose: false
+  script.castmedia:
+    expose: false
+  script.castmediafox:
+    expose: false
+  script.castoff:
+    expose: false
+  script.castswitches:
+    expose: false
+  script.castswitchesfox:
+    expose: false
+  script.casttransport:
+    expose: false
+  script.casttransportfox:
+    expose: false
+  script.casttvandmovies:
+    expose: false
+  script.casttvandmoviesfox:
+    expose: false
+  script.castweather:
+    expose: false
+  script.castweatherfox:
+    expose: false
+  script.check_config:
+    expose: false
+  script.firmwarealltasmota:
+    expose: false
+  script.firmwarenodemcu:
+    expose: false
+  script.firmwaresonoff:
+    expose: false
+  script.setupalltasmotadevices:
+    expose: false
+  script.setupnodemcu:
+    expose: false
+  script.setupsonoff:
+    expose: false
+  script.startalladdons:
+    expose: false
+  script.startupalltasmota:
+    expose: false
+  script.startupnodemcu:
+    expose: false
+  script.startupsonoff:
+    expose: false
+  script.templatesetupdevicetype:
+    expose: false
+  script.updateversions:
+    expose: false

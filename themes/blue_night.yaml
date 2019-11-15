@@ -6,6 +6,7 @@ blue_night:
   accent-color: "hsl(var(--huesat) 30%)"
   base-hue: "220"
   base-sat: "5%"
+  card-background-color: "var(--paper-card-background-color)"
   dark-divider-opacity: "0"
   dark-primary-color: "hsl(var(--huesat) 60%)"
   dark-secondary-opacity: "1"

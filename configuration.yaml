@@ -414,7 +414,7 @@ gpodder:
 
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml
-scene: !include scene.yaml
+scene: !include scenes.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

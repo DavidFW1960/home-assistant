@@ -737,6 +737,8 @@ views:
                     - entity_id: "geo_location.nsw_fire_service_feed_*"
                     - entity_id: "geo_location.lightning_strike_*"
                 show_empty: true
+                sort:
+                  method: state
           - type: map
             show_header_toggle: false
             dark_mode: true
@@ -1183,6 +1185,8 @@ views:
                 filter:
                   include:
                     - entity_id: "automation.*"
+                sort: 
+                  method: name
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
@@ -1193,6 +1197,8 @@ views:
                 filter:
                   include:
                     - entity_id: "scene.*"
+                sort: 
+                  method: name
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
@@ -1203,6 +1209,8 @@ views:
                 filter:
                   include:
                     - entity_id: "script.*"
+                sort: 
+                  method: name
           - type: 'custom:config-template-card'
             variables:
               - states['sensor.sonoff1_2914_status'].attributes['MqttCount']
