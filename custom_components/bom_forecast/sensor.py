@@ -24,6 +24,8 @@ import homeassistant.helpers.config_validation as cv
 
 _FIND_QUERY = "./forecast/area[@type='location']/forecast-period[@index='{}']/*[@type='{}']"
 _FIND_QUERY_2 = "./forecast/area[@type='metropolitan']/forecast-period[@index='{}']/text[@type='forecast']"
+_FIND_QUERY_3 = "./forecast/area[@type='metropolitan']/forecast-period[@index='{}']/text[@type='uv_alert']"
+_FIND_QUERY_4 = "./forecast/area[@type='metropolitan']/forecast-period[@index='{}']/text[@type='fire_danger']"
             
 _LOGGER = logging.getLogger(__name__)
 
@@ -173,6 +175,8 @@ SENSOR_TYPES = {
     'possible_rainfall': ['precipitation_range', 'Possible Rainfall', 'mm', 'mdi:water'],
     'summary': ['precis', 'Summary', None, 'mdi:text'],
     'detailed_summary': ['forecast', 'Detailed Summary', None, 'mdi:text'],
+    'uv_alert': ['uv_alert', 'UV Alert', None, 'mdi:text'],
+    'fire_danger': ['fire_danger', 'Fire Danger', None, 'mdi:text'],
     'icon': ['forecast_icon_code', 'Icon', None, None]
 }
 
@@ -390,8 +394,15 @@ class BOMForecastData:
         
         find_query = (_FIND_QUERY.format(index, SENSOR_TYPES[condition][0]))
         state = self._data.find(find_query)
+
         if condition == 'icon':
             return ICON_MAPPING[state.text]
+        if condition == 'uv_alert':
+            uv_alert = self._data.find(_FIND_QUERY_3.format(index, 'uv_alert')).text
+            return uv_alert
+        if condition == 'fire_danger':
+            fire_danger =  self._data.find(_FIND_QUERY_4.format(index, 'fire_danger')).text
+            return fire_danger
         if state is None:
             if condition == 'possible_rainfall':
                 return '0 mm'
