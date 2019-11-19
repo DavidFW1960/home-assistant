@@ -50,6 +50,8 @@ sensor:
       - civil_night
       - nautical_night
       - astronomical_night
+      - elevation
+      - max_elevation
     entity_namespace: solar
 
   - platform: moon

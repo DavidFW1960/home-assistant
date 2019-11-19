@@ -1,52 +1,84 @@
 # Lounge Light Scenes 
-- name: Lounge 100
+- id: 'lounge100'
+  name: Lounge 100
   entities:
-    script.lounge100: on
-- name: Lounge Normal
+    script.lounge100:
+      state: 'on'
+- id: 'loungenormal'
+  name: Lounge Normal
   entities:
-    script.loungenormal: on
-- name: Lounge Movie
+    script.loungenormal:
+      state: 'on'
+- id: 'loungemovie'
+  name: Lounge Movie
   entities:
-    script.loungemovie: on
-- name: Lounge Daylight
+    script.loungemovie:
+      state: 'on'
+- id: 'loungedaylight'
+  name: Lounge Daylight
   entities:
-    script.loungedaylight: on
-- name: Lounge Warm
+    script.loungedaylight:
+      state: 'on'
+- id: 'loungewarm'
+  name: Lounge Warm
   entities:
-    script.loungewarm: on
+    script.loungewarm:
+      state: 'on'
 # Office Light Scenes 
-- name: Office Main
+- id: 'officemain'
+  name: Office Main
   entities:
-    script.officemain: on
-- name: Office All
+    script.officemain:
+      state: 'on'
+- id: 'officeall'
+  name: Office All
   entities:
-    script.officeall: on
-- name: Office Daylight
+    script.officeall:
+      state: 'on'
+- id: 'officedaylight'
+  name: Office Daylight
   entities:
-    script.officedaylight: on
-- name: Office Warm
+    script.officedaylight:
+      state: 'on'
+- id: 'officewarm'
+  name: Office Warm
   entities:
-    script.officewarm: on
-- name: Desk Normal
+    script.officewarm:
+      state: 'on'
+- id: 'desknormal'
+  name: Desk Normal
   entities:
-    script.desknormal: on
-- name: Desk Daylight
+    script.desknormal:
+      state: 'on'
+- id: 'deskdaylight'
+  name: Desk Daylight
   entities:
-    script.deskdaylight: on
-- name: Desk Warm
+    script.deskdaylight:
+      state: 'on'
+- id: 'deskwarm'
+  name: Desk Warm
   entities:
-    script.deskwarm: on
+    script.deskwarm:
+      state: 'on'
 # Dining Light Scenes 
-- name: Dining Normal
+- id: 'diningnormal'
+  name: Dining Normal
   entities:
-    script.diningnormal: on
-- name: Dining Daylight
+    script.diningnormal:
+      state: 'on'
+- id: 'diningdaylight'
+  name: Dining Daylight
   entities:
-    script.diningdaylight: on
-- name: Dining Warm
+    script.diningdaylight:
+      state: 'on'
+- id: 'diningwarm'
+  name: Dining Warm
   entities:
-    script.diningwarm: on
+    script.diningwarm:
+      state: 'on'
 # Bedtime Scenes
-- name: Bedtime
+- id: 'bedtime'
+  name: Bedtime
   entities:
-    script.bedtime: on
+    script.bedtime:
+      state: 'on'
