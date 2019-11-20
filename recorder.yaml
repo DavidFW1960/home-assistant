@@ -81,3 +81,17 @@ exclude:
     - sensor.bom_today_max
     - sensor.bom_today_min
     - sensor.today_temp_bom_mean
+    - sensor.bom_gosford_fire_danger_0
+    - sensor.bom_gosford_fire_danger_1
+    - sensor.bom_gosford_fire_danger_2
+    - sensor.bom_gosford_fire_danger_3
+    - sensor.bom_gosford_fire_danger_4
+    - sensor.bom_gosford_fire_danger_5
+    - sensor.bom_gosford_fire_danger_6
+    - sensor.bom_gosford_uv_alert_0
+    - sensor.bom_gosford_uv_alert_1
+    - sensor.bom_gosford_uv_alert_2
+    - sensor.bom_gosford_uv_alert_3
+    - sensor.bom_gosford_uv_alert_4
+    - sensor.bom_gosford_uv_alert_5
+    - sensor.bom_gosford_uv_alert_6

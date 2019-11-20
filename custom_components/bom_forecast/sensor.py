@@ -9,7 +9,7 @@ import ftplib
 import io
 import logging
 import re
-#import xml
+# import xml
 import xml.etree.ElementTree
 
 import voluptuous as vol
@@ -26,7 +26,7 @@ _FIND_QUERY = "./forecast/area[@type='location']/forecast-period[@index='{}']/*[
 _FIND_QUERY_2 = "./forecast/area[@type='metropolitan']/forecast-period[@index='{}']/text[@type='forecast']"
 _FIND_QUERY_3 = "./forecast/area[@type='metropolitan']/forecast-period[@index='{}']/*[@type='uv_alert']"
 _FIND_QUERY_4 = "./forecast/area[@type='metropolitan']/forecast-period[@index='{}']/*[@type='fire_danger']"
-            
+
 _LOGGER = logging.getLogger(__name__)
 
 ATTR_ICON = 'icon'
@@ -171,12 +171,14 @@ PRODUCT_ID_LAT_LON_LOCATION = {
 SENSOR_TYPES = {
     'max': ['air_temperature_maximum', 'Max Temp C', TEMP_CELSIUS, 'mdi:thermometer'],
     'min': ['air_temperature_minimum', 'Min Temp C', TEMP_CELSIUS, 'mdi:thermometer'],
-    'chance_of_rain': ['probability_of_precipitation', 'Chance of Rain', '%', 'mdi:water-percent'],
-    'possible_rainfall': ['precipitation_range', 'Possible Rainfall', 'mm', 'mdi:water'],
+    'chance_of_rain': ['probability_of_precipitation', 'Chance of Rain', '%',
+                       'mdi:water-percent'],
+    'possible_rainfall': ['precipitation_range', 'Possible Rainfall', 'mm',
+                          'mdi:water'],
     'summary': ['precis', 'Summary', None, 'mdi:text'],
     'detailed_summary': ['forecast', 'Detailed Summary', None, 'mdi:text'],
-    'uv_alert': ['uv_alert', 'UV Alert', None, 'mdi:text'],
-    'fire_danger': ['fire_danger', 'Fire Danger', None, 'mdi:text'],
+    'uv_alert': ['uv_alert', 'UV Alert', None, 'mdi:weather-sunny'],
+    'fire_danger': ['fire_danger', 'Fire Danger', None, 'mdi:fire'],
     'icon': ['forecast_icon_code', 'Icon', None, None]
 }
 
@@ -200,11 +202,13 @@ ICON_MAPPING = {
     '19': 'tropicalcyclone'
 }
 
+
 def validate_days(days):
     """Check that days is within bounds."""
-    if days not in range(1,7):
+    if days not in range(1, 7):
         raise vol.error.Invalid("Forecast Days is out of Range")
     return days
+
 
 def validate_product_id(product_id):
     """Check that the Product ID is well-formed."""
@@ -214,19 +218,20 @@ def validate_product_id(product_id):
         raise vol.error.Invalid("Malformed Product ID")
     return product_id
 
+
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_MONITORED_CONDITIONS, default=[]):
         vol.All(cv.ensure_list, [vol.In(SENSOR_TYPES)]),
     vol.Optional(CONF_DAYS, default=6): validate_days,
     vol.Optional(CONF_FRIENDLY, default=False): cv.boolean,
-    vol.Optional(CONF_FRIENDLY_STATE_FORMAT, default='{summary}'):  cv.string,
+    vol.Optional(CONF_FRIENDLY_STATE_FORMAT, default='{summary}'): cv.string,
     vol.Optional(CONF_NAME, default=''): cv.string,
     vol.Optional(CONF_PRODUCT_ID, default=''): validate_product_id,
     vol.Optional(CONF_REST_OF_TODAY, default=True): cv.boolean,
 })
 
-def setup_platform(hass, config, add_entities, discovery_info=None):
 
+def setup_platform(hass, config, add_entities, discovery_info=None):
     days = config.get(CONF_DAYS)
     friendly = config.get(CONF_FRIENDLY)
     friendly_state_format = config.get(CONF_FRIENDLY_STATE_FORMAT)
@@ -252,14 +257,16 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         start = 1
 
     if friendly:
-        for index in range(start, config.get(CONF_DAYS)+1):
-            add_entities([BOMForecastSensorFriendly(bom_forecast_data, monitored_conditions,
-            index, name, product_id, friendly_state_format)])
+        for index in range(start, config.get(CONF_DAYS) + 1):
+            add_entities(
+                [BOMForecastSensorFriendly(bom_forecast_data, monitored_conditions,
+                                           index, name, product_id,
+                                           friendly_state_format)])
     else:
-        for index in range(start, config.get(CONF_DAYS)+1):
-            for condition in monitored_conditions:    
+        for index in range(start, config.get(CONF_DAYS) + 1):
+            for condition in monitored_conditions:
                 add_entities([BOMForecastSensor(bom_forecast_data, condition,
-                index, name, product_id)])
+                                                index, name, product_id)])
 
 
 class BOMForecastSensor(Entity):
@@ -273,26 +280,26 @@ class BOMForecastSensor(Entity):
         self._name = name
         self._product_id = product_id
         self.update()
-        
+
     @property
     def name(self):
         """Return the name of the sensor."""
         if not self._name:
             return 'BOM {} {}'.format(
-            SENSOR_TYPES[self._condition][1], self._index)
+                SENSOR_TYPES[self._condition][1], self._index)
         return 'BOM {} {} {}'.format(self._name,
-        SENSOR_TYPES[self._condition][1], self._index)
+                                     SENSOR_TYPES[self._condition][1], self._index)
 
     @property
     def state(self):
         """Return the state of the sensor."""
         reading = self._bom_forecast_data.get_reading(
             self._condition, self._index)
-            
-        if  self._condition == 'chance_of_rain':
-        	return reading.replace('%', '')
-        if  self._condition == 'possible_rainfall':
-        	return reading.replace(' mm', '')        	
+
+        if self._condition == 'chance_of_rain':
+            return reading.replace('%', '')
+        if self._condition == 'possible_rainfall':
+            return reading.replace(' mm', '')
         return reading
 
     @property
@@ -304,7 +311,8 @@ class BOMForecastSensor(Entity):
             ATTR_ISSUE_TIME_LOCAL: self._bom_forecast_data.get_issue_time_local(),
             ATTR_PRODUCT_ID: self._product_id,
             ATTR_PRODUCT_LOCATION: PRODUCT_ID_LAT_LON_LOCATION[self._product_id][2],
-            ATTR_START_TIME_LOCAL: self._bom_forecast_data.get_start_time_local(self._index),
+            ATTR_START_TIME_LOCAL: self._bom_forecast_data.get_start_time_local(
+                self._index),
             ATTR_ICON: SENSOR_TYPES[self._condition][3]
         }
         if self._name:
@@ -321,10 +329,12 @@ class BOMForecastSensor(Entity):
         """Fetch new state data for the sensor."""
         self._bom_forecast_data.update()
 
+
 class BOMForecastSensorFriendly(Entity):
     """Implementation of a user friendly BOM forecast sensor."""
 
-    def __init__(self, bom_forecast_data, conditions, index, name, product_id, friendly_state_format):
+    def __init__(self, bom_forecast_data, conditions, index, name, product_id,
+                 friendly_state_format):
         """Initialize the sensor."""
         self._bom_forecast_data = bom_forecast_data
         self._conditions = conditions
@@ -333,7 +343,7 @@ class BOMForecastSensorFriendly(Entity):
         self._name = name
         self._product_id = product_id
         self.update()
-        
+
     @property
     def unique_id(self):
         """Return the entity id of the sensor."""
@@ -346,7 +356,9 @@ class BOMForecastSensorFriendly(Entity):
         """Return the state of the sensor."""
         friendly_state = self._friendly_state_format
         for condition in self._conditions:
-            friendly_state = friendly_state.replace('{{{}}}'.format(condition), self._bom_forecast_data.get_reading(condition, self._index))
+            friendly_state = friendly_state.replace('{{{}}}'.format(condition),
+                                                    self._bom_forecast_data.get_reading(
+                                                        condition, self._index))
         return friendly_state
 
     @property
@@ -363,18 +375,21 @@ class BOMForecastSensorFriendly(Entity):
         if self._name:
             attr['Name'] = self._name
 
-        weather_forecast_date_string = self._bom_forecast_data.get_start_time_local(self._index).replace(":","")
-        weather_forecast_datetime = datetime.datetime.strptime(weather_forecast_date_string, "%Y-%m-%dT%H%M%S%z")
-        attr[ATTR_FRIENDLY_NAME] =  weather_forecast_datetime.strftime("%a, %e %b")            
-        
+        weather_forecast_date_string = self._bom_forecast_data.get_start_time_local(
+            self._index).replace(":", "")
+        weather_forecast_datetime = datetime.datetime.strptime(
+            weather_forecast_date_string, "%Y-%m-%dT%H%M%S%z")
+        attr[ATTR_FRIENDLY_NAME] = weather_forecast_datetime.strftime("%a, %e %b")
+
         attr["Product ID"] = self._product_id
         attr["Product Location"] = PRODUCT_ID_LAT_LON_LOCATION[self._product_id][2]
-        
+
         return attr
 
     def update(self):
         """Fetch new state data for the sensor."""
         self._bom_forecast_data.update()
+
 
 class BOMForecastData:
     """Get data from BOM."""
@@ -385,30 +400,61 @@ class BOMForecastData:
 
     def get_reading(self, condition, index):
         """Return the value for the given condition."""
+        _LOGGER.debug("get_reading for %s and %s", condition, index)
         if condition == 'detailed_summary':
             if PRODUCT_ID_LAT_LON_LOCATION[self._product_id][3] == 'City':
                 detailed_summary = self._data.find(_FIND_QUERY_2.format(index)).text
             else:
-                detailed_summary = self._data.find(_FIND_QUERY.format(index, 'forecast')).text
-            return (detailed_summary[:251] + '...') if len(detailed_summary) > 251 else detailed_summary
-        
+                detailed_summary = self._data.find(
+                    _FIND_QUERY.format(index, 'forecast')).text
+            return (detailed_summary[:251] + '...') if len(
+                detailed_summary) > 251 else detailed_summary
+
         if condition == 'uv_alert':
-            uv_alert_data = self._data.find(_FIND_QUERY_3.format(index, 'uv_alert'))
-            if uv_alert_data:
-                uv_alert = self._data.find(_FIND_QUERY_3.format(index, 'uv_alert')).text
+            if PRODUCT_ID_LAT_LON_LOCATION[self._product_id][3] == 'City':
+                _LOGGER.debug("City")
+                uv_alert_data = self._data.find(_FIND_QUERY_3.format(index))
+                _LOGGER.debug("uv_alert_data = %s", uv_alert_data)
+                if uv_alert_data is not None:
+                    uv_alert = uv_alert_data.text
+                    _LOGGER.debug("uv_alert = %s", uv_alert)
+                    return uv_alert
             else:
-                uv_alert = 'none'
-            return uv_alert
+                _LOGGER.debug("not City")
+                uv_alert_data = self._data.find(
+                    _FIND_QUERY.format(index, 'uv_alert')).text
+                _LOGGER.debug("uv_alert_data = %s", uv_alert_data)
+                if uv_alert_data is not None:
+                    uv_alert = self._data.find(
+                        _FIND_QUERY.format(index, 'uv_alert')).text
+                    _LOGGER.debug("uv_alert = %s", uv_alert)
+                    return uv_alert
+
+        if condition == 'fire_danger':
+            if PRODUCT_ID_LAT_LON_LOCATION[self._product_id][3] == 'City':
+                _LOGGER.debug("City")
+                fire_danger_data = self._data.find(_FIND_QUERY_4.format(index))
+                _LOGGER.debug("fire_danger_data = %s", fire_danger_data)
+                if fire_danger_data is not None:
+                    fire_danger = fire_danger_data.text
+                    _LOGGER.debug("fire_danger = %s", fire_danger)
+                    return fire_danger
+            else:
+                _LOGGER.debug("not City")
+                fire_danger_data = self._data.find(
+                    _FIND_QUERY.format(index, 'fire_danger')).text
+                _LOGGER.debug("fire_danger_data = %s", fire_danger_data)
+                if fire_danger_data is not None:
+                    fire_danger = self._data.find(
+                        _FIND_QUERY.format(index, 'fire_danger')).text
+                    _LOGGER.debug("fire_danger = %s", fire_danger)
+                    return fire_danger
 
         find_query = (_FIND_QUERY.format(index, SENSOR_TYPES[condition][0]))
         state = self._data.find(find_query)
 
         if condition == 'icon':
             return ICON_MAPPING[state.text]
-        if condition == 'fire_danger':
-            fire_danger_data =  self._data.find(_FIND_QUERY_4.format(index, 'fire_danger'))
-            if fire_danger_data:
-              return fire_danger_data.text
         if state is None:
             if condition == 'possible_rainfall':
                 return '0 mm'
@@ -428,7 +474,7 @@ class BOMForecastData:
         """Return the start time of forecast."""
         return self._data.find("./forecast/area[@type='location']/"
                                "forecast-period[@index='{}']".format(
-                                index)).get("start-time-local")
+            index)).get("start-time-local")
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
@@ -443,6 +489,7 @@ class BOMForecastData:
         tree = xml.etree.ElementTree.parse(file_obj)
         self._data = tree.getroot()
 
+
 def closest_product_id(lat, lon):
     """Return the closest product ID to our lat/lon."""
 
@@ -452,4 +499,4 @@ def closest_product_id(lat, lon):
         product_id_lon = PRODUCT_ID_LAT_LON_LOCATION[product_id][1]
         return (lat - product_id_lat) ** 2 + (lon - product_id_lon) ** 2
 
-    return min(PRODUCT_ID_LAT_LON_LOCATION, key=comparable_dist)  
+    return min(PRODUCT_ID_LAT_LON_LOCATION, key=comparable_dist)
