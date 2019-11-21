@@ -71,9 +71,9 @@ sensor:
 
       bom_uv_alert_summary:
         value_template: >
-            {% set val = states('sensor.bom_gosford_uv_alert_0').split('[')[1].split(']')[0]%}
-            {{ val | title }}
-
+            {% set val = states('sensor.bom_uv_alert').split('[')[1].split(']')[0] %}
+            {{ val | title }} 
+          
       bom_fire_danger:
         value_template: >
             {%- if states('sensor.bom_gosford_fire_danger_0') != 'n/a' -%} 
@@ -313,4 +313,12 @@ homeassistant:
     sensor.bom_gosford_wind_speed_kt:
       friendly_name: Wind Speed kt
       icon: mdi:weather-windy
+      <<: *common
+    sensor.bom_uv_alert:
+      friendly_name: UV Alert
+      icon: mdi:weather-sunny
+      <<: *common
+    sensor.bom_fire_danger:
+      friendly_name: Fire Danger
+      icon: mdi:fire
       <<: *common

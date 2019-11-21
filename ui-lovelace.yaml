@@ -412,6 +412,8 @@ views:
                 - entity: sensor.daylighttomorrow
                 - entity: sensor.yrwthr
                 - entity: sensor.moonphases
+                - entity: sensor.bom_uv_alert
+                - entity: sensor.bom_fire_danger
           - type: custom:mini-graph-card
             hours_to_show: 168
             points_per_hour: 1

@@ -282,28 +282,18 @@
   - event: start
     platform: homeassistant
   action:
-  - data:
-      payload: '2'
-      topic: sonoffs/cmnd/status
-    service: mqtt.publish
-  - data:
-      payload: '2'
-      topic: nodemcu/cmnd/status
-    service: mqtt.publish
+  - service: script.turn_on
+    data:
+      entity_id: script.firmwarealltasmota
 - id: '1532478833428'
   alias: Power State Tasmota on HA Start-Up
   trigger:
   - event: start
     platform: homeassistant
   action:
-  - data:
-      payload: ''
-      topic: sonoffs/cmnd/state
-    service: mqtt.publish
-  - data:
-      payload: ''
-      topic: nodemcu/cmnd/state
-    service: mqtt.publish
+  - service: script.turn_on
+    data:
+      entity_id: script.startupalltasmota
 - id: 'dockercontainers'
   alias: Restart Docker Containers when memory > 35%
   trigger:

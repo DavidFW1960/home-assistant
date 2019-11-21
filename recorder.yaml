@@ -88,6 +88,8 @@ exclude:
     - sensor.bom_gosford_fire_danger_4
     - sensor.bom_gosford_fire_danger_5
     - sensor.bom_gosford_fire_danger_6
+    - sensor.bom_fire_danger
+    - sensor.bom_fire_danger_summary
     - sensor.bom_gosford_uv_alert_0
     - sensor.bom_gosford_uv_alert_1
     - sensor.bom_gosford_uv_alert_2
@@ -95,3 +97,5 @@ exclude:
     - sensor.bom_gosford_uv_alert_4
     - sensor.bom_gosford_uv_alert_5
     - sensor.bom_gosford_uv_alert_6
+    - sensor.bom_uv_alert
+    - sensor.bom_uv_alert_summary
