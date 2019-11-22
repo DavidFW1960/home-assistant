@@ -56,10 +56,20 @@
   - service: switch.turn_on
     data:
       entity_id: switch.sonoff12914
+  - condition: and
+    conditions:
+      - condition: template
+        value_template: "{{ now().weekday() < 5 }}"
+      - condition: time
+        after: '18:00:00'
+        before: '19:00:00'
+      - condition: state
+        entity_id: person.liz
+        state: 'home'      
   - service: notify.david_ios_notify
     data:
       message: 'Coffee Maker On'
-      title: 'Coffee Automation Triggered'
+      title: 'Liz is home'
 - id: '1507434167221'
   alias: Coffee Maker Off
   trigger:
