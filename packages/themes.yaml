@@ -26,6 +26,7 @@ input_select:
      - 'green-slate'
      - 'grey_night'
      - 'halloween'
+     - 'ios-dark-mode'
      - 'light-blue'
      - 'light-cyan'
      - 'light-green'
