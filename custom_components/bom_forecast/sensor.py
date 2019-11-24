@@ -436,8 +436,13 @@ class BOMForecastData:
                 fire_danger_data = self._data.find(_FIND_QUERY_4.format(index))
                 _LOGGER.debug("fire_danger_data = %s", fire_danger_data)
                 if fire_danger_data is not None:
-                    fire_danger = fire_danger_data.text
-                    _LOGGER.debug("fire_danger = %s", fire_danger)
+                    fire_danger = fire_danger_data.text.strip()
+                    if fire_danger == '':
+                        # Check if there are sub-tags.
+                        fire_danger_data_paragraphs = fire_danger_data.findall("./p")
+                        if fire_danger_data_paragraphs is not None:
+                            paragraphs = [paragraph.text for paragraph in fire_danger_data_paragraphs]
+                            return ", ".join(paragraphs)
                     return fire_danger
             else:
                 _LOGGER.debug("not City")
