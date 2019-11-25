@@ -119,13 +119,13 @@ class SonarrUpcomingMediaSensor(Entity):
             else:
                 card_item['genres'] = ''
             try:
-                card_item['poster'] = re.sub('banners/', 'banners/_cache/',
+                card_item['poster'] = re.sub('.jpg', '_t.jpg',
                                        show['series']['images'][2]['url'])
             except:
                 continue
             try:
                 if '.jpg' in show['series']['images'][0]['url']:
-                    card_item['fanart'] = re.sub('banners/', 'banners/_cache/',
+                    card_item['fanart'] = re.sub('.jpg', '_t.jpg',
                                            show['series']['images'][0]['url'])
                 else:
                     card_item['fanart'] = ''

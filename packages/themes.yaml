@@ -24,6 +24,7 @@ input_select:
      - 'discord'
      - 'gray-green'
      - 'green-slate'
+     - 'green_slate'
      - 'grey_night'
      - 'halloween'
      - 'ios-dark-mode'

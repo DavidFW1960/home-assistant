@@ -1,0 +1,101 @@
+green_slate:
+  #Color Variables
+  green-color: '#00b706'
+  red-color: '#b70000'
+  white-color: '#FFFFFF'
+  light-grey-color: '#777777'
+  medium-grey-color: '#292929'
+  dark-grey-color: '#222222'
+  darker-grey-color: '#141414'
+  black-color: '#000000'  
+  # Main colors
+  primary-color: 'var(--green-color)'
+  accent-color: 'var(--green-color)'
+  dark-primary-color: 'var(--accent-color)'
+  light-primary-color: 'var(--accent-color)'
+  # Text colors
+  primary-text-color: 'var(--white-color)'
+  text-primary-color: 'var(--primary-text-color)'
+  secondary-text-color: 'var(--green-color)'
+  disabled-text-color: 'var(--light-grey-color)'
+  label-badge-border-color: 'var(--green-color)'
+  # Sidebar
+  sidebar-icon-color: 'var(--white-color)'
+  # Background colors
+  primary-background-color: 'var(--dark-grey-color)'
+  secondary-background-color: 'var(--dark-grey-color)'
+  divider-color: 'rgba(0, 0, 0, .12)'
+  table-row-background-color: 'var(--medium-grey-color)'
+  table-row-alternative-background-color: 'var(--medium-grey-color)'
+  # Nav Menu
+  paper-listbox-color: 'var(--light-grey-color)'
+  paper-listbox-background-color: 'var(--darker-grey-color)'
+  paper-grey-50: 'var(--primary-text-color)'
+  paper-grey-200: 'var(--dark-grey-color)'
+  # Paper card
+  paper-card-header-color: 'var(--accent-color)'
+  paper-card-background-color: 'var(--medium-grey-color)'
+  paper-dialog-background-color: 'var(--medium-grey-color)'
+  paper-item-icon-color: 'var(--primary-text-color)'
+  paper-item-icon-active-color: 'var(--green-color)'
+  paper-item-icon_-_color: 'var(--green-color)'
+  paper-item-selected_-_background-color: 'var(--medium-grey-color)'
+  paper-tabs-selection-bar-color: 'var(--green-color)'
+  # Labels
+  label-badge-red: 'var(--accent-color)'
+  label-badge-text-color: 'var(--primary-text-color)'
+  label-badge-background-color: 'var(--dark-grey-color)'
+  # Switches
+  paper-toggle-button-checked-button-color: 'var(--accent-color)'
+  paper-toggle-button-checked-bar-color: 'var(--accent-color)'
+  paper-toggle-button-checked-ink-color: 'var(--accent-color)'
+  paper-toggle-button-unchecked-button-color: 'var(--disabled-text-color)'
+  paper-toggle-button-unchecked-bar-color: 'var(--disabled-text-color)'
+  paper-toggle-button-unchecked-ink-color: 'var(--disabled-text-color)'
+  switch-checked-color: 'var(--paper-toggle-button-checked-button-color)'
+  switch-unchecked-color: 'var(--disabled-text-color)'
+  switch-unchecked-button-color: 'var(--disabled-text-color)'
+  switch-unchecked-track-color: 'var(--disabled-text-color)'
+  # Sliders
+  paper-slider-knob-color: '#2980b9'
+  paper-slider-knob-start-color: '#2980b9'
+  paper-slider-pin-color: '#2980b9'
+  paper-slider-active-color: '#2980b9'
+  paper-slider-container-color: 'linear-gradient(var(--primary-background-color), var(--secondary-background-color)) no-repeat'
+  paper-slider-secondary-color: 'var(--secondary-background-color)'
+  paper-slider-disabled-active-color: 'var(--disabled-text-color)'
+  paper-slider-disabled-secondary-color: 'var(--disabled-text-color)'
+  # Google colors
+  google-red-500: 'var(--red-color)'
+  google-green-500: 'var(--green-color)'
+  # Changes to fix history/logbook menus
+  lumo-primary-text-color: 'var(--green-color)'
+  lumo-secondary-text-color: 'var(--green-color)'
+  lumo-primary-color: 'var(--green-color)'
+  lumo-primary-color-50pct: 'rgba(0, 183, 6, .5)'
+  lumo-primary-color-10pct: 'rgba(0, 183, 6, .1)'
+  #Calendar day numbers
+  lumo-body-text-color: 'var(--white-color)'
+  #Calendar/Date-Picker Background
+  lumo-base-color: 'var(--medium-grey-color)'
+  #Month/Year header
+  lumo-header-text-color: 'var(--lumo-body-text-color)'
+  # DayOfWeek Header
+  lumo-tertiary-text-color: 'var(--lumo-body-text-color)'
+  lumo-shade: 'var(medium-grey-color)'
+  lumo-shade-90pct: 'rgba(41, 41, 41, .9)'
+  lumo-shade-80pct: 'rgba(41, 41, 41, .8)'
+  lumo-shade-70pct: 'rgba(41, 41, 41, .7)'
+  lumo-shade-60pct: 'rgba(41, 41, 41, .6)'
+  lumo-shade-50pct: 'rgba(41, 41, 41, .5)'
+  lumo-shade-40pct: 'rgba(41, 41, 41, .4)'
+  lumo-shade-30pct: 'rgba(41, 41, 41, .3)'
+  lumo-shade-20pct: 'rgba(41, 41, 41, .2)'
+  lumo-shade-10pct: 'rgba(41, 41, 41, .1)'
+  lumo-shade-5pct: 'rgba(41, 41, 41, .05)'
+  #Removes Gradient in Calendar/Date-Picker and Drop-down lists
+  lumo-tint-5pct: 'var(--darker-grey-color)'
+  # fix for device configuration screen
+  card-background-color: "var(--paper-card-background-color)"
+  #Round corners for cards
+  ha-card-border-radius: '5px'
