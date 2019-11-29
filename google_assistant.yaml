@@ -1,27 +1,25 @@
 # Google Assistant
 project_id: !secret ga_project
 api_key: !secret api-ga
-exposed_domains:
-  - light
-  - input_boolean
-  - script
+expose_by_default: false
 entity_config:
-  light.fan_light:
-    expose: false
-  light.meals_area_light:
-    expose: false
-  light.office_light_group:
-    expose: false
   light.lounge:
     room: lounge room
+    expose: true
   light.dining:
     room: dining room
+    expose: true
   light.office:
     room: office
+    expose: true
   light.desk:
     room: office
+    expose: true
   switch.sonoff12914:
     room: kitchen
+    expose: true
+  switch.sonoff23110:
+    room: bathroom
     expose: true
   switch.sonoff51083:
     room: house
@@ -29,23 +27,18 @@ entity_config:
   switch.sonoff63719:
     room: house
     expose: true
-  switch.hifi:
-    expose: false
-  switch.vpn_router:
-    expose: false
-  switch.sonoff23110:
-    room: bathroom
-    expose: true
-  switch.home_assistant:
-    expose: false
   input_boolean.homeandawayauto:
     room: house
+    expose: true
   input_boolean.alarmgaragedoor:
     room: house
+    expose: true
   input_boolean.overtime:
     room: kitchen
+    expose: true
   input_boolean.holiday:
     room: kitchen
+    expose: true
   sensor.nodemcu_lounge_bme280_temperature:
     room: lounge room
     name: Lounge Temperature
@@ -60,85 +53,49 @@ entity_config:
     expose: true
   script.bedtime:
     room: bedroom
+    expose: true
   script.diningdaylight:
     room: dining room
+    expose: true
   script.diningnormal:
     room: dining room
+    expose: true
   script.diningwarm:
     room: dining room
+    expose: true
   script.lounge100:
     room: lounge room
+    expose: true
   script.loungedaylight:
     room: lounge room
+    expose: true
   script.loungemovie:
     room: lounge room
+    expose: true
   script.loungenormal:
     room: lounge room
+    expose: true
   script.loungewarm:
     room: lounge room
+    expose: true
   script.officeall:
     room: office
+    expose: true
   script.officedaylight:
     room: office
+    expose: true
   script.officemain:
     room: office
+    expose: true
   script.officewarm:
     room: office
+    expose: true
   script.deskdaylight:
     room: office
+    expose: true
   script.desknormal:
     room: office
+    expose: true
   script.deskwarm:
     room: office
-  script.casthomeassistant:
-    expose: false
-  script.casthomeassistantfox:
-    expose: false
-  script.castmedia:
-    expose: false
-  script.castmediafox:
-    expose: false
-  script.castoff:
-    expose: false
-  script.castswitches:
-    expose: false
-  script.castswitchesfox:
-    expose: false
-  script.casttransport:
-    expose: false
-  script.casttransportfox:
-    expose: false
-  script.casttvandmovies:
-    expose: false
-  script.casttvandmoviesfox:
-    expose: false
-  script.castweather:
-    expose: false
-  script.castweatherfox:
-    expose: false
-  script.check_config:
-    expose: false
-  script.firmwarealltasmota:
-    expose: false
-  script.firmwarenodemcu:
-    expose: false
-  script.firmwaresonoff:
-    expose: false
-  script.setupalltasmotadevices:
-    expose: false
-  script.setupnodemcu:
-    expose: false
-  script.setupsonoff:
-    expose: false
-  script.startalladdons:
-    expose: false
-  script.startupalltasmota:
-    expose: false
-  script.startupnodemcu:
-    expose: false
-  script.startupsonoff:
-    expose: false
-  script.templatesetupdevicetype:
-    expose: false
-  script.updateversions:
-    expose: false
+    expose: true
