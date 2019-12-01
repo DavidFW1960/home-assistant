@@ -1,11 +1,9 @@
-# ABB CVC Capacity
+# Superloop CVC Capacity
 camera:
   - platform: generic
-    name: Aussie Broadband CVC Capacity
-    still_image_url: !secret my_abb_cvc
-  - platform: generic
-    name: Unofficial Aussie Broadband CVC Capacity
-    still_image_url: !secret unofficial_abb_cvc
+    name: Superloop CVC Capacity
+    still_image_url: !secret superloop_cvc
+
 
 # CPU Resources Used & Temperature, Fritz!Box, Speedtest
 # Speedtest

@@ -401,7 +401,6 @@ input_boolean:
 shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
-  abbusage: /bin/bash /config/abbusage/abbusage_ha.sh
 
 # Home Assistant Podcasts on gpodder
 gpodder:

@@ -28,8 +28,8 @@ resources:
     type: module
   - url: /community_plugin/list-card/list-card.js
     type: js
-# - url: /community_plugin/synthwave-hass-extras/synthwave-hass-extras.js
-#   type: js
+  - url: /community_plugin/synthwave-hass-extras/synthwave-hass-extras.js
+    type: js
   - url: /community_plugin/lovelace-card-mod/card-mod.js
     type: module
 cch:
@@ -239,85 +239,6 @@ views:
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
       - type: vertical-stack
         cards:
-          - type: 'custom:config-template-card'
-            variables:
-              - states['sensor.abb_usage'].state
-              - states['sensor.abb_usage'].attributes['usedMb']
-              - states['sensor.abb_usage'].attributes['downloadedMb']
-              - states['sensor.abb_usage'].attributes['uploadedMb']
-              - states['sensor.abb_usage'].attributes['allowanceMb']
-              - states['sensor.abb_usage'].attributes['daysTotal']
-              - states['sensor.abb_usage'].attributes['daysRemaining']
-              - states['sensor.abb_usage'].attributes['lastUpdated']
-              - states['sensor.abb_usage'].attributes['nextRollover']
-              - states['sensor.abb_usage'].attributes['daysUsed']
-              - states['automation.update_abb_usage'].attributes['last_triggered']
-            entities:
-              - sensor.abb_usage
-            card:
-              type: 'custom:hui-entities-card'
-              title: Aussie Broadband Usage
-              show_header_toggle: false
-              entities:
-                - entity: sensor.abb_usage
-                  name: "${'Last Update on' + '\xa0'.repeat(3) + new Date(vars[7]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'}) + '\xa0' + 'at' + '\xa0' + new Date(vars[7]).toLocaleTimeString('en-AU')}"
-                - entity: sensor.abb_usage
-                  name: "${'Updated' + '\xa0'.repeat(14) + Number.parseInt((new Date().getTime() - new Date(vars[7])) / 60000) + '\xa0' + 'minutes ago'}"
-                  icon: mdi:clock
-                - entity: sensor.abb_usage
-                  name: "${var usedinfo= ((vars[5] - vars[6]) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); 'Used' + '\xa0'.repeat(20) + usedinfo + '\xa0' + 'days' + '\xa0'.repeat(2) + '-' + '\xa0'.repeat(2) + usedpercent + '%' + '\xa0' + 'of month'}"
-                  icon: mdi:calendar
-                - entity: sensor.abb_usage
-                  name: "${var remaininfo= ((vars[5] - vars[9]) - Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var remainpercent= ((remaininfo / vars[5])*100).toFixed(2); 'Remaining' + '\xa0'.repeat(10) + remaininfo + '\xa0' + 'days' + '\xa0'.repeat(2) + '-' + '\xa0'.repeat(2) + remainpercent + '%' + '\xa0' + 'of month'}"
-                  icon: mdi:calendar
-                - entity: sensor.abb_usage
-                  name: "${var usedinfo= ((vars[5] - vars[6]) + Number.parseFloat(((new Date(vars[7]) - new Date().setHours(0,0,0,0)) / 86400000))).toFixed(2); var usedpercent= ((usedinfo / vars[5])*100).toFixed(2); var projected= ((vars[1] / usedpercent) / 10 ).toFixed(2); 'Projected Use' + '\xa0'.repeat(4) + projected  + '\xa0' + 'GB'}"
-                  icon: mdi:lan-connect
-                - entity: sensor.abb_usage
-                  name: "${'Next Rollover' + '\xa0'.repeat(5) + new Date(vars[8]).toLocaleDateString('en-AU', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'})}"
-                  icon: mdi:calendar
-                - entity: sensor.abb_usage
-                  name: "${'Today is Day' + '\xa0'.repeat(6) + ((vars[9] + 1)) + '\xa0'.repeat(2) + 'of' + '\xa0'.repeat(2) + vars[5] + '\xa0'.repeat(2) + 'days'}"
-                  icon: mdi:calendar
-                - entity: sensor.abb_usage
-                  name: "${'Downloaded' + '\xa0'.repeat(6) + ((vars[2]/1E3).toFixed(2)) + '\xa0' + 'GB' }"
-                  icon: mdi:file-download
-                - entity: sensor.abb_usage
-                  name: "${'Uploaded' + '\xa0'.repeat(11) + ((vars[3]/1E3).toFixed(2)) + '\xa0' + 'GB' }"
-                  icon: mdi:file-upload
-                - entity: sensor.abb_usage
-                  name: "${'Total' + '\xa0'.repeat(19) + (((vars[2] +vars[3]) / 1E3).toFixed(2)) + '\xa0' + 'GB of' + '\xa0' + (vars[4] < 100000000 ? Math.floor(vars[4] / 1000) : 'Unlimited') + '\xa0' + 'GB'}"
-                  icon: mdi:lan-connect
-                - entity: sensor.abb_usage
-                  name: "${'Last Update Requested' +'\xa0'.repeat(5) + Number.parseInt((new Date().getTime() - new Date(vars[10])) / 60000)+ '\xa0' + 'minutes ago'}"
-                  icon: mdi:clock
-          - type: 'custom:bar-card'
-            title: Month Used
-            entity: sensor.abb_usage
-            attribute: daysUsed
-            min: 1
-            max: sensor.abb_usage.attributes.daysTotal
-            height: 20px
-            direction: right
-            unit_of_measurement: days
-            tap_action: service
-            service_options:
-              domain: shell_command
-              service: abbusage
-          - type: picture-entity
-            title: Aussie Broadband CVC Capacity
-            entity: camera.aussie_broadband_cvc_capacity
-            tap_action:
-              action: more-info
-            hold_action:
-              action: more-info
-          - type: picture-entity
-            title: Unofficial Aussie Broadband CVC Capacity
-            entity: camera.unofficial_aussie_broadband_cvc_capacity
-            tap_action:
-              action: more-info
-            hold_action:
-              action: more-info
           - type: entities
             title: Internet
             show_header_toggle: false
@@ -328,6 +249,13 @@ views:
               - sensor.speedtest_upload_filtered
               - sensor.speedtest_ping
               - sensor.fritz_netmonitor
+          - type: picture-entity
+            title: Superloop CVC Capacity
+            entity: camera.superloop_cvc_capacity
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
           - type: horizontal-stack
             cards:
               - type: gauge
@@ -1037,7 +965,6 @@ views:
                   - automation.toothbrush_on
                   - automation.toothbrush_off
                   - automation.turn_lounge_light_on_elevation_25deg_after_4pm
-                  - automation.turn_coffee_maker_on_when_liz_gets_home_after_6
               - type: custom:fold-entity-row
                 open: false
                 head: 
@@ -1066,9 +993,6 @@ views:
                     secondary_info: "[[ automation.restart_docker_containers_when_memory_35.attributes.last_triggered ]]"
                   - automation.purge_history
                   - automation.roaster_needs_attention
-                  - entity: automation.update_abb_usage
-                    type: 'custom:secondaryinfo-entity-row'
-                    secondary_info: "[[ automation.update_abb_usage.attributes.last_triggered ]]"
               - type: custom:fold-entity-row
                 open: false
                 head: 
