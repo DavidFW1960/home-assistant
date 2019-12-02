@@ -10,8 +10,8 @@ resources:
     type: js
   - url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
     type: module
-  - url: /community_plugin/bar-card/bar-card.js
-    type: js
+#  - url: /community_plugin/bar-card/bar-card.js
+#    type: js
   - url: /community_plugin/compact-custom-header/compact-custom-header.js
     type: module
   - url: /community_plugin/button-card/button-card.js
@@ -28,8 +28,8 @@ resources:
     type: module
   - url: /community_plugin/list-card/list-card.js
     type: js
-  - url: /community_plugin/synthwave-hass-extras/synthwave-hass-extras.js
-    type: js
+#  - url: /community_plugin/synthwave-hass-extras/synthwave-hass-extras.js
+#    type: js
   - url: /community_plugin/lovelace-card-mod/card-mod.js
     type: module
 cch:
@@ -515,6 +515,7 @@ views:
             points_per_hour: 30
             show:
               labels: true
+            name: Temperature
             entities:
               - entity: sensor.nodemcu_lounge_bme280_temperature
                 name: Lounge Temperature
@@ -529,6 +530,7 @@ views:
             points_per_hour: 30
             show:
               labels: true
+            name: Pressure
             entities:
               - entity: sensor.nodemcu_lounge_bme280_pressure
                 name: Pressure
@@ -543,6 +545,7 @@ views:
             points_per_hour: 30
             show:
               labels: true
+            name: Humidity
             entities:
               - entity: sensor.nodemcu_lounge_bme280_humidity
                 name: Lounge Humidity
@@ -557,6 +560,7 @@ views:
             points_per_hour: 30
             show:
               labels: true
+            name: Illuminance
             entities:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
                 name: Illuminance
