@@ -46,15 +46,15 @@ clear-dark:
   paper-item-icon-active-color: 'var(--accent-color)'                             # On
 
   # Switches
-  switch-checked-color: 'var(--accent-color)'                                     # Knob On
+  switch-checked-button-color: 'var(--text-medium-light-color)'                   # Knob On
   switch-unchecked-button-color: 'var(--text-medium-light-color)'                 # Knob Off
+  switch-checked-track-color: '#009FFF'                                           # Background On
   switch-unchecked-track-color: '#767682'                                         # Background Off
-  # paper-toggle-button-checked-bar-color: '#009FFF'                              # Background On (currently broken in HA 0.101)
 
   # Slider
   paper-slider-active-color: 'var(--accent-color)'                                # Line On
-  paper-slider-container-color: 'var(--text-dark-color)'                          # Line Off
   paper-slider-knob-color: 'var(--text-medium-light-color)'                       # Knob On
+  paper-slider-container-color: 'var(--text-dark-color)'                          # Line Off
   paper-slider-knob-start-color: 'var(--text-medium-light-color)'                 # Knob Off
 
   # Shadows

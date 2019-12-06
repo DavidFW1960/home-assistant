@@ -26,6 +26,12 @@ homeassistant:
 # Track the sun
 sun:
 
+# Binary Sensor for sun op or down
+binary_sensor:
+  - platform: sun2
+    monitored_conditions:
+      - elevation
+      
 sensor:
 
   - platform: season

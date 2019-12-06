@@ -35,14 +35,14 @@ homeassistant:
       trusted_networks:
         - 127.0.0.1
         - ::1
-        - 10.90.11.0/24
+        - !secret my_ipv4_network
         - fd00::/8
         - !secret zerotier_network
         - !secret my_ipv6_network
       trusted_users:
         127.0.0.1: !secret user_id
         "::1": !secret user_id
-        10.90.11.0/24: !secret user_id
+        !secret trusted_ipv4: !secret user_id
         "fd00::/8": !secret user_id
         !secret trusted_ipv6: !secret user_id
         !secret zerotier_network: !secret user_id
@@ -165,6 +165,7 @@ recorder: !include recorder.yaml
 # the developers to assist with development of Home Assistant.
 # For more information, please see:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
@@ -179,7 +180,9 @@ discovery:
 # iOS & Mobile App Component
 #ios:
 mobile_app:
+
 zeroconf:
+
 ssdp:
 
 # Wemo
@@ -187,6 +190,7 @@ wemo:
 # discovery: false
   static:
     - !secret wemo_ip
+
 # Yeelights
 yeelight:
   devices:

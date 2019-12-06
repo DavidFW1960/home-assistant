@@ -10,8 +10,6 @@ resources:
     type: js
   - url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
     type: module
-#  - url: /community_plugin/bar-card/bar-card.js
-#    type: js
   - url: /community_plugin/compact-custom-header/compact-custom-header.js
     type: module
   - url: /community_plugin/button-card/button-card.js
@@ -28,8 +26,8 @@ resources:
     type: module
   - url: /community_plugin/list-card/list-card.js
     type: js
-#  - url: /community_plugin/synthwave-hass-extras/synthwave-hass-extras.js
-#    type: js
+  - url: /community_plugin/synthwave-hass-extras/synthwave-hass-extras.js
+    type: js
   - url: /community_plugin/lovelace-card-mod/card-mod.js
     type: module
 cch:
