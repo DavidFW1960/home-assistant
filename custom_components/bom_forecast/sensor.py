@@ -422,11 +422,10 @@ class BOMForecastData:
             else:
                 _LOGGER.debug("not City")
                 uv_alert_data = self._data.find(
-                    _FIND_QUERY.format(index, 'uv_alert')).text
+                    _FIND_QUERY.format(index, 'uv_alert'))
                 _LOGGER.debug("uv_alert_data = %s", uv_alert_data)
                 if uv_alert_data is not None:
-                    uv_alert = self._data.find(
-                        _FIND_QUERY.format(index, 'uv_alert')).text
+                    uv_alert = uv_alert_data.text
                     _LOGGER.debug("uv_alert = %s", uv_alert)
                     return uv_alert
 
@@ -447,11 +446,10 @@ class BOMForecastData:
             else:
                 _LOGGER.debug("not City")
                 fire_danger_data = self._data.find(
-                    _FIND_QUERY.format(index, 'fire_danger')).text
+                    _FIND_QUERY.format(index, 'fire_danger'))
                 _LOGGER.debug("fire_danger_data = %s", fire_danger_data)
                 if fire_danger_data is not None:
-                    fire_danger = self._data.find(
-                        _FIND_QUERY.format(index, 'fire_danger')).text
+                    fire_danger = fire_danger_data.text
                     _LOGGER.debug("fire_danger = %s", fire_danger)
                     return fire_danger
 
