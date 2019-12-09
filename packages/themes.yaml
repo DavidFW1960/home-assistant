@@ -47,6 +47,7 @@ input_select:
      - 'oled'
      - 'pmxmononight'
      - 'slate'
+     - 'slate_red'
      - 'solarized_light'
      - 'solarized-dark'
      - 'synthwave'
