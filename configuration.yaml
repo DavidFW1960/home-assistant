@@ -14,6 +14,10 @@ homeassistant:
   # whitelist_external_dirs:
   #   - /config/abbusage
 
+# Default Config
+# default_config:
+# https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/default_config/manifest.json
+
 # Customization file
   customize: !include customize.yaml
 # customize_glob: !include customize_glob.yaml
@@ -292,11 +296,9 @@ sensor:
   - platform: rest
     resource: https://api.github.com/repos/artisan-roaster-scope/artisan/releases/latest
     name: Artisan Software Version
-    username: !secret githubuser
-    password: !secret githubpass
-    authentication: basic
     value_template: '{{ value_json.tag_name }}'
     headers:
+      Authorization: !secret github-access-token-token
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
@@ -313,11 +315,9 @@ sensor:
   - platform: rest
     resource: https://api.github.com/repos/arendst/Tasmota/releases/latest
     name: Tasmota Firmware Version Available
-    username: !secret githubuser
-    password: !secret githubpass
-    authentication: basic
     value_template: '{{ value_json.tag_name }}'
     headers:
+      Authorization: !secret github-access-token-token
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
