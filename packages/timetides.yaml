@@ -23,9 +23,6 @@ homeassistant:
       friendly_name: Sunset (Today)
       <<: *common
 
-# Track the sun
-sun:
-
 # Binary Sensor for sun op or down
 binary_sensor:
   - platform: sun2

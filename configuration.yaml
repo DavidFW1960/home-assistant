@@ -1,22 +1,9 @@
-homeassistant:
-  # Name of the location where Home Assistant is running
-  # name: Home
-  # Location required to calculate the time the sun rises and sets
-  # latitude: !secret my_latitude
-  # longitude: !secret my_longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  # elevation: !secret my_elevation
-  # metric for Metric, imperial for Imperial
-  # unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  # time_zone: !secret my_timezone
-  # Whitelisted Directories
-  # whitelist_external_dirs:
-  #   - /config/abbusage
-
 # Default Config
-# default_config:
 # https://github.com/home-assistant/home-assistant/blob/dev/homeassistant/components/default_config/manifest.json
+# documentation: https://www.home-assistant.io/integrations/default_config
+default_config:
+
+homeassistant:
 
 # Customization file
   customize: !include customize.yaml
@@ -53,21 +40,12 @@ homeassistant:
       allow_bypass_login: true
     - type: homeassistant
 
-# System Health
-system_health:
-
 # Lovelace
 #lovelace:
 #  mode: yaml
 
 # Python
 # python_script:
-
-# Map
-map:
-
-# Person
-person:
 
 # Device Trackers - Fritz!Box & iPhone Detect
 device_tracker:
@@ -112,9 +90,6 @@ notify:
             push:
               sound:
                 name: default
-
-# Enables configuration UI
-config:
 
 http:
   # ssl_certificate: /ssl/fullchain.pem
@@ -164,16 +139,6 @@ panel_iframe:
 # Recorder
 recorder: !include recorder.yaml
 
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-
-updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
-
 # Discover some devices automatically
 discovery:
   ignore:
@@ -181,14 +146,6 @@ discovery:
   enable:
     - dlna_dmr
     
-# iOS & Mobile App Component
-#ios:
-mobile_app:
-
-zeroconf:
-
-ssdp:
-
 # Wemo
 wemo:
 # discovery: false
@@ -223,9 +180,6 @@ history:
       - sensor.karionggosford
       - sensor.gosfordkariong
       - sensor.systemuptime
-
-# View all events in a logbook
-logbook:
 
 # Sensors
 sensor:
