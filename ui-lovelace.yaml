@@ -10,8 +10,10 @@ resources:
     type: js
   - url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
     type: module
-  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+  - url: /community_plugin/custom-header/custom-header.js
     type: module
+  - url: /community_plugin/lovelace-swipe-navigation/swipe-navigation.js
+    type: js
   - url: /community_plugin/button-card/button-card.js
     type: module
   - url: /community_plugin/config-template-card/config-template-card.js
@@ -30,8 +32,12 @@ resources:
     type: js
   - url: /community_plugin/lovelace-card-mod/card-mod.js
     type: module
-cch:
-  swipe: true
+custom_header:
+  compact_mode: true
+swipe_nav:
+  wrap: true
+  animate: swipe        # could also use fade or flip
+  swipe_amount: 15
 views:
   - title: Home Assistant
     icon: mdi:home-assistant
