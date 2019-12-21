@@ -1203,7 +1203,7 @@ views:
       - type: vertical-stack
         cards:
           - type: entities
-            title: Google Media Players
+            title: Google Player Groups
             show_header_toggle: false
             entities:
               - entity: media_player.all_speakers
@@ -1222,6 +1222,18 @@ views:
                 hide: 
                   power_state: false
                 info: scroll
+              - entity: media_player.lounge_room
+                type: custom:mini-media-player
+                tts: 
+                  platform: google_translate
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+          - type: entities
+            title: Google Media Players
+            show_header_toggle: false
+            entities:
               - entity: media_player.bedroom_speaker
                 type: custom:mini-media-player
                 tts: 
@@ -1238,7 +1250,15 @@ views:
                 hide: 
                   power_state: false
                 info: scroll
-              - entity: media_player.lounge_speaker
+              - entity: media_player.lounge_mini_speaker
+                type: custom:mini-media-player
+                tts: 
+                  platform: google_translate
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.lounge_room_speaker
                 type: custom:mini-media-player
                 tts: 
                   platform: google_translate
@@ -1319,6 +1339,13 @@ views:
                 info: scroll
                 source: full
               - entity: media_player.ua55d8000_ua55d8000
+                type: custom:mini-media-player
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+                source: full
+              - entity: media_player.tvua55d8000
                 type: custom:mini-media-player
                 artwork: full-cover
                 hide: 

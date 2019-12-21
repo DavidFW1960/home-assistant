@@ -135,7 +135,7 @@ panel_iframe:
     icon: mdi:vector-square
 #   url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
     url: https://dev.materialdesignicons.com/icons
- 
+
 # Recorder
 recorder: !include recorder.yaml
 
@@ -145,7 +145,7 @@ discovery:
     - yeelight
   enable:
     - dlna_dmr
-    
+
 # Wemo
 wemo:
 # discovery: false
@@ -206,7 +206,7 @@ sensor:
     password: !secret outlooksyncpass
     folder: inbox
     search: !secret alarmnotification
-          
+
 # Sonarr, Radarr and Upcoming Media
   - platform: sonarr
     api_key: !secret my_sonarr_api
