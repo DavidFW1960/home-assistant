@@ -114,10 +114,6 @@ logger:
 
 # iFrame/Panel Custom 
 panel_iframe:
-  ide:
-    title: IDE
-    icon: mdi:code-braces
-    url: !secret ide-cloud9    
   jupyterlab:
     title: JupyterLab
     icon: mdi:flask
