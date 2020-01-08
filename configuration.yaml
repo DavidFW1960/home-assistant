@@ -111,6 +111,7 @@ logger:
     custom_components.sensor.authenticated: debug
 #   custom_components.iphonedetect: debug
 #   homeassistant.components.http.view: error
+    hacs: debug
 
 # iFrame/Panel Custom 
 panel_iframe:
@@ -187,8 +188,7 @@ sensor:
 
 # HERE Travel Time
   - platform: here_travel_time
-    app_id: !secret here_app_id
-    app_code: !secret here_app_code
+    api_key: !secret here_api_key
     name: Travel to Home
     origin_entity_id: person.david
     destination_entity_id : zone.home

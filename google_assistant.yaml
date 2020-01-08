@@ -1,6 +1,7 @@
 # Google Assistant
 project_id: !secret ga_project
-api_key: !secret api-ga
+service_account: !include gh-ha-2bb06375cfba.json
+report_state: true
 expose_by_default: false
 entity_config:
   light.lounge:
