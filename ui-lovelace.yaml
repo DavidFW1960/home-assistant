@@ -1113,6 +1113,29 @@ views:
                 tap_action:
                   action: call-service
                   service: frontend.reload_themes
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-walter-white-80.png
+                show_entity_picture: true
+                name: Person
+                tap_action:
+                  action: call-service
+                  service: person.reload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-enter-80.png
+                show_entity_picture: true
+                name: Select
+                tap_action:
+                  action: call-service
+                  service: input_select.reload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-switch-off-80.png
+                show_entity_picture: true
+                name: Boolean
+                tap_action:
+                  action: call-service
+                  service: input_boolean.reload
           - type: entities
             title: Automations, Scenes & Scripts
             show_header_toggle: false
@@ -1376,7 +1399,7 @@ views:
             cards:
               - type: custom:button-card
                 icon: mdi:home-assistant
-                name: Main
+                name: System
                 tap_action:
                   action: call-service
                   service: script.casthomeassistant
@@ -1429,7 +1452,7 @@ views:
             cards:
               - type: custom:button-card
                 icon: mdi:home-assistant
-                name: Main
+                name: System
                 tap_action:
                   action: call-service
                   service: script.casthomeassistantfox
