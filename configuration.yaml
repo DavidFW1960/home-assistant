@@ -111,7 +111,8 @@ logger:
     custom_components.sensor.authenticated: debug
 #   custom_components.iphonedetect: debug
 #   homeassistant.components.http.view: error
-    hacs: debug
+#   hacs: debug
+#   homeassistant.components.here_travel_time: debug
 
 # iFrame/Panel Custom 
 panel_iframe:

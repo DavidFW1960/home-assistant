@@ -385,6 +385,78 @@ views:
               - sensor.bom_forecast_4
               - sensor.bom_forecast_5
               - sensor.bom_forecast_6
+          - type: entities
+            title: Roving
+            show_header_toggle: false
+            entities:
+              - entity: sensor.nodemcu_roving_bme280_temperature
+              - entity: sensor.nodemcu_roving_am2301_temperature
+              - entity: sensor.nodemcu_roving_bme280_pressure
+              - entity: sensor.nodemcu_roving_bme280_seapressure
+              - entity: sensor.nodemcu_roving_bme280_humidity
+              - entity: sensor.nodemcu_roving_am2301_humidity
+#             - entity: sensor.nodemcu_roving_bh1750_illuminance
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Temperature
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_temperature
+                name: Lounge Temperature
+                show_state: true
+                color: orange
+              - entity: sensor.sonoff1_2914_si7021_temperature
+                name: Office Temperature
+                show_state: true
+                color: yellow
+              - entity: sensor.nodemcu_roving_bme280_temperature
+                name: Roving Temperature BME
+                show_state: true
+                color: red
+              - entity: sensor.nodemcu_roving_am2301_temperature
+                name: Roving Temperature AM
+                show_state: true
+                color: green
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Pressure
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_pressure
+                name: Lounge Pressure
+                show_state: true
+                color: cyan
+              - entity: sensor.nodemcu_roving_bme280_pressure
+                name: Roving Pressure
+                show_state: true
+                color: green
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Humidity
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_humidity
+                name: Lounge Humidity
+                show_state: true
+                color: yellow
+              - entity: sensor.sonoff1_2914_si7021_humidity
+                name: Office Humidity
+                show_state: true
+                color: orange
+              - entity: sensor.nodemcu_roving_bme280_humidity
+                name: Roving Humidity BME
+                show_state: true
+                color: red
+              - entity: sensor.nodemcu_roving_am2301_humidity
+                name: Roving Humidity AM
+                show_state: true
+                color: cyan
       - type: vertical-stack
         cards:
           - type: custom:bom-weather-card
@@ -1193,12 +1265,16 @@ views:
               - states['sensor.nodemcu_lounge_status'].attributes['MqttCount']
               - states['sensor.nodemcu_lounge_status'].attributes['WiFi LinkCount']
               - states['sensor.nodemcu_lounge_status'].state
+              - states['sensor.nodemcu_roving_status'].attributes['MqttCount']
+              - states['sensor.nodemcu_roving_status'].attributes['WiFi LinkCount']
+              - states['sensor.nodemcu_roving_status'].state
             entities:
               - sensor.sonoff1_2914_status
               - sensor.sonoff2_3110_status
               - sensor.sonoff5_1083_status
               - sensor.sonoff6_3719_status
               - sensor.nodemcu_lounge_status
+              - sensor.nodemcu_roving_status
             card:
               type: 'custom:hui-entities-card'
               title: MQTT & Wifi Connections
@@ -1217,8 +1293,11 @@ views:
                   name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.nodemcu_lounge_status
-                  name: "${'Weather' + '\xa0'.repeat(13) + 'MQTT ' + vars[12] + '\xa0'.repeat(4) + 'WiFi ' + vars[13] + '\xa0'.repeat(3) + ((parseInt(vars[14]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[14] >= 100 ? 'Excellent' : vars[14] >= 80 ? 'Good' : vars[14] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Weather' + '\xa0'.repeat(12) + 'MQTT ' + vars[12] + '\xa0'.repeat(4) + 'WiFi ' + vars[13] + '\xa0'.repeat(3) + ((parseInt(vars[14]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[14] >= 100 ? 'Excellent' : vars[14] >= 80 ? 'Good' : vars[14] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[14] >= 100 ? 'mdi:wifi' : vars[14] >= 80 ? 'mdi:wifi-strength-3' : vars[14] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                - entity: sensor.nodemcu_roving_status
+                  name: "${'Roving' + '\xa0'.repeat(15) + 'MQTT ' + vars[15] + '\xa0'.repeat(4) + 'WiFi ' + vars[16] + '\xa0'.repeat(3) + ((parseInt(vars[17]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[17] >= 100 ? 'Excellent' : vars[17] >= 80 ? 'Good' : vars[17] >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${vars[17] >= 100 ? 'mdi:wifi' : vars[17] >= 80 ? 'mdi:wifi-strength-3' : vars[17] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
   - title: Media
     path: media
     icon: mdi:vlc

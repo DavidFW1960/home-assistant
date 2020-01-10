@@ -110,25 +110,43 @@ sensor.config_result:
   icon: mdi:home-assistant
 sensor.nodemcu_lounge_bh1750_illuminance:
   unit_of_measurement: lx
-  friendly_name: BH1750 Illuminance
+  friendly_name: Lounge BH1750 Illuminance
   icon: mdi:brightness-5
 sensor.nodemcu_lounge_bme280_temperature:
-  friendly_name: BME280 Temperature
+  friendly_name: Lounge BME280 Temperature
 sensor.nodemcu_lounge_bme280_pressure:
-  friendly_name: BME280 Pressure
+  friendly_name: Lounge BME280 Pressure
   icon: mdi:gauge
 sensor.nodemcu_lounge_bme280_seapressure:
-  friendly_name: BME280 Sea Pressure
+  friendly_name: Lounge BME280 Sea Pressure
   unit_of_measurement: hPa
   icon: mdi:gauge
   device_class: pressure
 sensor.nodemcu_lounge_bme280_humidity:
-  friendly_name: BME280 Humidity
+  friendly_name: Lounge BME280 Humidity
 sensor.nodemcu_lounge_status:
   icon: mdi:thermometer
+sensor.nodemcu_roving_bme280_temperature:
+  friendly_name: Roving BME280 Temperature
+sensor.nodemcu_roving_bme280_pressure:
+  friendly_name: Roving BME280 Pressure
+  icon: mdi:gauge
+sensor.nodemcu_roving_bme280_seapressure:
+  friendly_name: Roving BME280 Sea Pressure
+  unit_of_measurement: hPa
+  icon: mdi:gauge
+  device_class: pressure
+sensor.nodemcu_roving_bme280_humidity:
+  friendly_name: Roving BME280 Humidity
+sensor.nodemcu_roving_status:
+  icon: mdi:thermometer
+sensor.nodemcu_roving_am2301_temperature:
+  friendly_name: Roving AM2301 Temperature
+sensor.nodemcu_roving_am2301_humidity:
+  friendly_name: Roving AM2301 Humidity
 sensor.sonoff1_2914_si7021_temperature:
-  friendly_name: Si7021 Temperature
+  friendly_name: Office Si7021 Temperature
 sensor.sonoff1_2914_si7021_humidity:
-  friendly_name: Si7021 Humidity
+  friendly_name: Office Si7021 Humidity
 sensor.ssl_certificate_expiry:
   friendly_name: SSL Certificate Expiry
