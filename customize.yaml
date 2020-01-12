@@ -148,5 +148,9 @@ sensor.sonoff1_2914_si7021_temperature:
   friendly_name: Office Si7021 Temperature
 sensor.sonoff1_2914_si7021_humidity:
   friendly_name: Office Si7021 Humidity
+sensor.sonoff3_0898_si7021_temperature:
+  friendly_name: Roving Si7021 Temperature
+sensor.sonoff3_0898_si7021_humidity:
+  friendly_name: Roving Si7021 Humidity
 sensor.ssl_certificate_expiry:
   friendly_name: SSL Certificate Expiry

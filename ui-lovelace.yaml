@@ -34,6 +34,18 @@ resources:
     type: module
 custom_header:
   compact_mode: true
+  exceptions:
+    - conditions:
+        user_agent: Windows
+      config:
+        hide_tabs:
+          - weather1
+          - weather2
+    - conditions:
+        user_agent: Mobile
+      config:
+        hide_tabs:
+          - weather
 swipe_nav:
   wrap: true
   animate: swipe        # could also use fade or flip
@@ -391,10 +403,12 @@ views:
             entities:
               - entity: sensor.nodemcu_roving_bme280_temperature
               - entity: sensor.nodemcu_roving_am2301_temperature
+              - entity: sensor.sonoff3_0898_si7021_temperature	
               - entity: sensor.nodemcu_roving_bme280_pressure
               - entity: sensor.nodemcu_roving_bme280_seapressure
               - entity: sensor.nodemcu_roving_bme280_humidity
               - entity: sensor.nodemcu_roving_am2301_humidity
+              - entity: sensor.sonoff3_0898_si7021_humidity
 #             - entity: sensor.nodemcu_roving_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
@@ -419,6 +433,10 @@ views:
                 name: Roving Temperature AM
                 show_state: true
                 color: green
+              - entity: sensor.sonoff3_0898_si7021_temperature
+                name: Roving Temperature SI
+                show_state: true
+                color: cyan
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 30
@@ -457,6 +475,10 @@ views:
                 name: Roving Humidity AM
                 show_state: true
                 color: cyan
+              - entity: sensor.sonoff3_0898_si7021_humidity
+                name: Roving Humidity SI
+                show_state: true
+                color: green
       - type: vertical-stack
         cards:
           - type: custom:bom-weather-card
@@ -754,6 +776,8 @@ views:
                   include:
                     - entity_id: "geo_location.nsw_fire_service_feed_*"
                     - entity_id: "geo_location.lightning_strike_*"
+                  exclude:
+                    - state: "unknown"
                 show_empty: true
                 sort:
                   method: state
@@ -765,6 +789,479 @@ views:
               - wwlln
             entities:
               - zone.home
+  - title: Weather1
+    path: weather1
+    icon: mdi:weather-cloudy
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: 'custom:config-template-card'
+            entities:
+              - sensor.seasonname
+              - sun.sun
+              - sensor.sunrisetoday
+              - sensor.sunsettoday
+              - sensor.nextsunrise
+              - sensor.nextsunset
+              - sensor.daylightyesterday
+              - sensor.daylighttoday
+              - sensor.daylighttomorrow
+              - sensor.yrwthr
+              - sensor.moonphases
+            card:
+              type: 'custom:hui-entities-card'
+              title: Season, Sun & Moon Phase
+              show_header_toggle: false
+              entities:
+                - entity: sensor.seasonname
+                - entity: sun.sun
+                  name: "${'Sun Elevation:' + '\xa0'.repeat(2) + states['sun.sun'].attributes['elevation'] + '°' }"
+                - entity: sensor.sunrisetoday
+                - entity: sensor.sunsettoday
+                - entity: sensor.nextsunrise
+                - entity: sensor.nextsunset
+                - entity: sensor.daylightyesterday
+                - entity: sensor.daylighttoday
+                - entity: sensor.daylighttomorrow
+                - entity: sensor.yrwthr
+                - entity: sensor.moonphases
+                - entity: sensor.bom_uv_alert
+                - entity: sensor.bom_fire_danger
+          - type: custom:mini-graph-card
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              labels: true
+            entities:
+              - entity: sensor.daylengthchange
+                name: Change in Day Length
+                show_state: true
+                color: orange
+          - type: entities
+            title: Weather from BOM Australia
+            show_header_toggle: false
+            entities:
+              - sensor.bom_forecast_0
+              - sensor.bom_gosford_air_temp_c
+              - sensor.bom_gosford_delta_temp_c
+              - sensor.bom_gosford_dew_point_c
+              - sensor.bom_gosford_feels_like_c
+              - sensor.bom_gosford_rain_today
+              - sensor.bom_gosford_relative_humidity
+              - sensor.bom_gosford_wind_direction
+              - sensor.bom_gosford_wind_gust_kmh
+              - sensor.bom_gosford_wind_gust_kt
+              - sensor.bom_gosford_wind_speed_kmh
+              - sensor.bom_gosford_wind_speed_kt
+          - type: entities
+            title: BOM Forecast
+            show_header_toggle: false
+            entities:
+              - sensor.bom_forecast_0
+              - sensor.bom_forecast_1
+              - sensor.bom_forecast_2
+              - sensor.bom_forecast_3
+              - sensor.bom_forecast_4
+              - sensor.bom_forecast_5
+              - sensor.bom_forecast_6
+      - type: vertical-stack
+        cards:
+          - type: custom:bom-weather-card
+            title: BOM Weather
+            entity_current_conditions: sensor.bom_gosford_icon_0
+            entity_temperature: sensor.bom_gosford_air_temp_c
+            entity_forecast_high_temp_1: sensor.bom_gosford_max_temp_c_1
+            entity_forecast_high_temp_2: sensor.bom_gosford_max_temp_c_2
+            entity_forecast_high_temp_3: sensor.bom_gosford_max_temp_c_3
+            entity_forecast_high_temp_4: sensor.bom_gosford_max_temp_c_4
+            entity_forecast_high_temp_5: sensor.bom_gosford_max_temp_c_5
+            entity_forecast_icon_1: sensor.bom_gosford_icon_1
+            entity_forecast_icon_2: sensor.bom_gosford_icon_2
+            entity_forecast_icon_3: sensor.bom_gosford_icon_3
+            entity_forecast_icon_4: sensor.bom_gosford_icon_4
+            entity_forecast_icon_5: sensor.bom_gosford_icon_5
+            entity_forecast_low_temp_1: sensor.bom_gosford_min_temp_c_1
+            entity_forecast_low_temp_2: sensor.bom_gosford_min_temp_c_2
+            entity_forecast_low_temp_3: sensor.bom_gosford_min_temp_c_3
+            entity_forecast_low_temp_4: sensor.bom_gosford_min_temp_c_4
+            entity_forecast_low_temp_5: sensor.bom_gosford_min_temp_c_5
+            entity_summary_1: sensor.bom_gosford_summary_1
+            entity_summary_2: sensor.bom_gosford_summary_2
+            entity_summary_3: sensor.bom_gosford_summary_3
+            entity_summary_4: sensor.bom_gosford_summary_4
+            entity_summary_5: sensor.bom_gosford_summary_5
+            entity_sun: sun.sun
+#           entity_visibility: sensor.dark_sky_visibility
+            entity_daytime_high: sensor.bom_today_max_average
+            entity_daytime_low: sensor.bom_today_min_average
+            entity_wind_bearing: sensor.bom_gosford_wind_direction
+            entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
+            entity_humidity: sensor.bom_gosford_relative_humidity
+            entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
+            entity_apparent_temp: sensor.bom_gosford_feels_like_c
+            entity_daily_summary: sensor.bom_gosford_detailed_summary_0
+            entity_pop: sensor.bom_gosford_chance_of_rain_0
+            entity_pop_intensity: sensor.bom_gosford_rain_today
+            entity_possible_today: sensor.bom_gosford_possible_rainfall_0
+            entity_pos_1: sensor.bom_gosford_possible_rainfall_1
+            entity_pos_2: sensor.bom_gosford_possible_rainfall_2
+            entity_pos_3: sensor.bom_gosford_possible_rainfall_3
+            entity_pos_4: sensor.bom_gosford_possible_rainfall_4
+            entity_pos_5: sensor.bom_gosford_possible_rainfall_5
+            entity_pop_1: sensor.bom_gosford_chance_of_rain_1
+            entity_pop_2: sensor.bom_gosford_chance_of_rain_2
+            entity_pop_3: sensor.bom_gosford_chance_of_rain_3
+            entity_pop_4: sensor.bom_gosford_chance_of_rain_4
+            entity_pop_5: sensor.bom_gosford_chance_of_rain_5
+            entity_current_text: sensor.bom_current_text
+            entity_uv_alert: sensor.bom_uv_alert
+            entity_fire_danger: sensor.bom_fire_danger
+            entity_uv_alert_summary: sensor.bom_uv_alert_summary
+            entity_fire_danger_summary: sensor.bom_fire_danger_summary
+            locale: en
+            sunset: true
+            static_icons: false
+            tooltip_bg_color: 'rgb( 75,155,239)'
+            tooltip_border_color: 'rgb(255,161,0)'
+            tooltip_border_width: 1
+            tooltip_caret_size: 5
+            tooltip_fg_color: '#fff'
+            tooltip_left_offset: -12
+            tooltip_width: 110
+            tooltips: true
+            old_daily_format: false
+            time_format: 12
+            show_beaufort: false
+            refresh_interval: 60
+            show_separator: false
+            temp_top_margin: -0.3em         #default -0.3em px or em
+            temp_font_weight: 300           #default 300 numeric
+            temp_font_size: 4em             #default 4em em
+            temp_right_pos: 0.85em          #default .85em px or em
+            temp_uom_top_margin: -9px       #default -9px px or em
+            temp_uom_right_margin: 7px      #default 7px px or em
+            apparent_top_margin: 45px       #default 45px px or em
+            apparent_right_pos: 1em         #default 1em px or em
+            apparent_right_margin: 1em      #default 1em px or em
+            current_text_top_margin: 4.5em  #default 39px px or em
+            current_text_left_pos: 0em      #default 5em px or em
+            current_text_font_size: 1.5em   #default 1.5em em
+            current_text_alignment: center  #default center
+            current_text_width: 100%        #default 100%
+            current_data_top_margin: 10em   #default 7em px or em
+            large_icon_top_margin: -3.5em   #default -3.5em px or em
+            large_icon_left_position: 0em   #default 0em px or em
+            separator_top_margin: 6em       #default 6em px or em
+            summary_top_padding: 2em        #default 1em px or em
+            summary_font_size: 0.8em        #default 0.8em px or em
+            slot_l1: daytime_high           #daytime_high
+            slot_l2: daytime_low            #daytime_low
+            slot_l3: wind                   #wind
+            slot_l4: pressure               #pressure
+            slot_l5: sun_next               #sun_next
+            slot_r1: pop                    #pop
+            slot_r2: humidity               #humidity
+            slot_r3: uv_summary             #uv_summary
+            slot_r4: fire_summary           #fire_summary
+            slot_r5: sun_following          #sun_following
+          - type: history-graph
+            title: Weather BOM Gosford
+            hours_to_show: 72
+            refresh_interval: 300
+            entities:
+              - sensor.bom_gosford_air_temp_c
+              - sensor.nodemcu_lounge_bme280_temperature
+              - sensor.sonoff1_2914_si7021_temperature
+              - sensor.bom_gosford_feels_like_c
+              - sensor.bom_gosford_dew_point_c
+              - sensor.bom_gosford_rain_today
+              - sensor.nodemcu_lounge_bme280_pressure
+              - sensor.nodemcu_lounge_bme280_seapressure
+              - sensor.bom_gosford_relative_humidity
+              - sensor.nodemcu_lounge_bme280_humidity
+              - sensor.sonoff1_2914_si7021_humidity
+              - sensor.bom_gosford_wind_gust_kmh
+              - sensor.bom_gosford_wind_speed_kmh
+          - type: entities
+            title: Sensors
+            show_header_toggle: false
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_temperature
+              - entity: sensor.sonoff1_2914_si7021_temperature
+              - entity: sensor.nodemcu_lounge_bme280_pressure
+              - entity: sensor.nodemcu_lounge_bme280_seapressure
+              - entity: sensor.nodemcu_lounge_bme280_humidity
+              - entity: sensor.sonoff1_2914_si7021_humidity
+              - entity: sensor.nodemcu_lounge_bh1750_illuminance
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Temperature
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_temperature
+                name: Lounge Temperature
+                show_state: true
+                color: orange
+              - entity: sensor.sonoff1_2914_si7021_temperature
+                name: Office Temperature
+                show_state: true
+                color: red
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Pressure
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_pressure
+                name: Pressure
+                show_state: true
+                color: cyan
+              - entity: sensor.nodemcu_lounge_bme280_seapressure
+                name: Sea Pressure
+                show_state: true
+                color: green
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Humidity
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_humidity
+                name: Lounge Humidity
+                show_state: true
+                color: yellow
+              - entity: sensor.sonoff1_2914_si7021_humidity
+                name: Office Humidity
+                show_state: true
+                color: orange
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Illuminance
+            entities:
+              - entity: sensor.nodemcu_lounge_bh1750_illuminance
+                name: Illuminance
+                show_state: true
+                color: pink
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            title: BOM Satellite
+            entity: camera.bom_satellite
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
+          - type: picture-entity
+            title: BOM Radar Sydney
+            entity: camera.sydney
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
+          - type: picture-entity
+            title: BOM Radar Newcastle
+            entity: camera.newcastle
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
+          - type: entities
+            title: NSW Warnings & Events
+            show_header_toggle: false
+            entities:
+              - binary_sensor.fire_ban_today
+              - sensor.fire_danger_level_today
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'None'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/Icons.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Low Moderate'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/low-moderate.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'High'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/high.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Very High'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/very-high.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Severe'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/severe.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Extreme'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/extreme.png
+          - type: conditional
+            conditions:
+              - entity: sensor.fire_danger_level_today
+                state: 'Catastrophic'
+            card:
+              type: picture-entity
+              entity: sensor.fire_danger_level_today
+              show_name: false
+              show_state: false
+              image: /local/icons/firedanger/catastrophic.png
+          - type: entities
+            entities: 
+              - type: custom:auto-entities
+                card:
+                  type: custom:fold-entity-row
+                  head:
+                    type: section
+                    label: Current Incidents
+                  open: true
+                filter:
+                  include:
+                    - entity_id: "geo_location.nsw_fire_service_feed_*"
+                    - entity_id: "geo_location.lightning_strike_*"
+                  exclude:
+                    - state: "unknown"
+                show_empty: true
+                sort:
+                  method: state
+          - type: map
+            show_header_toggle: false
+            dark_mode: true
+            geo_location_sources:
+              - nsw_rural_fire_service_feed
+              - wwlln
+            entities:
+              - zone.home
+  - title: Weather2
+    path: weather2
+    icon: mdi:weather-cloudy
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Roving
+            show_header_toggle: false
+            entities:
+              - entity: sensor.nodemcu_roving_bme280_temperature
+              - entity: sensor.nodemcu_roving_am2301_temperature
+              - entity: sensor.sonoff3_0898_si7021_temperature	
+              - entity: sensor.nodemcu_roving_bme280_pressure
+              - entity: sensor.nodemcu_roving_bme280_seapressure
+              - entity: sensor.nodemcu_roving_bme280_humidity
+              - entity: sensor.nodemcu_roving_am2301_humidity
+              - entity: sensor.sonoff3_0898_si7021_humidity
+#             - entity: sensor.nodemcu_roving_bh1750_illuminance
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Temperature
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_temperature
+                name: Lounge Temperature
+                show_state: true
+                color: orange
+              - entity: sensor.sonoff1_2914_si7021_temperature
+                name: Office Temperature
+                show_state: true
+                color: yellow
+              - entity: sensor.nodemcu_roving_bme280_temperature
+                name: Roving Temperature BME
+                show_state: true
+                color: red
+              - entity: sensor.nodemcu_roving_am2301_temperature
+                name: Roving Temperature AM
+                show_state: true
+                color: green
+              - entity: sensor.sonoff3_0898_si7021_temperature
+                name: Roving Temperature SI
+                show_state: true
+                color: cyan
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Pressure
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_pressure
+                name: Lounge Pressure
+                show_state: true
+                color: cyan
+              - entity: sensor.nodemcu_roving_bme280_pressure
+                name: Roving Pressure
+                show_state: true
+                color: green
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 30
+            show:
+              labels: true
+            name: Humidity
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_humidity
+                name: Lounge Humidity
+                show_state: true
+                color: yellow
+              - entity: sensor.sonoff1_2914_si7021_humidity
+                name: Office Humidity
+                show_state: true
+                color: orange
+              - entity: sensor.nodemcu_roving_bme280_humidity
+                name: Roving Humidity BME
+                show_state: true
+                color: red
+              - entity: sensor.nodemcu_roving_am2301_humidity
+                name: Roving Humidity AM
+                show_state: true
+                color: cyan
+              - entity: sensor.sonoff3_0898_si7021_humidity
+                name: Roving Humidity SI
+                show_state: true
+                color: green
   - title: Lights & Switches
     path: lights_and_switches
     icon: mdi:power
@@ -1268,6 +1765,9 @@ views:
               - states['sensor.nodemcu_roving_status'].attributes['MqttCount']
               - states['sensor.nodemcu_roving_status'].attributes['WiFi LinkCount']
               - states['sensor.nodemcu_roving_status'].state
+              - states['sensor.sonoff3_0898_status'].attributes['MqttCount']
+              - states['sensor.sonoff3_0898_status'].attributes['WiFi LinkCount']
+              - states['sensor.sonoff3_0898_status'].state
             entities:
               - sensor.sonoff1_2914_status
               - sensor.sonoff2_3110_status
@@ -1275,6 +1775,7 @@ views:
               - sensor.sonoff6_3719_status
               - sensor.nodemcu_lounge_status
               - sensor.nodemcu_roving_status
+              - sensor.sonoff3_0898_status
             card:
               type: 'custom:hui-entities-card'
               title: MQTT & Wifi Connections
@@ -1298,6 +1799,9 @@ views:
                 - entity: sensor.nodemcu_roving_status
                   name: "${'Roving' + '\xa0'.repeat(15) + 'MQTT ' + vars[15] + '\xa0'.repeat(4) + 'WiFi ' + vars[16] + '\xa0'.repeat(3) + ((parseInt(vars[17]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[17] >= 100 ? 'Excellent' : vars[17] >= 80 ? 'Good' : vars[17] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[17] >= 100 ? 'mdi:wifi' : vars[17] >= 80 ? 'mdi:wifi-strength-3' : vars[17] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                - entity: sensor.sonoff3_0898_status
+                  name: "${'RovingSI' + '\xa0'.repeat(11) + 'MQTT ' + vars[18] + '\xa0'.repeat(4) + 'WiFi ' + vars[19] + '\xa0'.repeat(3) + ((parseInt(vars[20]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[20] >= 100 ? 'Excellent' : vars[20] >= 80 ? 'Good' : vars[20] >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${vars[20] >= 100 ? 'mdi:wifi' : vars[20] >= 80 ? 'mdi:wifi-strength-3' : vars[20] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
   - title: Media
     path: media
     icon: mdi:vlc
