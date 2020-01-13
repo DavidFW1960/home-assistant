@@ -27,5 +27,4 @@ delete-gmail-email.sh
 emptyinbox.py
 abbcookie.txt
 *.json
-
 scripts.yaml
