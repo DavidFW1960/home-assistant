@@ -42,7 +42,18 @@ custom_header:
           - weather1
           - weather2
     - conditions:
+        user_agent: "(KHTML, like Gecko) Chrome"
+      config:
+        hide_tabs:
+          - weather1
+          - weather2
+    - conditions:
         user_agent: Mobile
+      config:
+        hide_tabs:
+          - weather
+    - conditions:
+        user_agent: AppleWebKit
       config:
         hide_tabs:
           - weather
