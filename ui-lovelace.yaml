@@ -786,9 +786,9 @@ views:
                 filter:
                   include:
                     - entity_id: "geo_location.nsw_fire_service_feed_*"
+                      state: "> 0"
                     - entity_id: "geo_location.lightning_strike_*"
-                  exclude:
-                    - state: "unknown"
+                      state: "> 0"
                 show_empty: true
                 sort:
                   method: state
@@ -1598,6 +1598,7 @@ views:
               - entity: script.check_config
               - entity: sensor.config_result
                 icon: mdi:home-assistant
+                name: Config Check Result
           - type: horizontal-stack
             cards:
               - type: custom:button-card
