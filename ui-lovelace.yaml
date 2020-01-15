@@ -1576,9 +1576,9 @@ views:
                   - automation.alarm_event_triggered
                   - automation.alarm_event_check
                   - automation.update_speedtest
-                  - entity: automation.restart_docker_containers_when_memory_45
+                  - entity: automation.restart_docker_containers_when_memory_50
                     type: 'custom:secondaryinfo-entity-row'
-                    secondary_info: "[[ automation.restart_docker_containers_when_memory_45.attributes.last_triggered ]]"
+                    secondary_info: "[[ automation.restart_docker_containers_when_memory_50.attributes.last_triggered ]]"
                   - automation.purge_history
                   - automation.roaster_needs_attention
               - type: custom:fold-entity-row
