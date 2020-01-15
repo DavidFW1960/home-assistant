@@ -420,7 +420,7 @@ views:
               - entity: sensor.nodemcu_roving_bme280_humidity
               - entity: sensor.nodemcu_roving_am2301_humidity
               - entity: sensor.sonoff3_0898_si7021_humidity
-#             - entity: sensor.nodemcu_roving_bh1750_illuminance
+              - entity: sensor.nodemcu_roving_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 30
@@ -1203,7 +1203,7 @@ views:
               - entity: sensor.nodemcu_roving_bme280_humidity
               - entity: sensor.nodemcu_roving_am2301_humidity
               - entity: sensor.sonoff3_0898_si7021_humidity
-#             - entity: sensor.nodemcu_roving_bh1750_illuminance
+              - entity: sensor.nodemcu_roving_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 30

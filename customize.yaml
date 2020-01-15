@@ -145,6 +145,10 @@ sensor.nodemcu_roving_am2301_temperature:
   friendly_name: Roving AM2301 Temperature
 sensor.nodemcu_roving_am2301_humidity:
   friendly_name: Roving AM2301 Humidity
+sensor.nodemcu_roving_bh1750_illuminance:
+  unit_of_measurement: lx
+  friendly_name: Roving BH1750 Illuminance
+  icon: mdi:brightness-5
 sensor.sonoff1_2914_si7021_temperature:
   friendly_name: Office Si7021 Temperature
 sensor.sonoff1_2914_si7021_humidity:
