@@ -127,27 +127,27 @@ sensor.nodemcu_lounge_bme280_humidity:
   friendly_name: Lounge BME280 Humidity
 sensor.nodemcu_lounge_status:
   icon: mdi:thermometer
-sensor.nodemcu_roving_bme280_temperature:
-  friendly_name: Roving BME280 Temperature
-sensor.nodemcu_roving_bme280_pressure:
-  friendly_name: Roving BME280 Pressure
+sensor.nodemcu_bedroom_bme280_temperature:
+  friendly_name: Bedroom BME280 Temperature
+sensor.nodemcu_bedroom_bme280_pressure:
+  friendly_name: Bedroom BME280 Pressure
   icon: mdi:gauge
-sensor.nodemcu_roving_bme280_seapressure:
-  friendly_name: Roving BME280 Sea Pressure
+sensor.nodemcu_bedroom_bme280_seapressure:
+  friendly_name: Bedroom BME280 Sea Pressure
   unit_of_measurement: hPa
   icon: mdi:gauge
   device_class: pressure
-sensor.nodemcu_roving_bme280_humidity:
-  friendly_name: Roving BME280 Humidity
-sensor.nodemcu_roving_status:
+sensor.nodemcu_bedroom_bme280_humidity:
+  friendly_name: Bedroom BME280 Humidity
+sensor.nodemcu_bedroom_status:
   icon: mdi:thermometer
-sensor.nodemcu_roving_am2301_temperature:
-  friendly_name: Roving AM2301 Temperature
-sensor.nodemcu_roving_am2301_humidity:
-  friendly_name: Roving AM2301 Humidity
-sensor.nodemcu_roving_bh1750_illuminance:
+sensor.nodemcu_bedroom_am2301_temperature:
+  friendly_name: Bedroom AM2301 Temperature
+sensor.nodemcu_bedroom_am2301_humidity:
+  friendly_name: Bedroom AM2301 Humidity
+sensor.nodemcu_bedroom_bh1750_illuminance:
   unit_of_measurement: lx
-  friendly_name: Roving BH1750 Illuminance
+  friendly_name: Bedroom BH1750 Illuminance
   icon: mdi:brightness-5
 sensor.sonoff1_2914_si7021_temperature:
   friendly_name: Office Si7021 Temperature
