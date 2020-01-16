@@ -409,18 +409,18 @@ views:
               - sensor.bom_forecast_5
               - sensor.bom_forecast_6
           - type: entities
-            title: Roving
+            title: Bedroom
             show_header_toggle: false
             entities:
-              - entity: sensor.nodemcu_roving_bme280_temperature
-              - entity: sensor.nodemcu_roving_am2301_temperature
+              - entity: sensor.nodemcu_bedroom_bme280_temperature
+              - entity: sensor.nodemcu_bedroom_am2301_temperature
               - entity: sensor.sonoff3_0898_si7021_temperature	
-              - entity: sensor.nodemcu_roving_bme280_pressure
-              - entity: sensor.nodemcu_roving_bme280_seapressure
-              - entity: sensor.nodemcu_roving_bme280_humidity
-              - entity: sensor.nodemcu_roving_am2301_humidity
+              - entity: sensor.nodemcu_bedroom_bme280_pressure
+              - entity: sensor.nodemcu_bedroom_bme280_seapressure
+              - entity: sensor.nodemcu_bedroom_bme280_humidity
+              - entity: sensor.nodemcu_bedroom_am2301_humidity
               - entity: sensor.sonoff3_0898_si7021_humidity
-              - entity: sensor.nodemcu_roving_bh1750_illuminance
+              - entity: sensor.nodemcu_bedroom_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 30
@@ -436,12 +436,12 @@ views:
                 name: Office Temperature
                 show_state: true
                 color: yellow
-              - entity: sensor.nodemcu_roving_bme280_temperature
-                name: Roving Temperature BME
+              - entity: sensor.nodemcu_bedroom_bme280_temperature
+                name: Bedroom Temperature BME
                 show_state: true
                 color: red
-              - entity: sensor.nodemcu_roving_am2301_temperature
-                name: Roving Temperature AM
+              - entity: sensor.nodemcu_bedroom_am2301_temperature
+                name: Bedroom Temperature AM
                 show_state: true
                 color: green
               - entity: sensor.sonoff3_0898_si7021_temperature
@@ -459,8 +459,8 @@ views:
                 name: Lounge Pressure
                 show_state: true
                 color: cyan
-              - entity: sensor.nodemcu_roving_bme280_pressure
-                name: Roving Pressure
+              - entity: sensor.nodemcu_bedroom_bme280_pressure
+                name: Bedroom Pressure
                 show_state: true
                 color: green
           - type: custom:mini-graph-card
@@ -478,12 +478,12 @@ views:
                 name: Office Humidity
                 show_state: true
                 color: orange
-              - entity: sensor.nodemcu_roving_bme280_humidity
-                name: Roving Humidity BME
+              - entity: sensor.nodemcu_bedroom_bme280_humidity
+                name: Bedroom Humidity BME
                 show_state: true
                 color: red
-              - entity: sensor.nodemcu_roving_am2301_humidity
-                name: Roving Humidity AM
+              - entity: sensor.nodemcu_bedroom_am2301_humidity
+                name: Bedroom Humidity AM
                 show_state: true
                 color: cyan
               - entity: sensor.sonoff3_0898_si7021_humidity
@@ -1192,18 +1192,18 @@ views:
       - type: vertical-stack
         cards:
           - type: entities
-            title: Roving
+            title: Bedroom
             show_header_toggle: false
             entities:
-              - entity: sensor.nodemcu_roving_bme280_temperature
-              - entity: sensor.nodemcu_roving_am2301_temperature
+              - entity: sensor.nodemcu_bedroom_bme280_temperature
+              - entity: sensor.nodemcu_bedroom_am2301_temperature
               - entity: sensor.sonoff3_0898_si7021_temperature	
-              - entity: sensor.nodemcu_roving_bme280_pressure
-              - entity: sensor.nodemcu_roving_bme280_seapressure
-              - entity: sensor.nodemcu_roving_bme280_humidity
-              - entity: sensor.nodemcu_roving_am2301_humidity
+              - entity: sensor.nodemcu_bedroom_bme280_pressure
+              - entity: sensor.nodemcu_bedroom_bme280_seapressure
+              - entity: sensor.nodemcu_bedroom_bme280_humidity
+              - entity: sensor.nodemcu_bedroom_am2301_humidity
               - entity: sensor.sonoff3_0898_si7021_humidity
-              - entity: sensor.nodemcu_roving_bh1750_illuminance
+              - entity: sensor.nodemcu_bedroom_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 30
@@ -1219,12 +1219,12 @@ views:
                 name: Office Temperature
                 show_state: true
                 color: yellow
-              - entity: sensor.nodemcu_roving_bme280_temperature
-                name: Roving Temperature BME
+              - entity: sensor.nodemcu_bedroom_bme280_temperature
+                name: Bedroom Temperature BME
                 show_state: true
                 color: red
-              - entity: sensor.nodemcu_roving_am2301_temperature
-                name: Roving Temperature AM
+              - entity: sensor.nodemcu_bedroom_am2301_temperature
+                name: Bedroom Temperature AM
                 show_state: true
                 color: green
               - entity: sensor.sonoff3_0898_si7021_temperature
@@ -1242,8 +1242,8 @@ views:
                 name: Lounge Pressure
                 show_state: true
                 color: cyan
-              - entity: sensor.nodemcu_roving_bme280_pressure
-                name: Roving Pressure
+              - entity: sensor.nodemcu_bedroom_bme280_pressure
+                name: Bedroom Pressure
                 show_state: true
                 color: green
           - type: custom:mini-graph-card
@@ -1261,12 +1261,12 @@ views:
                 name: Office Humidity
                 show_state: true
                 color: orange
-              - entity: sensor.nodemcu_roving_bme280_humidity
-                name: Roving Humidity BME
+              - entity: sensor.nodemcu_bedroom_bme280_humidity
+                name: Bedroom Humidity BME
                 show_state: true
                 color: red
-              - entity: sensor.nodemcu_roving_am2301_humidity
-                name: Roving Humidity AM
+              - entity: sensor.nodemcu_bedroom_am2301_humidity
+                name: Bedroom Humidity AM
                 show_state: true
                 color: cyan
               - entity: sensor.sonoff3_0898_si7021_humidity
@@ -1576,9 +1576,9 @@ views:
                   - automation.alarm_event_triggered
                   - automation.alarm_event_check
                   - automation.update_speedtest
-                  - entity: automation.restart_docker_containers_when_memory_50
+                  - entity: automation.restart_docker_containers_when_memory_35
                     type: 'custom:secondaryinfo-entity-row'
-                    secondary_info: "[[ automation.restart_docker_containers_when_memory_50.attributes.last_triggered ]]"
+                    secondary_info: "[[ automation.restart_docker_containers_when_memory_35.attributes.last_triggered ]]"
                   - automation.purge_history
                   - automation.roaster_needs_attention
               - type: custom:fold-entity-row
@@ -1774,9 +1774,9 @@ views:
               - states['sensor.nodemcu_lounge_status'].attributes['MqttCount']
               - states['sensor.nodemcu_lounge_status'].attributes['WiFi LinkCount']
               - states['sensor.nodemcu_lounge_status'].state
-              - states['sensor.nodemcu_roving_status'].attributes['MqttCount']
-              - states['sensor.nodemcu_roving_status'].attributes['WiFi LinkCount']
-              - states['sensor.nodemcu_roving_status'].state
+              - states['sensor.nodemcu_bedroom_status'].attributes['MqttCount']
+              - states['sensor.nodemcu_bedroom_status'].attributes['WiFi LinkCount']
+              - states['sensor.nodemcu_bedroom_status'].state
               - states['sensor.sonoff3_0898_status'].attributes['MqttCount']
               - states['sensor.sonoff3_0898_status'].attributes['WiFi LinkCount']
               - states['sensor.sonoff3_0898_status'].state
@@ -1786,7 +1786,7 @@ views:
               - sensor.sonoff5_1083_status
               - sensor.sonoff6_3719_status
               - sensor.nodemcu_lounge_status
-              - sensor.nodemcu_roving_status
+              - sensor.nodemcu_bedroom_status
               - sensor.sonoff3_0898_status
             card:
               type: 'custom:hui-entities-card'
@@ -1808,8 +1808,8 @@ views:
                 - entity: sensor.nodemcu_lounge_status
                   name: "${'Weather' + '\xa0'.repeat(12) + 'MQTT ' + vars[12] + '\xa0'.repeat(4) + 'WiFi ' + vars[13] + '\xa0'.repeat(3) + ((parseInt(vars[14]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[14] >= 100 ? 'Excellent' : vars[14] >= 80 ? 'Good' : vars[14] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[14] >= 100 ? 'mdi:wifi' : vars[14] >= 80 ? 'mdi:wifi-strength-3' : vars[14] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-                - entity: sensor.nodemcu_roving_status
-                  name: "${'Roving' + '\xa0'.repeat(15) + 'MQTT ' + vars[15] + '\xa0'.repeat(4) + 'WiFi ' + vars[16] + '\xa0'.repeat(3) + ((parseInt(vars[17]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[17] >= 100 ? 'Excellent' : vars[17] >= 80 ? 'Good' : vars[17] >= 60 ? 'Fair' : 'Weak' )}"
+                - entity: sensor.nodemcu_bedroom_status
+                  name: "${'Bedroom' + '\xa0'.repeat(11) + 'MQTT ' + vars[15] + '\xa0'.repeat(4) + 'WiFi ' + vars[16] + '\xa0'.repeat(3) + ((parseInt(vars[17]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[17] >= 100 ? 'Excellent' : vars[17] >= 80 ? 'Good' : vars[17] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[17] >= 100 ? 'mdi:wifi' : vars[17] >= 80 ? 'mdi:wifi-strength-3' : vars[17] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.sonoff3_0898_status
                   name: "${'RovingSI' + '\xa0'.repeat(11) + 'MQTT ' + vars[18] + '\xa0'.repeat(4) + 'WiFi ' + vars[19] + '\xa0'.repeat(3) + ((parseInt(vars[20]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[20] >= 100 ? 'Excellent' : vars[20] >= 80 ? 'Good' : vars[20] >= 60 ? 'Fair' : 'Weak' )}"

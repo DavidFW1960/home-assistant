@@ -324,16 +324,28 @@
     data:
       entity_id: script.startupalltasmota
 - id: 'dockercontainers'
-  alias: Restart Docker Containers when memory > 50%
+  alias: Restart Docker Containers when memory > 35%
   trigger:
   - platform: numeric_state
     entity_id: sensor.memory_use_percent
-    above: 50
+    above: 35
     for:
       hours: 1
-      minutes: 0
-      seconds: 0    
+  - platform: state
+    entity_id: input_boolean.retrigger
+    to: 'on'
+    for:
+      minutes: 10
   action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.retrigger
+  - delay: '00:00:01'
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.retrigger
+  - condition: template
+    value_template: "{{ now().strftime('%M') < '58' and now().strftime('%M') > '02' and (states('sensor.sonarr_queue') == '0') }}"
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.retrigger
   - service: switch.turn_off
     entity_id: switch.ha_dockermon_radarr, switch.ha_dockermon_sonarr, switch.ha_dockermon_sabnzbd
   - delay: '00:01:00'

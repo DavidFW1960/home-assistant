@@ -351,6 +351,8 @@ input_boolean:
     name: Overtime
   holiday:
     name: Holiday
+  retrigger:
+    name: Retrigger Docker Containers Restart
 
 # Clear Out Gmail Alarm Notifications & Clean Known Devices file, ABB usage, Component/Card Versions
 shell_command:
