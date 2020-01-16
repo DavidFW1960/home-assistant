@@ -238,6 +238,7 @@ views:
                   type: section
                   label: Containers
                 items:
+                  - input_boolean.retrigger
                   - switch.ha_dockermon_sabnzbd
                   - switch.ha_dockermon_sonarr
                   - switch.ha_dockermon_radarr
