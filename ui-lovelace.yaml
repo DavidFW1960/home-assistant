@@ -34,6 +34,10 @@ resources:
     type: module
 custom_header:
   compact_mode: true
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
+  active_tab_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
   exceptions:
     - conditions:
         user_agent: Windows
@@ -1579,9 +1583,9 @@ views:
                   - automation.alarm_event_triggered
                   - automation.alarm_event_check
                   - automation.update_speedtest
-                  - entity: automation.restart_docker_containers_when_memory_35
+                  - entity: automation.restart_docker_containers_when_memory_40
                     type: 'custom:secondaryinfo-entity-row'
-                    secondary_info: "[[ automation.restart_docker_containers_when_memory_35.attributes.last_triggered ]]"
+                    secondary_info: "[[ automation.restart_docker_containers_when_memory_40.attributes.last_triggered ]]"
                   - automation.purge_history
                   - automation.roaster_needs_attention
               - type: custom:fold-entity-row

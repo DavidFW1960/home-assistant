@@ -324,11 +324,11 @@
     data:
       entity_id: script.startupalltasmota
 - id: 'dockercontainers'
-  alias: Restart Docker Containers when memory > 35%
+  alias: Restart Docker Containers when memory > 40%
   trigger:
   - platform: numeric_state
     entity_id: sensor.memory_use_percent
-    above: 35
+    above: 40
     for:
       hours: 1
   - platform: state

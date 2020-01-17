@@ -2,6 +2,7 @@
 # Creater: Juan - @juanmtech
 # Website: https://www.juanmtech.com
 # YouTube Channel: https://youtube.com/juanmtech
+# My Home Assistant Config files: https://github.com/JuanMTech/Home_Assistant_files
 #
 #
 Google Light Theme:
@@ -9,7 +10,7 @@ Google Light Theme:
   app-header-background-color: "#F8F8F8"
   app-header-text-color: "#424242"
   # Main Interface Colors
-  primary-color: "#5F6267"
+  primary-color: "#5F9BEA"
   light-primary-color: var(--primary-color)
   primary-background-color: "#F8F8F8"
   secondary-background-color: var(--primary-background-color)
@@ -39,7 +40,11 @@ Google Light Theme:
   # Labels
   label-badge-background-color: "#F8FAF9"
   label-badge-text-color: "#4D5575"
-  label-badge-red: "#5F6267"
+  label-badge-red: "#C7484C"
+  label-badge-green: "#6DC071"
+  label-badge-blue: "#51AAD1"
+  label-badge-yellow: "#D9B757"
+  label-badge-gray: "#5F6267"
   # Cards
   ha-card-border-radius: "15px"
   ha-card-box-shadow: 1px 1px 5px 0px rgb(230, 230, 230)
