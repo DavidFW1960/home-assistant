@@ -43,11 +43,15 @@ sensor.coffee_maker_firmware:
   icon: mdi:coffee
 sensor.toothbrush_firmware:
   icon: mdi:tooth
+sensor.rovingsi_firmware:
+  icon: mdi:flash
 sensor.garage_door_firmware:
   icon: mdi:garage
 sensor.alarm_firmware:
   icon: mdi:shield-home
 sensor.nodemcu_lounge_firmware:
+  icon: mdi:thermometer
+sensor.nodemcu_bedroom_firmware:
   icon: mdi:thermometer
 sensor.tasmota_firmware_version_available:
   icon: mdi:script
