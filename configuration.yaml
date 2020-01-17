@@ -281,6 +281,10 @@ sensor:
     state_topic: "sonoff2/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
   - platform: mqtt
+    name: "RovingSI Firmware"
+    state_topic: "sonoff3/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
     name: "Garage Door Firmware"
     state_topic: "sonoff5/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
@@ -291,6 +295,10 @@ sensor:
   - platform: mqtt
     name: "Nodemcu Lounge Firmware"
     state_topic: "nodemcu_lounge/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
+    name: "Nodemcu Bedroom Firmware"
+    state_topic: "nodemcu_bedroom/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
 binary_sensor:
   - platform: template
