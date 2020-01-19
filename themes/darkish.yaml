@@ -1,6 +1,6 @@
 darkish:
   # Accent Colour (Edit this to change the accent) #
-  accent: "#03a9f4" # this
+  accent: "#03a9f4"
 
   # Background
   primary-background-color: "#121212"
@@ -16,7 +16,7 @@ darkish:
   paper-card-background-color: "#1D1D1D"
 
   # Colours
-  primary-color: "#03a9f4" # this
+  primary-color: "#03a9f4"
   secondary-background-color: "#1D1D1D"
   accent-color: "var(--accent)"
   dark-primary-color: "var(--accent)"
@@ -39,7 +39,7 @@ darkish:
   
   # Icons
   state-icon-color: "#A0A0A0"
-  state-icon-active-color: "#fdd835cc" #this icon wesleypc
+  state-icon-active-color: "#fdd835cc" # icon active
   sidebar-selected-icon-color: "var(--accent)"
   sidebar-icon-color: "#A0A0A0"
  
@@ -71,5 +71,23 @@ darkish:
   lumo-primary-contrast-color: "var(--primary-text-color)"
   
   # switch
-  switch-unchecked-color: "var(--primary-text-color)" #this
-  switch-unchecked-button-color: "#878787" #this
+  switch-unchecked-color: "var(--primary-text-color)"
+  switch-unchecked-button-color: "#878787"
+  
+  # Material
+  material-body-text-color: "var(--accent)" # Upper text
+  material-secondary-background-color: "#515151" # background hover
+  material-divider-color: "#515151" # background selected
+  material-background-color: "var(--paper-grey-200)"
+  
+  # mdc
+  mdc-dialog-title-ink-color: "var(--accent)"
+  mdc-checkbox__native-control: "var(--primary-text-color)"
+  
+  #test
+  #mdc-checkbox: "#ff0000"
+  #mdc-checkbox-border: "ff0000"
+  # mdc-checkbox--upgraded: ""
+  # mdc-ripple-upgraded: ""
+  # mdc-ripple-upgraded--unbounded: ""
+  # mdc-checkbox--selected: ""
