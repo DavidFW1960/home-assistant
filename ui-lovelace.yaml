@@ -430,7 +430,7 @@ views:
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Temperature
@@ -457,7 +457,7 @@ views:
                 color: cyan
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Pressure
@@ -472,7 +472,7 @@ views:
                 color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Humidity
@@ -497,6 +497,17 @@ views:
                 name: Roving Humidity SI
                 show_state: true
                 color: green
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 10
+            show:
+              labels: true
+            name: Illuminance
+            entities:
+              - entity: sensor.nodemcu_bedroom_bh1750_illuminance
+                name: Bedroom Illuminance
+                show_state: true
+                color: pink
       - type: vertical-stack
         cards:
           - type: custom:bom-weather-card
@@ -628,7 +639,7 @@ views:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Temperature
@@ -643,7 +654,7 @@ views:
                 color: red
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Pressure
@@ -658,7 +669,7 @@ views:
                 color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Humidity
@@ -673,7 +684,7 @@ views:
                 color: orange
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Illuminance
@@ -1013,7 +1024,7 @@ views:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Temperature
@@ -1028,7 +1039,7 @@ views:
                 color: red
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Pressure
@@ -1043,7 +1054,7 @@ views:
                 color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Humidity
@@ -1058,7 +1069,7 @@ views:
                 color: orange
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Illuminance
@@ -1213,7 +1224,7 @@ views:
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Temperature
@@ -1240,7 +1251,7 @@ views:
                 color: cyan
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Pressure
@@ -1255,7 +1266,7 @@ views:
                 color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 30
+            points_per_hour: 10
             show:
               labels: true
             name: Humidity
@@ -1280,6 +1291,17 @@ views:
                 name: Roving Humidity SI
                 show_state: true
                 color: green
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 10
+            show:
+              labels: true
+            name: Illuminance
+            entities:
+              - entity: sensor.nodemcu_bedroom_bh1750_illuminance
+                name: Bedroom Illuminance
+                show_state: true
+                color: pink
   - title: Lights & Switches
     path: lights_and_switches
     icon: mdi:power

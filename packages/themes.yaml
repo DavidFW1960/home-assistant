@@ -61,7 +61,7 @@ input_select:
      - 'synthwave'
      - 'teal'
      - 'vintage'
-    initial: 'slate'
+    initial: 'Google Dark Theme'
     icon: 'mdi:palette'
 
 automation:
@@ -73,7 +73,7 @@ automation:
     action:
       service: frontend.set_theme
       data:
-        name: slate
+        name: 'Google Dark Theme'
   - id: 'changetheme'
     alias: 'System - Change Current Theme'
     hide_entity: true
