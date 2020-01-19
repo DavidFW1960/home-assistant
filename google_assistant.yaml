@@ -40,7 +40,8 @@ entity_config:
   input_boolean.holiday:
     room: kitchen
     expose: true
-  sensor.nodemcu_bedroom_bme280_temperature:
+# sensor.nodemcu_bedroom_bme280_temperature:
+  sensor.nodemcu_bedroom_am2301_temperature:
     room: bedroom
     name: Bedroom Temperature
     expose: true

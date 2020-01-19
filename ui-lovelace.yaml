@@ -419,12 +419,12 @@ views:
             title: Bedroom
             show_header_toggle: false
             entities:
-              - entity: sensor.nodemcu_bedroom_bme280_temperature
+#              - entity: sensor.nodemcu_bedroom_bme280_temperature
               - entity: sensor.nodemcu_bedroom_am2301_temperature
               - entity: sensor.sonoff3_0898_si7021_temperature	
-              - entity: sensor.nodemcu_bedroom_bme280_pressure
-              - entity: sensor.nodemcu_bedroom_bme280_seapressure
-              - entity: sensor.nodemcu_bedroom_bme280_humidity
+#              - entity: sensor.nodemcu_bedroom_bme280_pressure
+#              - entity: sensor.nodemcu_bedroom_bme280_seapressure
+#              - entity: sensor.nodemcu_bedroom_bme280_humidity
               - entity: sensor.nodemcu_bedroom_am2301_humidity
               - entity: sensor.sonoff3_0898_si7021_humidity
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
@@ -443,10 +443,10 @@ views:
                 name: Office Temperature
                 show_state: true
                 color: yellow
-              - entity: sensor.nodemcu_bedroom_bme280_temperature
-                name: Bedroom Temperature BME
-                show_state: true
-                color: red
+#              - entity: sensor.nodemcu_bedroom_bme280_temperature
+#                name: Bedroom Temperature BME
+#                show_state: true
+#                color: red
               - entity: sensor.nodemcu_bedroom_am2301_temperature
                 name: Bedroom Temperature AM
                 show_state: true
@@ -455,21 +455,21 @@ views:
                 name: Roving Temperature SI
                 show_state: true
                 color: cyan
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 10
-            show:
-              labels: true
-            name: Pressure
-            entities:
-              - entity: sensor.nodemcu_lounge_bme280_pressure
-                name: Lounge Pressure
-                show_state: true
-                color: cyan
-              - entity: sensor.nodemcu_bedroom_bme280_pressure
-                name: Bedroom Pressure
-                show_state: true
-                color: green
+#          - type: custom:mini-graph-card
+#            hours_to_show: 48
+#            points_per_hour: 10
+#            show:
+#              labels: true
+#            name: Pressure
+#            entities:
+#              - entity: sensor.nodemcu_lounge_bme280_pressure
+#                name: Lounge Pressure
+#                show_state: true
+#                color: cyan
+#              - entity: sensor.nodemcu_bedroom_bme280_pressure
+#                name: Bedroom Pressure
+#                show_state: true
+#                color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 10
@@ -485,10 +485,10 @@ views:
                 name: Office Humidity
                 show_state: true
                 color: orange
-              - entity: sensor.nodemcu_bedroom_bme280_humidity
-                name: Bedroom Humidity BME
-                show_state: true
-                color: red
+#              - entity: sensor.nodemcu_bedroom_bme280_humidity
+#                name: Bedroom Humidity BME
+#                show_state: true
+#                color: red
               - entity: sensor.nodemcu_bedroom_am2301_humidity
                 name: Bedroom Humidity AM
                 show_state: true
@@ -1213,12 +1213,12 @@ views:
             title: Bedroom
             show_header_toggle: false
             entities:
-              - entity: sensor.nodemcu_bedroom_bme280_temperature
+#              - entity: sensor.nodemcu_bedroom_bme280_temperature
               - entity: sensor.nodemcu_bedroom_am2301_temperature
               - entity: sensor.sonoff3_0898_si7021_temperature	
-              - entity: sensor.nodemcu_bedroom_bme280_pressure
-              - entity: sensor.nodemcu_bedroom_bme280_seapressure
-              - entity: sensor.nodemcu_bedroom_bme280_humidity
+#              - entity: sensor.nodemcu_bedroom_bme280_pressure
+#              - entity: sensor.nodemcu_bedroom_bme280_seapressure
+#              - entity: sensor.nodemcu_bedroom_bme280_humidity
               - entity: sensor.nodemcu_bedroom_am2301_humidity
               - entity: sensor.sonoff3_0898_si7021_humidity
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
@@ -1237,10 +1237,10 @@ views:
                 name: Office Temperature
                 show_state: true
                 color: yellow
-              - entity: sensor.nodemcu_bedroom_bme280_temperature
-                name: Bedroom Temperature BME
-                show_state: true
-                color: red
+#              - entity: sensor.nodemcu_bedroom_bme280_temperature
+#                name: Bedroom Temperature BME
+#                show_state: true
+#                color: red
               - entity: sensor.nodemcu_bedroom_am2301_temperature
                 name: Bedroom Temperature AM
                 show_state: true
@@ -1249,21 +1249,21 @@ views:
                 name: Roving Temperature SI
                 show_state: true
                 color: cyan
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 10
-            show:
-              labels: true
-            name: Pressure
-            entities:
-              - entity: sensor.nodemcu_lounge_bme280_pressure
-                name: Lounge Pressure
-                show_state: true
-                color: cyan
-              - entity: sensor.nodemcu_bedroom_bme280_pressure
-                name: Bedroom Pressure
-                show_state: true
-                color: green
+#          - type: custom:mini-graph-card
+#            hours_to_show: 48
+#            points_per_hour: 10
+#            show:
+#              labels: true
+#            name: Pressure
+#            entities:
+#              - entity: sensor.nodemcu_lounge_bme280_pressure
+#                name: Lounge Pressure
+#                show_state: true
+#                color: cyan
+#              - entity: sensor.nodemcu_bedroom_bme280_pressure
+#                name: Bedroom Pressure
+#                show_state: true
+#                color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 10
@@ -1279,10 +1279,10 @@ views:
                 name: Office Humidity
                 show_state: true
                 color: orange
-              - entity: sensor.nodemcu_bedroom_bme280_humidity
-                name: Bedroom Humidity BME
-                show_state: true
-                color: red
+#              - entity: sensor.nodemcu_bedroom_bme280_humidity
+#                name: Bedroom Humidity BME
+#                show_state: true
+#                color: red
               - entity: sensor.nodemcu_bedroom_am2301_humidity
                 name: Bedroom Humidity AM
                 show_state: true
