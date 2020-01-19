@@ -1,0 +1,75 @@
+darkish:
+  # Accent Colour (Edit this to change the accent) #
+  accent: "#03a9f4" # this
+
+  # Background
+  primary-background-color: "#121212"
+
+  # Text
+  primary-text-color: "#FFFFFFDE"
+  secondary-text-color: "#FFFFFF99"
+  disabled-text-color: "#FFFFFF61"
+  sidebar-selected-text-color: "var(--accent)"
+
+  # Card
+  card-background-color: "#1D1D1D"
+  paper-card-background-color: "#1D1D1D"
+
+  # Colours
+  primary-color: "#03a9f4" # this
+  secondary-background-color: "#1D1D1D"
+  accent-color: "var(--accent)"
+  dark-primary-color: "var(--accent)"
+  light-primary-color: "var(--accent)"
+
+  # Controls
+  toggle-button-color: "var(--accent)"
+  paper-toggle-button-checked-button-color: "var(--accent)"
+  paper-toggle-button-checked-bar-color: "var(--accent)"
+  paper-toggle-button-checked-ink-color: "var(--accent)"
+  paper-toggle-button-unchecked-button-color: "var(--primary-text-color)"
+  paper-toggle-button-unchecked-bar-color: "#878787"
+  paper-checkbox-checked-color: "var(--accent)"
+  paper-checkbox-checked-ink-color: "var(--accent)"
+  paper-radio-button-checked-color: "var(--accent)"
+  paper-input-container-focus-color: "var(--accent)"
+  paper-dropdown-menu-focus-color: "var(--accent)"
+  slider-color: "var(--accent)"
+  mdc-theme-primary: "var(--accent)"
+  
+  # Icons
+  state-icon-color: "#A0A0A0"
+  state-icon-active-color: "#fdd835cc" #this icon wesleypc
+  sidebar-selected-icon-color: "var(--accent)"
+  sidebar-icon-color: "#A0A0A0"
+ 
+  
+  # Badges
+  ha-label-badge-color: "var(--accent)"
+  label-badge-background-color: "#121212"
+  label-badge-text-color: "var(--secondary-text-color)"
+
+  # Tabs
+  paper-tab-ink: "var(--accent)"
+  paper-listbox-color: "var(--primary-text-color)"
+    
+  # Divider
+  divider-color: "#2D2D2D"
+
+  # Lumo
+  lumo-base-color: "#2D2D2D"
+  lumo-tint-5pct: "none"
+  lumo-shade-5pct: "#272727"
+  paper-grey-200: "#272727"
+  lumo-primary-color-10pct: "#2D2D2D"
+  lumo-primary-color-50pct: "none"
+  lumo-box-shadow-m: "none"
+  lumo-primary-color: "var(--accent)"
+  lumo-header-text-color: "var(--primary-text-color)"
+  lumo-body-text-color: "var(--primary-text-color)"
+  lumo-tertiary-text-color: "var(--secondary-text-color)"
+  lumo-primary-contrast-color: "var(--primary-text-color)"
+  
+  # switch
+  switch-unchecked-color: "var(--primary-text-color)" #this
+  switch-unchecked-button-color: "#878787" #this
