@@ -1,0 +1,75 @@
+vaporwave-pink:
+  # Background image
+  background: 'center / cover no-repeat url("/local/lovelace-ui/pink-with-mountains.jpg") fixed'
+
+  light: "#dbebfb"
+  dark: "#32334a"
+  pink: "#ff71ce"
+  gray: "#BAC0C6"
+  gray-dark: "#11111d"
+  yellow: "#fffb96"
+  purple: "#b967ff"
+  teal: "#01cdfe"
+  green: "#05ffa1"
+
+  red: "#dc3545"
+  orange: "#fd7e14"
+  white: "#fff"
+
+  primary-color: "var(--pink)"
+  primary-background-color: "var(--white)"
+  primary-text-color: "var(--dark)"
+  light-primary-color: "var(--green)"
+  accent-color: "var(--teal)"
+
+  secondary-background-color: "var(--yellow)"
+  secondary-text-color: "var(--purple)"
+  
+  # Card-Specific Modifications
+  ha-card-box-shadow: "10px 10px 17px -8px #A9A9A9" # Shadows on cards. Same as `shadow-elevation-2dp_-_box-shadow:
+  ha-card-border-radius: "10px" # Rounded corners on cards. NOTE: may not work with custom cards.
+  ha-card-background: '#FFF' # Defines the background for cards.
+
+  disabled-text-color: "var(--gray)"
+  
+  divider-color: "rgba(255, 255, 255, 0.12)"
+  
+  paper-card-background-color: "var(--white)"
+  paper-card-header-color: "#var(--paper-item-icon-color)"
+  card-background-color: "var(--paper-card-background-color)"
+
+  paper-item-icon-color: "var(--pink)"
+  paper-listbox-background-color: "var(--teal)"
+  paper-listbox-color: "var(--light)"
+
+  paper-grey-50: "var(--primary-text-color)"
+  paper-grey-200: "var(-gray)"
+  google-red-500: "var(--orange)"
+  
+  label-badge-background-color: "var(--secondary-background-color)"
+  label-badge-text-color: "var(--text-primary-color)"
+  
+  paper-item-icon-active-color: "var(--green)"
+  paper-item-icon_-_color: "var(--primary-text-color)"
+  
+  sidebar-icon-color: "var(--light)"
+  sidebar-text-color: "var(--light)"
+  sidebar-selected-background-color: "var(--green)"
+  sidebar-selected-icon-color: "var(--light)"
+  sidebar-selected-text-color: "var(--light)"
+  sidebar-text_-_background: "var(--light)"
+
+  paper-progress-active-color: "var(--pink)"
+  paper-progress-container-color: "var(--purple)"
+  paper-slider-knob-color: "var(--green)"
+  paper-slider-knob-start-color: "var(--purple)"
+
+  switch-unchecked-color: "var(--green)"
+  switch-unchecked-button-color: "var(--green)"
+    
+  # Themable CCS vars in HACS (https://hacs.xyz/docs/basic/theming)
+  link-text-color: "var(--green)"
+  hacs-status-installed: "var(--green)"
+  hacs-status-pending-restart: "var(--yellow)"
+  hacs-status-pending-update: "var(--purple)"
+  hacs-status-not-loaded: "var(--yellow)"
