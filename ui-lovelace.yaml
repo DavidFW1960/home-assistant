@@ -33,6 +33,7 @@ resources:
   - url: /community_plugin/lovelace-card-mod/card-mod.js
     type: module
 custom_header:
+# header_text: '{{ deviceID }}' # Must set compact_mode: false to display
   compact_mode: true
   background: var(--app-header-background-color)
   elements_color: var(--app-header-text-color)

@@ -128,10 +128,6 @@ panel_iframe:
     title: Tasmo Admin
     icon: mdi:lightbulb-on
     url: !secret tasmoadmin
-  tasui:
-    title: Tasui
-    icon: mdi:car-esp
-    url: !secret tasui
   mdiindex:
     title: MDI Icon Index
     icon: mdi:vector-square
