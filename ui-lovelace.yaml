@@ -876,7 +876,7 @@ views:
                   - value: 'off'
                     color: var(--paper-item-icon-color)       # rgb(54, 95, 140)
                   - value: 'on'
-                    color: var(--secondary-text-color)        # rgb(251, 210, 41)
+                    color: var(--paper-item-icon-active-color)        # rgb(251, 210, 41)
                 name: Exit-Enter
                 show_state: false
                 tap_action:
