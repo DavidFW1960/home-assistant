@@ -40,10 +40,6 @@ homeassistant:
       allow_bypass_login: true
     - type: homeassistant
 
-# Lovelace
-#lovelace:
-#  mode: yaml
-
 # Python
 # python_script:
 
