@@ -223,6 +223,7 @@ views:
                   label: Containers
                 items:
                   - input_boolean.retrigger
+                  - script.restartvscode
                   - switch.ha_dockermon_sabnzbd
                   - switch.ha_dockermon_sonarr
                   - switch.ha_dockermon_radarr
