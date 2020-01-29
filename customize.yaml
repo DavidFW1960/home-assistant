@@ -78,16 +78,16 @@ media_player.tvua55d8000:
   friendly_name: Samsung TV
 switch.ha_dockermon_sabnzbd:
   friendly_name: Sabnzbd
-  icon: mdi:docker
+  icon: mdi:kodi
 switch.ha_dockermon_sonarr:
   friendly_name: Sonarr
-  icon: mdi:docker
+  icon: mdi:television-classic
 switch.ha_dockermon_radarr:
   friendly_name: Radarr
-  icon: mdi:docker
+  icon: mdi:filmstrip
 switch.ha_dockermon_lazylibrarian:
   friendly_name: Lazy Librarian
-  icon: mdi:docker
+  icon: mdi:library-books
 switch.ha_dockermon_portainer:
   friendly_name: Portainer
   icon: mdi:docker
@@ -165,33 +165,59 @@ sensor.ssl_certificate_expiry:
   friendly_name: SSL Certificate Expiry
 sensor.appdaemon_memory_average:
   friendly_name: Appdaemon
+  icon: mdi:docker
 sensor.caddy_memory_average:
   friendly_name: Caddy
+  icon: mdi:docker
 sensor.configurator_memory_average:
   friendly_name: Configurator
+  icon: mdi:docker
 sensor.dropbox_sync_memory_average:
   friendly_name: Dropbox Sync
+  icon: mdi:docker
 sensor.glances_memory_average:
   friendly_name: Glances
+  icon: mdi:docker
 sensor.jupyterlab_lite_memory_average:
   friendly_name: Jupyterlab Lite
+  icon: mdi:docker
 sensor.logviewer_memory_average:
   friendly_name: Log Viewer
+  icon: mdi:docker
 sensor.mosquitto_memory_average:
   friendly_name: Mosquitto
+  icon: mdi:docker
 sensor.ssh_memory_average:
   friendly_name: SSH & Web Terminal
+  icon: mdi:docker
 sensor.samba_memory_average:
   friendly_name: Samba
+  icon: mdi:docker
 sensor.tasmoadmin_memory_average:
   friendly_name: TasmoAdmin
+  icon: mdi:docker
 sensor.vscode_memory_average:
   friendly_name: VS Code
+  icon: mdi:docker
 sensor.zerotier_one_memory_average:
   friendly_name: ZeroTier One
+  icon: mdi:docker
 sensor.sabnzbd_memory_average:
   friendly_name: Sabnzbd
+  icon: mdi:kodi
 sensor.sonarr_memory_average:
   friendly_name: Sonarr
+  icon: mdi:television-classic
 sensor.radarr_memory_average:
   friendly_name: Radarr
+  icon: mdi:filmstrip
+sensor.lazylibrarian_memory_average:
+  friendly_name: Lazy Librarian
+  icon: mdi:library-books
+sensor.portainer_memory_average:
+  friendly_name: Portainer
+  icon: mdi:docker
+sensor.watchtower_memory_average:
+  friendly_name: Watchtower
+  icon: mdi:docker
+  
