@@ -32,8 +32,8 @@ resources:
     type: js
   - url: /community_plugin/lovelace-card-mod/card-mod.js
     type: module
-  - url: /community_plugin/lovelace-template-entity-row/template-entity-row.js
-    type: module
+  - url: /community_plugin/flex-table-card/flex-table-card.js
+    type: js
 custom_header:
 # header_text: '{{ deviceID }}' # Must set compact_mode: false to display
   compact_mode: true
@@ -232,58 +232,30 @@ views:
                   - switch.ha_dockermon_lazylibrarian
                   - switch.ha_dockermon_portainer
                   - switch.ha_dockermon_watchtower
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "Appdaemon min {{state_attr('sensor.appdaemon_memory_average' ,'min_value')}}, max {{state_attr('sensor.appdaemon_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.appdaemon_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "Caddy min {{state_attr('sensor.caddy_memory_average' ,'min_value')}}, max {{state_attr('sensor.caddy_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.caddy_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "Configurator min {{state_attr('sensor.configurator_memory_average' ,'min_value')}}, max {{state_attr('sensor.configurator_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.configurator_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "Dropbox Sync min {{state_attr('sensor.dropbox_sync_memory_average' ,'min_value')}}, max {{state_attr('sensor.dropbox_sync_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.dropbox_sync_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "Glances min {{state_attr('sensor.glances_memory_average' ,'min_value')}}, max {{state_attr('sensor.glances_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.glances_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "Jupyterlab Lite min {{state_attr('sensor.jupyterlab_lite_memory_average' ,'min_value')}}, max {{state_attr('sensor.jupyterlab_lite_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.jupyterlab_lite_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "Logviewer min {{state_attr('sensor.logviewer_memory_average' ,'min_value')}}, max {{state_attr('sensor.logviewer_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.logviewer_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "Mosquitto min {{state_attr('sensor.mosquitto_memory_average' ,'min_value')}}, max {{state_attr('sensor.mosquitto_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.mosquitto_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "SSH & Web Terminal min {{state_attr('sensor.ssh_memory_average' ,'min_value')}}, max {{state_attr('sensor.ssh_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.ssh_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "Samba min {{state_attr('sensor.samba_memory_average' ,'min_value')}}, max {{state_attr('sensor.samba_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.samba_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "TasmoAdmin min {{state_attr('sensor.tasmoadmin_memory_average' ,'min_value')}}, max {{state_attr('sensor.tasmoadmin_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.tasmoadmin_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "VSCode min {{state_attr('sensor.vscode_memory_average' ,'min_value')}}, max {{state_attr('sensor.vscode_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.vscode_memory_average')}}"
-                  - type: custom:template-entity-row
-                    icon: mdi:docker
-                    name: "ZeroTier One min {{state_attr('sensor.zerotier_one_memory_average' ,'min_value')}}, max {{state_attr('sensor.zerotier_one_memory_average' ,'max_value')}}"
-                    state: "{{states('sensor.zerotier_one_memory_average')}}"
+                  - type: custom:flex-table-card
+                    sort_by: name+
+                    title: Docker Memory Now (MB)
+                    entities:
+                      include: sensor.*_memory
+                    columns:
+                      - name: Name
+                        prop: name              
+                      - name: Used Now
+                        prop: state
+                  - type: custom:flex-table-card
+                    sort_by: name+
+                    title: Docker Memory Average (MB)
+                    entities:
+                      include: sensor.*_memory_average
+                    columns:
+                      - name: Name
+                        prop: name              
+                      - name: Minimum
+                        attr: min_value
+                      - name: Maximum
+                        attr: max_value
+                      - name: Average
+                        prop: state
           - type: 'custom:config-template-card'
             entities:
               - device_tracker.davids_iphone_2
@@ -448,99 +420,6 @@ views:
               - sensor.bom_forecast_4
               - sensor.bom_forecast_5
               - sensor.bom_forecast_6
-          - type: entities
-            title: Bedroom
-            show_header_toggle: false
-            entities:
-#              - entity: sensor.nodemcu_bedroom_bme280_temperature
-              - entity: sensor.nodemcu_bedroom_am2301_temperature
-              - entity: sensor.sonoff3_0898_si7021_temperature	
-#              - entity: sensor.nodemcu_bedroom_bme280_pressure
-#              - entity: sensor.nodemcu_bedroom_bme280_seapressure
-#              - entity: sensor.nodemcu_bedroom_bme280_humidity
-              - entity: sensor.nodemcu_bedroom_am2301_humidity
-              - entity: sensor.sonoff3_0898_si7021_humidity
-              - entity: sensor.nodemcu_bedroom_bh1750_illuminance
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 10
-            show:
-              labels: true
-            name: Temperature
-            entities:
-              - entity: sensor.nodemcu_lounge_bme280_temperature
-                name: Lounge Temperature
-                show_state: true
-                color: orange
-              - entity: sensor.sonoff1_2914_si7021_temperature
-                name: Office Temperature
-                show_state: true
-                color: yellow
-#              - entity: sensor.nodemcu_bedroom_bme280_temperature
-#                name: Bedroom Temperature BME
-#                show_state: true
-#                color: red
-              - entity: sensor.nodemcu_bedroom_am2301_temperature
-                name: Bedroom Temperature AM
-                show_state: true
-                color: green
-              - entity: sensor.sonoff3_0898_si7021_temperature
-                name: Roving Temperature SI
-                show_state: true
-                color: cyan
-#          - type: custom:mini-graph-card
-#            hours_to_show: 48
-#            points_per_hour: 10
-#            show:
-#              labels: true
-#            name: Pressure
-#            entities:
-#              - entity: sensor.nodemcu_lounge_bme280_pressure
-#                name: Lounge Pressure
-#                show_state: true
-#                color: cyan
-#              - entity: sensor.nodemcu_bedroom_bme280_pressure
-#                name: Bedroom Pressure
-#                show_state: true
-#                color: green
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 10
-            show:
-              labels: true
-            name: Humidity
-            entities:
-              - entity: sensor.nodemcu_lounge_bme280_humidity
-                name: Lounge Humidity
-                show_state: true
-                color: yellow
-              - entity: sensor.sonoff1_2914_si7021_humidity
-                name: Office Humidity
-                show_state: true
-                color: orange
-#              - entity: sensor.nodemcu_bedroom_bme280_humidity
-#                name: Bedroom Humidity BME
-#                show_state: true
-#                color: red
-              - entity: sensor.nodemcu_bedroom_am2301_humidity
-                name: Bedroom Humidity AM
-                show_state: true
-                color: cyan
-              - entity: sensor.sonoff3_0898_si7021_humidity
-                name: Roving Humidity SI
-                show_state: true
-                color: green
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 10
-            show:
-              labels: true
-            name: Illuminance
-            entities:
-              - entity: sensor.nodemcu_bedroom_bh1750_illuminance
-                name: Bedroom Illuminance
-                show_state: true
-                color: pink
       - type: vertical-stack
         cards:
           - type: custom:bom-weather-card
@@ -648,15 +527,21 @@ views:
             entities:
               - sensor.bom_gosford_air_temp_c
               - sensor.nodemcu_lounge_bme280_temperature
+#              - sensor.nodemcu_bedroom_bme280_temperature
+              - sensor.nodemcu_bedroom_am2301_temperature
               - sensor.sonoff1_2914_si7021_temperature
+              - sensor.sonoff3_0898_si7021_temperature	
               - sensor.bom_gosford_feels_like_c
               - sensor.bom_gosford_dew_point_c
               - sensor.bom_gosford_rain_today
               - sensor.nodemcu_lounge_bme280_pressure
-              - sensor.nodemcu_lounge_bme280_seapressure
+#              - sensor.nodemcu_bedroom_bme280_pressure
               - sensor.bom_gosford_relative_humidity
               - sensor.nodemcu_lounge_bme280_humidity
+#              - sensor.nodemcu_bedroom_bme280_humidity
+              - sensor.nodemcu_bedroom_am2301_humidity
               - sensor.sonoff1_2914_si7021_humidity
+              - sensor.sonoff3_0898_si7021_humidity
               - sensor.bom_gosford_wind_gust_kmh
               - sensor.bom_gosford_wind_speed_kmh
           - type: entities
@@ -664,12 +549,21 @@ views:
             show_header_toggle: false
             entities:
               - entity: sensor.nodemcu_lounge_bme280_temperature
+#              - entity: sensor.nodemcu_bedroom_bme280_temperature
+              - entity: sensor.nodemcu_bedroom_am2301_temperature
               - entity: sensor.sonoff1_2914_si7021_temperature
+              - entity: sensor.sonoff3_0898_si7021_temperature	
               - entity: sensor.nodemcu_lounge_bme280_pressure
               - entity: sensor.nodemcu_lounge_bme280_seapressure
+#              - entity: sensor.nodemcu_bedroom_bme280_pressure
+#              - entity: sensor.nodemcu_bedroom_bme280_seapressure
               - entity: sensor.nodemcu_lounge_bme280_humidity
+#              - entity: sensor.nodemcu_bedroom_bme280_humidity
+              - entity: sensor.nodemcu_bedroom_am2301_humidity
               - entity: sensor.sonoff1_2914_si7021_humidity
+              - entity: sensor.sonoff3_0898_si7021_humidity
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
+              - entity: sensor.nodemcu_bedroom_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 10
@@ -681,10 +575,22 @@ views:
                 name: Lounge Temperature
                 show_state: true
                 color: orange
+#              - entity: sensor.nodemcu_bedroom_bme280_temperature
+#                name: Bedroom Temperature BME
+#                show_state: true
+#                color: red
+              - entity: sensor.nodemcu_bedroom_am2301_temperature
+                name: Bedroom Temperature AM
+                show_state: true
+                color: green
               - entity: sensor.sonoff1_2914_si7021_temperature
                 name: Office Temperature
                 show_state: true
-                color: red
+                color: blue
+              - entity: sensor.sonoff3_0898_si7021_temperature
+                name: Roving Temperature SI
+                show_state: true
+                color: cyan
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 10
@@ -700,6 +606,10 @@ views:
                 name: Sea Pressure
                 show_state: true
                 color: green
+#              - entity: sensor.nodemcu_bedroom_bme280_pressure
+#                name: Bedroom Pressure
+#                show_state: true
+#                color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 10
@@ -711,10 +621,22 @@ views:
                 name: Lounge Humidity
                 show_state: true
                 color: yellow
+#              - entity: sensor.nodemcu_bedroom_bme280_humidity
+#                name: Bedroom Humidity BME
+#                show_state: true
+#                color: red
+              - entity: sensor.nodemcu_bedroom_am2301_humidity
+                name: Bedroom Humidity AM
+                show_state: true
+                color: cyan
               - entity: sensor.sonoff1_2914_si7021_humidity
                 name: Office Humidity
                 show_state: true
                 color: orange
+              - entity: sensor.sonoff3_0898_si7021_humidity
+                name: Roving Humidity SI
+                show_state: true
+                color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 10
@@ -726,6 +648,10 @@ views:
                 name: Illuminance
                 show_state: true
                 color: pink
+              - entity: sensor.nodemcu_bedroom_bh1750_illuminance
+                name: Bedroom Illuminance
+                show_state: true
+                color: red
       - type: vertical-stack
         cards:
           - type: picture-entity

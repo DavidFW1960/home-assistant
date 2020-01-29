@@ -163,3 +163,35 @@ sensor.sonoff3_0898_si7021_humidity:
   friendly_name: Roving Si7021 Humidity
 sensor.ssl_certificate_expiry:
   friendly_name: SSL Certificate Expiry
+sensor.appdaemon_memory_average:
+  friendly_name: Appdaemon
+sensor.caddy_memory_average:
+  friendly_name: Caddy
+sensor.configurator_memory_average:
+  friendly_name: Configurator
+sensor.dropbox_sync_memory_average:
+  friendly_name: Dropbox Sync
+sensor.glances_memory_average:
+  friendly_name: Glances
+sensor.jupyterlab_lite_memory_average:
+  friendly_name: Jupyterlab Lite
+sensor.logviewer_memory_average:
+  friendly_name: Log Viewer
+sensor.mosquitto_memory_average:
+  friendly_name: Mosquitto
+sensor.ssh_memory_average:
+  friendly_name: SSH & Web Terminal
+sensor.samba_memory_average:
+  friendly_name: Samba
+sensor.tasmoadmin_memory_average:
+  friendly_name: TasmoAdmin
+sensor.vscode_memory_average:
+  friendly_name: VS Code
+sensor.zerotier_one_memory_average:
+  friendly_name: ZeroTier One
+sensor.sabnzbd_memory_average:
+  friendly_name: Sabnzbd
+sensor.sonarr_memory_average:
+  friendly_name: Sonarr
+sensor.radarr_memory_average:
+  friendly_name: Radarr
