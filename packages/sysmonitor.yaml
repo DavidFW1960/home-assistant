@@ -50,6 +50,18 @@ sensor:
 
 # Docker Containers
   - platform: rest
+    resource: http://10.90.11.100:8126/container/lazylibrarian/stats
+    name: LazyLibrarian Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: lazylibrarian_memory_average
+    entities:
+      - sensor.lazylibrarian_memory
+    duration:
+      days: 2
+  - platform: rest
     resource: http://10.90.11.100:8126/container/sabnzbd/stats
     name: Sabnzbd Memory
     scan_interval: 900
@@ -239,6 +251,30 @@ sensor:
     name: caddy_memory_average
     entities:
       - sensor.caddy_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/portainer/stats
+    name: Portainer Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: portainer_memory_average
+    entities:
+      - sensor.portainer_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/watchtower/stats
+    name: Watchtower Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: watchtower_memory_average
+    entities:
+      - sensor.watchtower_memory
     duration:
       days: 2
 
