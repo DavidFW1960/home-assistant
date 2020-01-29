@@ -32,6 +32,8 @@ resources:
     type: js
   - url: /community_plugin/lovelace-card-mod/card-mod.js
     type: module
+  - url: /community_plugin/lovelace-template-entity-row/template-entity-row.js
+    type: module
 custom_header:
 # header_text: '{{ deviceID }}' # Must set compact_mode: false to display
   compact_mode: true
@@ -221,7 +223,7 @@ views:
                 head: 
                   type: section
                   label: Containers
-                items:
+                entities:
                   - input_boolean.retrigger
                   - script.restartvscode
                   - switch.ha_dockermon_sabnzbd
@@ -230,6 +232,58 @@ views:
                   - switch.ha_dockermon_lazylibrarian
                   - switch.ha_dockermon_portainer
                   - switch.ha_dockermon_watchtower
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "Appdaemon min {{state_attr('sensor.appdaemon_memory_average' ,'min_value')}}, max {{state_attr('sensor.appdaemon_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.appdaemon_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "Caddy min {{state_attr('sensor.caddy_memory_average' ,'min_value')}}, max {{state_attr('sensor.caddy_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.caddy_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "Configurator min {{state_attr('sensor.configurator_memory_average' ,'min_value')}}, max {{state_attr('sensor.configurator_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.configurator_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "Dropbox Sync min {{state_attr('sensor.dropbox_sync_memory_average' ,'min_value')}}, max {{state_attr('sensor.dropbox_sync_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.dropbox_sync_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "Glances min {{state_attr('sensor.glances_memory_average' ,'min_value')}}, max {{state_attr('sensor.glances_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.glances_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "Jupyterlab Lite min {{state_attr('sensor.jupyterlab_lite_memory_average' ,'min_value')}}, max {{state_attr('sensor.jupyterlab_lite_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.jupyterlab_lite_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "Logviewer min {{state_attr('sensor.logviewer_memory_average' ,'min_value')}}, max {{state_attr('sensor.logviewer_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.logviewer_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "Mosquitto min {{state_attr('sensor.mosquitto_memory_average' ,'min_value')}}, max {{state_attr('sensor.mosquitto_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.mosquitto_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "SSH & Web Terminal min {{state_attr('sensor.ssh_memory_average' ,'min_value')}}, max {{state_attr('sensor.ssh_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.ssh_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "Samba min {{state_attr('sensor.samba_memory_average' ,'min_value')}}, max {{state_attr('sensor.samba_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.samba_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "TasmoAdmin min {{state_attr('sensor.tasmoadmin_memory_average' ,'min_value')}}, max {{state_attr('sensor.tasmoadmin_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.tasmoadmin_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "VSCode min {{state_attr('sensor.vscode_memory_average' ,'min_value')}}, max {{state_attr('sensor.vscode_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.vscode_memory_average')}}"
+                  - type: custom:template-entity-row
+                    icon: mdi:docker
+                    name: "ZeroTier One min {{state_attr('sensor.zerotier_one_memory_average' ,'min_value')}}, max {{state_attr('sensor.zerotier_one_memory_average' ,'max_value')}}"
+                    state: "{{states('sensor.zerotier_one_memory_average')}}"
           - type: 'custom:config-template-card'
             entities:
               - device_tracker.davids_iphone_2

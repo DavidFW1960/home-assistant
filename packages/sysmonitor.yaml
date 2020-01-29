@@ -55,18 +55,192 @@ sensor:
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
+  - platform: average
+    name: sabnzbd_memory_average
+    entities:
+      - sensor.sabnzbd_memory
+    duration:
+      days: 2
   - platform: rest
     resource: http://10.90.11.100:8126/container/sonarr/stats
     name: Sonarr Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
+  - platform: average
+    name: sonarr_memory_average
+    entities:
+      - sensor.sonarr_memory
+    duration:
+      days: 2
   - platform: rest
     resource: http://10.90.11.100:8126/container/radarr/stats
     name: Radarr Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
+  - platform: average
+    name: radarr_memory_average
+    entities:
+      - sensor.radarr_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_7be23ff5_dropbox_sync/stats
+    name: Dropbox Sync Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: dropbox_sync_memory_average
+    entities:
+      - sensor.dropbox_sync_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_a0d7b954_appdaemon/stats
+    name: Appdaemon Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: appdaemon_memory_average
+    entities:
+      - sensor.appdaemon_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_a0d7b954_glances/stats
+    name: Glances Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: glances_memory_average
+    entities:
+      - sensor.glances_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_a0d7b954_jupyterlablite/stats
+    name: JupyterLab Lite Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: jupyterlab_lite_memory_average
+    entities:
+      - sensor.jupyterlab_lite_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_a0d7b954_logviewer/stats
+    name: Logviewer Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: logviewer_memory_average
+    entities:
+      - sensor.logviewer_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_a0d7b954_sonweb/stats
+    name: Tasmoadmin Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: tasmoadmin_memory_average
+    entities:
+      - sensor.tasmoadmin_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_a0d7b954_ssh/stats
+    name: SSH & Web Terminal Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: ssh_memory_average
+    entities:
+      -  sensor.ssh_web_terminal_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_a0d7b954_vscode/stats
+    name: VSCode Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: vscode_memory_average
+    entities:
+      - sensor.vscode_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_a0d7b954_zerotier/stats
+    name: ZeroTier One Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: zerotier_one_memory_average
+    entities:
+      - sensor.zerotier_one_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_core_configurator/stats
+    name: Configurator Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: configurator_memory_average
+    entities:
+      - sensor.configurator_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_core_mosquitto/stats
+    name: Mosquitto Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: mosquitto_memory_average
+    entities:
+      - sensor.mosquitto_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_core_samba/stats
+    name: Samba Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: samba_memory_average
+    entities:
+      - sensor.samba_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_fe41fc28_caddy/stats
+    name: Caddy Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: caddy_memory_average
+    entities:
+      - sensor.caddy_memory
+    duration:
+      days: 2
 
 # Up since
   - platform: template
