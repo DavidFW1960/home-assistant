@@ -1,0 +1,110 @@
+---
+# Blackened Theme
+#   https://github.com/krissen/blackened
+#
+# heavily based on amoled:
+#   https://github.com/home-assistant-community-themes/amoled
+#
+# Disclaimer: first theme(-adaptation) and very early stages!
+#   Still a lot of "in-progress" variables left from troubleshooting etc.
+#   Will remove in due course.
+#   ... But it works, as it is, for my purposes.
+
+blackened:
+  # divider-color: "rgba(0, 0, 0, .12)"
+  accent-color: "#E45E65"
+  accent-color-2: "var(--yellow-chrome)"
+  black: "#000000"
+  blue-air-super: "#72A0C1"
+  card-background-color: "var(--black)"
+  dark-primary-color: "var(--accent-color)"
+  default-primary-color: "var(--green)"
+  disabled-text-color: "var(--gray-darkish)"
+  divider-color: "var(--gray-darkish)"
+  google-green-500: "#39E949"
+  google-red-500: "#E45E65"
+  gray-dark: "#696969"
+  gray-darkish: "#A9A9A9"
+  gray-light: "#D3D3D3"
+  gray-mid: "#888888"
+  green: "#A4C639"
+  hacs-badge-color: "var(--gray-dark)"
+  hacs-badge-text-color: "var(--white)"
+  hacs-status-default: "var(--white)"
+  hacs-status-installed: "var(--white)"
+  hacs-status-pending-restart: "var(--accent-color)"
+  hacs-status-pending-update: "var(--accent-color)"
+  label-badge-background-color: "var(--gray-darkish)"
+  label-badge-border-color: "var(--green)"
+  label-badge-red: "var(--accent-color)"
+  label-badge-text-color: "var(--primary-text-color)"
+  light-primary-color: "var(--gray-darkish)"
+  mdc-theme-primary: "var(--accent-color)"
+  paper-button-color: "var(--white)"
+  paper-button-ink-color: "var(--white-antique)"  # små ikoner för grejer
+  paper-card-background-color: "var(--black)"
+  paper-card-header-color: "var(--accent-color)"
+  paper-dialog-background-color: "var(--gray-darkish)"  # bakgrund på kort t ex entities
+  paper-fab-background: "var(--green)"
+  paper-grey-200: "var(--gray-dark)"
+  paper-grey-50: "var(--gray-light)"
+  paper-icon-button-active-color: "var(--accent-color-2)"  # knapp on, som switch
+  paper-icon-button-inactive-color: "var(--gray-mid)"     # knapp off, som switch
+  paper-input-container-color: "var(--gray-light)"  # text i text-ruta ur fokus
+  paper-input-container-focus-color: "var(--accent-color-2)"  # visar textruta är i fokus
+  paper-input-container-input-color: "var(--white)"  # text i input-text-rutor
+  paper-input-container-invalid-color: "var(--red)"
+  paper-item-icon-active-color: "var(--white-yellow)"
+  paper-item-icon-color: "var(--gray-mid)"
+  paper-item-selected-background-color: "var(--accent-color)"
+  paper-listbox-background-color: "var(--black)"
+  paper-listbox-color: "var(--yellow-chrome)"  # dropdown menu (select-list) text-färg
+  paper-listbox-selected-color: "var(--accent-color)"
+  paper-menu-background-color: "var(--green)"
+  paper-menu-color: "var(--yellow-chrome)"
+  paper-slider-active-color: "var(--accent-color)"
+  paper-slider-container-color: "linear-gradient(var(--gray-darkish), var(--gray-light)) no-repeat"
+  paper-slider-disabled-active-color: "var(--disabled-text-color)"
+  paper-slider-disabled-secondary-color: "var(--disabled-text-color)"
+  paper-slider-knob-color: "var(--accent-color)"
+  paper-slider-knob-start-color: "var(--accent-color)"
+  paper-slider-pin-color: "var(--accent-color)"
+  paper-slider-secondary-color: "var(--secondary-background-color)"
+  paper-spinner-color: "var(--accent-color)"
+  paper-spinner-layer-1-color: "var(--accent-color)"
+  paper-spinner-layer-2-color: "var(--accent-color)"
+  paper-spinner-layer-3-color: "var(--accent-color)"
+  paper-spinner-layer-4-color: "var(--accent-color)"
+  paper-tabs-selection-bar-color: "var(--green)"
+  paper-toggle-button-checked-bar-color: "var(--accent-color)"
+  paper-toggle-button-checked-button-color: "var(--accent-color)"
+  paper-toggle-button-checked-ink-color: "var(--accent-color)"
+  paper-toggle-button-unchecked-bar-color: "var(--disabled-text-color)"
+  paper-toggle-button-unchecked-button-color: "var(--disabled-text-color)"
+  paper-toggle-button-unchecked-ink-color: "var(--disabled-text-color)"
+  paper-toolbar-background: "var(--green)"
+  paper-toolbar-color: "var(--yellow-chrome)"
+  primary-background-color: "var(--black)"
+  primary-color: "#000000"  # kan inte vara variabel!
+  primary-text-color: "var(--white-ish)"  # det mesta text (inte rubriker)
+  red: "#FF0000"
+  secondary-background-color: "var(--gray-light)"
+  secondary-text-color: "var(--white-pink)"
+  sidebar-icon-color: "var(--gray-dark)"
+  sidebar-selected-icon-color: "var(--primary-text-color)"
+  sidebar-selected-text-color: "var(--primary-text-color)"
+  sidebar-text-color: "var(--gray-darkish)"
+  switch-checked-color: "var(--gray-light)"
+  switch-unchecked-button-color: "var(--gray-darkish, var(--gray-light))"
+  switch-unchecked-track-color: "var(--gray-darkish)"
+  table-row-alternative-background-color: "var(--gray-darkish)"
+  table-row-background-color: "var(--gray-light)"
+  text-primary-color: "var(--white)"  # rubrik-text + text på knappar
+  white: "#FFFFFF"
+  white-antique: "#FAEBD7"
+  white-ish: "#FAFAFA"
+  white-navajo: "#FFDEAD"
+  white-pink: "#FFF6F6"
+  white-yellow: "#FFFFC8"
+  yellow-chrome: "#FFA700"
+

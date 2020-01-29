@@ -1,0 +1,61 @@
+uglychristmas:
+  #Ugly Christmas theme created by @houtknots | https://github.com/houtknots
+  #Ugly Christ theme is based of the "Dark Clear Theme" made by @naofireblade | https://github.com/naofireblade
+
+  # Colors
+  text-color: '#FFFFFF'
+  text-medium-light-color: '#FFFFFF'
+  text-medium-color: '#FFFFFF'
+  text-dark-color: '#F8B229'
+  accent-color: '#F8B229'
+  accent-medium-color: '#F8B229'
+  background-color: '#165B33'
+  background-color-2: '#BB2528'
+  background-card-color: '#BB2528'
+  border-color: '#EA4630'
+
+  # Header
+  primary-color: '#BB2528'
+  text-primary-color: 'var(--text-color)'
+
+  # Left Menu
+  paper-listbox-background-color: 'var(--background-color)'
+  sidebar-icon-color: 'var(--text-medium-color)'
+  sidebar-selected-icon-color: 'var(--text-medium-light-color)'
+  sidebar-selected-text-color: 'var(--text-color)'
+
+  # UI
+  paper-card-header-color: 'var(--text-color)'
+  primary-background-color: 'var(--background-color)'
+  mdc-theme-primary: 'var(--accent-medium-color)'
+  card-background-color: 'var(--background-card-color)'
+
+  # Card
+  paper-card-background-color: 'var(--background-card-color)'
+  dark-primary-color: 'var(--text-color)'
+  primary-text-color: 'var(--text-color)'
+  paper-listbox-color: 'var(--text-color)'
+  light-primary-color: 'var(--text-dark-color)'
+  secondary-text-color: 'var(--text-medium-color)'
+  disabled-text-color: 'var(--text-dark-color)'
+  paper-dialog-button-color: 'var(--text-color)'
+  secondary-background-color: 'var(--background-color-2)'
+
+  # Icons
+  paper-item-icon-color: 'var(--text-dark-color)'
+  paper-item-icon-active-color: 'var(--accent-color)'
+
+  # Switches
+  switch-checked-button-color: 'var(--text-medium-light-color)'
+  switch-unchecked-button-color: 'var(--text-medium-light-color)'
+  switch-checked-track-color: '#F8B229'
+  switch-unchecked-track-color: '#767682'
+
+  # Slider
+  paper-slider-active-color: 'var(--accent-color)'
+  paper-slider-container-color: 'var(--text-dark-color)'
+  paper-slider-knob-color: 'var(--text-medium-light-color)'
+  paper-slider-knob-start-color: 'var(--text-medium-light-color)'
+
+  # Shadows
+  ha-card-box-shadow: 'inset 0px 0px 0px 1px var(--border-color)'
