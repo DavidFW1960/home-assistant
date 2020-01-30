@@ -168,13 +168,12 @@ views:
                   action: call-service
                   service: script.firmwarealltasmota
               - type: entity-button
-                entity: automation.make_snapshot_copy_backups_to_dropbox
+                entity: script.dropboxbackup
                 icon: mdi:dropbox
                 name: Dropbox Backup
                 tap_action:
                   action: call-service
-                  service: hassio.addon_stdin
-                  service_data: {"addon":"7be23ff5_dropbox_sync","input":{"command":"upload"}}
+                  service: script.dropboxbackup
               - type: entity-button
                 entity: script.updateversions
                 icon: mdi:check-decagram
