@@ -2,14 +2,14 @@ sensor.sonoff1_2914_status:
   icon: mdi:coffee
 sensor.sonoff2_3110_status:
   icon: mdi:tooth
+sensor.sonoff3_0898_status:
+  icon: mdi:desktop-classic
+sensor.sonoff4_0851_status:
+  icon: mdi:flash
 sensor.sonoff5_1083_status:
   icon: mdi:garage
 sensor.sonoff6_3719_status:
   icon: mdi:shield-home
-sensor.sonoff4_0851_status:
-  icon: mdi:flash
-sensor.sonoff3_0898_status:
-  icon: mdi:flash
 sensor.sonoff7_3474_status:
   icon: mdi:flash
 switch.sonoff12914:
@@ -18,9 +18,10 @@ switch.sonoff12914:
 switch.sonoff23110:
   friendly_name: Toothbrush
   icon: mdi:tooth
-switch.sonoff0898:
-  friendly_name: sonoff3-0898
-switch.sonoff0851:
+switch.sonoff30898:
+  friendly_name: XCY Mini PC
+  icon: mdi:desktop-classic
+switch.sonoff40851:
   friendly_name: sonoff4-0851
 switch.sonoff51083:
   friendly_name: Garage Door
@@ -43,8 +44,8 @@ sensor.coffee_maker_firmware:
   icon: mdi:coffee
 sensor.toothbrush_firmware:
   icon: mdi:tooth
-sensor.rovingsi_firmware:
-  icon: mdi:flash
+sensor.xcy_mini_pc_firmware:
+  icon: mdi:desktop-classic
 sensor.garage_door_firmware:
   icon: mdi:garage
 sensor.alarm_firmware:
@@ -98,8 +99,6 @@ device_tracker.2f8148d281b54990843f41e7216860f0:
   friendly_name: David's iPad
 device_tracker.e05603a1f7b1483faa3b1b5378be26fa:
   friendly_name: David's iPhone
-automation.update_abb_usage:
-  entity_picture: /local/icons/abb/abb.png
 person.david:
   entity_picture: /local/images/david.png
 person.liz:
@@ -154,13 +153,13 @@ sensor.nodemcu_bedroom_bh1750_illuminance:
   friendly_name: Bedroom BH1750 Illuminance
   icon: mdi:brightness-5
 sensor.sonoff1_2914_si7021_temperature:
-  friendly_name: Office Si7021 Temperature
+  friendly_name: Kitchen Si7021 Temperature
 sensor.sonoff1_2914_si7021_humidity:
-  friendly_name: Office Si7021 Humidity
+  friendly_name: Kitchen Si7021 Humidity
 sensor.sonoff3_0898_si7021_temperature:
-  friendly_name: Roving Si7021 Temperature
+  friendly_name: Office Si7021 Temperature
 sensor.sonoff3_0898_si7021_humidity:
-  friendly_name: Roving Si7021 Humidity
+  friendly_name: Office Si7021 Humidity
 sensor.ssl_certificate_expiry:
   friendly_name: SSL Certificate Expiry
 sensor.appdaemon_memory_average:
@@ -220,4 +219,3 @@ sensor.portainer_memory_average:
 sensor.watchtower_memory_average:
   friendly_name: Watchtower
   icon: mdi:docker
-  

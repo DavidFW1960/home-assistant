@@ -91,7 +91,6 @@ automation:
         name: 'Google Dark Theme'
   - id: 'changetheme'
     alias: 'System - Change Current Theme'
-    hide_entity: true
     trigger:
       - platform: state
         entity_id: input_select.theme_switcher

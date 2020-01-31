@@ -60,7 +60,7 @@ views:
               - sensor.ssl_certificate_expiry
               - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
-              - sensor.rovingsi_firmware
+              - sensor.xcy_mini_pc_firmware
               - sensor.garage_door_firmware
               - sensor.alarm_firmware
               - sensor.nodemcu_lounge_firmware
@@ -585,11 +585,11 @@ views:
                 show_state: true
                 color: green
               - entity: sensor.sonoff1_2914_si7021_temperature
-                name: Office Temperature
+                name: Kitchen Temperature
                 show_state: true
                 color: blue
               - entity: sensor.sonoff3_0898_si7021_temperature
-                name: Roving Temperature SI
+                name: Office Temperature
                 show_state: true
                 color: cyan
           - type: custom:mini-graph-card
@@ -631,11 +631,11 @@ views:
                 show_state: true
                 color: cyan
               - entity: sensor.sonoff1_2914_si7021_humidity
-                name: Office Humidity
+                name: Kitchen Humidity
                 show_state: true
                 color: orange
               - entity: sensor.sonoff3_0898_si7021_humidity
-                name: Roving Humidity SI
+                name: Office Humidity
                 show_state: true
                 color: green
           - type: custom:mini-graph-card
@@ -965,6 +965,7 @@ views:
               - switch.hifi
               - switch.vpn_router
               - switch.sonoff23110
+              - switch.sonoff30898
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -1314,10 +1315,10 @@ views:
                   name: "${'Weather' + '\xa0'.repeat(12) + 'MQTT ' + vars[12] + '\xa0'.repeat(4) + 'WiFi ' + vars[13] + '\xa0'.repeat(3) + ((parseInt(vars[14]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[14] >= 100 ? 'Excellent' : vars[14] >= 80 ? 'Good' : vars[14] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[14] >= 100 ? 'mdi:wifi' : vars[14] >= 80 ? 'mdi:wifi-strength-3' : vars[14] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.nodemcu_bedroom_status
-                  name: "${'Bedroom' + '\xa0'.repeat(11) + 'MQTT ' + vars[15] + '\xa0'.repeat(4) + 'WiFi ' + vars[16] + '\xa0'.repeat(3) + ((parseInt(vars[17]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[17] >= 100 ? 'Excellent' : vars[17] >= 80 ? 'Good' : vars[17] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Bedroom' + '\xa0'.repeat(10) + 'MQTT ' + vars[15] + '\xa0'.repeat(4) + 'WiFi ' + vars[16] + '\xa0'.repeat(3) + ((parseInt(vars[17]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[17] >= 100 ? 'Excellent' : vars[17] >= 80 ? 'Good' : vars[17] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[17] >= 100 ? 'mdi:wifi' : vars[17] >= 80 ? 'mdi:wifi-strength-3' : vars[17] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.sonoff3_0898_status
-                  name: "${'RovingSI' + '\xa0'.repeat(11) + 'MQTT ' + vars[18] + '\xa0'.repeat(4) + 'WiFi ' + vars[19] + '\xa0'.repeat(3) + ((parseInt(vars[20]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[20] >= 100 ? 'Excellent' : vars[20] >= 80 ? 'Good' : vars[20] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Office' + '\xa0'.repeat(16) + 'MQTT ' + vars[18] + '\xa0'.repeat(4) + 'WiFi ' + vars[19] + '\xa0'.repeat(3) + ((parseInt(vars[20]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[20] >= 100 ? 'Excellent' : vars[20] >= 80 ? 'Good' : vars[20] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[20] >= 100 ? 'mdi:wifi' : vars[20] >= 80 ? 'mdi:wifi-strength-3' : vars[20] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
   - title: Media
     path: media

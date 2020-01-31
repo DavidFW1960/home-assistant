@@ -50,7 +50,6 @@ device_tracker:
     consider_home: 180
     new_device_defaults:
       track_new_devices: false
-      hide_if_away: false
   - platform: iphonedetect
     consider_home: 60
     hosts:
@@ -139,12 +138,6 @@ discovery:
     - yeelight
   enable:
     - dlna_dmr
-
-# Wemo
-wemo:
-# discovery: false
-  static:
-    - !secret wemo_ip
 
 # Yeelights
 yeelight:
@@ -277,7 +270,7 @@ sensor:
     state_topic: "sonoff2/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
   - platform: mqtt
-    name: "RovingSI Firmware"
+    name: "XCY Mini PC Firmware"
     state_topic: "sonoff3/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
   - platform: mqtt

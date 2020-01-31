@@ -22,6 +22,9 @@ entity_config:
   switch.sonoff23110:
     room: bathroom
     expose: true
+  switch.sonoff30898:
+    room: office
+    expose: true
   switch.sonoff51083:
     room: house
     expose: true
@@ -50,8 +53,12 @@ entity_config:
     name: Lounge Temperature
     expose: true
   sensor.sonoff1_2914_si7021_temperature:
-    room: meals area
-    name: Meals Area Temperature
+    room: kitchen
+    name: Kitchen Temperature
+    expose: true
+  sensor.sonoff3_0898_si7021_temperature:
+    room: office
+    name: Office Temperature
     expose: true
   sensor.bom_gosford_air_temp_c:
     room: house

@@ -76,17 +76,17 @@ noctis-grey:
   table-row-background-color: 'var(--background-color)'
   table-row-alternative-background-color: 'var(--paper-card-background-color)'
 
-  #Badges
+  # Badges and gauges
   label-badge-background-color: 'var(--background-color)'
   label-badge-text-color: 'var(--text-primary-color)'
-  label-badge-red: '#4d4d4d'
-  label-badge-blue: 'var(--label-badge-red)'
-  label-badge-green: 'var(--label-badge-red)'
-  label-badge-yellow: 'var(--label-badge-red)'
+  label-badge-red: '#B54949'
+  label-badge-blue: '#539BE1'
+  label-badge-green: '#44ba83'
+  label-badge-yellow: '#E0A957'
 
   paper-input-container-focus-color: 'var(--accent-color)'
 
-  #Toast
+  # Toast
   paper-toast-background-color: '#353535'
 
   # Custom Header

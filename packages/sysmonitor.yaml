@@ -14,18 +14,6 @@ speedtestdotnet:
     - download
     - upload
 
-# Graph Speedtest Download Filtered and Unfiltered
-history_graph:
-  speedtest:
-    name: Speedtest Graph
-    entities:
-      - sensor.speedtest_download
-      - sensor.speedtest_download_filtered
-      - sensor.speedtest_upload
-      - sensor.speedtest_upload_filtered
-    hours_to_show: 24
-    refresh: 1800
-
 sensor:
 
 # Speedtest Sensor Filters

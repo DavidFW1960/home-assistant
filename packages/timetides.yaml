@@ -136,12 +136,3 @@ sensor:
         entity_picture_template: >-
           {% set state = states('sensor.season'.title()) %}
           {{ '/local/icons/season/{}.png'.format(state) }}
-
-# Graph Day Length Change
-history_graph:
-  lencha:
-    name: Day Length Change
-    entities:
-      - sensor.daylengthchange        
-    hours_to_show: 168
-    refresh: 1800
