@@ -27,4 +27,4 @@ delete-gmail-email.sh
 emptyinbox.py
 abbcookie.txt
 *.json
-backlog-tasmota.yaml
+backlog_tasmota.yaml
