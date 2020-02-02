@@ -346,6 +346,23 @@ views:
                 color: "#ffa500"        #orange
               - value: 15
                 color: "#00ff00"        #green
+          - type: entities
+            title: Open National Electricity Market
+            show_header_toggle: false
+            entities: 
+              - type: custom:auto-entities
+                card:
+                  type: custom:fold-entity-row
+                  head:
+                    type: section
+                    label: OpenNEM
+                  open: true
+                filter:
+                  include:
+                    - entity_id: "sensor.opennem_*"
+                show_empty: true
+                sort:
+                  method: name
   - title: Weather
     path: weather
     icon: mdi:weather-cloudy
