@@ -17,7 +17,7 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
 import homeassistant.util.dt as dt_util
 
-__version__: '0.1'
+__version__: '0.3'
 
 _RESOURCE = "http://data.opennem.org.au/power/{}.json"
 _LOGGER = logging.getLogger(__name__)
@@ -87,6 +87,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         # vol.Optional(CONF_NAME): cv.string,
         vol.Required(CONF_REGION): cv.string,
+        vol.Optional(CONF_NAME, default=''): cv.string,
         vol.Required(CONF_MONITORED_CONDITIONS, default=[]): vol.All(
             cv.ensure_list, [vol.In(SENSOR_TYPES)]
         ),
@@ -96,6 +97,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Setup Sensor"""
     region = config.get(CONF_REGION)
+    name = config.get(CONF_NAME)
     _LOGGER.debug("OpenNEM: Region %s", region)
     opennem_data = OpenNEMCurrentData(region)
     try:
@@ -109,7 +111,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     add_entities(
         [
-            OpenNEMSensor(opennem_data, variable, config.get(CONF_REGION), config.get(CONF_REGION))
+            OpenNEMSensor(opennem_data, variable, config.get(CONF_NAME), config.get(CONF_REGION))
             for variable in config[CONF_MONITORED_CONDITIONS]
         ]
     )
@@ -124,7 +126,9 @@ class OpenNEMSensor(Entity):
 
     @property
     def name(self):
-        return "OpenNEM {}: {}".format(self.regionname, SENSOR_TYPES[self._condition][0])
+        if not self.regionname:
+            return "OpenNEM {}: {}".format(self.regname, SENSOR_TYPES[self._condition][0])
+        return "{} {}".format(self.regionname, SENSOR_TYPES[self._condition][0])
 
     @property
     def state(self):
@@ -178,6 +182,14 @@ class OpenNEMCurrentData:
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
+        ftype = None
+        units = None
+        last_update = None
+        value = None
+        ffvalue = None
+        renvalue = None
+        genvalue = None
+
         if not self.should_update():
             _LOGGER.debug("OpenNEM was last updated %s minutes ago, skipping update", (dt_util_utcnow() - self.last_updated))
             return
@@ -196,19 +208,28 @@ class OpenNEMCurrentData:
                 # DATA[ftype][1]=config.get(CONF_REGION)
                 DATA[ftype][2]=units
                 DATA[ftype][3]=last_update
-                DATA[ftype][4]=value
+                if value:
+                    DATA[ftype][4]=round(value,2)
+                else:
+                    DATA[ftype][4]=0
 
-            # DATA['fossilfuel'][1] = config.get(CONF_REGION)
-            DATA['fossilfuel'][2] = "MW"
-            DATA['fossilfuel'][4] = DATA['black_coal'][4] + DATA["distillate"][4] + DATA["brown_coal"][4] + DATA["gas_ccgt"][4] + DATA["gas_ocgt"][4] + DATA["gas_recip"][4] + DATA["gas_steam"][4]
+            ffvalue = DATA['black_coal'][4] + DATA["distillate"][4] + DATA["brown_coal"][4] + DATA["gas_ccgt"][4] + DATA["gas_ocgt"][4] + DATA["gas_recip"][4] + DATA["gas_steam"][4]
+            if ffvalue:
+                DATA['fossilfuel'][4] = round(ffvalue,2)
+            else:
+                DATA['fossilfuel'][4] = 0
 
-            # DATA['renewables'][1] = config.get(CONF_REGION)
-            DATA['fossilfuel'][2] = "MW"
-            DATA['renewables'][4] = DATA['biomass'][4]+DATA["hydro"][4]+DATA["solar"][4]+DATA["wind"][4]+DATA["rooftop_solar"][4]
+            renvalue = DATA['biomass'][4]+DATA["hydro"][4]+DATA["solar"][4]+DATA["wind"][4]+DATA["rooftop_solar"][4]
+            if renvalue:
+                DATA['renewables'][4] = round(renvalue,2)
+            else:
+                DATA['renewables'][4] = 0
 
-            # DATA['generation'][1] = config.get(CONF_REGION)
-            DATA['generation'][2] = "MW"
-            DATA['generation'][4] = DATA['fossilfuel'][4]+DATA['renewables'][4]
+            genvalue = DATA['fossilfuel'][4]+DATA['renewables'][4]
+            if genvalue:
+                DATA['generation'][4] = round(genvalue,2)
+            else:
+                DATA['generation'][4] = 0
 
             self._data = DATA
             self.last_updated = dt_util.as_utc(datetime.datetime.strptime(str(self._data['demand'][3]), "%Y-%m-%dT%H:%M+1000"))
