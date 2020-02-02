@@ -26,7 +26,7 @@ setupalltasmotadevices:
       entity_id: setupnodemculounge
     service: script.turn_on
   - data:
-      entity_id: setupnodemcuroving
+      entity_id: setupnodemcubedroom
     service: script.turn_on
 startupalltasmota:
   alias: Tasmota Restore State at Startup
