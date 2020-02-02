@@ -1,0 +1,350 @@
+setupalltasmotadevices:
+  alias: Tasmota Setup All Devices
+  sequence:
+  - data:
+      entity_id: setupsonoff1
+    service: script.turn_on
+  - data:
+      entity_id: setupsonoff2
+    service: script.turn_on
+  - data:
+      entity_id: setupsonoff3
+    service: script.turn_on
+  - data:
+      entity_id: setupsonoff4
+    service: script.turn_on
+  - data:
+      entity_id: setupsonoff5
+    service: script.turn_on
+  - data:
+      entity_id: setupsonoff6
+    service: script.turn_on
+  - data:
+      entity_id: setupsonoff7
+    service: script.turn_on
+  - data:
+      entity_id: setupnodemculounge
+    service: script.turn_on
+  - data:
+      entity_id: setupnodemcuroving
+    service: script.turn_on
+startupalltasmota:
+  alias: Tasmota Restore State at Startup
+  sequence:
+  - data:
+      payload: ''
+      topic: sonoffs/cmnd/state
+    service: mqtt.publish
+  - data:
+      payload: ''
+      topic: nodemcu/cmnd/state
+    service: mqtt.publish
+firmwarealltasmota:
+  alias: Tasmota Firmware Versions
+  sequence:
+  - data:
+      payload: '2'
+      topic: sonoffs/cmnd/status
+    service: mqtt.publish
+  - data:
+      payload: '2'
+      topic: nodemcu/cmnd/status
+    service: mqtt.publish
+updateversions:
+  alias: Update Versions HA
+  sequence:
+  - data:
+      entity_id: sensor.hacs, sensor.hass_available_to_install_version, sensor.hass_current_beta_version,
+        sensor.hass_current_dev_version, sensor.hass_current_hassos_version, sensor.hass_current_stable_version,
+        sensor.hass_current_supervisor_beta_version, sensor.hass_current_supervisor_stable_version,
+        sensor.hass_installed_version
+    service: homeassistant.update_entity
+check_config:
+  sequence: []
+  alias: Check Configuration
+casthomeassistant:
+  alias: Cast Home Assistant
+  sequence:
+  - data:
+      entity_id: media_player.lounge_room_tv
+      view_path: home_assistant
+    service: cast.show_lovelace_view
+castweather:
+  alias: Cast Weather
+  sequence:
+  - data:
+      entity_id: media_player.lounge_room_tv
+      view_path: weather
+    service: cast.show_lovelace_view
+castswitches:
+  alias: Cast Switches
+  sequence:
+  - data:
+      entity_id: media_player.lounge_room_tv
+      view_path: lights_and_switches
+    service: cast.show_lovelace_view
+castmedia:
+  alias: Cast Media
+  sequence:
+  - data:
+      entity_id: media_player.lounge_room_tv
+      view_path: media
+    service: cast.show_lovelace_view
+casttvandmovies:
+  alias: Cast TV & Movies
+  sequence:
+  - data:
+      entity_id: media_player.lounge_room_tv
+      view_path: tv_and_movies
+    service: cast.show_lovelace_view
+casttransport:
+  alias: Cast Transport
+  sequence:
+  - data:
+      entity_id: media_player.lounge_room_tv
+      view_path: transport
+    service: cast.show_lovelace_view
+casthomeassistantfox:
+  alias: Cast Home Assistant Foxtel
+  sequence:
+  - data:
+      entity_id: media_player.foxtel_7587
+      view_path: home_assistant
+    service: cast.show_lovelace_view
+castweatherfox:
+  alias: Cast Weather Foxtel
+  sequence:
+  - data:
+      entity_id: media_player.foxtel_7587
+      view_path: weather
+    service: cast.show_lovelace_view
+castswitchesfox:
+  alias: Cast Switches Foxtel
+  sequence:
+  - data:
+      entity_id: media_player.foxtel_7587
+      view_path: lights_and_switches
+    service: cast.show_lovelace_view
+castmediafox:
+  alias: Cast Media Foxtel
+  sequence:
+  - data:
+      entity_id: media_player.foxtel_7587
+      view_path: media
+    service: cast.show_lovelace_view
+casttvandmoviesfox:
+  alias: Cast TV & Movies Foxtel
+  sequence:
+  - data:
+      entity_id: media_player.foxtel_7587
+      view_path: tv_and_movies
+    service: cast.show_lovelace_view
+casttransportfox:
+  alias: Cast Transport Foxtel
+  sequence:
+  - data:
+      entity_id: media_player.foxtel_7587
+      view_path: transport
+    service: cast.show_lovelace_view
+castoff:
+  alias: Stop Casting Samsung
+  sequence:
+  - data:
+      entity_id: media_player.lounge_room_tv, media_player.foxtel_7587
+    service: media_player.turn_off
+startalladdons:
+  alias: Start all Hass.io addons
+  sequence:
+  - data: {"addon": "7be23ff5_dropbox_sync"}
+    service: hassio.addon_start
+  - data: {"addon": "a0d7b954_appdaemon"}
+    service: hassio.addon_start
+  - data: {"addon": "a0d7b954_glances"}
+    service: hassio.addon_start
+  - data: {"addon": "a0d7b954_jupyterlablite"}
+    service: hassio.addon_start
+  - data: {"addon": "a0d7b954_logviewer"}
+    service: hassio.addon_start
+  - data: {"addon": "a0d7b954_sonweb"}
+    service: hassio.addon_start
+  - data: {"addon": "a0d7b954_ssh"}
+    service: hassio.addon_start
+  - data: {"addon": "a0d7b954_vscode"}
+    service: hassio.addon_start
+  - data: {"addon": "a0d7b954_zerotier"}
+    service: hassio.addon_start
+  - data: {"addon": "core_configurator"}
+    service: hassio.addon_start
+  - data: {"addon": "core_mosquitto"}
+    service: hassio.addon_start
+  - data: {"addon": "core_samba"}
+    service: hassio.addon_start
+  - data: {"addon": "fe41fc28_caddy"}
+    service: hassio.addon_start
+restartvscode:
+  alias: Restart VSCode
+  sequence:
+  - data: {"addon": "a0d7b954_vscode"}
+    service: hassio.addon_restart
+dropboxbackup:
+  alias: Initiate Dropbox Backup
+  sequence:
+  - data: {"addon":"7be23ff5_dropbox_sync","input":{"command":"upload"}}
+    service: hassio.addon_stdin
+#Light Scripts
+lounge100:
+  alias: Lounge 100
+  sequence:
+  - data:
+      entity_id: light.lounge
+      transition: 2
+      brightness: 255   #brightness_pct: 100
+      color_temp: 322   #kelvin: 3100
+    service: light.turn_on
+loungenormal:
+  alias: Lounge Normal
+  sequence:
+  - data:
+      entity_id: light.lounge
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 322   #kelvin: 3100
+    service: light.turn_on
+loungemovie:
+  alias: Lounge Movie
+  sequence:
+  - data:
+      entity_id: light.lounge
+      transition: 2
+      brightness: 77   #brightness_pct: 30
+      rgb_color: [0,0,255]
+    service: light.turn_on
+loungedaylight:
+  alias: Lounge Daylight
+  sequence:
+  - data:
+      entity_id: light.lounge
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 154   #kelvin: 6500
+    service: light.turn_on
+loungewarm:
+  alias: Lounge Warm
+  sequence:
+  - data:
+      entity_id: light.lounge
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 370   #kelvin: 2700
+    service: light.turn_on
+officemain:
+  alias: Office Main
+  sequence:
+  - data:
+      entity_id: light.office
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 322   #kelvin: 3100
+    service: light.turn_on
+officeall:
+  alias: Office All
+  sequence:
+  - data:
+      entity_id: light.desk
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 322   #kelvin: 3100
+    service: light.turn_on
+  - data:
+      entity_id: light.office
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 322   #kelvin: 3100
+    service: light.turn_on
+officedaylight:
+  alias: Office Daylight
+  sequence:
+  - data:
+      entity_id: light.office
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 154   #kelvin: 6500
+    service: light.turn_on
+officewarm:
+  alias: Office Warm
+  sequence:
+  - data:
+      entity_id: light.office
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 370   #kelvin: 2700
+    service: light.turn_on
+desknormal:
+  alias: Desk Normal
+  sequence:
+  - data:
+      entity_id: light.desk
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 322   #kelvin: 3100
+    service: light.turn_on
+deskdaylight:
+  alias: Desk Daylight
+  sequence:
+  - data:
+      entity_id: light.desk
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 154   #kelvin: 6500
+    service: light.turn_on
+deskwarm:
+  alias: Desk Warm
+  sequence:
+  - data:
+      entity_id: light.desk
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 370   #kelvin: 2700
+    service: light.turn_on
+diningnormal:
+  alias: Dining Normal
+  sequence:
+  - data:
+      entity_id: light.dining
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 322   #kelvin: 3100
+    service: light.turn_on
+diningdaylight:
+  alias: Dining Daylight
+  sequence:
+  - data:
+      entity_id: light.dining
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 154   #kelvin: 6500
+    service: light.turn_on
+diningwarm:
+  alias: Dining Warm
+  sequence:
+  - data:
+      entity_id: light.dining
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 370   #kelvin: 2700
+    service: light.turn_on
+bedtime:
+  alias: Bedtime
+  sequence:
+  - data:
+      entity_id: light.desk
+      transition: 2
+      brightness: 191   #brightness_pct: 75
+      color_temp: 322   #kelvin: 3100
+    service: light.turn_on
+  - data:
+      entity_id: light.meals_area_light
+    service: light.turn_on
+  - data:
+      entity_id: light.fan_light
+    service: light.turn_on
