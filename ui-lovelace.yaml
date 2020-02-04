@@ -807,10 +807,13 @@ views:
             entities:
               - entity: input_boolean.alarmgaragedoor
                 secondary_info: last-changed
+                state_color: true
               - entity: switch.sonoff51083
                 secondary_info: last-changed
+                state_color: true
               - entity: switch.sonoff63719
                 secondary_info: last-changed
+                state_color: true
           - type: horizontal-stack
             cards:
               - type: conditional
@@ -975,6 +978,7 @@ views:
         cards:
           - type: entities
             title: Switch
+            state_color: true
             show_header_toggle: false
             entities:
               - switch.sonoff12914
