@@ -809,16 +809,14 @@ views:
           - type: entities
             title: Security & Home
             show_header_toggle: false
+            state_color: true
             entities:
               - entity: input_boolean.alarmgaragedoor
                 secondary_info: last-changed
-                state_color: true
               - entity: switch.sonoff51083
                 secondary_info: last-changed
-                state_color: true
               - entity: switch.sonoff63719
                 secondary_info: last-changed
-                state_color: true
           - type: horizontal-stack
             cards:
               - type: conditional
