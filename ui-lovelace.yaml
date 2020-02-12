@@ -165,7 +165,18 @@ views:
                   :host {
                   --paper-item-icon-active-color: rgb(255, 165, 0);
                   }
-              - sensor.hacs
+              - entity: sensor.hacs
+                tap_action:
+                  action: navigate
+                  navigation_path: /hacs/installed
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity)|int >0 %}
+                      rgb(255, 165, 0)
+                    {% endif %}
+                    ;
+                  }
           - type: custom:list-card
             entity: sensor.hacs
             title: HA Community Store
@@ -293,6 +304,20 @@ views:
                 - entity: device_tracker.davids_ipad_2
                 - entity: sensor.battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
+          - type: entities
+            entities:
+              - sensor.mfc_9335cdw_b_w_counter
+              - sensor.mfc_9335cdw_belt_unit_remaining_life
+              - sensor.mfc_9335cdw_black_toner_remaining
+              - sensor.mfc_9335cdw_color_counter
+              - sensor.mfc_9335cdw_cyan_toner_remaining
+              - sensor.mfc_9335cdw_fuser_remaining_life
+              - sensor.mfc_9335cdw_magenta_toner_remaining
+              - sensor.mfc_9335cdw_page_counter
+              - sensor.mfc_9335cdw_pf_kit_1_remaining_life
+              - sensor.mfc_9335cdw_status
+              - sensor.mfc_9335cdw_uptime
+              - sensor.mfc_9335cdw_yellow_toner_remaining
       - type: vertical-stack
         cards:
           - type: entities
