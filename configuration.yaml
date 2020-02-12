@@ -250,6 +250,17 @@ sensor:
     icon: mdi:coffee
     value_template: "{{ value_json.state }}"
 
+# Docker Compose Version
+  - platform: rest
+    resource: https://api.github.com/repos/docker/compose/releases/latest
+    name: Docker Compose Version Available
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Authorization: !secret github-access-token-token
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+
 # Tasmota Firmware
 # Getting Firmware from JSON for Tasmota
   - platform: rest
