@@ -130,7 +130,7 @@ class SonarrUpcomingMediaSensor(Entity):
                 else:
                     card_item['fanart'] = ''
             except:
-                card_item['fanart'] = ''
+                pass
             card_json.append(card_item)
         attributes['data'] = json.dumps(card_json)
         return attributes

@@ -17,7 +17,7 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_SSL
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.2.8'
+__version__ = '0.2.9'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -177,12 +177,12 @@ class RadarrUpcomingMediaSensor(Entity):
                         movie['images'][0] = image_url % (
                             '500', tmdb_json['poster_path'])
                     except:
-                        movie['images'][0] = ''
+                        continue
                     try:
                         movie['images'][1] = image_url % (
                             '780', tmdb_json['backdrop_path'])
                     except:
-                        movie['images'][1] = ''
+                        pass
                     if days_until(movie['inCinemas'], self._tz) > -1:
                         movie['path'] = movie['inCinemas']
                     elif 'physicalRelease' in movie:
