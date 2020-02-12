@@ -66,7 +66,12 @@ views:
               - sensor.nodemcu_lounge_firmware
               - sensor.nodemcu_bedroom_firmware
               - sensor.tasmota_firmware_version_available
-              - binary_sensor.tasmota_update_available
+              - entity: binary_sensor.tasmota_update_available
+                state_color: true
+                style: |
+                  :host {
+                  --paper-item-icon-active-color: rgb(255, 165, 0);
+                  }
               - sensor.artisan_software_version
               - sensor.memory
               - sensor.processor
@@ -147,9 +152,25 @@ views:
               - sensor.hass_current_dev_version
               - sensor.hass_current_supervisor_stable_version
               - sensor.hass_current_supervisor_beta_version
-              - binary_sensor.hass_update_available
-              - binary_sensor.updater
-              - sensor.hacs
+              - sensor.docker_compose_version_available
+              - entity: binary_sensor.hass_update_available
+                state_color: true
+                style: |
+                  :host {
+                  --paper-item-icon-active-color: rgb(255, 165, 0);
+                  }
+              - entity: binary_sensor.updater
+                state_color: true
+                style: |
+                  :host {
+                  --paper-item-icon-active-color: rgb(255, 165, 0);
+                  }
+              - entity: sensor.hacs
+                state_color: true
+                style: |
+                  :host {
+                  --paper-item-icon-active-color: rgb(255, 165, 0);
+                  }
           - type: custom:list-card
             entity: sensor.hacs
             title: HA Community Store
@@ -393,7 +414,7 @@ views:
                   state_color: true
                   style: |
                     :host {
-                    --paper-item-icon-active-color: rgb(181, 142, 49);
+                    --paper-item-icon-active-color: rgb(255, 165, 0);
                     }
                 - entity: sensor.sunrisetoday
                 - entity: sensor.sunsettoday
@@ -668,7 +689,7 @@ views:
             name: Illuminance
             entities:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
-                name: Illuminance
+                name: Lounge Illuminance
                 show_state: true
                 color: pink
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
@@ -702,7 +723,12 @@ views:
             title: NSW Warnings & Events
             show_header_toggle: false
             entities:
-              - binary_sensor.fire_ban_today
+              - entity: binary_sensor.fire_ban_today
+                state_color: true
+                style: |
+                  :host {
+                  --paper-item-icon-active-color: rgb(255, 165, 0);
+                  }
               - sensor.fire_danger_level_today
           - type: conditional
             conditions:
@@ -792,6 +818,7 @@ views:
                 show_empty: true
                 sort:
                   method: state
+                  numeric: true
           - type: map
             show_header_toggle: false
             dark_mode: true
