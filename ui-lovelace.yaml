@@ -165,12 +165,7 @@ views:
                   :host {
                   --paper-item-icon-active-color: rgb(255, 165, 0);
                   }
-              - entity: sensor.hacs
-                state_color: true
-                style: |
-                  :host {
-                  --paper-item-icon-active-color: rgb(255, 165, 0);
-                  }
+              - sensor.hacs
           - type: custom:list-card
             entity: sensor.hacs
             title: HA Community Store
