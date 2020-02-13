@@ -172,7 +172,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states(config.entity)|int >0 %}
+                    {% if states(config.entity)|int > 0 %}
                       rgb(255, 165, 0)
                     {% endif %}
                     ;
@@ -305,19 +305,33 @@ views:
                 - entity: sensor.battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
           - type: entities
+            title: Brother MFC 9335CDW
+            show_header_toggle: false
             entities:
-              - sensor.mfc_9335cdw_b_w_counter
-              - sensor.mfc_9335cdw_belt_unit_remaining_life
-              - sensor.mfc_9335cdw_black_toner_remaining
-              - sensor.mfc_9335cdw_color_counter
-              - sensor.mfc_9335cdw_cyan_toner_remaining
-              - sensor.mfc_9335cdw_fuser_remaining_life
-              - sensor.mfc_9335cdw_magenta_toner_remaining
-              - sensor.mfc_9335cdw_page_counter
-              - sensor.mfc_9335cdw_pf_kit_1_remaining_life
-              - sensor.mfc_9335cdw_status
-              - sensor.mfc_9335cdw_uptime
-              - sensor.mfc_9335cdw_yellow_toner_remaining
+              - entity: sensor.mfc_9335cdw_b_w_counter
+                name: B/W Counter
+              - entity: sensor.mfc_9335cdw_black_toner_remaining
+                name: Black Toner Remaining
+              - entity: sensor.mfc_9335cdw_color_counter
+                name: Colour Counter
+              - entity: sensor.mfc_9335cdw_cyan_toner_remaining
+                name: Cyan Toner Remaining
+              - entity: sensor.mfc_9335cdw_magenta_toner_remaining
+                name: Magenta Toner Remaining
+              - entity: sensor.mfc_9335cdw_yellow_toner_remaining
+                name: Yellow Toner Remaining
+              - entity: sensor.mfc_9335cdw_belt_unit_remaining_life
+                name: Belt Unit Remaining Life
+              - entity: sensor.mfc_9335cdw_page_counter
+                name: Page Counter
+              - entity: sensor.mfc_9335cdw_fuser_remaining_life
+                name: Fuser Remaining Life
+              - entity: sensor.mfc_9335cdw_pf_kit_1_remaining_life
+                name: PF Kit 1 Remaining Life
+              - entity: sensor.mfc_9335cdw_status
+                name: Status
+              - entity: sensor.mfc_9335cdw_uptime
+                name: Uptime
       - type: vertical-stack
         cards:
           - type: entities
