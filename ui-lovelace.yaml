@@ -70,7 +70,7 @@ views:
                 state_color: true
                 style: |
                   :host {
-                  --paper-item-icon-active-color: rgb(255, 165, 0);
+                  --paper-item-icon-active-color: rgb(255, 223, 0);
                   }
               - sensor.artisan_software_version
               - sensor.memory
@@ -157,13 +157,13 @@ views:
                 state_color: true
                 style: |
                   :host {
-                  --paper-item-icon-active-color: rgb(255, 165, 0);
+                  --paper-item-icon-active-color: rgb(255, 223, 0);
                   }
               - entity: binary_sensor.updater
                 state_color: true
                 style: |
                   :host {
-                  --paper-item-icon-active-color: rgb(255, 165, 0);
+                  --paper-item-icon-active-color: rgb(255, 223, 0);
                   }
               - entity: sensor.hacs
                 tap_action:
@@ -173,7 +173,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity)|int > 0 %}
-                      rgb(255, 165, 0)
+                      rgb(255, 223, 0)
                     {% endif %}
                     ;
                   }
@@ -448,7 +448,7 @@ views:
                   state_color: true
                   style: |
                     :host {
-                    --paper-item-icon-active-color: rgb(255, 165, 0);
+                    --paper-item-icon-active-color: rgb(255, 223, 0);
                     }
                 - entity: sensor.sunrisetoday
                 - entity: sensor.sunsettoday
@@ -761,7 +761,7 @@ views:
                 state_color: true
                 style: |
                   :host {
-                  --paper-item-icon-active-color: rgb(255, 165, 0);
+                  --paper-item-icon-active-color: rgb(255, 223, 0);
                   }
               - sensor.fire_danger_level_today
           - type: conditional
