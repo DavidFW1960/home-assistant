@@ -231,6 +231,18 @@ sensor:
     theaters: true
     max: 10
 
+# Github Sensors
+  - platform: github
+    access_token: !secret github-access-token
+    entity_namespace: github
+    repositories:
+      - path: 'artisan-roaster-scope/artisan'
+        name: Github Artisan
+      - path: 'docker/compose'
+        name: Github Docker Compose
+      - path: 'arendst/Tasmota'
+        name: Github Tasmota
+
 # Artisan Software Version
 # Getting Artisan version from JSON
   - platform: rest
