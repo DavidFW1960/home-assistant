@@ -8,7 +8,7 @@ slate_red:
   primary-text-color: '#ededed'
   text-primary-color: 'var(--primary-text-color)'
   secondary-text-color: '#ededed'
-  disabled-text-color: '#545454'
+  disabled-text-color: '#818181'
   label-badge-border-color: 'green'
   # Sidebar
   sidebar-icon-color: '#d3d3d3'
@@ -28,7 +28,7 @@ slate_red:
   paper-card-background-color: '#292929'
   paper-dialog-background-color: '#292929'
   paper-item-icon-color: 'var(--primary-text-color)'
-  paper-item-icon-active-color: '#b58e31'
+  paper-item-icon-active-color: '#ffd05f'
   paper-item-icon_-_color: 'green'
   paper-item-selected_-_background-color: '#292929'
   paper-tabs-selection-bar-color: 'green'
@@ -43,6 +43,10 @@ slate_red:
   paper-toggle-button-unchecked-button-color: 'var(--disabled-text-color)'
   paper-toggle-button-unchecked-bar-color: 'var(--disabled-text-color)'
   paper-toggle-button-unchecked-ink-color: 'var(--disabled-text-color)'
+  switch-checked-color: 'var(--paper-toggle-button-checked-button-color)'
+  switch-unchecked-color: 'var(--disabled-text-color)'
+  switch-unchecked-button-color: 'var(--disabled-text-color)'
+  switch-unchecked-track-color: 'var(--disabled-text-color)'
   # Sliders
   paper-slider-knob-color: 'var(--primary-color)'
   paper-slider-knob-start-color: 'var(--primary-color)'
@@ -78,3 +82,7 @@ slate_red:
   lumo-tint-5pct: '#222222'
   # fix for device configuration screen
   card-background-color: "var(--paper-card-background-color)"
+  # Fix for Person Device Chooser - thanks to vajonam!
+  material-background-color: "var(--paper-listbox-background-color)"
+  material-secondary-background-color: '#222222'
+  material-body-text-color: '#FFFFFF'
