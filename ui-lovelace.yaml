@@ -72,7 +72,17 @@ views:
                   :host {
                   --paper-item-icon-active-color: rgb(255, 223, 0);
                   }
-              - sensor.artisan_software_version
+              - entity: sensor.artisan_software_version
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity) != 'v2.1.2' %}
+                      rgb(255, 223, 0)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
               - sensor.memory
               - sensor.processor
           - type: horizontal-stack
@@ -152,7 +162,17 @@ views:
               - sensor.hass_current_dev_version
               - sensor.hass_current_supervisor_stable_version
               - sensor.hass_current_supervisor_beta_version
-              - sensor.docker_compose_version_available
+              - entity: sensor.docker_compose_version_available
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity) != 'v1.25.4' %}
+                      rgb(255, 223, 0)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
               - entity: binary_sensor.hass_update_available
                 state_color: true
                 style: |
