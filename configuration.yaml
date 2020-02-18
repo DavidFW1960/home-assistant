@@ -388,6 +388,10 @@ gpodder:
       name: gPodder
       device: homeassistant
 
+media_player:
+  - platform: onkyo
+    host: !secret onkyo
+
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml
 scene: !include scenes.yaml

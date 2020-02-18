@@ -327,121 +327,7 @@ views:
                 - entity: sensor.battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
           - type: entities
-            title: Brother MFC 9335CDW
-            show_header_toggle: false
-            entities:
-              - entity: sensor.mfc_9335cdw_b_w_counter
-                name: B/W Counter
-              - entity: sensor.mfc_9335cdw_black_toner_remaining
-                name: Black Toner Remaining
-              - entity: sensor.mfc_9335cdw_color_counter
-                name: Colour Counter
-              - entity: sensor.mfc_9335cdw_cyan_toner_remaining
-                name: Cyan Toner Remaining
-              - entity: sensor.mfc_9335cdw_magenta_toner_remaining
-                name: Magenta Toner Remaining
-              - entity: sensor.mfc_9335cdw_yellow_toner_remaining
-                name: Yellow Toner Remaining
-              - entity: sensor.mfc_9335cdw_belt_unit_remaining_life
-                name: Belt Unit Remaining Life
-              - entity: sensor.mfc_9335cdw_page_counter
-                name: Page Counter
-              - entity: sensor.mfc_9335cdw_fuser_remaining_life
-                name: Fuser Remaining Life
-              - entity: sensor.mfc_9335cdw_pf_kit_1_remaining_life
-                name: PF Kit 1 Remaining Life
-              - entity: sensor.mfc_9335cdw_status
-                name: Status
-              - entity: sensor.mfc_9335cdw_uptime
-                name: Uptime
-      - type: vertical-stack
-        cards:
-          - type: entities
-            title: Internet
-            show_header_toggle: false
-            entities:
-              - sensor.speedtest_download
-              - sensor.speedtest_download_filtered
-              - sensor.speedtest_upload
-              - sensor.speedtest_upload_filtered
-              - sensor.speedtest_ping
-              - sensor.fritz_netmonitor
-          - type: picture-entity
-            title: Superloop CVC Capacity
-            entity: camera.superloop_cvc_capacity
-            tap_action:
-              action: more-info
-            hold_action:
-              action: more-info
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                name: Mbit/s Download
-                unit: ' '
-                min: 0
-                max: 50
-                severity:
-                  red: 0
-                  yellow: 30
-                  green: 40
-                entity: sensor.speedtest_download
-              - type: gauge
-                name: Mbit/s Upload
-                unit: ' '
-                min: 0
-                max: 20
-                severity:
-                  red: 0
-                  yellow: 11
-                  green: 15
-                entity: sensor.speedtest_upload
-          - type: custom:mini-graph-card
-            hours_to_show: 24
-            points_per_hour: 2
-            entities:
-              - sensor.speedtest_download
-            show:
-              labels: true
-            color_thresholds:
-              - value: 0
-                color: "#ff0000"        #red
-              - value: 30
-                color: "#ffa500"        #orange
-              - value: 40
-                color: "#00ff00"        #green
-          - type: custom:mini-graph-card
-            hours_to_show: 24
-            points_per_hour: 2
-            entities:
-              - sensor.speedtest_upload
-            show:
-              labels: true
-            color_thresholds:
-              - value: 0
-                color: "#ff0000"        #red
-              - value: 11
-                color: "#ffa500"        #orange
-              - value: 15
-                color: "#00ff00"        #green
-          - type: entities
-            title: Open National Electricity Market
-            show_header_toggle: false
-            entities: 
-              - type: custom:auto-entities
-                card:
-                  type: custom:fold-entity-row
-                  head:
-                    type: section
-                    label: OpenNEM
-                  open: true
-                filter:
-                  include:
-                    - entity_id: "sensor.opennem_*"
-                show_empty: true
-                sort:
-                  method: name
-          - type: entities
-            title: Brother MFC9335CDW
+            title: Brother MFC-9335CDW
             show_header_toggle: false
             entities:
               - type: 'custom:hui-horizontal-stack-card'
@@ -654,6 +540,8 @@ views:
                         name: Colour
                       - entity: sensor.mfc_9335cdw_b_w_counter
                         name: B/W
+                      - entity: sensor.mfc_9335cdw_status
+                        name: Status
                     show_header_toggle: false
                     theme: no-shadow
                     type: entities
@@ -664,9 +552,97 @@ views:
                         name: PF Kit
                       - entity: sensor.mfc_9335cdw_fuser_remaining_life
                         name: Fuser
+                      - entity: sensor.mfc_9335cdw_uptime
+                        name: Uptime
                     show_header_toggle: false
                     theme: no-shadow
                     type: entities
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Internet
+            show_header_toggle: false
+            entities:
+              - sensor.speedtest_download
+              - sensor.speedtest_download_filtered
+              - sensor.speedtest_upload
+              - sensor.speedtest_upload_filtered
+              - sensor.speedtest_ping
+              - sensor.fritz_netmonitor
+          - type: picture-entity
+            title: Superloop CVC Capacity
+            entity: camera.superloop_cvc_capacity
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                name: Mbit/s Download
+                unit: ' '
+                min: 0
+                max: 50
+                severity:
+                  red: 0
+                  yellow: 30
+                  green: 40
+                entity: sensor.speedtest_download
+              - type: gauge
+                name: Mbit/s Upload
+                unit: ' '
+                min: 0
+                max: 20
+                severity:
+                  red: 0
+                  yellow: 11
+                  green: 15
+                entity: sensor.speedtest_upload
+          - type: custom:mini-graph-card
+            hours_to_show: 24
+            points_per_hour: 2
+            entities:
+              - sensor.speedtest_download
+            show:
+              labels: true
+            color_thresholds:
+              - value: 0
+                color: "#ff0000"        #red
+              - value: 30
+                color: "#ffa500"        #orange
+              - value: 40
+                color: "#00ff00"        #green
+          - type: custom:mini-graph-card
+            hours_to_show: 24
+            points_per_hour: 2
+            entities:
+              - sensor.speedtest_upload
+            show:
+              labels: true
+            color_thresholds:
+              - value: 0
+                color: "#ff0000"        #red
+              - value: 11
+                color: "#ffa500"        #orange
+              - value: 15
+                color: "#00ff00"        #green
+          - type: entities
+            title: Open National Electricity Market
+            show_header_toggle: false
+            entities: 
+              - type: custom:auto-entities
+                card:
+                  type: custom:fold-entity-row
+                  head:
+                    type: section
+                    label: OpenNEM
+                  open: true
+                filter:
+                  include:
+                    - entity_id: "sensor.opennem_*"
+                show_empty: true
+                sort:
+                  method: name
   - title: Weather
     path: weather
     icon: mdi:weather-cloudy
@@ -1789,7 +1765,7 @@ views:
                   power_state: false
                 info: scroll
                 source: full
-              - entity: media_player.txnr1009
+              - entity: media_player.onkyo_receiver
                 type: custom:mini-media-player
                 artwork: full-cover
                 hide: 
