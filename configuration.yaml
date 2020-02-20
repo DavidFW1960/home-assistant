@@ -234,13 +234,14 @@ sensor:
 # Github Sensors
   - platform: github
     access_token: !secret github-access-token
-    entity_namespace: github
+    entity_namespace: Github
+    scan_interval: 3600
     repositories:
-      - path: 'artisan-roaster-scope/artisan'
+      - path: artisan-roaster-scope/artisan
         name: Github Artisan
-      - path: 'docker/compose'
+      - path: docker/compose
         name: Github Docker Compose
-      - path: 'arendst/Tasmota'
+      - path: arendst/Tasmota
         name: Github Tasmota
 
 # Artisan Software Version
