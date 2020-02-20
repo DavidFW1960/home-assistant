@@ -267,4 +267,5 @@ sensor.opennem_nsw1_temperature:
   friendly_name: Temperature
 sensor.opennem_nsw1_wind:
   friendly_name: Wind
-  
+sensor.gdacs_33_443955_151_286184:
+  friendly_name: GDACS Alerts

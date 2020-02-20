@@ -1070,8 +1070,8 @@ views:
                   open: true
                 filter:
                   include:
-                    - entity_id: "geo_location.nsw_fire_service_feed_*"
-                    - entity_id: "geo_location.lightning_strike_*"
+                    - entity_id: "geo_location.*"
+                    - entity_id: "sensor.gdacs*"
                   exclude:
                     - state: unknown
                 show_empty: true
@@ -1084,6 +1084,7 @@ views:
             geo_location_sources:
               - nsw_rural_fire_service_feed
               - wwlln
+              - gdacs
             entities:
               - zone.home
   - title: Lights & Switches
