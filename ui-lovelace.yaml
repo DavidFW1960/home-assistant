@@ -830,7 +830,7 @@ views:
             entities:
               - sensor.bom_gosford_air_temp_c
               - sensor.nodemcu_lounge_bme280_temperature
-#              - sensor.nodemcu_bedroom_bme280_temperature
+              - sensor.nodemcu_bedroom_bme280_temperature
               - sensor.nodemcu_bedroom_am2301_temperature
               - sensor.sonoff1_2914_si7021_temperature
               - sensor.sonoff3_0898_si7021_temperature	
@@ -838,10 +838,10 @@ views:
               - sensor.bom_gosford_dew_point_c
               - sensor.bom_gosford_rain_today
               - sensor.nodemcu_lounge_bme280_pressure
-#              - sensor.nodemcu_bedroom_bme280_pressure
+              - sensor.nodemcu_bedroom_bme280_pressure
               - sensor.bom_gosford_relative_humidity
               - sensor.nodemcu_lounge_bme280_humidity
-#              - sensor.nodemcu_bedroom_bme280_humidity
+              - sensor.nodemcu_bedroom_bme280_humidity
               - sensor.nodemcu_bedroom_am2301_humidity
               - sensor.sonoff1_2914_si7021_humidity
               - sensor.sonoff3_0898_si7021_humidity
@@ -852,16 +852,16 @@ views:
             show_header_toggle: false
             entities:
               - entity: sensor.nodemcu_lounge_bme280_temperature
-#              - entity: sensor.nodemcu_bedroom_bme280_temperature
+              - entity: sensor.nodemcu_bedroom_bme280_temperature
               - entity: sensor.nodemcu_bedroom_am2301_temperature
               - entity: sensor.sonoff1_2914_si7021_temperature
               - entity: sensor.sonoff3_0898_si7021_temperature	
               - entity: sensor.nodemcu_lounge_bme280_pressure
               - entity: sensor.nodemcu_lounge_bme280_seapressure
-#              - entity: sensor.nodemcu_bedroom_bme280_pressure
-#              - entity: sensor.nodemcu_bedroom_bme280_seapressure
+              - entity: sensor.nodemcu_bedroom_bme280_pressure
+              - entity: sensor.nodemcu_bedroom_bme280_seapressure
               - entity: sensor.nodemcu_lounge_bme280_humidity
-#              - entity: sensor.nodemcu_bedroom_bme280_humidity
+              - entity: sensor.nodemcu_bedroom_bme280_humidity
               - entity: sensor.nodemcu_bedroom_am2301_humidity
               - entity: sensor.sonoff1_2914_si7021_humidity
               - entity: sensor.sonoff3_0898_si7021_humidity
@@ -878,10 +878,10 @@ views:
                 name: Lounge Temperature
                 show_state: true
                 color: orange
-#              - entity: sensor.nodemcu_bedroom_bme280_temperature
-#                name: Bedroom Temperature BME
-#                show_state: true
-#                color: red
+              - entity: sensor.nodemcu_bedroom_bme280_temperature
+                name: Bedroom Temperature BME
+                show_state: true
+                color: red
               - entity: sensor.nodemcu_bedroom_am2301_temperature
                 name: Bedroom Temperature AM
                 show_state: true
@@ -902,17 +902,17 @@ views:
             name: Pressure
             entities:
               - entity: sensor.nodemcu_lounge_bme280_pressure
-                name: Pressure
+                name: Lounge Pressure
                 show_state: true
                 color: cyan
               - entity: sensor.nodemcu_lounge_bme280_seapressure
                 name: Sea Pressure
                 show_state: true
                 color: green
-#              - entity: sensor.nodemcu_bedroom_bme280_pressure
-#                name: Bedroom Pressure
-#                show_state: true
-#                color: green
+              - entity: sensor.nodemcu_bedroom_bme280_pressure
+                name: Bedroom Pressure
+                show_state: true
+                color: yellow
           - type: custom:mini-graph-card
             hours_to_show: 48
             points_per_hour: 10
@@ -924,10 +924,10 @@ views:
                 name: Lounge Humidity
                 show_state: true
                 color: yellow
-#              - entity: sensor.nodemcu_bedroom_bme280_humidity
-#                name: Bedroom Humidity BME
-#                show_state: true
-#                color: red
+              - entity: sensor.nodemcu_bedroom_bme280_humidity
+                name: Bedroom Humidity BME
+                show_state: true
+                color: red
               - entity: sensor.nodemcu_bedroom_am2301_humidity
                 name: Bedroom Humidity AM
                 show_state: true
