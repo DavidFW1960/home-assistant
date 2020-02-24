@@ -825,7 +825,7 @@ views:
             slot_r5: sun_following          #sun_following
           - type: history-graph
             title: Weather BOM Gosford
-            hours_to_show: 72
+            hours_to_show: 48
             refresh_interval: 300
             entities:
               - sensor.bom_gosford_air_temp_c
@@ -869,7 +869,7 @@ views:
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 10
+            points_per_hour: 5
             show:
               labels: true
             name: Temperature
@@ -896,7 +896,7 @@ views:
                 color: cyan
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 10
+            points_per_hour: 5
             show:
               labels: true
             name: Pressure
@@ -915,7 +915,7 @@ views:
                 color: yellow
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 10
+            points_per_hour: 5
             show:
               labels: true
             name: Humidity
@@ -942,7 +942,7 @@ views:
                 color: green
           - type: custom:mini-graph-card
             hours_to_show: 48
-            points_per_hour: 10
+            points_per_hour: 5
             show:
               labels: true
             name: Illuminance
