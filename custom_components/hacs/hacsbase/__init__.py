@@ -17,6 +17,10 @@ from ..setup import setup_extra_stores
 from ..store import async_load_from_store, async_save_to_store
 from ..helpers.get_defaults import get_default_repos_lists, get_default_repos_orgs
 
+from custom_components.hacs.helpers.register_repository import register_repository
+from custom_components.hacs.globals import removed_repositories, get_removed
+from custom_components.hacs.repositories.removed import RemovedRepository
+
 
 class HacsStatus:
     """HacsStatus."""
@@ -90,6 +94,7 @@ class Hacs:
     github = None
     hass = None
     version = None
+    session = None
     factory = HacsTaskFactory()
     system = System()
     recuring_tasks = []
@@ -114,7 +119,7 @@ class Hacs:
         """Get repository by full_name."""
         try:
             for repository in self.repositories:
-                if repository.information.full_name == repository_full_name:
+                if repository.data.full_name.lower() == repository_full_name.lower():
                     return repository
         except Exception:  # pylint: disable=broad-except
             pass
@@ -122,10 +127,9 @@ class Hacs:
 
     def is_known(self, repository_full_name):
         """Return a bool if the repository is known."""
-        for repository in self.repositories:
-            if repository.information.full_name == repository_full_name:
-                return True
-        return False
+        return repository_full_name.lower() in [
+            x.data.full_name.lower() for x in self.repositories
+        ]
 
     @property
     def sorted_by_name(self):
@@ -135,59 +139,16 @@ class Hacs:
     @property
     def sorted_by_repository_name(self):
         """Return a sorted(by repository_name) list of repository objects."""
-        return sorted(self.repositories, key=lambda x: x.information.full_name)
+        return sorted(self.repositories, key=lambda x: x.data.full_name)
 
     async def register_repository(self, full_name, category, check=True):
         """Register a repository."""
-        from ..repositories.repository import RERPOSITORY_CLASSES
-
-        if full_name in self.common.skip:
-            if full_name != "hacs/integration":
-                self.logger.debug(f"Skipping {full_name}")
-                return
-
-        if category not in RERPOSITORY_CLASSES:
-            msg = f"{category} is not a valid repository category."
-            self.logger.error(msg)
-            raise HacsException(msg)
-
-        repository = RERPOSITORY_CLASSES[category](full_name)
-        if check:
-            try:
-                await repository.registration()
-                if self.system.status.new:
-                    repository.status.new = False
-                if repository.validate.errors:
-                    self.common.skip.append(repository.information.full_name)
-                    if not self.system.status.startup:
-                        self.logger.error(f"Validation for {full_name} failed.")
-                    return repository.validate.errors
-                repository.logger.info("Registration complete")
-            except AIOGitHubException as exception:
-                self.logger.debug(self.github.ratelimits.remaining)
-                self.logger.debug(self.github.ratelimits.reset_utc)
-                self.common.skip.append(repository.information.full_name)
-                # if not self.system.status.startup:
-                if self.system.status.startup:
-                    self.logger.error(
-                        f"Validation for {full_name} failed with {exception}."
-                    )
-                return exception
-        self.hass.bus.async_fire(
-            "hacs/repository",
-            {
-                "id": 1337,
-                "action": "registration",
-                "repository": repository.information.full_name,
-                "repository_id": repository.information.uid,
-            },
-        )
-        self.repositories.append(repository)
+        await register_repository(full_name, category, check=True)
 
     async def startup_tasks(self):
         """Tasks tha are started after startup."""
         self.system.status.background_task = True
-        await self.hass.async_add_executor_job(setup_extra_stores, self)
+        await self.hass.async_add_executor_job(setup_extra_stores)
         self.hass.bus.async_fire("hacs/status", {})
         self.logger.debug(self.github.ratelimits.remaining)
         self.logger.debug(self.github.ratelimits.reset_utc)
@@ -258,6 +219,8 @@ class Hacs:
 
         for repository in critical:
             self.common.blacklist.append(repository["repository"])
+            removed_repo = get_removed(repository["repository"])
+            removed_repo.removal_type = "critical"
             repo = self.get_by_name(repository["repository"])
 
             stored = {
@@ -266,7 +229,6 @@ class Hacs:
                 "link": repository["link"],
                 "acknowledged": True,
             }
-
             if repository["repository"] not in instored:
                 if repo is not None and repo.installed:
                     self.logger.critical(
@@ -278,6 +240,7 @@ class Hacs:
                     repo.remove()
                     await repo.uninstall()
             stored_critical.append(stored)
+            removed_repo.update_data(stored)
 
         # Save to FS
         await async_save_to_store(self.hass, "critical", stored_critical)
@@ -299,7 +262,7 @@ class Hacs:
         for repository in self.repositories:
             if (
                 repository.status.installed
-                and repository.category in self.common.categories
+                and repository.data.category in self.common.categories
             ):
                 self.factory.tasks.append(self.factory.safe_update(repository))
 
@@ -313,12 +276,13 @@ class Hacs:
     async def recuring_tasks_all(self, notarealarg=None):
         """Recuring tasks for all repositories."""
         self.logger.debug("Starting recuring background task for all repositories")
+        await self.hass.async_add_executor_job(setup_extra_stores)
         self.system.status.background_task = True
         self.hass.bus.async_fire("hacs/status", {})
         self.logger.debug(self.github.ratelimits.remaining)
         self.logger.debug(self.github.ratelimits.reset_utc)
         for repository in self.repositories:
-            if repository.category in self.common.categories:
+            if repository.data.category in self.common.categories:
                 self.factory.tasks.append(self.factory.safe_common_update(repository))
 
         await self.factory.execute()
@@ -338,7 +302,7 @@ class Hacs:
                 repository = self.get_by_name(repository)
                 if repository.status.installed:
                     self.logger.warning(
-                        f"You have {repository.information.full_name} installed with HACS "
+                        f"You have {repository.data.full_name} installed with HACS "
                         + "this repository has been blacklisted, please consider removing it."
                     )
                 else:
@@ -353,7 +317,7 @@ class Hacs:
         repositories = {}
         for category in self.common.categories:
             repositories[category] = await get_default_repos_lists(
-                self.github, category
+                self.session, self.configuration.token, category
             )
             org = await get_default_repos_orgs(self.github, category)
             for repo in org:
@@ -370,8 +334,12 @@ class Hacs:
         self.logger.info("Loading known repositories")
         repositories = await self.get_repositories()
 
-        for item in await get_default_repos_lists(self.github, "blacklist"):
+        for item in await get_default_repos_lists(
+            self.session, self.configuration.token, "blacklist"
+        ):
             if item not in self.common.blacklist:
+                removed = get_removed(item)
+                removed.removal_type = "blacklist"
                 self.common.blacklist.append(item)
 
         for category in repositories:
@@ -380,7 +348,6 @@ class Hacs:
                     continue
                 if self.is_known(repo):
                     continue
-                self.factory.tasks.append(
-                    self.factory.safe_register(self, repo, category)
-                )
+                self.factory.tasks.append(self.factory.safe_register(repo, category))
         await self.factory.execute()
+        self.logger.info("Loading known repositories finished")
