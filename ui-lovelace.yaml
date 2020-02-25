@@ -310,8 +310,8 @@ views:
             entities:
               - device_tracker.davids_iphone_2
               - device_tracker.davids_ipad_2
-              - sensor.battery_level
-              - sensor.battery_level_2
+              - sensor.davids_ipad_battery_level
+              - sensor.davids_iphone_battery_level
             card:
               type: 'custom:hui-entities-card'
               title: iOS Devices
@@ -321,11 +321,11 @@ views:
                 - entity: sensor.travel_to_home
                 - entity: person.liz
                 - entity: device_tracker.davids_iphone_2
-                - entity: sensor.battery_level_2
-                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state_2'].state + '\xa0'.repeat(5) + 'Level:'}"
+                - entity: sensor.davids_iphone_battery_level
+                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.davids_iphone_battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
                 - entity: device_tracker.davids_ipad_2
-                - entity: sensor.battery_level
-                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
+                - entity: sensor.davids_ipad_battery_level
+                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.davids_ipad_battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
           - type: entities
             title: Brother MFC-9335CDW
             show_header_toggle: false
