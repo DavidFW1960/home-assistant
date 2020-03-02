@@ -238,11 +238,11 @@ sensor:
     scan_interval: 3600
     repositories:
       - path: artisan-roaster-scope/artisan
-        name: Github Artisan
+        name: Artisan
       - path: docker/compose
-        name: Github Docker Compose
+        name: Docker Compose
       - path: arendst/Tasmota
-        name: Github Tasmota
+        name: Tasmota
 
 # Artisan Software Version
 # Getting Artisan version from JSON
