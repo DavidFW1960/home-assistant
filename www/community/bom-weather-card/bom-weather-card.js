@@ -268,14 +268,14 @@ class BOMWeatherCard extends LitElement {
     var mostly_sunny_icon = (this.config.old_icon ==="true") ? `fair-${this.dayOrNight}` : `fair-${this.dayOrNight}`;
     var partly_cloudy_icon = (this.config.old_icon ==="true") ? `cloudy-${this.dayOrNight}-3` : `partly-cloudy-${this.dayOrNight}`;
     var cloudy_icon = (this.config.old_icon ==="true") ? `cloudy-original` : `cloudy`;
-    var hazy_icon = (this.config.old_icon ==="true") ? `cloudy-${this.dayOrNight}-1` : `haze`;
+    var hazy_icon = (this.config.old_icon ==="true") ? `haze` : `haze`;
     var frost_icon = (this.config.old_icon ==="true") ? `cloudy-${this.dayOrNight}-1` : `cloudy-${this.dayOrNight}-1`;
     var light_rain_icon = (this.config.old_icon ==="true") ? `rainy-1` : `rainy-1`;
-    var windy_icon = (this.config.old_icon ==="true") ? `cloudy-original` : `wind`;
-    var fog_icon = (this.config.old_icon ==="true") ? `cloudy-original` : `fog`;
+    var windy_icon = (this.config.old_icon ==="true") ? `wind` : `wind`;
+    var fog_icon = (this.config.old_icon ==="true") ? `fog` : `fog`;
     var showers_icon = (this.config.old_icon ==="true") ? `rainy-3` : `rainy-3`;
     var rain_icon = (this.config.old_icon ==="true") ? `rainy-5` : `rain`;
-    var dust_icon = (this.config.old_icon ==="true") ? `cloudy-${this.dayOrNight}-1` : `haze`;
+    var dust_icon = (this.config.old_icon ==="true") ? `haze` : `haze`;
     var snow_icon = (this.config.old_icon ==="true") ? `snowy-6` : `snow`;
     var storm_icon = (this.config.old_icon ==="true") ? `scattered-thunderstorms` : `scattered-thunderstorms`;
     var light_showers_icon = (this.config.old_icon ==="true") ? `rainy-5` : `rainy-5`;
