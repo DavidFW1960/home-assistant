@@ -104,6 +104,13 @@ casttransport:
       entity_id: media_player.lounge_room_tv
       view_path: transport
     service: cast.show_lovelace_view
+castmedical:
+  alias: Cast Medical
+  sequence:
+  - data:
+      entity_id: media_player.lounge_room_tv
+      view_path: medical
+    service: cast.show_lovelace_view
 casthomeassistantfox:
   alias: Cast Home Assistant Foxtel
   sequence:
@@ -145,6 +152,13 @@ casttransportfox:
   - data:
       entity_id: media_player.foxtel_7587
       view_path: transport
+    service: cast.show_lovelace_view
+castmedicalfox:
+  alias: Cast Medical Fox
+  sequence:
+  - data:
+      entity_id: media_player.foxtel_7587
+      view_path: medical
     service: cast.show_lovelace_view
 castoff:
   alias: Stop Casting Samsung
