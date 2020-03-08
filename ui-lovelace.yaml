@@ -780,7 +780,7 @@ views:
             locale: en
             sunset: true
             static_icons: false
-            old_icon: "true"
+            old_icon: "hybrid"
             tooltip_bg_color: 'rgb( 75,155,239)'
             tooltip_border_color: 'rgb(255,161,0)'
             tooltip_border_width: 1
@@ -1736,6 +1736,10 @@ views:
                 name: Transport
                 view: "transport"
                 hide_if_unavailable: false
+              - type: cast
+                name: Medical Alerts
+                view: "medical"
+                hide_if_unavailable: false
       - type: vertical-stack
         cards:
           - type: entities
@@ -1812,30 +1816,37 @@ views:
             cards:
               - type: custom:button-card
                 icon: mdi:home-assistant
+                show_entity_picture: true
                 name: System
                 tap_action:
                   action: call-service
                   service: script.casthomeassistant
               - type: custom:button-card
                 icon: mdi:weather-cloudy
+                show_entity_picture: true
                 name: Weather
                 tap_action:
                   action: call-service
                   service: script.castweather
               - type: custom:button-card
                 icon: mdi:power
+                show_entity_picture: true
                 name: Switches
                 tap_action:
                   action: call-service
                   service: script.castswitches
               - type: custom:button-card
                 icon: mdi:vlc
+                show_entity_picture: true
                 name: Media
                 tap_action:
                   action: call-service
                   service: script.castmedia
+          - type: horizontal-stack
+            cards:
               - type: custom:button-card
                 icon: mdi:kodi
+                show_entity_picture: true
                 name: TV
                 tap_action:
                   action: call-service
@@ -1847,6 +1858,20 @@ views:
                 tap_action:
                   action: call-service
                   service: script.casttransport
+              - type: custom:button-card
+                icon: mdi:medical-bag
+                show_entity_picture: true
+                name: Alerts
+                tap_action:
+                  action: call-service
+                  service: script.castmedical
+              - type: custom:button-card
+                icon: mdi:power
+                show_entity_picture: true
+                name: Cast Off
+                tap_action:
+                  action: call-service
+                  service: script.castoff
           - type: markdown
             style: |
               h2 {
@@ -1887,6 +1912,8 @@ views:
                 tap_action:
                   action: call-service
                   service: script.castmediafox
+          - type: horizontal-stack
+            cards:
               - type: custom:button-card
                 icon: mdi:kodi
                 name: TV
@@ -1900,15 +1927,17 @@ views:
                 tap_action:
                   action: call-service
                   service: script.casttransportfox
-          - type: horizontal-stack
-            cards:
+              - type: custom:button-card
+                icon: mdi:medical-bag
+                show_entity_picture: true
+                name: Alerts
+                tap_action:
+                  action: call-service
+                  service: script.castmedicalfox
               - type: custom:button-card
                 icon: mdi:power
                 show_entity_picture: true
                 name: Cast Off
-                styles:
-                  card:
-                    - width: 25%
                 tap_action:
                   action: call-service
                   service: script.castoff
@@ -2014,3 +2043,45 @@ views:
           - sensor.caltex_907
           - sensor.caltex_906
           - sensor.shell_902
+  - title: Medical Alerts
+    path: medical
+    icon: mdi:medical-bag
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: glance
+            show_icon: true
+            show_name: true
+            show_state: true
+            title: Australia
+            entities:
+              - entity: sensor.australia_coronavirus_confirmed
+                icon: 'mdi:account-box'
+                name: Confirmed
+              - entity: sensor.australia_coronavirus_current
+                icon: 'mdi:biohazard'
+                name: Current
+              - entity: sensor.australia_coronavirus_recovered
+                icon: 'mdi:calendar-check-outline'
+                name: Recovered
+              - entity: sensor.australia_coronavirus_deaths
+                icon: 'mdi:grave-stone'
+                name: Deaths
+          - type: glance
+            show_icon: true
+            show_name: true
+            show_state: true
+            title: Worldwide
+            entities:
+              - entity: sensor.worldwide_coronavirus_confirmed
+                icon: 'mdi:account-box'
+                name: Confirmed
+              - entity: sensor.worldwide_coronavirus_current
+                icon: 'mdi:biohazard'
+                name: Current
+              - entity: sensor.worldwide_coronavirus_recovered
+                icon: 'mdi:calendar-check-outline'
+                name: Recovered
+              - entity: sensor.worldwide_coronavirus_deaths
+                icon: 'mdi:grave-stone'
+                name: Deaths
