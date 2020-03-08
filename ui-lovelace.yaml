@@ -2049,6 +2049,9 @@ views:
     cards:
       - type: vertical-stack
         cards:
+          - entities: null
+            type: picture
+            image: local/images/coronavirus.jpg
           - type: glance
             show_icon: true
             show_name: true
