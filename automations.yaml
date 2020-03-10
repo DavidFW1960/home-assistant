@@ -387,7 +387,7 @@
   action:
   - data:
       keep_days: 7
-      repack: 'true'
+#     repack: 'true'
     service: recorder.purge
 - id: 'cleanknowndevices'
   alias: Clean out Known Devices
