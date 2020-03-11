@@ -206,6 +206,18 @@ sensor:
     duration:
       days: 2
   - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_core_mariadb/stats
+    name: MariaDB Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: mariadb_memory_average
+    entities:
+      - sensor.mariadb_memory
+    duration:
+      days: 2
+  - platform: rest
     resource: http://10.90.11.100:8126/container/addon_core_mosquitto/stats
     name: Mosquitto Memory
     scan_interval: 900
