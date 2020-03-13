@@ -423,6 +423,15 @@
   action:
   - service: automation.turn_on
     entity_id: all
+- id: 'restartnodemcu'
+  alias: Schedule NodeMCU Lounge Restart
+  trigger:
+  - platform: homeassistant
+    event: start
+  - at: '00:00:00'
+    platform: time
+  action:
+  - service: script.restartnodemculounge
 - id: 'hacspersistentnotification'
   alias: HACS Persistent Notification
   trigger:

@@ -50,6 +50,13 @@ firmwarealltasmota:
       payload: '2'
       topic: nodemcu/cmnd/status
     service: mqtt.publish
+restartnodemculounge:
+  alias: Restart Lounge NodeMCU Devices
+  sequence:
+  - data:
+      payload: '1'
+      topic: nodemcu_lounge/cmnd/Restart
+    service: mqtt.publish
 updateversions:
   alias: Update Versions HA
   sequence:
