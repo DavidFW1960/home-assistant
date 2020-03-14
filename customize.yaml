@@ -162,6 +162,7 @@ sensor.sonoff3_0898_si7021_humidity:
   friendly_name: Office Si7021 Humidity
 sensor.ssl_certificate_expiry:
   friendly_name: SSL Certificate Expiry
+  unit_of_measurement: days
 sensor.appdaemon_memory_average:
   friendly_name: Appdaemon
   icon: mdi:docker
