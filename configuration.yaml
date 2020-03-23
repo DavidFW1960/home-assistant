@@ -43,6 +43,11 @@ homeassistant:
 # Python
 # python_script:
 
+# LG TV
+webostv:
+  host: !secret weboslgtv
+  name: LG-TV Lounge Room
+
 # Device Trackers - Fritz!Box & iPhone Detect
 device_tracker:
   - platform: fritz

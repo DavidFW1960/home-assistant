@@ -1755,14 +1755,14 @@ views:
                   power_state: false
                 info: scroll
                 source: full
-              - entity: media_player.ua55d8000_ua55d8000
+              - entity:  media_player.lg_webos_tvc429
                 type: custom:mini-media-player
                 artwork: full-cover
                 hide: 
                   power_state: false
                 info: scroll
                 source: full
-              - entity: media_player.tvua55d8000
+              - entity:  media_player.lg_tv_lounge_room
                 type: custom:mini-media-player
                 artwork: full-cover
                 hide: 
@@ -1788,7 +1788,7 @@ views:
                 margin-inline-end: 0px;
                 font-weight: normal;
             content: >
-              ## Samsung TV
+              ## Chromecast on LG TV
           - type: horizontal-stack
             cards:
               - type: custom:button-card
