@@ -1755,7 +1755,14 @@ views:
                   power_state: false
                 info: scroll
                 source: full
-              - entity:  media_player.lg_webos_tvc429
+              - entity:  media_player.lg_webos_tv_c429
+                type: custom:mini-media-player
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+                source: full
+              - entity:  media_player.lg_webos_tv_oled55c9pta
                 type: custom:mini-media-player
                 artwork: full-cover
                 hide: 
