@@ -1309,6 +1309,24 @@ views:
                   service_data:
                     entity_id: input_boolean.holiday
           - type: entities
+            title: Harmony Remote
+            state_color: true
+            show_header_toggle: false
+            entities:
+              - input_boolean.harmonyremote
+              - entity: remote.harmony_hub
+                state_color: true
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if is_state('remote.harmony_hub', 'on') %}
+                      var(--primary-color)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
+          - type: entities
             title: Overrides
             show_header_toggle: false
             entities:
