@@ -1315,7 +1315,6 @@ views:
             entities:
               - input_boolean.harmonyremote
               - entity: remote.harmony_hub
-                state_color: true
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -2046,6 +2045,7 @@ views:
           - sensor.caltex_906
           - sensor.shell_902
   - title: Medical Alerts
+    background: center / cover no-repeat url("/local/images/covid19-background.jpg") fixed
     path: medical
     icon: mdi:medical-bag
     cards:
