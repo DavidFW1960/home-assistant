@@ -426,10 +426,13 @@
 - id: 'restartnodemcu'
   alias: Schedule NodeMCU Lounge Restart
   trigger:
-  - platform: homeassistant
-    event: start
-  - at: '00:00:00'
-    platform: time
+  - platform: numeric_state
+    entity_id: sensor.nodemcu_lounge_bme280_pressure
+    below: 700
+# - platform: homeassistant
+#   event: start
+# - at: '00:00:00'
+#   platform: time
   action:
   - service: script.restartnodemculounge
 - id: 'hacspersistentnotification'
