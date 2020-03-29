@@ -367,6 +367,13 @@ switch:
     host: !secret my_hadockermon_host
     port: !secret my_hadockermon_port
 
+# Harmony Hub
+remote:
+  - platform: harmony
+    name: Harmony Hub
+    host: !secret harmonyip
+    activity: Watch DTV
+
 # Binary Switch for Home and Away Automations, Alarm & Garage Door, Overtime & Holiday
 input_boolean:
   homeandawayauto:
@@ -381,6 +388,7 @@ input_boolean:
     name: Retrigger Docker Containers Restart
   harmonyremote:
     name: Switch Harmony Remote On or Off
+    icon: mdi:television-guide
 
 # Clear Out Gmail Alarm Notifications & Clean Known Devices file, ABB usage, Component/Card Versions
 shell_command:
