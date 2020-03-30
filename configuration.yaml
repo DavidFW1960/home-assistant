@@ -366,6 +366,21 @@ switch:
   - platform: hadockermon
     host: !secret my_hadockermon_host
     port: !secret my_hadockermon_port
+# Template Switch for Harmony Remote
+  - platform: template
+    switches:
+      harmony:
+        value_template: "{{ not is_state_attr('remote.harmony_hub', 'current_activity', 'PowerOff') }}"
+        turn_on:
+          service: remote.turn_on
+          data:
+            entity_id: remote.harmony_hub
+            activity: 'Watch DTV'
+        turn_off:
+          service: remote.turn_on
+          data:
+            entity_id: remote.harmony_hub
+            activity: 'PowerOff'
 
 # Harmony Hub
 remote:
@@ -386,9 +401,6 @@ input_boolean:
     name: Holiday
   retrigger:
     name: Retrigger Docker Containers Restart
-  harmonyremote:
-    name: Switch Harmony Remote On or Off
-    icon: mdi:television-guide
 
 # Clear Out Gmail Alarm Notifications & Clean Known Devices file, ABB usage, Component/Card Versions
 shell_command:

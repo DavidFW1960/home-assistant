@@ -451,37 +451,3 @@
       data:
         message: "Update available!"
         title: "HACS"
-- id: 'harmonyon'
-  alias: Harmony Remote On
-  trigger:
-  - platform: state
-    from: 'off'
-    to: 'on'
-    entity_id: input_boolean.harmonyremote
-  - platform: state
-    from: 'off'
-    to: 'on'
-    entity_id: remote.harmony_hub
-  action:
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.harmonyremote
-  - service: remote.turn_on
-    entity_id: remote.harmony_hub
-    data:
-      activity: "Watch DTV"
-- id: 'harmonyoff'
-  alias: Harmony Remote Off
-  trigger:
-  - platform: state
-    from: 'on'
-    to: 'off'
-    entity_id: input_boolean.harmonyremote
-  - platform: state
-    from: 'on'
-    to: 'off'
-    entity_id: remote.harmony_hub
-  action:
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.harmonyremote
-  - service: remote.turn_off
-    entity_id: remote.harmony_hub

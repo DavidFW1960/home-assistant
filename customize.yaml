@@ -40,6 +40,9 @@ switch.vpn_router:
 switch.hifi:
   icon: mdi:television
   friendly_name: HiFi
+switch.harmony:
+  friendly_name: Switch Harmony Remote On or Off
+  icon: mdi:television-guide
 sensor.coffee_maker_firmware:
   icon: mdi:coffee
 sensor.toothbrush_firmware:

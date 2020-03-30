@@ -43,7 +43,7 @@ entity_config:
   input_boolean.holiday:
     room: kitchen
     expose: true
-  input_boolean.harmonyremote:
+  switch.harmony:
     room: lounge room
     expose: true
   sensor.nodemcu_bedroom_bme280_temperature:
