@@ -104,6 +104,7 @@ input_select:
      - 'ux_goodie'
      - 'vaporwave-pink'
      - 'vintage'
+     - 'yourname'
     initial: 'Google Dark Theme'
     icon: 'mdi:palette'
 
