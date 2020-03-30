@@ -1313,8 +1313,10 @@ views:
             state_color: true
             show_header_toggle: false
             entities:
-              - input_boolean.harmonyremote
+              - switch.harmony
               - entity: remote.harmony_hub
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: "[[ remote.harmony_hub.attributes.current_activity ]]"
                 style: |
                   :host {
                   --paper-item-icon-color:
