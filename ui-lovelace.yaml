@@ -1754,6 +1754,12 @@ views:
                 hide: 
                   power_state: false
                 info: scroll
+              - entity: media_player.hdvr3500
+                type: custom:mini-media-player
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
               - entity: media_player.osmc_vero4
                 type: custom:mini-media-player
                 artwork: full-cover
