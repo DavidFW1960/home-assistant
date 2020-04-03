@@ -122,11 +122,18 @@ views:
             entities:
               - sensor.hass_installed_version
               - sensor.hass_available_to_install_version
-              - sensor.hass_current_stable_version
-              - sensor.hass_current_beta_version
-              - sensor.hass_current_dev_version
-              - sensor.hass_current_supervisor_stable_version
-              - sensor.hass_current_supervisor_beta_version
+              - sensor.current_ha_stable
+              - sensor.current_ha_beta
+              - sensor.current_ha_dev
+              - sensor.current_supervisor_stable
+              - sensor.current_supervisor_beta
+              - sensor.current_supervisor_dev
+              - sensor.current_dns_stable
+              - sensor.current_dns_beta
+              - sensor.current_dns_dev
+              - sensor.current_audio_stable
+              - sensor.current_audio_beta
+              - sensor.current_audio_dev
               - entity: sensor.docker_compose_version_available
                 style: |
                   :host {

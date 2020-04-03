@@ -27,43 +27,117 @@ homeassistant:
 
     sensor.hass_installed_version:
       <<: *customize
-      friendly_name: 'Hass.io Installed Version'
+      friendly_name: 'HA Supervised Installed Version'
       icon: mdi:check-decagram
 
     sensor.hass_available_to_install_version:
       <<: *customize
-      friendly_name: 'Hass.io Available to Install Version'
+      friendly_name: 'HA Supervised Available Version Sensor'
       icon: mdi:check-decagram
 
-    sensor.hass_current_stable_version:
+    sensor.current_ha_beta:
       <<: *customize
-      friendly_name: 'Hass.io Current Stable Version'
-      icon: mdi:check-decagram
-
-    sensor.hass_current_beta_version:
-      <<: *customize
-      friendly_name: 'Hass.io Beta Release'
+      friendly_name: 'HA Supervised Beta Version'
       icon: mdi:beta
 
-    sensor.hass_current_dev_version:
+    sensor.current_ha_stable:
+      <<: *customize
+      friendly_name: 'HA Supervised Current Stable Version'
+      icon: mdi:check-decagram
+
+    sensor.current_ha_dev:
       <<: *customize
       friendly_name: 'Hass.io Dev Release'
       icon: mdi:alpha
 
-    sensor.hass_current_supervisor_stable_version:
+    sensor.current_supervisor_beta:
       <<: *customize
-      friendly_name: 'Hass.io Current Supervisor Stable Version'
+      friendly_name: 'HA Current Supervisor Beta'
+      icon: mdi:beta
+
+    sensor.current_supervisor_stable:
+      <<: *customize
+      friendly_name: 'HA Current Supervisor Stable'
       icon: mdi:check-decagram
 
-    sensor.hass_current_supervisor_beta_version:
+    sensor.current_supervisor_dev:
       <<: *customize
-      friendly_name: 'Hass.io Current Supervisor Beta Version'
+      friendly_name: 'HA Current Supervisor Beta'
+      icon: mdi:alpha
+
+    sensor.current_hassos_beta:
+      <<: *customize
+      friendly_name: 'HassOS Current Beta'
+      icon: mdi:beta
+
+    sensor.current_hassos_stable:
+      <<: *customize
+      friendly_name: 'HassOS Current Stable'
       icon: mdi:check-decagram
 
-    sensor.hass_current_hassos_version:
+    sensor.current_hassos_dev:
       <<: *customize
-      friendly_name: 'Hass.io Current HassOS Version'
+      friendly_name: 'HassOS Current Dev'
+      icon: mdi:alpha
+
+    sensor.current_dns_beta:
+      <<: *customize
+      friendly_name: 'DNS Current Beta'
+      icon: mdi:beta
+
+    sensor.current_dns_stable:
+      <<: *customize
+      friendly_name: 'DNS Current Stable'
       icon: mdi:check-decagram
+
+    sensor.current_dns_dev:
+      <<: *customize
+      friendly_name: 'DNS Current Dev'
+      icon: mdi:alpha
+
+    sensor.current_audio_beta:
+      <<: *customize
+      friendly_name: 'Audio Current Beta'
+      icon: mdi:beta
+
+    sensor.current_audio_stable:
+      <<: *customize
+      friendly_name: 'Audio Current Stable'
+      icon: mdi:check-decagram
+
+    sensor.current_audio_dev:
+      <<: *customize
+      friendly_name: 'Audio Current Dev'
+      icon: mdi:alpha
+
+    sensor.current_hassos_cli_beta:
+      <<: *customize
+      friendly_name: 'HassOS Cli Current Beta'
+      icon: mdi:beta
+
+    sensor.current_hassos_cli_stable:
+      <<: *customize
+      friendly_name: 'HassOS Cli Current Stable'
+      icon: mdi:check-decagram
+
+    sensor.current_hassos_cli_dev:
+      <<: *customize
+      friendly_name: 'HassOS Cli Current Dev'
+      icon: mdi:alpha
+    sensor.current_cli_beta:
+      <<: *customize
+      friendly_name: 'Cli Current Beta'
+      icon: mdi:beta
+
+    sensor.current_cli_stable:
+      <<: *customize
+      friendly_name: 'Cli Current Stable'
+      icon: mdi:check-decagram
+
+    sensor.current_cli_dev:
+      <<: *customize
+      friendly_name: 'Cli Current Dev'
+      icon: mdi:alpha
 
 ################################################
 ## Updater
@@ -91,40 +165,92 @@ sensor:
     source: hassio
 
   - platform: rest
-    resource: https://s3.amazonaws.com/hassio-version/stable.json
-    name: Hass Current Stable Version
-    scan_interval: 7200
-    value_template: "{{ value_json.homeassistant['qemux86-64'] }}"
-
-  - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/beta.json
-    name: Hass Current Beta Version
+    name: Home Assistant Beta Supervised Versions
     scan_interval: 7200
-    value_template: "{{ value_json.homeassistant['qemux86-64'] }}"
-
+    json_attributes:
+      - supervisor
+      - homeassistant
+      - hassos
+      - hassos-cli
+      - cli
+      - dns
+      - audio
+    value_template: 'OK'
+  - platform: template
+    sensors:
+      current_supervisor_beta:
+        value_template: '{{ states.sensor.home_assistant_beta_supervised_versions.attributes["supervisor"] }}'
+      current_ha_beta:
+        value_template: '{{ states.sensor.home_assistant_beta_supervised_versions.attributes["homeassistant"]["intel-nuc"] }}'
+      current_hassos_beta:
+        value_template: '{{ states.sensor.home_assistant_beta_supervised_versions.attributes["hassos"]["intel-nuc"] }}'
+      current_hassos_cli_beta:
+        value_template: '{{ states.sensor.home_assistant_beta_supervised_versions.attributes["hassos-cli"] }}'
+      current_cli_beta:
+        value_template: '{{ states.sensor.home_assistant_beta_supervised_versions.attributes["cli"] }}'
+      current_dns_beta:
+        value_template: '{{ states.sensor.home_assistant_beta_supervised_versions.attributes["dns"] }}'
+      current_audio_beta:
+        value_template: '{{ states.sensor.home_assistant_beta_supervised_versions.attributes["audio"] }}'
+  - platform: rest
+    resource: https://s3.amazonaws.com/hassio-version/stable.json
+    name: Home Assistant Supervised Stable Versions
+    scan_interval: 7200
+    json_attributes:
+      - supervisor
+      - homeassistant
+      - hassos
+      - hassos-cli
+      - cli
+      - dns
+      - audio
+    value_template: 'OK'
+  - platform: template
+    sensors:
+      current_supervisor_stable:
+        value_template: '{{ states.sensor.home_assistant_supervised_stable_versions.attributes["supervisor"] }}'
+      current_ha_stable:
+        value_template: '{{ states.sensor.home_assistant_supervised_stable_versions.attributes["homeassistant"]["intel-nuc"] }}'
+      current_hassos_stable:
+        value_template: '{{ states.sensor.home_assistant_supervised_stable_versions.attributes["hassos"]["intel-nuc"] }}'
+      current_hassos_cli_stable:
+        value_template: '{{ states.sensor.home_assistant_supervised_stable_versions.attributes["hassos-cli"] }}'
+      current_cli_stable:
+        value_template: '{{ states.sensor.home_assistant_supervised_stable_versions.attributes["cli"] }}'
+      current_dns_stable:
+        value_template: '{{ states.sensor.home_assistant_supervised_stable_versions.attributes["dns"] }}'
+      current_audio_stable:
+        value_template: '{{ states.sensor.home_assistant_supervised_stable_versions.attributes["audio"] }}'
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/dev.json
-    name: Hass Current Dev Version
+    name: Home Assistant Supervised Dev Versions
     scan_interval: 7200
-    value_template: "{{ value_json.homeassistant['qemux86-64'] }}"
-
-  - platform: rest
-    resource: https://s3.amazonaws.com/hassio-version/stable.json
-    name: Hass Current Supervisor Stable Version
-    scan_interval: 7200
-    value_template: '{{ value_json.supervisor }}'
-
-  - platform: rest
-    resource: https://s3.amazonaws.com/hassio-version/beta.json
-    name: Hass Current Supervisor Beta Version
-    scan_interval: 7200
-    value_template: '{{ value_json.supervisor }}'
-
-  - platform: rest
-    resource: https://s3.amazonaws.com/hassio-version/stable.json
-    name: Hass Current HassOS Version
-    scan_interval: 7200
-    value_template: "{{ value_json.hassos['rpi3-64'] }}"
+    json_attributes:
+      - supervisor
+      - homeassistant
+      - hassos
+      - hassos-cli
+      - cli
+      - dns
+      - audio
+    value_template: 'OK'
+  - platform: template
+    sensors:
+      current_supervisor_dev:
+        value_template: '{{ states.sensor.home_assistant_supervised_dev_versions.attributes["supervisor"] }}'
+      current_ha_dev:
+        value_template: '{{ states.sensor.home_assistant_supervised_dev_versions.attributes["homeassistant"]["intel-nuc"] }}'
+      current_hassos_dev:
+        value_template: '{{ states.sensor.home_assistant_supervised_dev_versions.attributes["hassos"]["intel-nuc"] }}'
+      current_hassos_cli_dev:
+        value_template: '{{ states.sensor.home_assistant_supervised_dev_versions.attributes["hassos-cli"] }}'
+      current_cli_dev:
+        value_template: '{{ states.sensor.home_assistant_supervised_dev_versions.attributes["cli"] }}'
+      current_dns_dev:
+        value_template: '{{ states.sensor.home_assistant_supervised_dev_versions.attributes["dns"] }}'
+      current_audio_dev:
+        value_template: '{{ states.sensor.home_assistant_supervised_dev_versions.attributes["audio"] }}'
 
 ################################################
 ## Binary Sensor
@@ -135,8 +261,8 @@ binary_sensor:
     sensors:
       hass_update_available:
         value_template: >-
-          {{ states('sensor.hass_current_stable_version') != 'unavailable' and 
-             states('sensor.hass_current_stable_version') > states('sensor.hass_installed_version')
+          {{ states('sensor.current_ha_stable') != 'unavailable' and 
+             states('sensor.current_ha_stable') > states('sensor.hass_installed_version')
               }}
 
 ################################################
@@ -148,23 +274,28 @@ automation:
     trigger:
       - platform: template
         value_template: >-
-          {{ states('sensor.hass_current_stable_version') != 'unavailable' and 
-             states('sensor.hass_current_stable_version') > states('sensor.hass_installed_version')
+          {{ states('sensor.current_ha_stable') != 'unavailable' and 
+             states('sensor.current_ha_stable') > states('sensor.hass_installed_version')
              }}
     action:
       - service: notify.david_ios_notify
         data:
-          message: "Home Assistant version {{ states('sensor.hass_current_stable_version') }} is now available for Hass.io"
+          message: "Home Assistant version {{ states('sensor.current_ha_stable') }} is now available for Hass.io"
           title: Home Assistant Update
   - alias: 'Beta Update Available'
     trigger:
       - platform: template
         value_template: >-
-          {{ states('sensor.hass_current_beta_version') != 'unavailable' and 
-             states('sensor.hass_current_beta_version') > states('sensor.hass_installed_version')
+          {{ states('sensor.current_ha_beta') != 'unavailable' and 
+             states('sensor.current_ha_beta') > states('sensor.hass_installed_version')
              }}
     action:
       - service: notify.david_ios_notify
         data:
-          message: "Home Assistant Beta version {{ states('sensor.hass_current_beta_version') }} is now available for Hass.io"
+          message: "Home Assistant Beta version {{ states('sensor.current_ha_beta') }} is now available for Hass.io"
           title: Home Assistant Beta Update
+
+################################################
+## CLI Commands
+################################################
+# ha su options --channel dev
