@@ -60,6 +60,11 @@ homeassistant:
       friendly_name: 'HA Current Supervisor Stable'
       icon: mdi:check-decagram
 
+    sensor.current_supervisor_installed:
+      <<: *customize
+      friendly_name: 'HA Current Supervisor Installed'
+      icon: mdi:check-decagram
+
     sensor.current_supervisor_dev:
       <<: *customize
       friendly_name: 'HA Current Supervisor Beta'
@@ -90,6 +95,11 @@ homeassistant:
       friendly_name: 'DNS Current Stable'
       icon: mdi:check-decagram
 
+    sensor.current_dns_installed:
+      <<: *customize
+      friendly_name: 'DNS Current Installed'
+      icon: mdi:check-decagram
+
     sensor.current_dns_dev:
       <<: *customize
       friendly_name: 'DNS Current Dev'
@@ -103,6 +113,11 @@ homeassistant:
     sensor.current_audio_stable:
       <<: *customize
       friendly_name: 'Audio Current Stable'
+      icon: mdi:check-decagram
+
+    sensor.current_audio_installed:
+      <<: *customize
+      friendly_name: 'Audio Current Installed'
       icon: mdi:check-decagram
 
     sensor.current_audio_dev:
@@ -163,6 +178,40 @@ sensor:
     beta: true
     image: qemux86-64
     source: hassio
+
+  - platform: command_line
+    name: Supervisor Installed
+    command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"newest_version":.data.version_latest,"current_version":.data.version,"addons":[.data.addons[] | select(.version != .installed)]}'''
+    value_template: "{{ value_json.addons | length }}"
+    json_attributes:
+      - newest_version
+      - current_version
+      - addons
+
+  - platform: command_line
+    name: DNS Installed
+    command: 'curl http://supervisor/dns/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"version":.data.version,"version_latest":.data.version_latest }'''
+    value_template: "{{ value_json.version }}"
+    json_attributes:
+      - version
+      - version_latest
+
+  - platform: command_line
+    name: Audio Installed
+    command: 'curl http://supervisor/audio/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"version":.data.version,"version_latest":.data.version_latest }'''
+    value_template: "{{ value_json.version }}"
+    json_attributes:
+      - version
+      - version_latest
+
+  - platform: template
+    sensors:
+      current_supervisor_installed:
+        value_template: '{{ states.sensor.supervisor_installed.attributes["current_version"] }}'
+      current_dns_installed:
+        value_template: '{{ states.sensor.dns_installed.attributes["version"] }}'
+      current_audio_installed:
+        value_template: '{{ states.sensor.audio_installed.attributes["version"] }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/beta.json

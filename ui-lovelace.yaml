@@ -125,12 +125,15 @@ views:
               - sensor.current_ha_stable
               - sensor.current_ha_beta
               - sensor.current_ha_dev
+              - sensor.current_supervisor_installed
               - sensor.current_supervisor_stable
               - sensor.current_supervisor_beta
               - sensor.current_supervisor_dev
+              - sensor.current_dns_installed
               - sensor.current_dns_stable
               - sensor.current_dns_beta
               - sensor.current_dns_dev
+              - sensor.current_audio_installed
               - sensor.current_audio_stable
               - sensor.current_audio_beta
               - sensor.current_audio_dev
@@ -307,7 +310,6 @@ views:
                       - type: 'custom:bar-card'
                         entity: sensor.mfc_9335cdw_black_toner_remaining
                         color: black
-                        title_position: 'off'
                         unit_of_measurement: '%'
                         direction: up
                         indicator: auto-vertical
@@ -319,8 +321,16 @@ views:
                             border-radius: 0;
                             box-shadow: none;
                             background: transparent;
+                          bar-card-value {
+                            margin-right: auto;
+                            margin-left: auto;
+                            margin-bottom: 0px;
+                            margin-top: auto;
+                            bottom 8px;
                           }
-                        icon_position: 'off'
+                        positions:
+                          icon: 'off'
+                          title: 'off'
                         saturation: 50%
                         animation: auto
                         speed: 1000
@@ -352,7 +362,6 @@ views:
                       - type: 'custom:bar-card'
                         entity: sensor.mfc_9335cdw_cyan_toner_remaining
                         color: cyan
-                        title_position: 'off'
                         unit_of_measurement: '%'
                         direction: up
                         indicator: auto-vertical
@@ -365,7 +374,9 @@ views:
                             box-shadow: none;
                             background: transparent;
                           }
-                        icon_position: 'off'
+                        positions:
+                          icon: 'off'
+                          title: 'off'
                         saturation: 50%
                         animation: auto
                         speed: 1000
@@ -397,7 +408,6 @@ views:
                       - type: 'custom:bar-card'
                         entity: sensor.mfc_9335cdw_magenta_toner_remaining
                         color: magenta
-                        title_position: 'off'
                         unit_of_measurement: '%'
                         direction: up
                         indicator: auto-vertical
@@ -410,7 +420,9 @@ views:
                             box-shadow: none;
                             background: transparent;
                           }
-                        icon_position: 'off'
+                        positions:
+                          icon: 'off'
+                          title: 'off'
                         saturation: 50%
                         animation: auto
                         speed: 1000
@@ -442,7 +454,6 @@ views:
                       - type: 'custom:bar-card'
                         entity: sensor.mfc_9335cdw_yellow_toner_remaining
                         color: yellow
-                        title_position: 'off'
                         unit_of_measurement: '%'
                         direction: up
                         indicator: auto-vertical
@@ -455,7 +466,9 @@ views:
                             box-shadow: none;
                             background: transparent;
                           }
-                        icon_position: 'off'
+                        positions:
+                          icon: 'off'
+                          title: 'off'
                         saturation: 50%
                         animation: auto
                         speed: 1000
