@@ -305,198 +305,29 @@ views:
             entities:
               - type: 'custom:hui-horizontal-stack-card'
                 cards:
-                  - type: 'custom:hui-horizontal-stack-card'
-                    cards:
-                      - type: 'custom:bar-card'
-                        entity: sensor.mfc_9335cdw_black_toner_remaining
-                        color: black
-                        unit_of_measurement: '%'
-                        direction: up
-                        indicator: auto-vertical
-                        width: 3em
-                        height: 14em
-                        rounding: 10px
-                        style: |
-                          ha-card {
-                            border-radius: 0;
-                            box-shadow: none;
-                            background: transparent;
-                          bar-card-value {
-                            margin-right: auto;
-                            margin-left: auto;
-                            margin-bottom: 0px;
-                            margin-top: auto;
-                            bottom 8px;
-                          }
-                        positions:
-                          icon: 'off'
-                          title: 'off'
-                        saturation: 50%
-                        animation: auto
-                        speed: 1000
-                        delay: 5000
-                        min: 0
-                        max: 100
-                        padding: 4px
-                        align: center
-                        tap_action: info
-                        show_value: true
-                        limit_value: false
-                        show_minmax: false
-                        title: false
-                        severity: false
-                        target: false
-                        attribute: false
-                        icon: false
-                        charge_entity: false
-                        card_style: false
-                        icon_style: false
-                        title_style: false
-                        value_style: false
-                        minmax_style: false
-                        background_style: false
-                        visibility: false
-                        decimal: false
-                        entities:
-                          - entity: sensor.mfc_9335cdw_black_toner_remaining
-                      - type: 'custom:bar-card'
-                        entity: sensor.mfc_9335cdw_cyan_toner_remaining
+                  - type: 'custom:bar-card'
+                    entities:
+                      - entity: sensor.mfc_9335cdw_black_toner_remaining
+                        color: black  
+                      - entity: sensor.mfc_9335cdw_cyan_toner_remaining
                         color: cyan
-                        unit_of_measurement: '%'
-                        direction: up
-                        indicator: auto-vertical
-                        width: 3em
-                        height: 14em
-                        rounding: 10px
-                        style: |
-                          ha-card {
-                            border-radius: 0;
-                            box-shadow: none;
-                            background: transparent;
-                          }
-                        positions:
-                          icon: 'off'
-                          title: 'off'
-                        saturation: 50%
-                        animation: auto
-                        speed: 1000
-                        delay: 5000
-                        min: 0
-                        max: 100
-                        padding: 4px
-                        align: center
-                        tap_action: info
-                        show_value: true
-                        limit_value: false
-                        show_minmax: false
-                        title: false
-                        severity: false
-                        target: false
-                        attribute: false
-                        icon: false
-                        charge_entity: false
-                        card_style: false
-                        icon_style: false
-                        title_style: false
-                        value_style: false
-                        minmax_style: false
-                        background_style: false
-                        visibility: false
-                        decimal: false
-                        entities:
-                          - entity: sensor.mfc_9335cdw_cyan_toner_remaining
-                      - type: 'custom:bar-card'
-                        entity: sensor.mfc_9335cdw_magenta_toner_remaining
+                      - entity: sensor.mfc_9335cdw_magenta_toner_remaining
                         color: magenta
-                        unit_of_measurement: '%'
-                        direction: up
-                        indicator: auto-vertical
-                        width: 3em
-                        height: 14em
-                        rounding: 10px
-                        style: |
-                          ha-card {
-                            border-radius: 0;
-                            box-shadow: none;
-                            background: transparent;
-                          }
-                        positions:
-                          icon: 'off'
-                          title: 'off'
-                        saturation: 50%
-                        animation: auto
-                        speed: 1000
-                        delay: 5000
-                        min: 0
-                        max: 100
-                        padding: 4px
-                        align: center
-                        tap_action: info
-                        show_value: true
-                        limit_value: false
-                        show_minmax: false
-                        title: false
-                        severity: false
-                        target: false
-                        attribute: false
-                        icon: false
-                        charge_entity: false
-                        card_style: false
-                        icon_style: false
-                        title_style: false
-                        value_style: false
-                        minmax_style: false
-                        background_style: false
-                        visibility: false
-                        decimal: false
-                        entities:
-                          - entity: sensor.mfc_9335cdw_magenta_toner_remaining
-                      - type: 'custom:bar-card'
-                        entity: sensor.mfc_9335cdw_yellow_toner_remaining
+                      - entity: sensor.mfc_9335cdw_yellow_toner_remaining
                         color: yellow
-                        unit_of_measurement: '%'
-                        direction: up
-                        indicator: auto-vertical
-                        width: 3em
-                        height: 14em
-                        rounding: 10px
-                        style: |
-                          ha-card {
-                            border-radius: 0;
-                            box-shadow: none;
-                            background: transparent;
-                          }
-                        positions:
-                          icon: 'off'
-                          title: 'off'
-                        saturation: 50%
-                        animation: auto
-                        speed: 1000
-                        delay: 5000
-                        min: 0
-                        max: 100
-                        padding: 4px
-                        align: center
-                        tap_action: info
-                        show_value: true
-                        limit_value: false
-                        show_minmax: false
-                        title: false
-                        severity: false
-                        target: false
-                        attribute: false
-                        icon: false
-                        charge_entity: false
-                        card_style: false
-                        icon_style: false
-                        title_style: false
-                        value_style: false
-                        minmax_style: false
-                        background_style: false
-                        visibility: false
-                        decimal: false
-                        entities:
-                          - entity: sensor.mfc_9335cdw_yellow_toner_remaining
+                    direction: up
+                    indicator: auto-vertical
+                    width: 100%
+                    height: 14em
+                    positions:
+                      icon: 'off'
+                      indicator: 'off'
+                      title: 'off'
+                    stack: horizontal
+                    style: |
+                      bar-card-value {
+                        margin-top: auto;
+                      }
                   - type: picture-elements
                     image: /local/printer/blank.png
                     elements:
