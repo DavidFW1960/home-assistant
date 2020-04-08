@@ -1,4 +1,4 @@
-console.info(`%cBAR-CARD\n%cVersion: 3.0.3`, 'color: #4788d4; font-weight: bold;', '');
+console.info(`%cBAR-CARD\n%cVersion: 3.0.5`, 'color: #4788d4; font-weight: bold;', '');
 class BarCard extends HTMLElement {
     constructor() {
         super();
@@ -8,6 +8,7 @@ class BarCard extends HTMLElement {
         while (this.shadowRoot.lastChild)
             this.shadowRoot.removeChild(this.shadowRoot.lastChild);
         const defaultConfig = {
+            attribute: false,
             animation: {
                 state: 'off',
                 delay: 5000,
@@ -760,7 +761,13 @@ class BarCard extends HTMLElement {
             configTarget = config.target;
         const configMin = this._minCheck(entity, hass, index);
         const configMax = this._maxCheck(entity, hass, index);
-        let entityState = entityObject.state;
+        let entityState;
+        if (config.attribute) {
+            entityState = entityObject.attributes[config.attribute];
+        }
+        else {
+            entityState = entityObject.state;
+        }
         if (!isNaN(entityState)) {
             entityState = Number(entityState);
         }

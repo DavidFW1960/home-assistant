@@ -318,6 +318,7 @@ views:
                     direction: up
                     indicator: auto-vertical
                     width: 100%
+                    entity_row: true
                     height: 14em
                     positions:
                       icon: 'off'
@@ -327,6 +328,7 @@ views:
                     style: |
                       bar-card-value {
                         margin-top: auto;
+                        margin-bottom: auto;
                       }
                   - type: picture-elements
                     image: /local/printer/blank.png
