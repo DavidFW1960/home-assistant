@@ -1,8 +1,8 @@
 # Superloop CVC Capacity
-camera:
-  - platform: generic
-    name: Superloop CVC Capacity
-    still_image_url: !secret superloop_cvc
+#camera:
+#  - platform: generic
+#    name: Superloop CVC Capacity
+#    still_image_url: !secret superloop_cvc
 
 
 # CPU Resources Used & Temperature, Fritz!Box, Speedtest
@@ -215,6 +215,18 @@ sensor:
     name: mariadb_memory_average
     entities:
       - sensor.mariadb_memory
+    duration:
+      days: 2
+  - platform: rest
+    resource: http://10.90.11.100:8126/container/addon_a0d7b954_phpmyadmin/stats
+    name: phpMyAdmin Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: phpmyadmin_memory_average
+    entities:
+      - sensor.phpmyadmin_memory
     duration:
       days: 2
   - platform: rest

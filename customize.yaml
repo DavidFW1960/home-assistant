@@ -188,6 +188,9 @@ sensor.logviewer_memory_average:
 sensor.mariadb_memory_average:
   friendly_name: MariaDB
   icon: mdi:docker
+sensor.phpmyadmin_memory_average:
+  friendly_name: phpMyAdmin
+  icon: mdi:docker
 sensor.mosquitto_memory_average:
   friendly_name: Mosquitto
   icon: mdi:docker
