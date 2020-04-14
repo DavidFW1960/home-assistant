@@ -2,11 +2,11 @@ yourname:
   ### Main Interface Colors ###
   background-image: 'center / cover no-repeat url("/local/yourname.jpg") fixed'
   app-header-background-color: "#141A32"
-  card-background-color: "#000000"
+  card-background-color: var(--primary-background-color)
   primary-color: "#007AFF"
   light-primary-color: "#4DA3FF"
   primary-background-color: "#141A32"
-  secondary-background-color: var(--primary-background-color)
+  secondary-background-color: "#000000"
   divider-color: "#3B4C8B"
   ### Text ###
   primary-text-color: "#FFFFFF"
@@ -46,5 +46,5 @@ yourname:
   paper-toggle-button-unchecked-bar-color: "#303F79"
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
-  table-row-alternative-background-color: var(--secondary-background-color)
+  table-row-alternative-background-color: var(--primary-background-color)
   data-table-background-color: var(--primary-background-color)
