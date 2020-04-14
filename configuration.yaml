@@ -113,6 +113,8 @@ logger:
 #   homeassistant.components.http.view: error
 #   hacs: debug
 #   homeassistant.components.here_travel_time: debug
+#   homeassistant.components.zeroconf: debug
+#   pyipp: debug
 
 # iFrame/Panel Custom 
 panel_iframe:
