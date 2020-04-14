@@ -141,7 +141,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states(config.entity) != 'v1.25.4' %}
+                    {% if states(config.entity) != 'v1.25.5' %}
                       rgb(255, 223, 0)
                     {% else %}
                       var(--disabled-text-color)
@@ -385,13 +385,13 @@ views:
               - sensor.speedtest_upload_filtered
               - sensor.speedtest_ping
               - sensor.fritz_netmonitor
-          - type: picture-entity
-            title: Superloop CVC Capacity
-            entity: camera.superloop_cvc_capacity
-            tap_action:
-              action: more-info
-            hold_action:
-              action: more-info
+#         - type: picture-entity
+#           title: Superloop CVC Capacity
+#           entity: camera.superloop_cvc_capacity
+#           tap_action:
+#             action: more-info
+#           hold_action:
+#             action: more-info
           - type: horizontal-stack
             cards:
               - type: gauge
