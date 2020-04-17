@@ -42,7 +42,7 @@ noctis-grey:
   paper-item-icon-active-color: 'var(--accent-color)'
 
   # Sidebar
-  paper-listbox-background-color: 'var(--background-color)'
+  sidebar-background-color: 'var(--background-color)'
   sidebar-icon-color: '#7b7d80'
   sidebar-selected-icon-color: 'var(--accent-color)'
   sidebar-selected-text-color: 'var(--text-color)'
@@ -64,6 +64,9 @@ noctis-grey:
   switch-checked-button-color: 'var(--accent-color)'
   switch-unchecked-track-color: 'var(--background-color-2)'
   switch-checked-track-color: 'var(--background-color-2)'
+
+  # ListBox
+  paper-listbox-background-color: 'var(--background-color)' # Also changes partial sidebar color
 
   # Radio Button
   paper-radio-button-checked-color: 'var(--accent-color)'
