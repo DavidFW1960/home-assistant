@@ -30,20 +30,6 @@
   - service: switch.turn_on
     data:
       entity_id: switch.sonoff12914
-  - condition: and
-    conditions:
-      - condition: template
-        value_template: "{{ now().weekday() < 5 }}"
-      - condition: time
-        after: '18:00:00'
-        before: '19:00:00'
-      - condition: state
-        entity_id: person.liz
-        state: 'home'      
-  - service: notify.david_ios_notify
-    data:
-      message: 'Coffee Maker On'
-      title: 'Liz is home'
 - id: '1507434167221'
   alias: Coffee Maker Off
   trigger:
@@ -407,3 +393,22 @@
       data:
         message: "Update available!"
         title: "HACS"
+- id: 'updateaddonsavailable'
+  alias: Update for addon available
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.supervisor_installed
+    above: 0
+  action:
+    - service: persistent_notification.create
+      data:
+        message: "Update available!"
+        title: "Addons"
+    - service: notify.david_ios_notify
+      data_template:
+        message: "Update Available"
+        title: "Addons"
+    - service: notify.html5_notify
+      data_template:
+        message: "Update Available"
+        title: "Addons"
