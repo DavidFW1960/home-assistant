@@ -43,13 +43,13 @@ function t(t, e, i, n) {
           s = [],
           a = document.createTreeWalker(e.content, 133, null, !1);let l = 0,
         u = -1,
-        d = 0;const { strings: p, values: { length: f } } = t;for (; d < f;) {
+        d = 0;const { strings: f, values: { length: p } } = t;for (; d < p;) {
       const t = a.nextNode();if (null !== t) {
         if (u++, 1 === t.nodeType) {
           if (t.hasAttributes()) {
             const e = t.attributes,
                   { length: i } = e;let n = 0;for (let t = 0; t < i; t++) o(e[t].name, "$lit$") && n++;for (; n-- > 0;) {
-              const e = p[d],
+              const e = f[d],
                     i = h.exec(e)[2],
                     n = i.toLowerCase() + "$lit$",
                     s = t.getAttribute(n);t.removeAttribute(n);const a = s.split(r);this.parts.push({ type: "attribute", index: u, name: i, strings: a }), d += a.length - 1;
@@ -81,16 +81,16 @@ function t(t, e, i, n) {
       c = () => document.createComment(""),
       h = /([ \x09\x0a\x0c\x0d])([^\0-\x1F\x7F-\x9F "'>=/]+)([ \x09\x0a\x0c\x0d]*=[ \x09\x0a\x0c\x0d]*(?:[^ \x09\x0a\x0c\x0d"'`<>=]*|"[^"]*|'[^']*))$/;function u(t, e) {
   const { element: { content: i }, parts: n } = t,
-        s = document.createTreeWalker(i, 133, null, !1);let r = p(n),
+        s = document.createTreeWalker(i, 133, null, !1);let r = f(n),
       a = n[r],
       o = -1,
       l = 0;const c = [];let h = null;for (; s.nextNode();) {
-    o++;const t = s.currentNode;for (t.previousSibling === h && (h = null), e.has(t) && (c.push(t), null === h && (h = t)), null !== h && l++; void 0 !== a && a.index === o;) a.index = null !== h ? -1 : a.index - l, r = p(n, r), a = n[r];
+    o++;const t = s.currentNode;for (t.previousSibling === h && (h = null), e.has(t) && (c.push(t), null === h && (h = t)), null !== h && l++; void 0 !== a && a.index === o;) a.index = null !== h ? -1 : a.index - l, r = f(n, r), a = n[r];
   }c.forEach(t => t.parentNode.removeChild(t));
 }const d = t => {
   let e = 11 === t.nodeType ? 0 : 1;const i = document.createTreeWalker(t, 133, null, !1);for (; i.nextNode();) e++;return e;
 },
-      p = (t, e = -1) => {
+      f = (t, e = -1) => {
   for (let i = e + 1; i < t.length; i++) {
     const e = t[i];if (l(e)) return i;
   }return -1;
@@ -108,11 +108,11 @@ function t(t, e, i, n) {
  * subject to an additional IP rights grant found at
  * http://polymer.github.io/PATENTS.txt
  */
-const f = new WeakMap(),
+const p = new WeakMap(),
       m = t => (...e) => {
-  const i = t(...e);return f.set(i, !0), i;
+  const i = t(...e);return p.set(i, !0), i;
 },
-      g = t => "function" == typeof t && f.has(t),
+      g = t => "function" == typeof t && p.has(t),
       _ = {},
       b = {};
 /**
@@ -255,17 +255,17 @@ class y {
       const t = this.__pendingValue;this.__pendingValue = _, t(this);
     }if (this.__pendingValue === _) return;const t = !!this.__pendingValue;this.value !== t && (t ? this.element.setAttribute(this.name, "") : this.element.removeAttribute(this.name), this.value = t), this.__pendingValue = _;
   }
-}class N extends k {
+}class C extends k {
   constructor(t, e, i) {
     super(t, e, i), this.single = 2 === i.length && "" === i[0] && "" === i[1];
   }_createPart() {
-    return new C(this);
+    return new N(this);
   }_getValue() {
     return this.single ? this.parts[0].value : super._getValue();
   }commit() {
     this.dirty && (this.dirty = !1, this.element[this.name] = this._getValue());
   }
-}class C extends T {}let E = !1;(() => {
+}class N extends T {}let E = !1;(() => {
   try {
     const t = { get capture() {
         return E = !0, !1;
@@ -332,7 +332,7 @@ class y {
 class {
   handleAttributeExpressions(t, e, i, n) {
     const s = e[0];if ("." === s) {
-      return new N(t, e.slice(1), i).parts;
+      return new C(t, e.slice(1), i).parts;
     }return "@" === s ? [new A(t, e.slice(1), n.eventContext)] : "?" === s ? [new O(t, e.slice(1), i)] : new k(t, e, i).parts;
   }handleTextExpression(t) {
     return new M(t);
@@ -386,13 +386,13 @@ class {
       });
     });
   })(t);const o = n.content;i ? function (t, e, i = null) {
-    const { element: { content: n }, parts: s } = t;if (null == i) return void n.appendChild(e);const r = document.createTreeWalker(n, 133, null, !1);let a = p(s),
+    const { element: { content: n }, parts: s } = t;if (null == i) return void n.appendChild(e);const r = document.createTreeWalker(n, 133, null, !1);let a = f(s),
         o = 0,
         l = -1;for (; r.nextNode();) {
       for (l++, r.currentNode === i && (o = d(e), i.parentNode.insertBefore(e, i)); -1 !== a && s[a].index === l;) {
         if (o > 0) {
-          for (; -1 !== a;) s[a].index += o, a = p(s, a);return;
-        }a = p(s, a);
+          for (; -1 !== a;) s[a].index += o, a = f(s, a);return;
+        }a = f(s, a);
       }
     }
   }(i, a, o.firstChild) : o.insertBefore(a, o.firstChild), window.ShadyCSS.prepareTemplateStyles(n, t);const l = o.querySelector("style");if (window.ShadyCSS.nativeShadow && null !== l) e.insertBefore(l.cloneNode(!0), e.firstChild);else if (i) {
@@ -612,7 +612,7 @@ found at http://polymer.github.io/PATENTS.txt
  */
 const et = new WeakMap(),
       it = m(t => e => {
-  if (!(e instanceof T) || e instanceof C || "style" !== e.committer.name || e.committer.parts.length > 1) throw new Error("The `styleMap` directive must be used in the style attribute and must be the only part in the attribute.");const { committer: i } = e,
+  if (!(e instanceof T) || e instanceof N || "style" !== e.committer.name || e.committer.parts.length > 1) throw new Error("The `styleMap` directive must be used in the style attribute and must be the only part in the attribute.");const { committer: i } = e,
         { style: n } = i.element;let s = et.get(e);void 0 === s && (n.cssText = i.strings.join(" "), et.set(e, s = new Set())), s.forEach(e => {
     e in t || (s.delete(e), -1 === e.indexOf("-") ? n[e] = null : n.removeProperty(e));
   });for (const r in t) s.add(r), -1 === r.indexOf("-") ? n[r] = t[r] : n.setProperty(r, t[r]);
@@ -648,7 +648,7 @@ class rt {
   }
 }const at = new WeakMap(),
       ot = m(t => e => {
-  if (!(e instanceof T) || e instanceof C || "class" !== e.committer.name || e.committer.parts.length > 1) throw new Error("The `classMap` directive must be used in the `class` attribute and must be the only part in the attribute.");const { committer: i } = e,
+  if (!(e instanceof T) || e instanceof N || "class" !== e.committer.name || e.committer.parts.length > 1) throw new Error("The `classMap` directive must be used in the `class` attribute and must be the only part in the attribute.");const { committer: i } = e,
         { element: n } = i;let s = at.get(e);void 0 === s && (n.setAttribute("class", i.strings.join(" ")), at.set(e, s = new Set()));const r = n.classList || new rt(n);s.forEach(e => {
     e in t || (r.remove(e), s.delete(e));
   });for (const a in t) {
@@ -664,17 +664,17 @@ class rt {
       return t.toLowerCase();
     }).indexOf(e.toLowerCase());return n > -1 ? n : null;
   };
-};function pt(t) {
+};function ft(t) {
   for (var e = [], i = 1; i < arguments.length; i++) e[i - 1] = arguments[i];for (var n = 0, s = e; n < s.length; n++) {
     var r = s[n];for (var a in r) t[a] = r[a];
   }return t;
-}var ft = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+}var pt = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     mt = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     gt = ut(mt, 3),
-    _t = { dayNamesShort: ut(ft, 3), dayNames: ft, monthNamesShort: gt, monthNames: mt, amPm: ["am", "pm"], DoFn: function (t) {
+    _t = { dayNamesShort: ut(pt, 3), dayNames: pt, monthNamesShort: gt, monthNames: mt, amPm: ["am", "pm"], DoFn: function (t) {
     return t + ["th", "st", "nd", "rd"][t % 10 > 3 ? 0 : (t - t % 10 != 10 ? 1 : 0) * t % 10];
   } },
-    bt = pt({}, _t),
+    bt = ft({}, _t),
     yt = function (t, e) {
   for (void 0 === e && (e = 2), t = String(t); t.length < e;) t = "0" + t;return t;
 },
@@ -751,12 +751,12 @@ class rt {
     Mt = (dt("monthNamesShort"), dt("monthNames"), { default: "ddd MMM DD YYYY HH:mm:ss", shortDate: "M/D/YY", mediumDate: "MMM D, YYYY", longDate: "MMMM D, YYYY", fullDate: "dddd, MMMM D, YYYY", isoDate: "YYYY-MM-DD", isoDateTime: "YYYY-MM-DDTHH:mm:ssZ", shortTime: "HH:mm", mediumTime: "HH:mm:ss", longTime: "HH:mm:ss.SSS" });var Ot = function (t, e, i) {
   if (void 0 === e && (e = Mt.default), void 0 === i && (i = {}), "number" == typeof t && (t = new Date(t)), "[object Date]" !== Object.prototype.toString.call(t) || isNaN(t.getTime())) throw new Error("Invalid Date pass to format");var n = [];e = (e = Mt[e] || e).replace(ht, function (t, e) {
     return n.push(e), "@@@";
-  });var s = pt(pt({}, bt), i);return (e = e.replace(lt, function (e) {
+  });var s = ft(ft({}, bt), i);return (e = e.replace(lt, function (e) {
     return vt[e](t, s);
   })).replace(/@@@/g, function () {
     return n.shift();
   });
-};function Nt(t) {
+};function Ct(t) {
   var e = t.split(":").map(Number);return 3600 * e[0] + 60 * e[1] + e[2];
 }(function () {
   try {
@@ -776,7 +776,7 @@ class rt {
   } catch (t) {
     return "RangeError" === t.name;
   }
-}();var Ct = function (t) {
+}();var Nt = function (t) {
   return t < 10 ? "0" + t : t;
 };function Et(t) {
   return t.substr(0, t.indexOf("."));
@@ -967,16 +967,16 @@ class rt {
       a = !1,
       o = !1;return "string" == typeof t && (t = function (t) {
     if (0 === (t = t.trim().toLowerCase()).length) return !1;var e = !1;if (oe[t]) t = oe[t], e = !0;else if ("transparent" === t) return { r: 0, g: 0, b: 0, a: 0, format: "name" };var i = de.rgb.exec(t);if (i) return { r: i[1], g: i[2], b: i[3] };if (i = de.rgba.exec(t)) return { r: i[1], g: i[2], b: i[3], a: i[4] };if (i = de.hsl.exec(t)) return { h: i[1], s: i[2], l: i[3] };if (i = de.hsla.exec(t)) return { h: i[1], s: i[2], l: i[3], a: i[4] };if (i = de.hsv.exec(t)) return { h: i[1], s: i[2], v: i[3] };if (i = de.hsva.exec(t)) return { h: i[1], s: i[2], v: i[3], a: i[4] };if (i = de.hex8.exec(t)) return { r: ae(i[1]), g: ae(i[2]), b: ae(i[3]), a: re(i[4]), format: e ? "name" : "hex8" };if (i = de.hex6.exec(t)) return { r: ae(i[1]), g: ae(i[2]), b: ae(i[3]), format: e ? "name" : "hex" };if (i = de.hex4.exec(t)) return { r: ae(i[1] + i[1]), g: ae(i[2] + i[2]), b: ae(i[3] + i[3]), a: re(i[4] + i[4]), format: e ? "name" : "hex8" };if (i = de.hex3.exec(t)) return { r: ae(i[1] + i[1]), g: ae(i[2] + i[2]), b: ae(i[3] + i[3]), format: e ? "name" : "hex" };return !1;
-  }(t)), "object" == typeof t && (pe(t.r) && pe(t.g) && pe(t.b) ? (e = function (t, e, i) {
+  }(t)), "object" == typeof t && (fe(t.r) && fe(t.g) && fe(t.b) ? (e = function (t, e, i) {
     return { r: 255 * Gt(t, 255), g: 255 * Gt(e, 255), b: 255 * Gt(i, 255) };
-  }(t.r, t.g, t.b), a = !0, o = "%" === String(t.r).substr(-1) ? "prgb" : "rgb") : pe(t.h) && pe(t.s) && pe(t.v) ? (n = Kt(t.s), s = Kt(t.v), e = function (t, e, i) {
+  }(t.r, t.g, t.b), a = !0, o = "%" === String(t.r).substr(-1) ? "prgb" : "rgb") : fe(t.h) && fe(t.s) && fe(t.v) ? (n = Kt(t.s), s = Kt(t.v), e = function (t, e, i) {
     t = 6 * Gt(t, 360), e = Gt(e, 100), i = Gt(i, 100);var n = Math.floor(t),
         s = t - n,
         r = i * (1 - e),
         a = i * (1 - s * e),
         o = i * (1 - (1 - s) * e),
         l = n % 6;return { r: 255 * [i, a, r, r, o, i][l], g: 255 * [o, i, i, a, r, r][l], b: 255 * [r, r, o, i, i, a][l] };
-  }(t.h, n, s), a = !0, o = "hsv") : pe(t.h) && pe(t.s) && pe(t.l) && (n = Kt(t.s), r = Kt(t.l), e = function (t, e, i) {
+  }(t.h, n, s), a = !0, o = "hsv") : fe(t.h) && fe(t.s) && fe(t.l) && (n = Kt(t.s), r = Kt(t.l), e = function (t, e, i) {
     var n, s, r;if (t = Gt(t, 360), e = Gt(e, 100), i = Gt(i, 100), 0 === e) s = i, r = i, n = i;else {
       var a = i < .5 ? i * (1 + e) : i + e - i * e,
           o = 2 * i - a;n = ee(o, a, t + 1 / 3), s = ee(o, a, t), r = ee(o, a, t - 1 / 3);
@@ -985,9 +985,9 @@ class rt {
 }var ce = "(?:[-\\+]?\\d*\\.\\d+%?)|(?:[-\\+]?\\d+%?)",
     he = "[\\s|\\(]+(" + ce + ")[,|\\s]+(" + ce + ")[,|\\s]+(" + ce + ")\\s*\\)?",
     ue = "[\\s|\\(]+(" + ce + ")[,|\\s]+(" + ce + ")[,|\\s]+(" + ce + ")[,|\\s]+(" + ce + ")\\s*\\)?",
-    de = { CSS_UNIT: new RegExp(ce), rgb: new RegExp("rgb" + he), rgba: new RegExp("rgba" + ue), hsl: new RegExp("hsl" + he), hsla: new RegExp("hsla" + ue), hsv: new RegExp("hsv" + he), hsva: new RegExp("hsva" + ue), hex3: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/, hex6: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/, hex4: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/, hex8: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/ };function pe(t) {
+    de = { CSS_UNIT: new RegExp(ce), rgb: new RegExp("rgb" + he), rgba: new RegExp("rgba" + ue), hsl: new RegExp("hsl" + he), hsla: new RegExp("hsla" + ue), hsv: new RegExp("hsv" + he), hsva: new RegExp("hsva" + ue), hex3: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/, hex6: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/, hex4: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/, hex8: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/ };function fe(t) {
   return Boolean(de.CSS_UNIT.exec(String(t)));
-}var fe = function () {
+}var pe = function () {
   function t(e, i) {
     var n;if (void 0 === e && (e = ""), void 0 === i && (i = {}), e instanceof t) return e;this.originalInput = e;var s = le(e);this.originalInput = e, this.r = s.r, this.g = s.g, this.b = s.b, this.a = s.a, this.roundA = Math.round(100 * this.a) / 100, this.format = null !== (n = i.format) && void 0 !== n ? n : s.format, this.gradientType = i.gradientType, this.r < 1 && (this.r = Math.round(this.r)), this.g < 1 && (this.g = Math.round(this.g)), this.b < 1 && (this.b = Math.round(this.b)), this.isValid = s.ok;
   }return t.prototype.isDark = function () {
@@ -1096,13 +1096,13 @@ class rt {
     return this.toRgbString() === new t(e).toRgbString();
   }, t;
 }();function me(t, e) {
-  return void 0 === t && (t = ""), void 0 === e && (e = {}), new fe(t, e);
+  return void 0 === t && (t = ""), void 0 === e && (e = {}), new pe(t, e);
 }function ge(t) {
   return t.substr(0, t.indexOf("."));
 }function _e(t) {
   return "var" === t.substring(0, 3) ? window.getComputedStyle(document.documentElement).getPropertyValue(t.substring(4).slice(0, -1)).trim() : t;
 }function be(t, e) {
-  const i = new fe(_e(t));if (i.isValid) {
+  const i = new pe(_e(t));if (i.isValid) {
     const t = i.mix("black", 100 - e).toString();if (t) return t;
   }return t;
 }function ye(...t) {
@@ -1516,7 +1516,7 @@ class rt {
   }
 `;let Se = window.cardHelpers;const xe = new Promise(async t => {
   Se && t(), window.loadCardHelpers && (Se = await window.loadCardHelpers(), window.cardHelpers = Se, t());
-});console.info("%c  BUTTON-CARD  \n%c Version 3.3.0-3 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");let ke = class extends tt {
+});console.info("%c  BUTTON-CARD  \n%c Version 3.3.0-4 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");let ke = class extends tt {
   constructor() {
     super(...arguments), this._cards = [], this._entities = [];
   }set hass(t) {
@@ -1557,7 +1557,13 @@ class rt {
   }static get styles() {
     return we;
   }render() {
-    return this._stateObj = this._config.entity ? this._hass.states[this._config.entity] : void 0, this._cards = [], this._evaledVariables = this._config.variables ? this._objectEvalTemplate(this._stateObj, this._config.variables) : void 0, this._config && this._hass ? this._cardHtml() : R``;
+    this._stateObj = this._config.entity ? this._hass.states[this._config.entity] : void 0;try {
+      return this._cards = [], this._evaledVariables = this._config.variables ? this._objectEvalTemplate(this._stateObj, this._config.variables) : void 0, this._config && this._hass ? this._cardHtml() : R``;
+    } catch (t) {
+      t.stack ? console.error(t.stack) : console.error(t);const e = document.createElement("hui-error-card");return e.setConfig({ type: "error", error: t.toString(), origConfig: this._config }), R`
+        ${e}
+      `;
+    }
   }shouldUpdate(t) {
     return !(!this._hasTemplate && !t.has("_timeRemaining")) || function (t, e) {
       if (e.has("_config")) return !0;const i = e.get("_hass");if (i) {
@@ -1577,7 +1583,7 @@ class rt {
     this._clearInterval(), this._calculateRemaining(t), "active" === t.state && (this._interval = window.setInterval(() => this._calculateRemaining(t), 1e3));
   }_calculateRemaining(t) {
     this._timeRemaining = function (t) {
-      var e = Nt(t.attributes.remaining);if ("active" === t.state) {
+      var e = Ct(t.attributes.remaining);if ("active" === t.state) {
         var i = new Date().getTime(),
             n = new Date(t.last_changed).getTime();e = Math.max(e - (i - n) / 1e3, 0);
       }return e;
@@ -1586,8 +1592,8 @@ class rt {
     if (t) return function (t) {
       var e = Math.floor(t / 3600),
           i = Math.floor(t % 3600 / 60),
-          n = Math.floor(t % 3600 % 60);return e > 0 ? e + ":" + Ct(i) + ":" + Ct(n) : i > 0 ? i + ":" + Ct(n) : n > 0 ? "" + n : null;
-    }(this._timeRemaining || Nt(t.attributes.duration));
+          n = Math.floor(t % 3600 % 60);return e > 0 ? e + ":" + Nt(i) + ":" + Nt(n) : i > 0 ? i + ":" + Nt(n) : n > 0 ? "" + n : null;
+    }(this._timeRemaining || Ct(t.attributes.duration));
   }_getMatchingConfigState(t) {
     if (!this._config.state) return;const e = this._config.state.find(t => "template" === t.operator);if (!t && !e) return;let i;const n = this._config.state.find(e => {
       if (!e.operator) return t && this._getTemplateOrValue(t, e.value) == t.state;switch (e.operator) {case "==":
@@ -1603,7 +1609,11 @@ class rt {
           return !1;}
     });return !n && i ? i : n;
   }_evalTemplate(t, e) {
-    return new Function("states", "entity", "user", "hass", "variables", "html", `'use strict'; ${e}`).call(this, this._hass.states, t, this._hass.user, this._hass, this._evaledVariables, R);
+    try {
+      return new Function("states", "entity", "user", "hass", "variables", "html", `'use strict'; ${e}`).call(this, this._hass.states, t, this._hass.user, this._hass, this._evaledVariables, R);
+    } catch (i) {
+      const t = e.length <= 100 ? e.trim() : `${e.trim().substring(0, 98)}...`;throw i.message = `${i.name}: ${i.message} in '${t}'`, i.name = "ButtonCardJSTemplateError", i;
+    }
   }_objectEvalTemplate(t, e) {
     const i = JSON.parse(JSON.stringify(e));return this._getTemplateOrValue(t, i);
   }_getTemplateOrValue(t, e) {
@@ -1617,9 +1627,9 @@ class rt {
         return this._config.default_color;}
   }_getColorForLightEntity(t, e) {
     let i = this._config.default_color;return t && (t.attributes.rgb_color ? (i = `rgb(${t.attributes.rgb_color.join(",")})`, t.attributes.brightness && (i = be(i, (t.attributes.brightness + 245) / 5))) : e && t.attributes.color_temp && t.attributes.min_mireds && t.attributes.max_mireds ? (i = function (t, e, i) {
-      const n = new fe("rgb(255, 160, 0)"),
-            s = new fe("rgb(166, 209, 255)"),
-            r = new fe("white"),
+      const n = new pe("rgb(255, 160, 0)"),
+            s = new pe("rgb(166, 209, 255)"),
+            r = new pe("white"),
             a = (t - e) / (i - e) * 100;return a < 50 ? me(s).mix(r, 2 * a).toRgbString() : me(r).mix(n, 2 * (a - 50)).toRgbString();
     }(t.attributes.color_temp, t.attributes.min_mireds, t.attributes.max_mireds), t.attributes.brightness && (i = be(i, (t.attributes.brightness + 245) / 5))) : i = t.attributes.brightness ? be(this._getDefaultColorForState(t), (t.attributes.brightness + 245) / 5) : this._getDefaultColorForState(t)), i;
   }_buildCssColorAttribute(t, e) {
@@ -1723,7 +1733,7 @@ class rt {
         return this._blankCardColoredHtml(o);case "card":case "label-card":
         {
           const t = function (t) {
-            const e = new fe(_e(t));return e.isValid && e.getLuminance() > .5 ? "rgb(62, 62, 62)" : "rgb(234, 234, 234)";
+            const e = new pe(_e(t));return e.isValid && e.getLuminance() > .5 ? "rgb(62, 62, 62)" : "rgb(234, 234, 234)";
           }(e);n.color = t, s.color = t, n["background-color"] = e, n = Object.assign(Object.assign({}, n), o), i = "inherit";break;
         }default:
         n = o;}this._config.aspect_ratio ? (r["--aspect-ratio"] = this._config.aspect_ratio, n.position = "absolute") : r.display = "inline", this.style.setProperty("--button-card-light-color", this._getColorForLightEntity(this._stateObj, !0)), this.style.setProperty("--button-card-light-color-no-temperature", this._getColorForLightEntity(this._stateObj, !1)), s = Object.assign(Object.assign({}, s), a);const c = this._config.extra_styles ? R`
@@ -1778,8 +1788,8 @@ class rt {
           h = this._buildStyleGeneric(t, e, "state"),
           u = this._buildStyleGeneric(t, e, "label"),
           d = this._buildLastChanged(t, u),
-          p = this._buildStyleGeneric(t, e, "grid");return a || o.push("no-icon"), s || o.push("no-name"), r || o.push("no-state"), l || d || o.push("no-label"), R`
-      <div id="container" class=${o.join(" ")} style=${it(p)}>
+          f = this._buildStyleGeneric(t, e, "grid");return a || o.push("no-icon"), s || o.push("no-name"), r || o.push("no-state"), l || d || o.push("no-label"), R`
+      <div id="container" class=${o.join(" ")} style=${it(f)}>
         ${a || ""}
         ${s ? R`
               <div id="name" class="ellipsis" style=${it(c)}>
