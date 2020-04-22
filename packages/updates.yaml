@@ -154,6 +154,21 @@ homeassistant:
       friendly_name: 'Cli Current Dev'
       icon: mdi:alpha
 
+    sensor.current_cli_installed:
+      <<: *customize
+      friendly_name: 'Cli Current Installed'
+      icon: mdi:check-decagram
+
+    sensor.current_multicast_latest:
+      <<: *customize
+      friendly_name: 'Multicast Latest'
+      icon: mdi:check-decagram
+
+    sensor.current_multicast_installed:
+      <<: *customize
+      friendly_name: 'Multicast Installed'
+      icon: mdi:check-decagram
+
 ################################################
 ## Updater
 ## https://www.home-assistant.io/components/updater/
@@ -204,6 +219,22 @@ sensor:
       - version
       - version_latest
 
+  - platform: command_line
+    name: Cli Installed
+    command: 'curl http://supervisor/cli/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"version":.data.version,"version_latest":.data.version_latest }'''
+    value_template: "{{ value_json.version }}"
+    json_attributes:
+      - version
+      - version_latest
+
+  - platform: command_line
+    name: Multicast Installed
+    command: 'curl http://supervisor/multicast/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"version":.data.version,"version_latest":.data.version_latest }'''
+    value_template: "{{ value_json.version }}"
+    json_attributes:
+      - version
+      - version_latest
+
   - platform: template
     sensors:
       current_supervisor_installed:
@@ -212,6 +243,12 @@ sensor:
         value_template: '{{ states.sensor.dns_installed.attributes["version"] }}'
       current_audio_installed:
         value_template: '{{ states.sensor.audio_installed.attributes["version"] }}'
+      current_cli_installed:
+        value_template: '{{ states.sensor.cli_installed.attributes["version"] }}'
+      current_multicast_installed:
+        value_template: '{{ states.sensor.multicast_installed.attributes["version"] }}'
+      current_multicast_latest:
+        value_template: '{{ states.sensor.multicast_installed.attributes["version_latest"] }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/beta.json

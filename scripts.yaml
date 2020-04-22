@@ -73,6 +73,7 @@ casthomeassistant:
   alias: Cast Home Assistant
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.lounge_room_tv
       view_path: home_assistant
     service: cast.show_lovelace_view
@@ -80,6 +81,7 @@ castweather:
   alias: Cast Weather
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.lounge_room_tv
       view_path: weather
     service: cast.show_lovelace_view
@@ -87,6 +89,7 @@ castswitches:
   alias: Cast Switches
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.lounge_room_tv
       view_path: lights_and_switches
     service: cast.show_lovelace_view
@@ -94,6 +97,7 @@ castmedia:
   alias: Cast Media
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.lounge_room_tv
       view_path: media
     service: cast.show_lovelace_view
@@ -101,6 +105,7 @@ casttvandmovies:
   alias: Cast TV & Movies
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.lounge_room_tv
       view_path: tv_and_movies
     service: cast.show_lovelace_view
@@ -108,6 +113,7 @@ casttransport:
   alias: Cast Transport
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.lounge_room_tv
       view_path: transport
     service: cast.show_lovelace_view
@@ -115,6 +121,7 @@ castmedical:
   alias: Cast Medical
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.lounge_room_tv
       view_path: medical
     service: cast.show_lovelace_view
@@ -122,6 +129,7 @@ casthomeassistantfox:
   alias: Cast Home Assistant Foxtel
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.foxtel_7587
       view_path: home_assistant
     service: cast.show_lovelace_view
@@ -129,6 +137,7 @@ castweatherfox:
   alias: Cast Weather Foxtel
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.foxtel_7587
       view_path: weather
     service: cast.show_lovelace_view
@@ -136,6 +145,7 @@ castswitchesfox:
   alias: Cast Switches Foxtel
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.foxtel_7587
       view_path: lights_and_switches
     service: cast.show_lovelace_view
@@ -143,6 +153,7 @@ castmediafox:
   alias: Cast Media Foxtel
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.foxtel_7587
       view_path: media
     service: cast.show_lovelace_view
@@ -150,6 +161,7 @@ casttvandmoviesfox:
   alias: Cast TV & Movies Foxtel
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.foxtel_7587
       view_path: tv_and_movies
     service: cast.show_lovelace_view
@@ -157,6 +169,7 @@ casttransportfox:
   alias: Cast Transport Foxtel
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.foxtel_7587
       view_path: transport
     service: cast.show_lovelace_view
@@ -164,6 +177,7 @@ castmedicalfox:
   alias: Cast Medical Fox
   sequence:
   - data:
+      dashboard_path: lovelace
       entity_id: media_player.foxtel_7587
       view_path: medical
     service: cast.show_lovelace_view
