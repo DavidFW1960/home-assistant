@@ -47,7 +47,7 @@ homeassistant:
 
     sensor.current_ha_dev:
       <<: *customize
-      friendly_name: 'Hass.io Dev Release'
+      friendly_name: 'HA Supervised Dev Version'
       icon: mdi:alpha
 
     sensor.current_supervisor_beta:
@@ -67,7 +67,7 @@ homeassistant:
 
     sensor.current_supervisor_dev:
       <<: *customize
-      friendly_name: 'HA Current Supervisor Beta'
+      friendly_name: 'HA Current Supervisor Dev'
       icon: mdi:alpha
 
     sensor.current_hassos_beta:

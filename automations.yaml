@@ -324,17 +324,6 @@
   action:
   - service: homeassistant.update_entity
     entity_id: sensor.alarm_triggers
-- id: '1552527487165'
-  alias: Purge History
-  trigger:
-  - at: '00:00:00'
-    platform: time
-  condition: []
-  action:
-  - data:
-      keep_days: 7
-#     repack: 'true'
-    service: recorder.purge
 - id: 'cleanknowndevices'
   alias: Clean out Known Devices
   trigger:
