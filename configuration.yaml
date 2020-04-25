@@ -115,6 +115,9 @@ logger:
 #   homeassistant.components.here_travel_time: debug
 #   homeassistant.components.zeroconf: debug
 #   pyipp: debug
+#   homeassistant.components.ssdp: debug
+#   homeassistant.components.fritzbox: debug
+#   pyfritzhome: debug
 
 # iFrame/Panel Custom 
 panel_iframe:
