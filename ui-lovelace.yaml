@@ -673,6 +673,11 @@ views:
               - sensor.sonoff3_0898_si7021_temperature	
               - sensor.bom_gosford_feels_like_c
               - sensor.bom_gosford_dew_point_c
+              - sensor.nodemcu_lounge_bme280_dewpoint
+              - sensor.nodemcu_bedroom_bme280_dewpoint
+              - sensor.nodemcu_bedroom_am2301_dewpoint
+              - sensor.sonoff1_2914_si7021_dewpoint
+              - sensor.sonoff3_0898_si7021_dewpoint	
               - sensor.bom_gosford_rain_today
               - sensor.nodemcu_lounge_bme280_pressure
               - sensor.nodemcu_bedroom_bme280_pressure
@@ -702,6 +707,11 @@ views:
               - entity: sensor.nodemcu_bedroom_am2301_humidity
               - entity: sensor.sonoff1_2914_si7021_humidity
               - entity: sensor.sonoff3_0898_si7021_humidity
+              - entity: sensor.nodemcu_lounge_bme280_dewpoint
+              - entity: sensor.nodemcu_bedroom_bme280_dewpoint
+              - entity: sensor.nodemcu_bedroom_am2301_dewpoint
+              - entity: sensor.sonoff1_2914_si7021_dewpoint
+              - entity: sensor.sonoff3_0898_si7021_dewpoint	
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
           - type: custom:mini-graph-card
@@ -775,6 +785,33 @@ views:
                 color: orange
               - entity: sensor.sonoff3_0898_si7021_humidity
                 name: Office Humidity
+                show_state: true
+                color: green
+          - type: custom:mini-graph-card
+            hours_to_show: 48
+            points_per_hour: 5
+            show:
+              labels: true
+            name: DewPoint
+            entities:
+              - entity: sensor.nodemcu_lounge_bme280_dewpoint
+                name: Lounge Dewpoint
+                show_state: true
+                color: yellow
+              - entity: sensor.nodemcu_bedroom_bme280_dewpoint
+                name: Bedroom Dewpoint BME
+                show_state: true
+                color: red
+              - entity: sensor.nodemcu_bedroom_am2301_dewpoint
+                name: Bedroom Dewpoint AM
+                show_state: true
+                color: cyan
+              - entity: sensor.sonoff1_2914_si7021_dewpoint
+                name: Kitchen Dewpoint
+                show_state: true
+                color: orange
+              - entity: sensor.sonoff3_0898_si7021_dewpoint
+                name: Office Dewpoint
                 show_state: true
                 color: green
           - type: custom:mini-graph-card

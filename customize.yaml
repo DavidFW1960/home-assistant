@@ -129,8 +129,11 @@ sensor.nodemcu_lounge_bme280_seapressure:
   device_class: pressure
 sensor.nodemcu_lounge_bme280_humidity:
   friendly_name: Lounge BME280 Humidity
+sensor.nodemcu_lounge_bme280_dewpoint:
+  friendly_name: Lounge BME280 DewPoint
 sensor.nodemcu_lounge_status:
   icon: mdi:thermometer
+  friendly_name: Lounge Nodemcu Status
 sensor.nodemcu_bedroom_bme280_temperature:
   friendly_name: Bedroom BME280 Temperature
 sensor.nodemcu_bedroom_bme280_pressure:
@@ -143,10 +146,15 @@ sensor.nodemcu_bedroom_bme280_seapressure:
   device_class: pressure
 sensor.nodemcu_bedroom_bme280_humidity:
   friendly_name: Bedroom BME280 Humidity
+sensor.nodemcu_bedroom_bme280_dewpoint:
+  friendly_name: Bedroom BME280 DewPoint
 sensor.nodemcu_bedroom_status:
   icon: mdi:thermometer
+  friendly_name: Bedroom Nodemcu Status
 sensor.nodemcu_bedroom_am2301_temperature:
   friendly_name: Bedroom AM2301 Temperature
+sensor.nodemcu_bedroom_am2301_dewpoint:
+  friendly_name: Bedroom AM2301 DewPoint
 sensor.nodemcu_bedroom_am2301_humidity:
   friendly_name: Bedroom AM2301 Humidity
 sensor.nodemcu_bedroom_bh1750_illuminance:
@@ -157,10 +165,14 @@ sensor.sonoff1_2914_si7021_temperature:
   friendly_name: Kitchen Si7021 Temperature
 sensor.sonoff1_2914_si7021_humidity:
   friendly_name: Kitchen Si7021 Humidity
+sensor.sonoff1_2914_si7021_dewpoint:
+  friendly_name: Kitchen Si7021 DewPoint
 sensor.sonoff3_0898_si7021_temperature:
   friendly_name: Office Si7021 Temperature
 sensor.sonoff3_0898_si7021_humidity:
   friendly_name: Office Si7021 Humidity
+sensor.sonoff3_0898_si7021_dewpoint:
+  friendly_name: Office Si7021 DewPoint
 sensor.ssl_certificate_expiry:
   friendly_name: SSL Certificate Expiry
   unit_of_measurement: days
