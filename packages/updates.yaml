@@ -198,6 +198,7 @@ sensor:
     name: Supervisor Installed
     command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"newest_version":.data.version_latest,"current_version":.data.version,"addons":[.data.addons[] | select(.version != .installed)]}'''
     value_template: "{{ value_json.addons | length }}"
+    unit_of_measurement: pending update(s)
     json_attributes:
       - newest_version
       - current_version
