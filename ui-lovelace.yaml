@@ -166,6 +166,18 @@ views:
                   :host {
                   --paper-item-icon-active-color: rgb(255, 223, 0);
                   }
+              - entity: sensor.supervisor_installed
+                tap_action:
+                  action: navigate
+                  navigation_path: /hassio/dashboard
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity)|int > 0 %}
+                      rgb(255, 223, 0)
+                    {% endif %}
+                    ;
+                  }
               - entity: sensor.hacs
                 tap_action:
                   action: navigate
