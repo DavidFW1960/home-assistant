@@ -4488,7 +4488,7 @@ const actionHandler = directive((options = {}) => (part) => {
     actionHandlerBind(part.committer.element, options);
 });
 
-const CARD_VERSION = '3.1.0';
+const CARD_VERSION = '3.1.1';
 
 var common = {
 	version: "Version",
@@ -4558,12 +4558,16 @@ const styles = html `
     #states > * {
       margin: 8px 0px;
     }
+    #states > :last-child {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    #states > :first-child {
+      margin-top: 0px;
+    }
     bar-card-row {
       display: flex;
       justify-content: stretch;
-    }
-    bar-card-row:last-child {
-      margin-bottom: 0px;
     }
     bar-card-row > div {
       flex-basis: 100%;
@@ -4620,10 +4624,21 @@ const styles = html `
       opacity: 0.25;
     }
     bar-card-currentbar {
-      background: linear-gradient(to var(--bar-direction), var(--bar-color) var(--bar-percent), #0000 var(--bar-percent), #0000 var(--bar-percent));
+      background: linear-gradient(
+        to var(--bar-direction),
+        var(--bar-color) var(--bar-percent),
+        #0000 var(--bar-percent),
+        #0000 var(--bar-percent)
+      );
     }
     bar-card-targetbar {
-      background: linear-gradient(to var(--bar-direction), #0000 var(--bar-percent), var(--bar-color) var(--bar-percent), var(--bar-color) var(--bar-target-percent), #0000 var(--bar-target-percent));
+      background: linear-gradient(
+        to var(--bar-direction),
+        #0000 var(--bar-percent),
+        var(--bar-color) var(--bar-percent),
+        var(--bar-color) var(--bar-target-percent),
+        #0000 var(--bar-target-percent)
+      );
       display: var(--target-display);
       filter: brightness(0.66);
       opacity: 0.33;
@@ -4912,7 +4927,7 @@ let BarCard = class BarCard extends LitElement {
                         break;
                     case 'inside':
                         iconInside = html `
-              <bar-card-iconbar style="margin: 0px 10px 0px 0px">
+              <bar-card-iconbar>
                 <ha-icon icon="${icon}"></ha-icon>
               </bar-card-iconbar>
             `;
@@ -5138,7 +5153,7 @@ let BarCard = class BarCard extends LitElement {
         const rowArray = [];
         for (const row of perRowArray) {
             rowArray.push(html `
-        <bar-card-row style="flex-direction: ${rowFlexDirection}; margin-bottom: 8px;">${row}</bar-card-row>
+        <bar-card-row style="flex-direction: ${rowFlexDirection};">${row}</bar-card-row>
       `);
         }
         return rowArray;
