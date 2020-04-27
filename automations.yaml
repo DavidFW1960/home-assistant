@@ -105,7 +105,7 @@
   alias: Make Snapshot & Copy Backups to Dropbox
   trigger:
   - platform: time
-    at: '03:00:00'
+    at: '12:30:00'
   condition: []
   action:
   - service: hassio.snapshot_full
@@ -115,7 +115,7 @@
     data_template:
       message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d')
         }}"
-  - delay: '01:00:00'
+  - delay: '03:00:00'
   - service: hassio.addon_stdin
     data_template:
       addon: 7be23ff5_dropbox_sync
