@@ -8,15 +8,18 @@ clear-dark:
   text-medium-color: '#80828A'                                                    # Medium grey text
   text-dark-color: '#6A6B74'                                                      # Dark grey text
   accent-color: '#008bef'                                                         # Blue
-  accent-medium-color: '#2686c1'                                                  # Decent blue
+  accent-medium-color: '#2484C9'                                                  # Decent blue
   background-color: '#3b4049'                                                     # Dark grey background
   background-color-2: '#484E59'                                                   # Light grey background
   background-card-color: '#434952'                                                # Grey background
   border-color: '#383C46'                                                         # Grey border
 
   # Header
-  primary-color: '#363941'                                                        # Background color
-  text-primary-color: 'var(--text-color)'                                         # Text
+  app-header-background-color: '#363941'                                          # Background color
+
+  # Text
+  primary-color: 'var(--text-color)'
+  text-primary-color: 'var(--text-color)'
 
   # Left Menu
   paper-listbox-background-color: 'var(--background-color)'                       # Background
@@ -56,6 +59,10 @@ clear-dark:
   paper-slider-knob-color: 'var(--text-medium-light-color)'                       # Knob On
   paper-slider-container-color: 'var(--text-dark-color)'                          # Line Off
   paper-slider-knob-start-color: 'var(--text-medium-light-color)'                 # Knob Off
+
+  # Badges
+  label-badge-text-color: 'var(--text-color)'
+  label-badge-background-color: 'rgba(54, 57, 65, 0.6)'
 
   # Shadows
   ha-card-box-shadow: 'inset 0px 0px 0px 1px var(--border-color)'
