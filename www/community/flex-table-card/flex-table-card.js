@@ -43,6 +43,34 @@ function compareVersion(vers1, vers2) {
     return (vers1.length == vers2.length) ? 0 : (vers1.length < vers2.length ? -1 : 1);
 }
 
+class CellFormatters {
+    constructor() {
+        this.failed = false;
+    }
+    number(data) {
+        return parseFloat(data) || null;
+    }
+    full_datetime(data) {
+        return Date.parse(data);
+    }
+    hours_passed(data) {
+        return Math.round((Date.now() - Date.parse(data)) / 36000.) / 100;
+    }
+    hours_mins_passed(data) {
+        const hourDiff = (Date.now() - Date.parse(data));
+        //const secDiff = hourDiff / 1000;
+        const minDiff = hourDiff / 60 / 1000;
+        const hDiff = hourDiff / 3600 / 1000;
+        const hours = Math.floor(hDiff);
+        const minutes = minDiff - 60 * hours;
+        const minr = Math.floor(minutes);
+        return (!isNaN(hours) && !isNaN(minr)) ? hours + " hours " + minr + " minutes" : null;
+    }
+    
+
+}
+
+
 /** flex-table data representation and keeper */
 class DataTable {
     constructor(cfg) {
@@ -156,17 +184,7 @@ class DataRow {
             // THIS WILL BE BREAKING OLD STUFF, INTRODUCE DEPRECATION WARNINGS!!!!!
             if ("data" in col) {
                 for (let tok of col.data.split(","))
-                    //let data_src = "auto";
                     col_getter.push(["auto", tok]);
-                //console.log(col_getter.join(", "));
-                    // DECIDE if "data_src" should remain, or can we avoid it?!
-                    // -> best case we don't need it, thus fully remove it (also no list of pairs)
-                    // magic "@" to enforce behavior, avoid this (or is it ok?)
-                    /*if (tok.indexOf("@") > -1) {
-                        let subtoks = tok.split("@");
-                        data_src = subtoks[1];
-                        tok = subtoks[0];
-                    }*/
 
             // OLD data source selection: CALL DEPRECATION WARNING HERE!!!
             // start with console.log(), continue with console.warn(), console.error()
@@ -268,8 +286,13 @@ class DataRow {
             else
                 raw_content = raw_content[0];
 
+            let fmt = new CellFormatters();
+            if (col.fmt) {
+                raw_content = fmt[col.fmt](raw_content);
+                if (fmt.failed)
+                    raw_content = null;
+            }
             return ([null, undefined].every(x => raw_content !== x)) ? raw_content : new Array();
-
         });
         return null;
     }
