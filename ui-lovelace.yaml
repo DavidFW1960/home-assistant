@@ -279,9 +279,9 @@ views:
                       include: sensor.*_memory
                     columns:
                       - name: Name
-                        prop: name              
+                        data: name              
                       - name: Used Now
-                        prop: state
+                        data: state
                   - type: custom:flex-table-card
                     sort_by: name+
                     clickable: true
@@ -290,13 +290,13 @@ views:
                       include: sensor.*_memory_average
                     columns:
                       - name: Name
-                        prop: name              
+                        data: name              
                       - name: Minimum
-                        attr: min_value
+                        data: min_value
                       - name: Maximum
-                        attr: max_value
+                        data: max_value
                       - name: Average
-                        prop: state
+                        data: state
           - type: 'custom:config-template-card'
             entities:
               - device_tracker.davids_iphone_2
@@ -341,12 +341,13 @@ views:
                     positions:
                       icon: 'off'
                       indicator: 'off'
-                      title: 'off'
+                      name: 'off'
                     stack: horizontal
-                    style: |
+                    style: |-
                       bar-card-value {
                         margin-top: auto;
                         margin-bottom: auto;
+                        font-weight: bold;
                       }
                   - type: picture-elements
                     image: /local/printer/blank.png
@@ -1947,7 +1948,7 @@ views:
             entities:
               - sensor.caltex_2436
               - sensor.caltex_663
-              - sensor.caltex_861
+              - sensor.caltex_18253
               - sensor.caltex_17310
               - sensor.caltex_643
               - sensor.caltex_721
