@@ -87,8 +87,8 @@ sensor:
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
-    station_id: 861
-#   friendly_name: Caltex 164 Mona Vale Rd St Ives
+    station_id: 18253
+#   friendly_name: Caltex 164 Mona Vale Rd St Ives #861
 #   sensor.caltex_st_ives_pdl
     fuel_types:
       - PDL
@@ -186,7 +186,7 @@ sensor:
           {% if states('sensor.caltex_woolworths_turramurra_pdl') != 'unknown' %} {{ states('sensor.caltex_woolworths_turramurra_pdl') }}{% else %}Out-of-Stock{% endif %}
         friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
 
-      caltex_861:
+      caltex_18253:
         value_template: >
           {% if states('sensor.caltex_st_ives_pdl') != 'unknown' %} {{ states('sensor.caltex_st_ives_pdl') }}{% else %}Out-of-Stock{% endif %}
         friendly_name: Caltex 164 Mona Vale Rd St Ives
@@ -326,7 +326,7 @@ homeassistant:
     sensor.caltex_663:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_861:
+    sensor.caltex_18253:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_17310:
