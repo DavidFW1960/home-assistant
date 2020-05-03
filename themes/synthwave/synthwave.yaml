@@ -6,7 +6,7 @@ synthwave:
   disabled-text-color: '#bdbdbd'
 
   # main interface colors
-  primary-color: '#ffffff'
+  primary-color: '#34294f88'
   primary-background-color: '#2a2139'
   dark-primary-color: '#f92aad'
   light-primary-color: '#241b2f'
@@ -14,6 +14,7 @@ synthwave:
   divider-color: '#49549539'
   paper-dialog-button-color: '#fff'
   switch-unchecked-button-color: '#fff'
+  iron-icon-fill-color: '#fff'
   yellow: '#ffcc00'
   green: '#72f1b8cc'
   
@@ -90,3 +91,6 @@ synthwave:
 
   # fix dropdown background
   material-background-color: 'var(--light-primary-color)'
+
+  # Scrollbar
+  scrollbar-thumb-color: 'var(--divider-color)'
