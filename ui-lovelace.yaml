@@ -614,6 +614,7 @@ views:
             entity_daytime_low: sensor.bom_today_min_average
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
+            entity_wind_gust: sensor.bom_gosford_wind_gust_kmh
             entity_humidity: sensor.bom_gosford_relative_humidity
             entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
             entity_apparent_temp: sensor.bom_gosford_feels_like_c
