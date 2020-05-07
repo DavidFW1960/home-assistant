@@ -30,6 +30,7 @@ ios-light-mode-dark-green:
   state-icon-color: "#FFF"
   state-icon-active-color: "#333333"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#333333"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -62,9 +63,11 @@ ios-light-mode-dark-green:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(61, 107, 86, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -100,6 +103,7 @@ ios-light-mode-dark-green-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -132,9 +136,11 @@ ios-light-mode-dark-green-alternative:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(61, 107, 86, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -170,6 +176,7 @@ ios-dark-mode-dark-green:
   state-icon-color: "#FFF"
   state-icon-active-color: "#FFF"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#FFF"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -202,9 +209,11 @@ ios-dark-mode-dark-green:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(61, 107, 86, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -240,6 +249,7 @@ ios-dark-mode-dark-green-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -272,9 +282,11 @@ ios-dark-mode-dark-green-alternative:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(61, 107, 86, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -310,6 +322,7 @@ ios-light-mode-light-blue:
   state-icon-color: "#FFF"
   state-icon-active-color: "#333333"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#333333"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -342,9 +355,11 @@ ios-light-mode-light-blue:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(1, 133, 162, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -380,6 +395,7 @@ ios-light-mode-light-blue-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -412,9 +428,11 @@ ios-light-mode-light-blue-alternative:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(1, 133, 162, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -450,6 +468,7 @@ ios-dark-mode-light-blue:
   state-icon-color: "#FFF"
   state-icon-active-color: "#FFF"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#FFF"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -482,9 +501,11 @@ ios-dark-mode-light-blue:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(1, 133, 162, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -520,6 +541,7 @@ ios-dark-mode-light-blue-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -552,9 +574,11 @@ ios-dark-mode-light-blue-alternative:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(1, 133, 162, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -590,6 +614,7 @@ ios-light-mode-light-green:
   state-icon-color: "#FFF"
   state-icon-active-color: "#333333"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#333333"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -622,9 +647,11 @@ ios-light-mode-light-green:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(116, 184, 139, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -660,6 +687,7 @@ ios-light-mode-light-green-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -692,9 +720,11 @@ ios-light-mode-light-green-alternative:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(116, 184, 139, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -730,6 +760,7 @@ ios-dark-mode-light-green:
   state-icon-color: "#FFF"
   state-icon-active-color: "#FFF"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#FFF"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -762,9 +793,11 @@ ios-dark-mode-light-green:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(116, 184, 139, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -800,6 +833,7 @@ ios-dark-mode-light-green-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -832,9 +866,11 @@ ios-dark-mode-light-green-alternative:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(116, 184, 139, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -870,6 +906,7 @@ ios-light-mode-orange:
   state-icon-color: "#FFF"
   state-icon-active-color: "#333333"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#333333"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -902,9 +939,11 @@ ios-light-mode-orange:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(254, 190, 86, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -940,6 +979,7 @@ ios-light-mode-orange-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -972,9 +1012,11 @@ ios-light-mode-orange-alternative:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(254, 190, 86, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1010,6 +1052,7 @@ ios-dark-mode-orange:
   state-icon-color: "#FFF"
   state-icon-active-color: "#FFF"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#FFF"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1042,9 +1085,11 @@ ios-dark-mode-orange:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(254, 190, 86, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1080,6 +1125,7 @@ ios-dark-mode-orange-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1112,9 +1158,11 @@ ios-dark-mode-orange-alternative:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(254, 190, 86, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1150,6 +1198,7 @@ ios-light-mode-blue-red:
   state-icon-color: "#FFF"
   state-icon-active-color: "#333333"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#333333"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1182,9 +1231,11 @@ ios-light-mode-blue-red:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(63, 36, 75, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1220,6 +1271,7 @@ ios-light-mode-blue-red-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1252,9 +1304,11 @@ ios-light-mode-blue-red-alternative:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(63, 36, 75, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1290,6 +1344,7 @@ ios-dark-mode-blue-red:
   state-icon-color: "#FFF"
   state-icon-active-color: "#FFF"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#FFF"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1322,9 +1377,11 @@ ios-dark-mode-blue-red:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(63, 36, 75, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1360,6 +1417,7 @@ ios-dark-mode-blue-red-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1392,9 +1450,11 @@ ios-dark-mode-blue-red-alternative:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(63, 36, 75, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1430,6 +1490,7 @@ ios-light-mode-red:
   state-icon-color: "#FFF"
   state-icon-active-color: "#333333"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#333333"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1462,9 +1523,11 @@ ios-light-mode-red:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(249, 129, 97, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1500,6 +1563,7 @@ ios-light-mode-red-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1532,9 +1596,11 @@ ios-light-mode-red-alternative:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(249, 129, 97, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1570,6 +1636,7 @@ ios-dark-mode-red:
   state-icon-color: "#FFF"
   state-icon-active-color: "#FFF"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#FFF"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1602,9 +1669,11 @@ ios-dark-mode-red:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(249, 129, 97, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1640,6 +1709,7 @@ ios-dark-mode-red-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1672,9 +1742,11 @@ ios-dark-mode-red-alternative:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(249, 129, 97, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1710,6 +1782,7 @@ ios-light-mode-dark-blue:
   state-icon-color: "#FFF"
   state-icon-active-color: "#333333"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#333333"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1742,9 +1815,11 @@ ios-light-mode-dark-blue:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(118, 129, 167, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1780,6 +1855,7 @@ ios-light-mode-dark-blue-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1812,9 +1888,11 @@ ios-light-mode-dark-blue-alternative:
   switch-checked-track-color: "#34c759"  # from Apple systemGreen light mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(200, 200, 200, 0.8)
+  paper-dialog-background-color: rgba(200, 200, 200, 0.8)  # e.g., background of more-info
   paper-item-icon-color: "#333333"  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(230, 230, 230, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(118, 129, 167, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1850,6 +1928,7 @@ ios-dark-mode-dark-blue:
   state-icon-color: "#FFF"
   state-icon-active-color: "#FFF"  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: "#FFF"  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1882,9 +1961,11 @@ ios-dark-mode-dark-blue:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(118, 129, 167, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
@@ -1920,6 +2001,7 @@ ios-dark-mode-dark-blue-alternative:
   state-icon-color: "#FFF"
   state-icon-active-color: rgba(255, 214, 10, 1)  # or make light icons yellow when active: rgba(255, 214, 10, 1)
   state-icon-unavailable-color: var(--disabled-text-color)
+  paper-item-icon-active-color: rgba(255, 214, 10, 1)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/30
   # Sliders
   paper-slider-knob-color: "#FFF"
   paper-slider-knob-start-color: var(--paper-slider-knob-color)
@@ -1952,9 +2034,11 @@ ios-dark-mode-dark-blue-alternative:
   switch-checked-track-color: "#30d158"  # from Apple systemGreen dark mode
   switch-checked-button-color: "#FFF"
   # Other
-  paper-dialog-background-color: rgba(55, 55, 55, 0.6)
+  paper-dialog-background-color: rgba(55, 55, 55, 0.8)  # e.g., background of more-info
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
+  lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
+  app-header-background-color: rgba(118, 129, 167, 0.8)
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white

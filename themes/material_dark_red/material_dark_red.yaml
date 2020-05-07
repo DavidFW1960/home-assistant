@@ -3,6 +3,7 @@
 # Material Dark Red Theme
 #
 material_dark_red:
+  card-background-color: "var(--paper-card-background-color)"
   dark-primary-color: "#c66900"
   disabled-text-color: "#545454"
   divider-color: "#333333"
@@ -30,6 +31,7 @@ material_dark_red:
   primary-text-color: "#cfcfcf"
   secondary-background-color: "#131313"
   secondary-text-color: "var(--primary-color)"
+  sidebar-background-color: "#333333"
   sidebar-icon-color: "var(--paper-item-icon-color)"
   sidebar-text_-_background: "#333333"
   table-row-alternative-background-color: "var(--sidebar-text_-_background)"

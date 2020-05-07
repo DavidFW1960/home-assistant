@@ -14,7 +14,7 @@ synthwave:
   divider-color: '#49549539'
   paper-dialog-button-color: '#fff'
   switch-unchecked-button-color: '#fff'
-  iron-icon-fill-color: '#fff'
+  # iron-icon-fill-color: '#fff'
   yellow: '#ffcc00'
   green: '#72f1b8cc'
   
@@ -94,3 +94,8 @@ synthwave:
 
   # Scrollbar
   scrollbar-thumb-color: 'var(--divider-color)'
+
+  # simple-thermostat buttons
+  # https://github.com/nervetattoo/simple-thermostat
+  st-mode-background: 'var(--primary-background-color)'
+  st-mode-active-background: 'var(--dark-primary-color)'

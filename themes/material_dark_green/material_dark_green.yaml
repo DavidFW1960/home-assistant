@@ -42,6 +42,7 @@ material_dark_green:
   red: "#d10404"
   secondary-background-color: "var(--dark_grey)"
   secondary-text-color: "var(--white)"
+  sidebar-background-color: "#273339"
   sidebar-text_-_background: "var(--pink)"
   table-row-alternative-background-color: "var(--dark_grey)"
   table-row-background-color: "var(--light_grey)"
