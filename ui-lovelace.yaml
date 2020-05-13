@@ -166,6 +166,10 @@ views:
                   :host {
                   --paper-item-icon-active-color: rgb(255, 223, 0);
                   }
+          - type: entities
+            title: Addons
+            show_header_toggle: false
+            entities:
               - entity: sensor.supervisor_installed
                 tap_action:
                   action: navigate
@@ -182,11 +186,12 @@ views:
             entity: sensor.supervisor_installed
             title: HA Addons
             columns:
-              - {field: addons, title: 'Addon'}
-              - {field: current_version, title: 'Installed'}
-              - {field: newest_version, title: 'Latest'}
+              - {field: name, title: 'Addon'}
+              - {field: installed, title: 'Installed'}
+              - {field: version, title: 'Latest'}
             feed_attribute: addons
           - type: entities
+            title: HACS
             entities:
               - entity: sensor.hacs
                 tap_action:
