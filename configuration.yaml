@@ -100,8 +100,6 @@ http:
     - ::1
   ip_ban_enabled: true
   login_attempts_threshold: 5
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  base_url: !secret base_http_url
 
 # Logger
 logger:
@@ -308,6 +306,10 @@ sensor:
     state_topic: "sonoff3/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
   - platform: mqtt
+    name: "TV Switch Firmware"
+    state_topic: "sonoff4/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
     name: "Garage Door Firmware"
     state_topic: "sonoff5/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
@@ -358,7 +360,7 @@ tts:
 ifttt:
   key: !secret ifttt_api
 
-# Xiaomi Switches & Hadockermon
+# Xiaomi Switches
 switch:
   - platform: xiaomi_miio
     name: Home Assistant
@@ -368,9 +370,6 @@ switch:
     name: VPN Router
     host: !secret vpnrouter-ip
     token: !secret vpnrouter-token
-  - platform: hadockermon
-    host: !secret my_hadockermon_host
-    port: !secret my_hadockermon_port
 
 # Template Switch for Harmony Remote
   - platform: template
