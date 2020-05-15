@@ -1,11 +1,11 @@
 title: Home
-custom_header:
+#custom_header:
 # header_text: '{{ deviceID }}' # Must set compact_mode: false to display
-  compact_mode: true
-  background: var(--app-header-background-color)
-  elements_color: var(--app-header-text-color)
-  active_tab_color: var(--state-icon-active-color)
-  tab_indicator_color: var(--state-icon-active-color)
+#  compact_mode: true
+#  background: var(--app-header-background-color)
+#  elements_color: var(--app-header-text-color)
+#  active_tab_color: var(--state-icon-active-color)
+#  tab_indicator_color: var(--state-icon-active-color)
 swipe_nav:
   wrap: true
   animate: swipe        # could also use fade or flip
@@ -26,6 +26,7 @@ views:
               - sensor.coffee_maker_firmware
               - sensor.toothbrush_firmware
               - sensor.xcy_mini_pc_firmware
+              - sensor.tv_switch_firmware
               - sensor.garage_door_firmware
               - sensor.alarm_firmware
               - sensor.nodemcu_lounge_firmware
@@ -186,9 +187,9 @@ views:
             entity: sensor.supervisor_installed
             title: HA Addons
             columns:
-              - {field: name, title: 'Addon'}
-              - {field: installed, title: 'Installed'}
-              - {field: version, title: 'Latest'}
+              - {field: name, title: 'Addon', style: [text-align: left]}
+              - {field: installed, title: 'Installed', style: [text-align: center]}
+              - {field: version, title: 'Latest', style: [text-align: center]}
             feed_attribute: addons
           - type: entities
             title: HACS
@@ -209,9 +210,9 @@ views:
             entity: sensor.hacs
             title: HA Community Store
             columns:
-              - {field: name, title: 'Name'}
-              - {field: installed version, title: 'Installed'}
-              - {field: available version, title: 'Latest'}
+              - {field: name, title: 'Name', style: [text-align: left]}
+              - {field: installed version, title: 'Installed', style: [text-align: center]}
+              - {field: available version, title: 'Latest', style: [text-align: center]}
             feed_attribute: repositories
           - type: horizontal-stack
             cards:
@@ -1035,8 +1036,9 @@ views:
                       operator: '>'
                       color: red
                       icon: mdi:alert
-                      style:
-                        - animation: blink 2s ease infinite
+                      styles:
+                        card:
+                          - animation: blink 2s ease infinite
                       spin: false
                     - operator: default
                       color: green
@@ -1064,6 +1066,7 @@ views:
                 entity: input_boolean.alarmgaragedoor
                 icon: mdi:security
                 color_type: icon
+                aspect_ratio: 1.6/1
                 lock:
                   enabled: true
                   duration: 2
@@ -1180,12 +1183,14 @@ views:
               - switch.vpn_router
               - switch.sonoff23110
               - switch.sonoff30898
+              - switch.sonoff40851
           - type: horizontal-stack
             cards:
               - type: custom:button-card
                 entity: input_boolean.homeandawayauto
                 icon: mdi:home
                 color_type: icon
+                aspect_ratio: 1.6/1
                 state:
                   - value: 'off'
                     color: red
@@ -1203,6 +1208,7 @@ views:
                 entity: input_boolean.overtime
                 icon: mdi:clock
                 color_type: icon
+                aspect_ratio: 1.6/1
                 state:
                   - value: 'off'
                     color: red
@@ -1220,6 +1226,7 @@ views:
                 entity: input_boolean.holiday
                 icon: mdi:calendar
                 color_type: icon
+                aspect_ratio: 1.6/1
                 state:
                   - value: 'off'
                     color: red
@@ -1342,6 +1349,7 @@ views:
             cards:
               - type: custom:button-card
                 icon: mdi:home-assistant
+                aspect_ratio: 1.6/1
                 lock:
                   enabled: true
                   duration: 5
@@ -1352,6 +1360,7 @@ views:
               - type: custom:button-card
                 entity: input_select.theme_switcher
                 icon: mdi:palette-outline
+                aspect_ratio: 1.6/1
                 lock:
                   enabled: true
                   duration: 60
@@ -1519,6 +1528,9 @@ views:
               - states['sensor.sonoff3_0898_status'].attributes['MqttCount']
               - states['sensor.sonoff3_0898_status'].attributes['WiFi LinkCount']
               - states['sensor.sonoff3_0898_status'].state
+              - states['sensor.sonoff4_0851_status'].attributes['MqttCount']
+              - states['sensor.sonoff4_0851_status'].attributes['WiFi LinkCount']
+              - states['sensor.sonoff4_0851_status'].state
             entities:
               - sensor.sonoff1_2914_status
               - sensor.sonoff2_3110_status
@@ -1527,6 +1539,7 @@ views:
               - sensor.nodemcu_lounge_status
               - sensor.nodemcu_bedroom_status
               - sensor.sonoff3_0898_status
+              - sensor.sonoff4_0851_status
             card:
               type: 'custom:hui-entities-card'
               title: MQTT & Wifi Connections
@@ -1553,6 +1566,9 @@ views:
                 - entity: sensor.sonoff3_0898_status
                   name: "${'Office' + '\xa0'.repeat(16) + 'MQTT ' + vars[18] + '\xa0'.repeat(4) + 'WiFi ' + vars[19] + '\xa0'.repeat(3) + ((parseInt(vars[20]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[20] >= 100 ? 'Excellent' : vars[20] >= 80 ? 'Good' : vars[20] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[20] >= 100 ? 'mdi:wifi' : vars[20] >= 80 ? 'mdi:wifi-strength-3' : vars[20] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                - entity: sensor.sonoff4_0851_status
+                  name: "${'TV' + '\xa0'.repeat(21) + 'MQTT ' + vars[21] + '\xa0'.repeat(4) + 'WiFi ' + vars[22] + '\xa0'.repeat(3) + ((parseInt(vars[23]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[23] >= 100 ? 'Excellent' : vars[23] >= 80 ? 'Good' : vars[23] >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${vars[23] >= 100 ? 'mdi:wifi' : vars[23] >= 80 ? 'mdi:wifi-strength-3' : vars[23] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
   - title: Media
     path: media
     icon: mdi:vlc
@@ -1706,13 +1722,6 @@ views:
                 info: scroll
                 source: full
               - entity: media_player.onkyo_receiver
-                type: custom:mini-media-player
-                artwork: full-cover
-                hide: 
-                  power_state: false
-                info: scroll
-                source: full
-              - entity:  media_player.lg_webos_tv_c429
                 type: custom:mini-media-player
                 artwork: full-cover
                 hide: 
