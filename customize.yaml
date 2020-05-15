@@ -22,7 +22,8 @@ switch.sonoff30898:
   friendly_name: XCY Mini PC
   icon: mdi:desktop-classic
 switch.sonoff40851:
-  friendly_name: sonoff4-0851
+  friendly_name: TV Switch
+  icon: mdi:television
 switch.sonoff51083:
   friendly_name: Garage Door
   icon: mdi:garage
@@ -49,6 +50,8 @@ sensor.toothbrush_firmware:
   icon: mdi:tooth
 sensor.xcy_mini_pc_firmware:
   icon: mdi:desktop-classic
+sensor.tv_switch_firmware:
+  icon: mdi:television
 sensor.garage_door_firmware:
   icon: mdi:garage
 sensor.alarm_firmware:
