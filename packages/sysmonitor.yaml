@@ -76,6 +76,18 @@ sensor:
 
 # Docker Containers
   - platform: rest
+    resource: http://10.90.11.100:8126/container/ha_dockermon/stats
+    name: HA Dockermon Memory
+    scan_interval: 900
+    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
+    unit_of_measurement: 'MB'
+  - platform: average
+    name: ha_dockermon_memory_average
+    entities:
+      - sensor.ha_dockermon_memory
+    duration:
+      days: 2
+  - platform: rest
     resource: http://10.90.11.100:8126/container/lazylibrarian/stats
     name: LazyLibrarian Memory
     scan_interval: 900
