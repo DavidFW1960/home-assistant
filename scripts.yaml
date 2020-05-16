@@ -1,33 +1,15 @@
 setupalltasmotadevices:
   alias: Tasmota Setup All Devices
   sequence:
-  - data:
-      entity_id: setupsonoff1
-    service: script.turn_on
-  - data:
-      entity_id: setupsonoff2
-    service: script.turn_on
-  - data:
-      entity_id: setupsonoff3
-    service: script.turn_on
-  - data:
-      entity_id: setupsonoff4
-    service: script.turn_on
-  - data:
-      entity_id: setupsonoff5
-    service: script.turn_on
-  - data:
-      entity_id: setupsonoff6
-    service: script.turn_on
-  - data:
-      entity_id: setupsonoff7
-    service: script.turn_on
-  - data:
-      entity_id: setupnodemculounge
-    service: script.turn_on
-  - data:
-      entity_id: setupnodemcubedroom
-    service: script.turn_on
+    - service: script.setupsonoff1
+    - service: script.setupsonoff2
+    - service: script.setupsonoff3
+    - service: script.setupsonoff4
+    - service: script.setupsonoff5
+    - service: script.setupsonoff6
+    - service: script.setupsonoff7
+    - service: script.setupnodemculounge
+    - service: script.setupnodemcubedroom
 startupalltasmota:
   alias: Tasmota Restore State at Startup
   sequence:
@@ -216,6 +198,11 @@ startalladdons:
     service: hassio.addon_start
   - data: {"addon": "fe41fc28_caddy"}
     service: hassio.addon_start
+  - data: {"addon": "a0d7b954_phpmyadmin"}
+    service: hassio.addon_start
+  - data: {"addon": "core_mariadb"}
+    service: hassio.addon_start
+
 restartvscode:
   alias: Restart VSCode
   sequence:
