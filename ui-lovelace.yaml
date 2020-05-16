@@ -122,28 +122,58 @@ views:
             show_header_toggle: false
             entities:
               - sensor.hass_installed_version
-              - sensor.hass_available_to_install_version
-              - sensor.current_ha_stable
-              - sensor.current_ha_beta
-              - sensor.current_ha_dev
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
+                  label: Home Assistant
+                entities:
+                  - sensor.hass_available_to_install_version
+                  - sensor.current_ha_stable
+                  - sensor.current_ha_beta
+                  - sensor.current_ha_dev
               - sensor.current_supervisor_installed
-              - sensor.current_supervisor_stable
-              - sensor.current_supervisor_beta
-              - sensor.current_supervisor_dev
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
+                  label: Supervisor
+                entities:
+                  - sensor.current_supervisor_stable
+                  - sensor.current_supervisor_beta
+                  - sensor.current_supervisor_dev
               - sensor.current_dns_installed
-              - sensor.current_dns_stable
-              - sensor.current_dns_beta
-              - sensor.current_dns_dev
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
+                  label: DNS
+                entities:
+                  - sensor.current_dns_stable
+                  - sensor.current_dns_beta
+                  - sensor.current_dns_dev
               - sensor.current_audio_installed
-              - sensor.current_audio_stable
-              - sensor.current_audio_beta
-              - sensor.current_audio_dev
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
+                  label: Audio
+                entities:
+                  - sensor.current_audio_stable
+                  - sensor.current_audio_beta
+                  - sensor.current_audio_dev
               - sensor.current_cli_installed
-              - sensor.current_cli_stable
-              - sensor.current_cli_beta
-              - sensor.current_cli_dev
-              - sensor.current_multicast_installed
-              - sensor.current_multicast_latest
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
+                  label: CLI
+                entities:
+                  - sensor.current_cli_stable
+                  - sensor.current_cli_beta
+                  - sensor.current_cli_dev
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
+                  label: Multicast
+                entities:
+                  - sensor.current_multicast_installed
+                  - sensor.current_multicast_latest
               - entity: sensor.docker_compose_version_available
                 style: |
                   :host {
