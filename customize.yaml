@@ -194,6 +194,9 @@ sensor.dropbox_sync_memory_average:
 sensor.glances_memory_average:
   friendly_name: Glances
   icon: mdi:docker
+sensor.ha_dockermon_memory_average:
+  friendly_name: HA Dockermon
+  icon: mdi:docker
 sensor.jupyterlab_lite_memory_average:
   friendly_name: Jupyterlab Lite
   icon: mdi:docker
