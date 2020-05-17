@@ -1,11 +1,11 @@
 title: Home
-#custom_header:
-# header_text: '{{ deviceID }}' # Must set compact_mode: false to display
-#  compact_mode: true
-#  background: var(--app-header-background-color)
-#  elements_color: var(--app-header-text-color)
-#  active_tab_color: var(--state-icon-active-color)
-#  tab_indicator_color: var(--state-icon-active-color)
+custom_header:
+  header_text: '{{ deviceID }}' # Must set compact_mode: false to display
+  compact_mode: true
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
+  active_tab_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
 swipe_nav:
   wrap: true
   animate: swipe        # could also use fade or flip
@@ -121,7 +121,6 @@ views:
             title: Updates
             show_header_toggle: false
             entities:
-              - sensor.hass_installed_version
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -131,7 +130,7 @@ views:
                   - sensor.current_ha_stable
                   - sensor.current_ha_beta
                   - sensor.current_ha_dev
-              - sensor.current_supervisor_installed
+              - sensor.hass_installed_version
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -140,7 +139,7 @@ views:
                   - sensor.current_supervisor_stable
                   - sensor.current_supervisor_beta
                   - sensor.current_supervisor_dev
-              - sensor.current_dns_installed
+              - sensor.current_supervisor_installed
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -149,7 +148,7 @@ views:
                   - sensor.current_dns_stable
                   - sensor.current_dns_beta
                   - sensor.current_dns_dev
-              - sensor.current_audio_installed
+              - sensor.current_dns_installed
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -158,7 +157,7 @@ views:
                   - sensor.current_audio_stable
                   - sensor.current_audio_beta
                   - sensor.current_audio_dev
-              - sensor.current_cli_installed
+              - sensor.current_audio_installed
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -167,6 +166,7 @@ views:
                   - sensor.current_cli_stable
                   - sensor.current_cli_beta
                   - sensor.current_cli_dev
+              - sensor.current_cli_installed
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -1096,7 +1096,6 @@ views:
                 entity: input_boolean.alarmgaragedoor
                 icon: mdi:security
                 color_type: icon
-                aspect_ratio: 1.6/1
                 lock:
                   enabled: true
                   duration: 2
@@ -1220,7 +1219,6 @@ views:
                 entity: input_boolean.homeandawayauto
                 icon: mdi:home
                 color_type: icon
-                aspect_ratio: 1.6/1
                 state:
                   - value: 'off'
                     color: red
@@ -1238,7 +1236,6 @@ views:
                 entity: input_boolean.overtime
                 icon: mdi:clock
                 color_type: icon
-                aspect_ratio: 1.6/1
                 state:
                   - value: 'off'
                     color: red
@@ -1256,7 +1253,6 @@ views:
                 entity: input_boolean.holiday
                 icon: mdi:calendar
                 color_type: icon
-                aspect_ratio: 1.6/1
                 state:
                   - value: 'off'
                     color: red
@@ -1379,7 +1375,6 @@ views:
             cards:
               - type: custom:button-card
                 icon: mdi:home-assistant
-                aspect_ratio: 1.6/1
                 lock:
                   enabled: true
                   duration: 5
@@ -1390,7 +1385,6 @@ views:
               - type: custom:button-card
                 entity: input_select.theme_switcher
                 icon: mdi:palette-outline
-                aspect_ratio: 1.6/1
                 lock:
                   enabled: true
                   duration: 60
