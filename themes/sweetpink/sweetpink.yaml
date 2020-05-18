@@ -62,7 +62,7 @@ sweetpink:
   paper-slider-knob-start-color: "var(--purple)"
 
   switch-unchecked-color: "var(--teal)"
-# switch-unchecked-button-color: "var(--teal)"
+  switch-unchecked-button-color: "var(--teal)"
 
   # Themable CCS vars in HACS (https://hacs.xyz/docs/basic/theming)
   link-text-color: "var(--cyan)"
@@ -72,7 +72,5 @@ sweetpink:
   hacs-status-not-loaded: "var(--indigo)"
 
   paper-dialog-button-color: "var(--light)"
-  switch-unchecked-button-color: "var(--light)"
-# switch-unchecked-button-color: "var(--light)"
   iron-icon-fill-color: "var(--light)"
   update-heading: "var(--light)"
