@@ -130,7 +130,17 @@ views:
                   - sensor.current_ha_stable
                   - sensor.current_ha_beta
                   - sensor.current_ha_dev
-              - sensor.hass_installed_version
+              - entity: sensor.hass_installed_version
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity) != states('sensor.current_ha_beta') %}
+                      rgb(255, 223, 0)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -139,7 +149,17 @@ views:
                   - sensor.current_supervisor_stable
                   - sensor.current_supervisor_beta
                   - sensor.current_supervisor_dev
-              - sensor.current_supervisor_installed
+              - entity: sensor.current_supervisor_installed
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity) != states('sensor.current_supervisor_beta') %}
+                      rgb(255, 223, 0)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -148,7 +168,17 @@ views:
                   - sensor.current_dns_stable
                   - sensor.current_dns_beta
                   - sensor.current_dns_dev
-              - sensor.current_dns_installed
+              - entity: sensor.current_dns_installed
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity) != states('sensor.current_dns_beta') %}
+                      rgb(255, 223, 0)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -157,7 +187,17 @@ views:
                   - sensor.current_audio_stable
                   - sensor.current_audio_beta
                   - sensor.current_audio_dev
-              - sensor.current_audio_installed
+              - entity: sensor.current_audio_installed
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity) != states('sensor.current_audio_beta') %}
+                      rgb(255, 223, 0)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -166,14 +206,34 @@ views:
                   - sensor.current_cli_stable
                   - sensor.current_cli_beta
                   - sensor.current_cli_dev
-              - sensor.current_cli_installed
+              - entity: sensor.current_cli_installed
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity) != states('sensor.current_cli_beta') %}
+                      rgb(255, 223, 0)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
               - type: custom:fold-entity-row
                 head: 
                   type: section
                   label: Multicast
                 entities:
-                  - sensor.current_multicast_installed
                   - sensor.current_multicast_latest
+              - entity: sensor.current_multicast_installed
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity) != states('sensor.current_multicast_latest') %}
+                      rgb(255, 223, 0)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
               - entity: sensor.docker_compose_version_available
                 style: |
                   :host {
