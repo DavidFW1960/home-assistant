@@ -234,6 +234,9 @@ views:
                     {% endif %}
                     ;
                   }
+          - type: entities
+            show_header_toggle: false
+            entities:
               - entity: sensor.docker_compose_version_available
                 style: |
                   :host {
