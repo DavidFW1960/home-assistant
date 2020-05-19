@@ -18,11 +18,12 @@ sundown:
   label-badge-border-color: "green" # Label badge border, just a reference value
 
   # Background colors
-  primary-background-color: "#433557" # Settings background
+  primary-background-color: "#2c203e" # Settings background
   secondary-background-color: "#383C45" # Main card UI background
   divider-color: "rgba(0, 0, 0, .12)" # Divider
   data-table-background-color: "#433557"
   sidebar-background-color: "#433557"
+  mdc-theme-surface: "#433557"
 
   # Table rows
   table-row-background-color: "#353840" # Table row
@@ -60,6 +61,7 @@ sundown:
   paper-toggle-button-unchecked-button-color: "var(--disabled-text-color)"
   paper-toggle-button-unchecked-bar-color: "var(--disabled-text-color)"
   paper-toggle-button-unchecked-ink-color: "var(--disabled-text-color)"
+  switch-unchecked-button-color: "#524566"
 
   # Sliders
   paper-slider-knob-color: "var(--accent-color)"
