@@ -1456,7 +1456,6 @@ views:
                   - entity: automation.restart_docker_containers_when_memory_40
                     type: 'custom:secondaryinfo-entity-row'
                     secondary_info: "[[ automation.restart_docker_containers_when_memory_40.attributes.last_triggered ]]"
-                  - automation.purge_history
                   - automation.roaster_needs_attention
               - type: custom:fold-entity-row
                 open: false
