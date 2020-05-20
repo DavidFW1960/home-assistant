@@ -23,16 +23,40 @@ views:
             entities:
               - sensor.last_successful_authentication
               - sensor.ssl_certificate_expiry
-              - sensor.coffee_maker_firmware
-              - sensor.toothbrush_firmware
-              - sensor.xcy_mini_pc_firmware
-              - sensor.tv_switch_firmware
-              - sensor.garage_door_firmware
-              - sensor.alarm_firmware
-              - sensor.nodemcu_lounge_firmware
-              - sensor.nodemcu_bedroom_firmware
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
+                  label: Tasmota Firmware
+                entities:
+                  - sensor.toothbrush_firmware
+                  - sensor.xcy_mini_pc_firmware
+                  - sensor.tv_switch_firmware
+                  - sensor.garage_door_firmware
+                  - sensor.alarm_firmware
+                  - sensor.nodemcu_lounge_firmware
+                  - sensor.nodemcu_bedroom_firmware
+              - entity: sensor.coffee_maker_firmware
+                tap_action:
+                  action: navigate
+                  navigation_path: /tasmoadmin
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states('binary_sensor.tasmota_update_available') == 'on' %}
+                      rgb(255, 223, 0)
+                    {% else %}
+                      var(--disabled-text-color)
+                    {% endif %}
+                    ;
+                  }
               - sensor.tasmota_firmware_version_available
               - entity: binary_sensor.tasmota_update_available
+                tap_action:
+                  action: navigate
+                  navigation_path: /tasmoadmin
                 state_color: true
                 style: |
                   :host {
@@ -131,6 +155,9 @@ views:
                   - sensor.current_ha_beta
                   - sensor.current_ha_dev
               - entity: sensor.hass_installed_version
+                tap_action:
+                  action: navigate
+                  navigation_path: /hassio/dashboard
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -150,6 +177,9 @@ views:
                   - sensor.current_supervisor_beta
                   - sensor.current_supervisor_dev
               - entity: sensor.current_supervisor_installed
+                tap_action:
+                  action: navigate
+                  navigation_path: /hassio/dashboard
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -169,6 +199,9 @@ views:
                   - sensor.current_dns_beta
                   - sensor.current_dns_dev
               - entity: sensor.current_dns_installed
+                tap_action:
+                  action: navigate
+                  navigation_path: /hassio/dashboard
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -188,6 +221,9 @@ views:
                   - sensor.current_audio_beta
                   - sensor.current_audio_dev
               - entity: sensor.current_audio_installed
+                tap_action:
+                  action: navigate
+                  navigation_path: /hassio/dashboard
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -207,6 +243,9 @@ views:
                   - sensor.current_cli_beta
                   - sensor.current_cli_dev
               - entity: sensor.current_cli_installed
+                tap_action:
+                  action: navigate
+                  navigation_path: /hassio/dashboard
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -224,6 +263,9 @@ views:
                 entities:
                   - sensor.current_multicast_latest
               - entity: sensor.current_multicast_installed
+                tap_action:
+                  action: navigate
+                  navigation_path: /hassio/dashboard
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -1491,21 +1533,21 @@ views:
                 name: Core
                 tap_action:
                   action: call-service
-                  service: homeassistant.reload_core_config
+                  service: script.coreconfigreload
               - type: custom:button-card
                 entity_picture: /local/images/icons8-variation-80.png
                 show_entity_picture: true
                 name: Groups
                 tap_action:
                   action: call-service
-                  service: group.reload
+                  service: script.groupreload
               - type: custom:button-card
                 entity_picture: /local/images/icons8-automation-80.png
                 show_entity_picture: true
                 name: Auto
                 tap_action:
                   action: call-service
-                  service: automation.reload
+                  service: script.automationsreload
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -1514,21 +1556,21 @@ views:
                 name: Scripts
                 tap_action:
                   action: call-service
-                  service: script.reload
+                  service: script.scriptsreload
               - type: custom:button-card
                 entity_picture: /local/images/icons8-landscape-80.png
                 show_entity_picture: true
                 name: Scenes
                 tap_action:
                   action: call-service
-                  service: scene.reload
+                  service: script.scenesreload
               - type: custom:button-card
                 entity_picture: /local/images/icons8-change-theme-80.png
                 show_entity_picture: true
                 name: Themes
                 tap_action:
                   action: call-service
-                  service: frontend.reload_themes
+                  service: script.themesreload
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -1537,21 +1579,21 @@ views:
                 name: Person
                 tap_action:
                   action: call-service
-                  service: person.reload
+                  service: script.personreload
               - type: custom:button-card
                 entity_picture: /local/images/icons8-enter-80.png
                 show_entity_picture: true
                 name: Select
                 tap_action:
                   action: call-service
-                  service: input_select.reload
+                  service: script.inputselectreload
               - type: custom:button-card
                 entity_picture: /local/images/icons8-switch-off-80.png
                 show_entity_picture: true
                 name: Boolean
                 tap_action:
                   action: call-service
-                  service: input_boolean.reload
+                  service: script.inputbooleanreload
           - type: entities
             title: Automations, Scenes & Scripts
             show_header_toggle: false

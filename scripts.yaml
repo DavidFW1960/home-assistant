@@ -202,7 +202,122 @@ startalladdons:
     service: hassio.addon_start
   - data: {"addon": "core_mariadb"}
     service: hassio.addon_start
-
+  - service: persistent_notification.create
+    data_template:
+      message: 'Addons Restarted'
+      title: 'Addons Notification'
+  - service: notify.html5_notify
+    data_template:
+      message: 'Addons Restarted'
+      title: 'Addons Notification'
+coreconfigreload:
+  alias: Reload Core
+  sequence:
+    - service: homeassistant.reload_core_config
+    - service: persistent_notification.create
+      data_template:
+        message: 'Core Config Reloaded'
+        title: 'Reload Notification'
+    - service: notify.html5_notify
+      data_template:
+        message: 'Core Config Reloaded'
+        title: 'Reload Notification'
+groupreload:
+  alias: Reload Groups
+  sequence:
+    - service: group.reload
+    - service: persistent_notification.create
+      data_template:
+        message: 'Groups Reloaded'
+        title: 'Reload Notification'
+    - service: notify.html5_notify
+      data_template:
+        message: 'Groups Reloaded'
+        title: 'Reload Notification'
+automationsreload:
+  alias: Reload Automations
+  sequence:
+    - service: automation.reload
+    - service: persistent_notification.create
+      data_template:
+        message: 'Automations Reloaded'
+        title: 'Reload Notification'
+    - service: notify.html5_notify
+      data_template:
+        message: 'Automations Reloaded'
+        title: 'Reload Notification'
+scriptsreload:
+  alias: Reload Scripts
+  sequence:
+    - service: script.reload
+    - service: persistent_notification.create
+      data_template:
+        message: 'Scripts Reloaded'
+        title: 'Reload Notification'
+    - service: notify.html5_notify
+      data_template:
+        message: 'Scripts Reloaded'
+        title: 'Reload Notification'
+scenesreload:
+  alias: Reload Scenes
+  sequence:
+    - service: scene.reload
+    - service: persistent_notification.create
+      data_template:
+        message: 'Scenes Reloaded'
+        title: 'Reload Notification'
+    - service: notify.html5_notify
+      data_template:
+        message: 'Scenes Reloaded'
+        title: 'Reload Notification'
+themesreload:
+  alias: Reload Themes
+  sequence:
+    - service: frontend.reload_themes
+    - service: persistent_notification.create
+      data_template:
+        message: 'Themes Reloaded'
+        title: 'Reload Notification'
+    - service: notify.html5_notify
+      data_template:
+        message: 'Themes Reloaded'
+        title: 'Reload Notification'
+personreload:
+  alias: Reload Person
+  sequence:
+    - service: person.reload
+    - service: persistent_notification.create
+      data_template:
+        message: 'Person Reloaded'
+        title: 'Reload Notification'
+    - service: notify.html5_notify
+      data_template:
+        message: 'Person Reloaded'
+        title: 'Reload Notification'
+inputselectreload:
+  alias: Reload Input Select
+  sequence:
+    - service: input_select.reload
+    - service: persistent_notification.create
+      data_template:
+        message: 'Input_Select Reloaded'
+        title: 'Reload Notification'
+    - service: notify.html5_notify
+      data_template:
+        message: 'Input_Select Reloaded'
+        title: 'Reload Notification'
+inputbooleanreload:
+  alias: Reload Input Boolean
+  sequence:
+    - service: input_boolean.reload
+    - service: persistent_notification.create
+      data_template:
+        message: 'Input_Boolean Reloaded'
+        title: 'Reload Notification'
+    - service: notify.html5_notify
+      data_template:
+        message: 'Input_Boolean Reloaded'
+        title: 'Reload Notification'
 restartvscode:
   alias: Restart VSCode
   sequence:
