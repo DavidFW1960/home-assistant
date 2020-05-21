@@ -139,6 +139,81 @@ views:
               - entity: sensor.last_boot
                 format: datetime
               - sensor.systemuptime
+          - type: entities
+            title: Brother MFC-9335CDW
+            show_header_toggle: false
+            entities:
+              - type: 'custom:hui-horizontal-stack-card'
+                cards:
+                  - type: 'custom:bar-card'
+                    entities:
+                      - entity: sensor.mfc_9335cdw_black_toner_remaining
+                        color: black  
+                      - entity: sensor.mfc_9335cdw_cyan_toner_remaining
+                        color: cyan
+                      - entity: sensor.mfc_9335cdw_magenta_toner_remaining
+                        color: magenta
+                      - entity: sensor.mfc_9335cdw_yellow_toner_remaining
+                        color: yellow
+                    direction: up
+                    indicator: auto-vertical
+                    width: 100%
+                    entity_row: true
+                    height: 14em
+                    positions:
+                      icon: 'off'
+                      indicator: 'off'
+                      name: 'off'
+                    stack: horizontal
+                    style: |-
+                      bar-card-value {
+                        margin-top: auto;
+                        margin-bottom: auto;
+                        font-weight: bold;
+                      }
+                  - type: picture-elements
+                    image: /local/printer/blank.png
+                    elements:
+                      - type: image
+                        image: /local/printer/brothermfc9335cdw.png
+                        style:
+                          top: 50%
+                          left: 50%
+                          width: 100%
+                          filter: 'drop-shadow(2px 2px 5px rgb(100, 100, 100, 1)'
+                    style: |
+                      ha-card {
+                        border-radius: 0;
+                        box-shadow: none;
+                        background: transparent;
+                        height: 100%;
+                      }
+              - type: 'custom:hui-horizontal-stack-card'
+                cards:
+                  - entities:
+                      - entity: sensor.mfc_9335cdw_page_counter
+                        name: Pages
+                      - entity: sensor.mfc_9335cdw_color_counter
+                        name: Colour
+                      - entity: sensor.mfc_9335cdw_b_w_counter
+                        name: B/W
+                      - entity: sensor.mfc_9335cdw_status
+                        name: Status
+                    show_header_toggle: false
+                    theme: no-shadow
+                    type: entities
+                  - entities:
+                      - entity: sensor.mfc_9335cdw_belt_unit_remaining_life
+                        name: Belt
+                      - entity: sensor.mfc_9335cdw_pf_kit_1_remaining_life
+                        name: PF Kit
+                      - entity: sensor.mfc_9335cdw_fuser_remaining_life
+                        name: Fuser
+                      - entity: sensor.mfc_9335cdw_uptime
+                        name: Uptime
+                    show_header_toggle: false
+                    theme: no-shadow
+                    type: entities
       - type: vertical-stack
         cards:
           - type: entities
@@ -468,81 +543,6 @@ views:
                 - entity: device_tracker.davids_ipad_2
                 - entity: sensor.davids_ipad_battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.davids_ipad_battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
-          - type: entities
-            title: Brother MFC-9335CDW
-            show_header_toggle: false
-            entities:
-              - type: 'custom:hui-horizontal-stack-card'
-                cards:
-                  - type: 'custom:bar-card'
-                    entities:
-                      - entity: sensor.mfc_9335cdw_black_toner_remaining
-                        color: black  
-                      - entity: sensor.mfc_9335cdw_cyan_toner_remaining
-                        color: cyan
-                      - entity: sensor.mfc_9335cdw_magenta_toner_remaining
-                        color: magenta
-                      - entity: sensor.mfc_9335cdw_yellow_toner_remaining
-                        color: yellow
-                    direction: up
-                    indicator: auto-vertical
-                    width: 100%
-                    entity_row: true
-                    height: 14em
-                    positions:
-                      icon: 'off'
-                      indicator: 'off'
-                      name: 'off'
-                    stack: horizontal
-                    style: |-
-                      bar-card-value {
-                        margin-top: auto;
-                        margin-bottom: auto;
-                        font-weight: bold;
-                      }
-                  - type: picture-elements
-                    image: /local/printer/blank.png
-                    elements:
-                      - type: image
-                        image: /local/printer/brothermfc9335cdw.png
-                        style:
-                          top: 50%
-                          left: 50%
-                          width: 100%
-                          filter: 'drop-shadow(2px 2px 5px rgb(100, 100, 100, 1)'
-                    style: |
-                      ha-card {
-                        border-radius: 0;
-                        box-shadow: none;
-                        background: transparent;
-                        height: 100%;
-                      }
-              - type: 'custom:hui-horizontal-stack-card'
-                cards:
-                  - entities:
-                      - entity: sensor.mfc_9335cdw_page_counter
-                        name: Pages
-                      - entity: sensor.mfc_9335cdw_color_counter
-                        name: Colour
-                      - entity: sensor.mfc_9335cdw_b_w_counter
-                        name: B/W
-                      - entity: sensor.mfc_9335cdw_status
-                        name: Status
-                    show_header_toggle: false
-                    theme: no-shadow
-                    type: entities
-                  - entities:
-                      - entity: sensor.mfc_9335cdw_belt_unit_remaining_life
-                        name: Belt
-                      - entity: sensor.mfc_9335cdw_pf_kit_1_remaining_life
-                        name: PF Kit
-                      - entity: sensor.mfc_9335cdw_fuser_remaining_life
-                        name: Fuser
-                      - entity: sensor.mfc_9335cdw_uptime
-                        name: Uptime
-                    show_header_toggle: false
-                    theme: no-shadow
-                    type: entities
       - type: vertical-stack
         cards:
           - type: entities
