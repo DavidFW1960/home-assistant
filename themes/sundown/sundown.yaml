@@ -24,6 +24,7 @@ sundown:
   data-table-background-color: "#433557"
   sidebar-background-color: "#433557"
   mdc-theme-surface: "#433557"
+  material-background-color: "#433557"
 
   # Table rows
   table-row-background-color: "#353840" # Table row
@@ -40,11 +41,11 @@ sundown:
   # Paper card
   paper-card-header-color: "var(--accent-color)" # Card header text colour
   paper-card-background-color: "#433557" # Card background colour
-  paper-dialog-background-color: "#434954" # Card dialog background colour
+  paper-dialog-background-color: "#2c203e" # Card dialog background colour
   paper-item-icon-color: "var(--primary-text-color)" # Icon color
   paper-item-icon-active-color: "#F9C536" # Icon color active
   paper-item-icon_-_color: "green"
-  paper-item-selected_-_background-color: "#434954" # Popup item select
+  paper-item-selected_-_background-color: "#2c203e" # Popup item select
   paper-tabs-selection-bar-color: "green"
 
   ha-card-border-radius: "4px"
