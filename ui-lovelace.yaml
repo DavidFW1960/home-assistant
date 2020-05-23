@@ -421,8 +421,8 @@ views:
             title: HA Community Store
             columns:
               - {field: name, title: 'Name', style: [text-align: left]}
-              - {field: installed version, title: 'Installed', style: [text-align: center]}
-              - {field: available version, title: 'Latest', style: [text-align: center]}
+              - {field: installed_version, title: 'Installed', style: [text-align: center]}
+              - {field: available_version, title: 'Latest', style: [text-align: center]}
             feed_attribute: repositories
           - type: horizontal-stack
             cards:
@@ -781,7 +781,7 @@ views:
             locale: en
             sunset: true
             static_icons: false
-            old_icon: "hybrid"
+            old_icon: hybrid
             tooltip_bg_color: 'rgb( 75,155,239)'
             tooltip_border_color: 'rgb(255,161,0)'
             tooltip_border_width: 1
