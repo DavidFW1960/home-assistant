@@ -109,7 +109,7 @@ logger:
     custom_components.sensor.authenticated: debug
 #   custom_components.iphonedetect: debug
 #   homeassistant.components.http.view: error
-#   hacs: debug
+#   hacs: debug ###Now Enable in HACS options
 #   homeassistant.components.here_travel_time: debug
 #   homeassistant.components.zeroconf: debug
 #   pyipp: debug
