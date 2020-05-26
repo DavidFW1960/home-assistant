@@ -17,7 +17,7 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import CONF_API_KEY, CONF_HOST, CONF_PORT, CONF_SSL
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.2.9'
+__version__ = '0.3.2'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -116,8 +116,9 @@ class RadarrUpcomingMediaSensor(Entity):
                 else:
                     card_item['rating'] = ''
                 if 'images' in movie:
-                    card_item['poster'] = movie['images'][0]
-                    if '.jpg' in movie['images'][1]:
+                    if len(movie['images']):
+                        card_item['poster'] = movie['images'][0]
+                    if len(movie['images']) > 1 and '.jpg' in movie['images'][1]:
                         card_item['fanart'] = movie['images'][1]
                     else:
                         card_item['fanart'] = ''
@@ -125,7 +126,7 @@ class RadarrUpcomingMediaSensor(Entity):
                     continue
                 self.card_json.append(card_item)
                 self.change_detected = False
-        attributes['data'] = json.dumps(self.card_json)
+        attributes['data'] = self.card_json
         return attributes
 
     def update(self):
