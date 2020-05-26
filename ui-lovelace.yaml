@@ -1315,11 +1315,11 @@ views:
             entities:
               - switch.sonoff12914
               - switch.home_assistant
+              - switch.sonoff40851
               - switch.hifi
               - switch.vpn_router
               - switch.sonoff23110
               - switch.sonoff30898
-              - switch.sonoff40851
           - type: horizontal-stack
             cards:
               - type: custom:button-card
