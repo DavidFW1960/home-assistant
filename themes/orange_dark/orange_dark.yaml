@@ -49,7 +49,8 @@ Orange Dark:
   # Cards
   ha-card-border-radius: "10px"
   ha-card-box-shadow: 0px
-  paper-card-background-color: "#303236"
+  paper-dialog-background-color: "#303236"
+  paper-card-background-color: var(--paper-dialog-background-color)
   paper-listbox-background-color: "#282A2F"
   # Switches
   switch-checked-button-color: "#DF6040"
