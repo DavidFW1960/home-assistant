@@ -132,7 +132,7 @@ class SonarrUpcomingMediaSensor(Entity):
             except:
                 pass
             card_json.append(card_item)
-        attributes['data'] = json.dumps(card_json)
+        attributes['data'] = card_json
         return attributes
 
     def update(self):
