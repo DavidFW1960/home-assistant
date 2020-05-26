@@ -5,7 +5,7 @@ sensor.sonoff2_3110_status:
 sensor.sonoff3_0898_status:
   icon: mdi:desktop-classic
 sensor.sonoff4_0851_status:
-  icon: mdi:flash
+  icon: mdi:television-classic
 sensor.sonoff5_1083_status:
   icon: mdi:garage
 sensor.sonoff6_3719_status:
@@ -23,7 +23,7 @@ switch.sonoff30898:
   icon: mdi:desktop-classic
 switch.sonoff40851:
   friendly_name: TV Switch
-  icon: mdi:television
+  icon: mdi:television-classic
 switch.sonoff51083:
   friendly_name: Garage Door
   icon: mdi:garage
