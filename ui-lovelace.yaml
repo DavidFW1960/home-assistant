@@ -708,10 +708,10 @@ views:
               - sensor.bom_gosford_rain_today
               - sensor.bom_gosford_relative_humidity
               - sensor.bom_gosford_wind_direction
-              - sensor.bom_gosford_wind_gust_kmh
-              - sensor.bom_gosford_wind_gust_kt
               - sensor.bom_gosford_wind_speed_kmh
+              - sensor.bom_gosford_wind_gust_kmh
               - sensor.bom_gosford_wind_speed_kt
+              - sensor.bom_gosford_wind_gust_kt
           - type: entities
             title: BOM Forecast
             show_header_toggle: false
@@ -1872,12 +1872,12 @@ views:
                   power_state: false
                 info: scroll
                 source: full
-              - entity: sensor.gpodder
-                type: custom:podcast-card
-                name: Home Assistant Podcasts
-                default_target: media_player.office_speaker
-                show_player: true
-                custom_player: true
+#             - entity: sensor.gpodder
+#               type: custom:podcast-card
+#               name: Home Assistant Podcasts
+#               default_target: media_player.office_speaker
+#               show_player: true
+#               custom_player: true
           - type: markdown
             style: |
               h2 {
