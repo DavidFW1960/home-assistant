@@ -25,6 +25,7 @@ sundown:
   sidebar-background-color: "#433557"
   mdc-theme-surface: "#433557"
   material-background-color: "#433557"
+  card-background-color: "#433557" # Card background colour
 
   # Table rows
   table-row-background-color: "#353840" # Table row
