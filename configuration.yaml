@@ -406,13 +406,13 @@ shell_command:
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
 
 # Home Assistant Podcasts on gpodder
-gpodder:
-  username: !secret gpodder_user
-  password: !secret gpodder_password
-  sensor:
-    - enabled: true
-      name: gPodder
-      device: homeassistant
+#gpodder:
+#  username: !secret gpodder_user
+#  password: !secret gpodder_password
+#  sensor:
+#    - enabled: true
+#      name: gPodder
+#      device: homeassistant
 
 media_player:
   - platform: onkyo
