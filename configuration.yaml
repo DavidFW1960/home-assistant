@@ -420,7 +420,10 @@ media_player:
 
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml
-scene: !include scenes.yaml
 group: !include groups.yaml
+scene: !include scenes.yaml
+scene manual: !include scenes_manual.yaml
 automation: !include automations.yaml
+automation manual: !include automations_manual.yaml
 script: !include scripts.yaml
+#script manual: !include scripts_manual.yaml
