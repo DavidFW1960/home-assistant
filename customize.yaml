@@ -297,3 +297,6 @@ sensor.gdacs_33_443955_151_286184:
   friendly_name: GDACS Alerts
 sensor.supervisor_installed:
   icon: mdi:home-assistant
+sensor.beaufort:
+  friendly_name: Beaufort Rating
+  icon: mdi:weather-windy

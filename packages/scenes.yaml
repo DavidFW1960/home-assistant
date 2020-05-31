@@ -1,0 +1,85 @@
+scene:
+# Lounge Light Scenes 
+  - id: 'lounge100'
+    name: Lounge 100
+    entities:
+      script.lounge100:
+        state: 'on'
+  - id: 'loungenormal'
+    name: Lounge Normal
+    entities:
+      script.loungenormal:
+        state: 'on'
+  - id: 'loungemovie'
+    name: Lounge Movie
+    entities:
+      script.loungemovie:
+        state: 'on'
+  - id: 'loungedaylight'
+    name: Lounge Daylight
+    entities:
+      script.loungedaylight:
+        state: 'on'
+  - id: 'loungewarm'
+    name: Lounge Warm
+    entities:
+      script.loungewarm:
+        state: 'on'
+# Office Light Scenes 
+  - id: 'officemain'
+    name: Office Main
+    entities:
+      script.officemain:
+        state: 'on'
+  - id: 'officeall'
+    name: Office All
+    entities:
+      script.officeall:
+        state: 'on'
+  - id: 'officedaylight'
+    name: Office Daylight
+    entities:
+      script.officedaylight:
+        state: 'on'
+  - id: 'officewarm'
+    name: Office Warm
+    entities:
+      script.officewarm:
+        state: 'on'
+  - id: 'desknormal'
+    name: Desk Normal
+    entities:
+      script.desknormal:
+        state: 'on'
+  - id: 'deskdaylight'
+    name: Desk Daylight
+    entities:
+      script.deskdaylight:
+        state: 'on'
+  - id: 'deskwarm'
+    name: Desk Warm
+    entities:
+      script.deskwarm:
+        state: 'on'
+# Dining Light Scenes 
+  - id: 'diningnormal'
+    name: Dining Normal
+    entities:
+      script.diningnormal:
+        state: 'on'
+  - id: 'diningdaylight'
+    name: Dining Daylight
+    entities:
+      script.diningdaylight:
+        state: 'on'
+  - id: 'diningwarm'
+    name: Dining Warm
+    entities:
+      script.diningwarm:
+        state: 'on'
+# Bedtime Scenes
+  - id: 'bedtime'
+    name: Bedtime
+    entities:
+      script.bedtime:
+        state: 'on'
