@@ -112,6 +112,36 @@ sensor:
             {{ states('sensor.bom_gosford_fire_danger_1') }}
             {%- endif -%}
 
+      beaufort:
+        value_template: >
+            {%- if states('sensor.bom_gosford_wind_speed_kmh') | float  >= 118 -%}
+            12
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 103 -%}
+            11
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 89 -%}
+            10
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 75 -%}
+            9
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 62 -%}
+            8
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 50 -%}
+            7
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 39 -%}
+            6
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 29 -%}
+            5
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 20 -%}
+            4
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 12 -%}
+            3
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 6 -%}
+            2
+            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 2 -%}
+            1
+            {%- else -%}
+            0
+            {%- endif -%}
+
       bom_forecast_0:
         entity_id:
           - sensor.bom_today_max
