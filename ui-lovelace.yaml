@@ -712,6 +712,15 @@ views:
               - sensor.bom_gosford_wind_gust_kmh
               - sensor.bom_gosford_wind_speed_kt
               - sensor.bom_gosford_wind_gust_kt
+          - type: custom:card-templater
+            entities:
+              - sensor.beaufort
+            card:
+              type: entities
+              columns: 2
+              entities:
+                - entity: sensor.beaufort
+                  name_template: "{{ state_attr('sensor.beaufort','friendly_name') }} - {%set list1 = 'Calm','Light air','Light breeze','Gentle breeze','Moderate breeze','Fresh breeze','Strong breeze','High wind, moderate/near gale','Gale/fresh gale','Strong/severe gale','Storm, whole gale','Violent Storm','Hurricane Force'%}{{list1[states('sensor.beaufort')|int]}}"
           - type: entities
             title: BOM Forecast
             show_header_toggle: false
