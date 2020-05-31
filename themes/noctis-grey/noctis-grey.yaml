@@ -14,6 +14,8 @@ noctis-grey:
   text-color: '#ffffff'
   primary-text-color: 'var(--text-color)'
   text-primary-color: 'var(--text-color)'
+  rgb-primary-text-color: 'var(--text-color)'
+  rgb-text-primary-color: 'var(--text-color)'
   secondary-text-color: '#BAC0C6'
   text-medium-light-color: '#A0A2A8'
   text-medium-color: '#80828A'
@@ -29,6 +31,7 @@ noctis-grey:
   primary-background-color: 'var(--background-color)'
   background-color-2: '#606060'
   secondary-background-color: 'none'
+  markdown-code-background-color: '#424242'
 
   # Card
   card-background-color: 'var(--paper-card-background-color)'
@@ -66,10 +69,13 @@ noctis-grey:
   switch-checked-track-color: 'var(--background-color-2)'
 
   # ListBox
-  paper-listbox-background-color: 'var(--background-color)' # Also changes partial sidebar color
+  paper-listbox-background-color: 'transparent' # Also changes partial sidebar color
 
   # Radio Button
   paper-radio-button-checked-color: 'var(--accent-color)'
+
+  # Checkboxes
+  mdc-checkbox-unchecked-color: var(--text-medium-color);
 
   # Popups
   more-info-header-background: 'var(--secondary-background-color)'
