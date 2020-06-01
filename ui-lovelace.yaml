@@ -847,6 +847,16 @@ views:
             slot_r3: uv_summary             #uv_summary
             slot_r4: fire_summary           #fire_summary
             slot_r5: sun_following          #sun_following
+          - type: 'custom:config-template-card'
+            variables:
+              - states['sensor.beaufort'].state
+            entities:
+              - sensor.beaufort
+            card:
+              type: 'custom:hui-entities-card'
+              entities:
+                - entity: sensor.beaufort
+                  name: "${'Beaufort force:' + '\xa0'.repeat(2) + (vars[0] == 12 ? 'Hurricane Force' : vars[0] == 11 ? 'Violent Storm' : vars[0] == 10 ? 'Storm, whole gale' : vars[0] == 9 ? 'Strong/severe gale' : vars[0] == 8 ? 'Gale/ fresh gale' : vars[0] == 7 ? 'High wind, moderate/near gale' : vars[0] == 6 ? 'Strong breeze' : vars[0] == 5 ? 'Fresh breeze' : vars[0] == 4 ? 'Moderate breeze' : vars[0] == 3 ? 'Gentle breeze' : vars[0] == 2 ? 'Light breeze' : vars[0] == 1 ? 'Light air' : 'Calm')}"
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 48
