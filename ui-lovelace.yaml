@@ -66,7 +66,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states(config.entity) != 'v2.1.2' %}
+                    {% if states(config.entity) != 'v2.4.0' %}
                       rgb(255, 223, 0)
                     {% else %}
                       var(--disabled-text-color)
@@ -358,7 +358,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states(config.entity) != 'v1.25.5' %}
+                    {% if states(config.entity) != 'v1.26.0' %}
                       rgb(255, 223, 0)
                     {% else %}
                       var(--disabled-text-color)
@@ -1154,7 +1154,6 @@ views:
             dark_mode: true
             geo_location_sources:
               - nsw_rural_fire_service_feed
-              - wwlln
               - gdacs
             entities:
               - zone.home
