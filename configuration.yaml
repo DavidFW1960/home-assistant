@@ -201,18 +201,7 @@ sensor:
     folder: inbox
     search: !secret alarmnotification
 
-# Sonarr, Radarr and Upcoming Media
-  - platform: sonarr
-    api_key: !secret my_sonarr_api
-    host: !secret my_sonarr_host
-    port: !secret my_sonarr_port
-    monitored_conditions:
-      - series
-      - upcoming
-      - wanted
-      - queue
-      - commands
-    days: 2
+# Radarr and Upcoming Media
   - platform: radarr
     api_key: !secret my_radarr_api
     host: !secret my_radarr_host
