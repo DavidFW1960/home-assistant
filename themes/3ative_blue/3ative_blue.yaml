@@ -1,0 +1,75 @@
+3ative_blue:
+  ### Main Interface Colors ###
+  primary-color: "#3776c3"
+  light-primary-color: "#1f4573" # Logo Circle BG
+  primary-background-color: "#002c42" # Main Pages Background Colour
+  secondary-background-color: "#16304e" # Pop up Box Header Color
+  divider-color: var(--primary-color)
+  mdc-button: "#008686"
+  paper-listbox-background-color: "#000000" # Side Bar Background Colour
+  accent-color: "#3ba1a5" # Circle Plus Button Color
+
+  ### Cards ###
+  paper-card-background-color: "rgba(0, 0, 0, 0.6)"  # Cards Background Colour
+  ch-background: "rgba(0, 0, 0, 0.6)"  # Top bar
+  ha-card-border-radius: 3px
+  card-background-color: "#1b3a60"
+  markdown-code-background-color: "#112640"
+
+  ### Text ###
+  primary-text-color: "#c5c5c5" # Main Text Colour
+  secondary-text-color: "#12afff"
+  text-primary-color: "white" # Page Header Text & Icon text Color
+  disabled-text-color: "#A3A3A3"
+  lumo-body-text-color: "#03d032" # 'Logbook' Date Color
+
+  ### Sidebar Menu ###
+  sidebar-icon-color: "#3776c37d"
+  sidebar-text-color: var(--primary-color)
+  # sidebar-selected-background-color: var(--primary-background-color)
+  sidebar-selected-icon-color: "#82b7ff" # Selected Icon Colour
+  sidebar-selected-text-color: var(--primary-text-color)
+
+  ### States and Badges ###
+  state-icon-color: "#17416f" # Icon Off Color
+  state-icon-active-color: "#469dff" # Icon On Color
+  state-icon-unavailable-color: var(--disabled-text-color)
+
+  ### Sliders ###
+  paper-slider-knob-color: "#68ccff"
+  paper-slider-knob-start-color: var(--state-icon-color) # Slider Knob Off Color
+  paper-slider-pin-color: var(--state-icon-active-color)
+  paper-slider-active-color: "#376e8a" # Slider On track Color
+  paper-slider-secondary-color: var(--light-primary-color)
+  paper-slider-container-color: var(--slider-bar-color) # Slider Bar OFF Colour
+
+  ### Top Badges ###
+  label-badge-background-color: "#00000000" # Background Colour
+  label-badge-text-color: "#75b6ff" # Text Colour
+  label-badge-red: var(--primary-color) # Boarder Colour
+
+  ### Toggles ###
+  switch-checked-color: "#469dff"
+  switch-unchecked-button-color: "#163d68"
+  switch-unchecked-track-color: var(--primary-color)
+
+  ### Table row ###
+  table-row-background-color: "#000000"
+  table-row-alternative-background-color: "#0b1623"
+  data-table-background-color: var(--primary-background-color)
+  dark-primary-color: "#0288d1"
+
+  paper-item-icon-color: var(--state-icon-color) # Icon OFF COLOUR
+  paper-item-icon-active-color: var(--state-icon-active-color)
+
+  ha-paper-slider-pin-font-size: 15px
+  background-image: 'center / cover no-repeat url("/local/3ative_bg.jpg") fixed'
+
+  paper-input-container-focus-color: "white"
+
+  sidebar-background-color: var(--paper-listbox-background-color)
+
+  label-badge-blue: "#039be5"
+  label-badge-green: "#0DA035"
+  label-badge-yellow: "#f4b400"
+  label-badge-grey: var(--paper-grey-500)

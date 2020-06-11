@@ -40,6 +40,7 @@ blue_night:
   lumo-shade-90pct: "rgba(41, 41, 41, .9)"
   lumo-tertiary-text-color: "var(--lumo-body-text-color)"
   lumo-tint-5pct: "var(--darker-grey-color)"
+  markdown-code-background-color: "hsl(var(--huesat) 16%)"
   medium-grey-color: "#202020"
   paper-button-ink-color: "hsl(var(--huesat) 50%)"
   paper-card-background-color: "hsl(var(--huesat) 12%)"

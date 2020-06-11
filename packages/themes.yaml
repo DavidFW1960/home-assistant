@@ -3,6 +3,7 @@ input_select:
     name: 'Switch Theme'
     options:
      - 'default'
+     - '3ative_blue'
      - 'amoled'
      - 'AMOLED Blue'
      - 'aqua-fiesta'
@@ -86,6 +87,7 @@ input_select:
      - 'night-theme'
      - 'noctis'
      - 'noctis-grey'
+     - 'nord'
      - 'oled'
      - 'Orange Dark'
      - 'Orange light'
