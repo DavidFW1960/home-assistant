@@ -89,7 +89,7 @@ sensor:
   - platform: nsw_fuel_station
     station_id: 18253
 #   friendly_name: Caltex 164 Mona Vale Rd St Ives #861
-#   sensor.caltex_st_ives_pdl
+#   sensor.caltex_st_ives_foodary_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
@@ -188,8 +188,8 @@ sensor:
 
       caltex_18253:
         value_template: >
-          {% if states('sensor.caltex_st_ives_pdl') != 'unknown' %} {{ states('sensor.caltex_st_ives_pdl') }}{% else %}Out-of-Stock{% endif %}
-        friendly_name: Caltex 164 Mona Vale Rd St Ives
+          {% if states('sensor.caltex_st_ives_foodary_pdl') != 'unknown' %} {{ states('sensor.caltex_st_ives_foodary_pdl') }}{% else %}Out-of-Stock{% endif %}
+        friendly_name: Caltex 164 Mona Vale Rd St Ives Foodary
 
       caltex_17310:
         value_template: >
