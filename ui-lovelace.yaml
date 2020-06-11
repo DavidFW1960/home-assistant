@@ -2191,12 +2191,12 @@ views:
               - entity: sensor.worldwide_coronavirus_confirmed
                 icon: 'mdi:account-box'
                 name: Confirmed
-              - entity: sensor.worldwide_coronavirus_current
-                icon: 'mdi:biohazard'
-                name: Current
-              - entity: sensor.worldwide_coronavirus_recovered
-                icon: 'mdi:calendar-check-outline'
-                name: Recovered
+#             - entity: sensor.worldwide_coronavirus_current
+#               icon: 'mdi:biohazard'
+#               name: Current
+#             - entity: sensor.worldwide_coronavirus_recovered
+#               icon: 'mdi:calendar-check-outline'
+#               name: Recovered
               - entity: sensor.worldwide_coronavirus_deaths
                 icon: 'mdi:grave-stone'
                 name: Deaths
