@@ -3,6 +3,7 @@ custom_header:
   header_text: '{{ deviceID }}' # Must set compact_mode: false to display
   compact_mode: true
   background: var(--app-header-background-color)
+#  background: var(--background-image)    # 3ative_blue theme 3ative_bg.jpg in /www
   elements_color: var(--app-header-text-color)
   active_tab_color: var(--state-icon-active-color)
   tab_indicator_color: var(--state-icon-active-color)
@@ -2103,11 +2104,12 @@ views:
           - sensor.sabnzbd_weekly_total
           - sensor.sabnzbd_monthly_total
           - sensor.sabnzbd_total
-          - sensor.sonarr_series
+          - sensor.sonarr_shows
           - sensor.sonarr_upcoming
           - sensor.sonarr_wanted
           - sensor.sonarr_queue
           - sensor.sonarr_commands
+          - sensor.sonarr_disk_space
           - sensor.radarr_movies
           - sensor.radarr_upcoming
           - sensor.radarr_commands
