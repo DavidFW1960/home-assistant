@@ -65,7 +65,7 @@ entity_config:
     expose: true
   sensor.bom_gosford_air_temp_c:
     room: house
-    name: Outside Temperature
+    name: Air Temp
     expose: true
   script.bedtime:
     room: bedroom
