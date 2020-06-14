@@ -57,6 +57,7 @@ sensor:
       - nautical_night
       - astronomical_night
       - elevation
+      - min_elevation
       - max_elevation
     entity_namespace: solar
 
