@@ -28,7 +28,7 @@ nord:
   paper-grey-200: "var(--dark-background-color)"
   primary-text-color: "var(--foreground-color)"
   secondary-text-color: "var(--foreground-color)"
-  disabled-text-color: "var(--light-background-color)"
+  disabled-text-color: "grey"
   light-disabled-text-color: "var(--lighter-background-color)"
   dark-primary-color: "var(--accent-color)"
 
@@ -66,8 +66,8 @@ nord:
   paper-toggle-button-checked-button-color: "var(--accent-color)"
 
   # Switch
-  switch-unchecked-track-color: "var(--disabled-text-color)"
-  switch-unchecked-color: "var(--light-disabled-text-color)"
+  switch-unchecked-track-color: "var(--foreground-color)"
+  switch-unchecked-color: "var(--foreground-color)"
   switch-checked-track-color: "var(--accent-color)"
   switch-checked-color: "var(--accent-color)"
 
