@@ -20,4 +20,6 @@ Here's what the screens look like right now:
 ![Switches](switches.png)
 Note that the alarm notification and Recycle Bin are on conditional cards and only show when needed
 ![Media](media.png)
+![Upcoming Media](upcoming_media.png)
 ![Transport](transport.png)
+![Corona Virus](covid19.png)
