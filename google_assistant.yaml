@@ -25,6 +25,9 @@ entity_config:
   switch.sonoff30898:
     room: office
     expose: true
+  switch.sonoff40851:
+    room: lounge room
+    expose: true
   switch.sonoff51083:
     room: house
     expose: true
