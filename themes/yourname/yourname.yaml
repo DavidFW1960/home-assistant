@@ -8,6 +8,7 @@ yourname:
   primary-background-color: "#141A32"
   secondary-background-color: "#000000"
   divider-color: "#3B4C8B"
+  markdown-code-background-color: "#1E2747"
   ### Text ###
   primary-text-color: "#FFFFFF"
   secondary-text-color: "#4DA3FF"
@@ -36,7 +37,6 @@ yourname:
   ### Cards ###
   ha-card-border-radius: '20px' 
   paper-card-header-color: "#FFFFFF"
-  #paper-card-background-color: "#1E2747"
   paper-card-background-color: "rgba(0, 0, 0, 0.6)"
   paper-listbox-background-color: var(--primary-background-color)
   ### Toggles ###
