@@ -112,6 +112,8 @@ sensor:
             {{ states('sensor.bom_gosford_fire_danger_1') }}
             {%- endif -%}
 
+# Beaufort
+# https://en.wikipedia.org/wiki/Beaufort_scale
       beaufort:
         value_template: >
             {%- if states('sensor.bom_gosford_wind_speed_kmh') | float  >= 118 -%}
@@ -142,6 +144,8 @@ sensor:
             0
             {%- endif -%}
 
+# Heatindex
+# https://en.wikipedia.org/wiki/Heat_index
       heatindex:
         unit_of_measurement: °C
         device_class: temperature
