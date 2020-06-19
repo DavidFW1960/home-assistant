@@ -459,101 +459,147 @@ automation:
 
 homeassistant:
   customize:
+    package.node_anchors:
+      common: &common
+        package: "sysmonitor"
 
     sensor.disk_use:
       friendly_name: Disk Used
+      <<: *common
     sensor.disk_free:
       friendly_name: Disk Free
+      <<: *common
     sensor.disk_use_percent:
       friendly_name: Percent Disk Used
+      <<: *common
     sensor.memory_use_percent:
       friendly_name: Percent Memory Used
+      <<: *common
     sensor.memory_use:
       friendly_name: Memory Used
+      <<: *common
     sensor.memory_free:
       friendly_name: Memory Free
+      <<: *common
     sensor.swap_use_percent:
       friendly_name: Percent Swap Used
+      <<: *common
     sensor.load_1m:
       friendly_name: 1m Load
+      <<: *common
     sensor.load_5m:
       friendly_name: 5m Load
+      <<: *common
     sensor.load_15m:
       friendly_name: 15m Load
+      <<: *common
     sensor.load:
       friendly_name: Load Averages
       icon: mdi:memory
+      <<: *common
     sensor.processor_use:
       friendly_name: Processor Used
+      <<: *common
     sensor.ipv4_address:
       friendly_name: IPv4 Address
+      <<: *common
     sensor.wan_ip_address:
       friendly_name: WAN IP Address
       icon: mdi:server-network
+      <<: *common
     sensor.network_in_eno1:
       friendly_name: Network In
+      <<: *common
     sensor.network_out_eno1:
       friendly_name: Network Out
+      <<: *common
     sensor.last_boot:
       friendly_name: Last Boot
       device_class: timestamp
       icon: mdi:clock
+      <<: *common
     sensor.systemuptime:
       friendly_name: Since Last Boot
       icon: mdi:clock
+      <<: *common
     sensor.last_successful_authentication:
       friendly_name: Last Successful Authentication
       icon: mdi:shield-check
+      <<: *common
     sensor.memory:
       friendly_name: Memory % Use Stats
       icon: mdi:memory
+      <<: *common
     sensor.processor:
       friendly_name: Processor % Use Stats
       icon: mdi:memory
+      <<: *common
     sensor.artisan_software_version:
       icon: mdi:coffee
+      <<: *common
     sensor.fritz_netmonitor:
       friendly_name: Fritz Net Monitor
+      <<: *common
     sensor.hass_current_beta_version:
       icon: mdi:beta
+      <<: *common
     sensor.hass_current_dev_version:
       icon: mdi:alpha
+      <<: *common
     sensor.hass_installed_version:
       icon: mdi:approval
+      <<: *common
     sensor.cpu_temperature:
       icon: mdi:thermometer
+      <<: *common
     sensor.sonarr_memory:
       friendly_name: Sonarr Memory Used
       icon: mdi:television-classic
+      <<: *common
     sensor.radarr_memory:
       friendly_name: Radarr Memory Used
       icon: mdi:filmstrip
+      <<: *common
     sensor.sabnzbd_memory:
       friendly_name: Sabnzbd Memory Used
       icon: mdi:kodi
+      <<: *common
     sensor.sabnzbd_status:
       icon: mdi:download
+      <<: *common
     sensor.sabnzbd_queue:
       icon: mdi:download
+      <<: *common
     sensor.sabnzbd_queue_count:
       icon: mdi:download
+      <<: *common
     sensor.sabnzbd_speed:
       icon: mdi:speedometer
+      <<: *common
     sensor.sabnzbd_left:
       icon: mdi:download
+      <<: *common
     sensor.sabnzbd_disk:
       icon: mdi:harddisk
+      <<: *common
     sensor.sabnzbd_disk_free:
       icon: mdi:harddisk
+      <<: *common
     sensor.sabnzbd_daily_total:
       icon: mdi:disc
+      <<: *common
     sensor.sabnzbd_weekly_total:
       icon: mdi:disc
+      <<: *common
     sensor.sabnzbd_monthly_total:
       icon: mdi:disc
+      <<: *common
     sensor.sabnzbd_total:
       icon: mdi:disc
+      <<: *common
     sensor.speedtest_download_filtered:
       icon: mdi:speedometer
+      <<: *common
     sensor.speedtest_upload_filtered:
       icon: mdi:speedometer
+      <<: *common

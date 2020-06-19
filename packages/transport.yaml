@@ -18,6 +18,18 @@ homeassistant:
     sensor.trainmonitor2:
       icon: mdi:train
       <<: *common
+    sensor.kariong_gosford:
+      icon: mdi:bus
+      <<: *common
+    sensor.gosford_kariong:
+      icon: mdi:bus
+      <<: *common
+    sensor.central_gosford:
+      icon: mdi:train
+      <<: *common
+    sensor.gosford_central:
+      icon: mdi:train
+      <<: *common
 
 
 sensor:
