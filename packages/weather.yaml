@@ -142,6 +142,37 @@ sensor:
             0
             {%- endif -%}
 
+      heatindex:
+        unit_of_measurement: °C
+        device_class: temperature
+        value_template: > 
+            {% set T = states('sensor.bom_gosford_air_temp_c') | float %}
+            {% set R = states('sensor.bom_gosford_relative_humidity') | float %}
+            {% set c1 = -8.78469475556 %}
+            {% set c2 = 1.61139411 %}
+            {% set c3 = 2.33854883889 %}
+            {% set c4 = -0.14611605 %}
+            {% set c5 = -0.012308094 %}
+            {% set c6 = -0.0164248277778 %}
+            {% set c7 = 0.002211732 %}
+            {% set c8 = 0.00072546 %}
+            {% set c9 = -0.000003582 %}
+            {% set HI = c1 + (c2 * T ) + (c3 * R) + ( c4 * T * R ) + ( c5 * T**2 ) + ( c6 * R**2 ) + ( c7 * T**2 * R ) + ( c8 * T * R**2 ) + ( c9 * T**2 * R**2 ) %} 
+            {{ HI | round }}
+      heatindexrating:
+        value_template: >
+            {%- if states('sensor.heatindex') | float  >= 54 -%}
+            Extreme danger: heat stroke imminent
+            {%- elif states('sensor.heatindex') | float  >= 41 -%}
+            Danger: cramps, exhaustion heat stroke probable
+            {%- elif states('sensor.heatindex') | float  >= 32 -%}
+            Extreme caution: cramps and exhaustion possible
+            {%- elif states('sensor.heatindex') | float  >= 26 -%}
+            Caution: fatigue possible
+            {%- else -%}
+            Normal
+            {%- endif -%}
+
       bom_forecast_0:
         entity_id:
           - sensor.bom_today_max
@@ -373,4 +404,12 @@ homeassistant:
     sensor.bom_fire_danger:
       friendly_name: Fire Danger
       icon: mdi:fire
+      <<: *common
+    sensor.heatindex:
+      friendly_name: Heat Index
+      icon: mdi:weather-sunny-alert
+      <<: *common
+    sensor.heatindexrating:
+      friendly_name: Heat Index Rating
+      icon: mdi:weather-sunny-alert
       <<: *common

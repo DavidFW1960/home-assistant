@@ -700,6 +700,8 @@ views:
           - type: 'custom:config-template-card'
             variables:
               - states['sensor.beaufort'].state
+              - states['sensor.heatindex'].state
+              - states['sensor.heatindexrating'].state
             entities:
               - sensor.bom_forecast_0
               - sensor.bom_gosford_air_temp_c
@@ -714,6 +716,8 @@ views:
               - sensor.bom_gosford_wind_speed_kt
               - sensor.bom_gosford_wind_gust_kt
               - sensor.beaufort
+              - sensor.heatindex
+              - sensor.heatindexrating
             card:
               type: 'custom:hui-entities-card'
               title: Weather from BOM Australia
@@ -733,6 +737,8 @@ views:
                 - entity: sensor.bom_gosford_wind_gust_kt
                 - entity: sensor.beaufort
                   name: "${'Beaufort force:' + '\xa0'.repeat(2) + (vars[0] == 12 ? 'Hurricane Force' : vars[0] == 11 ? 'Violent Storm' : vars[0] == 10 ? 'Storm, whole gale' : vars[0] == 9 ? 'Strong/severe gale' : vars[0] == 8 ? 'Gale/ fresh gale' : vars[0] == 7 ? 'High wind, moderate/near gale' : vars[0] == 6 ? 'Strong breeze' : vars[0] == 5 ? 'Fresh breeze' : vars[0] == 4 ? 'Moderate breeze' : vars[0] == 3 ? 'Gentle breeze' : vars[0] == 2 ? 'Light breeze' : vars[0] == 1 ? 'Light air' : 'Calm')}"
+                - entity: sensor.heatindex
+                  name: "${'Heat Index:' + '\xa0'.repeat(2) + vars[2]}"
           - type: entities
             title: BOM Forecast
             show_header_toggle: false
@@ -852,13 +858,19 @@ views:
           - type: 'custom:config-template-card'
             variables:
               - states['sensor.beaufort'].state
+              - states['sensor.heatindex'].state
+              - states['sensor.heatindexrating'].state
             entities:
               - sensor.beaufort
+              - sensor.heatindex
+              - sensor.heatindexrating
             card:
               type: 'custom:hui-entities-card'
               entities:
                 - entity: sensor.beaufort
                   name: "${'Beaufort force:' + '\xa0'.repeat(2) + (vars[0] == 12 ? 'Hurricane Force' : vars[0] == 11 ? 'Violent Storm' : vars[0] == 10 ? 'Storm, whole gale' : vars[0] == 9 ? 'Strong/severe gale' : vars[0] == 8 ? 'Gale/ fresh gale' : vars[0] == 7 ? 'High wind, moderate/near gale' : vars[0] == 6 ? 'Strong breeze' : vars[0] == 5 ? 'Fresh breeze' : vars[0] == 4 ? 'Moderate breeze' : vars[0] == 3 ? 'Gentle breeze' : vars[0] == 2 ? 'Light breeze' : vars[0] == 1 ? 'Light air' : 'Calm')}"
+                - entity: sensor.heatindex
+                  name: "${'Heat Index:' + '\xa0'.repeat(2) + vars[2]}"
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 48
