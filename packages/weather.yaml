@@ -149,7 +149,8 @@ sensor:
       heatindex:
         unit_of_measurement: °C
         device_class: temperature
-        value_template: > 
+        value_template: >
+            {%- if states('sensor.bom_gosford_air_temp_c') | float > 27 and states('sensor.bom_gosford_relative_humidity') | float > 40 -%}
             {% set T = states('sensor.bom_gosford_air_temp_c') | float %}
             {% set R = states('sensor.bom_gosford_relative_humidity') | float %}
             {% set c1 = -8.78469475556 %}
@@ -163,9 +164,14 @@ sensor:
             {% set c9 = -0.000003582 %}
             {% set HI = c1 + (c2 * T ) + (c3 * R) + ( c4 * T * R ) + ( c5 * T**2 ) + ( c6 * R**2 ) + ( c7 * T**2 * R ) + ( c8 * T * R**2 ) + ( c9 * T**2 * R**2 ) %} 
             {{ HI | round }}
+            {%- else -%}
+            n/a
+            {%- endif -%}
       heatindexrating:
         value_template: >
-            {%- if states('sensor.heatindex') | float  >= 54 -%}
+            {%- if states('sensor.heatindex') == 'n/a' -%}
+            Out of range
+            {%- elif states('sensor.heatindex') | float  >= 54 -%}
             Extreme danger: heat stroke imminent
             {%- elif states('sensor.heatindex') | float  >= 41 -%}
             Danger: cramps, exhaustion heat stroke probable

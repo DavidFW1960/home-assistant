@@ -5,42 +5,135 @@ automation:
     - platform: time
       at: '07:00:00'
     - platform: time
+      at: '07:15:00'
+    - platform: time
       at: '08:00:00'
+    - platform: time
+      at: '12:00:00'
     - platform: time
       at: '12:30:00'
     - platform: time
+      at: '14:00:00'
+    - platform: time
       at: '18:30:00'
+    - platform: time
+      at: '19:00:00'
+    - platform: time
+      at: '20:00:00'
+    - entity_id: person.liz
+      from: 'not_home'
+      platform: state
+      to: 'home'
     condition:
-      condition: and
+    - condition: or
       conditions:
+      - condition: and
+        conditions:
         - condition: state
           entity_id: 'input_boolean.homeandawayauto'
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.lizcovid
+          state: 'off'
+        - condition: or
+          conditions:
+            - condition: template
+              value_template: "{{ now().strftime('%H:%M') == '07:00' and now().weekday() < 5  and (states('input_boolean.holiday') == 'off') }}"
+            - condition: template
+              value_template: "{{ now().strftime('%H:%M') == '08:00' }}"
+            - condition: template
+              value_template: "{{ now().strftime('%H:%M') == '12:30' and now().weekday() < 5 }}"
+            - condition: template
+              value_template: "{{ now().strftime('%H:%M') == '14:00' and now().weekday() > 4 }}"
+            - condition: template
+              value_template: "{{ now().strftime('%H:%M') == '18:30' }}" 
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: 'input_boolean.homeandawayauto'
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.lizcovid
           state: 'on'
         - condition: or
           conditions:
             - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '07:00' and now().weekday()
-                < 5  and (states('input_boolean.holiday') == 'off') }}"
+              value_template: "{{ now().strftime('%H:%M') == '07:00' and now().weekday() < 5  and (states('input_boolean.holiday') == 'off') }}"
+            - condition: template
+              value_template: "{{ now().strftime('%H:%M') == '07:15' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
             - condition: template
               value_template: "{{ now().strftime('%H:%M') == '08:00' }}"
             - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '12:30' }}"
+              value_template: "{{ now().strftime('%H:%M') == '12:00' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
             - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '18:30' }}" 
+              value_template: "{{ now().strftime('%H:%M') == '14:00' and now().weekday() > 4 }}"
+            - condition: template
+              value_template: "{{ now().strftime('%H:%M') == '19:00' and (states('input_boolean.overtime') == 'off') }}"
+            - condition: template
+              value_template: "{{ now().strftime('%H:%M') == '19:00' and now().weekday() > 4 }}"
+            - condition: template
+              value_template: "{{ now().strftime('%H:%M') == '20:00' and (states('input_boolean.overtime') == 'on') and now().weekday() < 5 }}"
+            - condition: and
+              conditions:
+                - condition: template
+                  value_template: "{{ now().weekday() < 5 }}"
+                - condition: time
+                  after: '18:00:00'
+                  before: '19:00:00'
+                - condition: state
+                  entity_id: person.liz
+                  state: 'home'
     action:
     - service: switch.turn_on
       data:
         entity_id: switch.sonoff12914
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: "{{ now().weekday() < 5 }}"
+        - condition: time
+          after: '18:00:00'
+          before: '19:00:00'
+        - condition: state
+          entity_id: input_boolean.lizcovid
+          state: 'on'
+        - condition: state
+          entity_id: person.liz
+          state: 'home'      
+    - service: notify.david_ios_notify
+      data:
+        message: 'Coffee Maker On'
+        title: 'Liz is home'
   - id: '1507434167221'
     alias: Coffee Maker Off
     trigger:
     - platform: time
+      at: '08:30:00'
+    - platform: time
       at: '10:30:00'
+    - platform: time
+      at: '11:00:00'
     - platform: time
       at: '14:00:00'
     - platform: time
+      at: '16:00:00'
+    - platform: time
       at: '22:00:00'
-    condition: []
+    condition:
+      condition: or
+      conditions:
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '08:30' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '10:30' and now().weekday() < 5  and (states('input_boolean.holiday') == 'off') and (states('input_boolean.lizcovid') == 'off') }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '11:00' and now().weekday() > 4  }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '14:00' and now().weekday() < 5  and (states('input_boolean.holiday') == 'off') }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '16:00' }}"
+      - condition: template
+        value_template: "{{ now().strftime('%H:%M') == '22:00' }}"
     action:
     - service: switch.turn_off
       data:
@@ -345,6 +438,9 @@ automation:
     trigger:
     - entity_id: sensor.artisan_events
       platform: state
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.artisan_events') != 'unavailable' }}"
     action:
     - service: notify.david_ios_notify
       data_template:
@@ -410,4 +506,43 @@ automation:
         data_template:
           message: "Update Available"
           title: "Addons"
-  
+  - id: '1593407614869'
+    alias: Is Liz at Work or Home?
+    trigger:
+    - at: '09:00:00'
+      platform: time
+    condition:
+    - condition: template
+      value_template: "{{ now().strftime('%H:%M') == '09:00' and now().weekday() == 1 }}"
+    action:
+    - data:
+        message: Is Liz Home or at Work today?
+      service: notify.david_ios_notify
+  - id: 'covidon'
+    alias: Liz at Work
+    trigger:
+    - at: '00:00:00'
+      platform: time
+    condition:
+    - condition: template
+      value_template: "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 1 }}"
+    action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.lizcovid
+    - data:
+        message: Liz is at Work today. Covid-Liz is On.
+      service: notify.david_ios_notify
+  - id: 'covidoff'
+    alias: Liz at Home
+    trigger:
+    - at: '00:00:00'
+      platform: time
+    condition:
+    - condition: template
+      value_template: "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 2 }}"
+    action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.lizcovid
+    - data:
+        message: Liz is at Home today. Covid-Liz is Off.
+      service: notify.david_ios_notify

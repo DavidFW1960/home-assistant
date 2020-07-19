@@ -47,10 +47,11 @@ Green Dark Mode:
   label-badge-gray: "#5F6267"
 
   # Cards
+  card-background-color: "#252629"
   ha-card-border-radius: "10px"
   ha-card-box-shadow: 0px
-  paper-dialog-background-color: "#252629"
-  paper-card-background-color: var(--paper-dialog-background-color)
+  paper-dialog-background-color: var(--card-background-color)
+  paper-card-background-color: var(--card-background-color)
   paper-listbox-background-color: "#1C1D21"
   # Switches
   switch-checked-button-color: "#45AA79"
@@ -70,3 +71,5 @@ Green Dark Mode:
   material-background-color: var(--secondary-background-color)
   material-secondary-background-color: var(--primary-background-color)
   mdc-theme-surface: var(--secondary-background-color)
+  # HACS
+  hacs-chip-background-color: var(--primary-color)

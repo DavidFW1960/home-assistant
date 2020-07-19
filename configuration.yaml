@@ -183,6 +183,11 @@ sensor:
   - platform: authenticated
     enable_notification: true
     provider: 'ipapi'
+    exclude:
+      - !secret my_ipv4_network
+      - fd00::/8
+      - !secret zerotier_network
+      - !secret my_ipv6_network
 
 # HERE Travel Time
   - platform: here_travel_time
@@ -386,6 +391,8 @@ input_boolean:
     name: Overtime
   holiday:
     name: Holiday
+  lizcovid:
+    name: Liz Home or Work
   retrigger:
     name: Retrigger Docker Containers Restart
 
@@ -393,15 +400,6 @@ input_boolean:
 shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
-
-# Home Assistant Podcasts on gpodder
-#gpodder:
-#  username: !secret gpodder_user
-#  password: !secret gpodder_password
-#  sensor:
-#    - enabled: true
-#      name: gPodder
-#      device: homeassistant
 
 media_player:
   - platform: onkyo

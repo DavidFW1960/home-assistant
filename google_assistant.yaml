@@ -46,6 +46,9 @@ entity_config:
   input_boolean.holiday:
     room: kitchen
     expose: true
+  input_boolean.lizcovid:
+    room: house
+    expose: true
   switch.harmony:
     room: lounge room
     expose: true

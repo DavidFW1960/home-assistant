@@ -211,6 +211,7 @@ script:
       data_template:
         message: 'Addons Restarted'
         title: 'Addons Notification'
+# Home Assistant Reload Configuration Components
   coreconfigreload:
     alias: Reload Core
     sequence:
@@ -318,6 +319,54 @@ script:
       - service: notify.html5_notify
         data_template:
           message: 'Input_Boolean Reloaded'
+          title: 'Reload Notification'
+  zonesreload:
+    alias: Reload Zones
+    sequence:
+      - service: zone.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Zones Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Zones Reloaded'
+          title: 'Reload Notification'
+  inputtextreload:
+    alias: Reload Input Text
+    sequence:
+      - service: input_text.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Input_Text Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Input_Text Reloaded'
+          title: 'Reload Notification'
+  inputnumbersreload:
+    alias: Reload Input Numbers
+    sequence:
+      - service: input_number.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Input_Number Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Input_Number Reloaded'
+          title: 'Reload Notification'
+  inputdatetimereload:
+    alias: Reload Input Date-Time
+    sequence:
+      - service: input_datetime.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Input Date Time Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Input Date Time Reloaded'
           title: 'Reload Notification'
   restartvscode:
     alias: Restart VSCode
@@ -486,3 +535,11 @@ script:
     - data:
         entity_id: light.fan_light
       service: light.turn_on
+
+# Repack Database
+  recorder_repack_db:
+    alias: Recorder Repack Database
+    sequence:
+    - data:
+        repack: 'yes'
+      service: recorder.purge

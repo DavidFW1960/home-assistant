@@ -4,15 +4,6 @@
 #    name: Superloop CVC Capacity
 #    still_image_url: !secret superloop_cvc
 
-
-# CPU Resources Used & Temperature, Fritz!Box, Speedtest
-# Speedtest
-speedtestdotnet:
-  scan_interval: '00:30:00'
-  monitored_conditions:
-    - ping
-    - download
-    - upload
 # Hadockermon
 switch:
   - platform: rest
@@ -54,6 +45,7 @@ switch:
 
 sensor:
 
+# CPU Resources Used & Temperature, Fritz!Box
 # Speedtest Sensor Filters
   - platform: filter
     name: "Speedtest Download Filtered"

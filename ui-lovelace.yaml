@@ -359,7 +359,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states(config.entity) != 'v1.26.0' %}
+                    {% if states(config.entity) != 'v1.26.2' %}
                       rgb(255, 223, 0)
                     {% else %}
                       var(--disabled-text-color)
@@ -448,6 +448,13 @@ views:
                 tap_action:
                   action: call-service
                   service: script.updateversions
+              - type: entity-button
+                entity: script.recorder_repack_db
+                icon: mdi:script-text-outline
+                name: Repack Database
+                tap_action:
+                  action: call-service
+                  service: script.1593403010853
           - type: custom:mini-graph-card
             hours_to_show: 24
             points_per_hour: 4
@@ -860,10 +867,12 @@ views:
               - states['sensor.beaufort'].state
               - states['sensor.heatindex'].state
               - states['sensor.heatindexrating'].state
+              - states['sensor.bom_gosford_air_temp_c'].attributes['last_update']
             entities:
               - sensor.beaufort
               - sensor.heatindex
               - sensor.heatindexrating
+              - sensor.bom_gosford_air_temp_c
             card:
               type: 'custom:hui-entities-card'
               entities:
@@ -871,6 +880,8 @@ views:
                   name: "${'Beaufort force:' + '\xa0'.repeat(2) + (vars[0] == 12 ? 'Hurricane Force' : vars[0] == 11 ? 'Violent Storm' : vars[0] == 10 ? 'Storm, whole gale' : vars[0] == 9 ? 'Strong/severe gale' : vars[0] == 8 ? 'Gale/ fresh gale' : vars[0] == 7 ? 'High wind, moderate/near gale' : vars[0] == 6 ? 'Strong breeze' : vars[0] == 5 ? 'Fresh breeze' : vars[0] == 4 ? 'Moderate breeze' : vars[0] == 3 ? 'Gentle breeze' : vars[0] == 2 ? 'Light breeze' : vars[0] == 1 ? 'Light air' : 'Calm')}"
                 - entity: sensor.heatindex
                   name: "${'Heat Index:' + '\xa0'.repeat(2) + vars[2]}"
+                - entity: sensor.bom_gosford_air_temp_c
+                  name: "${'BOM Update:' + '\xa0'.repeat(2) + ( new Date(vars[3]).toLocaleTimeString('en-US') ) + '\xa0'.repeat(2) + 'Current Temp' }"
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 48
@@ -1338,7 +1349,7 @@ views:
                   service: script.firmwarealltasmota
               - type: entity-button
                 entity: script.startupalltasmota
-                icon: mdi:windows
+                icon: mdi:microsoft-windows
                 name: Status
                 tap_action:
                   action: call-service
@@ -1417,6 +1428,23 @@ views:
                   service: input_boolean.toggle
                   service_data:
                     entity_id: input_boolean.holiday
+              - type: custom:button-card
+                entity: input_boolean.lizcovid
+                icon: mdi:briefcase-check-outline
+                color_type: icon
+                state:
+                  - value: 'off'
+                    color: green
+                    name: Liz @ Home
+                  - value: 'on'
+                    color: red
+                    name: Liz @ Work
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.lizcovid
           - type: entities
             title: Harmony Remote
             state_color: true
@@ -1449,6 +1477,7 @@ views:
                   - input_boolean.homeandawayauto
                   - input_boolean.overtime
                   - input_boolean.holiday
+                  - input_boolean.lizcovid
           - type: entities
             title: Security Automations
             show_header_toggle: false
@@ -1639,6 +1668,36 @@ views:
                 tap_action:
                   action: call-service
                   service: script.inputbooleanreload
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-home-80.png
+                show_entity_picture: true
+                name: Zone
+                tap_action:
+                  action: call-service
+                  service: script.zonesreload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-rename-80.png
+                show_entity_picture: true
+                name: Text
+                tap_action:
+                  action: call-service
+                  service: script.inputtextreload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-input-80.png
+                show_entity_picture: true
+                name: Numbers
+                tap_action:
+                  action: call-service
+                  service: script.inputnumbersreload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-time-span-80.png
+                show_entity_picture: true
+                name: Date Time
+                tap_action:
+                  action: call-service
+                  service: script.inputdatetimesreload
           - type: entities
             title: Automations, Scenes & Scripts
             show_header_toggle: false
@@ -1916,12 +1975,12 @@ views:
                   power_state: false
                 info: scroll
                 source: full
-#             - entity: sensor.gpodder
-#               type: custom:podcast-card
-#               name: Home Assistant Podcasts
-#               default_target: media_player.office_speaker
-#               show_player: true
-#               custom_player: true
+              - entity: sensor.gpodder
+                type: custom:podcast-card
+                name: Home Assistant Podcasts
+                default_target: media_player.office_speaker
+                show_player: true
+                custom_player: true
           - type: markdown
             style: |
               h2 {
@@ -2205,12 +2264,12 @@ views:
               - entity: sensor.worldwide_coronavirus_confirmed
                 icon: 'mdi:account-box'
                 name: Confirmed
-#             - entity: sensor.worldwide_coronavirus_current
-#               icon: 'mdi:biohazard'
-#               name: Current
-#             - entity: sensor.worldwide_coronavirus_recovered
-#               icon: 'mdi:calendar-check-outline'
-#               name: Recovered
+              - entity: sensor.worldwide_coronavirus_current
+                icon: 'mdi:biohazard'
+                name: Current
+              - entity: sensor.worldwide_coronavirus_recovered
+                icon: 'mdi:calendar-check-outline'
+                name: Recovered
               - entity: sensor.worldwide_coronavirus_deaths
                 icon: 'mdi:grave-stone'
                 name: Deaths

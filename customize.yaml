@@ -92,7 +92,7 @@ switch.ha_dockermon_radarr:
   icon: mdi:filmstrip
 switch.ha_dockermon_lazylibrarian:
   friendly_name: Lazy Librarian
-  icon: mdi:library-books
+  icon: mdi:filmstrip-box
 switch.ha_dockermon_portainer:
   friendly_name: Portainer
   icon: mdi:docker
@@ -238,7 +238,7 @@ sensor.radarr_memory_average:
   icon: mdi:filmstrip
 sensor.lazylibrarian_memory_average:
   friendly_name: Lazy Librarian
-  icon: mdi:library-books
+  icon: mdi:filmstrip-box
 sensor.portainer_memory_average:
   friendly_name: Portainer
   icon: mdi:docker
