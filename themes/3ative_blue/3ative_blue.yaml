@@ -10,11 +10,12 @@
   accent-color: "#3ba1a5" # Circle Plus Button Color
 
   ### Cards ###
-  paper-card-background-color: "rgba(0, 0, 0, 0.6)"  # Cards Background Colour
-  ch-background: "rgba(0, 0, 0, 0.6)"  # Top bar
+  ch-background: "rgba(0, 0, 0, 0.6)"  # fix for 0.113
+  mdc-theme-surface: "rgb(16 44 75)"  # Pop up card BG fix for 0.113
   ha-card-border-radius: 3px
-  card-background-color: "#1b3a60"
+  card-background-color: "rgba(0, 0, 0, 0.6)" # Cards Background Colour
   markdown-code-background-color: "#112640"
+  material-background-color: var(--mdc-theme-surface) #Dropdown Menu BG
 
   ### Text ###
   primary-text-color: "#c5c5c5" # Main Text Colour
@@ -63,7 +64,7 @@
   paper-item-icon-active-color: var(--state-icon-active-color)
 
   ha-paper-slider-pin-font-size: 15px
-  background-image: 'center / cover no-repeat url("/local/3ative_bg.jpg") fixed'
+  background-image: 'url("/local/3ative_bg.jpg") top center/cover no-repeat fixed '
 
   paper-input-container-focus-color: "white"
 
@@ -73,3 +74,4 @@
   label-badge-green: "#0DA035"
   label-badge-yellow: "#f4b400"
   label-badge-grey: var(--paper-grey-500)
+  # accent-color: "#ff0000"

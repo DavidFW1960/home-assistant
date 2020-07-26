@@ -51,7 +51,6 @@ Green Dark Mode:
   ha-card-border-radius: "10px"
   ha-card-box-shadow: 0px
   paper-dialog-background-color: var(--card-background-color)
-  paper-card-background-color: var(--card-background-color)
   paper-listbox-background-color: "#1C1D21"
   # Switches
   switch-checked-button-color: "#45AA79"
