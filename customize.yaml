@@ -300,3 +300,5 @@ sensor.supervisor_installed:
 sensor.beaufort:
   friendly_name: Beaufort Rating
   icon: mdi:weather-windy
+sensor.cert_expiry_timestamp:
+  friendly_name: SSL Certificate Expires

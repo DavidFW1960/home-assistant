@@ -18,12 +18,20 @@ views:
     cards:
       - type: vertical-stack
         cards:
-          - type: entities
-            title: System Information
-            show_header_toggle: false
+          - type: 'custom:config-template-card'
             entities:
               - sensor.last_successful_authentication
               - sensor.ssl_certificate_expiry
+              - sensor.cert_expiry_timestamp
+            card:
+              type: 'custom:hui-entities-card'
+              title: System Information
+              show_header_toggle: false
+              entities:
+                - entity: sensor.last_successful_authentication
+                - entity: sensor.ssl_certificate_expiry
+                - entity: sensor.cert_expiry_timestamp
+                  name: "${'Certificate Expiry Time'}"
           - type: entities
             show_header_toggle: false
             entities:
