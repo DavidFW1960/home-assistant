@@ -31,7 +31,8 @@ views:
                 - entity: sensor.last_successful_authentication
                 - entity: sensor.ssl_certificate_expiry
                 - entity: sensor.cert_expiry_timestamp
-                  name: "${'Certificate Expiry Time'}"
+                  name: "${'Certificate Expiry Date'}"
+                  format: date
           - type: entities
             show_header_toggle: false
             entities:
