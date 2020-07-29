@@ -78,3 +78,6 @@ sundown:
   # Google colors
   google-red-500: "#E45E65"
   google-green-500: "#39E949"
+  
+  # Code background
+  markdown-code-background-color: "#323232"
