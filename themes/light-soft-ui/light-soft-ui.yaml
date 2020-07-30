@@ -1,0 +1,249 @@
+# Thanks @JuanMTech, @thomasloven, and @N-l1.
+Light Soft UI:
+  # Header Colors
+  app-header-background-color: "#f3f5f7"
+  app-header-text-color: "#000"
+  # Interface Colors
+  primary-color: "#5F9BEA"
+  light-primary-color: var(--primary-color)
+  primary-background-color: "#f3f5f7"
+  secondary-background-color: var(--primary-background-color)
+  divider-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
+  # Text Colors
+  primary-text-color: "#4A4A4A"
+  secondary-text-color: "#5F6267"
+  text-primary-color: "#FFFFFF"
+  disabled-text-color: "#717171"
+  # Sidebar Menu Colors
+  sidebar-icon-color: "#555"
+  sidebar-text-color: "#555"
+  sidebar-background-color: "#f3f5f7"
+  sidebar-selected-background-color: var(--primary-background-color)
+  sidebar-selected-icon-color: "#5F9BEA"
+  sidebar-selected-text-color: var(--sidebar-selected-icon-color))
+  # State and Badge Colors
+  state-icon-color: "#5F6267"
+  state-icon-active-color: "#5F9BEA"
+  state-icon-unavailable-color: var(--disabled-text-color)
+  # Slider Colors
+  paper-slider-knob-color: "#5F9BD3"
+  paper-slider-knob-start-color: var(--paper-slider-knob-color)
+  paper-slider-pin-color: var(--paper-slider-knob-color)
+  paper-slider-active-color: var(--paper-slider-knob-color)
+  paper-slider-secondary-color: var(--light-primary-color)
+  # Label Colors
+  label-badge-background-color: "#F8FAF9"
+  label-badge-text-color: "#4D5575"
+  label-badge-red: "#C7484C"
+  label-badge-green: "#6DC071"
+  label-badge-blue: "#51AAD1"
+  label-badge-yellow: "#D9B757"
+  label-badge-gray: "#5F6267"
+  # Card Stuff + Colors
+  ha-card-border-radius: '15px'
+  ha-card-box-shadow: '-5.5px -5.5px 5.5px 0 rgba(255,255,255,.5), 5.5px 5.5px 5.5px 0 rgba(0,0,0,.03)'
+  paper-card-background-color: "rgba(255, 255, 255, 0.9)"
+  paper-listbox-background-color: "rgba(255, 255, 255, 0.9)"
+  # Switch Colors
+  switch-checked-button-color: "#5F9Bd3"
+  switch-checked-track-color: "#75a2d3"
+  switch-unchecked-button-color: "#5F6267"
+  switch-unchecked-track-color: "#888b91"
+  # Toggle Colors
+  paper-toggle-button-checked-button-color: var(--switch-checked-button-color)
+  paper-toggle-button-checked-bar-color: var(--switch-checked-track-color)
+  paper-toggle-button-unchecked-button-color: var(--switch-unchecked-button-color)
+  paper-toggle-button-unchecked-bar-color: var(--switch-unchecked-track-color)
+  # Table Colors
+  table-row-background-color: var(--primary-background-color)
+  table-row-alternative-background-color: var(--secondary-background-color)
+  data-table-background-color: var(--primary-background-color)
+  # Dropdown Colors
+  material-background-color: var(--paper-card-background-color)
+  material-secondary-background-color: var(--primary-background-color)
+  mdc-theme-surface: var(--paper-card-background-color)
+  # Card-mod
+  card-mod-theme: "Light Soft UI"
+  theme-red: firebrick
+  theme-green: forestgreen
+  theme-blue: deepskyblue
+  ha-label-badge-title-font-size: 1em
+  card-mod-card-yaml: |
+    hui-image:
+      $: |
+        img {
+          border-radius: 18px;
+        }
+    ha-gauge:
+      $: |
+        .dial {
+          stroke: white !important;
+        }
+    .: |
+      ha-card:not(.type-markdown) {
+        background-color: var(--primary-background-color);
+        border-radius: var(--ha-card-border-radius);
+      }
+      ha-card:not(.type-markdown):not(.type-custom-button-card):not(.type-entities):not(.type-custom-mod-card):not(.type-custom-bar-card):not(.type-history-graph) {
+        margin: 30px;
+        box-shadow: -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+      }
+      ha-card.type-custom-vacuum-card > .preview {
+        --primary-color: var(--primary-background-color);
+      }
+      ha-card.type-custom-vacuum-card > .preview > * {
+        color: var(--primary-text-color);
+      }
+      ha-card.type-custom-vacuum-card > .preview > .header > .battery > ha-icon {
+        color: var(--primary-text-color);
+      }
+      ha-card.type-custom-vacuum-card > .preview > .metadata > .vacuum-name {
+        color: var(--primary-text-color);
+      }
+      ha-card.type-picture-entity {
+        padding: 10px;
+      }
+      ha-card.type-picture-entity > .footer {
+        margin: 10px;
+        border-radius: 18px;
+      }
+      ha-card.type-entities, ha-card.type-custom-bar-card, ha-card.type-entity, ha-card.type-history-graph, ha-card.type-map {
+        box-shadow: none !important;
+        margin: 30px 20px;
+      }
+      ha-card > #states > div > * {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        width: 95%;
+        margin: 0 auto 0 5px;
+      }
+      ha-card > #states > div > *:not(hui-button-row):not(hui-input-select-entity-row):not(hui-input-number-entity-row):not(hui-input-text-entity-row) {
+        display: block;
+      }
+      ha-card.type-media-control, ha-card.type-media-control > * {
+        background-color: var(--primary-background-color) !important;
+        color: var(--secondary-text-color) !important;
+      }
+      ha-card > #states,
+      ha-card > .header-footer,
+      ha-card:not(.type-humidifier) > .content {
+        box-shadow: -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+        border-radius: var(--ha-card-border-radius);
+        margin: 12px;
+        padding: 10px;
+      }
+      ha-card.type-map > #root {
+        box-shadow: -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+        border-radius: var(--ha-card-border-radius);
+        margin: 12px;
+        padding: 10px;
+      }
+      ha-card.type-entity > .info {
+        padding: 16px;
+        box-shadow: -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+        border-radius: var(--ha-card-border-radius);
+        margin: 12px;
+      }
+      ha-card > .header-footer {
+        margin: 25px 12px;
+      }
+      ha-card > .card-header {
+        box-shadow: none;
+      }
+      ha-card > .card-header > .name {
+        text-align: center;
+        width: 100%;
+      }
+      ha-card > .card-header > hui-entities-toggle {
+        margin: 0 25px 0 -25px;
+      }
+      ha-card.type-custom-bar-card > .card-header,
+      ha-card.type-history-graph > .card-header,
+      ha-card.type-map > .card-header {
+        text-align: center;
+        width: 70%;
+        margin: 0 auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(359deg);
+        }
+      }
+      ha-icon[data-domain="fan"][data-state="on"] {
+        animation: spin 4s infinite linear;
+      }
+  card-mod-view: |
+    #badges {
+      width: 90%;
+      margin: 8px auto !important;
+    }
+    #columns {
+      flex-direction: column !important;
+      margin: 0 auto;
+      max-width: 500px;
+    }
+  card-mod-badge-yaml: |
+    .: |
+      :host {
+        border-radius: 5px;
+        padding: 11px 8px;
+        margin: 11px 12px 24px 12px;
+        display: inline-block;
+        --label-badge-blue: {% if not states(config.entity) %} var(--theme-blue);
+          {% elif is_state(config.entity, 'on') %} var(--theme-green);
+          {% elif is_state(config.entity, 'open') %} var(--theme-green);
+          {% elif is_state(config.entity, 'unlocked') %} var(--theme-green);
+          {% elif is_state(config.entity, 'off') %} var(--theme-red);
+          {% elif is_state(config.entity, 'closed') %} var(--theme-red);
+          {% elif is_state(config.entity, 'locked') %} var(--theme-red);
+          {% else %} var(--theme-blue); {% endif %}
+        --label-badge-red: teal;
+        box-shadow: -5px -5px 5px 0 rgba(255,255,255,.5), 5px 5px 5px 0 rgba(0,0,0,.03);
+      }
+    ha-state-label-badge:
+      $:
+        ha-label-badge:
+          $: |
+            .label-badge {
+              background: none !important;
+            }
+            .title {
+              -webkit-line-clamp: 1;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+            }
+  card-mod-more-info-yaml: |
+    $: |
+      .mdc-dialog {
+        backdrop-filter: blur(2px);
+        background: rgba(255, 255, 255, 0.35);
+      }
+      .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: var(--ha-card-border-radius);
+      }
+    ha-header-bar:
+      $: |
+        .mdc-top-app-bar {
+          background: none !important;
+        }
+  card-mod-row-yaml: |
+    "*:first-child":
+      $: |
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(359deg);
+          }
+        }
+        state-badge {
+          {% if config.entity.startswith('fan.') and is_state(config.entity, 'on') %}
+          animation: spin 4s infinite linear;
+          {% endif %}
+        }

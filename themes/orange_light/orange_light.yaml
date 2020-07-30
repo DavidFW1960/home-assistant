@@ -19,7 +19,7 @@ Orange light:
   primary-text-color: "#7c7d83"
   secondary-text-color: "#7c7d83"
   text-primary-color: "#FFFFFF"
-  disabled-text-color: "#717171"
+  disabled-text-color: "#BFBFBF"
   # Sidebar Menu
   sidebar-icon-color: var(--app-header-text-color)
   sidebar-text-color: '#7c7d83'
@@ -51,6 +51,7 @@ Orange light:
   ha-card-box-shadow: 1px 1px 5px 0px rgb(230, 230, 230)
   paper-dialog-background-color: var(--card-background-color)
   paper-listbox-background-color: var(--card-background-color)
+  paper-card-background-color: var(--card-background-color)
   # Switches
   switch-checked-button-color: "#DF6040"
   switch-checked-track-color: "#c44221"
@@ -68,3 +69,7 @@ Orange light:
   # Dropdowns
   material-background-color: var(--secondary-background-color)
   material-secondary-background-color: var(--primary-background-color)
+  # HACS
+  hacs-chip-background-color: var(--primary-color)
+  # Pre/Code
+  markdown-code-background-color: "#FDFBFE"

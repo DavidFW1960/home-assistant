@@ -51,6 +51,7 @@ Orange Dark:
   ha-card-box-shadow: 0px
   paper-dialog-background-color: var(--card-background-color)
   paper-listbox-background-color: "#282A2F"
+  paper-card-background-color: var(--card-background-color)
   # Switches
   switch-checked-button-color: "#DF6040"
   switch-checked-track-color: "#c44221"
@@ -69,3 +70,7 @@ Orange Dark:
   material-background-color: var(--secondary-background-color)
   material-secondary-background-color: var(--primary-background-color)
   mdc-theme-surface: var(--secondary-background-color)
+  # HACS
+  hacs-chip-background-color: var(--primary-color)
+  # Pre/Code
+  markdown-code-background-color: "#282A2F"

@@ -29,7 +29,7 @@ ux_goodie:
   paper-listbox-background-color: "var(--ha-card-background)"
   ha-card-border-radius: "15px"
   ha-card-background: "rgba(10, 10, 10, 0.87)"
-  paper-card-background-color: "var(--ha-card-background)"  # lovelace cards background
+  paper-card-background-color: "var(--ha-card-background)"  # lovelace cards background  # REMOVED IN HA 0.113 <---
   paper-dialog-background-color: "rgba(20, 20, 20, 0.95)"  # entity details background
 
 
@@ -78,6 +78,7 @@ ux_goodie:
   text-primary-color: "#FFF"
   disabled-text-color: "#BDBDBD"
   text-dark-color: "#FFF"
+  markdown-code-background-color: "#1A1A1A"
 
 
 ### OTHERS

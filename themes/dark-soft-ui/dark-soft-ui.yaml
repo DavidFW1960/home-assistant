@@ -1,0 +1,235 @@
+# Thanks @JuanMTech, @thomasloven, and @N-l1.
+Dark Soft UI:
+  # Header Colors
+  app-header-background-color: var(--primary-background-color)
+  app-header-text-color: var(--primary-text-color)
+  # Interface Colors
+  primary-color: "#4C3FF9"
+  light-primary-color: "#6F64FA"
+  primary-background-color: "#262938"
+  secondary-background-color: var(--primary-background-color)
+  divider-color: "#313549"
+  card-background-color: var(--paper-card-background-color)
+  # Text Colors
+  primary-text-color: "#F7F8FA"
+  secondary-text-color: "#00ECCA"
+  text-primary-color: "#FFFFFF"
+  disabled-text-color: "#616387"
+  # Sidebar Menu Colors
+  sidebar-icon-color: "#4C3FF9"
+  sidebar-text-color: "#F7F8FA"
+  sidebar-selected-background-color: var(--primary-background-color)
+  sidebar-selected-icon-color: var(--secondary-text-color)
+  sidebar-selected-text-color: var(--sidebar-selected-icon-color)
+  sidebar-background-color: var(--paper-listbox-background-color)
+  # State and Badge Colors
+  state-icon-color: "#00ECCA"
+  state-icon-active-color: "#F7AA1C"
+  state-icon-unavailable-color: var(--disabled-text-color)
+  # Slider Colors
+  paper-slider-knob-color: "#00ECCA"
+  paper-slider-knob-start-color: var(--paper-slider-knob-color)
+  paper-slider-pin-color: var(--paper-slider-knob-color)
+  paper-slider-active-color: var(--paper-slider-knob-color)
+  paper-slider-secondary-color: var(--light-primary-color)
+  # Label Colors
+  label-badge-background-color: "#2E2F40"
+  label-badge-text-color: "#F7F8FA"
+  label-badge-red: "#323346"
+  # Card Stuff + Colors
+  ha-card-border-radius: "15px"
+  ha-card-box-shadow: -5.5px -5.5px 5.5px 0 rgba(50, 50, 50,.5), 5.5px 5.5px 5.5px 0 rgba(0,0,0,.15)
+  paper-card-background-color: "#2E2F40"
+  paper-listbox-background-color: var(--primary-background-color)
+  # Switch Colors
+  paper-toggle-button-checked-button-color: "#4C3FF9"
+  paper-toggle-button-checked-bar-color: "#262938"
+  paper-toggle-button-unchecked-button-color: var(--paper-toggle-button-checked-button-color)
+  paper-toggle-button-unchecked-bar-color: "#262938"
+  # Table Colors
+  table-row-background-color: var(--primary-background-color)
+  table-row-alternative-background-color: var(--secondary-background-color)
+  # Card-mod
+  card-mod-theme: "Dark Soft UI"
+  theme-red: firebrick
+  theme-green: forestgreen
+  theme-blue: deepskyblue
+  ha-label-badge-title-font-size: 1em
+  card-mod-card-yaml: |
+    hui-image:
+      $: |
+        img {
+          border-radius: 18px;
+        }
+    ha-gauge:
+      $: |
+        .dial {
+          stroke: white !important;
+        }
+    .: |
+      ha-card:not(.type-markdown) {
+        background-color: var(--primary-background-color);
+        border-radius: var(--ha-card-border-radius);
+      }
+      ha-card:not(.type-markdown):not(.type-custom-button-card):not(.type-entities):not(.type-custom-mod-card):not(.type-custom-bar-card):not(.type-history-graph) {
+        margin: 30px;
+        box-shadow: -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+      }
+      ha-card.type-custom-vacuum-card > .preview {
+        --primary-color: var(--primary-background-color);
+      }
+      ha-card.type-custom-vacuum-card > .preview > * {
+        color: var(--primary-text-color);
+      }
+      ha-card.type-custom-vacuum-card > .preview > .header > .battery > ha-icon {
+        color: var(--primary-text-color);
+      }
+      ha-card.type-custom-vacuum-card > .preview > .metadata > .vacuum-name {
+        color: var(--primary-text-color);
+      }
+      ha-card.type-picture-entity {
+        padding: 10px;
+      }
+      ha-card.type-picture-entity > .footer {
+        margin: 10px;
+        border-radius: 18px;
+      }
+      ha-card.type-entities, ha-card.type-custom-bar-card, ha-card.type-entity, ha-card.type-history-graph, ha-card.type-map {
+        box-shadow: none !important;
+        margin: 30px 20px;
+      }
+      ha-card > #states > div > * {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        width: 95%;
+        margin: 0 auto 0 5px;
+      }
+      ha-card > #states > div > *:not(hui-button-row):not(hui-input-select-entity-row):not(hui-input-number-entity-row):not(hui-input-text-entity-row) {
+        display: block;
+      }
+      ha-card.type-media-control, ha-card.type-media-control > * {
+        background-color: var(--primary-background-color) !important;
+        color: var(--secondary-text-color) !important;
+      }
+      ha-card > #states,
+      ha-card > .header-footer,
+      ha-card:not(.type-humidifier) > .content {
+        box-shadow: -8px -8px 8px 0 rgba(50, 50, 50,.5), 8px 8px 8px 0 rgba(0,0,0,.15);
+        border-radius: var(--ha-card-border-radius);
+        margin: 12px;
+        padding: 10px;
+      }
+      ha-card.type-map > #root {
+        box-shadow: -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+        border-radius: var(--ha-card-border-radius);
+        margin: 12px;
+        padding: 10px;
+      }
+      ha-card.type-entity > .info {
+        padding: 16px;
+        box-shadow: -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+        border-radius: var(--ha-card-border-radius);
+        margin: 12px;
+      }
+      ha-card > .header-footer {
+        margin: 25px 12px;
+      }
+      ha-card > .card-header {
+        box-shadow: none;
+      }
+      ha-card > .card-header > .name {
+        text-align: center;
+        width: 100%;
+      }
+      ha-card > .card-header > hui-entities-toggle {
+        margin: 0 25px 0 -25px;
+      }
+      ha-card.type-custom-bar-card > .card-header,
+      ha-card.type-history-graph > .card-header,
+      ha-card.type-map > .card-header {
+        text-align: center;
+        width: 70%;
+        margin: 0 auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(359deg);
+        }
+      }
+      ha-icon[data-domain="fan"][data-state="on"] {
+        animation: spin 4s infinite linear;
+      }
+  card-mod-view: |
+    #badges {
+      width: 90%;
+      margin: 8px auto !important;
+    }
+    #columns {
+      flex-direction: column !important;
+      margin: 0 auto;
+      max-width: 500px;
+    }
+  card-mod-badge-yaml: |
+    .: |
+      :host {
+        border-radius: 5px;
+        padding: 11px 8px;
+        margin: 11px 12px 24px 12px;
+        display: inline-block;
+        --label-badge-blue: {% if not states(config.entity) %} var(--theme-blue);
+          {% elif is_state(config.entity, 'on') %} var(--theme-green);
+          {% elif is_state(config.entity, 'open') %} var(--theme-green);
+          {% elif is_state(config.entity, 'unlocked') %} var(--theme-green);
+          {% elif is_state(config.entity, 'off') %} var(--theme-red);
+          {% elif is_state(config.entity, 'closed') %} var(--theme-red);
+          {% elif is_state(config.entity, 'locked') %} var(--theme-red);
+          {% else %} var(--theme-blue); {% endif %}
+        --label-badge-red: teal;
+        box-shadow: -5px -5px 5px 0 rgba(50, 50, 50,.5), 5px 5px 5px 0 rgba(0,0,0,.15);
+      }
+    ha-state-label-badge:
+      $:
+        ha-label-badge:
+          $: |
+            .label-badge {
+              background: none !important;
+            }
+            .title {
+              -webkit-line-clamp: 1;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+            }
+  card-mod-more-info-yaml: |
+    $: |
+      .mdc-dialog {
+        backdrop-filter: blur(2px);
+        background: rgba(0, 0, 0, 0.35);
+      }
+      .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: var(--ha-card-border-radius);
+      }
+    ha-header-bar:
+      $: |
+        .mdc-top-app-bar {
+          background: none !important;
+        }
+  card-mod-row-yaml: |
+    "*:first-child":
+      $: |
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(359deg);
+          }
+        }
+        state-badge {
+          {% if config.entity.startswith('fan.') and is_state(config.entity, 'on') %}
+          animation: spin 4s infinite linear;
+          {% endif %}
+        }
