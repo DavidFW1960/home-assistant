@@ -112,7 +112,7 @@ input_select:
      - 'vaporwave-pink'
      - 'vintage'
      - 'yourname'
-    initial: 'Google Dark Theme'
+    initial: 'ios-dark-mode-blue-red'
     icon: 'mdi:palette'
 
 automation:
@@ -124,7 +124,7 @@ automation:
     action:
       service: frontend.set_theme
       data:
-        name: 'Google Dark Theme'
+        name: 'ios-dark-mode-blue-red'
   - id: 'changetheme'
     alias: 'System - Change Current Theme'
     trigger:
