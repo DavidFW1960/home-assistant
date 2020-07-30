@@ -54,11 +54,11 @@ views:
                   navigation_path: /tasmoadmin
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states('binary_sensor.tasmota_update_available') == 'on' %}
                       rgb(255, 223, 0)
                     {% else %}
-                      var(--disabled-text-color)
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -75,11 +75,11 @@ views:
               - entity: sensor.artisan_software_version
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity) != 'v2.4.0' %}
                       rgb(255, 223, 0)
                     {% else %}
-                      var(--disabled-text-color)
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -245,11 +245,11 @@ views:
                   navigation_path: /hassio/dashboard
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity) != states('sensor.current_ha_beta') %}
                       rgb(255, 223, 0)
                     {% else %}
-                      var(--disabled-text-color)
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -267,11 +267,11 @@ views:
                   navigation_path: /hassio/dashboard
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity) != states('sensor.current_supervisor_beta') %}
                       rgb(255, 223, 0)
                     {% else %}
-                      var(--disabled-text-color)
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -289,11 +289,11 @@ views:
                   navigation_path: /hassio/dashboard
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity) != states('sensor.current_dns_beta') %}
                       rgb(255, 223, 0)
                     {% else %}
-                      var(--disabled-text-color)
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -311,11 +311,11 @@ views:
                   navigation_path: /hassio/dashboard
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity) != states('sensor.current_audio_beta') %}
                       rgb(255, 223, 0)
                     {% else %}
-                      var(--disabled-text-color)
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -333,11 +333,11 @@ views:
                   navigation_path: /hassio/dashboard
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity) != states('sensor.current_cli_beta') %}
                       rgb(255, 223, 0)
                     {% else %}
-                      var(--disabled-text-color)
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -353,11 +353,11 @@ views:
                   navigation_path: /hassio/dashboard
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity) != states('sensor.current_multicast_latest') %}
                       rgb(255, 223, 0)
                     {% else %}
-                      var(--disabled-text-color)
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -367,11 +367,11 @@ views:
               - entity: sensor.docker_compose_version_available
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity) != 'v1.26.2' %}
                       rgb(255, 223, 0)
                     {% else %}
-                      var(--disabled-text-color)
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -397,9 +397,11 @@ views:
                   navigation_path: /hassio/dashboard
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity)|int > 0 %}
                       rgb(255, 223, 0)
+                    {% else %}
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -420,9 +422,11 @@ views:
                   navigation_path: /hacs/installed
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if states(config.entity)|int > 0 %}
                       rgb(255, 223, 0)
+                    {% else %}
+                      var(--state-icon-color)
                     {% endif %}
                     ;
                   }
@@ -1272,7 +1276,7 @@ views:
                   duration: 2
                 state:
                   - value: 'off'
-                    color: var(--paper-item-icon-color)       # rgb(54, 95, 140)
+                    color: var(--state-icon-active-color)       # rgb(54, 95, 140)
                   - value: 'on'
                     color: var(--paper-item-icon-active-color)        # rgb(251, 210, 41)
                 name: Exit-Enter
@@ -1465,7 +1469,7 @@ views:
                 secondary_info: "[[ remote.harmony_hub.attributes.current_activity ]]"
                 style: |
                   :host {
-                  --paper-item-icon-color:
+                  --state-icon-active-color:
                     {% if is_state('remote.harmony_hub', 'on') %}
                       var(--paper-item-icon-active-color)
                     {% else %}
