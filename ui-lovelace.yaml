@@ -70,7 +70,7 @@ views:
                 state_color: true
                 style: |
                   :host {
-                  --paper-item-icon-active-color: rgb(255, 223, 0);
+                  --state-icon-active-color: rgb(255, 223, 0);
                   }
               - entity: sensor.artisan_software_version
                 style: |
@@ -379,13 +379,13 @@ views:
                 state_color: true
                 style: |
                   :host {
-                  --paper-item-icon-active-color: rgb(255, 223, 0);
+                  --state-icon-active-color: rgb(255, 223, 0);
                   }
               - entity: binary_sensor.updater
                 state_color: true
                 style: |
                   :host {
-                  --paper-item-icon-active-color: rgb(255, 223, 0);
+                  --state-icon-active-color: rgb(255, 223, 0);
                   }
           - type: entities
             title: Addons
@@ -694,7 +694,7 @@ views:
                   state_color: true
                   style: |
                     :host {
-                    --paper-item-icon-active-color: rgb(255, 223, 0);
+                    --state-icon-active-color: rgb(255, 223, 0);
                     }
                 - entity: sensor.sunrisetoday
                 - entity: sensor.sunsettoday
@@ -1095,7 +1095,7 @@ views:
                 state_color: true
                 style: |
                   :host {
-                  --paper-item-icon-active-color: rgb(255, 223, 0);
+                  --state-icon-active-color: rgb(255, 223, 0);
                   }
               - sensor.fire_danger_level_today
           - type: conditional
@@ -1471,7 +1471,7 @@ views:
                   :host {
                   --state-icon-active-color:
                     {% if is_state('remote.harmony_hub', 'on') %}
-                      var(--paper-item-icon-active-color)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
