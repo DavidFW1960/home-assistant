@@ -72,7 +72,7 @@ Dark Soft UI:
         border-radius: var(--ha-card-border-radius);
       }
       ha-card:not(.type-markdown):not(.type-custom-button-card):not(.type-entities):not(.type-custom-mod-card):not(.type-custom-bar-card):not(.type-history-graph) {
-        margin: 30px;
+        margin: 20px 0;
         box-shadow: -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
       }
       ha-card.type-custom-vacuum-card > .preview {
@@ -96,7 +96,7 @@ Dark Soft UI:
       }
       ha-card.type-entities, ha-card.type-custom-bar-card, ha-card.type-entity, ha-card.type-history-graph, ha-card.type-map {
         box-shadow: none !important;
-        margin: 30px 20px;
+        margin: 30px 0;
       }
       ha-card > #states > div > * {
         padding-top: 8px;
@@ -113,7 +113,7 @@ Dark Soft UI:
       }
       ha-card > #states,
       ha-card > .header-footer,
-      ha-card:not(.type-humidifier) > .content {
+      ha-card:not(.type-humidifier):not(.type-light):not(.type-weather-forecast) > .content {
         box-shadow: -8px -8px 8px 0 rgba(50, 50, 50,.5), 8px 8px 8px 0 rgba(0,0,0,.15);
         border-radius: var(--ha-card-border-radius);
         margin: 12px;
@@ -171,6 +171,9 @@ Dark Soft UI:
       flex-direction: column !important;
       margin: 0 auto;
       max-width: 500px;
+    }
+    #columns > .column {
+      margin: 0 20px;
     }
   card-mod-badge-yaml: |
     .: |
