@@ -67,6 +67,12 @@ Dark Soft UI:
           stroke: white !important;
         }
     .: |
+      ha-card.type-markdown {
+        box-shadow: none;
+      }
+      ha-card.type-markdown > ha-markdown {
+        padding: 8px;
+      }
       ha-card:not(.type-markdown) {
         background-color: var(--primary-background-color);
         border-radius: var(--ha-card-border-radius);
