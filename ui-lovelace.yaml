@@ -1848,6 +1848,7 @@ views:
             entities:
               - entity: media_player.all_speakers
                 type: custom:mini-media-player
+                icon: mdi:google-home
                 tts: 
                   platform: google_translate
                 artwork: full-cover
@@ -1856,6 +1857,7 @@ views:
                 info: scroll
               - entity: media_player.living_areas
                 type: custom:mini-media-player
+                icon: mdi:google-home
                 tts: 
                   platform: google_translate
                 artwork: full-cover
@@ -1864,6 +1866,7 @@ views:
                 info: scroll
               - entity: media_player.lounge_room
                 type: custom:mini-media-player
+                icon: mdi:google-home
                 tts: 
                   platform: google_translate
                 artwork: full-cover
@@ -1876,6 +1879,7 @@ views:
             entities:
               - entity: media_player.bedroom_speaker
                 type: custom:mini-media-player
+                icon: mdi:google-home
                 tts: 
                   platform: google_translate
                 artwork: full-cover
@@ -1884,6 +1888,7 @@ views:
                 info: scroll
               - entity: media_player.office_speaker
                 type: custom:mini-media-player
+                icon: mdi:google-home
                 tts: 
                   platform: google_translate
                 artwork: full-cover
@@ -1892,6 +1897,7 @@ views:
                 info: scroll
               - entity: media_player.lounge_mini_speaker
                 type: custom:mini-media-player
+                icon: mdi:google-home
                 tts: 
                   platform: google_translate
                 artwork: full-cover
@@ -1900,6 +1906,7 @@ views:
                 info: scroll
               - entity: media_player.lounge_room_speaker
                 type: custom:mini-media-player
+                icon: mdi:google-home
                 tts: 
                   platform: google_translate
                 artwork: full-cover
@@ -1908,6 +1915,7 @@ views:
                 info: scroll
               - entity: media_player.lounge_room_tv
                 type: custom:mini-media-player
+                icon: mdi:television-classic
                 artwork: full-cover
                 hide: 
                   power_state: false
@@ -1959,30 +1967,35 @@ views:
             entities:
               - entity: media_player.roku_5x46aj056306
                 type: custom:mini-media-player
+                icon: mdi:play-network
                 artwork: cover
                 hide: 
                   power_state: false
                 info: scroll
               - entity: media_player.foxtel_7587
                 type: custom:mini-media-player
+                icon: mdi:play-network
                 artwork: full-cover
                 hide: 
                   power_state: false
                 info: scroll
               - entity: media_player.hdvr3500
                 type: custom:mini-media-player
+                icon: mdi:satellite
                 artwork: full-cover
                 hide: 
                   power_state: false
                 info: scroll
               - entity: media_player.osmc_vero4
                 type: custom:mini-media-player
+                icon: mdi:kodi
                 artwork: full-cover
                 hide: 
                   power_state: false
                 info: scroll
               - entity: media_player.wdtvlive
                 type: custom:mini-media-player
+                icon: mdi:play-network
                 artwork: full-cover
                 hide: 
                   power_state: false
@@ -1990,6 +2003,7 @@ views:
                 source: full
               - entity: media_player.onkyo_receiver
                 type: custom:mini-media-player
+                icon: mdi:play-network
                 artwork: full-cover
                 hide: 
                   power_state: false
@@ -1997,6 +2011,7 @@ views:
                 source: full
               - entity:  media_player.lg_webos_tv_oled55c9pta
                 type: custom:mini-media-player
+                icon: mdi:television-classic
                 artwork: full-cover
                 hide: 
                   power_state: false
@@ -2004,6 +2019,7 @@ views:
                 source: full
               - entity:  media_player.lg_tv_lounge_room
                 type: custom:mini-media-player
+                icon: mdi:television-classic
                 artwork: full-cover
                 hide: 
                   power_state: false
@@ -2012,6 +2028,7 @@ views:
               - entity: sensor.gpodder
                 type: custom:podcast-card
                 name: Home Assistant Podcasts
+                icon: mdi:home-assistant
                 default_target: media_player.office_speaker
                 show_player: true
                 custom_player: true
