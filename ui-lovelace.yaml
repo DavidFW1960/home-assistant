@@ -56,7 +56,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states('binary_sensor.tasmota_update_available') == 'on' %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -72,7 +72,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states('binary_sensor.tasmota_update_available') == 'on' %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -83,7 +83,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) != 'v2.4.0' %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -253,7 +253,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) != states('sensor.current_ha_beta') %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -275,7 +275,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) != states('sensor.current_supervisor_beta') %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -297,7 +297,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) != states('sensor.current_dns_beta') %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -319,7 +319,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) != states('sensor.current_audio_beta') %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -341,7 +341,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) != states('sensor.current_cli_beta') %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -361,7 +361,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) != states('sensor.current_multicast_latest') %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -375,7 +375,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) != 'v1.26.2' %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -386,7 +386,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) == 'on' %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -397,7 +397,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity) == 'on' %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -415,7 +415,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity)|int > 0 %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -440,7 +440,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if states(config.entity)|int > 0 %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -1112,7 +1112,7 @@ views:
                 style: |
                   :host {
                     {% if states('binary_sensor.fire_ban_today') == 'on' %}
-                      rgb(255, 223, 0)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -1492,7 +1492,7 @@ views:
                   :host {
                   --paper-item-icon-color:
                     {% if is_state('remote.harmony_hub', 'on') %}
-                      var(--paper-item-icon-color)
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
