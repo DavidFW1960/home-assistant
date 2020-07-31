@@ -435,7 +435,7 @@ views:
               - entity: sensor.hacs
                 tap_action:
                   action: navigate
-                  navigation_path: /hacs/installed
+                  navigation_path: /hacs/entry
                 style: |
                   :host {
                   --paper-item-icon-color:
