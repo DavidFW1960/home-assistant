@@ -707,10 +707,16 @@ views:
                 - entity: sensor.seasonname
                 - entity: sun.sun
                   name: "${'Sun Elevation:' + '\xa0'.repeat(2) + states['sun.sun'].attributes['elevation'] + '°' }"
-                  state_color: true
+                  state_color: false
                   style: |
                     :host {
-                    --paper-item-icon-color: rgb(255, 223, 0);
+                    --paper-item-icon-color:
+                      {% if states('sun.sun') == 'above_horizon' %}
+                        rgb(255, 223, 0)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
                     }
                 - entity: sensor.sunrisetoday
                 - entity: sensor.sunsettoday
