@@ -1305,7 +1305,7 @@ views:
                   - value: 'off'
                     color: var(--state-icon-color)
                   - value: 'on'
-                    color: var(--paper-item-icon-color)
+                    color: var(--state-icon-active-color)
                 name: Exit-Enter
                 show_state: false
                 tap_action:
