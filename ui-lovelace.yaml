@@ -1497,7 +1497,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if is_state('remote.harmony_hub', 'on') %}
+                    {% if is_state('switch.harmony', 'on') %}
                       var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
