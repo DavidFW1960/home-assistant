@@ -34,6 +34,7 @@ views:
                   name: "${'Certificate Expiry Date'}"
                   format: date
           - type: entities
+            title: Tasmota
             show_header_toggle: false
             entities:
               - type: custom:fold-entity-row
@@ -89,8 +90,6 @@ views:
                     {% endif %}
                     ;
                   }
-              - sensor.memory
-              - sensor.processor
           - type: horizontal-stack
             cards:
               - type: gauge
@@ -136,7 +135,9 @@ views:
             title: NUC Resources
             show_header_toggle: false
             entities:
+              - sensor.memory
               - sensor.nuc_memory_used_filtered
+              - sensor.processor
               - sensor.nuc_processor_used_filtered
               - sensor.cpu_temperature
               - sensor.disk_use
