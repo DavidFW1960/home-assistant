@@ -8,20 +8,20 @@ Dark Soft UI:
   light-primary-color: "#6F64FA"
   primary-background-color: "#262938"
   secondary-background-color: var(--primary-background-color)
-  divider-color: "#313549"
+  divider-color: var(--primary-background-color)
   card-background-color: var(--paper-card-background-color)
   # Text Colors
   primary-text-color: "#F7F8FA"
-  secondary-text-color: "#00ECCA"
+  secondary-text-color: "#8EEDDF"
   text-primary-color: "#FFFFFF"
   disabled-text-color: "#616387"
   # Sidebar Menu Colors
-  sidebar-icon-color: "#4C3FF9"
-  sidebar-text-color: "#F7F8FA"
+  sidebar-icon-color: "#E7E8EA"
+  sidebar-text-color: var(--sidebar-icon-color)
+  sidebar-background-color: var(--primary-background-color)
   sidebar-selected-background-color: var(--primary-background-color)
   sidebar-selected-icon-color: var(--secondary-text-color)
   sidebar-selected-text-color: var(--sidebar-selected-icon-color)
-  sidebar-background-color: var(--paper-listbox-background-color)
   # State and Badge Colors
   state-icon-color: "#00ECCA"
   state-icon-active-color: "#F7AA1C"
@@ -34,21 +34,43 @@ Dark Soft UI:
   paper-slider-secondary-color: var(--light-primary-color)
   # Label Colors
   label-badge-background-color: "#2E2F40"
-  label-badge-text-color: "#F7F8FA"
-  label-badge-red: "#323346"
+  label-badge-text-color: var(--primary-text-color)
+  label-badge-red: "#C7484C"
+  label-badge-green: "#6DC071"
+  label-badge-blue: "#51AAD1"
+  label-badge-yellow: "#D9B757"
+  label-badge-gray: "#5F6267"
   # Card Stuff + Colors
   ha-card-border-radius: "15px"
-  ha-card-box-shadow: -5.5px -5.5px 5.5px 0 rgba(50, 50, 50,.5), 5.5px 5.5px 5.5px 0 rgba(0,0,0,.15)
-  paper-card-background-color: "#2E2F40"
+  ha-card-box-shadow: -5.5px -5.5px 5.5px 0 rgba(50, 50, 50,.5), 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .15)
+  paper-card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)
-  # Switch Colors
+  # Switch + Toggle Colors
   paper-toggle-button-checked-button-color: "#4C3FF9"
   paper-toggle-button-checked-bar-color: "#262938"
   paper-toggle-button-unchecked-button-color: var(--paper-toggle-button-checked-button-color)
-  paper-toggle-button-unchecked-bar-color: "#262938"
+  paper-toggle-button-unchecked-bar-color: var(--paper-toggle-button-unchecked-bar-color)
   # Table Colors
   table-row-background-color: var(--primary-background-color)
-  table-row-alternative-background-color: var(--secondary-background-color)
+  table-row-alternative-background-color: var(--primary-background-color)
+  data-table-background-color: var(--primary-background-color)
+  # Dropdown Colors
+  material-background-color: var(--primary-background-color)
+  material-secondary-background-color: var(--primary-background-color)
+  mdc-theme-surface: var(--primary-background-color)
+  # Convenience
+  primary-name-text-color: grey
+  primary-state-text-color: grey
+  primary-icon-color: grey
+  ha-card-box-shadow-inset: inset -5.5px -5.5px 5.5px 0 rgba(60, 60, 60, .6), inset 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .5)
+  primary-yellow: "#FAD46B"
+  dark-primary-yellow: "#DAB44B"
+  red: "#DC3545"
+  orange: "#FD7E14"
+  yellow: "#FFC107"
+  green: "#28A745"
+  blue: "#007BFF"
+  purple: "#6D42C1"
   # Card-mod
   card-mod-theme: "Dark Soft UI"
   theme-red: firebrick
@@ -59,7 +81,7 @@ Dark Soft UI:
     hui-image:
       $: |
         img {
-          border-radius: 18px;
+          border-radius: 15px;
         }
     ha-gauge:
       $: |
@@ -77,9 +99,9 @@ Dark Soft UI:
         background-color: var(--primary-background-color);
         border-radius: var(--ha-card-border-radius);
       }
-      ha-card:not(.type-markdown):not(.type-custom-button-card):not(.type-entities):not(.type-custom-mod-card):not(.type-custom-bar-card):not(.type-history-graph) {
+      ha-card:not(.type-markdown):not(.type-custom-button-card):not(.type-entities):not(.type-custom-mod-card):not(.type-custom-bar-card):not(.type-history-graph):not(.type-iframe):not(.type-glance) {
         margin: 20px 0;
-        box-shadow: -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+        box-shadow: -8px -8px 8px 0 rgba(50, 50, 50, .5), 8px 8px 8px 0 rgba(0, 0, 0, .15);
       }
       ha-card.type-custom-vacuum-card > .preview {
         --primary-color: var(--primary-background-color);
@@ -93,14 +115,18 @@ Dark Soft UI:
       ha-card.type-custom-vacuum-card > .preview > .metadata > .vacuum-name {
         color: var(--primary-text-color);
       }
-      ha-card.type-picture-entity {
+      ha-card.type-picture-entity,
+      ha-card.type-picture-glance {
         padding: 10px;
       }
-      ha-card.type-picture-entity > .footer {
+      ha-card.type-picture-entity > .footer,
+      ha-card.type-picture-glance > .box {
         margin: 10px;
-        border-radius: 18px;
+        border-radius: 15px;
       }
-      ha-card.type-entities, ha-card.type-custom-bar-card, ha-card.type-entity, ha-card.type-history-graph, ha-card.type-map {
+      ha-card.type-entities, ha-card.type-custom-bar-card, ha-card.type-entity,
+      ha-card.type-history-graph, ha-card.type-map, ha-card.type-iframe,
+      ha-card.type-glance {
         box-shadow: none !important;
         margin: 30px 0;
       }
@@ -119,21 +145,26 @@ Dark Soft UI:
       }
       ha-card > #states,
       ha-card > .header-footer,
+      ha-card > hui-graph-header-footer,
+      ha-card.type-glance > .entities,
       ha-card:not(.type-humidifier):not(.type-light):not(.type-weather-forecast) > .content {
-        box-shadow: -8px -8px 8px 0 rgba(50, 50, 50,.5), 8px 8px 8px 0 rgba(0,0,0,.15);
+        box-shadow: -8px -8px 8px 0 rgba(50, 50, 50, .5), 8px 8px 8px 0 rgba(0, 0, 0, .15);
         border-radius: var(--ha-card-border-radius);
         margin: 12px;
         padding: 10px;
       }
-      ha-card.type-map > #root {
-        box-shadow: -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+      ha-card.type-map, ha-card.type-iframe > #root {
+        box-shadow: -8px -8px 8px 0 rgba(255, 255, 255, .5),8px 8px 8px 0 rgba(0, 0, 0, .03);
         border-radius: var(--ha-card-border-radius);
         margin: 12px;
         padding: 10px;
+      }
+      ha-card.type-iframe > #root > iframe {
+        border-radius: var(--ha-card-border-radius);
       }
       ha-card.type-entity > .info {
         padding: 16px;
-        box-shadow: -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+        box-shadow: -8px -8px 8px 0 rgba(255, 255, 255, .5),8px 8px 8px 0 rgba(0, 0, 0, .03);
         border-radius: var(--ha-card-border-radius);
         margin: 12px;
       }
@@ -152,7 +183,10 @@ Dark Soft UI:
       }
       ha-card.type-custom-bar-card > .card-header,
       ha-card.type-history-graph > .card-header,
-      ha-card.type-map > .card-header {
+      ha-card.type-map > .card-header,
+      ha-card.type-iframe > .card-header,
+      ha-card.type-shopping-list > .card-header,
+      ha-card.type-glance > .card-header {
         text-align: center;
         width: 70%;
         margin: 0 auto;
@@ -167,6 +201,70 @@ Dark Soft UI:
       }
       ha-icon[data-domain="fan"][data-state="on"] {
         animation: spin 4s infinite linear;
+      }
+  card-mod-root-yaml: |
+    paper-tabs:
+      $: |
+        .not-visible {
+          display: none;
+        }
+    .: |
+      app-toolbar:not(.edit-mode):not(> div) {
+        height: 0;
+      }
+      .edit-mode, app-header, app-toolbar {
+        background-color: var(--primary-background-color) !important;
+        color: var(--primary-text-color) !important;
+      }
+      ha-button-menu {
+        top: 24px;
+        z-index: 2;
+        margin-left: calc(100% - 96px);
+      }
+      app-toolbar:not(.edit-mode) > [main-title] {
+        display: none;
+      }
+      menu-button[style="visibility: hidden;"] {
+        display: none;
+      }
+      ha-menu-button {
+        z-index: 2;
+        top: 24px;
+      }
+      paper-tabs {
+        --paper-tabs-selection-bar-color: var(--primary-color) !important;
+        margin-left: 32px !important;
+      }
+      paper-tab[aria-selected="true"] > ha-icon {
+        color: var(--primary-color) !important;
+      }
+      @media (orientation: portrait) {
+        ha-button-menu {
+          margin-left: calc(100% - 80px);
+        }
+        paper-tabs {
+          margin-left: 64px !important;
+          margin-right: 32px !important;
+        }
+        ch-header > paper-tabs,
+        app-header.edit-mode > * > paper-tabs {
+          margin-left: 10px !important;
+          margin-right: 10px !important;
+        }
+      }
+      ch-header > ha-button-menu,
+      app-toolbar.edit-mode > ha-button-menu {
+        top: unset;
+        margin-left: unset;
+      }
+      ch-header > ha-menu-button,
+      app-toolbar.edit-mode > ha-menu-button {
+        top: unset;
+        margin-left: unset;
+      }
+      ch-header > paper-tabs,
+      app-header.edit-mode > paper-tabs {
+        margin-left: 0;
       }
   card-mod-view: |
     #badges {
@@ -197,7 +295,7 @@ Dark Soft UI:
           {% elif is_state(config.entity, 'locked') %} var(--theme-red);
           {% else %} var(--theme-blue); {% endif %}
         --label-badge-red: teal;
-        box-shadow: -5px -5px 5px 0 rgba(50, 50, 50,.5), 5px 5px 5px 0 rgba(0,0,0,.15);
+        box-shadow: -5px -5px 5px 0 rgba(50, 50, 50, .5), 5px 5px 5px 0 rgba(0, 0, 0, .15);
       }
     ha-state-label-badge:
       $:
