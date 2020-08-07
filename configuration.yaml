@@ -116,6 +116,7 @@ logger:
 #   homeassistant.components.ssdp: debug
 #   homeassistant.components.fritzbox: debug
 #   pyfritzhome: debug
+#   homeassistant.components.mobile_app: debug
 
 # iFrame/Panel Custom 
 panel_iframe:
