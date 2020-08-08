@@ -443,15 +443,6 @@ automation:
       data_template:
         message: '{{ states("sensor.artisan_events") }}'
         title: 'Artisan Notification'
-  - id: 'initialautostate'
-    alias: 'Switch on All Automations when HA Starts'
-    initial_state: 'true'
-    trigger:
-    - platform: homeassistant
-      event: start
-    action:
-    - service: automation.turn_on
-      entity_id: all
   - id: 'restartnodemcu'
     alias: NodeMCU Lounge Restart
     trigger:
