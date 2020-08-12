@@ -1,70 +1,79 @@
 # Thanks @JuanMTech, @thomasloven, and @N-l1.
 Dark Soft UI:
-  # Header Colors
-  app-header-background-color: var(--primary-background-color)
-  app-header-text-color: var(--primary-text-color)
-  # Interface Colors
+  # Color
   primary-color: "#4C3FF9"
-  light-primary-color: "#6F64FA"
+  light-primary-color: "#6459FF"
+  mdc-theme-secondary: var(--primary-color)
+  accent-color: var(--primary-color)
+  # Background
   primary-background-color: "#262938"
   secondary-background-color: var(--primary-background-color)
-  divider-color: var(--primary-background-color)
-  card-background-color: var(--paper-card-background-color)
-  # Text Colors
+  # Text
   primary-text-color: "#F7F8FA"
-  secondary-text-color: "#8EEDDF"
+  secondary-text-color: var(--primary-text-color)
   text-primary-color: "#FFFFFF"
   disabled-text-color: "#616387"
-  # Sidebar Menu Colors
-  sidebar-icon-color: "#E7E8EA"
-  sidebar-text-color: var(--sidebar-icon-color)
+  # Sidebar
+  sidebar-icon-color: var(--primary-text-color)
+  sidebar-text-color: var(--primary-text-color)
+  sidebar-selected-icon-color: var(--light-primary-color)
+  sidebar-selected-text-color: var(--light-primary-color)
   sidebar-background-color: var(--primary-background-color)
   sidebar-selected-background-color: var(--primary-background-color)
-  sidebar-selected-icon-color: var(--secondary-text-color)
-  sidebar-selected-text-color: var(--sidebar-selected-icon-color)
-  # State and Badge Colors
-  state-icon-color: "#00ECCA"
-  state-icon-active-color: "#F7AA1C"
+  divider-color: var(--primary-background-color)
+  # Header
+  app-header-background-color: var(--primary-background-color)
+  app-header-text-color: var(--primary-text-color)
+  # Icons
+  state-icon-color: var(--primary-text-color)
+  state-icon-active-color: var(--primary-color)
   state-icon-unavailable-color: var(--disabled-text-color)
-  # Slider Colors
-  paper-slider-knob-color: "#00ECCA"
-  paper-slider-knob-start-color: var(--paper-slider-knob-color)
-  paper-slider-pin-color: var(--paper-slider-knob-color)
-  paper-slider-active-color: var(--paper-slider-knob-color)
+  # Sliders
+  paper-slider-knob-color: var(--primary-color)
+  paper-slider-knob-start-color: var(--primary-color)
+  paper-slider-pin-color: var(--primary-color)
+  paper-slider-active-color: var(--primary-color)
   paper-slider-secondary-color: var(--light-primary-color)
-  # Label Colors
-  label-badge-background-color: "#2E2F40"
+  # Labels
+  label-badge-background-color: var(--primary-background-color)
   label-badge-text-color: var(--primary-text-color)
   label-badge-red: "#C7484C"
   label-badge-green: "#6DC071"
   label-badge-blue: "#51AAD1"
   label-badge-yellow: "#D9B757"
   label-badge-gray: "#5F6267"
-  # Card Stuff + Colors
+  # Cards
   ha-card-border-radius: "15px"
-  ha-card-box-shadow: -5.5px -5.5px 5.5px 0 rgba(50, 50, 50,.5), 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .15)
+  ha-card-box-shadow: -5.5px -5.5px 5.5px 0 rgba(50, 50, 50, .5), 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .15)
+  card-background-color: var(--primary-background-color)
   paper-card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)
-  # Switch + Toggle Colors
-  paper-toggle-button-checked-button-color: "#4C3FF9"
-  paper-toggle-button-checked-bar-color: "#262938"
-  paper-toggle-button-unchecked-button-color: var(--paper-toggle-button-checked-button-color)
-  paper-toggle-button-unchecked-bar-color: var(--paper-toggle-button-unchecked-bar-color)
-  # Table Colors
+  # Switches
+  switch-checked-button-color: var(--primary-color)
+  switch-checked-track-color: var(--primary-color)
+  switch-unchecked-button-color: var(--disabled-text-color)
+  switch-unchecked-track-color: var(--disabled-text-color)
+  paper-toggle-button-checked-button-color: var(--primary-color)
+  paper-toggle-button-checked-bar-color: var(--primary-color)
+  paper-toggle-button-unchecked-button-color: var(--disabled-text-color)
+  paper-toggle-button-unchecked-bar-color: var(--disabled-text-color)
+  # Tables
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--primary-background-color)
   data-table-background-color: var(--primary-background-color)
-  # Dropdown Colors
+  # Dropdowns
   material-background-color: var(--primary-background-color)
-  material-secondary-background-color: var(--primary-background-color)
+  material-secondary-background-color: rgba(255, 255, 255, 0.1)
   mdc-theme-surface: var(--primary-background-color)
   # Convenience
   primary-name-text-color: grey
   primary-state-text-color: grey
   primary-icon-color: grey
-  ha-card-box-shadow-inset: inset -5.5px -5.5px 5.5px 0 rgba(60, 60, 60, .6), inset 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .5)
+  ha-card-box-shadow-inset: inset -5.5px -5.5px 5.5px 0 rgba(60, 60, 60, .5), inset 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .5)
+  soft-ui-pressed: var(--ha-card-box-shadow-inset)
   primary-yellow: "#FAD46B"
   dark-primary-yellow: "#DAB44B"
+  soft-ui-shadow: var(--ha-card-box-shadow)
   red: "#DC3545"
   orange: "#FD7E14"
   yellow: "#FFC107"
@@ -89,6 +98,10 @@ Dark Soft UI:
           stroke: white !important;
         }
     .: |
+      * {
+        --soft-ui-shadow: var(--ha-card-box-shadow) !important;
+        --soft-ui-pressed: var(--ha-card-box-shadow-inset) !important;
+      }
       ha-card.type-markdown {
         box-shadow: none;
       }
@@ -100,8 +113,8 @@ Dark Soft UI:
         border-radius: var(--ha-card-border-radius);
       }
       ha-card:not(.type-markdown):not(.type-custom-button-card):not(.type-entities):not(.type-custom-mod-card):not(.type-custom-bar-card):not(.type-history-graph):not(.type-iframe):not(.type-glance) {
-        margin: 20px 0;
-        box-shadow: -8px -8px 8px 0 rgba(50, 50, 50, .5), 8px 8px 8px 0 rgba(0, 0, 0, .15);
+        margin: 20px 6px;
+        box-shadow: var(--ha-card-box-shadow);
       }
       ha-card.type-custom-vacuum-card > .preview {
         --primary-color: var(--primary-background-color);
@@ -128,7 +141,7 @@ Dark Soft UI:
       ha-card.type-history-graph, ha-card.type-map, ha-card.type-iframe,
       ha-card.type-glance {
         box-shadow: none !important;
-        margin: 30px 0;
+        margin: 30px 6px;
       }
       ha-card > #states > div > * {
         padding-top: 8px;
@@ -148,13 +161,13 @@ Dark Soft UI:
       ha-card > hui-graph-header-footer,
       ha-card.type-glance > .entities,
       ha-card:not(.type-humidifier):not(.type-light):not(.type-weather-forecast) > .content {
-        box-shadow: -8px -8px 8px 0 rgba(50, 50, 50, .5), 8px 8px 8px 0 rgba(0, 0, 0, .15);
+        box-shadow: var(--ha-card-box-shadow);
         border-radius: var(--ha-card-border-radius);
         margin: 12px;
         padding: 10px;
       }
       ha-card.type-map, ha-card.type-iframe > #root {
-        box-shadow: -8px -8px 8px 0 rgba(255, 255, 255, .5),8px 8px 8px 0 rgba(0, 0, 0, .03);
+        box-shadow: var(--ha-card-box-shadow);
         border-radius: var(--ha-card-border-radius);
         margin: 12px;
         padding: 10px;
@@ -164,7 +177,7 @@ Dark Soft UI:
       }
       ha-card.type-entity > .info {
         padding: 16px;
-        box-shadow: -8px -8px 8px 0 rgba(255, 255, 255, .5),8px 8px 8px 0 rgba(0, 0, 0, .03);
+        box-shadow: var(--ha-card-box-shadow);
         border-radius: var(--ha-card-border-radius);
         margin: 12px;
       }
@@ -208,13 +221,33 @@ Dark Soft UI:
         .not-visible {
           display: none;
         }
+    "ha-app-layout":
+      $: |
+        #contentContainer[style="padding-top: 180px;"] {
+          padding-top: 90px;
+        }
     .: |
-      app-toolbar:not(.edit-mode):not(> div) {
+      app-toolbar:not(.edit-mode) {
         height: 0;
       }
       .edit-mode, app-header, app-toolbar {
         background-color: var(--primary-background-color) !important;
         color: var(--primary-text-color) !important;
+      }
+      app-header.edit-mode {
+        border-bottom: 2px var(--primary-color) solid;
+        padding-bottom: 10px;
+      }
+      app-header[shadow] > ::before {
+        box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.3);
+      }
+      #add-view ha-svg-icon {
+        background-color: var(--primary-color) !important;
+        color: #EEE !important;
+        border-radius: 5px !important;
+      }
+      .edit-icon {
+        color: var(--primary-color) !important;
       }
       ha-button-menu {
         top: 24px;
@@ -277,7 +310,7 @@ Dark Soft UI:
       max-width: 500px;
     }
     #columns > .column {
-      margin: 0 20px;
+      margin: 0 15px;
     }
   card-mod-badge-yaml: |
     .: |
@@ -295,7 +328,7 @@ Dark Soft UI:
           {% elif is_state(config.entity, 'locked') %} var(--theme-red);
           {% else %} var(--theme-blue); {% endif %}
         --label-badge-red: teal;
-        box-shadow: -5px -5px 5px 0 rgba(50, 50, 50, .5), 5px 5px 5px 0 rgba(0, 0, 0, .15);
+        box-shadow: var(--ha-card-box-shadow);
       }
     ha-state-label-badge:
       $:
