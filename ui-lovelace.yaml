@@ -918,6 +918,11 @@ views:
                   name: "${'Heat Index:' + '\xa0'.repeat(2) + vars[2]}"
                 - entity: sensor.bom_gosford_air_temp_c
                   name: "${'BOM Update:' + '\xa0'.repeat(2) + ( new Date(vars[3]).toLocaleTimeString('en-US') ) + '\xa0'.repeat(2) + 'Current Temp' }"
+          - type: 'custom:compass-card'
+            entity: sensor.bom_gosford_wind_direction
+            secondary_entity: sensor.bom_gosford_wind_speed_kmh
+            direction_offset: 0
+            name: Wind Direction
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 48
