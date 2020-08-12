@@ -933,14 +933,14 @@ views:
               - sensor.nodemcu_bedroom_bme280_temperature
               - sensor.nodemcu_bedroom_am2301_temperature
               - sensor.sonoff1_2914_si7021_temperature
-              - sensor.sonoff3_0898_si7021_temperature	
+              - sensor.sonoff3_0898_si7021_temperature  
               - sensor.bom_gosford_feels_like_c
               - sensor.bom_gosford_dew_point_c
               - sensor.nodemcu_lounge_bme280_dewpoint
               - sensor.nodemcu_bedroom_bme280_dewpoint
               - sensor.nodemcu_bedroom_am2301_dewpoint
               - sensor.sonoff1_2914_si7021_dewpoint
-              - sensor.sonoff3_0898_si7021_dewpoint	
+              - sensor.sonoff3_0898_si7021_dewpoint 
               - sensor.bom_gosford_rain_today
               - sensor.nodemcu_lounge_bme280_pressure
               - sensor.nodemcu_bedroom_bme280_pressure
@@ -960,7 +960,7 @@ views:
               - entity: sensor.nodemcu_bedroom_bme280_temperature
               - entity: sensor.nodemcu_bedroom_am2301_temperature
               - entity: sensor.sonoff1_2914_si7021_temperature
-              - entity: sensor.sonoff3_0898_si7021_temperature	
+              - entity: sensor.sonoff3_0898_si7021_temperature  
               - entity: sensor.nodemcu_lounge_bme280_pressure
               - entity: sensor.nodemcu_lounge_bme280_seapressure
               - entity: sensor.nodemcu_bedroom_bme280_pressure
@@ -974,7 +974,7 @@ views:
               - entity: sensor.nodemcu_bedroom_bme280_dewpoint
               - entity: sensor.nodemcu_bedroom_am2301_dewpoint
               - entity: sensor.sonoff1_2914_si7021_dewpoint
-              - entity: sensor.sonoff3_0898_si7021_dewpoint	
+              - entity: sensor.sonoff3_0898_si7021_dewpoint 
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
           - type: custom:mini-graph-card
@@ -1373,7 +1373,7 @@ views:
           - type: markdown
             style: |
               h2 {
-              	display: block;
+                display: block;
                 letter-spacing: -0.012em;
                 line-height: 32px;
                 font-size: 24px;
@@ -1634,7 +1634,7 @@ views:
           - type: markdown
             style: |
               h2 {
-              	display: block;
+                display: block;
                 letter-spacing: -0.012em;
                 line-height: 32px;
                 font-size: 24px;
@@ -2047,7 +2047,7 @@ views:
           - type: markdown
             style: |
               h2 {
-              	display: block;
+                display: block;
                 letter-spacing: -0.012em;
                 line-height: 32px;
                 font-size: 24px;
@@ -2121,7 +2121,7 @@ views:
           - type: markdown
             style: |
               h2 {
-              	display: block;
+                display: block;
                 letter-spacing: -0.012em;
                 line-height: 32px;
                 font-size: 24px;
@@ -2264,32 +2264,112 @@ views:
               - sensor.busmonitor2
               - sensor.trainmonitor1
               - sensor.trainmonitor2
-          - type: entities
-            title: NSW Fuel Watch - Sydney
-            show_header_toggle: false
+          - type: 'custom:config-template-card'
+            variables:
+              - states['sensor.caltex_woolworths_waitara_pdl'].attributes['station_id']
+              - states['sensor.caltex_woolworths_waitara_pdl'].attributes['friendly_name']
+              - states['sensor.caltex_woolworths_turramurra_pdl'].attributes['station_id']
+              - states['sensor.caltex_woolworths_turramurra_pdl'].attributes['friendly_name']
+              - states['sensor.caltex_st_ives_north_pdl'].attributes['station_id']
+              - states['sensor.caltex_st_ives_north_pdl'].attributes['friendly_name']
+              - states['sensor.caltex_st_ives_foodary_pdl'].attributes['station_id']
+              - states['sensor.caltex_st_ives_foodary_pdl'].attributes['friendly_name']
+              - states['sensor.caltex_woolworths_glenrose_pdl'].attributes['station_id']
+              - states['sensor.caltex_woolworths_glenrose_pdl'].attributes['friendly_name']
+              - states['sensor.caltex_belrose_pdl'].attributes['station_id']
+              - states['sensor.caltex_belrose_pdl'].attributes['friendly_name']
             entities:
-              - sensor.caltex_2436
-              - sensor.caltex_663
-              - sensor.caltex_18253
-              - sensor.caltex_17310
-              - sensor.caltex_643
-              - sensor.caltex_721
-      - type: entities
-        title: NSW Fuel Watch - Central Coast
-        show_header_toggle: false
+              - sensor.caltex_woolworths_waitara_pdl:
+              - sensor.caltex_woolworths_turramurra_pdl:
+              - sensor.caltex_st_ives_north_pdl:
+              - sensor.caltex_st_ives_foodary_pdl:
+              - sensor.caltex_woolworths_glenrose_pdl:
+              - sensor.caltex_belrose_pdl:
+            card:
+              type: 'custom:hui-entities-card'
+              title: NSW Fuel Watch - Sydney
+              show_header_toggle: false
+              entities:
+                - entity: sensor.caltex_woolworths_waitara_pdl
+                  name: "${vars[1]}"
+                - entity: sensor.caltex_woolworths_turramurra_pdl
+                  name: "${vars[3]}"
+                - entity: sensor.caltex_st_ives_north_pdl
+                  name: "${vars[5]}"
+                - entity: sensor.caltex_st_ives_foodary_pdl
+                  name: "${vars[7]}"
+                - entity: sensor.caltex_woolworths_glenrose_pdl
+                  name: "${vars[9]}"
+                - entity: sensor.caltex_belrose_pdl
+                  name: "${vars[11]}"
+      - type: 'custom:config-template-card'
+        variables:
+          - states['sensor.caltex_kariong_pdl'].attributes['station_id']
+          - states['sensor.caltex_kariong_pdl'].attributes['friendly_name']
+          - states['sensor.caltex_woolworths_gosford_pdl'].attributes['station_id']
+          - states['sensor.caltex_woolworths_gosford_pdl'].attributes['friendly_name']
+          - states['sensor.caltex_gosford_west_pdl'].attributes['station_id']
+          - states['sensor.caltex_gosford_west_pdl'].attributes['friendly_name']
+          - states['sensor.caltex_gosford_west_pdl_2'].attributes['station_id']
+          - states['sensor.caltex_gosford_west_pdl_2'].attributes['friendly_name']
+          - states['sensor.caltex_gosford_west_pdl_3'].attributes['station_id']
+          - states['sensor.caltex_gosford_west_pdl_3'].attributes['friendly_name']
+          - states['sensor.caltex_woolworths_erina_pdl'].attributes['station_id']
+          - states['sensor.caltex_woolworths_erina_pdl'].attributes['friendly_name']
+          - states['sensor.caltex_wyoming_pdl'].attributes['station_id']
+          - states['sensor.caltex_wyoming_pdl'].attributes['friendly_name']
+          - states['sensor.caltex_woolworths_tuggerah_pdl'].attributes['station_id']
+          - states['sensor.caltex_woolworths_tuggerah_pdl'].attributes['friendly_name']
+          - states['sensor.caltex_woolworths_tuggerah_north_pdl'].attributes['station_id']
+          - states['sensor.caltex_woolworths_tuggerah_north_pdl'].attributes['friendly_name']
+          - states['sensor.caltex_wyong_pdl'].attributes['station_id']
+          - states['sensor.caltex_wyong_pdl'].attributes['friendly_name']
+          - states['sensor.caltex_wyong_pdl_2'].attributes['station_id']
+          - states['sensor.caltex_wyong_pdl_2'].attributes['friendly_name']
+          - states['sensor.coles_express_kariong_dl'].attributes['station_id']
+          - states['sensor.coles_express_kariong_dl'].attributes['friendly_name']
         entities:
-          - sensor.caltex_17340
-          - sensor.caltex_622
-          - sensor.caltex_874
-          - sensor.caltex_845
-          - sensor.caltex_819
-          - sensor.caltex_17249
-          - sensor.caltex_2263
-          - sensor.caltex_620
-          - sensor.caltex_523
-          - sensor.caltex_907
-          - sensor.caltex_906
-          - sensor.shell_902
+          - sensor.caltex_kariong_pdl:
+          - sensor.caltex_woolworths_gosford_pdl:
+          - sensor.caltex_gosford_west_pdl:
+          - sensor.caltex_gosford_west_pdl_2:
+          - sensor.caltex_gosford_west_pdl_3:
+          - sensor.caltex_woolworths_erina_pdl:
+          - sensor.caltex_wyoming_pdl:
+          - sensor.caltex_woolworths_tuggerah_pdl:
+          - sensor.caltex_woolworths_tuggerah_north_pdl:
+          - sensor.caltex_wyong_pdl:
+          - sensor.caltex_wyong_pdl_2:
+          - sensor.coles_express_kariong_dl:
+        card:
+          type: 'custom:hui-entities-card'
+          title: NSW Fuel Watch - Central Coast
+          show_header_toggle: false
+          entities:
+            - entity: sensor.caltex_kariong_pdl
+              name: "${vars[1]}"
+            - entity: sensor.caltex_woolworths_gosford_pdl
+              name: "${vars[3]}"
+            - entity: sensor.caltex_gosford_west_pdl
+              name: "${vars[5]}"
+            - entity: sensor.caltex_gosford_west_pdl_2
+              name: "${vars[7]}"
+            - entity: sensor.caltex_gosford_west_pdl_3
+              name: "${vars[9]}"
+            - entity: sensor.caltex_woolworths_erina_pdl
+              name: "${vars[11]}"
+            - entity: sensor.caltex_wyoming_pdl
+              name: "${vars[13]}"
+            - entity: sensor.caltex_woolworths_tuggerah_pdl
+              name: "${vars[15]}"
+            - entity: sensor.caltex_woolworths_tuggerah_north_pdl
+              name: "${vars[17]}"
+            - entity: sensor.caltex_wyong_pdl
+              name: "${vars[19]}"
+            - entity: sensor.caltex_wyong_pdl_2
+              name: "${vars[21]}"
+            - entity: sensor.coles_express_kariong_dl
+              name: "${vars[23]}"
   - title: Medical Alerts
     background: center / cover no-repeat url("/local/images/covid19-background.jpg") fixed
     path: medical
