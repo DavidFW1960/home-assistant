@@ -1519,7 +1519,7 @@ views:
                 head: 
                   type: section
                   label: Overrides
-                items:
+                entities:
                   - input_boolean.homeandawayauto
                   - input_boolean.overtime
                   - input_boolean.holiday
@@ -1533,7 +1533,7 @@ views:
                 head: 
                   type: section
                   label: Security
-                items:
+                entities:
                   - automation.close_garage_and_set_alarm
                   - automation.deactivate_alarm_and_open_garage
           - type: entities
@@ -1545,7 +1545,7 @@ views:
                 head: 
                   type: section
                   label: Lights & Switches
-                items:
+                entities:
                   - automation.coffee_maker_on
                   - automation.coffee_maker_off
                   - automation.toothbrush_on
@@ -1556,8 +1556,7 @@ views:
                 head: 
                   type: section
                   label: Not in Normal Use
-                items:
-                  - automation.switch_on_all_automations_when_ha_starts
+                entities:
                   - automation.lights_on_failsafe
                   - automation.lights_off_failsafe
                   - automation.system_runtime
@@ -1583,7 +1582,7 @@ views:
                 head: 
                   type: section
                   label: Tasmota
-                items:
+                entities:
                   - automation.tasmota_firmware_installed
                   - automation.power_state_tasmota_on_ha_start_up
       - type: vertical-stack
@@ -2264,112 +2263,28 @@ views:
               - sensor.busmonitor2
               - sensor.trainmonitor1
               - sensor.trainmonitor2
-          - type: 'custom:config-template-card'
-            variables:
-              - states['sensor.caltex_woolworths_waitara_pdl'].attributes['station_id']
-              - states['sensor.caltex_woolworths_waitara_pdl'].attributes['friendly_name']
-              - states['sensor.caltex_woolworths_turramurra_pdl'].attributes['station_id']
-              - states['sensor.caltex_woolworths_turramurra_pdl'].attributes['friendly_name']
-              - states['sensor.caltex_st_ives_north_pdl'].attributes['station_id']
-              - states['sensor.caltex_st_ives_north_pdl'].attributes['friendly_name']
-              - states['sensor.caltex_st_ives_foodary_pdl'].attributes['station_id']
-              - states['sensor.caltex_st_ives_foodary_pdl'].attributes['friendly_name']
-              - states['sensor.caltex_woolworths_glenrose_pdl'].attributes['station_id']
-              - states['sensor.caltex_woolworths_glenrose_pdl'].attributes['friendly_name']
-              - states['sensor.caltex_belrose_pdl'].attributes['station_id']
-              - states['sensor.caltex_belrose_pdl'].attributes['friendly_name']
-            entities:
-              - sensor.caltex_woolworths_waitara_pdl:
-              - sensor.caltex_woolworths_turramurra_pdl:
-              - sensor.caltex_st_ives_north_pdl:
-              - sensor.caltex_st_ives_foodary_pdl:
-              - sensor.caltex_woolworths_glenrose_pdl:
-              - sensor.caltex_belrose_pdl:
+          - type: custom:auto-entities
             card:
-              type: 'custom:hui-entities-card'
+              type: entities
               title: NSW Fuel Watch - Sydney
               show_header_toggle: false
-              entities:
-                - entity: sensor.caltex_woolworths_waitara_pdl
-                  name: "${vars[1]}"
-                - entity: sensor.caltex_woolworths_turramurra_pdl
-                  name: "${vars[3]}"
-                - entity: sensor.caltex_st_ives_north_pdl
-                  name: "${vars[5]}"
-                - entity: sensor.caltex_st_ives_foodary_pdl
-                  name: "${vars[7]}"
-                - entity: sensor.caltex_woolworths_glenrose_pdl
-                  name: "${vars[9]}"
-                - entity: sensor.caltex_belrose_pdl
-                  name: "${vars[11]}"
-      - type: 'custom:config-template-card'
-        variables:
-          - states['sensor.caltex_kariong_pdl'].attributes['station_id']
-          - states['sensor.caltex_kariong_pdl'].attributes['friendly_name']
-          - states['sensor.caltex_woolworths_gosford_pdl'].attributes['station_id']
-          - states['sensor.caltex_woolworths_gosford_pdl'].attributes['friendly_name']
-          - states['sensor.caltex_gosford_west_pdl'].attributes['station_id']
-          - states['sensor.caltex_gosford_west_pdl'].attributes['friendly_name']
-          - states['sensor.caltex_gosford_west_pdl_2'].attributes['station_id']
-          - states['sensor.caltex_gosford_west_pdl_2'].attributes['friendly_name']
-          - states['sensor.caltex_gosford_west_pdl_3'].attributes['station_id']
-          - states['sensor.caltex_gosford_west_pdl_3'].attributes['friendly_name']
-          - states['sensor.caltex_woolworths_erina_pdl'].attributes['station_id']
-          - states['sensor.caltex_woolworths_erina_pdl'].attributes['friendly_name']
-          - states['sensor.caltex_wyoming_pdl'].attributes['station_id']
-          - states['sensor.caltex_wyoming_pdl'].attributes['friendly_name']
-          - states['sensor.caltex_woolworths_tuggerah_pdl'].attributes['station_id']
-          - states['sensor.caltex_woolworths_tuggerah_pdl'].attributes['friendly_name']
-          - states['sensor.caltex_woolworths_tuggerah_north_pdl'].attributes['station_id']
-          - states['sensor.caltex_woolworths_tuggerah_north_pdl'].attributes['friendly_name']
-          - states['sensor.caltex_wyong_pdl'].attributes['station_id']
-          - states['sensor.caltex_wyong_pdl'].attributes['friendly_name']
-          - states['sensor.caltex_wyong_pdl_2'].attributes['station_id']
-          - states['sensor.caltex_wyong_pdl_2'].attributes['friendly_name']
-          - states['sensor.coles_express_kariong_dl'].attributes['station_id']
-          - states['sensor.coles_express_kariong_dl'].attributes['friendly_name']
-        entities:
-          - sensor.caltex_kariong_pdl:
-          - sensor.caltex_woolworths_gosford_pdl:
-          - sensor.caltex_gosford_west_pdl:
-          - sensor.caltex_gosford_west_pdl_2:
-          - sensor.caltex_gosford_west_pdl_3:
-          - sensor.caltex_woolworths_erina_pdl:
-          - sensor.caltex_wyoming_pdl:
-          - sensor.caltex_woolworths_tuggerah_pdl:
-          - sensor.caltex_woolworths_tuggerah_north_pdl:
-          - sensor.caltex_wyong_pdl:
-          - sensor.caltex_wyong_pdl_2:
-          - sensor.coles_express_kariong_dl:
+            filter:
+              include:
+                - entity_id: sensor.syd*
+            sort:
+              method: state
+              numeric: true
+      - type: custom:auto-entities
         card:
-          type: 'custom:hui-entities-card'
+          type: entities
           title: NSW Fuel Watch - Central Coast
           show_header_toggle: false
-          entities:
-            - entity: sensor.caltex_kariong_pdl
-              name: "${vars[1]}"
-            - entity: sensor.caltex_woolworths_gosford_pdl
-              name: "${vars[3]}"
-            - entity: sensor.caltex_gosford_west_pdl
-              name: "${vars[5]}"
-            - entity: sensor.caltex_gosford_west_pdl_2
-              name: "${vars[7]}"
-            - entity: sensor.caltex_gosford_west_pdl_3
-              name: "${vars[9]}"
-            - entity: sensor.caltex_woolworths_erina_pdl
-              name: "${vars[11]}"
-            - entity: sensor.caltex_wyoming_pdl
-              name: "${vars[13]}"
-            - entity: sensor.caltex_woolworths_tuggerah_pdl
-              name: "${vars[15]}"
-            - entity: sensor.caltex_woolworths_tuggerah_north_pdl
-              name: "${vars[17]}"
-            - entity: sensor.caltex_wyong_pdl
-              name: "${vars[19]}"
-            - entity: sensor.caltex_wyong_pdl_2
-              name: "${vars[21]}"
-            - entity: sensor.coles_express_kariong_dl
-              name: "${vars[23]}"
+        filter:
+          include:
+            - entity_id: sensor.cc*
+        sort:
+          method: state
+          numeric: true
   - title: Medical Alerts
     background: center / cover no-repeat url("/local/images/covid19-background.jpg") fixed
     path: medical
@@ -2416,3 +2331,5 @@ views:
               - entity: sensor.worldwide_coronavirus_deaths
                 icon: 'mdi:grave-stone'
                 name: Deaths
+
+
