@@ -120,10 +120,6 @@ logger:
 
 # iFrame/Panel Custom 
 panel_iframe:
-  jupyterlab:
-    title: JupyterLab
-    icon: mdi:flask
-    url: !secret jupyterlab
   portainer:
     title: Portainer
     icon: mdi:docker
@@ -137,9 +133,6 @@ panel_iframe:
     icon: mdi:vector-square
 #   url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
     url: https://dev.materialdesignicons.com/icons
-
-# Recorder
-recorder: !include recorder.yaml
 
 # Discover some devices automatically
 discovery:
@@ -406,6 +399,7 @@ media_player:
   - platform: onkyo
     host: !secret onkyo
 
+recorder: !include recorder.yaml
 google_assistant: !include google_assistant.yaml
 light: !include lights.yaml
 group: !include groups.yaml
