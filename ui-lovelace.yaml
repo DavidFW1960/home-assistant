@@ -1214,6 +1214,7 @@ views:
                   include:
                     - entity_id: "geo_location.*"
                     - entity_id: "sensor.gdacs*"
+                    - entity_id: "sensor.blitzortung*"
                   exclude:
                     - state: unknown
                 show_empty: true
@@ -1229,6 +1230,7 @@ views:
               - gdacs
             entities:
               - zone.home
+              - device_tracker.lightning
   - title: Lights & Switches
     path: lights_and_switches
     icon: mdi:power
@@ -2285,6 +2287,32 @@ views:
         sort:
           method: state
           numeric: true
+      - type: vertical-stack
+        cards:
+          - type: history-graph
+            title: Fuel Prices Central Coast
+            entities:
+              - sensor.cc17249
+              - sensor.cc17340
+              - sensor.ccgw1
+              - sensor.ccgw2
+              - sensor.ccgw3
+              - sensor.cc2263
+              - sensor.cc523
+              - sensor.cc620
+              - sensor.cc622
+              - sensor.ccm11
+              - sensor.ccm12
+              - sensor.cc902
+          - type: history-graph
+            title: Fuel Prices Sydney
+            entities:
+              - sensor.syd17310
+              - sensor.syd18253
+              - sensor.syd2436
+              - sensor.syd643
+              - sensor.syd663
+              - sensor.syd721
   - title: Medical Alerts
     background: center / cover no-repeat url("/local/images/covid19-background.jpg") fixed
     path: medical

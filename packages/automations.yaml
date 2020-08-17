@@ -526,3 +526,18 @@ automation:
     - data:
         message: Liz is at Home today. Covid-Liz is Off.
       service: notify.david_ios_notify
+  - id: 'lightning'
+    alias: Lightning
+    trigger:
+    - platform: state
+      entity_id: sensor.blitzortung_lightning_azimuth
+    condition: 
+    - condition: template
+      value_template: "{{ states('sensor.blitzortung_lightning_counter') | float != 0 }}"
+    action:
+    - service: device_tracker.see
+      data_template:
+        dev_id: lightning
+        gps:
+          - "{{ state_attr('sensor.blitzortung_lightning_azimuth', 'lat') }}"
+          - "{{ state_attr('sensor.blitzortung_lightning_azimuth', 'lon') }}"

@@ -139,9 +139,9 @@ Dark Soft UI:
       }
       ha-card.type-entities, ha-card.type-custom-bar-card, ha-card.type-entity,
       ha-card.type-history-graph, ha-card.type-map, ha-card.type-iframe,
-      ha-card.type-glance {
+      ha-card.type-glance, ha-card.type-custom-button-text-card {
         box-shadow: none !important;
-        margin: 30px 6px;
+        margin: 25px 6px;
       }
       ha-card > #states > div > * {
         padding-top: 8px;
@@ -160,13 +160,9 @@ Dark Soft UI:
       ha-card > .header-footer,
       ha-card > hui-graph-header-footer,
       ha-card.type-glance > .entities,
-      ha-card:not(.type-humidifier):not(.type-light):not(.type-weather-forecast) > .content {
-        box-shadow: var(--ha-card-box-shadow);
-        border-radius: var(--ha-card-border-radius);
-        margin: 12px;
-        padding: 10px;
-      }
-      ha-card.type-map, ha-card.type-iframe > #root {
+      ha-card:not(.type-humidifier):not(.type-light):not(.type-weather-forecast) > .content,
+      ha-card.type-map > #root > #map,
+      ha-card.type-iframe > #root {
         box-shadow: var(--ha-card-box-shadow);
         border-radius: var(--ha-card-border-radius);
         margin: 12px;
@@ -223,8 +219,8 @@ Dark Soft UI:
         }
     "ha-app-layout":
       $: |
-        #contentContainer[style="padding-top: 180px;"] {
-          padding-top: 90px;
+        #contentContainer {
+          padding-top: 70px;
         }
     .: |
       app-toolbar:not(.edit-mode) {
@@ -299,6 +295,9 @@ Dark Soft UI:
       app-header.edit-mode > paper-tabs {
         margin-left: 0;
       }
+      app-toolbar a {
+        color: var(--primary-color) !important;
+      }
   card-mod-view: |
     #badges {
       width: 90%;
@@ -335,7 +334,7 @@ Dark Soft UI:
         ha-label-badge:
           $: |
             .label-badge {
-              background: none !important;
+              background: none;
             }
             .title {
               -webkit-line-clamp: 1;
@@ -346,11 +345,19 @@ Dark Soft UI:
     $: |
       .mdc-dialog {
         backdrop-filter: blur(2px);
-        background: rgba(0, 0, 0, 0.35);
+        background-color: #262938B2 !important;
+      }
+      .mdc-dialog__scrim {
+        background-color: #262938B2 !important;
       }
       .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.9);
         border-radius: var(--ha-card-border-radius);
+        box-shadow: var(--ha-card-box-shadow);
+      }
+      .mdc-dialog__content {
+        padding: 24px !important;
+        padding-bottom: 24px !important;
       }
     ha-header-bar:
       $: |
