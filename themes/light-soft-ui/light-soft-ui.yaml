@@ -74,12 +74,27 @@ Light Soft UI:
   primary-yellow: "#FAD46B"
   dark-primary-yellow: "#DAB44B"
   soft-ui-shadow: var(--ha-card-box-shadow)
-  red: "#DC3545"
-  orange: "#FD7E14"
-  yellow: "#FFC107"
-  green: "#28A745"
-  blue: "#007BFF"
-  purple: "#6D42C1"
+  red: "#eb6060"
+  red-orange: "#eb8e60"
+  orange: "#eba560"
+  orange-yellow: "#ebc860"
+  yellow: "#ebdf60"
+  yellow-green: "#c8eb60"
+  green-yellow: "#b1eb60"
+  green: "#60eb60"
+  green-cyan: "#60eba5"
+  cyan: "#60ebeb"
+  cyan-blue: "#60bceb"
+  blue-cyan: "#608eeb"
+  blue: "#6060eb"
+  blue-purple: "#7760eb"
+  purple-blue: "#8e60eb"
+  purple: "#a560eb"
+  purple-pink: "#bc60eb"
+  pink-purple: "#d460eb"
+  pink: "#eb60eb"
+  pink-red: "#eb60bc"
+  red-pink: "#eb608e"
   # Card-mod
   card-mod-theme: "Light Soft UI"
   theme-red: firebrick
@@ -265,6 +280,9 @@ Light Soft UI:
         margin-left: 32px !important;
       }
       paper-tab[aria-selected="true"] > ha-icon {
+        color: var(--primary-color) !important;
+      }
+      paper-tab[aria-selected="true"] {
         color: var(--primary-color) !important;
       }
       @media (orientation: portrait) {
