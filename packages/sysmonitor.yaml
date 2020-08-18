@@ -164,18 +164,6 @@ sensor:
     duration:
       days: 2
   - platform: rest
-    resource: http://10.90.11.100:8126/container/addon_a0d7b954_jupyterlablite/stats
-    name: JupyterLab Lite Memory
-    scan_interval: 900
-    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
-    unit_of_measurement: 'MB'
-  - platform: average
-    name: jupyterlab_lite_memory_average
-    entities:
-      - sensor.jupyterlab_lite_memory
-    duration:
-      days: 2
-  - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_logviewer/stats
     name: Logviewer Memory
     scan_interval: 900
