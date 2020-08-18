@@ -1500,8 +1500,8 @@ views:
             entities:
               - switch.harmony
               - entity: remote.harmony_hub
-                type: "custom:secondaryinfo-entity-row"
-                secondary_info: "[[ remote.harmony_hub.attributes.current_activity ]]"
+                type: "custom:template-entity-row"
+                secondary: "{{ state_attr('remote.harmony_hub', 'current_activity') }}"
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -1567,8 +1567,7 @@ views:
                   - automation.beta_update_available
                   - automation.hacs_persistent_notification
                   - entity: automation.update_bom_icons
-                    type: 'custom:secondaryinfo-entity-row'
-                    secondary_info: "[[ automation.update_bom_icons.attributes.last_triggered ]]"
+                    secondary_info: last-triggered
                   - automation.bin_night
                   - automation.update_bin_night
                   - automation.clean_out_known_devices
@@ -1576,8 +1575,7 @@ views:
                   - automation.alarm_event_check
                   - automation.update_speedtest
                   - entity: automation.restart_docker_containers_when_memory_40
-                    type: 'custom:secondaryinfo-entity-row'
-                    secondary_info: "[[ automation.restart_docker_containers_when_memory_40.attributes.last_triggered ]]"
+                    secondary_info: last-triggered
                   - automation.roaster_needs_attention
               - type: custom:fold-entity-row
                 open: false
