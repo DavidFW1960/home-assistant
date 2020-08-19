@@ -593,13 +593,6 @@ views:
               - sensor.speedtest_upload_filtered
               - sensor.speedtest_ping
               - sensor.fritz_netmonitor
-#         - type: picture-entity
-#           title: Superloop CVC Capacity
-#           entity: camera.superloop_cvc_capacity
-#           tap_action:
-#             action: more-info
-#           hold_action:
-#             action: more-info
           - type: horizontal-stack
             cards:
               - type: gauge
@@ -1226,7 +1219,6 @@ views:
             dark_mode: true
             geo_location_sources:
               - nsw_rural_fire_service_feed
-#             - wwlln
               - gdacs
             entities:
               - zone.home
