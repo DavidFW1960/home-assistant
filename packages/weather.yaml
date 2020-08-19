@@ -283,28 +283,6 @@ sensor:
         entity_picture_template: >-
           {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_6') ~ '.png' }}
 
-      bom_today_max:
-        entity_id:
-          - sensor.bom_gosford_max_temp_c_0
-          - sensor.today_temp_bom
-        value_template: >
-          {%- if states('sensor.bom_gosford_max_temp_c_0') == 'n/a' -%} 
-            {{ state_attr('sensor.today_temp_bom', 'max_value') }}
-          {% else %}
-            {{ states('sensor.bom_gosford_max_temp_c_0') }}
-          {% endif %}
-
-      bom_today_min:
-        entity_id:
-          - sensor.bom_gosford_min_temp_c_0
-          - sensor.today_temp_bom
-        value_template: >
-          {%- if states('sensor.bom_gosford_min_temp_c_0') == 'n/a' -%} 
-            {{ state_attr('sensor.today_temp_bom', 'min_value') }}
-          {% else %}
-            {{ states('sensor.bom_gosford_min_temp_c_0') }}
-          {% endif %}
-
       bom_today_max_average:
         entity_id:
           - sensor.bom_gosford_max_temp_c_0
@@ -326,13 +304,6 @@ sensor:
           {% else %}
             {{ states('sensor.bom_gosford_min_temp_c_0') }}
           {% endif %}
-
-  - platform: statistics
-    name: today_temp_bom
-    sampling_size: 150
-    entity_id: sensor.bom_gosford_air_temp_c
-    max_age:
-      hours: 24
 
   - platform: average
     name: today_temp_bom_average
