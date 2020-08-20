@@ -182,6 +182,7 @@ sensor:
       - fd00::/8
       - !secret zerotier_network
       - !secret my_ipv6_network
+      - 2001:4860:4000::/36      # Google
 
 # HERE Travel Time
   - platform: here_travel_time
