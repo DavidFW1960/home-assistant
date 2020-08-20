@@ -916,6 +916,9 @@ views:
             secondary_entity: sensor.bom_gosford_wind_speed_kmh
             direction_offset: 0
             name: Wind Direction
+            compass:
+              indicator: arrow_inward
+              show_north: true
           - type: history-graph
             title: Weather BOM Gosford
             hours_to_show: 48
@@ -1210,6 +1213,7 @@ views:
                     - entity_id: "sensor.blitzortung*"
                   exclude:
                     - state: unknown
+                    - state: '0'
                 show_empty: true
                 sort:
                   method: state
