@@ -1090,6 +1090,13 @@ views:
                 color: red
       - type: vertical-stack
         cards:
+#          - type: picture-entity
+#            title: Skyplot
+#            entity: camera.skyfield
+#            tap_action:
+#              action: more-info
+#            hold_action:
+#              action: more-info
           - type: picture-entity
             title: BOM Satellite
             entity: camera.bom_satellite

@@ -76,13 +76,16 @@ Dark Soft UI:
   soft-ui-shadow: var(--ha-card-box-shadow)
   red: "#eb6060"
   red-orange: "#eb8e60"
+  orange-red: "#eb9a60"
   orange: "#eba560"
   orange-yellow: "#ebc860"
+  yellow-orange: "#ebd460"
   yellow: "#ebdf60"
   yellow-green: "#c8eb60"
   green-yellow: "#b1eb60"
   green: "#60eb60"
   green-cyan: "#60eba5"
+  cyan-green: "#60ebc8"
   cyan: "#60ebeb"
   cyan-blue: "#60bceb"
   blue-cyan: "#608eeb"
@@ -101,6 +104,7 @@ Dark Soft UI:
   theme-green: forestgreen
   theme-blue: deepskyblue
   ha-label-badge-title-font-size: 1em
+  # Cards
   card-mod-card-yaml: |
     hui-image:
       $: |
@@ -111,6 +115,11 @@ Dark Soft UI:
       $: |
         .dial {
           stroke: white !important;
+        }
+    ha-markdown:
+      $: |
+        h1 {
+          text-align: center;
         }
     .: |
       * {
@@ -154,7 +163,8 @@ Dark Soft UI:
       }
       ha-card.type-entities, ha-card.type-custom-bar-card, ha-card.type-entity,
       ha-card.type-history-graph, ha-card.type-map, ha-card.type-iframe,
-      ha-card.type-glance, ha-card.type-custom-button-text-card {
+      ha-card.type-glance, ha-card.type-custom-button-text-card,
+      ha-card.type-custom-select-list-card {
         box-shadow: none !important;
         margin: 25px 6px;
       }
@@ -177,7 +187,8 @@ Dark Soft UI:
       ha-card.type-glance > .entities,
       ha-card:not(.type-humidifier):not(.type-light):not(.type-weather-forecast) > .content,
       ha-card.type-map > #root > #map,
-      ha-card.type-iframe > #root {
+      ha-card.type-iframe > #root,
+      ha-card.type-custom-select-list-card > #list {
         box-shadow: var(--ha-card-box-shadow);
         border-radius: var(--ha-card-border-radius);
         margin: 12px;
@@ -226,6 +237,7 @@ Dark Soft UI:
       ha-icon[data-domain="fan"][data-state="on"] {
         animation: spin 4s infinite linear;
       }
+  # Header
   card-mod-root-yaml: |
     paper-tabs:
       $: |
@@ -314,21 +326,28 @@ Dark Soft UI:
         margin-left: 0;
       }
       app-toolbar a {
-        color: var(--primary-color) !important;
+        color: var(--primary-text-color) !important;
       }
-  card-mod-view: |
-    #badges {
-      width: 90%;
-      margin: 8px auto !important;
-    }
-    #columns {
-      flex-direction: column !important;
-      margin: 0 auto;
-      max-width: 500px;
-    }
-    #columns > .column {
-      margin: 0 15px;
-    }
+  # Badges and columns
+  card-mod-view-yaml: |
+    hui-vertical-stack-card:
+      $: |
+        .card-header {
+          text-align: center;
+        }
+    .: |
+      #badges {
+        width: 90%;
+        margin: 8px auto !important;
+      }
+      #columns {
+        flex-direction: column !important;
+        margin: 0 auto;
+        max-width: 500px;
+      }
+      #columns > .column {
+        margin: 0 15px;
+      }
   card-mod-badge-yaml: |
     .: |
       :host {
@@ -359,6 +378,7 @@ Dark Soft UI:
               display: -webkit-box;
               -webkit-box-orient: vertical;
             }
+  # Style more info
   card-mod-more-info-yaml: |
     $: |
       .mdc-dialog {
@@ -369,19 +389,22 @@ Dark Soft UI:
         background-color: #262938B2 !important;
       }
       .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
-        background: rgba(0, 0, 0, 0.9);
+        background: var(--primary-background-color);
         border-radius: var(--ha-card-border-radius);
         box-shadow: var(--ha-card-box-shadow);
+        transform: scale(0.9);
       }
       .mdc-dialog__content {
-        padding: 24px !important;
-        padding-bottom: 24px !important;
+        padding: 36px !important;
+        padding-bottom: 36px !important;
+        transform: scale(1.11);
       }
     ha-header-bar:
       $: |
         .mdc-top-app-bar {
           background: none !important;
         }
+  # Spin fans
   card-mod-row-yaml: |
     "*:first-child":
       $: |

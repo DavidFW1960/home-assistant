@@ -32,6 +32,13 @@ binary_sensor:
           above: 25
           name: Sun Above 25
 
+# Skyfield Custom Component https://github.com/partofthething/ha_skyfield
+#camera:
+#  - platform: ha_skyfield
+#    show_time: true
+#    show_constellations: true
+#    show_legend: true
+
 sensor:
 
   - platform: season
