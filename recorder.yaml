@@ -40,8 +40,8 @@ exclude:
     - sensor.bom_gosford_detailed_summary_4
     - sensor.bom_gosford_detailed_summary_5
     - sensor.bom_gosford_detailed_summary_6
-    - sensor.bom_gosford_dew_point_c
-    - sensor.bom_gosford_feels_like_c
+#    - sensor.bom_gosford_dew_point_c
+#    - sensor.bom_gosford_feels_like_c
 #    - sensor.bom_gosford_icon_0
     - sensor.bom_gosford_icon_1
     - sensor.bom_gosford_icon_2
