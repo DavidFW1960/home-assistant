@@ -11,6 +11,7 @@ Dark Soft UI:
   # Text
   primary-text-color: "#F7F8FA"
   secondary-text-color: var(--primary-text-color)
+  material-secondary-text-color: var(--secondary-text-color)
   text-primary-color: "#FFFFFF"
   disabled-text-color: "#616387"
   # Sidebar
@@ -174,7 +175,7 @@ Dark Soft UI:
         width: 95%;
         margin: 0 auto 0 5px;
       }
-      ha-card > #states > div > *:not(hui-button-row):not(hui-input-select-entity-row):not(hui-input-number-entity-row):not(hui-input-text-entity-row) {
+      ha-card > #states > div > *:not(hui-button-row):not(hui-input-select-entity-row):not(hui-input-number-entity-row):not(hui-input-text-entity-row):not(hui-cast-row) {
         display: block;
       }
       ha-card.type-media-control, ha-card.type-media-control > * {
