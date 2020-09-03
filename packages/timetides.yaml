@@ -22,6 +22,10 @@ homeassistant:
     sensor.sunsettoday:
       friendly_name: Sunset (Today)
       <<: *common
+    binary_sensor.workday_sensor:
+      friendly_name: Workday
+      icon: mdi:calendar
+      <<: *common
 
 # Binary Sensor for sun op or down
 binary_sensor:
@@ -31,6 +35,11 @@ binary_sensor:
       - elevation:
           above: 25
           name: Sun Above 25
+  - platform: workday
+    country: AU
+    province: NSW
+    workdays: [mon, tue, wed, thu, fri]
+    excludes: [sat, sun, holiday]
 
 # Skyfield Custom Component https://github.com/partofthething/ha_skyfield
 #camera:

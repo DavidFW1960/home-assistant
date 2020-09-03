@@ -683,6 +683,7 @@ views:
           - type: 'custom:config-template-card'
             entities:
               - sensor.seasonname
+              - binary_sensor.workday_sensor
               - sun.sun
               - sensor.sunrisetoday
               - sensor.sunsettoday
@@ -706,6 +707,17 @@ views:
                     :host {
                     --paper-item-icon-color:
                       {% if states('sun.sun') == 'above_horizon' %}
+                        rgb(255, 223, 0)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
+                - entity: binary_sensor.workday_sensor
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states('binary_sensor.workday_sensor') == 'on' %}
                         rgb(255, 223, 0)
                       {% else %}
                         var(--state-icon-color)
