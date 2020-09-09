@@ -79,66 +79,50 @@ sensor:
 
   - platform: moon
 
-# https://www.yr.no/
-  - platform: yr
-
   - platform: template
     sensors:
-      yrwthr:
-        entity_id: sensor.yr_symbol
-        value_template: "{%set list2 = '0','Clear Sky','Fair','Partly Cloudy','Cloudy','Rain Showers','Rain Showers and Thunder','Sleet Showers','Snow Showers','Rain','Heavy Rain','Heavy Rain and Thunder','Sleet','Snow','Snow and Thunder','Fog','0','0','0','0','Sleet Showers and Thunder','Snow Showers and Thunder','Rain and Thunder','Sleet and Thunder','Light Rain Showers and Thunder','Heavy Rain Showers and Thunder','Light Sleet Showers and Thunder','Heavy Sleet Showers and Thunder','Light Snow Showers and Thunder','Heavy Snow Showers and Thunder','Light Rain and Thunder','Light Sleet and Thunder','Heavy Sleet and Thunder','Light Snow and Thunder','Heavy Snow and Thunder','0','0','0','0','0','Light Rain Showers','Heavy Rain Showers','Light Sleet Showers','Heavy Sleet Showers','Light Snow Showers','Heavy Snow Showers','Light Rain','Light Sleet','Heavy Sleet','Light Snow','Heavy Snow'%}{{list2[states('sensor.yr_symbol')|int]}}"
-        entity_picture_template: "{{ state_attr('sensor.yr_symbol','entity_picture') }}"
       nextsunrise:
-        entity_id: sun.sun
         friendly_name: 'Next Sunrise'
         value_template: >
           {{ as_timestamp(state_attr('sun.sun', 'next_rising')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-up
       nextsunset:
-        entity_id: sun.sun
         friendly_name: 'Next Sunset'
         value_template: >
           {{ as_timestamp(state_attr('sun.sun', 'next_setting')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       sunrisetoday:
-        entity_id: sensor.solar_sunrise
         friendly_name: 'Sunrise'
         value_template: >
           {{ as_timestamp(states('sensor.solar_sunrise')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-up
       sunsettoday:
-        entity_id: sensor.solar_sunset
         friendly_name: 'Sunset'
         value_template: >
           {{ as_timestamp(states('sensor.solar_sunset')) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
         icon_template: mdi:weather-sunset-down
       daylightyesterday:
-        entity_id: sensor.solar_daylight
         friendly_name: 'Day Length Yesterday'
         value_template: >
           {{ state_attr('sensor.solar_daylight', 'yesterday_hms') }}
         icon_template: mdi:weather-sunny
       daylighttoday:
-        entity_id: sensor.solar_daylight
         friendly_name: 'Day Length Today'
         value_template: >
           {{ state_attr('sensor.solar_daylight', 'today_hms') }}
         icon_template: mdi:weather-sunny
       daylighttomorrow:
-        entity_id: sensor.solar_daylight
         friendly_name: 'Day Length Tomorrow'
         value_template: >
           {{ state_attr('sensor.solar_daylight', 'tomorrow_hms') }}
         icon_template: mdi:weather-sunny
       daylengthchange:
-        entity_id: sensor.solar_daylight
         friendly_name: 'Change in Day Length'
         unit_of_measurement: "seconds"
         value_template: >
           {{ ((state_attr('sensor.solar_daylight', 'today') - state_attr('sensor.solar_daylight', 'yesterday')) * 3600) | round(0) }}
         icon_template: mdi:weather-sunny
       moonphases:
-        entity_id: sensor.moon
         friendly_name: 'Moon'
         value_template: >
           {{ states('sensor.moon').title().replace('_',' ') }}
@@ -146,7 +130,6 @@ sensor:
           {% set state = states('sensor.moon').title().replace('_','').replace(' ','') %}
           {{ '/local/icons/MoonPhases/S{}.jpg'.format(state) }}
       seasonname:
-        entity_id: sensor.season
         friendly_name: 'Season'
         value_template: >
           {{ states('sensor.season').title() }} 
