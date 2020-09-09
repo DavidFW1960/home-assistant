@@ -70,10 +70,11 @@ Dark Soft UI:
   primary-name-text-color: grey
   primary-state-text-color: grey
   primary-icon-color: grey
-  ha-card-box-shadow-inset: inset -5.5px -5.5px 5.5px 0 rgba(60, 60, 60, .5), inset 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .5)
-  soft-ui-pressed: var(--ha-card-box-shadow-inset)
   primary-yellow: "#FAD46B"
   dark-primary-yellow: "#DAB44B"
+  tertiary-background-color: "#323545"
+  ha-card-box-shadow-inset: inset -5.5px -5.5px 5.5px 0 rgba(60, 60, 60, .5), inset 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .5)
+  soft-ui-pressed: var(--ha-card-box-shadow-inset)
   soft-ui-shadow: var(--ha-card-box-shadow)
   red: "#eb6060"
   red-orange: "#eb8e60"
@@ -273,10 +274,18 @@ Dark Soft UI:
       .edit-icon {
         color: var(--primary-color) !important;
       }
-      ha-button-menu {
-        top: 24px;
+      mwc-icon-button[label="Start conversation"] {
+        top: 0;
+        right: 48px;
         z-index: 2;
-        margin-left: calc(100% - 96px);
+        position: absolute;
+      }
+      ha-button-menu {
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin-left: 5px;
+        position: absolute;
       }
       app-toolbar:not(.edit-mode) > [main-title] {
         display: none;
