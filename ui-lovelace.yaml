@@ -375,7 +375,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states(config.entity) != 'v1.26.2' %}
+                    {% if states(config.entity) != 'v1.27.0' %}
                       var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
@@ -731,7 +731,6 @@ views:
                 - entity: sensor.daylightyesterday
                 - entity: sensor.daylighttoday
                 - entity: sensor.daylighttomorrow
-                - entity: sensor.yrwthr
                 - entity: sensor.moonphases
                 - entity: sensor.bom_uv_alert
                 - entity: sensor.bom_fire_danger
@@ -1222,6 +1221,8 @@ views:
               show_state: false
               image: /local/icons/firedanger/catastrophic.png
           - type: entities
+            title: Geo Location Incidents
+            show_header_toggle: false
             entities: 
               - type: custom:auto-entities
                 card:
@@ -1240,14 +1241,12 @@ views:
                 sort:
                   method: state
                   numeric: true
-          - type: entities
-            entities: 
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
                   head:
                     type: section
-                    label: Gdacs
+                    label: GDACS Integration
                   open: true
                 filter:
                   include:
@@ -1259,8 +1258,6 @@ views:
                 sort:
                   method: state
                   numeric: true
-          - type: entities
-            entities: 
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
@@ -1723,8 +1720,6 @@ views:
                 tap_action:
                   action: call-service
                   service: script.automationsreload
-          - type: horizontal-stack
-            cards:
               - type: custom:button-card
                 entity_picture: /local/images/icons8-note-80.png
                 show_entity_picture: true
@@ -1732,6 +1727,8 @@ views:
                 tap_action:
                   action: call-service
                   service: script.scriptsreload
+          - type: horizontal-stack
+            cards:
               - type: custom:button-card
                 entity_picture: /local/images/icons8-landscape-80.png
                 show_entity_picture: true
@@ -1746,8 +1743,6 @@ views:
                 tap_action:
                   action: call-service
                   service: script.themesreload
-          - type: horizontal-stack
-            cards:
               - type: custom:button-card
                 entity_picture: /local/images/icons8-walter-white-80.png
                 show_entity_picture: true
@@ -1762,6 +1757,8 @@ views:
                 tap_action:
                   action: call-service
                   service: script.inputselectreload
+          - type: horizontal-stack
+            cards:
               - type: custom:button-card
                 entity_picture: /local/images/icons8-switch-off-80.png
                 show_entity_picture: true
@@ -1769,8 +1766,6 @@ views:
                 tap_action:
                   action: call-service
                   service: script.inputbooleanreload
-          - type: horizontal-stack
-            cards:
               - type: custom:button-card
                 entity_picture: /local/images/icons8-home-80.png
                 show_entity_picture: true
@@ -1792,6 +1787,8 @@ views:
                 tap_action:
                   action: call-service
                   service: script.inputnumbersreload
+          - type: horizontal-stack
+            cards:
               - type: custom:button-card
                 entity_picture: /local/images/icons8-time-span-80.png
                 show_entity_picture: true
@@ -1799,6 +1796,57 @@ views:
                 tap_action:
                   action: call-service
                   service: script.inputdatetimesreload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-statistics-80.png
+                show_entity_picture: true
+                name: Stats
+                tap_action:
+                  action: call-service
+                  service: script.statisticsreload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-template-80.png
+                show_entity_picture: true
+                name: Template
+                tap_action:
+                  action: call-service
+                  service: script.templatereload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-server-80.png
+                show_entity_picture: true
+                name: MQTT
+                tap_action:
+                  action: call-service
+                  service: script.mqttreload
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-rest-api-80.png
+                show_entity_picture: true
+                name: Rest
+                tap_action:
+                  action: call-service
+                  service: script.restreload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-typography-80.png
+                show_entity_picture: true
+                name: Generic
+                tap_action:
+                  action: call-service
+                  service: script.genericreload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-filter-80.png
+                show_entity_picture: true
+                name: Filter
+                tap_action:
+                  action: call-service
+                  service: script.filterreload
+              - type: custom:button-card
+                entity_picture: /local/images/icons8-command-line-80.png
+                show_entity_picture: true
+                name: Command
+                tap_action:
+                  action: call-service
+                  service: script.commandlinereload
           - type: entities
             title: Automations, Scenes & Scripts
             show_header_toggle: false
@@ -2054,6 +2102,13 @@ views:
                   power_state: false
                 info: scroll
               - entity: media_player.osmc_vero4
+                type: custom:mini-media-player
+                icon: mdi:kodi
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.osmc
                 type: custom:mini-media-player
                 icon: mdi:kodi
                 artwork: full-cover
@@ -2413,5 +2468,4 @@ views:
               - entity: sensor.worldwide_coronavirus_deaths
                 icon: 'mdi:grave-stone'
                 name: Deaths
-
 
