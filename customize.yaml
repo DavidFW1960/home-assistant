@@ -81,6 +81,8 @@ media_player.txnr1009:
   friendly_name: Onkyo
 media_player.osmc_vero4:
   friendly_name: Kodi OSMC Vero
+media_player.osmc:
+  friendly_name: Kodi
 switch.ha_dockermon_sabnzbd:
   friendly_name: Sabnzbd
   icon: mdi:kodi
