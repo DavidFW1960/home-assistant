@@ -136,18 +136,10 @@ panel_iframe:
 
 # Discover some devices automatically
 discovery:
-  ignore:
-    - yeelight
+#  ignore:
+#    - yeelight
   enable:
     - dlna_dmr
-
-# Yeelights
-yeelight:
-  devices:
-    !secret yeelight_fan:
-      name: Fan Light
-    !secret yeelight_meals:
-      name: Meals Area Light
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
