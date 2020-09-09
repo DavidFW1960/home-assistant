@@ -9,7 +9,7 @@ automation:
         - '08:00:00'
         - '12:00:00'
         - '12:30:00'
-        - '14:00:00'
+        - '13:30:00'
         - '18:30:00'
         - '19:00:00'
         - '20:00:00'
@@ -30,16 +30,11 @@ automation:
           state: 'off'
         - condition: or
           conditions:
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '07:00' and now().weekday() < 5  and (states('input_boolean.holiday') == 'off') }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '08:00' }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '12:30' and now().weekday() < 5 }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '14:00' and now().weekday() > 4 }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '18:30' }}" 
+            - "{{ now().strftime('%H:%M') == '07:00' and (states('binary_sensor.workday_sensor') == 'on') and (states('input_boolean.holiday') == 'off') }}"
+            - "{{ now().strftime('%H:%M') == '08:00' }}"
+            - "{{ now().strftime('%H:%M') == '12:30' and (states('binary_sensor.workday_sensor') == 'on') }}"
+            - "{{ now().strftime('%H:%M') == '13:30' and (states('binary_sensor.workday_sensor') == 'off') }}"
+            - "{{ now().strftime('%H:%M') == '18:30' }}" 
       - condition: and
         conditions:
         - condition: state
@@ -50,26 +45,17 @@ automation:
           state: 'on'
         - condition: or
           conditions:
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '07:00' and now().weekday() < 5  and (states('input_boolean.holiday') == 'off') }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '07:15' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '08:00' }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '12:00' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '14:00' and now().weekday() > 4 }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '19:00' and (states('input_boolean.overtime') == 'off') }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '19:00' and now().weekday() > 4 }}"
-            - condition: template
-              value_template: "{{ now().strftime('%H:%M') == '20:00' and (states('input_boolean.overtime') == 'on') and now().weekday() < 5 }}"
+            - "{{ now().strftime('%H:%M') == '07:00' and (states('binary_sensor.workday_sensor') == 'on') and (states('input_boolean.holiday') == 'off') }}"
+            - "{{ now().strftime('%H:%M') == '07:15' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
+            - "{{ now().strftime('%H:%M') == '08:00' }}"
+            - "{{ now().strftime('%H:%M') == '12:00' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
+            - "{{ now().strftime('%H:%M') == '13:30' and (states('binary_sensor.workday_sensor') == 'off') }}"
+            - "{{ now().strftime('%H:%M') == '19:00' and (states('input_boolean.overtime') == 'off') }}"
+            - "{{ now().strftime('%H:%M') == '19:00' and (states('binary_sensor.workday_sensor') == 'off') }}"
+            - "{{ now().strftime('%H:%M') == '20:00' and (states('input_boolean.overtime') == 'on') and (states('binary_sensor.workday_sensor') == 'on') }}"
             - condition: and
               conditions:
-                - condition: template
-                  value_template: "{{ now().weekday() < 5 }}"
+                - "{{ (states('binary_sensor.workday_sensor') == 'on') }}"
                 - condition: time
                   after: '18:00:00'
                   before: '19:00:00'
@@ -82,8 +68,7 @@ automation:
         entity_id: switch.sonoff12914
     - condition: and
       conditions:
-        - condition: template
-          value_template: "{{ now().weekday() < 5 }}"
+        - "{{ (states('binary_sensor.workday_sensor') == 'on') }}"
         - condition: time
           after: '18:00:00'
           before: '19:00:00'
@@ -111,18 +96,12 @@ automation:
     condition:
       condition: or
       conditions:
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '08:30' and (((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0) and (states('input_boolean.lizcovid') == 'on') }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '10:30' and now().weekday() < 5  and (states('input_boolean.holiday') == 'off') and (states('input_boolean.lizcovid') == 'off') }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '11:00' and now().weekday() > 4  }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '14:00' and now().weekday() < 5  and (states('input_boolean.holiday') == 'off') }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '16:00' }}"
-      - condition: template
-        value_template: "{{ now().strftime('%H:%M') == '22:00' }}"
+      - "{{ now().strftime('%H:%M') == '08:30' and (((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0) and (states('input_boolean.lizcovid') == 'on') }}"
+      - "{{ now().strftime('%H:%M') == '10:30' and (states('binary_sensor.workday_sensor') == 'on') and (states('input_boolean.holiday') == 'off') and (states('input_boolean.lizcovid') == 'off') }}"
+      - "{{ now().strftime('%H:%M') == '11:00' and (states('binary_sensor.workday_sensor') == 'off') }}"
+      - "{{ now().strftime('%H:%M') == '14:00' and (states('binary_sensor.workday_sensor') == 'on') and (states('input_boolean.holiday') == 'off') }}"
+      - "{{ now().strftime('%H:%M') == '16:00' }}"
+      - "{{ now().strftime('%H:%M') == '22:00' }}"
     action:
     - service: switch.turn_off
       data:
@@ -192,20 +171,20 @@ automation:
     condition: []
     action:
     - service: hassio.snapshot_full
-      data_template:
+      data:
         name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
     - service: notify.david_ios_notify
-      data_template:
+      data:
         message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d')
           }}"
     - delay: '03:00:00'
     - service: hassio.addon_stdin
-      data_template:
+      data:
         addon: 7be23ff5_dropbox_sync
         input:
           command: upload
     - service: notify.david_ios_notify
-      data_template:
+      data:
         message: Copied all new backups to Dropbox
   - id: '1532478833426'
     alias: Lights Off Failsafe
@@ -220,7 +199,7 @@ automation:
       entity_id: automation.lights_on_failsafe
     - delay: '00:00:02'
     - service: light.turn_off
-      data_template:
+      data:
         entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
           < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
           < 5) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
@@ -231,7 +210,7 @@ automation:
           < 5) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
     - delay: '00:00:02'
     - service: light.turn_off
-      data_template:
+      data:
         entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
           < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
           < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
@@ -255,7 +234,7 @@ automation:
       entity_id: automation.lights_off_failsafe
     - delay: '00:00:02'
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
           < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
           < 5) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
@@ -268,7 +247,7 @@ automation:
         color_temp: 322   #kelvin: 3100
     - delay: '00:00:05'
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
           < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
           < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
@@ -298,14 +277,14 @@ automation:
         entity_id: switch.sonoff63719
     - delay: '00:00:10'
     - service: notify.david_ios_notify
-      data_template:
+      data:
         message: >
           {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
           < 60 ) and (as_timestamp(now()) - as_timestamp(states.switch.sonoff51083.last_changed) 
           < 60 ) %} Garage closed & Alarm armed Verified {%- else %} Error occurred arming {%- endif %}
         title: 'Home Arming Notification'
     - service: persistent_notification.create
-      data_template:
+      data:
         message: >
           {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
           < 60 ) and (as_timestamp(now()) - as_timestamp(states.switch.sonoff51083.last_changed) 
@@ -326,14 +305,14 @@ automation:
         entity_id: switch.sonoff51083
     - delay: "00:00:10"
     - service: notify.david_ios_notify
-      data_template:
+      data:
         message: >
           {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
           < 60 ) and (as_timestamp(now()) - as_timestamp(states.switch.sonoff51083.last_changed) 
           < 60 ) %} Alarm disabled & Garage opened Verified {%- else %} Error occurred disarming {%- endif %}
         title: 'Home Disarming Notification'
     - service: persistent_notification.create
-      data_template:
+      data:
         message: >
           {%- if (as_timestamp(now()) - as_timestamp(states.switch.sonoff63719.last_changed)
           < 60 ) and (as_timestamp(now()) - as_timestamp(states.switch.sonoff51083.last_changed) 
@@ -394,8 +373,7 @@ automation:
     - platform: state
       entity_id: sensor.alarm_triggers
     condition:
-      - condition: template
-        value_template: "{{ states('sensor.alarm_triggers') != '0' and states('sensor.alarm_triggers') != 'unavailable' }}"
+      - "{{ states('sensor.alarm_triggers') != '0' and states('sensor.alarm_triggers') != 'unavailable' }}"
     action:
     - service: notify.david_ios_notify
       data:
@@ -428,19 +406,18 @@ automation:
     - entity_id: sensor.artisan_events
       platform: state
     condition:
-      - condition: template
-        value_template: "{{ states('sensor.artisan_events') != 'unavailable' }}"
+      - "{{ states('sensor.artisan_events') != 'unavailable' }}"
     action:
     - service: notify.david_ios_notify
-      data_template:
+      data:
         message: '{{ states("sensor.artisan_events") }}'
         title: 'Artisan Notification'
     - service: persistent_notification.create
-      data_template:
+      data:
         message: '{{ states("sensor.artisan_events") }}'
         title: 'Artisan Notification'
     - service: notify.html5_notify
-      data_template:
+      data:
         message: '{{ states("sensor.artisan_events") }}'
         title: 'Artisan Notification'
   - id: 'restartnodemcu'
@@ -460,8 +437,7 @@ automation:
       for:
         minutes: 30
     condition:
-      - condition: template
-        value_template: "{{ not is_state('sensor.hacs', 'unknown') }}"
+      - "{{ not is_state('sensor.hacs', 'unknown') }}"
     action:
       - service: persistent_notification.create
         data:
@@ -483,7 +459,7 @@ automation:
           message: "Update Available"
           title: "Addons"
       - service: notify.html5_notify
-        data_template:
+        data:
           message: "Update Available"
           title: "Addons"
   - id: '1593407614869'
@@ -492,8 +468,7 @@ automation:
     - at: '09:00:00'
       platform: time
     condition:
-    - condition: template
-      value_template: "{{ now().strftime('%H:%M') == '09:00' and now().weekday() == 1 }}"
+    - "{{ now().strftime('%H:%M') == '09:00' and now().weekday() == 1 }}"
     action:
     - data:
         message: Is Liz Home or at Work today?
@@ -504,8 +479,7 @@ automation:
     - at: '00:00:00'
       platform: time
     condition:
-    - condition: template
-      value_template: "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 1 }}"
+    - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 1 }}"
     action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.lizcovid
@@ -518,8 +492,7 @@ automation:
     - at: '00:00:00'
       platform: time
     condition:
-    - condition: template
-      value_template: "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 2 }}"
+    - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 2 }}"
     action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.lizcovid
@@ -532,11 +505,10 @@ automation:
     - platform: state
       entity_id: sensor.blitzortung_lightning_azimuth
     condition: 
-    - condition: template
-      value_template: "{{ states('sensor.blitzortung_lightning_counter') | float != 0 }}"
+    - "{{ states('sensor.blitzortung_lightning_counter') | float != 0 }}"
     action:
     - service: device_tracker.see
-      data_template:
+      data:
         dev_id: lightning
         gps:
           - "{{ state_attr('sensor.blitzortung_lightning_azimuth', 'lat') }}"
