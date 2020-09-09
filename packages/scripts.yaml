@@ -368,6 +368,90 @@ script:
         data_template:
           message: 'Input Date Time Reloaded'
           title: 'Reload Notification'
+  commandlinereload:
+    alias: Reload Commandline
+    sequence:
+      - service: command_line.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Command Line Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Command Line Reloaded'
+          title: 'Reload Notification'
+  filterreload:
+    alias: Reload Filter
+    sequence:
+      - service: filter.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Filter Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Filter Reloaded'
+          title: 'Reload Notification'
+  genericreload:
+    alias: Reload Generic
+    sequence:
+      - service: generic.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Generic Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Generic Reloaded'
+          title: 'Reload Notification'
+  mqttreload:
+    alias: Reload MQTT
+    sequence:
+      - service: mqtt.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'MQTT Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'MQTT Reloaded'
+          title: 'Reload Notification'
+  restreload:
+    alias: Reload Rest
+    sequence:
+      - service: rest.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Rest Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Rest Reloaded'
+          title: 'Reload Notification'
+  statisticsreload:
+    alias: Reload Statistics
+    sequence:
+      - service: statistics.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Statistics Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Statistics Reloaded'
+          title: 'Reload Notification'
+  templatereload:
+    alias: Reload Templates
+    sequence:
+      - service: template.reload
+      - service: persistent_notification.create
+        data_template:
+          message: 'Templates Reloaded'
+          title: 'Reload Notification'
+      - service: notify.html5_notify
+        data_template:
+          message: 'Templates Reloaded'
+          title: 'Reload Notification'
   restartvscode:
     alias: Restart VSCode
     sequence:
