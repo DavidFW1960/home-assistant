@@ -117,44 +117,30 @@ sensor:
     sensors:
 
       cc17249:
-        entity_id: 
-          - sensor.caltex_woolworths_erina_pdl
         value_template: "{{states('sensor.caltex_woolworths_erina_pdl')}}"
         friendly_name: Caltex Woolies 155 The Entrance Rd Erina
         unit_of_measurement: ¢/L
       cc17340:
-        entity_id: 
-          - sensor.caltex_kariong_pdl
         value_template: "{{states('sensor.caltex_kariong_pdl')}}"
         friendly_name: Caltex Langford Drive Kariong
         unit_of_measurement: ¢/L
       cc2263:
-        entity_id: 
-          - sensor.caltex_wyoming_pdl
         value_template: "{{states('sensor.caltex_wyoming_pdl')}}"
         friendly_name: Caltex 465 Pacific Hwy Wyoming
         unit_of_measurement: ¢/L
       cc523:
-        entity_id: 
-          - sensor.caltex_woolworths_tuggerah_north_pdl
         value_template: "{{states('sensor.caltex_woolworths_tuggerah_north_pdl')}}"
         friendly_name: Caltex Woolies 186 Pacific Hwy Tuggerah
         unit_of_measurement: ¢/L
       cc620:
-        entity_id: 
-          - sensor.caltex_woolworths_tuggerah_pdl
         value_template: "{{states('sensor.caltex_woolworths_tuggerah_pdl')}}"
         friendly_name: Caltex Woolies Westfield 24-26 Gavenlock Road
         unit_of_measurement: ¢/L
       cc622:
-        entity_id: 
-          - sensor.caltex_woolworths_gosford_pdl
         value_template: "{{states('sensor.caltex_woolworths_gosford_pdl')}}"
         friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
         unit_of_measurement: ¢/L
       ccgw1:
-        entity_id: 
-          - sensor.caltex_gosford_west_pdl
         value_template: "{{states('sensor.caltex_gosford_west_pdl')}}"
         friendly_name_template: >
           {% if state_attr('sensor.caltex_gosford_west_pdl', 'station_id') == 18323 %}
@@ -166,8 +152,6 @@ sensor:
           {% endif %}
         unit_of_measurement: ¢/L
       ccgw2:
-        entity_id: 
-          - sensor.caltex_gosford_west_pdl_2
         value_template: "{{states('sensor.caltex_gosford_west_pdl_2')}}"
         friendly_name_template: >
           {% if state_attr('sensor.caltex_gosford_west_pdl_2', 'station_id') == 18323 %}
@@ -179,8 +163,6 @@ sensor:
           {% endif %}
         unit_of_measurement: ¢/L
       ccgw3:
-        entity_id: 
-          - sensor.caltex_gosford_west_pdl_3
         value_template: "{{states('sensor.caltex_gosford_west_pdl_3')}}"
         friendly_name_template: >
           {% if state_attr('sensor.caltex_gosford_west_pdl_3', 'station_id') == 18323 %}
@@ -192,8 +174,6 @@ sensor:
           {% endif %}
         unit_of_measurement: ¢/L
       ccm11:
-        entity_id: 
-          - sensor.caltex_wyong_pdl
         value_template: "{{states('sensor.caltex_wyong_pdl')}}"
         friendly_name_template: >
           {% if state_attr('sensor.caltex_wyong_pdl', 'station_id') == 906 %}
@@ -203,8 +183,6 @@ sensor:
           {% endif %}
         unit_of_measurement: ¢/L
       ccm12:
-        entity_id: 
-          - sensor.caltex_wyong_pdl_2
         value_template: "{{states('sensor.caltex_wyong_pdl_2')}}"
         friendly_name_template: >
           {% if state_attr('sensor.caltex_wyong_pdl_2', 'station_id') == 906 %}
@@ -214,44 +192,30 @@ sensor:
           {% endif %}
         unit_of_measurement: ¢/L
       syd17310:
-        entity_id:
-          - sensor.caltex_st_ives_north_pdl
         value_template: "{{states('sensor.caltex_st_ives_north_pdl')}}"
         friendly_name: Caltex 363 Mona Vale Rd St Ives North
         unit_of_measurement: ¢/L
       syd18253:
-        entity_id:
-          - sensor.caltex_st_ives_foodary_pdl
         value_template: "{{states('sensor.caltex_st_ives_foodary_pdl')}}"
         friendly_name: Caltex 164 Mona Vale Rd St Ives Foodary
         unit_of_measurement: ¢/L
       syd2436:
-        entity_id:
-          - sensor.caltex_woolworths_waitara_pdl
         value_template: "{{states('sensor.caltex_woolworths_waitara_pdl')}}"
         friendly_name: Caltex Woolies 59-61 Pacific Hwy Waitara
         unit_of_measurement: ¢/L
       syd643:
-        entity_id:
-          - sensor.caltex_woolworths_glenrose_pdl
         value_template: "{{states('sensor.caltex_woolworths_glenrose_pdl')}}"
         friendly_name: Caltex Woolies 60 Glenn St Belrose
         unit_of_measurement: ¢/L
       syd663:
-        entity_id:
-          - sensor.caltex_woolworths_turramurra_pdl
         value_template: "{{states('sensor.caltex_woolworths_turramurra_pdl')}}"
         friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
         unit_of_measurement: ¢/L
       syd721:
-        entity_id:
-          - sensor.caltex_belrose_pdl
         value_template: "{{states('sensor.caltex_belrose_pdl')}}"
         friendly_name: Caltex 153 Forest Way Belrose
         unit_of_measurement: ¢/L
       cc902:
-        entity_id: 
-          - sensor.coles_express_kariong_dl
         value_template: "{{states('sensor.coles_express_kariong_dl')}}"
         friendly_name: Shell 6-8 Pacific Hwy Kariong
         unit_of_measurement: ¢/L
