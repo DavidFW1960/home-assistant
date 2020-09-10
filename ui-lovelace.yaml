@@ -375,7 +375,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states(config.entity) != 'v1.27.0' %}
+                    {% if states('sensor.docker_compose_version_available') | float != states('sensor.docker_compose_version_installed') | float %}
                       var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)

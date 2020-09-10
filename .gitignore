@@ -23,6 +23,7 @@ zones.yaml
 g-actions
 entity_registry.yaml
 delete-gmail-email.sh
+docker-compose-version.sh
 emptyinbox.py
 abbcookie.txt
 *.json
