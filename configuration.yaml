@@ -252,6 +252,13 @@ sensor:
     icon: mdi:coffee
     value_template: "{{ value_json.state }}"
 
+# Docker Compose Version Installed
+  - platform: mqtt
+    name: "Docker Compose Version Installed"
+    state_topic: "docker-compose-version"
+    icon: mdi:docker
+    value_template: "{{ value_json.state }}"
+
 # Docker Compose Version
   - platform: rest
     resource: https://api.github.com/repos/docker/compose/releases/latest
@@ -383,7 +390,7 @@ input_boolean:
   retrigger:
     name: Retrigger Docker Containers Restart
 
-# Clear Out Gmail Alarm Notifications & Clean Known Devices file, ABB usage, Component/Card Versions
+# Clear Out Gmail Alarm Notifications & Clean Known Devices file
 shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
