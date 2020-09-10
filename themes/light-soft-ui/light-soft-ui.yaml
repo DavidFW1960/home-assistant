@@ -280,6 +280,15 @@ Light Soft UI:
         z-index: 2;
         position: absolute;
       }
+      mwc-icon-button[title="Help"] {
+        top: 8px;
+        right: 48px;
+        position: absolute;
+      }
+      mwc-icon-button#add-view {
+        position: fixed;
+        right: 0px;
+      }
       ha-button-menu {
         top: 0;
         right: 0;
