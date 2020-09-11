@@ -375,7 +375,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states('sensor.docker_compose_version_available') | float != states('sensor.docker_compose_version_installed') | float %}
+                    {% if states('sensor.docker_compose_version_available') != states('sensor.docker_compose_version_installed') %}
                       var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
@@ -825,8 +825,8 @@ views:
             entity_summary_5: sensor.bom_gosford_summary_5
             entity_sun: sun.sun
 #           entity_visibility: sensor.dark_sky_visibility
-            entity_daytime_high: sensor.bom_today_max_average
-            entity_daytime_low: sensor.bom_today_min_average
+            entity_daytime_high: sensor.bom_today_max
+            entity_daytime_low: sensor.bom_today_min
             entity_wind_bearing: sensor.bom_gosford_wind_direction
             entity_wind_speed: sensor.bom_gosford_wind_speed_kmh
             entity_wind_gust: sensor.bom_gosford_wind_gust_kmh
