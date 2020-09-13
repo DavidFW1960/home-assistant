@@ -1120,6 +1120,16 @@ views:
               action: more-info
             hold_action:
               action: more-info
+          - type: 'custom:bom-radar-card'
+            frame_count: 10
+            lattitude: '-33.443955'
+            longitude: '151.286184'
+            markerIcon: 'true'
+            markerLattitude: '-33.443955'
+            markerLongitude: '151.286184'
+            show_marker: true
+            show_range: true
+            zoomLevel: '10'
           - type: picture-entity
             title: BOM Radar Sydney
             entity: camera.sydney
