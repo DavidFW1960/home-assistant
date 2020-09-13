@@ -3,8 +3,9 @@ Light Soft UI:
   # Color
   primary-color: "#5F9BEA"
   light-primary-color: "#80B7FF"
-  mdc-theme-secondary: var(--primary-color)
-  accent-color: var(--primary-color)
+  accent-color: "#60CAEB"
+  mdc-theme-secondary: var(--accent-color)
+  error-color: "#D18E41"
   # Background
   primary-background-color: "#F3F5F7"
   secondary-background-color: var(--primary-background-color)
@@ -14,6 +15,12 @@ Light Soft UI:
   material-secondary-text-color: var(--secondary-text-color)
   text-primary-color: "#FFFFFF"
   disabled-text-color: "#717171"
+  # Fonts
+  paper-font-headline_-_font-family: Quicksand, Roboto, sans-serif
+  paper-font-headline_-_font-weight: "600"
+  ha-card-header-font-family: Quicksand, Roboto, sans-serif
+  ha-card-header-font-weight: "600"
+  paper-font-common-code_-_font-family: Cascadia Code PL, Cascadia Mono PL, Cascadia Code, Cascadia Mono, monospace
   # Sidebar
   sidebar-icon-color: var(--primary-text-color)
   sidebar-text-color: var(--primary-text-color)
@@ -44,8 +51,8 @@ Light Soft UI:
   label-badge-yellow: "#D9B757"
   label-badge-gray: "#5F6267"
   # Cards
-  ha-card-border-radius: "15px"
-  ha-card-box-shadow: -5.5px -5.5px 5.5px 0 rgba(255, 255, 255, .5), 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .03)
+  ha-card-border-radius: "12.5px"
+  ha-card-box-shadow: -5px -5px 5px 0 rgba(255, 255, 255, .5), 5px 5px 5px 0 rgba(0, 0, 0, .03)
   card-background-color: var(--primary-background-color)
   paper-card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)

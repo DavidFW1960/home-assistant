@@ -1,12 +1,13 @@
 # Thanks @JuanMTech, @thomasloven, and @N-l1.
 Dark Soft UI:
   # Color
-  primary-color: "#4C3FF9"
-  light-primary-color: "#6459FF"
-  mdc-theme-secondary: var(--primary-color)
-  accent-color: var(--primary-color)
+  primary-color: "#6960EB"
+  light-primary-color: "#8880FF"
+  accent-color: "#6085EB"
+  mdc-theme-secondary: var(--accent-color)
+  error-color: "#D18E41"
   # Background
-  primary-background-color: "#262938"
+  primary-background-color: "#303138"
   secondary-background-color: var(--primary-background-color)
   # Text
   primary-text-color: "#F7F8FA"
@@ -14,6 +15,12 @@ Dark Soft UI:
   material-secondary-text-color: var(--secondary-text-color)
   text-primary-color: "#FFFFFF"
   disabled-text-color: "#616387"
+  # Fonts
+  paper-font-headline_-_font-family: Quicksand, Roboto, sans-serif
+  paper-font-headline_-_font-weight: "600"
+  ha-card-header-font-family: Quicksand, Roboto, sans-serif
+  ha-card-header-font-weight: "600"
+  paper-font-common-code_-_font-family: Cascadia Code PL, Cascadia Mono PL, Cascadia Code, Cascadia Mono, monospace
   # Sidebar
   sidebar-icon-color: var(--primary-text-color)
   sidebar-text-color: var(--primary-text-color)
@@ -44,8 +51,8 @@ Dark Soft UI:
   label-badge-yellow: "#D9B757"
   label-badge-gray: "#5F6267"
   # Cards
-  ha-card-border-radius: "15px"
-  ha-card-box-shadow: -5.5px -5.5px 5.5px 0 rgba(50, 50, 50, .5), 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .15)
+  ha-card-border-radius: "12.5px"
+  ha-card-box-shadow: -5px -5px 5px 0 rgba(50, 50, 50, .5), 5px 5px 5px 0 rgba(0, 0, 0, .15)
   card-background-color: var(--primary-background-color)
   paper-card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)
