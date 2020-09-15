@@ -100,3 +100,6 @@ reeder_dark:
   # Mini Graph Card
   mcg-title-letter-spacing: ".05em"
   mcg-title-font-weight: "500"
+
+  # Code Editor
+  code-editor-background-color: "#333333"
