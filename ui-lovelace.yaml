@@ -1129,23 +1129,9 @@ views:
             marker_longitude: '151.342224'
             show_marker: true
             show_range: true
-            zoom_level: '10'
+            zoom_level: '9'
             extra_labels: true
-            map_style: 'dark'
-          - type: picture-entity
-            title: BOM Radar Sydney
-            entity: camera.sydney
-            tap_action:
-              action: more-info
-            hold_action:
-              action: more-info
-          - type: picture-entity
-            title: BOM Radar Newcastle
-            entity: camera.newcastle
-            tap_action:
-              action: more-info
-            hold_action:
-              action: more-info
+            map_style: 'voyager'
           - type: entities
             title: NSW Warnings & Events
             show_header_toggle: false
