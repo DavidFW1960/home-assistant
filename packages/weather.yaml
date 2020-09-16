@@ -3,6 +3,11 @@
 # For the animated card follow the instructions and put the icons in <config-dir>/www/icons/weather_icons. This is a DIFFERENT icon file to the above.
 # Show BOM Satellite
 
+camera:
+  - platform: generic
+    name: BOM Satellite
+    still_image_url: http://www.bom.gov.au/gms/IDE00135.jpg
+
 sensor:
   - platform: bom
     station: !secret my_bom_station
