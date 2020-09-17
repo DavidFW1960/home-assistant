@@ -1132,6 +1132,7 @@ views:
             zoom_level: '9'
             extra_labels: true
             map_style: 'voyager'
+            show_scale: true
           - type: entities
             title: NSW Warnings & Events
             show_header_toggle: false
