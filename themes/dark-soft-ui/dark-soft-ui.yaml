@@ -5,7 +5,11 @@ Dark Soft UI:
   light-primary-color: "#8880FF"
   accent-color: "#6085EB"
   mdc-theme-secondary: var(--accent-color)
-  error-color: "#D18E41"
+  # More colors
+  success-color: "#77EB60"
+  info-color: var(--primary-color)
+  warning-color: "#EBEB60"
+  error-color: "#D18941"
   # Background
   primary-background-color: "#303138"
   secondary-background-color: var(--primary-background-color)
@@ -18,9 +22,13 @@ Dark Soft UI:
   # Fonts
   paper-font-headline_-_font-family: Quicksand, Roboto, sans-serif
   paper-font-headline_-_font-weight: "600"
+  paper-font-subhead_-_font-family: Quicksand, Roboto, sans-serif
+  paper-font-subhead_-_font-weight: "550"
+  paper-font-subhead_-_line-height: 2.6em
   ha-card-header-font-family: Quicksand, Roboto, sans-serif
   ha-card-header-font-weight: "600"
-  paper-font-common-code_-_font-family: Cascadia Code PL, Cascadia Mono PL, Cascadia Code, Cascadia Mono, monospace
+  code-font-family: Cascadia Code PL, Cascadia Mono PL, Cascadia Code, Cascadia Mono, monospace
+  paper-font-common-code_-_font-family: var(--code-font-family)
   # Sidebar
   sidebar-icon-color: var(--primary-text-color)
   sidebar-text-color: var(--primary-text-color)
@@ -45,14 +53,15 @@ Dark Soft UI:
   # Labels
   label-badge-background-color: var(--primary-background-color)
   label-badge-text-color: var(--primary-text-color)
-  label-badge-red: "#C7484C"
-  label-badge-green: "#6DC071"
-  label-badge-blue: "#51AAD1"
-  label-badge-yellow: "#D9B757"
-  label-badge-gray: "#5F6267"
+  label-badge-red: "#EB6065"
+  label-badge-green: "#60EB67"
+  label-badge-blue: "#60B1EB"
+  label-badge-yellow: "#EBC860"
+  label-badge-gray: "#666F80"
   # Cards
   ha-card-border-radius: "13.75px"
   ha-card-box-shadow: -5.25px -5.25px 5.25px 0 rgba(60, 60, 60, .6), 5.25px 5.25px 5.25px 0 rgba(0, 0, 0, .15)
+  ha-card-border-color: var(--primary-color)
   card-background-color: var(--primary-background-color)
   paper-card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)
