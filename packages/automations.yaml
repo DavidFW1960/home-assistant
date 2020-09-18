@@ -194,31 +194,24 @@ automation:
       to: 'off'
       entity_id: light.lounge, light.dining, light.desk, light.office
     condition: []
+    mode: single
     action:
     - service: automation.turn_off
       entity_id: automation.lights_on_failsafe
-    - delay: '00:00:02'
-    - service: light.turn_off
-      data:
-        entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-          < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 5) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-          < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 5) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 5) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-          < 5) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-          < 5) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
-    - delay: '00:00:02'
-    - service: light.turn_off
-      data:
-        entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-          < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-          < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 10) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 10) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-          < 10) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-          < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
+    - repeat:
+        count: '2'
+        sequence:
+        - delay: '00:00:02'
+        - service: light.turn_off
+          data:
+            entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+              < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+              < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+              < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+              < 10) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+              < 10) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+              < 10) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+              < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
     - service: automation.turn_on
       entity_id: automation.lights_on_failsafe
   - id: '1532478833427'
@@ -229,35 +222,27 @@ automation:
       to: 'on'
       entity_id: light.lounge, light.dining, light.desk, light.office
     condition: []
+    mode: single
     action:
     - service: automation.turn_off
       entity_id: automation.lights_off_failsafe
-    - delay: '00:00:02'
-    - service: light.turn_on
-      data:
-        entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-          < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 5) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-          < 5) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 5) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 5) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-          < 5) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-          < 5) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
-        brightness: 191   #brightness_pct: 75
-        color_temp: 322   #kelvin: 3100
-    - delay: '00:00:05'
-    - service: light.turn_on
-      data:
-        entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-          < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-          < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 10) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-          < 10) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-          < 10) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-          < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
-        brightness: 191   #brightness_pct: 75
-        color_temp: 322   #kelvin: 3100
+    - repeat:
+        count: '2'
+        sequence:
+        - delay: '00:00:02'
+        - service: light.turn_on
+          data:
+            entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+              < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+              < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+              < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+              < 10) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+              < 10) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+              < 10) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+              < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
+            brightness: 191   #brightness_pct: 75
+            color_temp: 322   #kelvin: 3100
+        - delay: '00:00:03'
     - service: automation.turn_on
       entity_id: automation.lights_off_failsafe
   - id: 'closegaragesetalarm'
