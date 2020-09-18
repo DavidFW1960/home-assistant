@@ -169,6 +169,16 @@ homeassistant:
       friendly_name: 'Multicast Installed'
       icon: mdi:check-decagram
 
+    sensor.current_observer_latest:
+      <<: *customize
+      friendly_name: 'Observer Latest'
+      icon: mdi:check-decagram
+
+    sensor.current_observer_installed:
+      <<: *customize
+      friendly_name: 'Observer Installed'
+      icon: mdi:check-decagram
+
 ################################################
 ## Updater
 ## https://www.home-assistant.io/components/updater/
@@ -236,6 +246,15 @@ sensor:
       - version
       - version_latest
 
+  - platform: command_line
+    name: Observer Installed
+    command: 'curl http://supervisor/observer/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"host": .data.host,"version":.data.version,"version_latest":.data.version_latest }'''
+    value_template: "{{ value_json.version }}"
+    json_attributes:
+      - host
+      - version
+      - version_latest
+
   - platform: template
     sensors:
       current_supervisor_installed:
@@ -250,6 +269,10 @@ sensor:
         value_template: '{{ states.sensor.multicast_installed.attributes["version"] }}'
       current_multicast_latest:
         value_template: '{{ states.sensor.multicast_installed.attributes["version_latest"] }}'
+      current_observer_installed:
+        value_template: '{{ states.sensor.observer_installed.attributes["version"] }}'
+      current_observer_latest:
+        value_template: '{{ states.sensor.observer_installed.attributes["version_latest"] }}'
 
   - platform: rest
     resource: https://s3.amazonaws.com/hassio-version/beta.json
