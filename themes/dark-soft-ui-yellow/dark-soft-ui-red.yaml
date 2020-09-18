@@ -1,0 +1,459 @@
+# Thanks @JuanMTech, @thomasloven, and @N-l1.
+Dark Soft UI Red:
+  # Color
+  primary-color: "#eb6060"
+  light-primary-color: var(--primary-color)
+  accent-color: "#eb609a"
+  mdc-theme-secondary: var(--accent-color)
+  # More colors
+  success-color: "#77EB60"
+  info-color: var(--primary-color)
+  warning-color: "#EBEB60"
+  error-color: "#D18941"
+  # Background
+  primary-background-color: "#383131"
+  secondary-background-color: var(--primary-background-color)
+  # Text
+  primary-text-color: "#F7F8FA"
+  secondary-text-color: var(--primary-text-color)
+  codemirror-meta: var(--primary-text-color)
+  material-secondary-text-color: var(--secondary-text-color)
+  text-primary-color: "#FFFFFF"
+  disabled-text-color: "#616387"
+  # Fonts
+  paper-font-headline_-_font-family: Quicksand, Roboto, sans-serif
+  paper-font-headline_-_font-weight: "600"
+  paper-font-subhead_-_font-family: Quicksand, Roboto, sans-serif
+  paper-font-subhead_-_font-weight: "550"
+  paper-font-subhead_-_line-height: 2.4em
+  ha-card-header-font-family: Quicksand, Roboto, sans-serif
+  ha-card-header-font-weight: "600"
+  code-font-family: Cascadia Code PL, Cascadia Mono PL, Cascadia Code, Cascadia Mono, monospace
+  paper-font-common-code_-_font-family: var(--code-font-family)
+  # Sidebar
+  sidebar-icon-color: var(--primary-text-color)
+  sidebar-text-color: var(--primary-text-color)
+  sidebar-selected-icon-color: var(--light-primary-color)
+  sidebar-selected-text-color: var(--light-primary-color)
+  sidebar-background-color: var(--primary-background-color)
+  sidebar-selected-background-color: var(--primary-background-color)
+  divider-color: var(--primary-background-color)
+  # Header
+  app-header-background-color: var(--primary-background-color)
+  app-header-text-color: var(--primary-text-color)
+  # Icons
+  state-icon-color: var(--primary-text-color)
+  state-icon-active-color: var(--primary-color)
+  state-icon-unavailable-color: var(--disabled-text-color)
+  # Sliders
+  paper-slider-knob-color: var(--primary-color)
+  paper-slider-knob-start-color: var(--primary-color)
+  paper-slider-pin-color: var(--primary-color)
+  paper-slider-active-color: var(--primary-color)
+  paper-slider-secondary-color: var(--light-primary-color)
+  # Labels
+  label-badge-background-color: var(--primary-background-color)
+  label-badge-text-color: var(--primary-text-color)
+  label-badge-red: "#EB6065"
+  label-badge-green: "#60EB67"
+  label-badge-blue: "#60B1EB"
+  label-badge-yellow: "#EBC860"
+  label-badge-gray: "#666F80"
+  # Cards
+  ha-card-border-radius: "13.75px"
+  ha-card-box-shadow: -5.25px -5.25px 5.25px 0 rgba(60, 60, 60, .6), 5.25px 5.25px 5.25px 0 rgba(0, 0, 0, .15)
+  ha-card-border-color: var(--primary-color)
+  card-background-color: var(--primary-background-color)
+  paper-card-background-color: var(--primary-background-color)
+  paper-listbox-background-color: var(--primary-background-color)
+  # Switches
+  switch-checked-button-color: var(--primary-color)
+  switch-checked-track-color: var(--primary-color)
+  switch-unchecked-button-color: var(--disabled-text-color)
+  switch-unchecked-track-color: var(--disabled-text-color)
+  paper-toggle-button-checked-button-color: var(--primary-color)
+  paper-toggle-button-checked-bar-color: var(--primary-color)
+  paper-toggle-button-unchecked-button-color: var(--disabled-text-color)
+  paper-toggle-button-unchecked-bar-color: var(--disabled-text-color)
+  # Tables
+  table-row-background-color: var(--primary-background-color)
+  table-row-alternative-background-color: var(--primary-background-color)
+  data-table-background-color: var(--primary-background-color)
+  # Dropdowns
+  material-background-color: var(--primary-background-color)
+  material-secondary-background-color: rgba(255, 255, 255, 0.1)
+  mdc-theme-surface: var(--primary-background-color)
+  # Convenience
+  primary-name-text-color: grey
+  primary-state-text-color: grey
+  primary-icon-color: grey
+  primary-yellow: "#FAD46B"
+  dark-primary-yellow: "#DAB44B"
+  tertiary-background-color: "#323545"
+  ha-card-box-shadow-inset: inset -5.5px -5.5px 5.5px 0 rgba(60, 60, 60, .5), inset 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .5)
+  soft-ui-pressed: var(--ha-card-box-shadow-inset)
+  soft-ui-shadow: var(--ha-card-box-shadow)
+  red: "#eb6060"
+  red-orange: "#eb8e60"
+  orange-red: "#eb9a60"
+  orange: "#eba560"
+  orange-yellow: "#ebc860"
+  yellow-orange: "#ebd460"
+  yellow: "#ebdf60"
+  yellow-green: "#c8eb60"
+  green-yellow: "#b1eb60"
+  green: "#60eb60"
+  green-cyan: "#60eba5"
+  cyan-green: "#60ebc8"
+  cyan: "#60ebeb"
+  cyan-blue: "#60bceb"
+  blue-cyan: "#608eeb"
+  blue: "#6060eb"
+  blue-purple: "#7760eb"
+  purple-blue: "#8e60eb"
+  purple: "#a560eb"
+  purple-pink: "#bc60eb"
+  pink-purple: "#d460eb"
+  pink: "#eb60eb"
+  pink-red: "#eb60bc"
+  red-pink: "#eb608e"
+  # Card-mod
+  card-mod-theme: "Dark Soft UI Red"
+  theme-red: firebrick
+  theme-green: forestgreen
+  theme-blue: deepskyblue
+  ha-label-badge-title-font-size: 1em
+  # Cards
+  card-mod-card-yaml: |
+    hui-image:
+      $: |
+        img {
+          border-radius: 15px;
+        }
+    ha-gauge:
+      $: |
+        .dial {
+          stroke: white !important;
+        }
+    ha-markdown:
+      $: |
+        h1 {
+          text-align: center;
+        }
+    .: |
+      * {
+        --soft-ui-shadow: var(--ha-card-box-shadow) !important;
+        --soft-ui-pressed: var(--ha-card-box-shadow-inset) !important;
+      }
+      ha-card.type-markdown {
+        box-shadow: none;
+      }
+      ha-card.type-markdown > ha-markdown {
+        padding: 8px;
+      }
+      ha-card:not(.type-markdown) {
+        background-color: var(--primary-background-color);
+        border-radius: var(--ha-card-border-radius);
+      }
+      ha-card:not(.type-markdown):not(.type-custom-button-card):not(.type-entities):not(.type-custom-mod-card):not(.type-custom-bar-card):not(.type-history-graph):not(.type-iframe):not(.type-glance) {
+        margin: 20px 6px;
+        box-shadow: var(--ha-card-box-shadow);
+      }
+      ha-card.type-custom-vacuum-card > .preview {
+        --primary-color: var(--primary-background-color);
+      }
+      ha-card.type-custom-vacuum-card > .preview > * {
+        color: var(--primary-text-color);
+      }
+      ha-card.type-custom-vacuum-card > .preview > .header > .battery > ha-icon {
+        color: var(--primary-text-color);
+      }
+      ha-card.type-custom-vacuum-card > .preview > .metadata > .vacuum-name {
+        color: var(--primary-text-color);
+      }
+      ha-card.type-picture-entity,
+      ha-card.type-picture-glance {
+        padding: 10px;
+      }
+      ha-card.type-picture-entity > .footer,
+      ha-card.type-picture-glance > .box {
+        margin: 10px;
+        border-radius: 15px;
+      }
+      ha-card.type-entities, ha-card.type-custom-bar-card, ha-card.type-entity,
+      ha-card.type-history-graph, ha-card.type-map, ha-card.type-iframe,
+      ha-card.type-glance, ha-card.type-custom-button-text-card,
+      ha-card.type-custom-select-list-card {
+        box-shadow: none !important;
+        margin: 25px 6px;
+      }
+      ha-card > #states > div > * {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        width: 95%;
+        margin: 0 auto 0 5px;
+      }
+      ha-card > #states > div > *:not(hui-button-row):not(hui-input-select-entity-row):not(hui-input-number-entity-row):not(hui-input-text-entity-row):not(hui-cast-row) {
+        display: block;
+      }
+      ha-card.type-media-control, ha-card.type-media-control > * {
+        background-color: var(--primary-background-color) !important;
+        color: var(--secondary-text-color) !important;
+      }
+      ha-card > #states,
+      ha-card > .header-footer,
+      ha-card > hui-graph-header-footer,
+      ha-card.type-glance > .entities,
+      ha-card:not(.type-humidifier):not(.type-light):not(.type-weather-forecast) > .content,
+      ha-card.type-map > #root > #map,
+      ha-card.type-iframe > #root,
+      ha-card.type-custom-select-list-card > #list {
+        box-shadow: var(--ha-card-box-shadow);
+        border-radius: var(--ha-card-border-radius);
+        margin: 12px;
+        padding: 10px;
+      }
+      ha-card.type-iframe > #root > iframe {
+        border-radius: var(--ha-card-border-radius);
+      }
+      ha-card.type-entity > .info {
+        padding: 16px;
+        box-shadow: var(--ha-card-box-shadow);
+        border-radius: var(--ha-card-border-radius);
+        margin: 12px;
+      }
+      ha-card > .header-footer {
+        margin: 25px 12px;
+      }
+      ha-card > .card-header {
+        box-shadow: none;
+      }
+      ha-card > .card-header > .name {
+        text-align: center;
+        width: 100%;
+      }
+      ha-card > .card-header > hui-entities-toggle {
+        margin: 0 25px 0 -25px;
+      }
+      ha-card.type-custom-bar-card > .card-header,
+      ha-card.type-history-graph > .card-header,
+      ha-card.type-map > .card-header,
+      ha-card.type-iframe > .card-header,
+      ha-card.type-shopping-list > .card-header,
+      ha-card.type-glance > .card-header {
+        text-align: center;
+        width: 70%;
+        margin: 0 auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(359deg);
+        }
+      }
+      ha-icon[data-domain="fan"][data-state="on"] {
+        animation: spin 4s infinite linear;
+      }
+  # Header
+  card-mod-root-yaml: |
+    paper-tabs:
+      $: |
+        .not-visible {
+          display: none;
+        }
+    "ha-app-layout":
+      $: |
+        #contentContainer {
+          padding-top: 70px;
+        }
+    .: |
+      app-toolbar:not(.edit-mode) {
+        height: 0;
+      }
+      .edit-mode, app-header, app-toolbar {
+        background-color: var(--primary-background-color) !important;
+        color: var(--primary-text-color) !important;
+      }
+      app-header.edit-mode {
+        border-bottom: 2px var(--primary-color) solid;
+        padding-bottom: 10px;
+      }
+      app-header[shadow] > ::before {
+        box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.3);
+      }
+      #add-view ha-svg-icon {
+        background-color: var(--primary-color) !important;
+        color: #EEE !important;
+        border-radius: 5px !important;
+      }
+      .edit-icon {
+        color: var(--primary-color) !important;
+      }
+      mwc-icon-button[label="Start conversation"] {
+        top: 0;
+        right: 48px;
+        z-index: 2;
+        position: absolute;
+      }
+      mwc-icon-button[title="Help"] {
+        top: 8px;
+        right: 48px;
+        position: absolute;
+      }
+      mwc-icon-button#add-view {
+        position: fixed;
+        right: 0px;
+      }
+      ha-button-menu {
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin-left: 5px;
+        position: absolute;
+      }
+      app-toolbar:not(.edit-mode) > [main-title] {
+        display: none;
+      }
+      menu-button[style="visibility: hidden;"] {
+        display: none;
+      }
+      ha-menu-button {
+        z-index: 2;
+        top: 24px;
+      }
+      paper-tabs {
+        --paper-tabs-selection-bar-color: var(--primary-color) !important;
+        margin-left: 32px !important;
+      }
+      paper-tab[aria-selected="true"] > ha-icon {
+        color: var(--primary-color) !important;
+      }
+      paper-tab[aria-selected="true"] {
+        color: var(--primary-color) !important;
+      }
+      @media (orientation: portrait) {
+        ha-button-menu {
+          margin-left: calc(100% - 80px);
+        }
+        paper-tabs {
+          margin-left: 64px !important;
+          margin-right: 32px !important;
+        }
+        ch-header > paper-tabs,
+        app-header.edit-mode > * > paper-tabs {
+          margin-left: 10px !important;
+          margin-right: 10px !important;
+        }
+      }
+      ch-header > ha-button-menu,
+      app-toolbar.edit-mode > ha-button-menu {
+        top: unset;
+        margin-left: unset;
+      }
+      ch-header > ha-menu-button,
+      app-toolbar.edit-mode > ha-menu-button {
+        top: unset;
+        margin-left: unset;
+      }
+      ch-header > paper-tabs,
+      app-header.edit-mode > paper-tabs {
+        margin-left: 0;
+      }
+      app-toolbar a {
+        color: var(--primary-text-color) !important;
+      }
+  # Badges and columns
+  card-mod-view-yaml: |
+    hui-vertical-stack-card:
+      $: |
+        .card-header {
+          text-align: center;
+        }
+    .: |
+      #badges {
+        width: 90%;
+        margin: 8px auto !important;
+      }
+      #columns {
+        flex-direction: column !important;
+        margin: 0 auto;
+        max-width: 500px;
+      }
+      #columns > .column {
+        margin: 0 15px;
+      }
+  card-mod-badge-yaml: |
+    .: |
+      :host {
+        border-radius: 5px;
+        padding: 11px 8px;
+        margin: 11px 12px 24px 12px;
+        display: inline-block;
+        --label-badge-blue: {% if not states(config.entity) %} var(--theme-blue);
+          {% elif is_state(config.entity, 'on') %} var(--theme-green);
+          {% elif is_state(config.entity, 'open') %} var(--theme-green);
+          {% elif is_state(config.entity, 'unlocked') %} var(--theme-green);
+          {% elif is_state(config.entity, 'off') %} var(--theme-red);
+          {% elif is_state(config.entity, 'closed') %} var(--theme-red);
+          {% elif is_state(config.entity, 'locked') %} var(--theme-red);
+          {% else %} var(--theme-blue); {% endif %}
+        --label-badge-red: teal;
+        box-shadow: var(--ha-card-box-shadow);
+      }
+    ha-state-label-badge:
+      $:
+        ha-label-badge:
+          $: |
+            .label-badge {
+              background: none;
+            }
+            .title {
+              -webkit-line-clamp: 1;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+            }
+  # Style more info
+  card-mod-more-info-yaml: |
+    $: |
+      .mdc-dialog {
+        backdrop-filter: blur(2px);
+        background-color: #262938B2 !important;
+      }
+      .mdc-dialog__scrim {
+        background-color: #262938B2 !important;
+      }
+      .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+        background: var(--primary-background-color);
+        border-radius: var(--ha-card-border-radius);
+        box-shadow: var(--ha-card-box-shadow);
+        transform: scale(0.9);
+      }
+      .mdc-dialog__content {
+        padding: 36px !important;
+        padding-bottom: 36px !important;
+        transform: scale(1.11);
+      }
+    ha-header-bar:
+      $: |
+        .mdc-top-app-bar {
+          background: none !important;
+        }
+  # Spin fans
+  card-mod-row-yaml: |
+    "*:first-child":
+      $: |
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(359deg);
+          }
+        }
+        state-badge {
+          {% if config.entity.startswith('fan.') and is_state(config.entity, 'on') %}
+          animation: spin 4s infinite linear;
+          {% endif %}
+        }
