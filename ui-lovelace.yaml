@@ -1140,18 +1140,23 @@ views:
             hold_action:
               action: more-info
           - type: 'custom:bom-radar-card'
-            frame_count: 10
             center_latitude: '-33.425018'
             center_longitude: '151.342224'
-            markerIcon: 'true'
+            zoom_level: '9'
+            frame_delay: 500
+            frame_count: 10
+            show_marker: true
+            markerIcon: true
             marker_latitude: '-33.425018'
             marker_longitude: '151.342224'
-            show_marker: true
             show_range: true
-            zoom_level: '9'
+            show_scale: true
+            show_zoom: true
+            show_recenter: true
+            show_playback: true
             extra_labels: true
             map_style: 'voyager'
-            show_scale: true
+            static_map: false
           - type: entities
             title: NSW Warnings & Events
             show_header_toggle: false
