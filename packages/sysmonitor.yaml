@@ -36,12 +36,6 @@ switch:
     body_on: '{"state": "start"}'
     body_off: '{"state": "stop"}'
     is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-  - platform: rest
-    resource: http://10.90.11.100:8126/container/watchtower
-    name: HA Dockermon Watchtower
-    body_on: '{"state": "start"}'
-    body_off: '{"state": "stop"}'
-    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 sensor:
 
@@ -305,18 +299,6 @@ sensor:
     name: portainer_memory_average
     entities:
       - sensor.portainer_memory
-    duration:
-      days: 2
-  - platform: rest
-    resource: http://10.90.11.100:8126/container/watchtower/stats
-    name: Watchtower Memory
-    scan_interval: 900
-    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
-    unit_of_measurement: 'MB'
-  - platform: average
-    name: watchtower_memory_average
-    entities:
-      - sensor.watchtower_memory
     duration:
       days: 2
 
