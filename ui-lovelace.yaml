@@ -368,6 +368,26 @@ views:
                     {% endif %}
                     ;
                   }
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
+                  label: Observer
+                entities:
+                  - sensor.current_observer_latest
+              - entity: sensor.current_observer_installed
+                tap_action:
+                  action: navigate
+                  navigation_path: /hassio/dashboard
+                style: |
+                  :host {
+                  --paper-item-icon-color:
+                    {% if states(config.entity) != states('sensor.current_observer_latest') %}
+                      var(--state-icon-active-color)
+                    {% else %}
+                      var(--state-icon-color)
+                    {% endif %}
+                    ;
+                  }
           - type: entities
             show_header_toggle: false
             entities:
@@ -534,7 +554,6 @@ views:
                   - switch.ha_dockermon_radarr
                   - switch.ha_dockermon_lazylibrarian
                   - switch.ha_dockermon_portainer
-                  - switch.ha_dockermon_watchtower
                   - type: custom:flex-table-card
                     sort_by: name+
                     clickable: true
