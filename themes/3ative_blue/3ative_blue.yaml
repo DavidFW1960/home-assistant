@@ -8,21 +8,23 @@
   mdc-button: "#008686"
   paper-listbox-background-color: "#000000" # Side Bar Background Colour
   accent-color: "#3ba1a5" # Circle Plus Button Color
+  primary-bg-color: "#3776c3"
 
   ### Cards ###
-  ch-background: "rgba(0, 0, 0, 0.6)"  # fix for 0.113
-  mdc-theme-surface: "rgb(16 44 75)"  # Pop up card BG fix for 0.113
+  ch-background: "rgba(0, 0, 20, 0.6)" # fix for 0.113
+  mdc-theme-surface: "rgb(16 44 75)" # Pop up card BG fix for 0.113
   ha-card-border-radius: 3px
-  card-background-color: "rgba(0, 0, 0, 0.6)" # Cards Background Colour
+  card-background-color: "rgba(0, 0, 20, 0.7)" # Cards Background Colour
   markdown-code-background-color: "#112640"
   material-background-color: var(--mdc-theme-surface) #Dropdown Menu BG
 
   ### Text ###
-  primary-text-color: "#c5c5c5" # Main Text Colour
+  primary-text-color: "#dbe0e4" # Main Text Colour
   secondary-text-color: "#12afff"
   text-primary-color: "white" # Page Header Text & Icon text Color
   disabled-text-color: "#A3A3A3"
   lumo-body-text-color: "#03d032" # 'Logbook' Date Color
+  codemirror-meta: "white"
 
   ### Sidebar Menu ###
   sidebar-icon-color: "#3776c37d"
@@ -75,3 +77,9 @@
   label-badge-yellow: "#f4b400"
   label-badge-grey: var(--paper-grey-500)
   # accent-color: "#ff0000"
+
+  ### Code Editor
+  codemirror-atom: "#5aa2f1"
+  codemirror-string: "#30f2ff"
+  codemirror-keyword: "#87c0ff"
+  codemirror-number: "#26f1ff"

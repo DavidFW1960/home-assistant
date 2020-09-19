@@ -10,6 +10,7 @@ ux_goodie:
   accent-color: "#FF9F0A"  # e.g. loader in HACS
   divider-color: "#545454"  # divider in sidebar
   ch-background: "rgba(10, 10, 10, 0.7)"  # top bar (custom header)
+  codemirror-meta: "var(--primary-text-color)" # code editor – simple styling
   
 
 # BACKGROUND AND SIDEBAR
