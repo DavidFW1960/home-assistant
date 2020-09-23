@@ -1,9 +1,9 @@
 # Thanks @JuanMTech, @thomasloven, and @N-l1.
 Dark Soft UI:
   # Color
-  primary-color: "#6960EB"
-  light-primary-color: "#8880FF"
-  accent-color: "#6085EB"
+  primary-color: "#609ceb"
+  light-primary-color: var(--primary-color)
+  accent-color: "#60bfeb"
   mdc-theme-secondary: var(--accent-color)
   # More colors
   success-color: "#77EB60"
@@ -11,11 +11,12 @@ Dark Soft UI:
   warning-color: "#EBEB60"
   error-color: "#D18941"
   # Background
-  primary-background-color: "#303138"
+  primary-background-color: "#313438"
   secondary-background-color: var(--primary-background-color)
   # Text
   primary-text-color: "#F7F8FA"
   secondary-text-color: var(--primary-text-color)
+  codemirror-meta: var(--primary-text-color)
   material-secondary-text-color: var(--secondary-text-color)
   text-primary-color: "#FFFFFF"
   disabled-text-color: "#616387"
@@ -24,7 +25,7 @@ Dark Soft UI:
   paper-font-headline_-_font-weight: "600"
   paper-font-subhead_-_font-family: Quicksand, Roboto, sans-serif
   paper-font-subhead_-_font-weight: "550"
-  paper-font-subhead_-_line-height: 2.6em
+  paper-font-subhead_-_line-height: 2.2em
   ha-card-header-font-family: Quicksand, Roboto, sans-serif
   ha-card-header-font-weight: "600"
   code-font-family: Cascadia Code PL, Cascadia Mono PL, Cascadia Code, Cascadia Mono, monospace

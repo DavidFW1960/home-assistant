@@ -1,9 +1,9 @@
 # Thanks @JuanMTech, @thomasloven, and @N-l1.
-Light Soft UI:
+Light Soft UI Purple:
   # Color
-  primary-color: "#609ceb"
+  primary-color: "#a560eb"
   light-primary-color: var(--primary-color)
-  accent-color: "#60bfeb"
+  accent-color: "#8360eb"
   mdc-theme-secondary: var(--accent-color)
   # More colors
   success-color: "#77EB60"
@@ -11,7 +11,7 @@ Light Soft UI:
   warning-color: "#EBEB60"
   error-color: "#D18941"
   # Background
-  primary-background-color: "#f1f4f7"
+  primary-background-color: "#f4f1f7"
   secondary-background-color: var(--primary-background-color)
   # Text
   primary-text-color: "#4A4A4A"
@@ -118,7 +118,7 @@ Light Soft UI:
   pink-red: "#eb60bc"
   red-pink: "#eb608e"
   # Card-mod
-  card-mod-theme: "Light Soft UI"
+  card-mod-theme: "Light Soft UI Purple"
   theme-red: firebrick
   theme-green: forestgreen
   theme-blue: deepskyblue

@@ -1,9 +1,9 @@
 # Thanks @JuanMTech, @thomasloven, and @N-l1.
-Light Soft UI:
+Dark Soft UI Cyan:
   # Color
-  primary-color: "#609ceb"
+  primary-color: "#60d4eb"
   light-primary-color: var(--primary-color)
-  accent-color: "#60bfeb"
+  accent-color: "#60ebdf"
   mdc-theme-secondary: var(--accent-color)
   # More colors
   success-color: "#77EB60"
@@ -11,15 +11,15 @@ Light Soft UI:
   warning-color: "#EBEB60"
   error-color: "#D18941"
   # Background
-  primary-background-color: "#f1f4f7"
+  primary-background-color: "#313738"
   secondary-background-color: var(--primary-background-color)
   # Text
-  primary-text-color: "#4A4A4A"
+  primary-text-color: "#F7F8FA"
   secondary-text-color: var(--primary-text-color)
   codemirror-meta: var(--primary-text-color)
   material-secondary-text-color: var(--secondary-text-color)
   text-primary-color: "#FFFFFF"
-  disabled-text-color: "#717171"
+  disabled-text-color: "#616387"
   # Fonts
   paper-font-headline_-_font-family: Quicksand, Roboto, sans-serif
   paper-font-headline_-_font-weight: "600"
@@ -61,7 +61,7 @@ Light Soft UI:
   label-badge-gray: "#666F80"
   # Cards
   ha-card-border-radius: "13.75px"
-  ha-card-box-shadow: -5.25px -5.25px 5.25px 0 rgba(255, 255, 255, .5), 5.25px 5.25px 5.25px 0 rgba(0, 0, 0, .03)
+  ha-card-box-shadow: -5.25px -5.25px 5.25px 0 rgba(60, 60, 60, .6), 5.25px 5.25px 5.25px 0 rgba(0, 0, 0, .15)
   ha-card-border-color: var(--primary-color)
   card-background-color: var(--primary-background-color)
   paper-card-background-color: var(--primary-background-color)
@@ -81,7 +81,7 @@ Light Soft UI:
   data-table-background-color: var(--primary-background-color)
   # Dropdowns
   material-background-color: var(--primary-background-color)
-  material-secondary-background-color: rgba(0, 0, 0, 0.1)
+  material-secondary-background-color: rgba(255, 255, 255, 0.1)
   mdc-theme-surface: var(--primary-background-color)
   # Convenience
   primary-name-text-color: grey
@@ -89,8 +89,8 @@ Light Soft UI:
   primary-icon-color: grey
   primary-yellow: "#FAD46B"
   dark-primary-yellow: "#DAB44B"
-  tertiary-background-color: "#DAE2EB"
-  ha-card-box-shadow-inset: inset -5.5px -5.5px 5.5px 0 rgba(255, 255, 255, .5), inset 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .03)
+  tertiary-background-color: "#323545"
+  ha-card-box-shadow-inset: inset -5.5px -5.5px 5.5px 0 rgba(60, 60, 60, .5), inset 5.5px 5.5px 5.5px 0 rgba(0, 0, 0, .5)
   soft-ui-pressed: var(--ha-card-box-shadow-inset)
   soft-ui-shadow: var(--ha-card-box-shadow)
   red: "#eb6060"
@@ -118,7 +118,7 @@ Light Soft UI:
   pink-red: "#eb60bc"
   red-pink: "#eb608e"
   # Card-mod
-  card-mod-theme: "Light Soft UI"
+  card-mod-theme: "Dark Soft UI Cyan"
   theme-red: firebrick
   theme-green: forestgreen
   theme-blue: deepskyblue
@@ -419,10 +419,10 @@ Light Soft UI:
     $: |
       .mdc-dialog {
         backdrop-filter: blur(2px);
-        background-color: #F3F5F7B2 !important;
+        background-color: #262938B2 !important;
       }
       .mdc-dialog__scrim {
-        background-color: #F3F5F7B2 !important;
+        background-color: #262938B2 !important;
       }
       .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
         background: var(--primary-background-color);
