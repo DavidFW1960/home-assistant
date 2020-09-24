@@ -1155,7 +1155,7 @@ views:
             show_recenter: true
             show_playback: true
             extra_labels: true
-            map_style: 'voyager'
+            map_style: 'satellite'
             static_map: false
           - type: entities
             title: NSW Warnings & Events
