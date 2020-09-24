@@ -204,14 +204,16 @@ automation:
         - delay: '00:00:02'
         - service: light.turn_off
           data:
-            entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-              < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-              < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-              < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-              < 10) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-              < 10) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-              < 10) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-              < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
+            entity_id: >
+              {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+              < 10) -%} {%- set h0='light.lounge' -%} {%- else -%} {%- set h0='' -%} {%- endif -%} 
+              {%- if (as_timestamp(now()) - as_timestamp(states.light.dining.last_changed)
+              < 10) -%} {%- set h1='light.dining' -%} {%- else -%} {%- set h1='' -%} {%- endif -%} 
+              {%- if (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+              < 10) -%} {%- set h2='light.desk' -%} {%- else -%} {%- set h2='' -%} {%- endif -%} 
+              {%- if (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+              < 10) -%} {%- set h3='light.office' -%} {%- else -%} {%- set h3='' -%} {%- endif -%} 
+              {{ [h0, h1, h2, h3]|join(',')|trim(',') }}
     - service: automation.turn_on
       entity_id: automation.lights_on_failsafe
   - id: '1532478833427'
@@ -232,14 +234,16 @@ automation:
         - delay: '00:00:02'
         - service: light.turn_on
           data:
-            entity_id: '{%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-              < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-              < 10) -%} light.lounge, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-              < 10) and (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-              < 10) -%} light.office, light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
-              < 10) -%} light.desk {%- elif (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
-              < 10) -%} light.office {%- elif (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
-              < 10) -%} light.lounge {%- else -%} light.dining {%- endif -%}'
+            entity_id: >
+              {%- if (as_timestamp(now()) - as_timestamp(states.light.lounge.last_changed)
+              < 10) -%} {%- set h0='light.lounge' -%} {%- else -%} {%- set h0='' -%} {%- endif -%} 
+              {%- if (as_timestamp(now()) - as_timestamp(states.light.dining.last_changed)
+              < 10) -%} {%- set h1='light.dining' -%} {%- else -%} {%- set h1='' -%} {%- endif -%} 
+              {%- if (as_timestamp(now()) - as_timestamp(states.light.desk.last_changed)
+              < 10) -%} {%- set h2='light.desk' -%} {%- else -%} {%- set h2='' -%} {%- endif -%} 
+              {%- if (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
+              < 10) -%} {%- set h3='light.office' -%} {%- else -%} {%- set h3='' -%} {%- endif -%} 
+              {{ [h0, h1, h2, h3]|join(',')|trim(',') }}
             brightness: 191   #brightness_pct: 75
             color_temp: 322   #kelvin: 3100
         - delay: '00:00:03'
