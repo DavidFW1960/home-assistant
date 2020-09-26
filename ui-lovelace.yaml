@@ -424,6 +424,8 @@ views:
                     {% endif %}
                     ;
                   }
+              - entity: sensor.github_main
+              - entity: sensor.github_hacs
           - type: entities
             title: Addons
             show_header_toggle: false
