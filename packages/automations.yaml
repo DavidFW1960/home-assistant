@@ -194,7 +194,7 @@ automation:
       to: 'off'
       entity_id: light.lounge, light.dining, light.desk, light.office
     condition: []
-    mode: single
+    mode: restart
     action:
     - service: automation.turn_off
       entity_id: automation.lights_on_failsafe
@@ -224,7 +224,7 @@ automation:
       to: 'on'
       entity_id: light.lounge, light.dining, light.desk, light.office
     condition: []
-    mode: single
+    mode: restart
     action:
     - service: automation.turn_off
       entity_id: automation.lights_off_failsafe
