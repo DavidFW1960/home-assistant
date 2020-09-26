@@ -252,6 +252,20 @@ sensor:
     icon: mdi:coffee
     value_template: "{{ value_json.state }}"
 
+# Github Rate Limit
+  - platform: mqtt
+    name: "Github Main"
+    state_topic: "github-api-rest"
+    icon: mdi:github
+    unit_of_measurement: calls
+    value_template: "{{ value_json.state }}"
+  - platform: mqtt
+    name: "Github HACS"
+    state_topic: "github-api-hacs"
+    icon: mdi:github
+    unit_of_measurement: calls
+    value_template: "{{ value_json.state }}"
+
 # Docker Compose Version Installed
   - platform: mqtt
     name: "Docker Compose Version Installed"
