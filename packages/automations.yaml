@@ -213,7 +213,8 @@ automation:
               < 10) -%} {%- set h2='light.desk' -%} {%- else -%} {%- set h2='' -%} {%- endif -%} 
               {%- if (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
               < 10) -%} {%- set h3='light.office' -%} {%- else -%} {%- set h3='' -%} {%- endif -%} 
-              {{ [h0, h1, h2, h3]|join(',')|trim(',') }}
+              {{ ' '+ [h0, h1, h2, h3]|join(', ')|trim(', ') }}
+        - delay: '00:00:03'
     - service: automation.turn_on
       entity_id: automation.lights_on_failsafe
   - id: '1532478833427'
@@ -243,7 +244,7 @@ automation:
               < 10) -%} {%- set h2='light.desk' -%} {%- else -%} {%- set h2='' -%} {%- endif -%} 
               {%- if (as_timestamp(now()) - as_timestamp(states.light.office.last_changed)
               < 10) -%} {%- set h3='light.office' -%} {%- else -%} {%- set h3='' -%} {%- endif -%} 
-              {{ [h0, h1, h2, h3]|join(',')|trim(',') }}
+              {{ ' ' + [h0, h1, h2, h3]|join(', ')|trim(', ') }}
             brightness: 191   #brightness_pct: 75
             color_temp: 322   #kelvin: 3100
         - delay: '00:00:03'
