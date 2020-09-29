@@ -578,10 +578,10 @@ views:
                         data: name              
                       - name: Minimum
                         data: min_value
-                      - name: Maximum
-                        data: max_value
                       - name: Average
                         data: state
+                      - name: Maximum
+                        data: max_value
           - type: 'custom:config-template-card'
             entities:
               - device_tracker.davids_iphone_2
