@@ -608,7 +608,10 @@ views:
             title: Internet
             show_header_toggle: false
             entities:
-              - sensor.speedtest_download
+              - entity: sensor.speedtest_download
+                tap_action:
+                  action: call-service
+                  service: speedtestdotnet.speedtest
               - sensor.speedtest_download_filtered
               - sensor.speedtest_upload
               - sensor.speedtest_upload_filtered
@@ -1159,6 +1162,7 @@ views:
             extra_labels: true
             map_style: 'satellite'
             static_map: false
+            show_radar_coverage: true
           - type: entities
             title: NSW Warnings & Events
             show_header_toggle: false
