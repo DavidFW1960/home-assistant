@@ -201,7 +201,7 @@ automation:
     - repeat:
         count: '2'
         sequence:
-        - delay: '00:00:02'
+        - delay: '00:00:03'
         - service: light.turn_off
           data:
             entity_id: >
@@ -216,7 +216,6 @@ automation:
                 {% set ns.entities = ns.entities + [ state.entity_id ] %}
               {% endfor %}
               {{ ns.entities | join(', ') or 'none' }}
-        - delay: '00:00:03'
     - service: automation.turn_on
       entity_id: automation.lights_on_failsafe
   - id: '1532478833427'
@@ -234,7 +233,7 @@ automation:
     - repeat:
         count: '2'
         sequence:
-        - delay: '00:00:02'
+        - delay: '00:00:03'
         - service: light.turn_on
           data:
             entity_id: >
@@ -251,7 +250,6 @@ automation:
               {{ ns.entities | join(', ') or 'none' }}
             brightness: 191   #brightness_pct: 75
             color_temp: 322   #kelvin: 3100
-        - delay: '00:00:03'
     - service: automation.turn_on
       entity_id: automation.lights_off_failsafe
   - id: 'closegaragesetalarm'
