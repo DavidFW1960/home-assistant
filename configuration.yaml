@@ -233,6 +233,26 @@ sensor:
       - path: arendst/Tasmota
         name: Tasmota
 
+# Github Rate Limits
+  - platform: rest
+    resource: https://api.github.com/rate_limit
+    name: Github HACS
+    value_template: '{{ value_json.resources.core.used }}'
+    headers:
+      Authorization: !secret hacs2
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://api.github.com/rate_limit
+    name: Github Main
+    value_template: '{{ value_json.resources.core.used }}'
+    headers:
+      Authorization: !secret github-access-token-token
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+
 # Artisan Software Version
 # Getting Artisan version from JSON
   - platform: rest
@@ -250,20 +270,6 @@ sensor:
     name: "Artisan Events"
     state_topic: "artisan"
     icon: mdi:coffee
-    value_template: "{{ value_json.state }}"
-
-# Github Rate Limit
-  - platform: mqtt
-    name: "Github Main"
-    state_topic: "github-api-rest"
-    icon: mdi:github
-    unit_of_measurement: calls
-    value_template: "{{ value_json.state }}"
-  - platform: mqtt
-    name: "Github HACS"
-    state_topic: "github-api-hacs"
-    icon: mdi:github
-    unit_of_measurement: calls
     value_template: "{{ value_json.state }}"
 
 # Docker Compose Version Installed
