@@ -304,3 +304,9 @@ sensor.beaufort:
   icon: mdi:weather-windy
 sensor.cert_expiry_timestamp:
   friendly_name: SSL Certificate Expires
+sensor.github_main:
+  icon: mdi:github
+  unit_of_measurement: calls
+sensor.github_hacs:
+  icon: mdi:github
+  unit_of_measurement: calls
