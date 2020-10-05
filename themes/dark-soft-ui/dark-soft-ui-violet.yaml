@@ -1,5 +1,5 @@
 # Thanks @JuanMTech, @thomasloven, and @N-l1.
-Dark Soft UI Purple:
+Dark Soft UI Violet:
   # Color
   primary-color: "#a560eb"
   light-primary-color: var(--primary-color)
@@ -63,6 +63,7 @@ Dark Soft UI Purple:
   ha-card-border-radius: "13.75px"
   ha-card-box-shadow: -5.25px -5.25px 5.25px 0 rgba(60, 60, 60, .6), 5.25px 5.25px 5.25px 0 rgba(0, 0, 0, .15)
   ha-card-border-color: var(--primary-color)
+  ha-card-border-width: 3px
   card-background-color: var(--primary-background-color)
   paper-card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)
@@ -118,7 +119,7 @@ Dark Soft UI Purple:
   pink-red: "#eb60bc"
   red-pink: "#eb608e"
   # Card-mod
-  card-mod-theme: "Dark Soft UI Purple"
+  card-mod-theme: "Dark Soft UI Violet"
   theme-red: firebrick
   theme-green: forestgreen
   theme-blue: deepskyblue
@@ -137,8 +138,9 @@ Dark Soft UI Purple:
         }
     ha-markdown:
       $: |
-        h1 {
+        h1, h2, h3, h4, h5, h6 {
           text-align: center;
+          font-family: Quicksand, Helvetica, Roboto, sans-serif;
         }
     .: |
       * {
@@ -419,10 +421,10 @@ Dark Soft UI Purple:
     $: |
       .mdc-dialog {
         backdrop-filter: blur(2px);
-        background-color: #262938B2 !important;
+        background-color: #353138cc !important;
       }
       .mdc-dialog__scrim {
-        background-color: #262938B2 !important;
+        background-color: #353138cc !important;
       }
       .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
         background: var(--primary-background-color);

@@ -63,6 +63,7 @@ Light Soft UI Green:
   ha-card-border-radius: "13.75px"
   ha-card-box-shadow: -5.25px -5.25px 5.25px 0 rgba(255, 255, 255, .5), 5.25px 5.25px 5.25px 0 rgba(0, 0, 0, .03)
   ha-card-border-color: var(--primary-color)
+  ha-card-border-width: 3px
   card-background-color: var(--primary-background-color)
   paper-card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)
@@ -137,8 +138,9 @@ Light Soft UI Green:
         }
     ha-markdown:
       $: |
-        h1 {
+        h1, h2, h3, h4, h5, h6 {
           text-align: center;
+          font-family: Quicksand, Helvetica, Roboto, sans-serif;
         }
     .: |
       * {
@@ -419,10 +421,10 @@ Light Soft UI Green:
     $: |
       .mdc-dialog {
         backdrop-filter: blur(2px);
-        background-color: #F3F5F7B2 !important;
+        background-color: #f1f7f2cc !important;
       }
       .mdc-dialog__scrim {
-        background-color: #F3F5F7B2 !important;
+        background-color: #f1f7f2cc !important;
       }
       .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
         background: var(--primary-background-color);

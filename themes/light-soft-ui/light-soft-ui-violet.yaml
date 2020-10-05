@@ -1,9 +1,9 @@
 # Thanks @JuanMTech, @thomasloven, and @N-l1.
-Light Soft UI Pink:
+Light Soft UI Violet:
   # Color
-  primary-color: "#eb60eb"
+  primary-color: "#a560eb"
   light-primary-color: var(--primary-color)
-  accent-color: "#c860eb"
+  accent-color: "#8360eb"
   mdc-theme-secondary: var(--accent-color)
   # More colors
   success-color: "#77EB60"
@@ -11,7 +11,7 @@ Light Soft UI Pink:
   warning-color: "#EBEB60"
   error-color: "#D18941"
   # Background
-  primary-background-color: "#f7f1f7"
+  primary-background-color: "#f4f1f7"
   secondary-background-color: var(--primary-background-color)
   # Text
   primary-text-color: "#4A4A4A"
@@ -63,6 +63,7 @@ Light Soft UI Pink:
   ha-card-border-radius: "13.75px"
   ha-card-box-shadow: -5.25px -5.25px 5.25px 0 rgba(255, 255, 255, .5), 5.25px 5.25px 5.25px 0 rgba(0, 0, 0, .03)
   ha-card-border-color: var(--primary-color)
+  ha-card-border-width: 3px
   card-background-color: var(--primary-background-color)
   paper-card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)
@@ -118,7 +119,7 @@ Light Soft UI Pink:
   pink-red: "#eb60bc"
   red-pink: "#eb608e"
   # Card-mod
-  card-mod-theme: "Light Soft UI Pink"
+  card-mod-theme: "Light Soft UI Violet"
   theme-red: firebrick
   theme-green: forestgreen
   theme-blue: deepskyblue
@@ -137,8 +138,9 @@ Light Soft UI Pink:
         }
     ha-markdown:
       $: |
-        h1 {
+        h1, h2, h3, h4, h5, h6 {
           text-align: center;
+          font-family: Quicksand, Helvetica, Roboto, sans-serif;
         }
     .: |
       * {
@@ -419,10 +421,10 @@ Light Soft UI Pink:
     $: |
       .mdc-dialog {
         backdrop-filter: blur(2px);
-        background-color: #F3F5F7B2 !important;
+        background-color: #f4f1f7cc !important;
       }
       .mdc-dialog__scrim {
-        background-color: #F3F5F7B2 !important;
+        background-color: #f4f1f7cc !important;
       }
       .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
         background: var(--primary-background-color);
