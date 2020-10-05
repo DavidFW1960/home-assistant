@@ -374,9 +374,9 @@ class {
   }return s.stringsArray.set(e.strings, r), r;
 },
       U = ["html", "svg"],
-      q = new Set(),
-      z = (t, e, i) => {
-  q.add(t);const n = i ? i.element : document.createElement("template"),
+      z = new Set(),
+      q = (t, e, i) => {
+  z.add(t);const n = i ? i.element : document.createElement("template"),
         s = e.querySelectorAll("style"),
         { length: r } = s;if (0 === r) return void window.ShadyCSS.prepareTemplateStyles(n, t);const a = document.createElement("style");for (let c = 0; c < r; c++) {
     const t = s[c];t.parentNode.removeChild(t), a.textContent += t.textContent;
@@ -601,11 +601,11 @@ const Q = window.ShadowRoot && (void 0 === window.ShadyCSS || window.ShadyCSS.na
   if (!n || "object" != typeof n || !n.scopeName) throw new Error("The `scopeName` option is required.");const s = n.scopeName,
         r = H.has(e),
         a = F && 11 === e.nodeType && !!e.host,
-        o = a && !q.has(s),
+        o = a && !z.has(s),
         l = o ? document.createDocumentFragment() : e;if (((t, e, n) => {
     let s = H.get(e);void 0 === s && (i(e, e.firstChild), H.set(e, s = new C(Object.assign({ templateFactory: j }, n))), s.appendInto(e)), s.setValue(t), s.commit();
   })(t, l, Object.assign({ templateFactory: I(s) }, n)), o) {
-    const t = H.get(l);H.delete(l);const n = t.value instanceof y ? t.value.template : void 0;z(s, l, n), i(e, e.firstChild), e.appendChild(l), H.set(e, t);
+    const t = H.get(l);H.delete(l);const n = t.value instanceof y ? t.value.template : void 0;q(s, l, n), i(e, e.firstChild), e.appendChild(l), H.set(e, t);
   }!r && a && window.ShadyCSS.styleElement(e.host);
 };
 /**
@@ -857,9 +857,9 @@ class ct {
   n = n || {}, i = null == i ? {} : i;var s = new Event(e, { bubbles: void 0 === n.bubbles || n.bubbles, cancelable: Boolean(n.cancelable), composed: void 0 === n.composed || n.composed });return s.detail = i, t.dispatchEvent(s), s;
 },
     Ut = new Set(["call-service", "divider", "section", "weblink", "cast", "select"]),
-    qt = { alert: "toggle", automation: "toggle", climate: "climate", cover: "cover", fan: "toggle", group: "group", input_boolean: "toggle", input_number: "input-number", input_select: "input-select", input_text: "input-text", light: "toggle", lock: "lock", media_player: "media-player", remote: "toggle", scene: "scene", script: "script", sensor: "sensor", timer: "timer", switch: "toggle", vacuum: "toggle", water_heater: "climate", input_datetime: "input-datetime" },
-    zt = { alert: "hass:alert", automation: "hass:playlist-play", calendar: "hass:calendar", camera: "hass:video", climate: "hass:thermostat", configurator: "hass:settings", conversation: "hass:text-to-speech", device_tracker: "hass:account", fan: "hass:fan", group: "hass:google-circles-communities", history_graph: "hass:chart-line", homeassistant: "hass:home-assistant", homekit: "hass:home-automation", image_processing: "hass:image-filter-frames", input_boolean: "hass:drawing", input_datetime: "hass:calendar-clock", input_number: "hass:ray-vertex", input_select: "hass:format-list-bulleted", input_text: "hass:textbox", light: "hass:lightbulb", mailbox: "hass:mailbox", notify: "hass:comment-alert", person: "hass:account", plant: "hass:flower", proximity: "hass:apple-safari", remote: "hass:remote", scene: "hass:google-pages", script: "hass:file-document", sensor: "hass:eye", simple_alarm: "hass:bell", sun: "hass:white-balance-sunny", switch: "hass:flash", timer: "hass:timer", updater: "hass:cloud-upload", vacuum: "hass:robot-vacuum", water_heater: "hass:thermometer", weblink: "hass:open-in-new" };function Yt(t, e) {
-  if (t in zt) return zt[t];switch (t) {case "alarm_control_panel":
+    zt = { alert: "toggle", automation: "toggle", climate: "climate", cover: "cover", fan: "toggle", group: "group", input_boolean: "toggle", input_number: "input-number", input_select: "input-select", input_text: "input-text", light: "toggle", lock: "lock", media_player: "media-player", remote: "toggle", scene: "scene", script: "script", sensor: "sensor", timer: "timer", switch: "toggle", vacuum: "toggle", water_heater: "climate", input_datetime: "input-datetime" },
+    qt = { alert: "hass:alert", automation: "hass:playlist-play", calendar: "hass:calendar", camera: "hass:video", climate: "hass:thermostat", configurator: "hass:settings", conversation: "hass:text-to-speech", device_tracker: "hass:account", fan: "hass:fan", group: "hass:google-circles-communities", history_graph: "hass:chart-line", homeassistant: "hass:home-assistant", homekit: "hass:home-automation", image_processing: "hass:image-filter-frames", input_boolean: "hass:drawing", input_datetime: "hass:calendar-clock", input_number: "hass:ray-vertex", input_select: "hass:format-list-bulleted", input_text: "hass:textbox", light: "hass:lightbulb", mailbox: "hass:mailbox", notify: "hass:comment-alert", person: "hass:account", plant: "hass:flower", proximity: "hass:apple-safari", remote: "hass:remote", scene: "hass:google-pages", script: "hass:file-document", sensor: "hass:eye", simple_alarm: "hass:bell", sun: "hass:white-balance-sunny", switch: "hass:flash", timer: "hass:timer", updater: "hass:cloud-upload", vacuum: "hass:robot-vacuum", water_heater: "hass:thermometer", weblink: "hass:open-in-new" };function Yt(t, e) {
+  if (t in qt) return qt[t];switch (t) {case "alarm_control_panel":
       switch (e) {case "armed_home":
           return "hass:bell-plus";case "armed_night":
           return "hass:bell-sleep";case "disarmed":
@@ -1216,6 +1216,27 @@ class ct {
   ha-card.disabled {
     pointer-events: none;
     cursor: default;
+  }
+  .tooltip .tooltiptext {
+    opacity: 0;
+    text-align: center;
+    padding: 4px;
+    border-radius: var(--ha-card-border-radius, 4px);
+    box-shadow: var(
+      --ha-card-box-shadow,
+      0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12)
+    );
+    background: var(--ha-card-background, var(--card-background-color, white));
+    border: 1px solid var(--primary-text-color);
+    color: var(--primary-text-color);
+    position: absolute;
+    z-index: 9999;
+  }
+  .tooltip:hover span.tooltiptext {
+    opacity: 1;
+    transition-delay: 1.5s;
   }
   ha-icon {
     display: inline-block;
@@ -1601,7 +1622,7 @@ class ct {
   }return i.attributes.device_class && e(`component.${s}.state.${i.attributes.device_class}.${i.state}`) || e(`component.${s}.state._.${i.state}`) || i.state;
 };let Pe = window.cardHelpers;const Ae = new Promise(async t => {
   Pe && t(), window.loadCardHelpers && (Pe = await window.loadCardHelpers(), window.cardHelpers = Pe, t());
-});console.info("%c  BUTTON-CARD  \n%c Version 3.3.7-0 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");let Ee = class extends nt {
+});console.info("%c  BUTTON-CARD  \n%c Version 3.4.0-0 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");let Ee = class extends nt {
   constructor() {
     super(...arguments), this._cards = {}, this._cardsConfig = {}, this._entities = [], this._initial_setup_complete = !1, this._rippleHandlers = new st(() => this._ripple);
   }set hass(t) {
@@ -1632,7 +1653,7 @@ class ct {
           }return n;
         };if (!t || "object" != typeof t || !e && !t.type) return i("No type defined", t);var s = t.type;if (s && s.startsWith("custom:")) s = s.substr("custom:".length);else if (e) {
           if (Ut.has(s)) s = "hui-" + s + "-row";else {
-            if (!t.entity) return i("Invalid config given.", t);var r = t.entity.split(".", 1)[0];s = "hui-" + (qt[r] || "text") + "-entity-row";
+            if (!t.entity) return i("Invalid config given.", t);var r = t.entity.split(".", 1)[0];s = "hui-" + (zt[r] || "text") + "-entity-row";
           }
         } else s = "hui-" + s + "-card";if (customElements.get(s)) return n(s, t);var a = i("Custom element doesn't exist: " + t.type + ".", t);a.style.display = "None";var o = setTimeout(function () {
           a.style.display = "";
@@ -1808,30 +1829,31 @@ class ct {
       </ha-card>
     `;
   }_cardHtml() {
-    const t = this._getMatchingConfigState(this._stateObj),
-          e = this._buildCssColorAttribute(this._stateObj, t);let i = e,
-        n = {},
-        s = {};const r = {},
-          a = this._buildStyleGeneric(this._stateObj, t, "lock"),
-          o = this._buildStyleGeneric(this._stateObj, t, "card"),
-          l = { "button-card-main": !0, disabled: !this._isClickable(this._stateObj) };switch (o.width && (this.style.setProperty("flex", "0 0 auto"), this.style.setProperty("max-width", "fit-content")), this._config.color_type) {case "blank-card":
-        return this._blankCardColoredHtml(o);case "card":case "label-card":
+    var t, e;const i = this._getMatchingConfigState(this._stateObj),
+          n = this._buildCssColorAttribute(this._stateObj, i);let s = n,
+        r = {},
+        a = {};const o = {},
+          l = this._buildStyleGeneric(this._stateObj, i, "lock"),
+          c = this._buildStyleGeneric(this._stateObj, i, "card"),
+          h = this._buildStyleGeneric(this._stateObj, i, "tooltip"),
+          u = { "button-card-main": !0, tooltip: !!(null === (t = this._config) || void 0 === t ? void 0 : t.tooltip), disabled: !this._isClickable(this._stateObj) };switch (c.width && (this.style.setProperty("flex", "0 0 auto"), this.style.setProperty("max-width", "fit-content")), this._config.color_type) {case "blank-card":
+        return this._blankCardColoredHtml(c);case "card":case "label-card":
         {
           const t = function (t) {
             const e = new we(ke(t));return e.isValid && e.getLuminance() > .5 ? "rgb(62, 62, 62)" : "rgb(234, 234, 234)";
-          }(e);n.color = t, s.color = t, n["background-color"] = e, n = Object.assign(Object.assign({}, n), o), i = "inherit";break;
+          }(n);r.color = t, a.color = t, r["background-color"] = n, r = Object.assign(Object.assign({}, r), c), s = "inherit";break;
         }default:
-        n = o;}this._config.aspect_ratio ? (r["--aspect-ratio"] = this._config.aspect_ratio, n.position = "absolute") : r.display = "inline", this.style.setProperty("--button-card-light-color", this._getColorForLightEntity(this._stateObj, !0)), this.style.setProperty("--button-card-light-color-no-temperature", this._getColorForLightEntity(this._stateObj, !1)), s = Object.assign(Object.assign({}, s), a);const c = this._config.extra_styles ? D`
+        r = c;}this._config.aspect_ratio ? (o["--aspect-ratio"] = this._config.aspect_ratio, r.position = "absolute") : o.display = "inline", this.style.setProperty("--button-card-light-color", this._getColorForLightEntity(this._stateObj, !0)), this.style.setProperty("--button-card-light-color-no-temperature", this._getColorForLightEntity(this._stateObj, !1)), a = Object.assign(Object.assign({}, a), l);const d = this._config.extra_styles ? D`
           <style>
             ${this._getTemplateOrValue(this._stateObj, this._config.extra_styles)}
           </style>
         ` : D``;return D`
-      ${c}
-      <div id="aspect-ratio" style=${at(r)}>
+      ${d}
+      <div id="aspect-ratio" style=${at(o)}>
         <ha-card
           id="card"
-          class=${ut(l)}
-          style=${at(n)}
+          class=${ut(u)}
+          style=${at(r)}
           @action=${this._handleAction}
           @focus="${this.handleRippleFocus}"
           @blur="${this.handleRippleBlur}"
@@ -1843,11 +1865,16 @@ class ct {
           .actionHandler=${ee({ hasDoubleClick: "none" !== this._config.double_tap_action.action, hasHold: "none" !== this._config.hold_action.action, repeat: this._config.hold_action.repeat })}
           .config="${this._config}"
         >
-          ${this._buttonContent(this._stateObj, t, i)}
+          ${this._buttonContent(this._stateObj, i, s)}
+          ${(null === (e = this._config) || void 0 === e ? void 0 : e.tooltip) ? D`
+                <span class="tooltiptext" style=${at(h)}
+                  >${this._getTemplateOrValue(this._stateObj, this._config.tooltip)}</span
+                >
+              ` : ""}
           <mwc-ripple id="ripple"></mwc-ripple>
         </ha-card>
       </div>
-      ${this._getLock(s)}
+      ${this._getLock(a)}
     `;
   }_getLock(t) {
     return this._config.lock && this._getTemplateOrValue(this._stateObj, this._config.lock.enabled) ? D`
@@ -1953,7 +1980,7 @@ class ct {
       let t = document.querySelector("hc-main");if (t = t && t.shadowRoot, t = t && t.querySelector("hc-lovelace"), t = t && t.shadowRoot, t = t && (t.querySelector("hui-view") || t.querySelector("hui-panel-view")), t) {
         const e = t.lovelace;return e.current_view = t.___curView, e;
       }return null;
-    }();let i = JSON.parse(JSON.stringify(t));i = this._configFromLLTemplates(e, i), this._config = Object.assign(Object.assign({ type: "custom:button-card", hold_action: { action: "none" }, double_tap_action: { action: "none" }, layout: "vertical", size: "40%", color_type: "icon", show_name: !0, show_state: !1, show_icon: !0, show_units: !0, show_label: !1, show_entity_picture: !1, show_live_stream: !1 }, i), { default_color: "DUMMY", color_off: "DUMMY", color_on: "DUMMY", lock: Object.assign({ enabled: !1, duration: 5, unlock: "tap" }, i.lock) }), this._config.entity && Ft.has(xe(this._config.entity)) ? this._config = Object.assign({ tap_action: { action: "toggle" } }, this._config) : this._config = Object.assign({ tap_action: { action: "more-info" } }, this._config), this._config.default_color = "var(--primary-text-color)", "icon" !== this._config.color_type ? this._config.color_off = "var(--card-background-color)" : this._config.color_off = "var(--paper-item-icon-color)", this._config.color_on = "var(--paper-item-icon-active-color)";const n = JSON.stringify(this._config);if (this._entities = [], Array.isArray(this._config.triggers_update) ? this._entities = [...this._config.triggers_update] : "string" == typeof this._config.triggers_update && "all" !== this._config.triggers_update && this._entities.push(this._config.triggers_update), "all" !== this._config.triggers_update) {
+    }();let i = JSON.parse(JSON.stringify(t));i = this._configFromLLTemplates(e, i), this._config = Object.assign(Object.assign({ type: "custom:button-card", hold_action: { action: "none" }, double_tap_action: { action: "none" }, layout: "vertical", size: "40%", color_type: "icon", show_name: !0, show_state: !1, show_icon: !0, show_units: !0, show_label: !1, show_entity_picture: !1, show_live_stream: !1, card_size: 3 }, i), { default_color: "DUMMY", color_off: "DUMMY", color_on: "DUMMY", lock: Object.assign({ enabled: !1, duration: 5, unlock: "tap" }, i.lock) }), this._config.entity && Ft.has(xe(this._config.entity)) ? this._config = Object.assign({ tap_action: { action: "toggle" } }, this._config) : this._config = Object.assign({ tap_action: { action: "more-info" } }, this._config), this._config.default_color = "var(--primary-text-color)", "icon" !== this._config.color_type ? this._config.color_off = "var(--card-background-color)" : this._config.color_off = "var(--paper-item-icon-color)", this._config.color_on = "var(--paper-item-icon-active-color)";const n = JSON.stringify(this._config);if (this._entities = [], Array.isArray(this._config.triggers_update) ? this._entities = [...this._config.triggers_update] : "string" == typeof this._config.triggers_update && "all" !== this._config.triggers_update && this._entities.push(this._config.triggers_update), "all" !== this._config.triggers_update) {
       const t = new RegExp(/states\[\s*('|\\")([a-zA-Z0-9_]+\.[a-zA-Z0-9_]+)\1\s*\]/, "gm"),
             e = new RegExp(/states\[\s*('|\\")([a-zA-Z0-9_]+\.[a-zA-Z0-9_]+)\1\s*\]/, "m"),
             i = n.match(t);null == i || i.forEach(t => {
@@ -1961,7 +1988,7 @@ class ct {
       });
     }this._config.entity && !this._entities.includes(this._config.entity) && this._entities.push(this._config.entity);const s = new RegExp("\\[\\[\\[.*\\]\\]\\]", "gm");this._hasTemplate = !("all" !== this._config.triggers_update || !n.match(s)), this._initial_setup_complete || this._initConnected();
   }getCardSize() {
-    return 3;
+    var t;return (null === (t = this._config) || void 0 === t ? void 0 : t.card_size) || 3;
   }_evalActions(t, e) {
     const i = JSON.parse(JSON.stringify(t)),
           n = t => t ? (Object.keys(t).forEach(e => {
