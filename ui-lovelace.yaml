@@ -1,12 +1,4 @@
 title: Home
-custom_header:
-  header_text: '{{ deviceID }}' # Must set compact_mode: false to display
-  compact_mode: true
-#  background: var(--app-header-background-color)
-  background: var(--background-image)
-#  elements_color: var(--primary-text-color)
-#  active_tab_color: var(--state-icon-active-color)
-#  tab_indicator_color: var(--state-icon-active-color)
 swipe_nav:
   wrap: true
   animate: swipe        # could also use fade or flip
@@ -965,6 +957,10 @@ views:
               north:
                 show: true
                 offset: 0
+            style: |
+              .sensor-1 .measurement {
+                font-size: 28px !important; 
+              } 
           - type: history-graph
             title: Temperature BOM Gosford
             hours_to_show: 48
