@@ -1518,11 +1518,11 @@ ios-dark-mode-blue-red:
         top: 24px;
       }
       paper-tabs {
-        --paper-tabs-selection-bar-color: var(--primary-color) !important;
+        --paper-tabs-selection-bar-color: white !important;
         margin-left: 65px !important;
       }
       paper-tab[aria-selected="true"] > ha-icon {
-        color: var(--primary-color) !important;
+        color: white !important;
       }
       paper-tab[aria-selected="true"] {
         color: var(--primary-color) !important;
