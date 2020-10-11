@@ -41,6 +41,7 @@ input_select:
      - 'ios-dark-mode'
      - 'ios-dark-mode-blue-red-alternative'
      - 'ios-dark-mode-blue-red'
+     - 'ios-dark-mode-blue-red-mod'
      - 'ios-dark-mode-dark-blue-alternative'
      - 'ios-dark-mode-dark-blue'
      - 'ios-dark-mode-dark-green-alternative'
@@ -114,7 +115,7 @@ input_select:
      - 'vaporwave-pink'
      - 'vintage'
      - 'yourname'
-    initial: 'ios-dark-mode-blue-red'
+    initial: 'ios-dark-mode-blue-red-mod'
     icon: 'mdi:palette'
 
 automation:
@@ -126,7 +127,7 @@ automation:
     action:
       service: frontend.set_theme
       data:
-        name: 'ios-dark-mode-blue-red'
+        name: 'ios-dark-mode-blue-red-mod'
   - id: 'changetheme'
     alias: 'System - Change Current Theme'
     trigger:
