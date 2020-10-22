@@ -190,7 +190,7 @@ class y {
   constructor(t, e, i) {
     this.dirty = !0, this.element = t, this.name = e, this.strings = i, this.parts = [];for (let n = 0; n < i.length - 1; n++) this.parts[n] = this._createPart();
   }_createPart() {
-    return new M(this);
+    return new C(this);
   }_getValue() {
     const t = this.strings,
           e = t.length - 1,
@@ -204,7 +204,7 @@ class y {
   }commit() {
     this.dirty && (this.dirty = !1, this.element.setAttribute(this.name, this._getValue()));
   }
-}class M {
+}class C {
   constructor(t) {
     this.value = void 0, this.committer = t;
   }setValue(t) {
@@ -214,7 +214,7 @@ class y {
       const t = this.value;this.value = _, t(this);
     }this.value !== _ && this.committer.commit();
   }
-}class C {
+}class M {
   constructor(t) {
     this.value = void 0, this.__pendingValue = void 0, this.options = t;
   }appendInto(t) {
@@ -245,7 +245,7 @@ class y {
     }
   }__commitIterable(t) {
     Array.isArray(this.value) || (this.value = [], this.clear());const e = this.value;let i,
-        n = 0;for (const s of t) i = e[n], void 0 === i && (i = new C(this.options), e.push(i), 0 === n ? i.appendIntoPart(this) : i.insertAfterPart(e[n - 1])), i.setValue(s), i.commit(), n++;n < e.length && (e.length = n, this.clear(i && i.endNode));
+        n = 0;for (const s of t) i = e[n], void 0 === i && (i = new M(this.options), e.push(i), 0 === n ? i.appendIntoPart(this) : i.insertAfterPart(e[n - 1])), i.setValue(s), i.commit(), n++;n < e.length && (e.length = n, this.clear(i && i.endNode));
   }clear(t = this.startNode) {
     i(this.startNode.parentNode, t.nextSibling, this.endNode);
   }
@@ -269,7 +269,7 @@ class y {
   }commit() {
     this.dirty && (this.dirty = !1, this.element[this.name] = this._getValue());
   }
-}class P extends M {}let A = !1;(() => {
+}class P extends C {}let A = !1;(() => {
   try {
     const t = { get capture() {
         return A = !0, !1;
@@ -339,7 +339,7 @@ class {
       return new N(t, e.slice(1), i).parts;
     }if ("@" === s) return [new E(t, e.slice(1), n.eventContext)];if ("?" === s) return [new O(t, e.slice(1), i)];return new T(t, e, i).parts;
   }handleTextExpression(t) {
-    return new C(t);
+    return new M(t);
   }
 }();
 /**
@@ -603,7 +603,7 @@ const Q = window.ShadowRoot && (void 0 === window.ShadyCSS || window.ShadyCSS.na
         a = F && 11 === e.nodeType && !!e.host,
         o = a && !z.has(s),
         l = o ? document.createDocumentFragment() : e;if (((t, e, n) => {
-    let s = H.get(e);void 0 === s && (i(e, e.firstChild), H.set(e, s = new C(Object.assign({ templateFactory: j }, n))), s.appendInto(e)), s.setValue(t), s.commit();
+    let s = H.get(e);void 0 === s && (i(e, e.firstChild), H.set(e, s = new M(Object.assign({ templateFactory: j }, n))), s.appendInto(e)), s.setValue(t), s.commit();
   })(t, l, Object.assign({ templateFactory: I(s) }, n)), o) {
     const t = H.get(l);H.delete(l);const n = t.value instanceof y ? t.value.template : void 0;q(s, l, n), i(e, e.firstChild), e.appendChild(l), H.set(e, t);
   }!r && a && window.ShadyCSS.styleElement(e.host);
@@ -667,14 +667,14 @@ class st {
  * http://polymer.github.io/PATENTS.txt
  */const rt = new WeakMap(),
       at = m(t => e => {
-  if (!(e instanceof M) || e instanceof P || "style" !== e.committer.name || e.committer.parts.length > 1) throw new Error("The `styleMap` directive must be used in the style attribute and must be the only part in the attribute.");const { committer: i } = e,
+  if (!(e instanceof C) || e instanceof P || "style" !== e.committer.name || e.committer.parts.length > 1) throw new Error("The `styleMap` directive must be used in the style attribute and must be the only part in the attribute.");const { committer: i } = e,
         { style: n } = i.element;let s = rt.get(e);void 0 === s && (n.cssText = i.strings.join(" "), rt.set(e, s = new Set())), s.forEach(e => {
     e in t || (s.delete(e), -1 === e.indexOf("-") ? n[e] = null : n.removeProperty(e));
   });for (const r in t) s.add(r), -1 === r.indexOf("-") ? n[r] = t[r] : n.setProperty(r, t[r]);
 }),
       ot = new WeakMap(),
       lt = m(t => e => {
-  if (!(e instanceof C)) throw new Error("unsafeHTML can only be used in text bindings");const i = ot.get(e);if (void 0 !== i && x(t) && t === i.value && e.value === i.fragment) return;const n = document.createElement("template");n.innerHTML = t;const s = document.importNode(n.content, !0);e.setValue(s), ot.set(e, { value: t, fragment: s });
+  if (!(e instanceof M)) throw new Error("unsafeHTML can only be used in text bindings");const i = ot.get(e);if (void 0 !== i && x(t) && t === i.value && e.value === i.fragment) return;const n = document.createElement("template");n.innerHTML = t;const s = document.importNode(n.content, !0);e.setValue(s), ot.set(e, { value: t, fragment: s });
 });
 /**
  * @license
@@ -703,7 +703,7 @@ class ct {
   }
 }const ht = new WeakMap(),
       ut = m(t => e => {
-  if (!(e instanceof M) || e instanceof P || "class" !== e.committer.name || e.committer.parts.length > 1) throw new Error("The `classMap` directive must be used in the `class` attribute and must be the only part in the attribute.");const { committer: i } = e,
+  if (!(e instanceof C) || e instanceof P || "class" !== e.committer.name || e.committer.parts.length > 1) throw new Error("The `classMap` directive must be used in the `class` attribute and must be the only part in the attribute.");const { committer: i } = e,
         { element: n } = i;let s = ht.get(e);void 0 === s && (n.setAttribute("class", i.strings.join(" ")), ht.set(e, s = new Set()));const r = n.classList || new ct(n);s.forEach(e => {
     e in t || (r.remove(e), s.delete(e));
   });for (const a in t) {
@@ -793,8 +793,8 @@ class ct {
     Tt = function (t) {
   return +t - 1;
 },
-    Mt = [null, "[1-9]\\d?"],
-    Ct = [null, pt],
+    Ct = [null, "[1-9]\\d?"],
+    Mt = [null, pt],
     Ot = ["isPm", pt, function (t, e) {
   var i = t.toLowerCase();return i === e.amPm[0] ? 0 : i === e.amPm[1] ? 1 : null;
 }],
@@ -1175,15 +1175,15 @@ class ct {
   const i = new we(ke(t));if (i.isValid) {
     const t = i.mix("black", 100 - e).toString();if (t) return t;
   }return t;
-}function Me(...t) {
+}function Ce(...t) {
   const e = t => t && "object" == typeof t;return t.reduce((t, i) => (Object.keys(i).forEach(n => {
     const s = t[n],
-          r = i[n];Array.isArray(s) && Array.isArray(r) ? t[n] = s.concat(...r) : e(s) && e(r) ? t[n] = Me(s, r) : t[n] = r;
+          r = i[n];Array.isArray(s) && Array.isArray(r) ? t[n] = s.concat(...r) : e(s) && e(r) ? t[n] = Ce(s, r) : t[n] = r;
   }), t), {});
-}function Ce(t, e) {
+}function Me(t, e) {
   let i = [];return t && t.forEach(t => {
     let n = t;e && e.forEach(e => {
-      e.id && t.id && e.id == t.id && (n = Me(n, e));
+      e.id && t.id && e.id == t.id && (n = Ce(n, e));
     }), i.push(n);
   }), e && (i = i.concat(e.filter(e => !t || !t.find(t => !(!t.id || !e.id) && t.id == e.id)))), i;
 }const Oe = ((t, ...e) => {
@@ -1622,7 +1622,7 @@ class ct {
   }return i.attributes.device_class && e(`component.${s}.state.${i.attributes.device_class}.${i.state}`) || e(`component.${s}.state._.${i.state}`) || i.state;
 };let Pe = window.cardHelpers;const Ae = new Promise(async t => {
   Pe && t(), window.loadCardHelpers && (Pe = await window.loadCardHelpers(), window.cardHelpers = Pe, t());
-});console.info("%c  BUTTON-CARD  \n%c Version 3.4.0-0 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");let Ee = class extends nt {
+});console.info("%c  BUTTON-CARD  \n%c Version 3.4.0-1 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");let Ee = class extends nt {
   constructor() {
     super(...arguments), this._cards = {}, this._cardsConfig = {}, this._entities = [], this._initial_setup_complete = !1, this._rippleHandlers = new st(() => this._ripple);
   }set hass(t) {
@@ -1736,12 +1736,12 @@ class ct {
         return this._config.color_off;default:
         return this._config.default_color;}
   }_getColorForLightEntity(t, e) {
-    let i = this._config.default_color;return t && (t.attributes.rgb_color ? (i = `rgb(${t.attributes.rgb_color.join(",")})`, t.attributes.brightness && (i = Te(i, (t.attributes.brightness + 245) / 5))) : e && t.attributes.color_temp && t.attributes.min_mireds && t.attributes.max_mireds ? (i = function (t, e, i) {
+    let i = this._config.default_color;return t && ("on" === t.state ? t.attributes.rgb_color ? (i = `rgb(${t.attributes.rgb_color.join(",")})`, t.attributes.brightness && (i = Te(i, (t.attributes.brightness + 245) / 5))) : e && t.attributes.color_temp && t.attributes.min_mireds && t.attributes.max_mireds ? (i = function (t, e, i) {
       const n = new we("rgb(255, 160, 0)"),
             s = new we("rgb(166, 209, 255)"),
             r = new we("white"),
             a = (t - e) / (i - e) * 100;return a < 50 ? Se(s).mix(r, 2 * a).toRgbString() : Se(r).mix(n, 2 * (a - 50)).toRgbString();
-    }(t.attributes.color_temp, t.attributes.min_mireds, t.attributes.max_mireds), t.attributes.brightness && (i = Te(i, (t.attributes.brightness + 245) / 5))) : i = t.attributes.brightness ? Te(this._getDefaultColorForState(t), (t.attributes.brightness + 245) / 5) : this._getDefaultColorForState(t)), i;
+    }(t.attributes.color_temp, t.attributes.min_mireds, t.attributes.max_mireds), t.attributes.brightness && (i = Te(i, (t.attributes.brightness + 245) / 5))) : i = t.attributes.brightness ? Te(this._getDefaultColorForState(t), (t.attributes.brightness + 245) / 5) : this._getDefaultColorForState(t) : i = this._getDefaultColorForState(t)), i;
   }_buildCssColorAttribute(t, e) {
     let i,
         n = "";return e && e.color ? n = e.color : "auto" !== this._config.color && t && "off" === t.state ? n = this._config.color_off : this._config.color && (n = this._config.color), i = "auto" == n || "auto-no-temperature" == n ? this._getColorForLightEntity(t, "auto-no-temperature" !== n) : n || (t ? this._getDefaultColorForState(t) : this._config.default_color), i;
@@ -1969,8 +1969,8 @@ class ct {
   }_configFromLLTemplates(t, e) {
     const i = e.template;if (!i) return e;let n,
         s = {};const r = i && Array.isArray(i) ? i : [i];return null == r || r.forEach(e => {
-      if (!t.config.button_card_templates || !t.config.button_card_templates[e]) throw new Error(`Button-card template '${e}' is missing!`);const i = this._configFromLLTemplates(t, t.config.button_card_templates[e]);s = Me(s, i), n = Ce(n, i.state);
-    }), s = Me(s, e), s.state = Ce(n, e.state), s;
+      if (!t.config.button_card_templates || !t.config.button_card_templates[e]) throw new Error(`Button-card template '${e}' is missing!`);const i = this._configFromLLTemplates(t, t.config.button_card_templates[e]);s = Ce(s, i), n = Me(n, i.state);
+    }), s = Ce(s, e), s.state = Me(n, e.state), s;
   }setConfig(t) {
     if (!t) throw new Error("Invalid configuration");this._cards = {}, this._cardsConfig = {};const e = function () {
       var t = document.querySelector("home-assistant");if (t = (t = (t = (t = (t = (t = (t = (t = t && t.shadowRoot) && t.querySelector("home-assistant-main")) && t.shadowRoot) && t.querySelector("app-drawer-layout partial-panel-resolver")) && t.shadowRoot || t) && t.querySelector("ha-panel-lovelace")) && t.shadowRoot) && t.querySelector("hui-root")) {
