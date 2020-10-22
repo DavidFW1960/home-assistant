@@ -3,7 +3,7 @@
 
 sensor:
   - platform: nsw_fuel_station
-    station_id: 721
+    station_id: 18424
 #   friendly_name: Caltex 153 Forest Way Belrose
 #   sensor.caltex_belrose_pdl
     fuel_types:
@@ -211,7 +211,7 @@ sensor:
         value_template: "{{states('sensor.caltex_woolworths_turramurra_pdl')}}"
         friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
         unit_of_measurement: ¢/L
-      syd721:
+      syd18424:
         value_template: "{{states('sensor.caltex_belrose_pdl')}}"
         friendly_name: Caltex 153 Forest Way Belrose
         unit_of_measurement: ¢/L
@@ -322,7 +322,7 @@ homeassistant:
     sensor.syd663:
       icon: mdi:gas-station
       <<: *common
-    sensor.syd721:
+    sensor.syd18424:
       icon: mdi:gas-station
       <<: *common
     sensor.ccm11:
