@@ -310,3 +310,7 @@ sensor.github_main:
 sensor.github_hacs:
   icon: mdi:github
   unit_of_measurement: calls
+sensor.bom_fire_danger_summary:
+  friendly_name: Danger Level Today
+  icon: mdi:fire
+

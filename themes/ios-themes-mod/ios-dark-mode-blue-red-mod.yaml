@@ -8,8 +8,8 @@ ios-dark-mode-blue-red-mod:
       .edit-mode, app-header, app-toolbar {
         background: url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg') !important;
       }
-
   header-height: 48px    
+
   # Global
   background-image: "center / cover no-repeat fixed url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg')"
   lovelace-background: var(--background-image)
