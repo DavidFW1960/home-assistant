@@ -199,6 +199,10 @@ sensor:
         value_template: "{{states('sensor.caltex_st_ives_foodary_pdl')}}"
         friendly_name: Caltex 164 Mona Vale Rd St Ives Foodary
         unit_of_measurement: ¢/L
+      syd18424:
+        value_template: "{{states('sensor.caltex_belrose_pdl')}}"
+        friendly_name: Caltex 153 Forest Way Belrose
+        unit_of_measurement: ¢/L
       syd2436:
         value_template: "{{states('sensor.caltex_woolworths_waitara_pdl')}}"
         friendly_name: Caltex Woolies 59-61 Pacific Hwy Waitara
@@ -211,10 +215,6 @@ sensor:
         value_template: "{{states('sensor.caltex_woolworths_turramurra_pdl')}}"
         friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
         unit_of_measurement: ¢/L
-      syd18424:
-        value_template: "{{states('sensor.caltex_belrose_pdl')}}"
-        friendly_name: Caltex 153 Forest Way Belrose
-        unit_of_measurement: ¢/L
       cc902:
         value_template: "{{states('sensor.coles_express_kariong_dl')}}"
         friendly_name: Shell 6-8 Pacific Hwy Kariong
@@ -226,10 +226,7 @@ homeassistant:
       common: &common
         package: "fuel"
 
-    sensor.caltex_kariong_pdl:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.caltex_woolworths_gosford_pdl:
+    sensor.caltex_belrose_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_gosford_west_pdl:
@@ -241,16 +238,37 @@ homeassistant:
     sensor.caltex_gosford_west_pdl_3:
       icon: mdi:gas-station
       <<: *common
+    sensor.caltex_kariong_pdl:
+      icon: mdi:gas-station
+      <<: *common
+    sensor.caltex_st_ives_foodary_pdl:
+      icon: mdi:gas-station
+      <<: *common
+    sensor.caltex_st_ives_north_pdl:
+      icon: mdi:gas-station
+      <<: *common
     sensor.caltex_woolworths_erina_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_wyoming_pdl:
+    sensor.caltex_woolworths_glenrose_pdl:
+      icon: mdi:gas-station
+      <<: *common
+    sensor.caltex_woolworths_gosford_pdl:
+      icon: mdi:gas-station
+      <<: *common
+    sensor.caltex_woolworths_tuggerah_north_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_woolworths_tuggerah_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_woolworths_tuggerah_north_pdl:
+    sensor.caltex_woolworths_turramurra_pdl:
+      icon: mdi:gas-station
+      <<: *common
+    sensor.caltex_woolworths_waitara_pdl:
+      icon: mdi:gas-station
+      <<: *common
+    sensor.caltex_wyoming_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_wyong_pdl:
@@ -260,24 +278,6 @@ homeassistant:
       icon: mdi:gas-station
       <<: *common
     sensor.coles_express_kariong_dl:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.caltex_woolworths_waitara_pdl:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.caltex_woolworths_turramurra_pdl:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.caltex_st_ives_north_pdl:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.caltex_st_ives_foodary_pdl:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.caltex_woolworths_glenrose_pdl:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.caltex_belrose_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.cc17249:
@@ -290,6 +290,9 @@ homeassistant:
       icon: mdi:gas-station
       <<: *common
     sensor.syd18253:
+      icon: mdi:gas-station
+      <<: *common
+    sensor.syd18424:
       icon: mdi:gas-station
       <<: *common
     sensor.ccgw1:
@@ -320,9 +323,6 @@ homeassistant:
       icon: mdi:gas-station
       <<: *common
     sensor.syd663:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.syd18424:
       icon: mdi:gas-station
       <<: *common
     sensor.ccm11:
