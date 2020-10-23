@@ -8,6 +8,7 @@ from datetime import timedelta
 from pyexpat import ExpatError
 
 import voluptuous as vol
+import xmltodict
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.components.rest.sensor import RestData
@@ -56,19 +57,20 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 })
 
 
-def setup_platform(hass, config, add_entities, discovery_info=None):
+async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Set up the sensor."""
     district_name = config.get(CONF_DISTRICT_NAME)
 
     rest = RestData(
         DEFAULT_METHOD, URL, None, None, None, DEFAULT_VERIFY_SSL)
-    rest.update()
+    await rest.async_update()
+    # rest.update()
     if rest.data is None:
         raise PlatformNotReady
 
     # Must update the sensor now (including fetching the rest resource) to
     # ensure it's updating its state.
-    add_entities([NswFireServiceFireDangerSensor(
+    async_add_entities([NswFireServiceFireDangerSensor(
             hass, rest, district_name)], True)
 
 
@@ -115,9 +117,9 @@ class NswFireServiceFireDangerSensor(Entity):
             return NswFireServiceFireDangerSensor._attribute_in_structure(
                 obj[key], keys) if keys else obj[key]
 
-    def update(self):
+    async def async_update(self):
         """Get the latest data from REST API and update the state."""
-        self.rest.update()
+        await self.rest.async_update()
         value = self.rest.data
         attributes = {
             'district': self._district_name,
@@ -126,8 +128,6 @@ class NswFireServiceFireDangerSensor(Entity):
         self._state = STATE_UNKNOWN
         if value:
             try:
-                import xmltodict
-
                 value = xmltodict.parse(value)
                 districts = self._attribute_in_structure(
                     value, [XML_FIRE_DANGER_MAP, XML_DISTRICT])
