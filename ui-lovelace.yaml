@@ -1155,19 +1155,42 @@ views:
 #              action: more-info
 #            hold_action:
 #              action: more-info
-          - type: picture-entity
-            title: BOM Satellite
-            entity: camera.bom_satellite
-            tap_action:
-              action: more-info
-            hold_action:
-              action: more-info
+#          - type: picture-entity
+#            title: BOM Satellite
+#            entity: camera.bom_satellite
+#            tap_action:
+#              action: more-info
+#            hold_action:
+#              action: more-info
+          - type: 'custom:bom-radar-card'
+            center_latitude: '-24.2744'
+            center_longitude: '133.7751'
+            zoom_level: '4'
+            frame_delay: 500
+            frame_count: 30
+            show_marker: true
+            markerIcon: true
+            marker_latitude: '-33.425018'
+            marker_longitude: '151.342224'
+            show_range: false
+            show_scale: false
+            show_zoom: false
+            show_recenter: true
+            show_playback: false
+            extra_labels: false
+            map_style: 'satellite'
+            static_map: false
+            show_radar_coverage: true
+            show_radar_location: false
+            radar_location_radius: 2
+            radar_location_line_colour: '#FF0000'
+            radar_location_fill_colour: '#FFFF00'
           - type: 'custom:bom-radar-card'
             center_latitude: '-33.425018'
             center_longitude: '151.342224'
             zoom_level: '9'
             frame_delay: 500
-            frame_count: 10
+            frame_count: 12
             show_marker: true
             markerIcon: true
             marker_latitude: '-33.425018'
