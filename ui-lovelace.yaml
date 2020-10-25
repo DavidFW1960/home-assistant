@@ -1182,6 +1182,9 @@ views:
             static_map: false
             show_radar_coverage: true
             show_radar_location: true
+            radar_location_radius: 5
+            radar_location_line_colour: '#FF0000'
+            radar_location_fill_colour: '#FFFF00'
           - type: entities
             title: NSW Warnings & Events
             show_header_toggle: false
@@ -2545,4 +2548,3 @@ views:
               - entity: sensor.worldwide_coronavirus_deaths
                 icon: 'mdi:grave-stone'
                 name: Deaths
-
