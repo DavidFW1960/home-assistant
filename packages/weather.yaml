@@ -3,27 +3,7 @@
 # For the animated card follow the instructions and put the icons in <config-dir>/www/icons/weather_icons. This is a DIFFERENT icon file to the above.
 # Show BOM Satellite
 
-camera:
-  - platform: generic
-    name: BOM Satellite
-    still_image_url: http://www.bom.gov.au/gms/IDE00135.jpg
-
 sensor:
-  - platform: bom
-    station: !secret my_bom_station
-    name: !secret my_bom_name
-    monitored_conditions:
-      - apparent_t
-      - delta_t
-      - gust_kmh
-      - gust_kt
-      - air_temp
-      - dewpt
-      - rain_trace
-      - rel_hum
-      - wind_dir
-      - wind_spd_kmh
-      - wind_spd_kt
 
   - platform: bom_forecast
     product_id: !secret my_bom_product_id
@@ -106,29 +86,29 @@ sensor:
 # https://en.wikipedia.org/wiki/Beaufort_scale
       beaufort:
         value_template: >
-            {%- if states('sensor.bom_gosford_wind_speed_kmh') | float  >= 118 -%}
+            {%- if states('sensor.gosford_wind_speed') | float  >= 118 -%}
             12
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 103 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 103 -%}
             11
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 89 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 89 -%}
             10
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 75 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 75 -%}
             9
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 62 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 62 -%}
             8
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 50 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 50 -%}
             7
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 39 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 39 -%}
             6
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 29 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 29 -%}
             5
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 20 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 20 -%}
             4
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 12 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 12 -%}
             3
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 6 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 6 -%}
             2
-            {%- elif states('sensor.bom_gosford_wind_speed_kmh') | float  >= 2 -%}
+            {%- elif states('sensor.gosford_wind_speed') | float  >= 2 -%}
             1
             {%- else -%}
             0
@@ -140,9 +120,9 @@ sensor:
         unit_of_measurement: °C
         device_class: temperature
         value_template: >
-            {%- if states('sensor.bom_gosford_air_temp_c') | float > 27 and states('sensor.bom_gosford_relative_humidity') | float > 40 -%}
-            {% set T = states('sensor.bom_gosford_air_temp_c') | float %}
-            {% set R = states('sensor.bom_gosford_relative_humidity') | float %}
+            {%- if states('sensor.gosford_temperature') | float > 27 and states('sensor.gosford_humidity') | float > 40 -%}
+            {% set T = states('sensor.gosford_temperature') | float %}
+            {% set R = states('sensor.gosford_humidity') | float %}
             {% set c1 = -8.78469475556 %}
             {% set c2 = 1.61139411 %}
             {% set c3 = 2.33854883889 %}
@@ -257,7 +237,7 @@ sensor:
   - platform: average
     name: today_temp_bom
     entities:
-      - sensor.bom_gosford_air_temp_c
+      - sensor.gosford_temperature
     start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
     end: '{{ now() }}'
 
@@ -282,48 +262,38 @@ homeassistant:
       common: &common
         package: "weather"
 
-    sensor.bom_gosford_air_temp_c:
+    sensor.gosford_temperature:
       friendly_name: Air Temp
       device_class: temperature
       <<: *common
-    sensor.bom_gosford_delta_temp_c:
-      friendly_name: Delta Temp
-      <<: *common
-    sensor.bom_gosford_dew_point_c:
-      friendly_name: Dew Point
-      <<: *common
-    sensor.bom_gosford_feels_like_c:
+    sensor.gosford_temperature_feels_like:
       friendly_name: Feels Like
       <<: *common
-    sensor.bom_gosford_rain_today:
+    sensor.gosford_rain_since_9am:
       friendly_name: Rain Today
       icon: mdi:weather-rainy
       <<: *common
-    sensor.bom_gosford_relative_humidity:
+    sensor.gosford_humidity:
       friendly_name: Relative Humidity
       icon: mdi:water-percent
       <<: *common
-    sensor.bom_gosford_wind_direction:
+    sensor.gosford_wind_direction:
       friendly_name: Wind Direction
       entity_picture: /local/icons/MoonPhases/rooster.png
       <<: *common
-    sensor.bom_gosford_wind_direction_kt:
-      friendly_name: Wind Direction kt
-      icon: mdi:weather-windy
-      <<: *common
-    sensor.bom_gosford_wind_gust_kmh:
+    sensor.gosford_gust_speed:
       friendly_name: Wind Gust
       icon: mdi:weather-windy
       <<: *common
-    sensor.bom_gosford_wind_gust_kt:
+    sensor.gosford_gust_speed_knots:
       friendly_name: Wind Gust kt
       icon: mdi:weather-windy
       <<: *common
-    sensor.bom_gosford_wind_speed_kmh:
+    sensor.gosford_wind_speed:
       friendly_name: Wind Speed
       icon: mdi:weather-windy
       <<: *common
-    sensor.bom_gosford_wind_speed_kt:
+    sensor.gosford_wind_speed_knots:
       friendly_name: Wind Speed kt
       icon: mdi:weather-windy
       <<: *common
