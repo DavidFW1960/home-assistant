@@ -79,7 +79,7 @@ exclude:
     - sensor.bom_gosford_summary_6
     - sensor.bom_today_max
     - sensor.bom_today_min
-    - sensor.today_temp_bom_mean
+    - sensor.today_temp_bom
     - sensor.bom_gosford_fire_danger_0
     - sensor.bom_gosford_fire_danger_1
     - sensor.bom_gosford_fire_danger_2
