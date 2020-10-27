@@ -280,6 +280,7 @@ homeassistant:
     sensor.gosford_wind_direction:
       friendly_name: Wind Direction
       entity_picture: /local/icons/MoonPhases/rooster.png
+      icon: mdi:compass-rose
       <<: *common
     sensor.gosford_gust_speed:
       friendly_name: Wind Gust
