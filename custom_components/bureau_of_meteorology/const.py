@@ -1,2 +1,2 @@
 """Constants for the BOM integration."""
-DOMAIN = "bom"
+DOMAIN = "bureau_of_meteorology"
