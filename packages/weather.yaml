@@ -5,82 +5,32 @@
 
 sensor:
 
-  - platform: bom_forecast
-    product_id: !secret my_bom_product_id
-    name: !secret my_bom_name
-    forecast_days: 6
-    rest_of_today: true
-    friendly: false
-    friendly_state_format: '{max}, {summary}'
-    monitored_conditions:
-      - 'max'
-      - 'min'
-      - 'chance_of_rain'
-      - 'possible_rainfall'
-      - 'summary'
-      - 'detailed_summary'
-      - 'icon'
-      - 'uv_alert'
-      - 'fire_danger'
-
   - platform: template
     sensors:
 
       bom_current_text:
         value_template: >
-            {% set val = states('sensor.bom_gosford_summary_0').split('.')[0] %} 
+            {% set val = states('sensor.kariong_short_text_0').split('.')[0] %} 
             {{ val | title }}
 
       bom_uv_alert:
         value_template: >
-            {%- if states('sensor.bom_gosford_uv_alert_0') == '##' -%}
-            UV Today: No Data
-            {%- elif states('sensor.bom_gosford_uv_alert_0') != 'n/a' -%} 
-            UV Today: {{ states('sensor.bom_gosford_uv_alert_0') }}
-            {%- elif states('sensor.bom_gosford_uv_alert_1') == '##' -%}
-            UV Tomorrow: No Data
-            {%- else -%}
-            UV Tomorrow: {{ states('sensor.bom_gosford_uv_alert_1') }}
-            {%- endif -%}
+            UV Today: Sun Protection 
+            {{ as_timestamp(states('sensor.kariong_uv_start_time_0')) | timestamp_custom(' %I:%M%p') | lower | replace(" 0", "") }} to {{ as_timestamp(states('sensor.kariong_uv_end_time_0')) | timestamp_custom(' %I:%M%p') | lower | replace(" 0", "") }}, UV Index predicted to reach {{ states('sensor.kariong_uv_max_index_0') }} [{{ states('sensor.bom_uv_alert_summary') }}]
 
       bom_uv_alert_summary:
         value_template: >
-            {%- if states('sensor.bom_gosford_uv_alert_0') == '##' -%} 
-            {% set val = 'No Data' %}
-            {%- elif states('sensor.bom_gosford_uv_alert_0') != 'n/a' -%} 
-            {% set val = states('sensor.bom_gosford_uv_alert_0').split('[')[1].split(']')[0] %}
-            {%- elif states('sensor.bom_gosford_uv_alert_1') == '##' -%} 
-            {% set val = 'No Data' %}
-            {%- elif states('sensor.bom_gosford_uv_alert_1') != 'n/a' -%} 
-            {% set val = states('sensor.bom_gosford_uv_alert_1').split('[')[1].split(']')[0] %}
-            {%- else -%}
-            {%- set val = 'No Data' -%}
-            {%- endif -%}
-            {{ val | title }} 
+            {% set uv = states('sensor.kariong_uv_category_0') %}
+            {% if uv == 'extreme' %} {% set uv = 'Extreme' %}
+            {% elif uv == 'veryhigh' %} {% set uv = 'Very High' %} 
+            {% elif uv == 'high' %} {% set uv = 'High' %}
+            {% elif uv == 'moderate' %} {% set uv = 'Moderate' %}
+            {% elif uv == 'low' %} {% set uv = 'Low' %}
+            {% endif %}
+            {{ uv }}
           
       bom_fire_danger:
-        value_template: >
-            {%- if states('sensor.bom_gosford_fire_danger_0') == '##' -%}
-            Fire Danger Today: No Data
-            {%- elif states('sensor.bom_gosford_fire_danger_0') != 'n/a' -%} 
-            Fire Danger Today: {{ states('sensor.bom_gosford_fire_danger_0') }}
-            {%- elif states('sensor.bom_gosford_fire_danger_1') == '##' -%}
-            Fire Danger Tomorrow: No Data
-            {%- else -%}
-            Fire Danger Tomorrow: {{ states('sensor.bom_gosford_fire_danger_1') }}
-            {%- endif -%}
-
-      bom_fire_danger_summary:
-        value_template: >
-            {%- if states('sensor.bom_gosford_fire_danger_0') == '##' -%}
-            No Data
-            {%- elif states('sensor.bom_gosford_fire_danger_0') != 'n/a' -%} 
-            {{ states('sensor.bom_gosford_fire_danger_0') }}
-            {%- elif states('sensor.bom_gosford_fire_danger_1') == '##' -%}
-            No Data
-            {%- else -%}
-            {{ states('sensor.bom_gosford_fire_danger_1') }}
-            {%- endif -%}
+        value_template: "Fire Danger Today: {{ states('sensor.kariong_fire_danger_1') }}"
 
 # Beaufort
 # https://en.wikipedia.org/wiki/Beaufort_scale
@@ -156,12 +106,14 @@ sensor:
       bom_forecast_0:
         friendly_name: "Today"
         value_template: >
-          {{states('sensor.bom_today_max')|round(0)}}°/{{states('sensor.bom_today_min')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_0')|round(0)}}%
+          {% if states('sensor.kariong_min_0') == 'unknown' %} {% set min = states('sensor.bom_today_min') %} {% else %} {% set min = states('sensor.kariong_min_0') %} {% endif %}
+          {% if states('sensor.kariong_max_0') == 'unknown' %} {% set max = states('sensor.bom_today_max') %} {% else %} {% set max = states('sensor.kariong_max_0') %} {% endif %}
+          {{ max|round(0)}}°/{{ min|round(0)}}°/{{states('sensor.kariong_rain_chance_0')|round(0)}}%
         entity_picture_template: >-
-          {%- if states('sun.sun') == 'below_horizon' and (states('sensor.bom_gosford_icon_0') == 'fog' or states('sensor.bom_gosford_icon_0') == 'haze' or states('sensor.bom_gosford_icon_0') == 'light-showers' or states('sensor.bom_gosford_icon_0') == 'partly-cloudy' or states('sensor.bom_gosford_icon_0') == 'showers') -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_0') ~ '-night.png' }}
+          {%- if states('sun.sun') == 'below_horizon' and (states('sensor.kariong_icon_0') == 'fog' or states('sensor.kariong_icon_0') == 'haze' or states('sensor.kariong_icon_0') == 'light-showers' or states('sensor.kariong_icon_0') == 'partly-cloudy' or states('sensor.kariong_icon_0') == 'showers' or states('sensor.kariong_icon_0') == 'shower' or states('sensor.kariong_icon_0') == 'light_showers' or states('sensor.kariong_icon_0') == 'partly_cloudy') -%}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.kariong_icon_0') ~ '-night.png' }}
           {%- else -%}
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_0') ~ '.png' }}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.kariong_icon_0') ~ '.png' }}
           {%- endif -%}
 
       bom_forecast_1:
@@ -169,70 +121,53 @@ sensor:
           {%- set date = as_timestamp(now()) + (1 * 86400 ) -%}
           {{ date | timestamp_custom('Tomorrow (%-d/%-m)') }}
         value_template: >
-          {{states('sensor.bom_gosford_max_temp_c_1')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_1')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_1')|round(0)}}%
+          {{states('sensor.kariong_max_1')|round(0)}}°/{{states('sensor.kariong_min_1')|round(0)}}°/{{states('sensor.kariong_rain_chance_1')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_1') ~ '.png' }}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.kariong_icon_1') ~ '.png' }}
 
       bom_forecast_2:
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (2 * 86400 ) -%}
           {{ date | timestamp_custom('%A (%-d/%-m)') }}
         value_template: >
-          {{states('sensor.bom_gosford_max_temp_c_2')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_2')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_2')|round(0)}}%
+          {{states('sensor.kariong_max_2')|round(0)}}°/{{states('sensor.kariong_min_2')|round(0)}}°/{{states('sensor.kariong_rain_chance_2')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_2') ~ '.png' }}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.kariong_icon_2') ~ '.png' }}
 
       bom_forecast_3:
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (3 * 86400 ) -%}
           {{ date | timestamp_custom('%A (%-d/%-m)') }}
         value_template: >
-          {{states('sensor.bom_gosford_max_temp_c_3')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_3')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_3')|round(0)}}%
+          {{states('sensor.kariong_max_3')|round(0)}}°/{{states('sensor.kariong_min_3')|round(0)}}°/{{states('sensor.kariong_rain_chance_3')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_3') ~ '.png' }}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.kariong_icon_3') ~ '.png' }}
 
       bom_forecast_4:
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (4 * 86400 ) -%}
           {{ date | timestamp_custom('%A (%-d/%-m)') }}
         value_template: >
-          {{states('sensor.bom_gosford_max_temp_c_4')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_4')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_4')|round(0)}}%
+          {{states('sensor.kariong_max_4')|round(0)}}°/{{states('sensor.kariong_min_4')|round(0)}}°/{{states('sensor.kariong_rain_chance_4')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_4') ~ '.png' }}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.kariong_icon_4') ~ '.png' }}
 
       bom_forecast_5:
         friendly_name_template: >
           {%- set date = as_timestamp(now()) + (5 * 86400 ) -%}
           {{ date | timestamp_custom('%A (%-d/%-m)') }}
         value_template: >
-          {{states('sensor.bom_gosford_max_temp_c_5')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_5')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_5')|round(0)}}%
+          {{states('sensor.kariong_max_5')|round(0)}}°/{{states('sensor.kariong_min_5')|round(0)}}°/{{states('sensor.kariong_rain_chance_5')|round(0)}}%
         entity_picture_template: >-
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_5') ~ '.png' }}
-
-      bom_forecast_6:
-        friendly_name_template: >
-          {%- set date = as_timestamp(now()) + (6 * 86400 ) -%}
-          {{ date | timestamp_custom('%A (%-d/%-m)') }}
-        value_template: >
-          {{states('sensor.bom_gosford_max_temp_c_6')|round(0)}}°/{{states('sensor.bom_gosford_min_temp_c_6')|round(0)}}°/{{states('sensor.bom_gosford_chance_of_rain_6')|round(0)}}%
-        entity_picture_template: >-
-          {{ '/local/icons/bom_icons/' ~ states('sensor.bom_gosford_icon_6') ~ '.png' }}
+          {{ '/local/icons/bom_icons/' ~ states('sensor.kariong_icon_5') ~ '.png' }}
 
       bom_today_max:
         value_template: >
-          {%- if states('sensor.bom_gosford_max_temp_c_0') == 'n/a' -%} 
-            {{ state_attr('sensor.today_temp_bom', 'max_value') }}
-          {% else %}
-            {{ states('sensor.bom_gosford_max_temp_c_0') }}
-          {% endif %}
+          {{ state_attr('sensor.today_temp_bom', 'max_value') }}
 
       bom_today_min:
         value_template: >
-          {%- if states('sensor.bom_gosford_min_temp_c_0') == 'n/a' -%} 
-            {{ state_attr('sensor.today_temp_bom', 'min_value') }}
-          {% else %}
-            {{ states('sensor.bom_gosford_min_temp_c_0') }}
-          {% endif %}
+          {{ state_attr('sensor.today_temp_bom', 'min_value') }}
 
   - platform: average
     name: today_temp_bom
