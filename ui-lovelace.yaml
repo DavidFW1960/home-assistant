@@ -927,6 +927,7 @@ views:
             card:
               type: 'custom:hui-entities-card'
               entities:
+                - entity: sensor.bom_forecast_0
                 - entity: sensor.beaufort
                   name: "${'Beaufort force:' + '\xa0'.repeat(2) + (vars[0] == 12 ? 'Hurricane Force' : vars[0] == 11 ? 'Violent Storm' : vars[0] == 10 ? 'Storm, whole gale' : vars[0] == 9 ? 'Strong/severe gale' : vars[0] == 8 ? 'Gale/ fresh gale' : vars[0] == 7 ? 'High wind, moderate/near gale' : vars[0] == 6 ? 'Strong breeze' : vars[0] == 5 ? 'Fresh breeze' : vars[0] == 4 ? 'Moderate breeze' : vars[0] == 3 ? 'Gentle breeze' : vars[0] == 2 ? 'Light breeze' : vars[0] == 1 ? 'Light air' : 'Calm')}"
                 - entity: sensor.heatindex
@@ -1206,99 +1207,99 @@ views:
             title: NSW Warnings & Events
             show_header_toggle: false
             entities:
-              - entity: binary_sensor.fire_ban_today
+              - entity: binary_sensor.fire_danger_in_greater_sydney_region_fire_ban_today
                 state_color: true
                 style: |
                   :host {
-                    {% if states('binary_sensor.fire_ban_today') == 'on' %}
+                    {% if states('binary_sensor.fire_danger_in_greater_sydney_region_fire_ban_today') == 'on' %}
                       var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
                     ;
                   }
-              - sensor.fire_danger_level_today
+              - sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - sensor.bom_fire_danger_summary
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_level_today
+              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'None'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_level_today
+              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/Icons.png
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_level_today
+              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
-                state: 'Low Moderate'
+                state: 'Low moderate'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_level_today
+              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/low-moderate.png
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_level_today
+              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'High'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_level_today
+              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/high.png
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_level_today
+              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'Very High'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_level_today
+              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/very-high.png
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_level_today
+              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'Severe'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_level_today
+              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/severe.png
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_level_today
+              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'Extreme'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_level_today
+              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/extreme.png
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_level_today
+              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'Catastrophic'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_level_today
+              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
