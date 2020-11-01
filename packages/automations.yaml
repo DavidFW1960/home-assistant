@@ -483,14 +483,30 @@ automation:
     trigger:
     - at: '00:00:00'
       platform: time
+    - entity_id: person.liz
+      from: 'not_home'
+      platform: state
+      to: 'home'
+      for: '00:01:00'
     condition:
-    - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 2 }}"
+    - condition: or
+      conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.lizcovid
+          state: 'on'        
+        - condition: template
+          value_template: "{{ now().strftime('%H:%M') < '18:30' and now().weekday() == 1 }}"
+    - condition: template
+      value_template: "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 2 }}"
     action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.lizcovid
     - data:
-        message: Liz is at Home today. Covid-Liz is Off.
+        message: Liz is at Home now. Covid-Liz is Off.
       service: notify.david_ios_notify
+    mode: single
   - id: 'lightning'
     alias: Lightning
     trigger:
