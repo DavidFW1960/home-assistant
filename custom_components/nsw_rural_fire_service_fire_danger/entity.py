@@ -29,7 +29,7 @@ class NswFireServiceFireDangerEntity(Entity):
         self._district_name = manager.district_name
         self._sensor_type = sensor_type
         self._config_entry_unique_id = config_entry_unique_id
-        self._name = f"Fire Danger in {self._district_name} {TYPES[self._sensor_type]}"
+        self._name = f"{self._district_name} {TYPES[self._sensor_type]}"
         self._state = STATE_UNKNOWN
         self._attributes = {
             "district": self._district_name,
