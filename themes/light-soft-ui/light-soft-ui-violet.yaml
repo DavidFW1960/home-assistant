@@ -434,6 +434,7 @@ Light Soft UI Violet:
         border-radius: var(--ha-card-border-radius);
         box-shadow: var(--ha-card-box-shadow);
         transform: scale(0.9);
+        overflow: hidden;
       }
       .mdc-dialog__content {
         padding: 36px !important;

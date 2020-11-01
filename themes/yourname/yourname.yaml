@@ -1,4 +1,6 @@
 yourname:
+  ### Header Height ###
+  header-height: 48px
   ### Main Interface Colors ###
   lovelace-background: 'center / cover no-repeat url("/local/backgrounds/yourname.jpg") fixed'
   app-header-background-color: "#141A32"

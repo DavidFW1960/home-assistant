@@ -2,14 +2,6 @@
 # iOS Dark Mode Theme - blue-red-mod
 #
 ios-dark-mode-blue-red-mod:
-  card-mod-theme: ios-dark-mode-blue-red-mod
-  card-mod-root-yaml: |
-    .: |
-      .edit-mode, app-header, app-toolbar {
-        background: url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg') !important;
-      }
-  header-height: 48px    
-
   # Global
   background-image: "center / cover no-repeat fixed url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg')"
   lovelace-background: var(--background-image)
@@ -73,10 +65,18 @@ ios-dark-mode-blue-red-mod:
   paper-item-icon-color: white  # also should mini-media-player icon white (but doesn't work by itself)
   more-info-header-background: rgba(25, 25, 25, 0.5)
   lumo-body-text-color: var(--primary-text-color)  # see https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/42
-  app-header-background-color: rgba(63, 36, 75, 0.8)
+  app-header-background-color: rgba(63, 36, 75, 0.4)
   markdown-code-background-color: "#464646"
-  code-editor-background-color: var(--disabled-text-color)
+  code-editor-background-color: "#161616"
   # Custom
   mcg-title-letter-spacing: .15em
   mini-media-player-base-color: white
   mini-media-player-icon-color: white
+  # CUSTOM-HEADER MODS
+  card-mod-theme: ios-dark-mode-blue-red-mod
+  card-mod-root-yaml: |
+    .: |
+      .edit-mode, app-header, app-toolbar {
+        background: url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg') !important;
+      }
+  header-height: 48px    
