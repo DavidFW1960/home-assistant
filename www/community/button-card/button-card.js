@@ -269,13 +269,13 @@ class y {
   }commit() {
     this.dirty && (this.dirty = !1, this.element[this.name] = this._getValue());
   }
-}class P extends C {}let A = !1;(() => {
+}class P extends C {}let E = !1;(() => {
   try {
     const t = { get capture() {
-        return A = !0, !1;
+        return E = !0, !1;
       } };window.addEventListener("test", t, t), window.removeEventListener("test", t, t);
   } catch (t) {}
-})();class E {
+})();class A {
   constructor(t, e, i) {
     this.value = void 0, this.__pendingValue = void 0, this.element = t, this.eventName = e, this.eventContext = i, this.__boundHandleEvent = t => this.handleEvent(t);
   }setValue(t) {
@@ -290,7 +290,7 @@ class y {
   }handleEvent(t) {
     "function" == typeof this.value ? this.value.call(this.eventContext || this.element, t) : this.value.handleEvent(t);
   }
-}const $ = t => t && (A ? { capture: t.capture, passive: t.passive, once: t.once } : t.capture)
+}const $ = t => t && (E ? { capture: t.capture, passive: t.passive, once: t.once } : t.capture)
 /**
  * @license
  * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
@@ -337,7 +337,7 @@ class {
   handleAttributeExpressions(t, e, i, n) {
     const s = e[0];if ("." === s) {
       return new N(t, e.slice(1), i).parts;
-    }if ("@" === s) return [new E(t, e.slice(1), n.eventContext)];if ("?" === s) return [new O(t, e.slice(1), i)];return new T(t, e, i).parts;
+    }if ("@" === s) return [new A(t, e.slice(1), n.eventContext)];if ("?" === s) return [new O(t, e.slice(1), i)];return new T(t, e, i).parts;
   }handleTextExpression(t) {
     return new M(t);
   }
@@ -413,7 +413,7 @@ class {
         return JSON.parse(t);}return t;
   } },
       B = (t, e) => e !== t && (e == e || t == t),
-      W = { attribute: !0, type: String, converter: Y, reflect: !1, hasChanged: B };class J extends HTMLElement {
+      W = { attribute: !0, type: String, converter: Y, reflect: !1, hasChanged: B };class G extends HTMLElement {
   constructor() {
     super(), this.initialize();
   }static get observedAttributes() {
@@ -508,7 +508,7 @@ class {
   }update(t) {
     void 0 !== this._reflectingProperties && this._reflectingProperties.size > 0 && (this._reflectingProperties.forEach((t, e) => this._propertyToAttribute(e, this[e], t)), this._reflectingProperties = void 0), this._markUpdated();
   }updated(t) {}firstUpdated(t) {}
-}J.finalized = !0;
+}G.finalized = !0;
 /**
  * @license
  * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
@@ -522,7 +522,7 @@ class {
  * subject to an additional IP rights grant found at
  * http://polymer.github.io/PATENTS.txt
  */
-const G = (t, e) => "method" === e.kind && e.descriptor && !("value" in e.descriptor) ? Object.assign(Object.assign({}, e), { finisher(i) {
+const J = (t, e) => "method" === e.kind && e.descriptor && !("value" in e.descriptor) ? Object.assign(Object.assign({}, e), { finisher(i) {
     i.createProperty(e.key, t);
   } }) : { kind: "field", key: Symbol(), placement: "own", descriptor: {}, initializer() {
     "function" == typeof e.initializer && (this[e.key] = e.initializer.call(this));
@@ -531,7 +531,7 @@ const G = (t, e) => "method" === e.kind && e.descriptor && !("value" in e.descri
   } };function Z(t) {
   return (e, i) => void 0 !== i ? ((t, e, i) => {
     e.constructor.createProperty(i, t);
-  })(t, e, i) : G(t, e);
+  })(t, e, i) : J(t, e);
 }const X = (t, e, i) => {
   Object.defineProperty(e, i, t);
 },
@@ -569,7 +569,7 @@ const Q = window.ShadowRoot && (void 0 === window.ShadyCSS || window.ShadyCSS.na
  * subject to an additional IP rights grant found at
  * http://polymer.github.io/PATENTS.txt
  */
-(window.litElementVersions || (window.litElementVersions = [])).push("2.4.0");const it = {};class nt extends J {
+(window.litElementVersions || (window.litElementVersions = [])).push("2.4.0");const it = {};class nt extends G {
   static getStyles() {
     return this.styles;
   }static _getUniqueStyles() {
@@ -803,7 +803,7 @@ class ct {
     var i = 60 * +e[1] + parseInt(e[2], 10);return "+" === e[0] ? i : -i;
   }return 0;
 }],
-    Pt = (gt("monthNamesShort"), gt("monthNames"), { default: "ddd MMM DD YYYY HH:mm:ss", shortDate: "M/D/YY", mediumDate: "MMM D, YYYY", longDate: "MMMM D, YYYY", fullDate: "dddd, MMMM D, YYYY", isoDate: "YYYY-MM-DD", isoDateTime: "YYYY-MM-DDTHH:mm:ssZ", shortTime: "HH:mm", mediumTime: "HH:mm:ss", longTime: "HH:mm:ss.SSS" });var At = function (t, e, i) {
+    Pt = (gt("monthNamesShort"), gt("monthNames"), { default: "ddd MMM DD YYYY HH:mm:ss", shortDate: "M/D/YY", mediumDate: "MMM D, YYYY", longDate: "MMMM D, YYYY", fullDate: "dddd, MMMM D, YYYY", isoDate: "YYYY-MM-DD", isoDateTime: "YYYY-MM-DDTHH:mm:ssZ", shortTime: "HH:mm", mediumTime: "HH:mm:ss", longTime: "HH:mm:ss.SSS" });var Et = function (t, e, i) {
   if (void 0 === e && (e = Pt.default), void 0 === i && (i = {}), "number" == typeof t && (t = new Date(t)), "[object Date]" !== Object.prototype.toString.call(t) || isNaN(t.getTime())) throw new Error("Invalid Date pass to format");var n = [];e = (e = Pt[e] || e).replace(ft, function (t, e) {
     return n.push(e), "@@@";
   });var s = _t(_t({}, St), i);return (e = e.replace(dt, function (e) {
@@ -811,7 +811,7 @@ class ct {
   })).replace(/@@@/g, function () {
     return n.shift();
   });
-};function Et(t) {
+};function At(t) {
   var e = t.split(":").map(Number);return 3600 * e[0] + 60 * e[1] + e[2];
 }var $t = function () {
   try {
@@ -822,7 +822,7 @@ class ct {
 }() ? function (t, e) {
   return t.toLocaleDateString(e, { year: "numeric", month: "long", day: "numeric" });
 } : function (t) {
-  return At(t, "mediumDate");
+  return Et(t, "mediumDate");
 },
     jt = function () {
   try {
@@ -833,7 +833,7 @@ class ct {
 }() ? function (t, e) {
   return t.toLocaleString(e, { year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "2-digit" });
 } : function (t) {
-  return At(t, "haDateTime");
+  return Et(t, "haDateTime");
 },
     Rt = function () {
   try {
@@ -844,7 +844,7 @@ class ct {
 }() ? function (t, e) {
   return t.toLocaleTimeString(e, { hour: "numeric", minute: "2-digit" });
 } : function (t) {
-  return At(t, "shortTime");
+  return Et(t, "shortTime");
 },
     Ht = function (t) {
   return t < 10 ? "0" + t : t;
@@ -889,7 +889,7 @@ class ct {
         n = i ? "turn_on" : "turn_off";}return t.callService(r, n, { entity_id: e });
   }(t, e, Lt.includes(t.states[e].state));
 },
-    Jt = function (t, e, i, n, s) {
+    Gt = function (t, e, i, n, s) {
   var r;if (s && i.double_tap_action ? r = i.double_tap_action : n && i.hold_action ? r = i.hold_action : !n && i.tap_action && (r = i.tap_action), r || (r = { action: "more-info" }), !r.confirmation || r.confirmation.exemptions && r.confirmation.exemptions.some(function (t) {
     return t.user === e.user.id;
   }) || confirm(r.confirmation.text || "Are you sure you want to " + r.action + "?")) switch (r.action) {case "more-info":
@@ -904,7 +904,7 @@ class ct {
           l = a[1],
           c = Object.assign({}, r.service_data);"entity" === c.entity_id && (c.entity_id = i.entity), e.callService(o, l, c), r.haptic && Bt(r.haptic);}
 },
-    Gt = { humidity: "hass:water-percent", illuminance: "hass:brightness-5", temperature: "hass:thermometer", pressure: "hass:gauge", power: "hass:flash", signal_strength: "hass:wifi" },
+    Jt = { humidity: "hass:water-percent", illuminance: "hass:brightness-5", temperature: "hass:thermometer", pressure: "hass:gauge", power: "hass:flash", signal_strength: "hass:wifi" },
     Zt = { binary_sensor: function (t) {
     var e = t.state && "off" === t.state;switch (t.attributes.device_class) {case "battery":
         return e ? "hass:battery" : "hass:battery-outline";case "cold":
@@ -935,7 +935,7 @@ class ct {
         return e ? "hass:window-open" : "hass:window-closed";default:
         return Yt("cover", t.state);}
   }, sensor: function (t) {
-    var e = t.attributes.device_class;if (e && e in Gt) return Gt[e];if ("battery" === e) {
+    var e = t.attributes.device_class;if (e && e in Jt) return Jt[e];if ("battery" === e) {
       var i = Number(t.state);if (isNaN(i)) return "hass:battery-unknown";var n = 10 * Math.round(i / 10);return n >= 100 ? "hass:battery" : n <= 0 ? "hass:battery-alert" : "hass:battery-" + n;
     }var s = t.attributes.unit_of_measurement;return "°C" === s || "°F" === s ? "hass:thermometer" : Yt("sensor");
   }, input_datetime: function (t) {
@@ -1620,9 +1620,9 @@ class ct {
       const e = new Date();return t = new Date(e.getFullYear(), e.getMonth(), e.getDay(), i.attributes.hour, i.attributes.minute), Rt(t, n);
     }return t = new Date(i.attributes.year, i.attributes.month - 1, i.attributes.day, i.attributes.hour, i.attributes.minute), jt(t, n);
   }return i.attributes.device_class && e(`component.${s}.state.${i.attributes.device_class}.${i.state}`) || e(`component.${s}.state._.${i.state}`) || i.state;
-};let Pe = window.cardHelpers;const Ae = new Promise(async t => {
+};let Pe = window.cardHelpers;const Ee = new Promise(async t => {
   Pe && t(), window.loadCardHelpers && (Pe = await window.loadCardHelpers(), window.cardHelpers = Pe, t());
-});console.info("%c  BUTTON-CARD  \n%c Version 3.4.0-1 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");let Ee = class extends nt {
+});console.info("%c  BUTTON-CARD  \n%c Version 3.4.0-2 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");let Ae = class extends nt {
   constructor() {
     super(...arguments), this._cards = {}, this._cardsConfig = {}, this._entities = [], this._initial_setup_complete = !1, this._rippleHandlers = new st(() => this._ripple);
   }set hass(t) {
@@ -1660,7 +1660,7 @@ class ct {
         }, 2e3);return customElements.whenDefined(t.type).then(function () {
           clearTimeout(o), It(a, "ll-rebuild", {}, a);
         }), a;
-      }(t);return Ae.then(() => {
+      }(t);return Ee.then(() => {
         It(e, "ll-rebuild", {});
       }), e;
     }
@@ -1675,13 +1675,13 @@ class ct {
       `;
     }
   }shouldUpdate(t) {
-    return !(!this._hasTemplate && !t.has("_timeRemaining")) || function (t, e) {
+    return !(!this._hasTemplate && !t.has("_timeRemaining") && !function (t, e) {
       if (e.has("_config")) return !0;const i = e.get("_hass");if (i) {
         return t._entities.some(function (e) {
           return (null == i ? void 0 : i.states[e]) !== t._hass.states[e];
         });
       }return !1;
-    }(this, t);
+    }(this, t)) && (this._expandTriggerGroups(), !0);
   }updated(t) {
     if (super.updated(t), this._config && this._config.entity && "timer" === xe(this._config.entity) && t.has("_hass")) {
       const e = this._hass.states[this._config.entity],
@@ -1693,7 +1693,7 @@ class ct {
     this._clearInterval(), this._calculateRemaining(t), "active" === t.state && (this._interval = window.setInterval(() => this._calculateRemaining(t), 1e3));
   }_calculateRemaining(t) {
     t.attributes.remaining && (this._timeRemaining = function (t) {
-      var e = Et(t.attributes.remaining);if ("active" === t.state) {
+      var e = At(t.attributes.remaining);if ("active" === t.state) {
         var i = new Date().getTime(),
             n = new Date(t.last_changed).getTime();e = Math.max(e - (i - n) / 1e3, 0);
       }return e;
@@ -1703,7 +1703,7 @@ class ct {
       var e = Math.floor(t / 3600),
           i = Math.floor(t % 3600 / 60),
           n = Math.floor(t % 3600 % 60);return e > 0 ? e + ":" + Ht(i) + ":" + Ht(n) : i > 0 ? i + ":" + Ht(n) : n > 0 ? "" + n : null;
-    }(this._timeRemaining || Et(t.attributes.duration));
+    }(this._timeRemaining || At(t.attributes.duration));
   }_getMatchingConfigState(t) {
     if (!this._config.state) return;const e = this._config.state.find(t => "template" === t.operator);if (!t && !e) return;let i;const n = this._config.state.find(e => {
       if (!e.operator) return t && this._getTemplateOrValue(t, e.value) == t.state;switch (e.operator) {case "==":
@@ -1980,13 +1980,21 @@ class ct {
       let t = document.querySelector("hc-main");if (t = t && t.shadowRoot, t = t && t.querySelector("hc-lovelace"), t = t && t.shadowRoot, t = t && (t.querySelector("hui-view") || t.querySelector("hui-panel-view")), t) {
         const e = t.lovelace;return e.current_view = t.___curView, e;
       }return null;
-    }();let i = JSON.parse(JSON.stringify(t));i = this._configFromLLTemplates(e, i), this._config = Object.assign(Object.assign({ type: "custom:button-card", hold_action: { action: "none" }, double_tap_action: { action: "none" }, layout: "vertical", size: "40%", color_type: "icon", show_name: !0, show_state: !1, show_icon: !0, show_units: !0, show_label: !1, show_entity_picture: !1, show_live_stream: !1, card_size: 3 }, i), { default_color: "DUMMY", color_off: "DUMMY", color_on: "DUMMY", lock: Object.assign({ enabled: !1, duration: 5, unlock: "tap" }, i.lock) }), this._config.entity && Ft.has(xe(this._config.entity)) ? this._config = Object.assign({ tap_action: { action: "toggle" } }, this._config) : this._config = Object.assign({ tap_action: { action: "more-info" } }, this._config), this._config.default_color = "var(--primary-text-color)", "icon" !== this._config.color_type ? this._config.color_off = "var(--card-background-color)" : this._config.color_off = "var(--paper-item-icon-color)", this._config.color_on = "var(--paper-item-icon-active-color)";const n = JSON.stringify(this._config);if (this._entities = [], Array.isArray(this._config.triggers_update) ? this._entities = [...this._config.triggers_update] : "string" == typeof this._config.triggers_update && "all" !== this._config.triggers_update && this._entities.push(this._config.triggers_update), "all" !== this._config.triggers_update) {
+    }();let i = JSON.parse(JSON.stringify(t));i = this._configFromLLTemplates(e, i), this._config = Object.assign(Object.assign({ type: "custom:button-card", group_expand: !1, hold_action: { action: "none" }, double_tap_action: { action: "none" }, layout: "vertical", size: "40%", color_type: "icon", show_name: !0, show_state: !1, show_icon: !0, show_units: !0, show_label: !1, show_entity_picture: !1, show_live_stream: !1, card_size: 3 }, i), { default_color: "DUMMY", color_off: "DUMMY", color_on: "DUMMY", lock: Object.assign({ enabled: !1, duration: 5, unlock: "tap" }, i.lock) }), this._config.entity && Ft.has(xe(this._config.entity)) ? this._config = Object.assign({ tap_action: { action: "toggle" } }, this._config) : this._config = Object.assign({ tap_action: { action: "more-info" } }, this._config), this._config.default_color = "var(--primary-text-color)", "icon" !== this._config.color_type ? this._config.color_off = "var(--card-background-color)" : this._config.color_off = "var(--paper-item-icon-color)", this._config.color_on = "var(--paper-item-icon-active-color)";const n = JSON.stringify(this._config);if (this._entities = [], Array.isArray(this._config.triggers_update) ? this._entities = [...this._config.triggers_update] : "string" == typeof this._config.triggers_update && "all" !== this._config.triggers_update && this._entities.push(this._config.triggers_update), "all" !== this._config.triggers_update) {
       const t = new RegExp(/states\[\s*('|\\")([a-zA-Z0-9_]+\.[a-zA-Z0-9_]+)\1\s*\]/, "gm"),
             e = new RegExp(/states\[\s*('|\\")([a-zA-Z0-9_]+\.[a-zA-Z0-9_]+)\1\s*\]/, "m"),
             i = n.match(t);null == i || i.forEach(t => {
         const i = t.match(e);i && !this._entities.includes(i[2]) && this._entities.push(i[2]);
       });
-    }this._config.entity && !this._entities.includes(this._config.entity) && this._entities.push(this._config.entity);const s = new RegExp("\\[\\[\\[.*\\]\\]\\]", "gm");this._hasTemplate = !("all" !== this._config.triggers_update || !n.match(s)), this._initial_setup_complete || this._initConnected();
+    }this._config.entity && !this._entities.includes(this._config.entity) && this._entities.push(this._config.entity), this._expandTriggerGroups();const s = new RegExp("\\[\\[\\[.*\\]\\]\\]", "gm");this._hasTemplate = !("all" !== this._config.triggers_update || !n.match(s)), this._initial_setup_complete || this._initConnected();
+  }_loopGroup(t) {
+    t && t.forEach(t => {
+      var e, i;(null === (e = this._hass) || void 0 === e ? void 0 : e.states[t]) && ("group" === xe(t) && (null === (i = this._hass.states[t].attributes) || void 0 === i ? void 0 : i.entity_id) ? this._loopGroup(this._hass.states[t].attributes.entity_id) : this._entities.includes(t) || this._entities.push(t));
+    });
+  }_expandTriggerGroups() {
+    var t;this._hass && (null === (t = this._config) || void 0 === t ? void 0 : t.group_expand) && this._entities && this._entities.forEach(t => {
+      var e, i;"group" === xe(t) && this._loopGroup(null === (i = null === (e = this._hass) || void 0 === e ? void 0 : e.states[t].attributes) || void 0 === i ? void 0 : i.entity_id);
+    });
   }getCardSize() {
     var t;return (null === (t = this._config) || void 0 === t ? void 0 : t.card_size) || 3;
   }_evalActions(t, e) {
@@ -2008,11 +2016,11 @@ class ct {
         this._handleHold(t);break;case "double_tap":
         this._handleDblTap(t);}
   }_handleTap(t) {
-    const e = t.target.config;e && Jt(this, this._hass, this._evalActions(e, "tap_action"), !1, !1);
+    const e = t.target.config;e && Gt(this, this._hass, this._evalActions(e, "tap_action"), !1, !1);
   }_handleHold(t) {
-    const e = t.target.config;e && Jt(this, this._hass, this._evalActions(e, "hold_action"), !0, !1);
+    const e = t.target.config;e && Gt(this, this._hass, this._evalActions(e, "hold_action"), !0, !1);
   }_handleDblTap(t) {
-    const e = t.target.config;e && Jt(this, this._hass, this._evalActions(e, "double_tap_action"), !1, !0);
+    const e = t.target.config;e && Gt(this, this._hass, this._evalActions(e, "double_tap_action"), !1, !0);
   }_handleUnlockType(t) {
     const e = t.target.config;e && e.lock.unlock === t.detail.action && this._handleLock();
   }_handleLock() {
@@ -2032,16 +2040,16 @@ class ct {
   }_stopPropagation(t) {
     t.stopPropagation();
   }
-};var $e, je, Re;t([Z()], Ee.prototype, "_hass", void 0), t([Z()], Ee.prototype, "_config", void 0), t([Z()], Ee.prototype, "_timeRemaining", void 0), t([($e = "mwc-ripple", (t, e) => {
+};var $e, je, Re;t([Z()], Ae.prototype, "_hass", void 0), t([Z()], Ae.prototype, "_config", void 0), t([Z()], Ae.prototype, "_timeRemaining", void 0), t([($e = "mwc-ripple", (t, e) => {
   const i = { async get() {
       return await this.updateComplete, this.renderRoot.querySelector($e);
     }, enumerable: !0, configurable: !0 };return void 0 !== e ? X(i, t, e) : K(i, t);
-})], Ee.prototype, "_ripple", void 0), t([(je = { passive: !0 }, (t, e) => void 0 !== e ? ((t, e, i) => {
+})], Ae.prototype, "_ripple", void 0), t([(je = { passive: !0 }, (t, e) => void 0 !== e ? ((t, e, i) => {
   Object.assign(e[i], t);
 })(je, t, e) : ((t, e) => Object.assign(Object.assign({}, e), { finisher(i) {
     Object.assign(i.prototype[e.key], t);
-  } }))(je, t))], Ee.prototype, "handleRippleActivate", null), Ee = t([(Re = "button-card", t => "function" == typeof t ? ((t, e) => (window.customElements.define(t, e), e))(Re, t) : ((t, e) => {
+  } }))(je, t))], Ae.prototype, "handleRippleActivate", null), Ae = t([(Re = "button-card", t => "function" == typeof t ? ((t, e) => (window.customElements.define(t, e), e))(Re, t) : ((t, e) => {
   const { kind: i, elements: n } = e;return { kind: i, elements: n, finisher(e) {
       window.customElements.define(t, e);
     } };
-})(Re, t))], Ee);
+})(Re, t))], Ae);

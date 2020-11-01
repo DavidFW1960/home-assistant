@@ -40,13 +40,19 @@ function swipeNavigation() {
 
   const appLayout = root.shadowRoot.querySelector("ha-app-layout");
   const view = appLayout.querySelector('[id="view"]');
-  const tabContainer = appLayout.querySelector("paper-tabs");
+  const tabContainer = appLayout.querySelector("paper-tabs") || appLayout.querySelector("ha-tabs");
   let xDown, yDown, xDiff, yDiff, activeTab, firstTab, lastTab, left;
-  let tabs = Array.from(tabContainer.querySelectorAll("paper-tab"));
+  let tabs = tabContainer ? Array.from(tabContainer.querySelectorAll("paper-tab")) : [];
 
-  appLayout.addEventListener("touchstart", handleTouchStart, { passive: true });
-  appLayout.addEventListener("touchmove", handleTouchMove, { passive: false });
-  appLayout.addEventListener("touchend", handleTouchEnd, { passive: true });
+  if (tabContainer) {
+    appLayout.addEventListener("touchstart", handleTouchStart, { passive: true });
+    appLayout.addEventListener("touchmove", handleTouchMove, { passive: false });
+    appLayout.addEventListener("touchend", handleTouchEnd, { passive: true });
+  }
+
+  if (animate == "swipe") {
+    appLayout.style.overflow = "hidden";
+  }
 
   function handleTouchStart(event) {
     let ignored = [
@@ -55,10 +61,8 @@ function swipeNavigation() {
       "SWIPE-CARD",
       "HUI-MAP-CARD",
       "ROUND-SLIDER",
-      "HUI-THERMOSTAT-CARD",
-      "CH-HEADER",
-      "CH-HEADER-BOTTOM",
-      "XIAOMI-VACUUM-MAP-CARD"
+      "XIAOMI-VACUUM-MAP-CARD",
+      "HA-SIDEBAR"
     ];
     if (typeof event.path == "object") {
       for (let element of event.path) {
