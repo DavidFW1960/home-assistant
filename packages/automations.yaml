@@ -14,7 +14,7 @@ automation:
         - '19:00:00'
         - '20:00:00'
     - entity_id: person.liz
-      from: 'not_home'
+      from: 'away'
       platform: state
       to: 'home'
     condition:
@@ -484,7 +484,7 @@ automation:
     - at: '00:00:00'
       platform: time
     - entity_id: person.liz
-      from: 'not_home'
+      from: 'away'
       platform: state
       to: 'home'
       for: '00:01:00'
@@ -504,7 +504,7 @@ automation:
     - service: input_boolean.turn_off
       entity_id: input_boolean.lizcovid
     - data:
-        message: Liz is at Home now. Covid-Liz is Off.
+        message: Liz is at Home now. Liz Covid is Off.
       service: notify.david_ios_notify
     mode: single
   - id: 'lightning'
