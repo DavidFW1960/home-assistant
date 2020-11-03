@@ -14,7 +14,7 @@ automation:
         - '19:00:00'
         - '20:00:00'
     - entity_id: person.liz
-      from: 'away'
+      from: 'not_home'
       platform: state
       to: 'home'
     condition:
@@ -484,7 +484,7 @@ automation:
     - at: '00:00:00'
       platform: time
     - entity_id: person.liz
-      from: 'away'
+      from: 'not_home'
       platform: state
       to: 'home'
       for: '00:01:00'
