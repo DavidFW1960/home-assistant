@@ -9,7 +9,8 @@ ux_goodie:
   light-primary-color: "#607D8B"  # user avatar
   accent-color: "#FF9F0A"  # e.g. loader in HACS
   divider-color: "#545454"  # divider in sidebar
-  ch-background: "rgba(10, 10, 10, 0.7)"  # top bar (custom header)
+  ch-background: "rgba(10, 10, 10, 0.65)"  # dashboard top bar (for custom header)
+  app-header-background-color-custom: "rgba(10, 10, 10, 0.65)"  # dashboard top bar (for card-mod-theme styling at the end of this file)
   codemirror-meta: "var(--primary-text-color)" # code editor – simple styling
   
 
@@ -121,134 +122,13 @@ ux_goodie:
   material-secondary-text-color: "var(--secondary-text-color)"
   
 
-# COMPACT HEADER
+# HEADER
   card-mod-theme: ux_goodie
   # Header
   card-mod-root-yaml: |
-    paper-tabs$: |
-      .not-visible {
-        display: none;
-      }
-    ha-app-layout$: |
-      /* This corrects top padding for the view. */
-      #contentContainer {
-        padding-top: 48px !important;
-      }
-    ha-button-menu$mwc-menu$mwc-menu-surface$: |
-      .mdc-menu-surface {
-        margin: 10px;
-        box-shadow: var(--ha-card-box-shadow, 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12));
-      }
     .: |
-      /* This hides the unused portion of the header. */
-      app-toolbar {
-        height: 0;
-      }
-      /* View height correction – this will eliminate the blank space at the bottom of the screen (caused by reducing the header height) */
-      hui-view {
-        min-height: calc(100vh - 48px) !important;
-      }
-      /* This forces background-color and text-color. */
+      /* This forces background-color of dashboard header */
       .edit-mode, app-header, app-toolbar {
-        background-color: var(--primary-background-color) !important;
-        color: var(--primary-text-color) !important;
-      }
-      /* This gives the header in edit mode a different look from the standard header. */
-      app-header.edit-mode {
-        border-bottom: 2px var(--primary-color) solid;
-        padding-bottom: 10px;
-      }
-      /* Make the color of the plus white instead of black. */
-      #add-view ha-svg-icon {
-        color: #EEE !important;
-      }
-      /* Bring voice button back down */
-      app-toolbar:not([class="edit-mode"]) mwc-icon-button[label] {
-        top: 0;
-        right: calc(48px * 1);
-        z-index: 2;
-        position: absolute;
-      }
-      /* Bring help button back in */
-      a[href="https://www.home-assistant.io/lovelace/"] > mwc-icon-button {
-        right: calc(48px * 2);
-        position: absolute;
-        z-index: 2;
-      }
-      /* Bring close button back in – PL */
-      mwc-icon-button[title="Zamknij"] {
-        top: 0;
-        left: 0;
-        position: absolute;
-        z-index: 2;
-      }
-      /* Bring close button back in – EN */
-      mwc-icon-button[title="Close"] {
-        top: 0;
-        left: 0;
-        position: absolute;
-        z-index: 2;
-      }
-      /* Bring add view button back in */
-      mwc-icon-button#add-view {
-        position: fixed;
-        right: 48px;
-      }
-      /* Bring edit UI overflow menu back in */
-      ha-button-menu {
-        top: 0;
-        right: 0;
-        z-index: 2;
-        position: absolute;
-        /*Uncomment this out to hide the overflow menu
-        display: none;
-        */
-      }
-      /* Hide the title */
-      app-toolbar > [main-title] {
-        display: none;
-      }
-      /* Hide buttons that are taking up space, but invisible */
-      menu-button[style="visibility: hidden;"] {
-        display: none;
-      }
-      /* Bring sidebar button back in */
-      ha-menu-button {
-        z-index: 2;
-        top: 24px;
-      }
-      /* Set margin on left to be smaller */
-      paper-tabs {
-        margin-left: 48px !important;
-      }
-      /* When not in edit mode, shrink the left margin */
-      app-toolbar:not(.edit-mode) > div > paper-tabs {
-        margin-left: 6px !important;
-      }
-      /* Color selected tabs */
-      paper-tab[aria-selected="true"] > ha-icon {
-        color: var(--topbar-selected-item-color) !important;
-      }
-      paper-tab[aria-selected="true"] {
-        color: var(--topbar-selected-item-color) !important;
-      }
-      /* Styles for mobile */
-      @media (orientation: portrait) {
-        /* Hide sidebar button and keep room for the overflow menu button */
-        paper-tabs {
-          margin-left: 5px !important;
-          margin-right: 48px !important;
-        }
-        /* Hide voice button */
-        mwc-icon-button[label="Start conversation"] {
-          display: none !important;
-        }
-        /* Hide sidebar button */
-        ha-menu-button {
-          display: none !important;
-        }
-      }
-      /* Make help button have contrast */
-      app-toolbar a {
+        background-color: var(--app-header-background-color-custom) !important;
         color: var(--primary-text-color) !important;
       }
