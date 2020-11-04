@@ -34,7 +34,7 @@ sensor:
       - PDL
   - platform: nsw_fuel_station
     station_id: 18253
-#   friendly_name: Caltex 164 Mona Vale Rd St Ives Foodary
+#   friendly_name: Ampol 164 Mona Vale Rd St Ives Foodary
 #   sensor.caltex_st_ives_foodary_pdl
     fuel_types:
       - PDL
@@ -196,8 +196,8 @@ sensor:
         friendly_name: Caltex 363 Mona Vale Rd St Ives North
         unit_of_measurement: ¢/L
       syd18253:
-        value_template: "{{states('sensor.caltex_st_ives_foodary_pdl')}}"
-        friendly_name: Caltex 164 Mona Vale Rd St Ives Foodary
+        value_template: "{{states('sensor.ampol_foodary_st_ives_pdl')}}"
+        friendly_name: Ampol 164 Mona Vale Rd St Ives Foodary
         unit_of_measurement: ¢/L
       syd18424:
         value_template: "{{states('sensor.caltex_belrose_pdl')}}"
@@ -241,7 +241,7 @@ homeassistant:
     sensor.caltex_kariong_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_st_ives_foodary_pdl:
+    sensor.ampol_foodary_st_ives_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_st_ives_north_pdl:
