@@ -767,15 +767,15 @@ views:
               - states['sensor.heatindexrating'].state
             entities:
               - sensor.bom_forecast_0
-              - sensor.gosford_temperature
-              - sensor.gosford_temperature_feels_like
+              - sensor.gosford_temp
+              - sensor.gosford_temp_feels_like
               - sensor.gosford_rain_since_9am
               - sensor.gosford_humidity
               - sensor.gosford_wind_direction
-              - sensor.gosford_wind_speed
-              - sensor.gosford_gust_speed
-              - sensor.gosford_wind_speed_knots
-              - sensor.gosford_gust_speed_knots
+              - sensor.gosford_wind_speed_kilometre
+              - sensor.gosford_gust_speed_kilometre
+              - sensor.gosford_wind_speed_knot
+              - sensor.gosford_gust_speed_knot
               - sensor.beaufort
               - sensor.heatindex
               - sensor.heatindexrating
@@ -785,15 +785,15 @@ views:
               show_header_toggle: false
               entities:
                 - entity: sensor.bom_forecast_0
-                - entity: sensor.gosford_temperature
-                - entity: sensor.gosford_temperature_feels_like
+                - entity: sensor.gosford_temp
+                - entity: sensor.gosford_temp_feels_like
                 - entity: sensor.gosford_rain_since_9am
                 - entity: sensor.gosford_humidity
                 - entity: sensor.gosford_wind_direction
-                - entity: sensor.gosford_wind_speed
-                - entity: sensor.gosford_gust_speed
-                - entity: sensor.gosford_wind_speed_knots
-                - entity: sensor.gosford_gust_speed_knots
+                - entity: sensor.gosford_wind_speed_kilometre
+                - entity: sensor.gosford_gust_speed_kilometre
+                - entity: sensor.gosford_wind_speed_knot
+                - entity: sensor.gosford_gust_speed_knot
                 - entity: sensor.beaufort
                   name: "${'Beaufort force:' + '\xa0'.repeat(2) + (vars[0] == 12 ? 'Hurricane Force' : vars[0] == 11 ? 'Violent Storm' : vars[0] == 10 ? 'Storm, whole gale' : vars[0] == 9 ? 'Strong/severe gale' : vars[0] == 8 ? 'Gale/ fresh gale' : vars[0] == 7 ? 'High wind, moderate/near gale' : vars[0] == 6 ? 'Strong breeze' : vars[0] == 5 ? 'Fresh breeze' : vars[0] == 4 ? 'Moderate breeze' : vars[0] == 3 ? 'Gentle breeze' : vars[0] == 2 ? 'Light breeze' : vars[0] == 1 ? 'Light air' : 'Calm')}"
                 - entity: sensor.heatindex
@@ -808,27 +808,28 @@ views:
               - sensor.bom_forecast_3
               - sensor.bom_forecast_4
               - sensor.bom_forecast_5
+              - sensor.bom_forecast_6
       - type: vertical-stack
         cards:
           - type: custom:bom-weather-card
             title: BOM Weather
-            entity_current_conditions: sensor.kariong_icon_0
-            entity_temperature: sensor.gosford_temperature
-            entity_forecast_high_temp_1: sensor.kariong_max_1
-            entity_forecast_high_temp_2: sensor.kariong_max_2
-            entity_forecast_high_temp_3: sensor.kariong_max_3
-            entity_forecast_high_temp_4: sensor.kariong_max_4
-            entity_forecast_high_temp_5: sensor.kariong_max_5
-            entity_forecast_icon_1: sensor.kariong_icon_1
-            entity_forecast_icon_2: sensor.kariong_icon_2
-            entity_forecast_icon_3: sensor.kariong_icon_3
-            entity_forecast_icon_4: sensor.kariong_icon_4
-            entity_forecast_icon_5: sensor.kariong_icon_5
-            entity_forecast_low_temp_1: sensor.kariong_min_1
-            entity_forecast_low_temp_2: sensor.kariong_min_2
-            entity_forecast_low_temp_3: sensor.kariong_min_3
-            entity_forecast_low_temp_4: sensor.kariong_min_4
-            entity_forecast_low_temp_5: sensor.kariong_min_5
+            entity_current_conditions: sensor.kariong_icon_descriptor_0
+            entity_temperature: sensor.gosford_temp
+            entity_forecast_high_temp_1: sensor.kariong_temp_max_1
+            entity_forecast_high_temp_2: sensor.kariong_temp_max_2
+            entity_forecast_high_temp_3: sensor.kariong_temp_max_3
+            entity_forecast_high_temp_4: sensor.kariong_temp_max_4
+            entity_forecast_high_temp_5: sensor.kariong_temp_max_5
+            entity_forecast_icon_1: sensor.kariong_icon_descriptor_1
+            entity_forecast_icon_2: sensor.kariong_icon_descriptor_2
+            entity_forecast_icon_3: sensor.kariong_icon_descriptor_3
+            entity_forecast_icon_4: sensor.kariong_icon_descriptor_4
+            entity_forecast_icon_5: sensor.kariong_icon_descriptor_5
+            entity_forecast_low_temp_1: sensor.kariong_temp_min_1
+            entity_forecast_low_temp_2: sensor.kariong_temp_min_2
+            entity_forecast_low_temp_3: sensor.kariong_temp_min_3
+            entity_forecast_low_temp_4: sensor.kariong_temp_min_4
+            entity_forecast_low_temp_5: sensor.kariong_temp_min_5
             entity_summary_1: sensor.kariong_short_text_1
             entity_summary_2: sensor.kariong_short_text_2
             entity_summary_3: sensor.kariong_short_text_3
@@ -839,13 +840,13 @@ views:
             entity_daytime_high: sensor.bom_today_max
             entity_daytime_low: sensor.bom_today_min
             entity_wind_bearing: sensor.gosford_wind_direction
-            entity_wind_speed: sensor.gosford_wind_speed
-            entity_wind_gust: sensor.gosford_gust_speed
-#           entity_wind_speed_kt: sensor.gosford_wind_speed_knots
-#           entity_wind_gust_kt: sensor.gosford_gust_speed_knots
+            entity_wind_speed: sensor.gosford_wind_speed_kilometre
+            entity_wind_gust: sensor.gosford_gust_speed_kilometre
+#           entity_wind_speed_kt: sensor.gosford_wind_speed_knot
+#           entity_wind_gust_kt: sensor.gosford_gust_speed_knot
             entity_humidity: sensor.gosford_humidity
             entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
-            entity_apparent_temp: sensor.gosford_temperature_feels_like
+            entity_apparent_temp: sensor.gosford_temp_feels_like
             entity_daily_summary: sensor.kariong_extended_text_0
             entity_pop: sensor.kariong_rain_chance_0
             entity_pop_intensity: sensor.gosford_rain_since_9am
@@ -919,12 +920,12 @@ views:
               - states['sensor.beaufort'].state
               - states['sensor.heatindex'].state
               - states['sensor.heatindexrating'].state
-              - states['sensor.gosford_temperature'].attributes['issue_time']
+              - states['sensor.gosford_temp'].attributes['issue_time']
             entities:
               - sensor.beaufort
               - sensor.heatindex
               - sensor.heatindexrating
-              - sensor.gosford_temperature
+              - sensor.gosford_temp
             card:
               type: 'custom:hui-entities-card'
               entities:
@@ -933,7 +934,7 @@ views:
                   name: "${'Beaufort force:' + '\xa0'.repeat(2) + (vars[0] == 12 ? 'Hurricane Force' : vars[0] == 11 ? 'Violent Storm' : vars[0] == 10 ? 'Storm, whole gale' : vars[0] == 9 ? 'Strong/severe gale' : vars[0] == 8 ? 'Gale/ fresh gale' : vars[0] == 7 ? 'High wind, moderate/near gale' : vars[0] == 6 ? 'Strong breeze' : vars[0] == 5 ? 'Fresh breeze' : vars[0] == 4 ? 'Moderate breeze' : vars[0] == 3 ? 'Gentle breeze' : vars[0] == 2 ? 'Light breeze' : vars[0] == 1 ? 'Light air' : 'Calm')}"
                 - entity: sensor.heatindex
                   name: "${'Heat Index:' + '\xa0'.repeat(2) + vars[2]}"
-                - entity: sensor.gosford_temperature
+                - entity: sensor.gosford_temp
                   name: "${'BOM Update:' + '\xa0'.repeat(2) + ( new Date(vars[3]).toLocaleTimeString('en-US') ) + '\xa0'.repeat(2) + 'Current Temp' }"
           - type: 'custom:compass-card'
             header:
@@ -944,7 +945,7 @@ views:
                 indicator:
                   type: arrow_inward
                   dynamic_style:
-                    sensor: sensor.gosford_wind_speed
+                    sensor: sensor.gosford_wind_speed_kilometre
                     bands:
                       - from_value: 0
                         color: '#039BE5'
@@ -959,7 +960,7 @@ views:
                 indicator:
                   type: circle
             value_sensors:
-              - sensor: sensor.gosford_wind_speed
+              - sensor: sensor.gosford_wind_speed_kilometre
               - sensor: sensor.solar_elevation
             compass:
               north:
@@ -974,13 +975,13 @@ views:
             hours_to_show: 48
             refresh_interval: 300
             entities:
-              - sensor.gosford_temperature
+              - sensor.gosford_temp
               - sensor.nodemcu_lounge_bme280_temperature
               - sensor.nodemcu_bedroom_bme280_temperature
               - sensor.nodemcu_bedroom_am2301_temperature
               - sensor.sonoff1_2914_si7021_temperature
               - sensor.sonoff3_0898_si7021_temperature  
-              - sensor.gosford_temperature_feels_like
+              - sensor.gosford_temp_feels_like
           - type: history-graph
             title: Dew Point BOM Gosford
             hours_to_show: 48
@@ -1000,8 +1001,8 @@ views:
               - sensor.nodemcu_bedroom_am2301_humidity
               - sensor.sonoff1_2914_si7021_humidity
               - sensor.sonoff3_0898_si7021_humidity
-              - sensor.gosford_gust_speed
-              - sensor.gosford_wind_speed
+              - sensor.gosford_gust_speed_kilometre
+              - sensor.gosford_wind_speed_kilometre
           - type: entities
             title: Sensors
             show_header_toggle: false
