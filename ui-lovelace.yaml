@@ -1837,7 +1837,7 @@ views:
                 name: Scripts
                 tap_action:
                   action: call-service
-                  service: script.scriptsreload
+                  service: script.reload
           - type: horizontal-stack
             cards:
               - type: custom:button-card
