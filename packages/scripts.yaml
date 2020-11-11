@@ -179,8 +179,6 @@ script:
       service: hassio.addon_start
     - data: {"addon": "a0d7b954_glances"}
       service: hassio.addon_start
-    - data: {"addon": "a0d7b954_jupyterlablite"}
-      service: hassio.addon_start
     - data: {"addon": "a0d7b954_logviewer"}
       service: hassio.addon_start
     - data: {"addon": "a0d7b954_sonweb"}
