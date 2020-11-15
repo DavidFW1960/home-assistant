@@ -247,6 +247,8 @@ views:
                   --paper-item-icon-color:
                     {% if states(config.entity) != states('sensor.current_ha_beta') %}
                       var(--state-icon-active-color)
+                    {% elif states(config.entity) != states('sensor.hass_available_to_install_version') %}
+                      var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
@@ -1262,7 +1264,7 @@ views:
             conditions:
               - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
-                state: 'Very High'
+                state: 'Very high'
             card:
               type: picture-entity
               entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
