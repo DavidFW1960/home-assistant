@@ -985,6 +985,12 @@ views:
               - sensor.sonoff3_0898_si7021_temperature  
               - sensor.gosford_temp_feels_like
           - type: history-graph
+            title: Outdoor Illuminance
+            hours_to_show: 48
+            refresh_interval: 300
+            entities:
+              - sensor.illuminance
+          - type: history-graph
             title: Dew Point BOM Gosford
             hours_to_show: 48
             refresh_interval: 300
