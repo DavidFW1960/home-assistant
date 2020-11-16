@@ -742,6 +742,7 @@ views:
                       {% endif %}
                       ;
                     }
+                - entity: sensor.illuminance
                 - entity: sensor.sunrisetoday
                 - entity: sensor.sunsettoday
                 - entity: sensor.nextsunrise
@@ -866,7 +867,7 @@ views:
             entity_current_text: sensor.bom_current_text
             entity_uv_alert: sensor.bom_uv_alert
             entity_fire_danger: sensor.bom_fire_danger
-            entity_uv_alert_summary: sensor.bom_uv_alert_summary
+            entity_uv_alert_summary: sensor.kariong_uv_category_0
             entity_fire_danger_summary: sensor.kariong_fire_danger_0
             locale: en
             sunset: true
@@ -938,6 +939,7 @@ views:
                   name: "${'Heat Index:' + '\xa0'.repeat(2) + vars[2]}"
                 - entity: sensor.gosford_temp
                   name: "${'BOM Update:' + '\xa0'.repeat(2) + ( new Date(vars[3]).toLocaleTimeString('en-US') ) + '\xa0'.repeat(2) + 'Current Temp' }"
+                - entity: sensor.illuminance
           - type: 'custom:compass-card'
             header:
               title:
