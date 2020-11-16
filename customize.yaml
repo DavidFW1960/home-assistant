@@ -313,4 +313,5 @@ sensor.github_hacs:
 sensor.bom_fire_danger_summary:
   friendly_name: Danger Level Today
   icon: mdi:fire
-
+sensor.illuminance:
+  icon: mdi:brightness-5

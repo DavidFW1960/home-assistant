@@ -1,5 +1,7 @@
 # pnbruckner's sensor component as a template.
 # https://github.com/pnbruckner/ha-illuminance/blob/master/custom_components/illuminance/sensor.py
+# https://community.home-assistant.io/t/outdoor-illuminance-template-sensor/
+
 sensor:
   - platform: template
     sensors:
