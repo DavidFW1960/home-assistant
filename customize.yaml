@@ -315,3 +315,6 @@ sensor.bom_fire_danger_summary:
   icon: mdi:fire
 sensor.illuminance:
   icon: mdi:brightness-5
+sensor.estimated_illuminance:
+  icon: mdi:brightness-5
+  

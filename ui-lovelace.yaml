@@ -743,6 +743,7 @@ views:
                       ;
                     }
                 - entity: sensor.illuminance
+                - entity: sensor.estimated_illuminance
                 - entity: sensor.sunrisetoday
                 - entity: sensor.sunsettoday
                 - entity: sensor.nextsunrise
@@ -940,6 +941,15 @@ views:
                 - entity: sensor.gosford_temp
                   name: "${'BOM Update:' + '\xa0'.repeat(2) + ( new Date(vars[3]).toLocaleTimeString('en-US') ) + '\xa0'.repeat(2) + 'Current Temp' }"
                 - entity: sensor.illuminance
+                  type: "custom:template-entity-row"
+                  secondary: "{{ states('weather.kariong') }} weather.kariong"
+                  state: "{{ states('sensor.illuminance') }} lx"
+                  icon: mdi:brightness-5
+                - entity: sensor.estimated_illuminance
+                  type: "custom:template-entity-row"
+                  secondary: "{{ states('weather.home') }} weather.home"
+                  state: "{{ states('sensor.estimated_illuminance') }} lx"
+                  icon: mdi:brightness-5
           - type: 'custom:compass-card'
             header:
               title:
@@ -992,6 +1002,7 @@ views:
             refresh_interval: 300
             entities:
               - sensor.illuminance
+              - sensor.estimated_illuminance
           - type: history-graph
             title: Dew Point BOM Gosford
             hours_to_show: 48

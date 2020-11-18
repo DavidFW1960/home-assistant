@@ -1,5 +1,6 @@
 # pnbruckner's sensor component as a template.
 # https://github.com/pnbruckner/ha-illuminance/blob/master/custom_components/illuminance/sensor.py
+# https://community.home-assistant.io/t/outdoor-illuminance-estimated-from-weather-conditions-reported-by-weather-underground-dark-sky-or-yr-no/
 # https://community.home-assistant.io/t/outdoor-illuminance-template-sensor/
 
 sensor:
@@ -14,7 +15,7 @@ sensor:
 
           {#- Retrieve the current condition and normalize the value #}
           {%- set current_condition = states("weather.kariong") %}
-          {%- set current_condition = current_condition|lower|replace("-day","")|replace("_day","")|replace("-night","")|replace("_night","")|replace("and","")|replace("-", " ")|replace("_", " ")|replace("(","")|replace(")","")|replace(" ", "")|replace(".", "") %}
+          {%- set current_condition = current_condition|lower|replace("-day","")|replace("_day","")|replace("-night","")|replace("_night","")|replace("and","")|replace("-", " ")|replace("_", " ")|replace("(","")|replace(")","")|replace(".", "")|replace(" ", "") %}
 
           
           {#- Assign a seemingly arbitrary number to the condition factor #}
@@ -52,3 +53,8 @@ sensor:
           {%- set illuminance = (factors.sun|float * factors.condition|float) | round %}
           {%- set illuminance = 10 if illuminance < 10 else illuminance %}
           {{ illuminance }}
+ 
+ # Use PBruckner Component
+  - platform: illuminance
+    entity_id: weather.home
+    name: Estimated Illuminance
