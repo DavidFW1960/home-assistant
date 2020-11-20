@@ -943,12 +943,12 @@ views:
                 - entity: sensor.illuminance
                   type: "custom:template-entity-row"
                   secondary: "{{ states('weather.kariong') }} weather.kariong"
-                  state: "{{ states('sensor.illuminance') }} lx"
+                  state: "{{ '{:,}'.format((states('sensor.illuminance'))|int) }} lx"
                   icon: mdi:brightness-5
                 - entity: sensor.estimated_illuminance
                   type: "custom:template-entity-row"
                   secondary: "{{ states('weather.home') }} weather.home"
-                  state: "{{ states('sensor.estimated_illuminance') }} lx"
+                  state: "{{ '{:,}'.format((states('sensor.estimated_illuminance'))|int) }} lx"
                   icon: mdi:brightness-5
           - type: 'custom:compass-card'
             header:
