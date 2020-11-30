@@ -11,7 +11,16 @@ from homeassistant.const import (
     TEMP_CELSIUS,
 )
 from homeassistant.helpers.entity import Entity
-from .const import ATTRIBUTION, DOMAIN
+from .const import (ATTRIBUTION,
+                    CONF_FORECASTS_BASENAME,
+                    CONF_FORECASTS_CREATE,
+                    CONF_FORECASTS_DAYS,
+                    CONF_FORECASTS_MONITORED,
+                    CONF_OBSERVATIONS_BASENAME,
+                    CONF_OBSERVATIONS_CREATE,
+                    CONF_OBSERVATIONS_MONITORED,
+                    DOMAIN,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -47,19 +56,19 @@ async def async_setup_entry(hass, config_entry, async_add_devices):
     """Add sensors for passed config_entry in HA."""
     collector = hass.data[DOMAIN][config_entry.entry_id]
 
-    station_name = collector.observations_data["data"]["station"]["name"]
     forecast_region = collector.daily_forecasts_data["metadata"]["forecast_region"]
     new_devices = []
 
-    for observation in collector.observations_data["data"]:
-        if observation in SENSOR_NAMES:
-            new_devices.append(ObservationSensor(collector, station_name, observation))
+    if config_entry.data[CONF_OBSERVATIONS_CREATE] == True:
+       for observation in collector.observations_data["data"]:
+           if observation in SENSOR_NAMES and observation in config_entry.data[CONF_OBSERVATIONS_MONITORED]:
+               new_devices.append(ObservationSensor(collector, config_entry.data[CONF_OBSERVATIONS_BASENAME], observation))
 
-    days = len(collector.daily_forecasts_data["data"])
-    for day in range(0, days):
-        for forecast in collector.daily_forecasts_data["data"][day]:
-            if forecast in SENSOR_NAMES:
-                new_devices.append(ForecastSensor(collector, collector.location_name, day, forecast))
+    if config_entry.data[CONF_FORECASTS_CREATE] == True:
+        days = config_entry.data[CONF_FORECASTS_DAYS]
+        for day in range(0, days+1):
+            for forecast in config_entry.data[CONF_FORECASTS_MONITORED]:
+                new_devices.append(ForecastSensor(collector, config_entry.data[CONF_FORECASTS_BASENAME], day, forecast))
 
     if new_devices:
         async_add_devices(new_devices)
