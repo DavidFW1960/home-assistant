@@ -942,7 +942,7 @@ views:
                   name: "${'BOM Update:' + '\xa0'.repeat(2) + ( new Date(vars[3]).toLocaleTimeString('en-US') ) + '\xa0'.repeat(2) + 'Current Temp' }"
                 - entity: sensor.illuminance
                   type: "custom:template-entity-row"
-                  secondary: "{{ states('weather.kariong') }} weather.kariong"
+                  secondary: "{{ states('sensor.kariong_icon_descriptor_0') }} weather.kariong"
                   state: "{{ '{:,}'.format((states('sensor.illuminance'))|int) }} lx"
                   icon: mdi:brightness-5
                 - entity: sensor.estimated_illuminance
@@ -1756,7 +1756,7 @@ views:
                   - automation.alarm_event_triggered
                   - automation.alarm_event_check
                   - automation.update_speedtest
-                  - entity: automation.restart_docker_containers_when_memory_40
+                  - entity: automation.restart_docker_containers_when_memory_50
                     secondary_info: last-triggered
                   - automation.roaster_needs_attention
               - type: custom:fold-entity-row
