@@ -12,7 +12,7 @@ ux_goodie:
   ch-background: "rgba(10, 10, 10, 0.65)"  # dashboard top bar (for custom header)
   app-header-background-color-custom: "rgba(10, 10, 10, 0.65)"  # dashboard top bar (for card-mod-theme styling at the end of this file)
   codemirror-meta: "var(--primary-text-color)" # code editor – simple styling
-  
+
 
 # BACKGROUND AND SIDEBAR
   primary-background-color: "#2E2E2E"  # main app background mostly
@@ -106,6 +106,11 @@ ux_goodie:
   mdc-theme-primary: "var(--primary-color)"  # font on some app-wide text buttons; background for big app-wide buttons
   mdc-theme-on-primary: "#f5f5f5" # font for big app-wide buttons
   mdc-theme-secondary: "#607D8B"  # round floating buttons (app-wide)
+  material-secondary-background-color: "rgba(46, 46, 46, 0.7)" # Comboboxes selected/highlighted item background – unfortunately, not all of them
+  material-divider-color: "rgba(46, 46, 46, 0.7)" # Comboboxes focused item backfround – unfortunately, not all of them
+  mdc-ripple-color: "#cdcdcd" # Quick Bar (and hopefully other mwc-lists) selected/highlighted item background
+  mdc-ripple-hover-opacity: "0.1"
+  mdc-ripple-focus-opacity: "0.15"
   hacs-badge-color: "#FFF"
 
   dark-disabled-opacity: "0.45"

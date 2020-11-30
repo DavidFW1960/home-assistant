@@ -9,6 +9,7 @@
   paper-listbox-background-color: "#000000" # Side Bar Background Colour
   accent-color: "#3ba1a5" # Circle Plus Button Color
   primary-bg-color: "#3776c3"
+  app-header-background-color: "#000d22"
 
   ### Cards ###
   ch-background: "rgba(0, 0, 20, 0.6)" # fix for 0.113
