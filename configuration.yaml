@@ -82,7 +82,7 @@ notify:
             push:
               sound:
                 name: default
-      - service: mobile_app_davids_ipad
+      - service: mobile_app_david_s_ipad
         data:
           data:
             push:
