@@ -178,7 +178,7 @@ sensor.sonoff3_0898_si7021_humidity:
   friendly_name: Office Si7021 Humidity
 sensor.sonoff3_0898_si7021_dewpoint:
   friendly_name: Office Si7021 DewPoint
-sensor.ssl_certificate_expiry:
+sensor.cert_expiry_timestamp_homeautomation_casa_30443:
   friendly_name: SSL Certificate Expiry
   unit_of_measurement: days
 sensor.appdaemon_memory_average:
@@ -317,4 +317,5 @@ sensor.illuminance:
   icon: mdi:brightness-5
 sensor.estimated_illuminance:
   icon: mdi:brightness-5
-  
+sensor.ha_uptime:
+  friendly_name: HA Last Started
