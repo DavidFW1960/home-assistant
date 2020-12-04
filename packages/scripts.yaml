@@ -173,33 +173,33 @@ script:
   startalladdons:
     alias: Start all Hass.io addons
     sequence:
+    - data: {"addon": "a0d7b954_appdaemon"}
+      service: hassio.addon_start
+    - data: {"addon": "fe41fc28_caddy"}
+      service: hassio.addon_start
     - data: {"addon": "7be23ff5_dropbox_sync"}
       service: hassio.addon_start
-    - data: {"addon": "a0d7b954_appdaemon"}
+    - data: {"addon": "core_configurator"}
       service: hassio.addon_start
     - data: {"addon": "a0d7b954_glances"}
       service: hassio.addon_start
     - data: {"addon": "a0d7b954_logviewer"}
       service: hassio.addon_start
-    - data: {"addon": "a0d7b954_sonweb"}
+    - data: {"addon": "core_mariadb"}
+      service: hassio.addon_start
+    - data: {"addon": "core_mosquitto"}
       service: hassio.addon_start
     - data: {"addon": "a0d7b954_ssh"}
+      service: hassio.addon_start
+    - data: {"addon": "core_samba"}
+      service: hassio.addon_start
+    - data: {"addon": "a0d7b954_sonweb"}
       service: hassio.addon_start
     - data: {"addon": "a0d7b954_vscode"}
       service: hassio.addon_start
     - data: {"addon": "a0d7b954_zerotier"}
       service: hassio.addon_start
-    - data: {"addon": "core_configurator"}
-      service: hassio.addon_start
-    - data: {"addon": "core_mosquitto"}
-      service: hassio.addon_start
-    - data: {"addon": "core_samba"}
-      service: hassio.addon_start
-    - data: {"addon": "fe41fc28_caddy"}
-      service: hassio.addon_start
     - data: {"addon": "a0d7b954_phpmyadmin"}
-      service: hassio.addon_start
-    - data: {"addon": "core_mariadb"}
       service: hassio.addon_start
     - service: persistent_notification.create
       data_template:
