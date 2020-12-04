@@ -13,16 +13,16 @@ views:
           - type: 'custom:config-template-card'
             entities:
               - sensor.last_successful_authentication
-              - sensor.ssl_certificate_expiry
-              - sensor.cert_expiry_timestamp
+              - sensor.cert_expiry_timestamp_homeautomation_casa_30443
             card:
               type: 'custom:hui-entities-card'
               title: System Information
               show_header_toggle: false
               entities:
                 - entity: sensor.last_successful_authentication
-                - entity: sensor.ssl_certificate_expiry
-                - entity: sensor.cert_expiry_timestamp
+                - entity: sensor.cert_expiry_timestamp_homeautomation_casa_30443
+                  name: "${'Certificate Expires'}"
+                - entity: sensor.cert_expiry_timestamp_homeautomation_casa_30443
                   name: "${'Certificate Expiry Date'}"
                   format: date
           - type: entities
@@ -55,7 +55,10 @@ views:
                     {% endif %}
                     ;
                   }
-              - sensor.tasmota_firmware_version_available
+              - entity: sensor.tasmota_firmware_version_available
+                tap_action:
+                  action: url
+                  url_path: https://github.com/arendst/Tasmota
               - entity: binary_sensor.tasmota_update_available
                 tap_action:
                   action: navigate
@@ -72,6 +75,9 @@ views:
                     ;
                   }
               - entity: sensor.artisan_software_version
+                tap_action:
+                  action: url
+                  url_path: https://github.com/artisan-roaster-scope/artisan/releases
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -148,6 +154,8 @@ views:
               - entity: sensor.last_boot
                 format: datetime
               - sensor.systemuptime
+              - entity: sensor.ha_uptime
+                format: relative
           - type: entities
             title: Brother MFC-9335CDW
             show_header_toggle: false
@@ -386,6 +394,9 @@ views:
             show_header_toggle: false
             entities:
               - entity: sensor.docker_compose_version_available
+                tap_action:
+                  action: url
+                  url_path: https://github.com/docker/compose/releases
                 style: |
                   :host {
                   --paper-item-icon-color:
@@ -1204,15 +1215,15 @@ views:
             radar_location_line_colour: '#FF0000'
             radar_location_fill_colour: '#FFFF00'
           - type: 'custom:bom-radar-card'
-            center_latitude: '-33.425018'
-            center_longitude: '151.342224'
+            center_latitude: '-33.440'
+            center_longitude: '151.293'
             zoom_level: '9'
             frame_delay: 500
             frame_count: 12
             show_marker: true
             markerIcon: true
-            marker_latitude: '-33.425018'
-            marker_longitude: '151.342224'
+            marker_latitude: '-33.440'
+            marker_longitude: '151.293'
             show_range: true
             show_scale: true
             show_zoom: true
@@ -2215,6 +2226,13 @@ views:
               - entity: media_player.roku_5x46aj056306
                 type: custom:mini-media-player
                 icon: mdi:play-network
+                artwork: cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.atv4
+                type: custom:mini-media-player
+                icon: mdi:apple
                 artwork: cover
                 hide: 
                   power_state: false
