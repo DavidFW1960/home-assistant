@@ -498,7 +498,7 @@ automation:
           state: 'on'        
         - condition: template
           value_template: "{{ now().strftime('%H:%M') < '18:30' and now().weekday() == 1 }}"
-      - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 2 }}"
+      - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 2 and (states('input_boolean.lizcovid') == 'on') }}"
     action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.lizcovid
