@@ -255,6 +255,13 @@ sensor:
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
 
+# SSL Certificate Expiry Days
+  - platform: template
+    sensors:
+      cert_expiry_ha_domain_days:
+        friendly_name: 'SSL Certificate Expiry Days'
+        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_ha_domain')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+
 # Artisan Software Version
 # Getting Artisan version from JSON
   - platform: rest

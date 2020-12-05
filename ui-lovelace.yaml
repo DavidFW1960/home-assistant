@@ -20,11 +20,11 @@ views:
               show_header_toggle: false
               entities:
                 - entity: sensor.last_successful_authentication
-                - entity: sensor.cert_expiry_timestamp_homeautomation_casa_30443
-                  name: "${'Certificate Expires'}"
-                - entity: sensor.cert_expiry_timestamp_homeautomation_casa_30443
+                - entity: sensor.cert_expiry_ha_domain_days
+                  name: "${'Certificate Expires in'}"
+                - entity: sensor.cert_expiry_ha_domain
                   name: "${'Certificate Expiry Date'}"
-                  format: date
+                  format: datetime
           - type: entities
             title: Tasmota
             show_header_toggle: false
