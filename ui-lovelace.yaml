@@ -2171,7 +2171,14 @@ views:
                 hide: 
                   power_state: false
                 info: scroll
-              - entity: media_player.lounge_room_tv
+              - entity: media_player.lounge_room_chrome_cast
+                type: custom:mini-media-player
+                icon: mdi:television-classic
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.office_tv
                 type: custom:mini-media-player
                 icon: mdi:television-classic
                 artwork: full-cover
@@ -2320,7 +2327,7 @@ views:
                     font-weight: normal;
                   }
             content: >
-              # Chromecast on LG TV
+              # Chromecast on Office TV
           - type: horizontal-stack
             cards:
               - type: custom:button-card
