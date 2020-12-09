@@ -108,6 +108,62 @@ script:
         entity_id: media_player.office_tv
         view_path: medical
       service: cast.show_lovelace_view
+  casthomeassistantlg:
+    alias: Cast Home Assistant LG
+    sequence:
+    - data:
+        dashboard_path: lovelace
+        entity_id: media_player.lounge_room_chrome_cast
+        view_path: home_assistant
+      service: cast.show_lovelace_view
+  castweatherlg:
+    alias: Cast Weather LG
+    sequence:
+    - data:
+        dashboard_path: lovelace
+        entity_id: media_player.lounge_room_chrome_cast
+        view_path: weather
+      service: cast.show_lovelace_view
+  castswitcheslg:
+    alias: Cast Switches LG
+    sequence:
+    - data:
+        dashboard_path: lovelace
+        entity_id: media_player.lounge_room_chrome_cast
+        view_path: lights_and_switches
+      service: cast.show_lovelace_view
+  castmedialg:
+    alias: Cast Media LG
+    sequence:
+    - data:
+        dashboard_path: lovelace
+        entity_id: media_player.lounge_room_chrome_cast
+        view_path: media
+      service: cast.show_lovelace_view
+  casttvandmovieslg:
+    alias: Cast TV & Movies LG
+    sequence:
+    - data:
+        dashboard_path: lovelace
+        entity_id: media_player.lounge_room_chrome_cast
+        view_path: tv_and_movies
+      service: cast.show_lovelace_view
+  casttransportlg:
+    alias: Cast Transport LG
+    sequence:
+    - data:
+        dashboard_path: lovelace
+        entity_id: media_player.lounge_room_chrome_cast
+        view_path: transport
+      service: cast.show_lovelace_view
+  castmedicallg:
+    alias: Cast Medical LG
+    sequence:
+    - data:
+        dashboard_path: lovelace
+        entity_id: media_player.lounge_room_chrome_cast
+        view_path: medical
+      service: cast.show_lovelace_view
   casthomeassistantfox:
     alias: Cast Home Assistant Foxtel
     sequence:
@@ -168,7 +224,7 @@ script:
     alias: Stop Casting Samsung
     sequence:
     - data:
-        entity_id: media_player.office_tv, media_player.foxtel_7587
+        entity_id: media_player.office_tv, media_player.foxtel_7587, media_player.lounge_room_chrome_cast
       service: media_player.turn_off
   startalladdons:
     alias: Start all Hass.io addons

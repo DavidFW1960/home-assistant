@@ -2311,6 +2311,85 @@ views:
                 default_target: media_player.office_speaker
                 show_player: true
                 custom_player: true
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            style:
+              ha-markdown:
+                $: |
+                  h1 {
+                    display: block;
+                    letter-spacing: -0.012em;
+                    line-height: 32px;
+                    font-size: 24px;
+                    margin-block-start: 0.83em;
+                    margin-block-end: 0.83em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    font-weight: normal;
+                  }
+            content: >
+              # Chromecast on LG TV
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                icon: mdi:home-assistant
+                show_entity_picture: true
+                name: System
+                tap_action:
+                  action: call-service
+                  service: script.casthomeassistantlg
+              - type: custom:button-card
+                icon: mdi:weather-cloudy
+                show_entity_picture: true
+                name: Weather
+                tap_action:
+                  action: call-service
+                  service: script.castweatherlg
+              - type: custom:button-card
+                icon: mdi:power
+                show_entity_picture: true
+                name: Switches
+                tap_action:
+                  action: call-service
+                  service: script.castswitcheslg
+              - type: custom:button-card
+                icon: mdi:vlc
+                show_entity_picture: true
+                name: Media
+                tap_action:
+                  action: call-service
+                  service: script.castmedialg
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                icon: mdi:kodi
+                show_entity_picture: true
+                name: TV
+                tap_action:
+                  action: call-service
+                  service: script.casttvandmovieslg
+              - type: custom:button-card
+                icon: mdi:train
+                show_entity_picture: true
+                name: Transport
+                tap_action:
+                  action: call-service
+                  service: script.casttransportlg
+              - type: custom:button-card
+                icon: mdi:medical-bag
+                show_entity_picture: true
+                name: Alerts
+                tap_action:
+                  action: call-service
+                  service: script.castmedicallg
+              - type: custom:button-card
+                icon: mdi:power
+                show_entity_picture: true
+                name: Cast Off
+                tap_action:
+                  action: call-service
+                  service: script.castoff
           - type: markdown
             style:
               ha-markdown:
