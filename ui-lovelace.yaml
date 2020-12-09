@@ -2185,45 +2185,6 @@ views:
                 hide: 
                   power_state: false
                 info: scroll
-          - type: entities
-            title: Chromecast Control
-            show_header_toggle: false
-            entities:
-              - type: cast
-                name: System
-                dashboard: lovelace
-                view: "home_assistant"
-                hide_if_unavailable: false
-              - type: cast
-                name: Weather
-                dashboard: lovelace
-                view: "weather"
-                hide_if_unavailable: false
-              - type: cast
-                name: Switches
-                dashboard: lovelace
-                view: "lights_and_switches"
-                hide_if_unavailable: false
-              - type: cast
-                name: Media
-                dashboard: lovelace
-                view: "media"
-                hide_if_unavailable: false
-              - type: cast
-                name: TV & Movies
-                dashboard: lovelace
-                view: "tv_and_movies"
-                hide_if_unavailable: false
-              - type: cast
-                name: Transport
-                dashboard: lovelace
-                view: "transport"
-                hide_if_unavailable: false
-              - type: cast
-                name: Medical Alerts
-                dashboard: lovelace
-                view: "medical"
-                hide_if_unavailable: false
       - type: vertical-stack
         cards:
           - type: entities
@@ -2539,6 +2500,45 @@ views:
                 tap_action:
                   action: call-service
                   service: script.castoff
+          - type: entities
+            title: Chromecast Control
+            show_header_toggle: false
+            entities:
+              - type: cast
+                name: System
+                dashboard: lovelace
+                view: "home_assistant"
+                hide_if_unavailable: false
+              - type: cast
+                name: Weather
+                dashboard: lovelace
+                view: "weather"
+                hide_if_unavailable: false
+              - type: cast
+                name: Switches
+                dashboard: lovelace
+                view: "lights_and_switches"
+                hide_if_unavailable: false
+              - type: cast
+                name: Media
+                dashboard: lovelace
+                view: "media"
+                hide_if_unavailable: false
+              - type: cast
+                name: TV & Movies
+                dashboard: lovelace
+                view: "tv_and_movies"
+                hide_if_unavailable: false
+              - type: cast
+                name: Transport
+                dashboard: lovelace
+                view: "transport"
+                hide_if_unavailable: false
+              - type: cast
+                name: Medical Alerts
+                dashboard: lovelace
+                view: "medical"
+                hide_if_unavailable: false
   - title: TV & Movies
     path: tv_and_movies
     icon: mdi:kodi
