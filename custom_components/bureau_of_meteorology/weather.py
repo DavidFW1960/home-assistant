@@ -156,7 +156,7 @@ class Weather(WeatherEntity):
         if short_text is None:
             return extended_text[:extended_text.find('.')]
         else:
-            return short_text 
+            return short_text
 
     async def async_update(self):
         await self.coordinator.async_update()
