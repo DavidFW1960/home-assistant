@@ -273,7 +273,12 @@ sensor:
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
-
+  - platform: mqtt
+    name: "Artisan Software Version Installed"
+    state_topic: "artisan_version"
+    icon: mdi:coffee
+    value_template: "{{ value_json.state }}"
+    
 # Artisan Charge
   - platform: mqtt
     name: "Artisan Events"
