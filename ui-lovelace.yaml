@@ -81,7 +81,7 @@ views:
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if (states(config.entity) != 'v2.4.2') and (states(config.entity) != 'continuous') %}
+                    {% if (states(config.entity) != states('sensor.artisan_software_version_installed')) and (states(config.entity) != 'continuous') %}
                       var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
