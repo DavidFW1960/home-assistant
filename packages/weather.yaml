@@ -174,6 +174,15 @@ sensor:
     start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
     end: '{{ now() }}'
 
+# Dewpoint Custom Component
+# https://github.com/miguelangel-nubla/home-assistant-dewpoint
+
+  - platform: dewpoint
+    sensors:
+      dewpoint_outside:
+        temperature: sensor.gosford_temp
+        rel_hum: sensor.gosford_humidity
+
 automation:
 - alias: 'Update BOM Icons'
   trigger:
@@ -195,6 +204,10 @@ homeassistant:
       common: &common
         package: "weather"
 
+    sensor.dewpoint_outside:
+      friendly_name: Dew Point
+      device_class: temperature
+      <<: *common
     sensor.gosford_temp:
       friendly_name: Air Temp
       device_class: temperature

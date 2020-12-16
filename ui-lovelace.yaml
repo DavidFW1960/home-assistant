@@ -794,6 +794,7 @@ views:
               - sensor.beaufort
               - sensor.heatindex
               - sensor.heatindexrating
+              - sensor.dewpoint_outside
             card:
               type: 'custom:hui-entities-card'
               title: Weather from BOM Australia
@@ -804,6 +805,7 @@ views:
                 - entity: sensor.gosford_temp_feels_like
                 - entity: sensor.gosford_rain_since_9am
                 - entity: sensor.gosford_humidity
+                - entity: sensor.dewpoint_outside
                 - entity: sensor.gosford_wind_direction
                 - entity: sensor.gosford_wind_speed_kilometre
                 - entity: sensor.gosford_gust_speed_kilometre
