@@ -252,6 +252,8 @@ sensor.watchtower_memory_average:
   icon: mdi:docker
 sensor.docker_compose_version_available:
   icon: mdi:docker
+sensor.docker_ce_version_available:
+  icon: mdi:docker
 sensor.opennem_nsw1_battery_charging:
   friendly_name: Battery (Charging)
 sensor.opennem_nsw1_battery_discharging:
