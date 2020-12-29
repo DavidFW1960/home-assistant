@@ -10,7 +10,7 @@ ux_goodie:
   accent-color: "#FF9F0A"  # e.g. loader in HACS
   divider-color: "#545454"  # divider in sidebar
   ch-background: "rgba(10, 10, 10, 0.65)"  # dashboard top bar (for custom header)
-  app-header-background-color-custom: "rgba(10, 10, 10, 0.65)"  # dashboard top bar (for card-mod-theme styling at the end of this file)
+  app-header-background-color-custom: "rgba(10, 10, 10, 0.4)"  # dashboard top bar (for card-mod-theme styling at the end of this file)
   codemirror-meta: "var(--primary-text-color)" # code editor – simple styling
 
 
