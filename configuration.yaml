@@ -134,8 +134,6 @@ panel_iframe:
 
 # Discover some devices automatically
 discovery:
-#  ignore:
-#    - yeelight
   enable:
     - dlna_dmr
 
