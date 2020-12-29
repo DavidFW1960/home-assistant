@@ -969,7 +969,7 @@ views:
                   name: "${'BOM Update:' + '\xa0'.repeat(2) + ( new Date(vars[3]).toLocaleTimeString('en-US') ) + '\xa0'.repeat(2) + 'Current Temp' }"
                 - entity: sensor.illuminance
                   type: "custom:template-entity-row"
-                  secondary: "{{ states('sensor.kariong_icon_descriptor_0') }} weather.kariong"
+                  secondary: "{{ states('weather.kariong') }} weather.kariong"
                   state: "{{ '{:,}'.format((states('sensor.illuminance'))|int) }} lx"
                   icon: mdi:brightness-5
                 - entity: sensor.estimated_illuminance
