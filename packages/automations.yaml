@@ -540,15 +540,15 @@ automation:
     alias: New Tasmota Available
     trigger:
     - platform: template
-      value_template: "{{ states('sensor.coffee_maker_firmware') != states('sensor.artisan_software_version_installed') }}"
+      value_template: "{{ states('sensor.coffee_maker_firmware') < states('sensor.tasmota_firmware_version_available') }}"
     condition: 
     - "{{states('sensor.coffee_maker_firmware') != 'unavailable'}}"
-    - "{{states('sensor.artisan_software_version_installed') != 'unavailable'}}"
+    - "{{states('sensor.tasmota_firmware_version_available') != 'unavailable'}}"
     action:
     - service: notify.david_ios_notify
       data:
         title: 'Tasmota Update'
-        message: "New Tasmota Firmware Version {{ states('sensor.coffee_maker_firmware') }} Available"
+        message: "New Tasmota Firmware Version {{ states('sensor.tasmota_firmware_version_available') }} Available"
     mode: single
   - id: '1608333947914'
     alias: New Docker Compose Available
