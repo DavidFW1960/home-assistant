@@ -35,10 +35,10 @@ exclude:
     - sensor.bom_uv_alert
     - sensor.bom_uv_alert_summary
     - sensor.bom_current_text
-include:
-  entity_globs:
-    - sensor.caltex_*
-    - sensor.ampol_*
-    - sensor.coles_*
-    - sensor.cc*
-    - sensor.syd*
+#include:
+#  entity_globs:
+#    - sensor.caltex_*
+#    - sensor.ampol_*
+#    - sensor.coles_*
+#    - sensor.cc*
+#    - sensor.syd*
