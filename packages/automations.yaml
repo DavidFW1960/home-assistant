@@ -118,17 +118,19 @@ automation:
     condition:
     - condition: and
       conditions:
-      - condition: or
+      - condition: time
+        after: '16:00:00'
+      - condition: and
         conditions:
-        - condition: time
-          after: '16:00:00'
-        - "{{ states('sensor.illuminance') | float < 7500 }}"
+        - condition: or
+          conditions:
+          - "{{ states('sensor.illuminance') | float < 7500 }}"
+          - condition: state
+            entity_id: 'binary_sensor.sun_above_25'
+            state: 'off'
     - condition: state
       entity_id: 'input_boolean.homeandawayauto'
       state: 'on'
-    - condition: state
-      entity_id: 'binary_sensor.sun_above_25'
-      state: 'off'
     action:
     - service: script.turn_on
       data:
