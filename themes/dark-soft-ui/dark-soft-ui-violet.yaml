@@ -316,11 +316,13 @@ Dark Soft UI Violet:
   # Badges and columns
   card-mod-view-yaml: |
     hui-masonry-view$: |
+      /* Delete to fix left-aligned
       #columns {
         flex-direction: column !important;
         margin: 0 auto;
         max-width: 500px;
       }
+      */
   card-mod-badge-yaml: |
     .: |
       :host {
