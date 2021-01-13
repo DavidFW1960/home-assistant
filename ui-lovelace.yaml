@@ -33,6 +33,7 @@ views:
                 head: 
                   type: section
                   label: Tasmota Firmware
+                padding: 0
                 entities:
                   - sensor.toothbrush_firmware
                   - sensor.xcy_mini_pc_firmware
@@ -241,6 +242,7 @@ views:
                 head: 
                   type: section
                   label: Home Assistant
+                padding: 0
                 entities:
                   - sensor.hass_available_to_install_version
                   - sensor.current_ha_stable
@@ -266,6 +268,7 @@ views:
                 head: 
                   type: section
                   label: Supervisor
+                padding: 0
                 entities:
                   - sensor.current_supervisor_stable
                   - sensor.current_supervisor_beta
@@ -288,6 +291,7 @@ views:
                 head: 
                   type: section
                   label: DNS
+                padding: 0
                 entities:
                   - sensor.current_dns_stable
                   - sensor.current_dns_beta
@@ -310,6 +314,7 @@ views:
                 head: 
                   type: section
                   label: Audio
+                padding: 0
                 entities:
                   - sensor.current_audio_stable
                   - sensor.current_audio_beta
@@ -332,6 +337,7 @@ views:
                 head: 
                   type: section
                   label: CLI
+                padding: 0
                 entities:
                   - sensor.current_cli_stable
                   - sensor.current_cli_beta
@@ -354,6 +360,7 @@ views:
                 head: 
                   type: section
                   label: Multicast
+                padding: 0
                 entities:
                   - sensor.current_multicast_latest
               - entity: sensor.current_multicast_installed
@@ -374,6 +381,7 @@ views:
                 head: 
                   type: section
                   label: Observer
+                padding: 0
                 entities:
                   - sensor.current_observer_latest
               - entity: sensor.current_observer_installed
@@ -567,6 +575,7 @@ views:
                 head: 
                   type: section
                   label: Containers
+                padding: 0
                 entities:
                   - input_boolean.retrigger
                   - script.restartvscode
@@ -707,6 +716,7 @@ views:
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
+                  padding: 0
                   head:
                     type: section
                     label: OpenNEM
@@ -1362,6 +1372,7 @@ views:
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
+                  padding: 0
                   head:
                     type: section
                     label: Current Incidents
@@ -1379,6 +1390,7 @@ views:
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
+                  padding: 0
                   head:
                     type: section
                     label: GDACS Integration
@@ -1396,6 +1408,7 @@ views:
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
+                  padding: 0
                   head:
                     type: section
                     label: Lightning Strikes
@@ -1413,6 +1426,7 @@ views:
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
+                  padding: 0
                   head:
                     type: section
                     label: Lightning Status
@@ -1726,6 +1740,7 @@ views:
             entities:
               - type: custom:fold-entity-row
                 open: false
+                padding: 0
                 head: 
                   type: section
                   label: Overrides
@@ -1740,6 +1755,7 @@ views:
             entities:            
               - type: custom:fold-entity-row
                 open: false
+                padding: 0
                 head: 
                   type: section
                   label: Security
@@ -1751,6 +1767,7 @@ views:
             show_header_toggle: false
             entities:
               - type: custom:fold-entity-row
+                padding: 0
                 open: false
                 head: 
                   type: section
@@ -1763,6 +1780,7 @@ views:
                   - automation.turn_lounge_light_on_elevation_25deg_after_4pm
               - type: custom:fold-entity-row
                 open: false
+                padding: 0
                 head: 
                   type: section
                   label: Not in Normal Use
@@ -1789,6 +1807,7 @@ views:
                   - automation.roaster_needs_attention
               - type: custom:fold-entity-row
                 open: false
+                padding: 0
                 head: 
                   type: section
                   label: Tasmota
@@ -2014,6 +2033,7 @@ views:
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
+                  padding: 0
                   head:
                     type: section
                     label: All Automations
@@ -2026,6 +2046,7 @@ views:
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
+                  padding: 0
                   head:
                     type: section
                     label: Scenes
@@ -2038,6 +2059,7 @@ views:
               - type: custom:auto-entities
                 card:
                   type: custom:fold-entity-row
+                  padding: 0
                   head:
                     type: section
                     label: Scripts
