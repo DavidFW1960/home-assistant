@@ -1,7 +1,7 @@
 slate_red:
   # Main colors
   primary-color: '#d32f2f'
-  accent-color: '#d32f2f'
+  accent-color: '#bd2a2a'
   dark-primary-color: '#c66900'
   light-primary-color: '#e06c6c'
   # Text colors
