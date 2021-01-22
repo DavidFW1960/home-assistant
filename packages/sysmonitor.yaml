@@ -278,7 +278,7 @@ sensor:
     duration:
       days: 2
   - platform: rest
-    resource: http://10.90.11.100:8126/container/addon_fe41fc28_caddy/stats
+    resource: http://10.90.11.100:8126/container/addon_2974f5cf_caddy2/stats
     name: Caddy Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
