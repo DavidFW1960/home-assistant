@@ -114,7 +114,7 @@ input_boolean.holiday:
 input_boolean.homeandawayauto:
   icon: mdi:home
 sensor.hacs:
-  friendly_name: HACS
+  friendly_name: HACS Updates
 sensor.config_result:
   icon: mdi:home-assistant
   friendly_name: Config Result
@@ -304,6 +304,7 @@ sensor.gdacs_33_443955_151_286184:
   friendly_name: GDACS Alerts
 sensor.supervisor_installed:
   icon: mdi:home-assistant
+  friendly_name: Supervisor Addon Updates
 sensor.beaufort:
   friendly_name: Beaufort Rating
   icon: mdi:weather-windy

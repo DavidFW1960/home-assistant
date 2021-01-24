@@ -394,10 +394,6 @@ sabnzbd:
 tts:
   - platform: google_translate
 
-# IFTTT
-ifttt:
-  key: !secret ifttt_api
-
 # Xiaomi Switches
 switch:
   - platform: xiaomi_miio

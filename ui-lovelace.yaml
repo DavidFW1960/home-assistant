@@ -400,6 +400,7 @@ views:
                   }
           - type: entities
             show_header_toggle: false
+            title: Docker Updates and Github Calls
             entities:
               - entity: sensor.docker_compose_version_available
                 tap_action:
