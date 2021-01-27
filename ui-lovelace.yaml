@@ -535,39 +535,34 @@ views:
                 tap_action:
                   action: call-service
                   service: script.1593403010853
-          - type: custom:mini-graph-card
-            hours_to_show: 24
-            points_per_hour: 4
-            show:
-              labels: true
-            entities:
+          - type: custom:apexcharts-card
+            graph_span: 24h
+            header:
+              show: true
+              title: Media Management
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+            series:
               - entity: sensor.sabnzbd_memory
                 name: Sabnzbd
-                icon: mdi:kodi
-                show_state: true
-                color: yellow
-          - type: custom:mini-graph-card
-            hours_to_show: 24
-            points_per_hour: 4
-            show:
-              labels: true
-            entities:
+                type: line
+                group_by:
+                  func: avg
+                  duration: 1h
               - entity: sensor.sonarr_memory
                 name: Sonarr
-                icon: mdi:television-classic
-                show_state: true
-                color: orange
-          - type: custom:mini-graph-card
-            hours_to_show: 24
-            points_per_hour: 4
-            show:
-              labels: true
-            entities:
+                type: line
+                group_by:
+                  func: avg
+                  duration: 1h
               - entity: sensor.radarr_memory
                 name: Radarr
-                icon: mdi:filmstrip
-                show_state: true
-                color: '#73C2FB'
+                type: line
+                group_by:
+                  func: avg
+                  duration: 1h
           - type: entities
             title: Docker Containers
             show_header_toggle: false
@@ -668,48 +663,34 @@ views:
                   yellow: 11
                   green: 15
                 entity: sensor.speedtest_upload
-          - type: custom:mini-graph-card
-            hours_to_show: 24
-            points_per_hour: 2
-            entities:
-              - sensor.speedtest_download
-            show:
-              labels: true
-            color_thresholds:
-              - value: 0
-                color: "#ff0000"        #red
-              - value: 30
-                color: "#ffa500"        #orange
-              - value: 40
-                color: "#00ff00"        #green
-          - type: custom:mini-graph-card
-            hours_to_show: 24
-            points_per_hour: 2
-            entities:
-              - sensor.speedtest_upload
-            show:
-              labels: true
-            color_thresholds:
-              - value: 0
-                color: "#ff0000"        #red
-              - value: 11
-                color: "#ffa500"        #orange
-              - value: 15
-                color: "#00ff00"        #green
-          - type: custom:mini-graph-card
-            hours_to_show: 24
-            points_per_hour: 2
-            entities:
-              - sensor.speedtest_ping
-            show:
-              labels: true
-            color_thresholds:
-              - value: 0
-                color: "#00ff00"        #green
-              - value: 15
-                color: "#ffa500"        #orange
-              - value: 30
-                color: "#ff0000"        #red
+          - type: custom:apexcharts-card
+            graph_span: 24h
+            header:
+              show: true
+              title: Speedtestdotnet
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+            series:
+              - entity: sensor.speedtest_download
+                name: Download
+                type: line
+                group_by:
+                  func: avg
+                  duration: 30min
+              - entity: sensor.speedtest_upload
+                name: Upload
+                type: line
+                group_by:
+                  func: avg
+                  duration: 30min
+              - entity: sensor.speedtest_ping
+                name: Ping
+                type: line
+                group_by:
+                  func: avg
+                  duration: 30min
           - type: entities
             title: Open National Electricity Market
             show_header_toggle: false
@@ -790,16 +771,23 @@ views:
                 - entity: sensor.moonphases
                 - entity: sensor.bom_uv_alert
                 - entity: sensor.bom_fire_danger
-          - type: custom:mini-graph-card
-            hours_to_show: 168
-            points_per_hour: 1
-            show:
-              labels: true
-            entities:
+          - type: custom:apexcharts-card
+            graph_span: 167h
+            header:
+              show: true
+              title: Change in Day Length
+              show_states: true
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+            series:
               - entity: sensor.daylengthchange
                 name: Change in Day Length
-                show_state: true
-                color: orange
+                type: line
+                group_by:
+                  func: avg
+                  duration: 60min
           - type: 'custom:config-template-card'
             variables:
               - states['sensor.beaufort'].state
@@ -1088,121 +1076,176 @@ views:
               - sensor.sonoff3_0898_si7021_humidity
               - sensor.gosford_gust_speed_kilometre
               - sensor.gosford_wind_speed_kilometre
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 5
-            show:
-              labels: true
-            name: Temperature
-            entities:
+          - type: custom:apexcharts-card
+            graph_span: 48h
+            header:
+              show: true
+              title: Temperature
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+            series:
               - entity: sensor.nodemcu_lounge_bme280_temperature
                 name: Lounge Temperature
-                show_state: true
-                color: orange
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_temperature
                 name: Bedroom Temperature BME
-                show_state: true
-                color: red
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_temperature
                 name: Bedroom Temperature AM
-                show_state: true
-                color: green
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.sonoff1_2914_si7021_temperature
                 name: Kitchen Temperature
-                show_state: true
-                color: blue
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.sonoff3_0898_si7021_temperature
                 name: Office Temperature
-                show_state: true
-                color: cyan
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 5
-            show:
-              labels: true
-            name: Pressure
-            entities:
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+          - type: custom:apexcharts-card
+            graph_span: 48h
+            header:
+              show: true
+              title: Pressure
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+            series:
               - entity: sensor.nodemcu_lounge_bme280_pressure
                 name: Lounge Pressure
-                show_state: true
-                color: cyan
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_seapressure
                 name: Sea Pressure
-                show_state: true
-                color: green
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_pressure
                 name: Bedroom Pressure
-                show_state: true
-                color: yellow
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 5
-            show:
-              labels: true
-            name: Humidity
-            entities:
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+          - type: custom:apexcharts-card
+            graph_span: 48h
+            header:
+              show: true
+              title: Humidity
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+            series:
               - entity: sensor.nodemcu_lounge_bme280_humidity
                 name: Lounge Humidity
-                show_state: true
-                color: yellow
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_humidity
                 name: Bedroom Humidity BME
-                show_state: true
-                color: red
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_humidity
                 name: Bedroom Humidity AM
-                show_state: true
-                color: cyan
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.sonoff1_2914_si7021_humidity
                 name: Kitchen Humidity
-                show_state: true
-                color: orange
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.sonoff3_0898_si7021_humidity
                 name: Office Humidity
-                show_state: true
-                color: green
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 5
-            show:
-              labels: true
-            name: DewPoint
-            entities:
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+          - type: custom:apexcharts-card
+            graph_span: 48h
+            header:
+              show: true
+              title: Dew Point
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+            series:
               - entity: sensor.nodemcu_lounge_bme280_dewpoint
                 name: Lounge Dewpoint
-                show_state: true
-                color: yellow
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_dewpoint
                 name: Bedroom Dewpoint BME
-                show_state: true
-                color: red
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_dewpoint
                 name: Bedroom Dewpoint AM
-                show_state: true
-                color: cyan
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.sonoff1_2914_si7021_dewpoint
                 name: Kitchen Dewpoint
-                show_state: true
-                color: orange
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.sonoff3_0898_si7021_dewpoint
                 name: Office Dewpoint
-                show_state: true
-                color: green
-          - type: custom:mini-graph-card
-            hours_to_show: 48
-            points_per_hour: 5
-            show:
-              labels: true
-            name: Illuminance
-            entities:
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+          - type: custom:apexcharts-card
+            graph_span: 48h
+            header:
+              show: true
+              title: Illuminance
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+            series:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
                 name: Lounge Illuminance
-                show_state: true
-                color: pink
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
                 name: Bedroom Illuminance
-                show_state: true
-                color: red
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
       - type: vertical-stack
         cards:
 #          - type: picture-entity
