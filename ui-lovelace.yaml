@@ -13,7 +13,8 @@ views:
           - type: 'custom:config-template-card'
             entities:
               - sensor.last_successful_authentication
-              - sensor.cert_expiry_timestamp_homeautomation_casa_30443
+              - sensor.cert_expiry_ha_domain_days
+              - sensor.cert_expiry_ha_domain
             card:
               type: 'custom:hui-entities-card'
               title: System Information
