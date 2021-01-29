@@ -122,15 +122,51 @@ views:
                   green: 0
                   yellow: 35
                   red: 50
-          - type: history-graph
-            title: NUC Resources Graph
-            hours_to_show: 72
-            refresh_interval: 1800
-            entities:
-              - sensor.memory_use_percent
-              - sensor.nuc_memory_used_filtered
-              - sensor.processor_use
-              - sensor.nuc_processor_used_filtered
+          - type: custom:apexcharts-card
+            graph_span: 72h
+            header:
+              show: true
+              title: NUC Resources Graph
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+            series:
+              - entity: sensor.memory_use_percent
+                name: Percent Memory Used
+                type: line
+                group_by:
+                  func: avg
+                  duration: 5min
+              - entity: sensor.nuc_memory_used_filtered
+                name: Memory Use Filtered
+                type: line
+                group_by:
+                  func: avg
+                  duration: 5min
+              - entity: sensor.processor_use
+                name: Processor Used
+                type: line
+                group_by:
+                  func: avg
+                  duration: 5min
+              - entity: sensor.nuc_processor_used_filtered
+                name: Processor Used  Filtered
+                type: line
+                group_by:
+                  func: avg
+                  duration: 5min
           - type: entities
             title: NUC Resources
             show_header_toggle: false
@@ -545,6 +581,17 @@ views:
               stroke:
                 width: 3
                 curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
             series:
               - entity: sensor.sabnzbd_memory
                 name: Sabnzbd
@@ -673,6 +720,20 @@ views:
               stroke:
                 width: 3
                 curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
             series:
               - entity: sensor.speedtest_download
                 name: Download
@@ -688,7 +749,7 @@ views:
                   duration: 30min
               - entity: sensor.speedtest_ping
                 name: Ping
-                type: line
+                type: column
                 group_by:
                   func: avg
                   duration: 30min
@@ -782,6 +843,17 @@ views:
               stroke:
                 width: 3
                 curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
             series:
               - entity: sensor.daylengthchange
                 name: Change in Day Length
@@ -1036,57 +1108,33 @@ views:
               .sensor-1 .measurement {
                 font-size: 28px !important; 
               } 
-          - type: history-graph
-            title: Temperature BOM Gosford
-            hours_to_show: 48
-            refresh_interval: 300
-            entities:
-              - sensor.gosford_temp
-              - sensor.nodemcu_lounge_bme280_temperature
-              - sensor.nodemcu_bedroom_bme280_temperature
-              - sensor.nodemcu_bedroom_am2301_temperature
-              - sensor.sonoff1_2914_si7021_temperature
-              - sensor.sonoff3_0898_si7021_temperature  
-              - sensor.gosford_temp_feels_like
-          - type: history-graph
-            title: Outdoor Illuminance
-            hours_to_show: 48
-            refresh_interval: 300
-            entities:
-              - sensor.illuminance
-              - sensor.estimated_illuminance
-          - type: history-graph
-            title: Dew Point BOM Gosford
-            hours_to_show: 48
-            refresh_interval: 300
-            entities:
-              - sensor.dewpoint_outside
-              - sensor.nodemcu_lounge_bme280_dewpoint
-              - sensor.nodemcu_bedroom_bme280_dewpoint
-              - sensor.nodemcu_bedroom_am2301_dewpoint
-              - sensor.sonoff1_2914_si7021_dewpoint
-              - sensor.sonoff3_0898_si7021_dewpoint 
-              - sensor.gosford_rain_since_9am
-              - sensor.nodemcu_lounge_bme280_pressure
-              - sensor.nodemcu_bedroom_bme280_pressure
-              - sensor.gosford_humidity
-              - sensor.nodemcu_lounge_bme280_humidity
-              - sensor.nodemcu_bedroom_bme280_humidity
-              - sensor.nodemcu_bedroom_am2301_humidity
-              - sensor.sonoff1_2914_si7021_humidity
-              - sensor.sonoff3_0898_si7021_humidity
-              - sensor.gosford_gust_speed_kilometre
-              - sensor.gosford_wind_speed_kilometre
           - type: custom:apexcharts-card
             graph_span: 48h
             header:
               show: true
-              title: Temperature
+              title: Temperature BOM Gosford
             apex_config:
               stroke:
                 width: 3
                 curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
             series:
+              - entity: sensor.gosford_temp
+                name: Air Temp
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_temperature
                 name: Lounge Temperature
                 type: line
@@ -1117,15 +1165,149 @@ views:
                 group_by:
                   func: avg
                   duration: 12min
+              - entity: sensor.gosford_temp_feels_like
+                name: Feels Like
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
           - type: custom:apexcharts-card
             graph_span: 48h
             header:
               show: true
-              title: Pressure
+              title: Outdoor Illuminance
             apex_config:
               stroke:
                 width: 3
                 curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+            series:
+              - entity: sensor.illuminance
+                name: Outdoor Illuminance Educated Guessor
+                type: line
+                group_by:
+                  func: avg
+                  duration: 15min
+              - entity: sensor.estimated_illuminance
+                name: Estimated Illuminance
+                type: line
+                group_by:
+                  func: avg
+                  duration: 15min
+          - type: custom:apexcharts-card
+            graph_span: 48h
+            header:
+              show: true
+              title: Dew Point
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+            series:
+              - entity: sensor.dewpoint_outside
+                name: Dew Point
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+              - entity: sensor.nodemcu_lounge_bme280_dewpoint
+                name: Lounge BME280 DewPoint
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+              - entity: sensor.nodemcu_bedroom_bme280_dewpoint
+                name: Bedroom BME280 DewPoint
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+              - entity: sensor.nodemcu_bedroom_am2301_dewpoint
+                name: Bedroom AM2301 DewPoint
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+              - entity: sensor.sonoff1_2914_si7021_dewpoint
+                name: Kitchen Si7021 DewPoint
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+              - entity: sensor.sonoff3_0898_si7021_dewpoint
+                name: Office Si7021 DewPoint
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+          - type: custom:apexcharts-card
+            graph_span: 48h
+            header:
+              show: true
+              title: Rain Today
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+            series:
+              - entity: sensor.gosford_rain_since_9am
+                name: Rain since 9am 
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
+          - type: custom:apexcharts-card
+            graph_span: 48h
+            header:
+              show: true
+              title: Air Pressure
+            apex_config:
+              stroke:
+                width: 3
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
             series:
               - entity: sensor.nodemcu_lounge_bme280_pressure
                 name: Lounge Pressure
@@ -1154,33 +1336,50 @@ views:
               stroke:
                 width: 3
                 curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
             series:
+              - entity: sensor.gosford_humidity
+                name: Relative Humidity
+                type: line
+                group_by:
+                  func: avg
+                  duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_humidity
-                name: Lounge Humidity
+                name: Lounge BME280 Humidity
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_humidity
-                name: Bedroom Humidity BME
+                name: Bedroom BME280 Humidity
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_humidity
-                name: Bedroom Humidity AM
+                name: Bedroom AM2301 Humidity
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff1_2914_si7021_humidity
-                name: Kitchen Humidity
+                name: Kitchen Si7021 Humidity
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff3_0898_si7021_humidity
-                name: Office Humidity
+                name: Office Si7021 Humidity
                 type: line
                 group_by:
                   func: avg
@@ -1189,38 +1388,31 @@ views:
             graph_span: 48h
             header:
               show: true
-              title: Dew Point
+              title: Wind Speed
             apex_config:
               stroke:
                 width: 3
                 curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
             series:
-              - entity: sensor.nodemcu_lounge_bme280_dewpoint
-                name: Lounge Dewpoint
+              - entity: sensor.gosford_wind_speed_kilometre
+                name: Wind Speed
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
-              - entity: sensor.nodemcu_bedroom_bme280_dewpoint
-                name: Bedroom Dewpoint BME
-                type: line
-                group_by:
-                  func: avg
-                  duration: 12min
-              - entity: sensor.nodemcu_bedroom_am2301_dewpoint
-                name: Bedroom Dewpoint AM
-                type: line
-                group_by:
-                  func: avg
-                  duration: 12min
-              - entity: sensor.sonoff1_2914_si7021_dewpoint
-                name: Kitchen Dewpoint
-                type: line
-                group_by:
-                  func: avg
-                  duration: 12min
-              - entity: sensor.sonoff3_0898_si7021_dewpoint
-                name: Office Dewpoint
+              - entity: sensor.gosford_gust_speed_kilometre
+                name: Gust Speed
                 type: line
                 group_by:
                   func: avg
@@ -1234,6 +1426,17 @@ views:
               stroke:
                 width: 3
                 curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
             series:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
                 name: Lounge Illuminance
@@ -2724,30 +2927,66 @@ views:
           numeric: true
       - type: vertical-stack
         cards:
-          - type: history-graph
-            title: Fuel Prices Central Coast
-            entities:
-              - sensor.cc17249
-              - sensor.cc17340
-              - sensor.ccgw1
-              - sensor.ccgw2
-              - sensor.ccgw3
-              - sensor.cc2263
-              - sensor.cc523
-              - sensor.cc620
-              - sensor.cc622
-              - sensor.ccm11
-              - sensor.ccm12
-              - sensor.cc902
-          - type: history-graph
-            title: Fuel Prices Sydney
-            entities:
-              - sensor.syd17310
-              - sensor.syd18253
-              - sensor.syd2436
-              - sensor.syd643
-              - sensor.syd663
-              - sensor.syd721
+          - type: custom:apexcharts-card
+            graph_span: 24h
+            header: 
+              show: true
+              title: Fuel Prices Central Coast
+            apex_config:
+              stroke:
+                width: 3
+                curve: stepline
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+            series:
+              - entity: sensor.cc17249
+              - entity: sensor.cc17340
+              - entity: sensor.ccgw1
+              - entity: sensor.ccgw2
+              - entity: sensor.ccgw3
+              - entity: sensor.cc2263
+              - entity: sensor.cc523
+              - entity: sensor.cc620
+              - entity: sensor.cc622
+              - entity: sensor.ccm11
+              - entity: sensor.ccm12
+              - entity: sensor.cc902
+          - type: custom:apexcharts-card
+            graph_span: 24h
+            header: 
+              show: true
+              title: Fuel Prices Central Coast
+            apex_config:
+              stroke:
+                width: 3
+                curve: stepline
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+            series:
+              - entity: sensor.syd17310
+              - entity: sensor.syd18253
+              - entity: sensor.syd18424
+              - entity: sensor.syd2436
+              - entity: sensor.syd643
+              - entity: sensor.syd663
   - title: Medical Alerts
     background: center / cover no-repeat url("/local/images/covid19-background.jpg") fixed
     path: medical
