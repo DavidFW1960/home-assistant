@@ -854,6 +854,8 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.daylengthchange
                 name: Change in Day Length
@@ -1266,6 +1268,7 @@ views:
             header:
               show: true
               title: Rain Today
+              show_states: true
             apex_config:
               stroke:
                 width: 3
@@ -1281,6 +1284,8 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.gosford_rain_since_9am
                 name: Rain since 9am 
