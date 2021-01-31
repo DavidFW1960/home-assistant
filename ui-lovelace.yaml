@@ -123,11 +123,24 @@ views:
                   yellow: 35
                   red: 50
           - type: custom:apexcharts-card
-            graph_span: 72h
+            graph_span: 24h
             header:
               show: true
-              title: NUC Resources Graph
+              title: NUC Memory Graph
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -142,31 +155,75 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '10%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.memory_use_percent
                 name: Percent Memory Used
-                type: line
+                type: column
                 group_by:
                   func: avg
-                  duration: 5min
+                  duration: 15min
               - entity: sensor.nuc_memory_used_filtered
                 name: Memory Use Filtered
                 type: line
                 group_by:
                   func: avg
-                  duration: 5min
+                  duration: 15min
+          - type: custom:apexcharts-card
+            graph_span: 24h
+            header:
+              show: true
+              title: NUC Processor Graph
+            apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
+              stroke:
+                width: 3
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '10%'
+              legend:
+                showForSingleSeries: true
+            series:
               - entity: sensor.processor_use
                 name: Processor Used
-                type: line
+                type: column
                 group_by:
                   func: avg
-                  duration: 5min
+                  duration: 15min
               - entity: sensor.nuc_processor_used_filtered
                 name: Processor Used  Filtered
                 type: line
                 group_by:
                   func: avg
-                  duration: 5min
+                  duration: 15min
           - type: entities
             title: NUC Resources
             show_header_toggle: false
@@ -578,6 +635,19 @@ views:
               show: true
               title: Media Management
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -592,6 +662,9 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
             series:
               - entity: sensor.sabnzbd_memory
                 name: Sabnzbd
@@ -717,6 +790,19 @@ views:
               show: true
               title: Speedtestdotnet
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -734,6 +820,8 @@ views:
               plotOptions:
                 bar:
                   columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.speedtest_download
                 name: Download
@@ -840,6 +928,19 @@ views:
               title: Change in Day Length
               show_states: true
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -854,6 +955,9 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
               legend:
                 showForSingleSeries: true
             series:
@@ -1116,6 +1220,19 @@ views:
               show: true
               title: Temperature BOM Gosford
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -1130,6 +1247,11 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.gosford_temp
                 name: Air Temp
@@ -1179,6 +1301,19 @@ views:
               show: true
               title: Outdoor Illuminance
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -1193,6 +1328,11 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.illuminance
                 name: Outdoor Illuminance Educated Guessor
@@ -1212,6 +1352,19 @@ views:
               show: true
               title: Dew Point
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -1226,6 +1379,11 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.dewpoint_outside
                 name: Dew Point
@@ -1270,6 +1428,19 @@ views:
               title: Rain Today
               show_states: true
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -1284,6 +1455,9 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
               legend:
                 showForSingleSeries: true
             series:
@@ -1299,6 +1473,19 @@ views:
               show: true
               title: Air Pressure
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -1313,6 +1500,11 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.nodemcu_lounge_bme280_pressure
                 name: Lounge Pressure
@@ -1338,6 +1530,19 @@ views:
               show: true
               title: Humidity
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -1352,6 +1557,11 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.gosford_humidity
                 name: Relative Humidity
@@ -1395,6 +1605,19 @@ views:
               show: true
               title: Wind Speed
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -1409,6 +1632,11 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.gosford_wind_speed_kilometre
                 name: Wind Speed
@@ -1428,6 +1656,19 @@ views:
               show: true
               title: Illuminance
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
                 curve: smooth
@@ -1442,6 +1683,11 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
                 name: Lounge Illuminance
@@ -2938,9 +3184,22 @@ views:
               show: true
               title: Fuel Prices Central Coast
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
-                curve: stepline
+                curve: smooth
               chart:
                 zoom:
                   enabled: true
@@ -2952,6 +3211,11 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.cc17249
               - entity: sensor.cc17340
@@ -2971,9 +3235,22 @@ views:
               show: true
               title: Fuel Prices Central Coast
             apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
               stroke:
                 width: 3
-                curve: stepline
+                curve: smooth
               chart:
                 zoom:
                   enabled: true
@@ -2985,6 +3262,11 @@ views:
                     zoomout: true
                     pan: true
                     reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
             series:
               - entity: sensor.syd17310
               - entity: sensor.syd18253
