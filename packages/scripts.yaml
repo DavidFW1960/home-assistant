@@ -231,7 +231,7 @@ script:
     sequence:
     - data: {"addon": "a0d7b954_appdaemon"}
       service: hassio.addon_start
-    - data: {"addon": "2974f5cf_caddy2"}
+    - data: {"addon": "c80c7555_caddy-2"}
       service: hassio.addon_start
     - data: {"addon": "7be23ff5_dropbox_sync"}
       service: hassio.addon_start
