@@ -19,6 +19,7 @@ noctis-grey:
   secondary-text-color: '#BAC0C6'
   text-medium-light-color: '#A0A2A8'
   text-medium-color: '#80828A'
+  disabled-text-color: '#626569'
 
   # Main Colors
   app-header-background-color: 'var(--background-color)'
