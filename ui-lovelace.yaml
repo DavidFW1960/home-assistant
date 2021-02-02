@@ -163,15 +163,17 @@ views:
             series:
               - entity: sensor.memory_use_percent
                 name: Percent Memory Used
-                type: column
+                type: area
+                color: cyan
                 group_by:
-                  func: avg
+                  func: raw
                   duration: 15min
               - entity: sensor.nuc_memory_used_filtered
                 name: Memory Use Filtered
                 type: line
+                color: magenta
                 group_by:
-                  func: avg
+                  func: raw
                   duration: 15min
           - type: custom:apexcharts-card
             graph_span: 24h
@@ -214,15 +216,17 @@ views:
             series:
               - entity: sensor.processor_use
                 name: Processor Used
-                type: column
+                type: area
+                color: cyan
                 group_by:
-                  func: avg
+                  func: raw
                   duration: 15min
               - entity: sensor.nuc_processor_used_filtered
                 name: Processor Used  Filtered
                 type: line
+                color: magenta
                 group_by:
-                  func: avg
+                  func: raw
                   duration: 15min
           - type: entities
             title: NUC Resources
@@ -1300,6 +1304,7 @@ views:
             header:
               show: true
               title: Outdoor Illuminance
+            y_axis_precision: 0
             apex_config:
               responsive:
                 - breakpoint: 765
@@ -3199,7 +3204,7 @@ views:
                       height: auto
               stroke:
                 width: 3
-                curve: smooth
+                curve: stepline
               chart:
                 zoom:
                   enabled: true
@@ -3233,7 +3238,7 @@ views:
             graph_span: 24h
             header: 
               show: true
-              title: Fuel Prices Central Coast
+              title: Fuel Prices Sydney
             apex_config:
               responsive:
                 - breakpoint: 765
@@ -3250,7 +3255,7 @@ views:
                       height: auto
               stroke:
                 width: 3
-                curve: smooth
+                curve: stepline
               chart:
                 zoom:
                   enabled: true
