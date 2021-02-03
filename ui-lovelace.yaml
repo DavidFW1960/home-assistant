@@ -3223,17 +3223,29 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.cc17249
+                fill_raw: last
               - entity: sensor.cc17340
+                fill_raw: last
               - entity: sensor.ccgw1
+                fill_raw: last
               - entity: sensor.ccgw2
+                fill_raw: last
               - entity: sensor.ccgw3
+                fill_raw: last
               - entity: sensor.cc2263
+                fill_raw: last
               - entity: sensor.cc523
+                fill_raw: last
               - entity: sensor.cc620
+                fill_raw: last
               - entity: sensor.cc622
+                fill_raw: last
               - entity: sensor.ccm11
+                fill_raw: last
               - entity: sensor.ccm12
+                fill_raw: last
               - entity: sensor.cc902
+                fill_raw: last
           - type: custom:apexcharts-card
             graph_span: 24h
             header: 
@@ -3274,11 +3286,17 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.syd17310
+                fill_raw: last
               - entity: sensor.syd18253
+                fill_raw: last
               - entity: sensor.syd18424
+                fill_raw: last
               - entity: sensor.syd2436
+                fill_raw: last
               - entity: sensor.syd643
+                fill_raw: last
               - entity: sensor.syd663
+                fill_raw: last
   - title: Medical Alerts
     background: center / cover no-repeat url("/local/images/covid19-background.jpg") fixed
     path: medical
