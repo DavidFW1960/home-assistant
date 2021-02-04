@@ -575,9 +575,9 @@ automation:
     alias: New Docker Available
     trigger:
     - platform: template
-      value_template: "{{ states('sensor.docker_ce_version_available') != states('sensor.docker_ce_version_installed') }}"
+      value_template: "{{ states('sensor.docker_version_available') != states('sensor.docker_ce_version_installed') }}"
     condition: 
-    - "{{states('sensor.docker_ce_version_available') != 'unavailable'}}"
+    - "{{states('sensor.docker_version_available') != 'unavailable'}}"
     - "{{states('sensor.docker_ce_version_installed') != 'unavailable'}}"
     action:
     - service: notify.david_ios_notify
