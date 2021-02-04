@@ -514,20 +514,34 @@ views:
                     {% endif %}
                     ;
                   }
-              - entity: sensor.docker_ce_version_available
+              - entity: sensor.docker_version_available
                 tap_action:
                   action: url
                   url_path: https://github.com/moby/moby/releases
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states('sensor.docker_ce_version_available') != states('sensor.docker_ce_version_installed') %}
+                    {% if states('sensor.docker_version_available') != states('sensor.docker_ce_version_installed') %}
                       var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
                     {% endif %}
                     ;
                   }
+#             - entity: sensor.docker_ce_version_available
+#               tap_action:
+#                 action: url
+#                 url_path: https://github.com/moby/moby/releases
+#               style: |
+#                 :host {
+#                 --paper-item-icon-color:
+#                   {% if states('sensor.docker_ce_version_available') != states('sensor.docker_ce_version_installed') %}
+#                     var(--state-icon-active-color)
+#                   {% else %}
+#                     var(--state-icon-color)
+#                   {% endif %}
+#                   ;
+#                 }
               - entity: binary_sensor.hass_update_available
                 style: |
                   :host {
