@@ -319,6 +319,11 @@ sensor:
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
+  - platform: mqtt
+    name: "Docker Version Available"
+    state_topic: "docker-ce-version-available"
+    icon: mdi:docker
+    value_template: "{{ value_json.state }}"
 
 # Tasmota Firmware
 # Getting Firmware from JSON for Tasmota
