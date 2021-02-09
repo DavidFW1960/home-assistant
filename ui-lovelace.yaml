@@ -142,7 +142,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -162,6 +161,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.memory_use_percent
+                stroke_width: 3
+                opacity: 0.2
                 name: Percent Memory Used
                 type: area
                 color: cyan
@@ -169,6 +170,7 @@ views:
                   func: raw
                   duration: 15min
               - entity: sensor.nuc_memory_used_filtered
+                stroke_width: 3
                 name: Memory Use Filtered
                 type: line
                 color: magenta
@@ -195,7 +197,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -215,6 +216,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.processor_use
+                stroke_width: 3
+                opacity: 0.2
                 name: Processor Used
                 type: area
                 color: cyan
@@ -223,6 +226,7 @@ views:
                   duration: 15min
               - entity: sensor.nuc_processor_used_filtered
                 name: Processor Used  Filtered
+                stroke_width: 3
                 type: line
                 color: magenta
                 group_by:
@@ -514,14 +518,14 @@ views:
                     {% endif %}
                     ;
                   }
-              - entity: sensor.docker_version_available
+              - entity: sensor.docker_ce_version_moby_available
                 tap_action:
                   action: url
                   url_path: https://github.com/moby/moby/releases
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states('sensor.docker_version_available') != states('sensor.docker_ce_version_installed') %}
+                    {% if states('sensor.docker_ce_version_moby_available') != states('sensor.docker_ce_version_installed') %}
                       var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)
@@ -667,7 +671,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -685,18 +688,21 @@ views:
                   columnWidth: '50%'
             series:
               - entity: sensor.sabnzbd_memory
+                stroke_width: 3
                 name: Sabnzbd
                 type: line
                 group_by:
                   func: avg
                   duration: 1h
               - entity: sensor.sonarr_memory
+                stroke_width: 3
                 name: Sonarr
                 type: line
                 group_by:
                   func: avg
                   duration: 1h
               - entity: sensor.radarr_memory
+                stroke_width: 3
                 name: Radarr
                 type: line
                 group_by:
@@ -822,7 +828,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -842,18 +847,21 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.speedtest_download
+                stroke_width: 3
                 name: Download
                 type: line
                 group_by:
                   func: avg
                   duration: 30min
               - entity: sensor.speedtest_upload
+                stroke_width: 3
                 name: Upload
                 type: line
                 group_by:
                   func: avg
                   duration: 30min
               - entity: sensor.speedtest_ping
+                stroke_width: 3
                 name: Ping
                 type: column
                 group_by:
@@ -960,7 +968,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -980,6 +987,7 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.daylengthchange
+                stroke_width: 3
                 name: Change in Day Length
                 type: line
                 group_by:
@@ -1252,7 +1260,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -1272,42 +1279,49 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.gosford_temp
+                stroke_width: 3
                 name: Air Temp
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_temperature
+                stroke_width: 3
                 name: Lounge Temperature
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_temperature
+                stroke_width: 3
                 name: Bedroom Temperature BME
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_temperature
+                stroke_width: 3
                 name: Bedroom Temperature AM
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff1_2914_si7021_temperature
+                stroke_width: 3
                 name: Kitchen Temperature
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff3_0898_si7021_temperature
+                stroke_width: 3
                 name: Office Temperature
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.gosford_temp_feels_like
+                stroke_width: 3
                 name: Feels Like
                 type: line
                 group_by:
@@ -1334,7 +1348,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -1354,12 +1367,14 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.illuminance
+                stroke_width: 3
                 name: Outdoor Illuminance Educated Guessor
                 type: line
                 group_by:
                   func: avg
                   duration: 15min
               - entity: sensor.estimated_illuminance
+                stroke_width: 3
                 name: Estimated Illuminance
                 type: line
                 group_by:
@@ -1385,7 +1400,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -1405,36 +1419,42 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.dewpoint_outside
+                stroke_width: 3
                 name: Dew Point
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_dewpoint
+                stroke_width: 3
                 name: Lounge BME280 DewPoint
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_dewpoint
+                stroke_width: 3
                 name: Bedroom BME280 DewPoint
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_dewpoint
+                stroke_width: 3
                 name: Bedroom AM2301 DewPoint
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff1_2914_si7021_dewpoint
+                stroke_width: 3
                 name: Kitchen Si7021 DewPoint
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff3_0898_si7021_dewpoint
+                stroke_width: 3
                 name: Office Si7021 DewPoint
                 type: line
                 group_by:
@@ -1461,7 +1481,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -1481,6 +1500,7 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.gosford_rain_since_9am
+                stroke_width: 3
                 name: Rain since 9am 
                 type: line
                 group_by:
@@ -1506,7 +1526,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -1526,18 +1545,21 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.nodemcu_lounge_bme280_pressure
+                stroke_width: 3
                 name: Lounge Pressure
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_seapressure
+                stroke_width: 3
                 name: Sea Pressure
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_pressure
+                stroke_width: 3
                 name: Bedroom Pressure
                 type: line
                 group_by:
@@ -1563,7 +1585,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -1583,36 +1604,42 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.gosford_humidity
+                stroke_width: 3
                 name: Relative Humidity
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_humidity
+                stroke_width: 3
                 name: Lounge BME280 Humidity
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_humidity
+                stroke_width: 3
                 name: Bedroom BME280 Humidity
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_humidity
+                stroke_width: 3
                 name: Bedroom AM2301 Humidity
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff1_2914_si7021_humidity
+                stroke_width: 3
                 name: Kitchen Si7021 Humidity
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff3_0898_si7021_humidity
+                stroke_width: 3
                 name: Office Si7021 Humidity
                 type: line
                 group_by:
@@ -1638,7 +1665,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -1658,12 +1684,14 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.gosford_wind_speed_kilometre
+                stroke_width: 3
                 name: Wind Speed
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.gosford_gust_speed_kilometre
+                stroke_width: 3
                 name: Gust Speed
                 type: line
                 group_by:
@@ -1689,7 +1717,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: smooth
               chart:
                 zoom:
@@ -1709,12 +1736,14 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
+                stroke_width: 3
                 name: Lounge Illuminance
                 type: line
                 group_by:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
+                stroke_width: 3
                 name: Bedroom Illuminance
                 type: line
                 group_by:
@@ -3217,7 +3246,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: stepline
               chart:
                 zoom:
@@ -3237,28 +3265,40 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.cc17249
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc17340
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccgw1
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccgw2
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccgw3
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc2263
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc523
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc620
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc622
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccm11
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccm12
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc902
+                stroke_width: 3
                 fill_raw: last
           - type: custom:apexcharts-card
             graph_span: 24h
@@ -3280,7 +3320,6 @@ views:
                     chart:
                       height: auto
               stroke:
-                width: 3
                 curve: stepline
               chart:
                 zoom:
@@ -3300,16 +3339,22 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.syd17310
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd18253
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd18424
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd2436
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd643
+                stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd663
+                stroke_width: 3
                 fill_raw: last
   - title: Medical Alerts
     background: center / cover no-repeat url("/local/images/covid19-background.jpg") fixed
