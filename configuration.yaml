@@ -319,11 +319,20 @@ sensor:
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
-  - platform: mqtt
-    name: "Docker Version Available"
-    state_topic: "docker-ce-version-available"
-    icon: mdi:docker
-    value_template: "{{ value_json.state }}"
+  - platform: rest
+    resource: https://api.github.com/repos/moby/moby/releases
+    name: Docker-CE Version Moby Available
+    value_template: '{{ value_json.0.tag_name }}'
+    headers:
+      Authorization: !secret github-access-token-token
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+#  - platform: mqtt
+#    name: "Docker Version Available"
+#    state_topic: "docker-ce-version-available"
+#    icon: mdi:docker
+#    value_template: "{{ value_json.state }}"
 
 # Tasmota Firmware
 # Getting Firmware from JSON for Tasmota
