@@ -234,6 +234,11 @@ sensor:
         name: Tasmota
       - path: moby/moby
         name: Docker-CE
+  - platform: template
+    sensors:
+      github_docker_ce_available:
+        friendly_name: 'Github Docker-CE Available'
+        value_template: "{{ state_attr('sensor.github_docker_ce', 'latest_release_tag') }}"
 
 # Github Rate Limits
   - platform: rest
@@ -328,11 +333,11 @@ sensor:
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
-#  - platform: mqtt
-#    name: "Docker Version Available"
-#    state_topic: "docker-ce-version-available"
-#    icon: mdi:docker
-#    value_template: "{{ value_json.state }}"
+  - platform: mqtt
+    name: "Docker Version Available"
+    state_topic: "docker-ce-version-available"
+    icon: mdi:docker
+    value_template: "{{ value_json.state }}"
 
 # Tasmota Firmware
 # Getting Firmware from JSON for Tasmota
