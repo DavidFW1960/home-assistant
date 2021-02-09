@@ -249,6 +249,11 @@ sensor.docker_compose_version_available:
 sensor.docker_ce_version_moby_available:
   friendly_name: Docker-CE Version Available
   icon: mdi:docker
+sensor.docker_version_available:
+  friendly_name: Docker Version Available
+  icon: mdi:docker
+sensor.github_docker_ce_available:
+  icon: mdi:docker
 sensor.opennem_nsw1_battery_charging:
   friendly_name: Battery (Charging)
 sensor.opennem_nsw1_battery_discharging:
@@ -320,3 +325,5 @@ sensor.estimated_illuminance:
   icon: mdi:brightness-5
 sensor.ha_uptime:
   friendly_name: HA Last Started
+media_player.onkyo_receiver:
+  icon: mdi:play-network
