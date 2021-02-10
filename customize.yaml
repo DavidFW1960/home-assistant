@@ -44,27 +44,6 @@ switch.hifi:
 switch.harmony:
   friendly_name: Switch Harmony Remote On or Off
   icon: mdi:television-guide
-sensor.coffee_maker_firmware:
-  icon: mdi:coffee
-sensor.toothbrush_firmware:
-  icon: mdi:tooth
-sensor.xcy_mini_pc_firmware:
-  icon: mdi:desktop-classic
-sensor.tv_switch_firmware:
-  icon: mdi:television
-sensor.garage_door_firmware:
-  icon: mdi:garage
-sensor.alarm_firmware:
-  icon: mdi:shield-home
-sensor.nodemcu_lounge_firmware:
-  icon: mdi:thermometer
-sensor.nodemcu_bedroom_firmware:
-  icon: mdi:thermometer
-sensor.tasmota_firmware_version_available:
-  icon: mdi:script
-binary_sensor.tasmota_update_available:
-  friendly_name: Update Available Tasmota
-  device_class: problem
 input_boolean.alarmgaragedoor:
   friendly_name: Exit-Enter
   icon: mdi:security
@@ -244,16 +223,6 @@ sensor.lazylibrarian_memory_average:
 sensor.portainer_memory_average:
   friendly_name: Portainer
   icon: mdi:docker
-sensor.docker_compose_version_available:
-  icon: mdi:docker
-sensor.docker_ce_version_moby_available:
-  friendly_name: Docker-CE Version Available
-  icon: mdi:docker
-sensor.docker_version_available:
-  friendly_name: Docker Version Available
-  icon: mdi:docker
-sensor.github_docker_ce_available:
-  icon: mdi:docker
 sensor.opennem_nsw1_battery_charging:
   friendly_name: Battery (Charging)
 sensor.opennem_nsw1_battery_discharging:
@@ -310,12 +279,6 @@ sensor.beaufort:
   icon: mdi:weather-windy
 sensor.cert_expiry_timestamp:
   friendly_name: SSL Certificate Expires
-sensor.github_main:
-  icon: mdi:github
-  unit_of_measurement: calls
-sensor.github_hacs:
-  icon: mdi:github
-  unit_of_measurement: calls
 sensor.bom_fire_danger_summary:
   friendly_name: Danger Level Today
   icon: mdi:fire

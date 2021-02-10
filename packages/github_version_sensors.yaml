@@ -1,0 +1,219 @@
+# Sensors for Tasmota Version, Docker, Artisan from Github
+
+sensor:
+
+# Github Sensors
+  - platform: github
+    access_token: !secret github-access-token
+    entity_namespace: Github
+    scan_interval: 3600
+    repositories:
+      - path: artisan-roaster-scope/artisan
+        name: Artisan
+      - path: docker/compose
+        name: Docker Compose
+      - path: arendst/Tasmota
+        name: Tasmota
+      - path: moby/moby
+        name: Docker-CE
+  - platform: template
+    sensors:
+      github_docker_ce_available:
+        friendly_name: 'Github Docker-CE Available'
+        value_template: "{{ state_attr('sensor.github_docker_ce', 'latest_release_tag') }}"
+
+# Github Rate Limits
+  - platform: rest
+    resource: https://api.github.com/rate_limit
+    name: Github HACS
+    value_template: '{{ value_json.resources.core.used }}'
+    headers:
+      Authorization: !secret hacs2
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://api.github.com/rate_limit
+    name: Github Main
+    value_template: '{{ value_json.resources.core.used }}'
+    headers:
+      Authorization: !secret github-access-token-token
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+
+# Artisan Software Version
+# Getting Artisan version from JSON
+  - platform: rest
+    resource: https://api.github.com/repos/artisan-roaster-scope/artisan/releases/latest
+    name: Artisan Software Version
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Authorization: !secret github-access-token-token
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: mqtt
+    name: "Artisan Software Version Installed"
+    state_topic: "artisan_version"
+    icon: mdi:coffee
+    value_template: "{{ value_json.state }}"
+    
+# Docker Compose and Docker-CE Version Installed
+  - platform: mqtt
+    name: "Docker Compose Version Installed"
+    state_topic: "docker-compose-version"
+    icon: mdi:docker
+    value_template: "{{ value_json.state }}"
+  - platform: mqtt
+    name: "Docker-CE Version Installed"
+    state_topic: "docker-ce-version"
+    icon: mdi:docker
+    value_template: "{{ value_json.state }}"
+
+# Docker Compose Version
+  - platform: rest
+    resource: https://api.github.com/repos/docker/compose/releases/latest
+    name: Docker Compose Version Available
+    value_template: 'v{{ value_json.tag_name }}'
+    headers:
+      Authorization: !secret github-access-token-token
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+
+# Docker-CE Version
+  - platform: rest
+    resource: https://api.github.com/repos/moby/moby/releases/latest
+    name: Docker-CE Version Available
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Authorization: !secret github-access-token-token
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: rest
+    resource: https://api.github.com/repos/moby/moby/releases
+    name: Docker-CE Version Moby Available
+    value_template: '{{ value_json.0.tag_name }}'
+    headers:
+      Authorization: !secret github-access-token-token
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: mqtt
+    name: "Docker Version Available"
+    state_topic: "docker-ce-version-available"
+    icon: mdi:docker
+    value_template: "{{ value_json.state }}"
+
+# Tasmota Firmware
+# Getting Firmware from JSON for Tasmota
+  - platform: rest
+    resource: https://api.github.com/repos/arendst/Tasmota/releases/latest
+    name: Tasmota Firmware Version Available
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Authorization: !secret github-access-token-token
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
+  - platform: mqtt
+    name: "Coffee Maker Firmware"
+    state_topic: "sonoff1/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
+    name: "Toothbrush Firmware"
+    state_topic: "sonoff2/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
+    name: "XCY Mini PC Firmware"
+    state_topic: "sonoff3/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
+    name: "TV Switch Firmware"
+    state_topic: "sonoff4/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
+    name: "Garage Door Firmware"
+    state_topic: "sonoff5/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
+    name: "Alarm Firmware"
+    state_topic: "sonoff6/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
+    name: "Nodemcu Lounge Firmware"
+    state_topic: "nodemcu_lounge/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+  - platform: mqtt
+    name: "Nodemcu Bedroom Firmware"
+    state_topic: "nodemcu_bedroom/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+binary_sensor:
+  - platform: template
+    sensors:
+      tasmota_update_available:
+        value_template: >-
+          {{ (states('sensor.tasmota_firmware_version_available') > states('sensor.toothbrush_firmware')) or (states('sensor.tasmota_firmware_version_available') > states('sensor.coffee_maker_firmware')) or (states('sensor.tasmota_firmware_version_available') > states('sensor.garage_door_firmware')) or (states('sensor.tasmota_firmware_version_available') > states('sensor.alarm_firmware'))
+              }}
+
+homeassistant:
+  customize:
+    package.node_anchors:
+      common: &common
+        package: "github_version_sensors"
+
+    sensor.coffee_maker_firmware:
+      icon: mdi:coffee
+      <<: *common
+    sensor.toothbrush_firmware:
+      icon: mdi:tooth
+      <<: *common
+    sensor.xcy_mini_pc_firmware:
+      icon: mdi:desktop-classic
+      <<: *common
+    sensor.tv_switch_firmware:
+      icon: mdi:television
+      <<: *common
+    sensor.garage_door_firmware:
+      icon: mdi:garage
+      <<: *common
+    sensor.alarm_firmware:
+      icon: mdi:shield-home
+      <<: *common
+    sensor.nodemcu_lounge_firmware:
+      icon: mdi:thermometer
+      <<: *common
+    sensor.nodemcu_bedroom_firmware:
+      icon: mdi:thermometer
+      <<: *common
+    sensor.tasmota_firmware_version_available:
+      icon: mdi:script
+      <<: *common
+    binary_sensor.tasmota_update_available:
+      friendly_name: Update Available Tasmota
+      device_class: problem
+      <<: *common
+    sensor.docker_compose_version_available:
+      icon: mdi:docker
+      <<: *common
+    sensor.docker_ce_version_moby_available:
+      friendly_name: Docker-CE Version Available
+      icon: mdi:docker
+      <<: *common
+    sensor.docker_version_available:
+      friendly_name: Docker Version Available
+      icon: mdi:docker
+      <<: *common
+    sensor.github_docker_ce_available:
+      icon: mdi:docker
+      <<: *common
+    sensor.github_main:
+      icon: mdi:github
+      unit_of_measurement: calls
+      <<: *common
+    sensor.github_hacs:
+      icon: mdi:github
+      unit_of_measurement: calls
+      <<: *common
