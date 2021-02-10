@@ -762,21 +762,21 @@ views:
                 name: Download
                 type: line
                 group_by:
-                  func: avg
+                  func: raw
                   duration: 30min
               - entity: sensor.speedtest_upload
                 stroke_width: 3
                 name: Upload
                 type: line
                 group_by:
-                  func: avg
+                  func: raw
                   duration: 30min
               - entity: sensor.speedtest_ping
                 stroke_width: 3
                 name: Ping
                 type: column
                 group_by:
-                  func: avg
+                  func: raw
                   duration: 30min
           - type: entities
             title: Brother MFC-9335CDW
