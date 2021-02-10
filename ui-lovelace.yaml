@@ -1334,7 +1334,7 @@ views:
                     chart:
                       height: auto
               stroke:
-                curve: smooth
+                curve: stepline
               chart:
                 zoom:
                   enabled: true
@@ -1357,14 +1357,14 @@ views:
                 name: Outdoor Illuminance Educated Guessor
                 type: line
                 group_by:
-                  func: avg
+                  func: raw
                   duration: 15min
               - entity: sensor.estimated_illuminance
                 stroke_width: 3
                 name: Estimated Illuminance
                 type: line
                 group_by:
-                  func: avg
+                  func: raw
                   duration: 15min
           - type: custom:apexcharts-card
             graph_span: 48h
