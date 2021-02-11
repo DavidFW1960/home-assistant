@@ -478,7 +478,7 @@ automation:
     - at: '00:00:00'
       platform: time
     condition:
-    - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 1 }}"
+    - "{{ now().strftime('%H:%M') == '00:00' and ((now().weekday() == 1) or (now().weekday() == 2)) }}"
     action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.lizcovid
@@ -504,8 +504,8 @@ automation:
           entity_id: input_boolean.lizcovid
           state: 'on'        
         - condition: template
-          value_template: "{{ now().strftime('%H:%M') < '18:30' and now().weekday() == 1 }}"
-      - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 2 and (states('input_boolean.lizcovid') == 'on') }}"
+          value_template: "{{ now().strftime('%H:%M') < '18:30' and ((now().weekday() == 1) or (now().weekday() == 2)) }}"
+      - "{{ now().strftime('%H:%M') == '00:00' and ((now().weekday() == 2) or (now().weekday() == 3)) and (states('input_boolean.lizcovid') == 'on') }}"
     action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.lizcovid
