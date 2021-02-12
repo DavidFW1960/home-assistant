@@ -169,9 +169,6 @@ sensor.caddy_memory_average:
 sensor.configurator_memory_average:
   friendly_name: Configurator
   icon: mdi:docker
-sensor.dropbox_sync_memory_average:
-  friendly_name: Dropbox Sync
-  icon: mdi:docker
 sensor.glances_memory_average:
   friendly_name: Glances
   icon: mdi:docker

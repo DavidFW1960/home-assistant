@@ -171,7 +171,7 @@ automation:
       data:
         entity_id: switch.sonoff23110
   - id: '1519082437913'
-    alias: Make Snapshot & Copy Backups to Dropbox
+    alias: Make Snapshot
     trigger:
     - platform: time
       at: '00:30:00'
@@ -184,15 +184,6 @@ automation:
       data:
         message: Created backup named "Automated Backup {{ now().strftime('%Y-%m-%d')
           }}"
-    - delay: '03:00:00'
-    - service: hassio.addon_stdin
-      data:
-        addon: 7be23ff5_dropbox_sync
-        input:
-          command: upload
-    - service: notify.david_ios_notify
-      data:
-        message: Copied all new backups to Dropbox
   - id: '1532478833426'
     alias: Lights Off Failsafe
     trigger:

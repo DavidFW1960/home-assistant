@@ -233,8 +233,6 @@ script:
       service: hassio.addon_start
     - data: {"addon": "c80c7555_caddy_2"}
       service: hassio.addon_start
-    - data: {"addon": "7be23ff5_dropbox_sync"}
-      service: hassio.addon_start
     - data: {"addon": "core_configurator"}
       service: hassio.addon_start
     - data: {"addon": "a0d7b954_glances"}
@@ -511,11 +509,6 @@ script:
     sequence:
     - data: {"addon": "a0d7b954_vscode"}
       service: hassio.addon_restart
-  dropboxbackup:
-    alias: Initiate Dropbox Backup
-    sequence:
-    - data: {"addon":"7be23ff5_dropbox_sync","input":{"command":"upload"}}
-      service: hassio.addon_stdin
   #Light Scripts
   lounge100:
     alias: Lounge 100

@@ -122,18 +122,6 @@ sensor:
     duration:
       days: 2
   - platform: rest
-    resource: http://10.90.11.100:8126/container/addon_7be23ff5_dropbox_sync/stats
-    name: Dropbox Sync Memory
-    scan_interval: 900
-    value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
-    unit_of_measurement: 'MB'
-  - platform: average
-    name: dropbox_sync_memory_average
-    entities:
-      - sensor.dropbox_sync_memory
-    duration:
-      days: 2
-  - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_appdaemon/stats
     name: Appdaemon Memory
     scan_interval: 900

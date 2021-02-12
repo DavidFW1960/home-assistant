@@ -197,11 +197,11 @@ homeassistant:
       icon: mdi:docker
       <<: *common
     sensor.docker_ce_version_moby_available:
-      friendly_name: Docker-CE Version Available
+      friendly_name: Docker-CE Version Available (Extract Tag 0)
       icon: mdi:docker
       <<: *common
     sensor.docker_version_available:
-      friendly_name: Docker Version Available
+      friendly_name: Docker Version Available (Repo)
       icon: mdi:docker
       <<: *common
     sensor.github_docker_ce_available:
@@ -222,5 +222,6 @@ homeassistant:
       icon: mdi:docker
       <<: *common
     sensor.docker_ce_version_available:
+      friendly_name: Docker-CE Version Available (Latest Tag)
       icon: mdi:docker
       <<: *common
