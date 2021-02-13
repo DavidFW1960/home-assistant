@@ -569,7 +569,13 @@ automation:
       value_template: "{{ states('sensor.docker_ce_version_moby_available') != states('sensor.docker_ce_version_installed') }}"
     condition: 
     - "{{states('sensor.docker_version_available') != 'unavailable'}}"
+    - "{{states('sensor.docker_version_available') != 'Unavailable'}}"
+    - "{{states('sensor.docker_version_available') != 'unknown'}}"
+    - "{{states('sensor.docker_version_available') != 'Unknown'}}"
     - "{{states('sensor.docker_ce_version_installed') != 'unavailable'}}"
+    - "{{states('sensor.docker_ce_version_installed') != 'Unavailable'}}"
+    - "{{states('sensor.docker_ce_version_installed') != 'unknown'}}"
+    - "{{states('sensor.docker_ce_version_installed') != 'Unknown'}}"
     action:
     - service: notify.david_ios_notify
       data:
