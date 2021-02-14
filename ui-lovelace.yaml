@@ -437,7 +437,7 @@ views:
                 entities:
                   - sensor.docker_ce_version_installed
                   - sensor.docker_ce_version_available
-                  - sensor.docker_ce_version_moby_available
+#                  - sensor.docker_ce_version_moby_available
                   - sensor.docker_version_available
                   - sensor.github_docker_ce_available
                   - sensor.docker_compose_version_installed
