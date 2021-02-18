@@ -161,6 +161,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.memory_use_percent
+                show:
+                  extremas: true
                 stroke_width: 3
                 opacity: 0.2
                 name: Percent Memory Used
@@ -170,6 +172,8 @@ views:
                   func: raw
                   duration: 15min
               - entity: sensor.nuc_memory_used_filtered
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Memory Use Filtered
                 type: line
@@ -216,6 +220,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.processor_use
+                show:
+                  extremas: true
                 stroke_width: 3
                 opacity: 0.2
                 name: Processor Used
@@ -225,6 +231,8 @@ views:
                   func: raw
                   duration: 15min
               - entity: sensor.nuc_processor_used_filtered
+                show:
+                  extremas: true
                 name: Processor Used  Filtered
                 stroke_width: 3
                 type: line
@@ -604,6 +612,8 @@ views:
                   columnWidth: '50%'
             series:
               - entity: sensor.sabnzbd_memory
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Sabnzbd
                 type: line
@@ -611,6 +621,8 @@ views:
                   func: avg
                   duration: 1h
               - entity: sensor.sonarr_memory
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Sonarr
                 type: line
@@ -618,6 +630,8 @@ views:
                   func: avg
                   duration: 1h
               - entity: sensor.radarr_memory
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Radarr
                 type: line
@@ -763,6 +777,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.speedtest_download
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Download
                 type: line
@@ -770,6 +786,8 @@ views:
                   func: raw
                   duration: 30min
               - entity: sensor.speedtest_upload
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Upload
                 type: line
@@ -777,6 +795,8 @@ views:
                   func: raw
                   duration: 30min
               - entity: sensor.speedtest_ping
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Ping
                 type: column
@@ -978,6 +998,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.daylengthchange
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Change in Day Length
                 type: line
@@ -1270,6 +1292,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.gosford_temp
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Air Temp
                 type: line
@@ -1277,6 +1301,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_temperature
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Lounge Temperature
                 type: line
@@ -1284,6 +1310,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_temperature
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Bedroom Temperature BME
                 type: line
@@ -1291,6 +1319,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_temperature
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Bedroom Temperature AM
                 type: line
@@ -1298,6 +1328,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff1_2914_si7021_temperature
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Kitchen Temperature
                 type: line
@@ -1305,6 +1337,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff3_0898_si7021_temperature
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Office Temperature
                 type: line
@@ -1312,6 +1346,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.gosford_temp_feels_like
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Feels Like
                 type: line
@@ -1358,6 +1394,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.illuminance
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Outdoor Illuminance Educated Guessor
                 type: line
@@ -1365,6 +1403,8 @@ views:
                   func: raw
                   duration: 15min
               - entity: sensor.estimated_illuminance
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Estimated Illuminance
                 type: line
@@ -1410,6 +1450,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.dewpoint_outside
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Dew Point
                 type: line
@@ -1417,6 +1459,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_dewpoint
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Lounge BME280 DewPoint
                 type: line
@@ -1424,6 +1468,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_dewpoint
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Bedroom BME280 DewPoint
                 type: line
@@ -1431,6 +1477,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_dewpoint
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Bedroom AM2301 DewPoint
                 type: line
@@ -1438,6 +1486,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff1_2914_si7021_dewpoint
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Kitchen Si7021 DewPoint
                 type: line
@@ -1445,6 +1495,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff3_0898_si7021_dewpoint
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Office Si7021 DewPoint
                 type: line
@@ -1491,6 +1543,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.gosford_rain_since_9am
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Rain since 9am 
                 type: line
@@ -1536,6 +1590,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.nodemcu_lounge_bme280_pressure
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Lounge Pressure
                 type: line
@@ -1543,6 +1599,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_seapressure
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Sea Pressure
                 type: line
@@ -1550,6 +1608,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_pressure
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Bedroom Pressure
                 type: line
@@ -1595,6 +1655,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.gosford_humidity
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Relative Humidity
                 type: line
@@ -1602,6 +1664,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_lounge_bme280_humidity
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Lounge BME280 Humidity
                 type: line
@@ -1609,6 +1673,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bme280_humidity
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Bedroom BME280 Humidity
                 type: line
@@ -1616,6 +1682,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_am2301_humidity
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Bedroom AM2301 Humidity
                 type: line
@@ -1623,6 +1691,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff1_2914_si7021_humidity
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Kitchen Si7021 Humidity
                 type: line
@@ -1630,6 +1700,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.sonoff3_0898_si7021_humidity
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Office Si7021 Humidity
                 type: line
@@ -1675,6 +1747,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.gosford_wind_speed_kilometre
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Wind Speed
                 type: line
@@ -1682,6 +1756,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.gosford_gust_speed_kilometre
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Gust Speed
                 type: line
@@ -1727,6 +1803,8 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.nodemcu_lounge_bh1750_illuminance
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Lounge Illuminance
                 type: line
@@ -1734,6 +1812,8 @@ views:
                   func: avg
                   duration: 12min
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
+                show:
+                  extremas: true
                 stroke_width: 3
                 name: Bedroom Illuminance
                 type: line
@@ -3241,39 +3321,63 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.cc17249
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc17340
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccgw1
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccgw2
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccgw3
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc2263
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc523
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc620
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc622
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccm11
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.ccm12
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc902
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
           - type: custom:apexcharts-card
@@ -3315,21 +3419,33 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.syd17310
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd18253
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd18424
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd2436
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd643
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.syd663
+                show:
+                  extremas: true
                 stroke_width: 3
                 fill_raw: last
   - title: Medical Alerts
