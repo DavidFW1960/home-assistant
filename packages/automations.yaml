@@ -453,7 +453,7 @@ automation:
           message: "Update Available"
           title: "Addons"
   - id: '1593407614869'
-    alias: Is Liz at Work or Home?
+    alias: Is Liz at Work or Home (Tue)?
     trigger:
     - at: '09:00:00'
       platform: time
@@ -463,8 +463,32 @@ automation:
     - data:
         message: Is Liz Home or at Work today?
       service: notify.david_ios_notify
-  - id: 'covidon'
-    alias: Liz at Work
+  - id: '1593407614870'
+    alias: Is Liz at Work or Home (Wed)?
+    trigger:
+    - at: '09:00:00'
+      platform: time
+    condition:
+    - "{{ now().strftime('%H:%M') == '09:00' and now().weekday() == 2 }}"
+    action:
+    - data:
+        message: Is Liz Home or at Work today?
+      service: notify.david_ios_notify
+  - id: 'covidontue'
+    alias: Liz at Work (Tue)
+    trigger:
+    - at: '00:00:00'
+      platform: time
+    condition:
+    - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 1 }}"
+    action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.lizcovid
+    - data:
+        message: Liz is at Work today. Covid-Liz is On.
+      service: notify.david_ios_notify
+  - id: 'covidontuewed'
+    alias: Liz at Work (Tue & Wed)
     trigger:
     - at: '00:00:00'
       platform: time
