@@ -172,6 +172,15 @@ sensor:
       - !secret my_ipv6_network
       - 2001:4860:4000::/36      # Google
 
+# Sql Sensor
+  - platform: sql
+    db_url: !secret sqlurl
+    queries:
+      - name: DB size
+        query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
+        column: "value"
+        unit_of_measurement: MB
+
 # Home Assistant Uptime
   - platform: uptime
     name: HA Uptime
