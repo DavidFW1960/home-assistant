@@ -287,3 +287,5 @@ sensor.ha_uptime:
   friendly_name: HA Last Started
 media_player.onkyo_receiver:
   icon: mdi:play-network
+sensor.db_size:
+  icon: mdi:database
