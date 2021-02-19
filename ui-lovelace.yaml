@@ -15,6 +15,7 @@ views:
               - sensor.last_successful_authentication
               - sensor.cert_expiry_ha_domain_days
               - sensor.cert_expiry_ha_domain
+              - sensor.db_size
             card:
               type: 'custom:hui-entities-card'
               title: System Information
@@ -26,6 +27,7 @@ views:
                 - entity: sensor.cert_expiry_ha_domain
                   name: "${'Certificate Expiry Date'}"
                   format: datetime
+                - entity: sensor.db_size
           - type: entities
             title: Tasmota
             show_header_toggle: false
