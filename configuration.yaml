@@ -229,12 +229,37 @@ sensor:
     theaters: true
     max: 10
 
-# SSL Certificate Expiry Days
+# SSL Certificates Expiry Days
   - platform: template
     sensors:
       cert_expiry_ha_domain_days:
         friendly_name: 'SSL Certificate Expiry Days'
         value_template: "{{ (as_timestamp(states('sensor.cert_expiry_ha_domain')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+  - platform: template
+    sensors:
+      cert_expiry_cockpit_days:
+        friendly_name: 'SSL Cockpit Expiry Days'
+        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_cockpit')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+  - platform: template
+    sensors:
+      cert_expiry_glances_days:
+        friendly_name: 'SSL Glances Expiry Days'
+        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_glances')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+  - platform: template
+    sensors:
+      cert_expiry_logviewer_days:
+        friendly_name: 'SSL Logviewer Expiry Days'
+        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_logviewer')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+  - platform: template
+    sensors:
+      cert_expiry_portainer_days:
+        friendly_name: 'SSL Portainer Expiry Days'
+        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_portainer')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+  - platform: template
+    sensors:
+      cert_expiry_tasmoadmin_days:
+        friendly_name: 'SSL Tasmoadmin Expiry Days'
+        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_tasmoadmin')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
 
 # Artisan Charge
   - platform: mqtt

@@ -154,12 +154,6 @@ sensor.sonoff3_0898_si7021_humidity:
   friendly_name: Office Si7021 Humidity
 sensor.sonoff3_0898_si7021_dewpoint:
   friendly_name: Office Si7021 DewPoint
-sensor.cert_expiry_ha_domain:
-  friendly_name: SSL Certificate Expiry
-sensor.cert_expiry_ha_domain_days:
-  friendly_name: SSL Certificate Expiry Days
-  unit_of_measurement: days
-  icon: mdi:certificate
 sensor.appdaemon_memory_average:
   friendly_name: Appdaemon
   icon: mdi:docker
@@ -274,8 +268,6 @@ sensor.supervisor_installed:
 sensor.beaufort:
   friendly_name: Beaufort Rating
   icon: mdi:weather-windy
-sensor.cert_expiry_timestamp:
-  friendly_name: SSL Certificate Expires
 sensor.bom_fire_danger_summary:
   friendly_name: Danger Level Today
   icon: mdi:fire
@@ -289,3 +281,21 @@ media_player.onkyo_receiver:
   icon: mdi:play-network
 sensor.db_size:
   icon: mdi:database
+sensor.cert_expiry_ha_domain:
+  friendly_name: SSL Certificate Expiry
+sensor.cert_expiry_ha_domain_days:
+  friendly_name: SSL Certificate Expiry Days
+  unit_of_measurement: days
+  icon: mdi:calendar
+sensor.cert_expiry_timestamp:
+  friendly_name: SSL Certificate Expires
+sensor.cert_expiry_cockpit_days:
+  icon: mdi:calendar
+sensor.cert_expiry_glances_days:
+  icon: mdi:calendar
+sensor.cert_expiry_logviewer_days:
+  icon: mdi:calendar
+sensor.cert_expiry_portainer_days:
+  icon: mdi:calendar
+sensor.cert_expiry_tasmoadmin_days:
+  icon: mdi:calendar

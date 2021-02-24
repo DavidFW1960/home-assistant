@@ -23,10 +23,31 @@ views:
               entities:
                 - entity: sensor.last_successful_authentication
                 - entity: sensor.cert_expiry_ha_domain_days
-                  name: "${'Certificate Expires in'}"
+                  name: "${'HA Certificate Expires in'}"
                 - entity: sensor.cert_expiry_ha_domain
-                  name: "${'Certificate Expiry Date'}"
+                  name: "${'HA Certificate Expiry Date'}"
                   format: datetime
+                - type: custom:fold-entity-row
+                  head: 
+                    type: section
+                    label: Other SSL Certificates
+                  padding: 0
+                  entities:
+                    - sensor.cert_expiry_cockpit_days
+                    - entity: sensor.cert_expiry_cockpit
+                      format: datetime
+                    - sensor.cert_expiry_glances_days
+                    - entity: sensor.cert_expiry_glances
+                      format: datetime
+                    - sensor.cert_expiry_logviewer_days
+                    - entity: sensor.cert_expiry_logviewer
+                      format: datetime
+                    - sensor.cert_expiry_portainer_days
+                    - entity: sensor.cert_expiry_portainer
+                      format: datetime
+                    - sensor.cert_expiry_tasmoadmin_days
+                    - entity: sensor.cert_expiry_tasmoadmin
+                      format: datetime
                 - entity: sensor.db_size
           - type: entities
             title: Tasmota
