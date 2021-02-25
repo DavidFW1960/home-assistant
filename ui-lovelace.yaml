@@ -1430,6 +1430,7 @@ views:
                 show:
                   extremas: true
                 stroke_width: 3
+                fill_raw: last
                 name: Outdoor Illuminance Educated Guessor
                 type: line
                 group_by:
@@ -1439,6 +1440,7 @@ views:
                 show:
                   extremas: true
                 stroke_width: 3
+                fill_raw: last
                 name: Estimated Illuminance
                 type: line
                 group_by:
