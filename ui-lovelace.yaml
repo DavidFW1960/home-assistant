@@ -16,12 +16,23 @@ views:
               - sensor.cert_expiry_ha_domain_days
               - sensor.cert_expiry_ha_domain
               - sensor.db_size
+              - sensor.cert_expiry_cockpit_days
+              - sensor.cert_expiry_cockpit
+              - sensor.cert_expiry_glances_days
+              - sensor.cert_expiry_glances
+              - sensor.cert_expiry_logviewer_days
+              - sensor.cert_expiry_logviewer
+              - sensor.cert_expiry_portainer_days
+              - sensor.cert_expiry_portainer
+              - sensor.cert_expiry_tasmoadmin_days
+              - sensor.cert_expiry_tasmoadmin
             card:
               type: 'custom:hui-entities-card'
               title: System Information
               show_header_toggle: false
               entities:
                 - entity: sensor.last_successful_authentication
+                - entity: sensor.db_size
                 - entity: sensor.cert_expiry_ha_domain_days
                   name: "${'HA Certificate Expires in'}"
                 - entity: sensor.cert_expiry_ha_domain
@@ -48,7 +59,6 @@ views:
                     - sensor.cert_expiry_tasmoadmin_days
                     - entity: sensor.cert_expiry_tasmoadmin
                       format: datetime
-                - entity: sensor.db_size
           - type: entities
             title: Tasmota
             show_header_toggle: false
