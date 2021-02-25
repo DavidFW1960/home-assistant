@@ -11,5 +11,6 @@
     "documentation": "https://github.com/Limych/ha-average",
     "domain": "average",
     "name": "Average",
-    "requirements": []
+    "requirements": [],
+    "version": "1.6.8"
 }

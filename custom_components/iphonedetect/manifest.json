@@ -4,5 +4,6 @@
   "documentation": "https://github.com/mudape/iphonedetect",
   "dependencies": [],
   "codeowners": ["@mudape"],
-  "requirements": []
+  "requirements": [],
+  "version": "1.2.5"
 } 
