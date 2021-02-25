@@ -291,16 +291,8 @@ sabnzbd:
 tts:
   - platform: google_translate
 
-# Xiaomi Switches
+# Switches
 switch:
-  - platform: xiaomi_miio
-    name: Home Assistant
-    host: !secret homeassistant-ip
-    token: !secret homeassistant-token
-  - platform: xiaomi_miio
-    name: VPN Router
-    host: !secret vpnrouter-ip
-    token: !secret vpnrouter-token
 
 # Template Switch for Harmony Remote
   - platform: template
