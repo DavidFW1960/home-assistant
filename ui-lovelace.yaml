@@ -478,8 +478,8 @@ views:
                 entities:
                   - sensor.docker_ce_version_installed
                   - sensor.docker_ce_version_available
-#                  - sensor.docker_ce_version_moby_available
-                  - sensor.docker_version_available
+                  - sensor.docker_ce_version_moby_available
+#                  - sensor.docker_version_available # repo via mqtt
                   - sensor.github_docker_ce_available
                   - sensor.docker_compose_version_installed
               - entity: sensor.docker_compose_version_available
@@ -496,14 +496,14 @@ views:
                     {% endif %}
                     ;
                   }
-              - entity: sensor.docker_ce_version_moby_available
+              - entity: sensor.docker_version_available
                 tap_action:
                   action: url
                   url_path: https://github.com/moby/moby/releases
                 style: |
                   :host {
                   --paper-item-icon-color:
-                    {% if states('sensor.docker_ce_version_moby_available') != states('sensor.docker_ce_version_installed') %}
+                    {% if states('sensor.docker_version_available') != states('sensor.docker_ce_version_installed') %}
                       var(--state-icon-active-color)
                     {% else %}
                       var(--state-icon-color)

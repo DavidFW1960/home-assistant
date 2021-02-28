@@ -84,6 +84,7 @@ sensor:
   - platform: rest
     resource: https://api.github.com/repos/moby/moby/releases/latest
     name: Docker-CE Version Available
+# friendly_name: Docker-CE Version Available (Latest Tag)
     value_template: '{{ value_json.tag_name }}'
     headers:
       Authorization: !secret github-access-token-token
@@ -93,6 +94,7 @@ sensor:
   - platform: rest
     resource: https://api.github.com/repos/moby/moby/releases
     name: Docker-CE Version Moby Available
+# friendly_name: Docker-CE Version Available (Extract Tag 0)
     value_template: '{{ value_json.0.tag_name }}'
     headers:
       Authorization: !secret github-access-token-token
@@ -101,6 +103,7 @@ sensor:
       User-Agent: Home Assistant REST sensor
   - platform: mqtt
     name: "Docker Version Available"
+# friendly_name: Docker Version Available (Repo)
     state_topic: "docker-ce-version-available"
     icon: mdi:docker
     value_template: "{{ value_json.state }}"
