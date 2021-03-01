@@ -231,7 +231,7 @@ script:
     sequence:
     - data: {"addon": "a0d7b954_appdaemon"}
       service: hassio.addon_start
-    - data: {"addon": "c80c7555_caddy_2"}
+    - data: {"addon": "c80c7555_caddy-2"}
       service: hassio.addon_start
     - data: {"addon": "core_configurator"}
       service: hassio.addon_start
