@@ -2733,6 +2733,14 @@ views:
               - states['sensor.sonoff4_0851_status'].attributes['MqttCount']
               - states['sensor.sonoff4_0851_status'].attributes['WiFi LinkCount']
               - states['sensor.sonoff4_0851_status'].state
+              - states['sensor.sonoff1_2914_status'].attributes['Signal (dBm)']
+              - states['sensor.sonoff2_3110_status'].attributes['Signal (dBm)']
+              - states['sensor.sonoff5_1083_status'].attributes['Signal (dBm)']
+              - states['sensor.sonoff6_3719_status'].attributes['Signal (dBm)']
+              - states['sensor.nodemcu_lounge_status'].attributes['Signal (dBm)']
+              - states['sensor.nodemcu_bedroom_status'].attributes['Signal (dBm)']
+              - states['sensor.sonoff3_0898_status'].attributes['Signal (dBm)']
+              - states['sensor.sonoff4_0851_status'].attributes['Signal (dBm)']
             entities:
               - sensor.sonoff1_2914_status
               - sensor.sonoff2_3110_status
@@ -2748,28 +2756,28 @@ views:
               show_header_toggle: false
               entities:
                 - entity: sensor.sonoff1_2914_status
-                  name: "${'Coffee' + '\xa0'.repeat(16) + 'MQTT ' + vars[0] + '\xa0'.repeat(4) + 'WiFi ' + vars[1] + '\xa0'.repeat(3) + ((parseInt(vars[2]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[2] >= 100 ? 'Excellent' : vars[2] >= 80 ? 'Good' : vars[2] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Coffee' + '\xa0'.repeat(16) + 'MQTT ' + vars[0] + '\xa0'.repeat(4) + 'WiFi ' + vars[1] + '\xa0'.repeat(3) + vars[24] + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[2] >= 100 ? 'Excellent' : vars[2] >= 80 ? 'Good' : vars[2] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[2] >= 100 ? 'mdi:wifi' : vars[2] >= 80 ? 'mdi:wifi-strength-3' : vars[2] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.sonoff2_3110_status
-                  name: "${'Toothbrush' + '\xa0'.repeat(7) + 'MQTT ' + vars[3] + '\xa0'.repeat(4) + 'WiFi ' + vars[4] + '\xa0'.repeat(3) + ((parseInt(vars[5]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[5] >= 100 ? 'Excellent' : vars[5] >= 80 ? 'Good' : vars[5] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Toothbrush' + '\xa0'.repeat(7) + 'MQTT ' + vars[3] + '\xa0'.repeat(4) + 'WiFi ' + vars[4] + '\xa0'.repeat(3) + vars[25] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[5] >= 100 ? 'Excellent' : vars[5] >= 80 ? 'Good' : vars[5] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[5] >= 100 ? 'mdi:wifi' : vars[5] >= 80 ? 'mdi:wifi-strength-3' : vars[5] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.sonoff5_1083_status
-                  name: "${'Garage' + '\xa0'.repeat(15) + 'MQTT ' + vars[6] + '\xa0'.repeat(4) + 'WiFi ' + vars[7] + '\xa0'.repeat(3) + ((parseInt(vars[8]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[8] >= 100 ? 'Excellent' : vars[8] >= 80 ? 'Good' : vars[8] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Garage' + '\xa0'.repeat(15) + 'MQTT ' + vars[6] + '\xa0'.repeat(4) + 'WiFi ' + vars[7] + '\xa0'.repeat(3) + vars[26] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[8] >= 100 ? 'Excellent' : vars[8] >= 80 ? 'Good' : vars[8] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[8] >= 100 ? 'mdi:wifi' : vars[8] >= 80 ? 'mdi:wifi-strength-3' : vars[8] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.sonoff6_3719_status
-                  name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + vars[27] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.nodemcu_lounge_status
-                  name: "${'Weather' + '\xa0'.repeat(12) + 'MQTT ' + vars[12] + '\xa0'.repeat(4) + 'WiFi ' + vars[13] + '\xa0'.repeat(3) + ((parseInt(vars[14]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[14] >= 100 ? 'Excellent' : vars[14] >= 80 ? 'Good' : vars[14] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Weather' + '\xa0'.repeat(12) + 'MQTT ' + vars[12] + '\xa0'.repeat(4) + 'WiFi ' + vars[13] + '\xa0'.repeat(3) + vars[28] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[14] >= 100 ? 'Excellent' : vars[14] >= 80 ? 'Good' : vars[14] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[14] >= 100 ? 'mdi:wifi' : vars[14] >= 80 ? 'mdi:wifi-strength-3' : vars[14] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.nodemcu_bedroom_status
-                  name: "${'Bedroom' + '\xa0'.repeat(10) + 'MQTT ' + vars[15] + '\xa0'.repeat(4) + 'WiFi ' + vars[16] + '\xa0'.repeat(3) + ((parseInt(vars[17]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[17] >= 100 ? 'Excellent' : vars[17] >= 80 ? 'Good' : vars[17] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Bedroom' + '\xa0'.repeat(10) + 'MQTT ' + vars[15] + '\xa0'.repeat(4) + 'WiFi ' + vars[16] + '\xa0'.repeat(3) + vars[29] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[17] >= 100 ? 'Excellent' : vars[17] >= 80 ? 'Good' : vars[17] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[17] >= 100 ? 'mdi:wifi' : vars[17] >= 80 ? 'mdi:wifi-strength-3' : vars[17] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.sonoff3_0898_status
-                  name: "${'Office' + '\xa0'.repeat(16) + 'MQTT ' + vars[18] + '\xa0'.repeat(4) + 'WiFi ' + vars[19] + '\xa0'.repeat(3) + ((parseInt(vars[20]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[20] >= 100 ? 'Excellent' : vars[20] >= 80 ? 'Good' : vars[20] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'Office' + '\xa0'.repeat(16) + 'MQTT ' + vars[18] + '\xa0'.repeat(4) + 'WiFi ' + vars[19] + '\xa0'.repeat(3) + vars[30] + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[20] >= 100 ? 'Excellent' : vars[20] >= 80 ? 'Good' : vars[20] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[20] >= 100 ? 'mdi:wifi' : vars[20] >= 80 ? 'mdi:wifi-strength-3' : vars[20] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
                 - entity: sensor.sonoff4_0851_status
-                  name: "${'TV' + '\xa0'.repeat(21) + 'MQTT ' + vars[21] + '\xa0'.repeat(4) + 'WiFi ' + vars[22] + '\xa0'.repeat(3) + ((parseInt(vars[23]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[23] >= 100 ? 'Excellent' : vars[23] >= 80 ? 'Good' : vars[23] >= 60 ? 'Fair' : 'Weak' )}"
+                  name: "${'TV' + '\xa0'.repeat(21) + 'MQTT ' + vars[21] + '\xa0'.repeat(4) + 'WiFi ' + vars[22] + '\xa0'.repeat(3) + vars[31] + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[23] >= 100 ? 'Excellent' : vars[23] >= 80 ? 'Good' : vars[23] >= 60 ? 'Fair' : 'Weak' )}"
                   icon: "${vars[23] >= 100 ? 'mdi:wifi' : vars[23] >= 80 ? 'mdi:wifi-strength-3' : vars[23] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
   - title: Media
     path: media
