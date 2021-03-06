@@ -80,16 +80,17 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /tasmoadmin
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states('binary_sensor.tasmota_update_available') == 'on' %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states('binary_sensor.tasmota_update_available') == 'on' %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - entity: sensor.tasmota_firmware_version_available
                 tap_action:
                   action: url
@@ -99,30 +100,32 @@ views:
                   action: navigate
                   navigation_path: /tasmoadmin
                 state_color: true
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states('binary_sensor.tasmota_update_available') == 'on' %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states('binary_sensor.tasmota_update_available') == 'on' %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - entity: sensor.artisan_software_version
                 tap_action:
                   action: url
                   url_path: https://github.com/artisan-roaster-scope/artisan/releases
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if (states(config.entity) != states('sensor.artisan_software_version_installed')) and (states(config.entity) != 'continuous') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if (states(config.entity) != states('sensor.artisan_software_version_installed')) and (states(config.entity) != 'continuous') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
           - type: horizontal-stack
             cards:
               - type: gauge
@@ -320,18 +323,19 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /hassio/dashboard
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity) != states('sensor.current_ha_beta') %}
-                      var(--state-icon-active-color)
-                    {% elif states(config.entity) != states('sensor.hass_available_to_install_version') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) != states('sensor.current_ha_beta') %}
+                        var(--state-icon-active-color)
+                      {% elif states(config.entity) != states('sensor.hass_available_to_install_version') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -345,16 +349,17 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /hassio/dashboard
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity) != states('sensor.current_supervisor_beta') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) != states('sensor.current_supervisor_beta') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -368,16 +373,17 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /hassio/dashboard
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity) != states('sensor.current_dns_beta') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) != states('sensor.current_dns_beta') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -391,16 +397,17 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /hassio/dashboard
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity) != states('sensor.current_audio_beta') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) != states('sensor.current_audio_beta') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -414,16 +421,17 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /hassio/dashboard
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity) != states('sensor.current_cli_beta') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) != states('sensor.current_cli_beta') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -435,16 +443,17 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /hassio/dashboard
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity) != states('sensor.current_multicast_latest') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) != states('sensor.current_multicast_latest') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - type: custom:fold-entity-row
                 head: 
                   type: section
@@ -456,16 +465,17 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /hassio/dashboard
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity) != states('sensor.current_observer_latest') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) != states('sensor.current_observer_latest') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
           - type: entities
             show_header_toggle: false
             title: Docker Updates and Github Calls
@@ -486,52 +496,56 @@ views:
                 tap_action:
                   action: url
                   url_path: https://github.com/docker/compose/releases
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states('sensor.docker_compose_version_available') != states('sensor.docker_compose_version_installed') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states('sensor.docker_compose_version_available') != states('sensor.docker_compose_version_installed') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - entity: sensor.docker_version_available
                 tap_action:
                   action: url
                   url_path: https://github.com/moby/moby/releases
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states('sensor.docker_version_available') != states('sensor.docker_ce_version_installed') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states('sensor.docker_version_available') != states('sensor.docker_ce_version_installed') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - entity: binary_sensor.hass_update_available
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity) == 'on' %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) == 'on' %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - entity: binary_sensor.updater
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity) == 'on' %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) == 'on' %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - entity: sensor.github_main
               - entity: sensor.github_hacs
           - type: entities
@@ -542,16 +556,17 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /hassio/dashboard
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity)|int > 0 %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity)|int > 0 %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
           - type: custom:list-card
             entity: sensor.supervisor_installed
             title: HA Addons
@@ -567,16 +582,17 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /hacs/entry
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if states(config.entity)|int > 0 %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity)|int > 0 %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
           - type: custom:list-card
             entity: sensor.hacs
             title: HA Community Store
@@ -862,12 +878,13 @@ views:
                       indicator: 'off'
                       name: 'off'
                     stack: horizontal
-                    style: |-
-                      bar-card-value {
-                        margin-top: auto;
-                        margin-bottom: auto;
-                        font-weight: bold;
-                      }
+                    card_mod:
+                      style: |-
+                        bar-card-value {
+                          margin-top: auto;
+                          margin-bottom: auto;
+                          font-weight: bold;
+                        }
                   - type: picture-elements
                     image: /local/printer/blank.png
                     elements:
@@ -878,13 +895,14 @@ views:
                           left: 50%
                           width: 100%
                           filter: 'drop-shadow(2px 2px 5px rgb(100, 100, 100, 1)'
-                    style: |
-                      ha-card {
-                        border-radius: 0;
-                        box-shadow: none;
-                        background: transparent;
-                        height: 100%;
-                      }
+                    card_mod:
+                      style: |
+                        ha-card {
+                          border-radius: 0;
+                          box-shadow: none;
+                          background: transparent;
+                          height: 100%;
+                        }
               - type: 'custom:hui-horizontal-stack-card'
                 cards:
                   - entities:
@@ -958,27 +976,29 @@ views:
                 - entity: sun.sun
                   name: "${'Sun Elevation:' + '\xa0'.repeat(2) + states['sun.sun'].attributes['elevation'] + '°' }"
                   state_color: false
-                  style: |
-                    :host {
-                    --paper-item-icon-color:
-                      {% if states('sun.sun') == 'above_horizon' %}
-                        rgb(255, 223, 0)
-                      {% else %}
-                        var(--state-icon-color)
-                      {% endif %}
-                      ;
-                    }
+                  card_mod:
+                    style: |
+                      :host {
+                      --paper-item-icon-color:
+                        {% if states('sun.sun') == 'above_horizon' %}
+                          rgb(255, 223, 0)
+                        {% else %}
+                          var(--state-icon-color)
+                        {% endif %}
+                        ;
+                      }
                 - entity: binary_sensor.workday_sensor
-                  style: |
-                    :host {
-                    --paper-item-icon-color:
-                      {% if states('binary_sensor.workday_sensor') == 'on' %}
-                        rgb(255, 223, 0)
-                      {% else %}
-                        var(--state-icon-color)
-                      {% endif %}
-                      ;
-                    }
+                  card_mod:
+                    style: |
+                      :host {
+                      --paper-item-icon-color:
+                        {% if states('binary_sensor.workday_sensor') == 'on' %}
+                          rgb(255, 223, 0)
+                        {% else %}
+                          var(--state-icon-color)
+                        {% endif %}
+                        ;
+                      }
                 - entity: sensor.illuminance
                 - entity: sensor.estimated_illuminance
                 - entity: sensor.sunrisetoday
@@ -1282,10 +1302,11 @@ views:
               north:
                 show: true
                 offset: 0
-            style: |
-              .sensor-1 .measurement {
-                font-size: 28px !important; 
-              } 
+            card_mod:
+              style: |
+                .sensor-1 .measurement {
+                  font-size: 28px !important; 
+                } 
           - type: custom:apexcharts-card
             graph_span: 48h
             header:
@@ -1909,15 +1930,16 @@ views:
             entities:
               - entity: binary_sensor.fire_danger_in_greater_sydney_region_fire_ban_today
                 state_color: true
-                style: |
-                  :host {
-                    {% if states('binary_sensor.fire_danger_in_greater_sydney_region_fire_ban_today') == 'on' %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                      {% if states('binary_sensor.fire_danger_in_greater_sydney_region_fire_ban_today') == 'on' %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - sensor.bom_fire_danger_summary
           - type: conditional
@@ -2231,20 +2253,21 @@ views:
               - light.office
               - light.desk
           - type: markdown
-            style:
-              ha-markdown:
-                $: |
-                  h1 {
-                    display: block;
-                    letter-spacing: -0.012em;
-                    line-height: 32px;
-                    font-size: 24px;
-                    margin-block-start: 0.83em;
-                    margin-block-end: 0.83em;
-                    margin-inline-start: 0px;
-                    margin-inline-end: 0px;
-                    font-weight: normal;
-                  }
+            card_mod:
+              style:
+                ha-markdown:
+                  $: |
+                    h1 {
+                      display: block;
+                      letter-spacing: -0.012em;
+                      line-height: 32px;
+                      font-size: 24px;
+                      margin-block-start: 0.83em;
+                      margin-block-end: 0.83em;
+                      margin-inline-start: 0px;
+                      margin-inline-end: 0px;
+                      font-weight: normal;
+                    }
             content: >
               # Tasmota Scripts
           - type: horizontal-stack
@@ -2363,16 +2386,17 @@ views:
               - entity: remote.harmony_hub
                 type: "custom:template-entity-row"
                 secondary: "{{ state_attr('remote.harmony_hub', 'current_activity') }}"
-                style: |
-                  :host {
-                  --paper-item-icon-color:
-                    {% if is_state('switch.harmony', 'on') %}
-                      var(--state-icon-active-color)
-                    {% else %}
-                      var(--state-icon-color)
-                    {% endif %}
-                    ;
-                  }
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if is_state('switch.harmony', 'on') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
           - type: entities
             title: Overrides
             show_header_toggle: false
@@ -2498,20 +2522,21 @@ views:
             entities:
               - input_select.theme_switcher
           - type: markdown
-            style:
-              ha-markdown:
-                $: |
-                  h1 {
-                    display: block;
-                    letter-spacing: -0.012em;
-                    line-height: 32px;
-                    font-size: 24px;
-                    margin-block-start: 0.83em;
-                    margin-block-end: 0.83em;
-                    margin-inline-start: 0px;
-                    margin-inline-end: 0px;
-                    font-weight: normal;
-                  }
+            card_mod:
+              style:
+                ha-markdown:
+                  $: |
+                    h1 {
+                      display: block;
+                      letter-spacing: -0.012em;
+                      line-height: 32px;
+                      font-size: 24px;
+                      margin-block-start: 0.83em;
+                      margin-block-end: 0.83em;
+                      margin-inline-start: 0px;
+                      margin-inline-end: 0px;
+                      font-weight: normal;
+                    }
             content: >
               # Reload Components
           - type: horizontal-stack
@@ -2960,20 +2985,21 @@ views:
       - type: vertical-stack
         cards:
           - type: markdown
-            style:
-              ha-markdown:
-                $: |
-                  h1 {
-                    display: block;
-                    letter-spacing: -0.012em;
-                    line-height: 32px;
-                    font-size: 24px;
-                    margin-block-start: 0.83em;
-                    margin-block-end: 0.83em;
-                    margin-inline-start: 0px;
-                    margin-inline-end: 0px;
-                    font-weight: normal;
-                  }
+            card_mod:
+              style:
+                ha-markdown:
+                  $: |
+                    h1 {
+                      display: block;
+                      letter-spacing: -0.012em;
+                      line-height: 32px;
+                      font-size: 24px;
+                      margin-block-start: 0.83em;
+                      margin-block-end: 0.83em;
+                      margin-inline-start: 0px;
+                      margin-inline-end: 0px;
+                      font-weight: normal;
+                    }
             content: >
               # Chromecast on LG TV
           - type: horizontal-stack
@@ -3037,20 +3063,21 @@ views:
                   action: call-service
                   service: script.castoff
           - type: markdown
-            style:
-              ha-markdown:
-                $: |
-                  h1 {
-                    display: block;
-                    letter-spacing: -0.012em;
-                    line-height: 32px;
-                    font-size: 24px;
-                    margin-block-start: 0.83em;
-                    margin-block-end: 0.83em;
-                    margin-inline-start: 0px;
-                    margin-inline-end: 0px;
-                    font-weight: normal;
-                  }
+            card_mod:
+              style:
+                ha-markdown:
+                  $: |
+                    h1 {
+                      display: block;
+                      letter-spacing: -0.012em;
+                      line-height: 32px;
+                      font-size: 24px;
+                      margin-block-start: 0.83em;
+                      margin-block-end: 0.83em;
+                      margin-inline-start: 0px;
+                      margin-inline-end: 0px;
+                      font-weight: normal;
+                    }
             content: >
               # Chromecast on Office TV
           - type: horizontal-stack
@@ -3114,20 +3141,21 @@ views:
                   action: call-service
                   service: script.castoff
           - type: markdown
-            style:
-              ha-markdown:
-                $: |
-                  h1 {
-                    display: block;
-                    letter-spacing: -0.012em;
-                    line-height: 32px;
-                    font-size: 24px;
-                    margin-block-start: 0.83em;
-                    margin-block-end: 0.83em;
-                    margin-inline-start: 0px;
-                    margin-inline-end: 0px;
-                    font-weight: normal;
-                  }
+            card_mod:
+              style:
+                ha-markdown:
+                  $: |
+                    h1 {
+                      display: block;
+                      letter-spacing: -0.012em;
+                      line-height: 32px;
+                      font-size: 24px;
+                      margin-block-start: 0.83em;
+                      margin-block-end: 0.83em;
+                      margin-inline-start: 0px;
+                      margin-inline-end: 0px;
+                      font-weight: normal;
+                    }
             content: >
               # Foxtel
           - type: horizontal-stack
