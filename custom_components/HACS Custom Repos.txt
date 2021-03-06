@@ -1,0 +1,10 @@
+HACS Custom repos
+
+Integrations
+miguelangel-nubla/home-assistant-dewpoint
+pnbruckner/ha-sun2
+pnbruckner/ha-illuminance
+
+Frontend
+theOzzieRat/bom-radar-card
+iantrich/list-card
