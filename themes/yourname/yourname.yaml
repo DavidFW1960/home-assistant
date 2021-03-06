@@ -1,10 +1,10 @@
 yourname:
   ### Header Height ###
-  header-height: 48px
+  header-height: 44px
   ### Main Interface Colors ###
   lovelace-background: 'center / cover no-repeat url("/local/backgrounds/yourname.jpg") fixed'
   app-header-background-color: "#141A32"
-  card-background-color: var(--primary-background-color)
+  card-background-color: "rgba(0, 0, 0, 0.5)"
   primary-color: "#007AFF"
   light-primary-color: "#4DA3FF"
   primary-background-color: var(--app-header-background-color)
@@ -22,6 +22,7 @@ yourname:
   sidebar-selected-background-color: var(--primary-background-color)
   sidebar-selected-icon-color: var(--light-primary-color)
   sidebar-selected-text-color: var(--sidebar-selected-icon-color)
+  sidebar-background-color: var(--primary-background-color)
   ### States and Badges ###
   state-icon-color: var(--primary-color)
   state-icon-active-color: "#FBCD41"
@@ -39,8 +40,8 @@ yourname:
   label-badge-yellow: "#DCA304"
   ### Cards ###
   ha-card-border-radius: '20px'
+  ha-card-background: "rgba(0, 0, 0, 0.5)"
   paper-card-header-color: var(--primary-text-color)
-  ha-card-background: "rgba(0, 0, 0, 0.6)"
   paper-card-background-color: var(--ha-card-background)
   paper-listbox-background-color: var(--primary-background-color)
   ### Toggles ###
