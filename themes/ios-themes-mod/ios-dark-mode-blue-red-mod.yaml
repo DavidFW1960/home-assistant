@@ -74,9 +74,8 @@ ios-dark-mode-blue-red-mod:
   mini-media-player-icon-color: white
   # CUSTOM-HEADER MODS
   card-mod-theme: ios-dark-mode-blue-red-mod
-  card-mod-root-yaml: |
-    .: |
-      .edit-mode, app-header, app-toolbar {
-        background: url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg') !important;
-      }
-  header-height: 48px    
+  card-mod-root: |
+    .edit-mode, app-header, app-toolbar {
+      background: url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg') !important;
+    }
+  header-height: 48px 
