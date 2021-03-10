@@ -829,6 +829,7 @@ views:
                 show:
                   extremas: true
                 stroke_width: 3
+                fill_raw: last
                 name: Download
                 type: line
                 group_by:
@@ -838,6 +839,7 @@ views:
                 show:
                   extremas: true
                 stroke_width: 3
+                fill_raw: last
                 name: Upload
                 type: line
                 group_by:
@@ -847,6 +849,7 @@ views:
                 show:
                   extremas: true
                 stroke_width: 3
+                fill_raw: last
                 name: Ping
                 type: column
                 group_by:
