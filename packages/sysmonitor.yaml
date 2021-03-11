@@ -351,9 +351,12 @@ sensor:
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
-  - platform: command_line
+# IPv6 Address
+  - platform: mqtt
     name: "WAN IP Address"
-    command: "wget -q -O - http://icanhazip.com/ | tail"
+    state_topic: "wan_ip_address"
+    icon: mdi:network
+    value_template: "{{ value_json.state }}"
   - platform: systemmonitor
     resources:
     - type: disk_use
