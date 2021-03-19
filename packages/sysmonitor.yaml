@@ -352,11 +352,9 @@ sensor:
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
 # IPv6 Address
-  - platform: mqtt
+  - platform: command_line
     name: "WAN IP Address"
-    state_topic: "wan_ip_address"
-    icon: mdi:network
-    value_template: "{{ value_json.state }}"
+    command: wget -qO- https://ipv6.icanhazip.com/
   - platform: systemmonitor
     resources:
     - type: disk_use
