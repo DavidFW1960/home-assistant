@@ -10,8 +10,14 @@ sensor:
       - PDL
   - platform: nsw_fuel_station
     station_id: 18323
-#   friendly_name: Caltex 283 Manns Rd West Gosford
-#   sensor.caltex_gosford_west_pdl_3
+#   friendly_name: Ampol 283 Manns Rd West Gosford
+#   sensor.ampol_gosford_west_pdl
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 18217
+#   friendly_name: Caltex Woolworths 900 Pacific Highway Lisarow
+#   sensor.caltex_woolworths_lisarow_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
@@ -116,6 +122,10 @@ sensor:
   - platform: template
     sensors:
 
+      cc18217:
+        value_template: "{{states('sensor.caltex_woolworths_lisarow_pdl')}}"
+        friendly_name: Caltex Woolies 900 Pacific Hwy Lisarow
+        unit_of_measurement: ¢/L
       cc17249:
         value_template: "{{states('sensor.caltex_woolworths_erina_pdl')}}"
         friendly_name: Caltex Woolies 155 The Entrance Rd Erina
@@ -143,9 +153,7 @@ sensor:
       ccgw1:
         value_template: "{{states('sensor.caltex_gosford_west_pdl')}}"
         friendly_name_template: >
-          {% if state_attr('sensor.caltex_gosford_west_pdl', 'station_id') == 18323 %}
-            Caltex 283 Manns Rd West Gosford
-          {% elif state_attr('sensor.caltex_gosford_west_pdl', 'station_id') == 874 %}
+          {% if state_attr('sensor.caltex_gosford_west_pdl', 'station_id') == 874 %}
             Caltex 30A Pacific Hwy West Gosford (From Gosford)
           {% else %}
             Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
@@ -154,24 +162,15 @@ sensor:
       ccgw2:
         value_template: "{{states('sensor.caltex_gosford_west_pdl_2')}}"
         friendly_name_template: >
-          {% if state_attr('sensor.caltex_gosford_west_pdl_2', 'station_id') == 18323 %}
-            Caltex 283 Manns Rd West Gosford
-          {% elif state_attr('sensor.caltex_gosford_west_pdl_2', 'station_id') == 874 %}
+          {% if state_attr('sensor.caltex_gosford_west_pdl_2', 'station_id') == 874 %}
             Caltex 30A Pacific Hwy West Gosford (From Gosford)
           {% else %}
-            Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
+            Caltex 69-71 Pacific Hwy West Gosford (To Gosford)
           {% endif %}
         unit_of_measurement: ¢/L
-      ccgw3:
-        value_template: "{{states('sensor.caltex_gosford_west_pdl_3')}}"
-        friendly_name_template: >
-          {% if state_attr('sensor.caltex_gosford_west_pdl_3', 'station_id') == 18323 %}
-            Caltex 283 Manns Rd West Gosford
-          {% elif state_attr('sensor.caltex_gosford_west_pdl_3', 'station_id') == 874 %}
-            Caltex 30A Pacific Hwy West Gosford (From Gosford)
-          {% else %}
-            Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
-          {% endif %}
+      cc18323:
+        value_template: "{{states('sensor.ampol_gosford_west_pdl')}}"
+        friendly_name: Ampol 283 Manns Rd West Gosford
         unit_of_measurement: ¢/L
       ccm11:
         value_template: "{{states('sensor.caltex_wyong_pdl')}}"
@@ -235,7 +234,7 @@ homeassistant:
     sensor.caltex_gosford_west_pdl_2:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_gosford_west_pdl_3:
+    sensor.ampol_gosford_west_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_kariong_pdl:
@@ -254,6 +253,9 @@ homeassistant:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_woolworths_gosford_pdl:
+      icon: mdi:gas-station
+      <<: *common
+    sensor.caltex_woolworths_lisarow_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_woolworths_tuggerah_north_pdl:
@@ -280,6 +282,9 @@ homeassistant:
     sensor.coles_express_kariong_dl:
       icon: mdi:gas-station
       <<: *common
+    sensor.cc18217:
+      icon: mdi:gas-station
+      <<: *common
     sensor.cc17249:
       icon: mdi:gas-station
       <<: *common
@@ -301,7 +306,7 @@ homeassistant:
     sensor.ccgw2:
       icon: mdi:gas-station
       <<: *common
-    sensor.ccgw3:
+    sensor.cc18323:
       icon: mdi:gas-station
       <<: *common
     sensor.cc2263:
