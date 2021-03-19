@@ -3399,6 +3399,11 @@ views:
                   extremas: true
                 stroke_width: 3
                 fill_raw: last
+              - entity: sensor.cc18217
+                show:
+                  extremas: true
+                stroke_width: 3
+                fill_raw: last
               - entity: sensor.cc17340
                 show:
                   extremas: true
@@ -3414,7 +3419,7 @@ views:
                   extremas: true
                 stroke_width: 3
                 fill_raw: last
-              - entity: sensor.ccgw3
+              - entity: sensor.cc18323
                 show:
                   extremas: true
                 stroke_width: 3
