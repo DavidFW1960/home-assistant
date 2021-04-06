@@ -1020,7 +1020,11 @@ views:
               show: true
               title: Change in Day Length
               show_states: true
+            y_axis_precision: 0
             apex_config:
+              yaxis:
+                forceNiceScale: true
+                decimalsInFloat: 0
               responsive:
                 - breakpoint: 765
                   options:
@@ -1054,6 +1058,7 @@ views:
                 showForSingleSeries: true
             series:
               - entity: sensor.daylengthchange
+                float_precision: 0
                 show:
                   extremas: true
                 stroke_width: 3
