@@ -30,12 +30,14 @@ homeassistant:
         - fd00::/8
         - !secret zerotier_network
         - !secret my_ipv6_network
+        - !secret ben_ipv6_network
       trusted_users:
         127.0.0.1: !secret user_id
         "::1": !secret user_id
         !secret trusted_ipv4: !secret user_id
         "fd00::/8": !secret user_id
         !secret trusted_ipv6: !secret user_id
+        !secret ben_trusted_ipv6: !secret user_id
         !secret zerotier_network: !secret user_id
       allow_bypass_login: true
     - type: homeassistant
@@ -105,6 +107,7 @@ logger:
   logs:
 #   TransportNSW.transportnsw: error
     custom_components.sensor.authenticated: debug
+    homeassistant.components.analytics : info
 #   custom_components.iphonedetect: debug
 #   homeassistant.components.http.view: error
 #   hacs: debug ###Now Enable in HACS options
@@ -170,6 +173,7 @@ sensor:
       - fd00::/8
       - !secret zerotier_network
       - !secret my_ipv6_network
+      - !secret ben_ipv6_network
       - 2001:4860:4000::/36      # Google
 
 # Sql Sensor
