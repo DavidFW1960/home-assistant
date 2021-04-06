@@ -551,7 +551,13 @@ automation:
       and (states('sensor.artisan_software_version') != 'continuous') }}"
     condition: 
     - "{{states('sensor.artisan_software_version') != 'unavailable'}}"
+    - "{{states('sensor.artisan_software_version') != 'Unavailable'}}"
+    - "{{states('sensor.artisan_software_version') != 'unknown'}}"
+    - "{{states('sensor.artisan_software_version') != 'Unknown'}}"
     - "{{states('sensor.artisan_software_version_installed') != 'unavailable'}}"
+    - "{{states('sensor.artisan_software_version_installed') != 'Unavailable'}}"
+    - "{{states('sensor.artisan_software_version_installed') != 'unknown'}}"
+    - "{{states('sensor.artisan_software_version_installed') != 'Unknown'}}"
     action:
     - service: notify.david_ios_notify
       data:
@@ -579,7 +585,13 @@ automation:
       value_template: "{{ states('sensor.docker_compose_version_available') != states('sensor.docker_compose_version_installed') }}"
     condition: 
     - "{{states('sensor.docker_compose_version_available') != 'unavailable'}}"
+    - "{{states('sensor.docker_compose_version_available') != 'Unavailable'}}"
+    - "{{states('sensor.docker_compose_version_available') != 'unknown'}}"
+    - "{{states('sensor.docker_compose_version_available') != 'Unknown'}}"
     - "{{states('sensor.docker_compose_version_installed') != 'unavailable'}}"
+    - "{{states('sensor.docker_compose_version_installed') != 'Unavailable'}}"
+    - "{{states('sensor.docker_compose_version_installed') != 'unknown'}}"
+    - "{{states('sensor.docker_compose_version_installed') != 'Unknown'}}"
     action:
     - service: notify.david_ios_notify
       data:
