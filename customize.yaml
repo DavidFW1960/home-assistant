@@ -299,3 +299,4 @@ sensor.cert_expiry_portainer_days:
   icon: mdi:calendar
 sensor.cert_expiry_tasmoadmin_days:
   icon: mdi:calendar
+
