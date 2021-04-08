@@ -76,6 +76,7 @@ views:
                   - sensor.alarm_firmware
                   - sensor.nodemcu_lounge_firmware
                   - sensor.nodemcu_bedroom_firmware
+                  - sensor.artisan_software_version_installed
               - entity: sensor.coffee_maker_firmware
                 tap_action:
                   action: navigate
@@ -757,9 +758,6 @@ views:
             show_header_toggle: false
             entities:
               - entity: sensor.speedtest_download
-                tap_action:
-                  action: call-service
-                  service: speedtestdotnet.speedtest
               - sensor.speedtest_download_filtered
               - sensor.speedtest_upload
               - sensor.speedtest_upload_filtered

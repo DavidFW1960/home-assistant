@@ -41,6 +41,14 @@ sensor:
 
 # CPU Resources Used & Temperature, Fritz!Box
 # Speedtest Sensor Filters
+# Shell Script Speedtest stuff
+  - platform: mqtt
+    name: "Speedtest Result"
+    state_topic: "speedtestresult"
+    value_template: "{{ value_json.state }}"
+    json_attributes_topic: "speedtestresult"
+    json_attributes_template: "{{ value_json.attributes | tojson }}"
+
   - platform: filter
     name: "Speedtest Download Filtered"
     entity_id: sensor.speedtest_download
@@ -290,9 +298,22 @@ sensor:
     duration:
       days: 2
 
-# Up since
+# Speedtest and Up Time
+
   - platform: template
     sensors:
+
+# Speedtest Results
+
+      speedtest_download:
+        value_template: '{{ states.sensor.speedtest_result.attributes["download"] }}'
+      speedtest_upload:
+        value_template: '{{ states.sensor.speedtest_result.attributes["upload"] }}'
+      speedtest_ping:
+        value_template: '{{ states.sensor.speedtest_result.attributes["ping"] }}'
+
+# Up since
+
       systemuptime:
         value_template: >-
           {% set time = (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) %}
@@ -352,9 +373,13 @@ sensor:
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
 # IPv6 Address
-  - platform: command_line
+#  - platform: command_line
+#    name: "WAN IP Address"
+#    command: wget -qO- https://ipv6.icanhazip.com/
+  - platform: mqtt
     name: "WAN IP Address"
-    command: wget -qO- https://ipv6.icanhazip.com/
+    state_topic: "wan_ip_address"
+    value_template: "{{ value_json.state }}"
   - platform: systemmonitor
     resources:
     - type: disk_use
@@ -394,6 +419,7 @@ sensor:
 
 automation:
   - alias: 'System Runtime'
+    id: 'runtime'
     trigger:
       platform: time_pattern
       minutes: '/1'
@@ -401,12 +427,6 @@ automation:
     action:
       - service: homeassistant.update_entity
         entity_id: sensor.systemuptime
-  - alias: 'Update Speedtest'
-    trigger:
-      platform: homeassistant
-      event: start
-    action:
-      - service: speedtestdotnet.speedtest
 
 homeassistant:
   customize:
@@ -552,5 +572,24 @@ homeassistant:
       icon: mdi:speedometer
       <<: *common
     sensor.speedtest_upload_filtered:
+      icon: mdi:speedometer
+      <<: *common
+    sensor.speedtest_download:
+      friendly_name: Speedtest Download
+      icon: mdi:speedometer
+      unit_of_measurement: Mbit/s
+      <<: *common
+    sensor.speedtest_upload:
+      friendly_name: Speedtest Upload
+      icon: mdi:speedometer
+      unit_of_measurement: Mbit/s
+      <<: *common
+    sensor.speedtest_ping:
+      friendly_name: Speedtest Ping
+      icon: mdi:speedometer
+      unit_of_measurement: ms
+      <<: *common
+    sensor.speedtest_result:
+      friendly_name: Speedtest Result
       icon: mdi:speedometer
       <<: *common
