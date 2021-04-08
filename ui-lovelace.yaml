@@ -789,7 +789,7 @@ views:
             graph_span: 24h
             header:
               show: true
-              title: Speedtestdotnet
+              title: Speedtest
             apex_config:
               responsive:
                 - breakpoint: 765
