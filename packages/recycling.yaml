@@ -28,6 +28,7 @@ sensor:
 
 automation:
   - alias: 'Update Bin Night'
+    id: 'recyclebin'
     trigger:
       - event: start
         platform: homeassistant
@@ -37,6 +38,7 @@ automation:
       - service: homeassistant.update_entity
         entity_id: sensor.recycling_bin_today, sensor.recycling_bin_tomorrow, sensor.green_bin_today, sensor.green_bin_tomorrow
   - alias: 'Bin Night'
+    id: 'binnight'
     trigger:
       - platform: time
         at: '19:00:00'

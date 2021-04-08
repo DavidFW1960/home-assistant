@@ -185,6 +185,7 @@ sensor:
 
 automation:
 - alias: 'Update BOM Icons'
+  id: 'bomiconupdate'
   trigger:
     - event: start
       platform: homeassistant
