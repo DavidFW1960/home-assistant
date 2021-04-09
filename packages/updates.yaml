@@ -180,14 +180,6 @@ homeassistant:
       icon: mdi:check-decagram
 
 ################################################
-## Updater
-## https://www.home-assistant.io/components/updater/
-## https://www.home-assistant.io/docs/backend/updater/
-################################################
-
-updater:
-
-################################################
 ## Sensor
 ################################################
 
