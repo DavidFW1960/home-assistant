@@ -311,6 +311,8 @@ sensor:
         value_template: '{{ states.sensor.speedtest_result.attributes["upload"] }}'
       speedtest_ping:
         value_template: '{{ states.sensor.speedtest_result.attributes["ping"] }}'
+      speedtest_lastrun:
+        value_template: '{{ states.sensor.speedtest_result.attributes["time_run"] }}'
 
 # Up since
 
@@ -592,4 +594,9 @@ homeassistant:
     sensor.speedtest_result:
       friendly_name: Speedtest Result
       icon: mdi:speedometer
+      <<: *common
+    sensor.speedtest_lastrun:
+      friendly_name: Speedtest Last Run
+      icon: mdi:clock
+      device_class: timestamp
       <<: *common
