@@ -757,11 +757,16 @@ views:
             title: Internet
             show_header_toggle: false
             entities:
-              - sensor.speedtest_download
-              - sensor.speedtest_download_filtered
-              - sensor.speedtest_upload
-              - sensor.speedtest_upload_filtered
-              - sensor.speedtest_ping
+              - entity: sensor.speedtest_download
+                secondary_info: last-changed
+              - entity: sensor.speedtest_download_average
+                secondary_info: last-changed
+              - entity: sensor.speedtest_upload
+                secondary_info: last-changed
+              - entity: sensor.speedtest_upload_average
+                secondary_info: last-changed
+              - entity: sensor.speedtest_ping
+                secondary_info: last-changed
               - entity: sensor.speedtest_lastrun
                 format: relative
               - sensor.fritz_netmonitor
