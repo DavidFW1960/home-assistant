@@ -49,20 +49,19 @@ sensor:
     json_attributes_topic: "speedtestresult"
     json_attributes_template: "{{ value_json.attributes | tojson }}"
 
-  - platform: filter
-    name: "Speedtest Download Filtered"
-    entity_id: sensor.speedtest_download
-    filters:
-      - filter: lowpass
-        time_constant: 20
-        precision: 2
-  - platform: filter
-    name: "Speedtest Upload Filtered"
-    entity_id: sensor.speedtest_upload
-    filters:
-      - filter: lowpass
-        time_constant: 20
-        precision: 2
+  - platform: average
+    name: "Speedtest Download Average"
+    entities:
+      - sensor.speedtest_download
+    start: '{{ 0 }}'
+    end: '{{ now() }}'
+
+  - platform: average
+    name: "Speedtest Upload Average"
+    entities:
+      - sensor.speedtest_upload
+    start: '{{ 0 }}'
+    end: '{{ now() }}'
 
 # FritzBox
   - platform: fritzbox_netmonitor
@@ -570,10 +569,10 @@ homeassistant:
     sensor.sabnzbd_total:
       icon: mdi:disc
       <<: *common
-    sensor.speedtest_download_filtered:
+    sensor.speedtest_download_average:
       icon: mdi:speedometer
       <<: *common
-    sensor.speedtest_upload_filtered:
+    sensor.speedtest_upload_average:
       icon: mdi:speedometer
       <<: *common
     sensor.speedtest_download:
