@@ -758,15 +758,15 @@ views:
             show_header_toggle: false
             entities:
               - entity: sensor.speedtest_download
-                secondary_info: last-changed
+                secondary_info: last-updated
               - entity: sensor.speedtest_download_average
-                secondary_info: last-changed
+                secondary_info: last-updated
               - entity: sensor.speedtest_upload
-                secondary_info: last-changed
+                secondary_info: last-updated
               - entity: sensor.speedtest_upload_average
-                secondary_info: last-changed
+                secondary_info: last-updated
               - entity: sensor.speedtest_ping
-                secondary_info: last-changed
+                secondary_info: last-updated
               - entity: sensor.speedtest_lastrun
                 format: relative
               - sensor.fritz_netmonitor
