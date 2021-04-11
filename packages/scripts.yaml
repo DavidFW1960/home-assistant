@@ -16,29 +16,29 @@ script:
     sequence:
     - data:
         payload: ''
-        topic: sonoffs/cmnd/state
+        topic: cmnd/sonoffs/state
       service: mqtt.publish
     - data:
         payload: ''
-        topic: nodemcu/cmnd/state
+        topic: cmnd/nodemcu/state
       service: mqtt.publish
   firmwarealltasmota:
     alias: Tasmota Firmware Versions
     sequence:
     - data:
         payload: '2'
-        topic: sonoffs/cmnd/status
+        topic: cmnd/sonoffs/status
       service: mqtt.publish
     - data:
         payload: '2'
-        topic: nodemcu/cmnd/status
+        topic: cmnd/nodemcu/status
       service: mqtt.publish
   restartnodemculounge:
     alias: Restart Lounge NodeMCU Devices
     sequence:
     - data:
         payload: '1'
-        topic: nodemcu_lounge/cmnd/Restart
+        topic: cmnd/nodemcu_lounge/Restart
       service: mqtt.publish
   updateversions:
     alias: Update Versions HA

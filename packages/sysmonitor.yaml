@@ -306,12 +306,16 @@ sensor:
 
       speedtest_download:
         value_template: '{{ states.sensor.speedtest_result.attributes["download"] }}'
+        unique_id: speeddown
       speedtest_upload:
         value_template: '{{ states.sensor.speedtest_result.attributes["upload"] }}'
+        unique_id: speedup
       speedtest_ping:
         value_template: '{{ states.sensor.speedtest_result.attributes["ping"] }}'
+        unique_id: speedping
       speedtest_lastrun:
         value_template: '{{ states.sensor.speedtest_result.attributes["time_run"] }}'
+        unique_id: speedtimerun
 
 # Up since
 
