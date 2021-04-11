@@ -69,6 +69,7 @@ views:
                   label: Tasmota Firmware
                 padding: 0
                 entities:
+                  - sensor.coffee_maker_firmware
                   - sensor.toothbrush_firmware
                   - sensor.xcy_mini_pc_firmware
                   - sensor.tv_switch_firmware
