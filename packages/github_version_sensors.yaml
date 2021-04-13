@@ -126,11 +126,23 @@ sensor:
     json_attributes_topic: "stat/sonoff1/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
+    name: "Coffee Maker Status"
+    state_topic: "stat/sonoff1/STATUS11"
+    value_template: '{{ value_json.StatusSTS.MqttCount}}'
+    json_attributes_topic: "stat/sonoff1/STATUS11"
+    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+  - platform: mqtt
     name: "Toothbrush Firmware"
     state_topic: "stat/sonoff2/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
     json_attributes_topic: "stat/sonoff2/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+  - platform: mqtt
+    name: "Toothbrush Status"
+    state_topic: "stat/sonoff2/STATUS11"
+    value_template: '{{ value_json.StatusSTS.MqttCount}}'
+    json_attributes_topic: "stat/sonoff2/STATUS11"
+    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
   - platform: mqtt
     name: "XCY Mini PC Firmware"
     state_topic: "stat/sonoff3/STATUS2"
@@ -138,11 +150,23 @@ sensor:
     json_attributes_topic: "stat/sonoff3/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
+    name: "XCY Mini PC Status"
+    state_topic: "stat/sonoff3/STATUS11"
+    value_template: '{{ value_json.StatusSTS.MqttCount}}'
+    json_attributes_topic: "stat/sonoff3/STATUS11"
+    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+  - platform: mqtt
     name: "TV Switch Firmware"
     state_topic: "stat/sonoff4/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
     json_attributes_topic: "stat/sonoff4/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+  - platform: mqtt
+    name: "TV Switch Status"
+    state_topic: "stat/sonoff4/STATUS11"
+    value_template: '{{ value_json.StatusSTS.MqttCount}}'
+    json_attributes_topic: "stat/sonoff4/STATUS11"
+    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
   - platform: mqtt
     name: "Garage Door Firmware"
     state_topic: "stat/sonoff5/STATUS2"
@@ -150,11 +174,23 @@ sensor:
     json_attributes_topic: "stat/sonoff5/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
+    name: "Garage Door Status"
+    state_topic: "stat/sonoff5/STATUS11"
+    value_template: '{{ value_json.StatusSTS.MqttCount}}'
+    json_attributes_topic: "stat/sonoff5/STATUS11"
+    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+  - platform: mqtt
     name: "Alarm Firmware"
     state_topic: "stat/sonoff6/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
     json_attributes_topic: "stat/sonoff6/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+  - platform: mqtt
+    name: "Alarm Status"
+    state_topic: "stat/sonoff6/STATUS11"
+    value_template: '{{ value_json.StatusSTS.MqttCount}}'
+    json_attributes_topic: "stat/sonoff6/STATUS11"
+    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
   - platform: mqtt
     name: "Nodemcu Lounge Firmware"
     state_topic: "stat/nodemcu_lounge/STATUS2"
@@ -162,11 +198,23 @@ sensor:
     json_attributes_topic: "stat/nodemcu_lounge/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
+    name: "Nodemcu Lounge Status"
+    state_topic: "stat/nodemcu_lounge/STATUS11"
+    value_template: '{{ value_json.StatusSTS.MqttCount}}'
+    json_attributes_topic: "stat/nodemcu_lounge/STATUS11"
+    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+  - platform: mqtt
     name: "Nodemcu Bedroom Firmware"
     state_topic: "stat/nodemcu_bedroom/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
     json_attributes_topic: "stat/nodemcu_bedroom/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+  - platform: mqtt
+    name: "Nodemcu Bedroom Status"
+    state_topic: "stat/nodemcu_bedroom/STATUS11"
+    value_template: '{{ value_json.StatusSTS.MqttCount}}'
+    json_attributes_topic: "stat/nodemcu_bedroom/STATUS11"
+    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
 
 binary_sensor:
   - platform: template
