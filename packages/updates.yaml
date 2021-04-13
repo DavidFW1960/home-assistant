@@ -18,7 +18,7 @@ homeassistant:
 
     binary_sensor.hass_update_available:
       <<: *customize
-      friendly_name: 'Update Available Hass'
+      friendly_name: 'Update Available Home Assistant'
       device_class: problem
 
     ################################################
