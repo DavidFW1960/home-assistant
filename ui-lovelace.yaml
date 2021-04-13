@@ -69,7 +69,6 @@ views:
                   label: Tasmota Firmware
                 padding: 0
                 entities:
-                  - sensor.coffee_maker_firmware
                   - sensor.toothbrush_firmware
                   - sensor.xcy_mini_pc_firmware
                   - sensor.tv_switch_firmware
@@ -2748,76 +2747,180 @@ views:
                   method: name
           - type: 'custom:config-template-card'
             variables:
-              - states['sensor.sonoff1_2914_mqtt_connect_count'].state
-              - states['sensor.sonoff1_2914_wifi_connect_count'].state
-              - states['sensor.sonoff1_2914_rssi'].state
-              - states['sensor.sonoff2_3110_mqtt_connect_count'].state
-              - states['sensor.sonoff2_3110_wifi_connect_count'].state
-              - states['sensor.sonoff2_3110_rssi'].state
-              - states['sensor.sonoff5_1083_mqtt_connect_count'].state
-              - states['sensor.sonoff5_1083_wifi_connect_count'].state
-              - states['sensor.sonoff5_1083_rssi'].state
-              - states['sensor.sonoff6_3719_mqtt_connect_count'].state
-              - states['sensor.sonoff6_3719_wifi_connect_count'].state
-              - states['sensor.sonoff6_3719_rssi'].state
-              - states['sensor.nodemcu_lounge_mqtt_connect_count'].state
-              - states['sensor.nodemcu_lounge_wifi_connect_count'].state
-              - states['sensor.nodemcu_lounge_rssi'].state
-              - states['sensor.nodemcu_bedroom_mqtt_connect_count'].state
-              - states['sensor.nodemcu_bedroom_wifi_connect_count'].state
-              - states['sensor.nodemcu_bedroom_rssi'].state
-              - states['sensor.sonoff3_0898_mqtt_connect_count'].state
-              - states['sensor.sonoff3_0898_wifi_connect_count'].state
-              - states['sensor.sonoff3_0898_rssi'].state
-              - states['sensor.sonoff4_0851_mqtt_connect_count'].state
-              - states['sensor.sonoff4_0851_wifi_connect_count'].state
-              - states['sensor.sonoff4_0851_rssi'].state
-              - states['sensor.sonoff1_2914_signal'].state
-              - states['sensor.sonoff2_3110_signal'].state
-              - states['sensor.sonoff5_1083_signal'].state
-              - states['sensor.sonoff6_3719_signal'].state
-              - states['sensor.nodemcu_lounge_signal'].state
-              - states['sensor.nodemcu_bedroom_signal'].state
-              - states['sensor.sonoff3_0898_signal'].state
-              - states['sensor.sonoff4_0851_signal'].state
+              coffee: states['sensor.sonoff1_2914_rssi'].state
+              toothbrush: states['sensor.sonoff2_3110_rssi'].state
+              garage: states['sensor.sonoff5_1083_rssi'].state
+              alarm: states['sensor.sonoff6_3719_rssi'].state
+              weather: states['sensor.nodemcu_lounge_rssi'].state
+              bedroom: states['sensor.nodemcu_bedroom_rssi'].state
+              xcy: states['sensor.sonoff3_0898_rssi'].state
+              tv: states['sensor.sonoff4_0851_rssi'].state
+              coffeesignal: states['sensor.sonoff1_2914_signal'].state
+              toothbrushsignal: states['sensor.sonoff2_3110_signal'].state
+              garagesignal: states['sensor.sonoff5_1083_signal'].state
+              alarmsignal: states['sensor.sonoff6_3719_signal'].state
+              weathersignal: states['sensor.nodemcu_lounge_signal'].state
+              bedroomsignal: states['sensor.nodemcu_bedroom_signal'].state
+              xcysignal: states['sensor.sonoff3_0898_signal'].state
+              tvsignal: states['sensor.sonoff4_0851_signal'].state
             entities:
               - sensor.sonoff1_2914_rssi
+              - sensor.sonoff1_2914_signal
+              - sensor.sonoff1_2914_wifi_connect_count
+              - sensor.coffee_maker_firmware
+              - sensor.coffee_maker_status
               - sensor.sonoff2_3110_rssi
+              - sensor.sonoff2_3110_signal
+              - sensor.sonoff2_3110_wifi_connect_count
+              - sensor.toothbrush_firmware
+              - sensor.toothbrush_status
               - sensor.sonoff5_1083_rssi
+              - sensor.sonoff5_1083_signal
+              - sensor.sonoff5_1083_wifi_connect_count
+              - sensor.garage_door_firmware
+              - sensor.garage_door_status
               - sensor.sonoff6_3719_rssi
+              - sensor.sonoff6_3719_signal
+              - sensor.sonoff6_3719_wifi_connect_count
+              - sensor.alarm_firmware
+              - sensor.alarm_status
               - sensor.nodemcu_lounge_rssi
+              - sensor.nodemcu_lounge_signal
+              - sensor.nodemcu_lounge_wifi_connect_count
+              - sensor.nodemcu_lounge_firmware
+              - sensor.nodemcu_lounge_status
               - sensor.nodemcu_bedroom_rssi
+              - sensor.nodemcu_bedroom_signal
+              - sensor.nodemcu_bedroom_wifi_connect_count
+              - sensor.nodemcu_bedroom_firmware
+              - sensor.nodemcu_bedroom_status
               - sensor.sonoff3_0898_rssi
+              - sensor.sonoff3_0898_signal
+              - sensor.sonoff3_0898_wifi_connect_count
+              - sensor.tv_switch_firmware
+              - sensor.tv_switch_status
               - sensor.sonoff4_0851_rssi
+              - sensor.sonoff4_0851_signal
+              - sensor.sonoff4_0851_wifi_connect_count
+              - sensor.xcy_mini_pc_firmware
+              - sensor.xcy_mini_pc_status
             card:
               type: 'custom:hui-entities-card'
               title: MQTT & Wifi Connections
               show_header_toggle: false
               entities:
-                - entity: sensor.sonoff1_2914_rssi
-                  name: "${'Coffee' + '\xa0'.repeat(16) + 'MQTT ' + vars[0] + '\xa0'.repeat(4) + 'WiFi ' + vars[1] + '\xa0'.repeat(3) + vars[24] + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[2] >= 100 ? 'Excellent' : vars[2] >= 80 ? 'Good' : vars[2] >= 60 ? 'Fair' : 'Weak' )}"
-                  icon: "${vars[2] >= 100 ? 'mdi:wifi' : vars[2] >= 80 ? 'mdi:wifi-strength-3' : vars[2] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-                - entity: sensor.sonoff2_3110_rssi
-                  name: "${'Toothbrush' + '\xa0'.repeat(7) + 'MQTT ' + vars[3] + '\xa0'.repeat(4) + 'WiFi ' + vars[4] + '\xa0'.repeat(3) + vars[25] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[5] >= 100 ? 'Excellent' : vars[5] >= 80 ? 'Good' : vars[5] >= 60 ? 'Fair' : 'Weak' )}"
-                  icon: "${vars[5] >= 100 ? 'mdi:wifi' : vars[5] >= 80 ? 'mdi:wifi-strength-3' : vars[5] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-                - entity: sensor.sonoff5_1083_rssi
-                  name: "${'Garage' + '\xa0'.repeat(15) + 'MQTT ' + vars[6] + '\xa0'.repeat(4) + 'WiFi ' + vars[7] + '\xa0'.repeat(3) + vars[26] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[8] >= 100 ? 'Excellent' : vars[8] >= 80 ? 'Good' : vars[8] >= 60 ? 'Fair' : 'Weak' )}"
-                  icon: "${vars[8] >= 100 ? 'mdi:wifi' : vars[8] >= 80 ? 'mdi:wifi-strength-3' : vars[8] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-                - entity: sensor.sonoff6_3719_rssi
-                  name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + vars[27] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
-                  icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-                - entity: sensor.nodemcu_lounge_rssi
-                  name: "${'Weather' + '\xa0'.repeat(12) + 'MQTT ' + vars[12] + '\xa0'.repeat(4) + 'WiFi ' + vars[13] + '\xa0'.repeat(3) + vars[28] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[14] >= 100 ? 'Excellent' : vars[14] >= 80 ? 'Good' : vars[14] >= 60 ? 'Fair' : 'Weak' )}"
-                  icon: "${vars[14] >= 100 ? 'mdi:wifi' : vars[14] >= 80 ? 'mdi:wifi-strength-3' : vars[14] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-                - entity: sensor.nodemcu_bedroom_rssi
-                  name: "${'Bedroom' + '\xa0'.repeat(10) + 'MQTT ' + vars[15] + '\xa0'.repeat(4) + 'WiFi ' + vars[16] + '\xa0'.repeat(3) + vars[29] + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[17] >= 100 ? 'Excellent' : vars[17] >= 80 ? 'Good' : vars[17] >= 60 ? 'Fair' : 'Weak' )}"
-                  icon: "${vars[17] >= 100 ? 'mdi:wifi' : vars[17] >= 80 ? 'mdi:wifi-strength-3' : vars[17] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-                - entity: sensor.sonoff3_0898_rssi
-                  name: "${'Office' + '\xa0'.repeat(16) + 'MQTT ' + vars[18] + '\xa0'.repeat(4) + 'WiFi ' + vars[19] + '\xa0'.repeat(3) + vars[30] + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[20] >= 100 ? 'Excellent' : vars[20] >= 80 ? 'Good' : vars[20] >= 60 ? 'Fair' : 'Weak' )}"
-                  icon: "${vars[20] >= 100 ? 'mdi:wifi' : vars[20] >= 80 ? 'mdi:wifi-strength-3' : vars[20] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-                - entity: sensor.sonoff4_0851_rssi
-                  name: "${'TV' + '\xa0'.repeat(21) + 'MQTT ' + vars[21] + '\xa0'.repeat(4) + 'WiFi ' + vars[22] + '\xa0'.repeat(3) + vars[31] + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[23] >= 100 ? 'Excellent' : vars[23] >= 80 ? 'Good' : vars[23] >= 60 ? 'Fair' : 'Weak' )}"
-                  icon: "${vars[23] >= 100 ? 'mdi:wifi' : vars[23] >= 80 ? 'mdi:wifi-strength-3' : vars[23] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                - entity: sensor.coffee_maker_firmware
+                  type: 'custom:multiple-entity-row'
+                  show_state: false
+                  name: "${'Coffee' + '\xa0'.repeat(16) + ( coffee >= 100 ? 'Excellent' : coffee >= 80 ? 'Good' : coffee >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${coffee >= 100 ? 'mdi:wifi' : coffee >= 80 ? 'mdi:wifi-strength-3' : coffee >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                  entities:
+                  - entity: sensor.coffee_maker_status
+                    name: MQTT
+                  - entity: sensor.sonoff1_2914_wifi_connect_count
+                    name: WiFi
+                  - entity: sensor.sonoff1_2914_signal
+                    name: Signal
+                  - entity: sensor.sonoff1_2914_rssi
+                    name: RSSI
+                - entity: sensor.toothbrush_firmware
+                  type: 'custom:multiple-entity-row'
+                  show_state: false
+                  name: "${'Toothbrush' + '\xa0'.repeat(7) + ( toothbrush >= 100 ? 'Excellent' : toothbrush >= 80 ? 'Good' : toothbrush >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${toothbrush >= 100 ? 'mdi:wifi' : toothbrush >= 80 ? 'mdi:wifi-strength-3' : toothbrush >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                  entities:
+                  - entity: sensor.toothbrush_status
+                    name: MQTT
+                  - entity: sensor.sonoff2_3110_wifi_connect_count
+                    name: WiFi
+                  - entity: sensor.sonoff2_3110_signal
+                    name: Signal
+                  - entity: sensor.sonoff2_3110_rssi
+                    name: RSSI
+                - entity: sensor.garage_door_firmware
+                  type: 'custom:multiple-entity-row'
+                  show_state: false
+                  name: "${'Garage' + '\xa0'.repeat(15) + ( garage >= 100 ? 'Excellent' : garage >= 80 ? 'Good' : garage >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${garage >= 100 ? 'mdi:wifi' : garage >= 80 ? 'mdi:wifi-strength-3' : garage >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                  entities:
+                  - entity: sensor.garage_door_status
+                    name: MQTT
+                  - entity: sensor.sonoff5_1083_wifi_connect_count
+                    name: WiFi
+                  - entity: sensor.sonoff5_1083_signal
+                    name: Signal
+                  - entity: sensor.sonoff5_1083_rssi
+                    name: RSSI
+                - entity: sensor.alarm_firmware
+                  type: 'custom:multiple-entity-row'
+                  show_state: false
+                  name: "${'Alarm' + '\xa0'.repeat(17) + ( alarm >= 100 ? 'Excellent' : alarm >= 80 ? 'Good' : alarm >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${alarm >= 100 ? 'mdi:wifi' : alarm >= 80 ? 'mdi:wifi-strength-3' : alarm >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                  entities:
+                  - entity: sensor.alarm_status
+                    name: MQTT
+                  - entity: sensor.sonoff6_3719_wifi_connect_count
+                    name: WiFi
+                  - entity: sensor.sonoff6_3719_signal
+                    name: Signal
+                  - entity: sensor.sonoff6_3719_rssi
+                    name: RSSI
+                - entity: sensor.nodemcu_lounge_firmware
+                  type: 'custom:multiple-entity-row'
+                  show_state: false
+                  name: "${'Weather' + '\xa0'.repeat(12) + ( weather >= 100 ? 'Excellent' : weather >= 80 ? 'Good' : weather >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${weather >= 100 ? 'mdi:wifi' : weather >= 80 ? 'mdi:wifi-strength-3' : weather >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                  entities:
+                  - entity: sensor.nodemcu_lounge_status
+                    name: MQTT
+                  - entity: sensor.nodemcu_lounge_wifi_connect_count
+                    name: WiFi
+                  - entity: sensor.nodemcu_lounge_signal
+                    name: Signal
+                  - entity: sensor.nodemcu_lounge_rssi
+                    name: RSSI
+                - entity: sensor.nodemcu_bedroom_firmware
+                  type: 'custom:multiple-entity-row'
+                  show_state: false
+                  name: "${'Bedroom' + '\xa0'.repeat(10) + ( bedroom >= 100 ? 'Excellent' : bedroom >= 80 ? 'Good' : bedroom >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${bedroom >= 100 ? 'mdi:wifi' : bedroom >= 80 ? 'mdi:wifi-strength-3' : bedroom >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                  entities:
+                  - entity: sensor.nodemcu_bedroom_status
+                    name: MQTT
+                  - entity: sensor.nodemcu_bedroom_wifi_connect_count
+                    name: WiFi
+                  - entity: sensor.nodemcu_bedroom_signal
+                    name: Signal
+                  - entity: sensor.nodemcu_bedroom_rssi
+                    name: RSSI
+                - entity: sensor.xcy_mini_pc_firmware
+                  type: 'custom:multiple-entity-row'
+                  show_state: false
+                  name: "${'Office' + '\xa0'.repeat(16) + ( xcy >= 100 ? 'Excellent' : xcy >= 80 ? 'Good' : xcy >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${xcy >= 100 ? 'mdi:wifi' : xcy >= 80 ? 'mdi:wifi-strength-3' : xcy >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                  entities:
+                  - entity: sensor.xcy_mini_pc_status
+                    name: MQTT
+                  - entity: sensor.sonoff3_0898_wifi_connect_count
+                    name: WiFi
+                  - entity: sensor.sonoff3_0898_signal
+                    name: Signal
+                  - entity: sensor.sonoff3_0898_rssi
+                    name: RSSI
+                - entity: sensor.tv_switch_firmware
+                  type: 'custom:multiple-entity-row'
+                  show_state: false
+                  name: "${'TV' + '\xa0'.repeat(21) + ( tv >= 100 ? 'Excellent' : tv >= 80 ? 'Good' : tv >= 60 ? 'Fair' : 'Weak' )}"
+                  icon: "${tv >= 100 ? 'mdi:wifi' : tv >= 80 ? 'mdi:wifi-strength-3' : tv >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+                  entities:
+                  - entity: sensor.tv_switch_status
+                    name: MQTT
+                  - entity: sensor.sonoff4_0851_wifi_connect_count
+                    name: WiFi
+                  - entity: sensor.sonoff4_0851_signal
+                    name: Signal
+                  - entity: sensor.sonoff4_0851_rssi
+                    name: RSSI
   - title: Media
     path: media
     icon: mdi:vlc
