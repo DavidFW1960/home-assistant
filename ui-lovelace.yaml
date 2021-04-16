@@ -2607,7 +2607,6 @@ views:
                   - automation.clean_out_known_devices
                   - automation.alarm_event_triggered
                   - automation.alarm_event_check
-                  - automation.update_speedtest
                   - entity: automation.restart_docker_containers_when_memory_50
                     secondary_info: last-triggered
                   - automation.roaster_needs_attention
