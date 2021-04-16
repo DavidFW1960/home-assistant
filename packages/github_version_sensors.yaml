@@ -254,6 +254,30 @@ homeassistant:
     sensor.nodemcu_bedroom_firmware:
       icon: mdi:thermometer
       <<: *common
+    sensor.coffee_maker_status:
+      icon: mdi:coffee
+      <<: *common
+    sensor.toothbrush_status:
+      icon: mdi:tooth
+      <<: *common
+    sensor.xcy_mini_pc_status:
+      icon: mdi:desktop-classic
+      <<: *common
+    sensor.tv_switch_status:
+      icon: mdi:television
+      <<: *common
+    sensor.garage_door_status:
+      icon: mdi:garage
+      <<: *common
+    sensor.alarm_status:
+      icon: mdi:shield-home
+      <<: *common
+    sensor.nodemcu_lounge_status:
+      icon: mdi:thermometer
+      <<: *common
+    sensor.nodemcu_bedroom_status:
+      icon: mdi:thermometer
+      <<: *common
     sensor.tasmota_firmware_version_available:
       icon: mdi:script
       <<: *common
