@@ -310,10 +310,8 @@ automation:
   - id: 'tasmota_firmware_installed'
     alias: Tasmota Firmware Installed
     trigger:
-    - platform: time
-      at: 
-        - '00:00:00'
-        - '12:00:00'
+    - platform: time_pattern
+      minutes: '/10'
     - event: start
       platform: homeassistant
     action:

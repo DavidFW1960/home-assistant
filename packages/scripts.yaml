@@ -23,7 +23,7 @@ script:
         topic: cmnd/nodemcu/state
       service: mqtt.publish
   firmwarealltasmota:
-    alias: Tasmota Firmware Versions
+    alias: Tasmota Firmware Versions & Status
     sequence:
     - data:
         payload: '2'
@@ -31,6 +31,14 @@ script:
       service: mqtt.publish
     - data:
         payload: '2'
+        topic: cmnd/nodemcu/status
+      service: mqtt.publish
+    - data:
+        payload: '11'
+        topic: cmnd/sonoffs/status
+      service: mqtt.publish
+    - data:
+        payload: '11'
         topic: cmnd/nodemcu/status
       service: mqtt.publish
   restartnodemculounge:
