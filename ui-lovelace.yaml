@@ -1253,7 +1253,22 @@ views:
               - sensor.bom_forecast_3
               - sensor.bom_forecast_4
               - sensor.bom_forecast_5
-              - sensor.bom_forecast_6
+              - type: 'custom:hui-element'
+                card_type: conditional
+                conditions:
+                  - entity: sensor.bom_forecast_6
+                    state_not: "unknown°/unknown°/unknown%"
+                card:
+                  type: entities
+                  card_mod:
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                        --ha-card-background: rgba(0, 0, 0, 0);
+                        margin: -16px -16px -16px -16px;
+                      }
+                  entities:
+                  - entity: sensor.bom_forecast_6
           - type: entities
             title: Sensors
             show_header_toggle: false
