@@ -125,7 +125,7 @@ decluttering_templates:
             - entity: sensor.[[device]]_signal
               name: Signal
               styles:
-                width: 48px
+                width: 55px
             - entity: sensor.[[device]]_rssi
               name: Quality
               styles:
@@ -2890,58 +2890,115 @@ views:
                     - entity_id: "script.*"
                 sort: 
                   method: name
-          - type: entities
-            title: MQTT & Wifi Connections
-            show_header_toggle: false
-            entities:
-              - type: 'custom:decluttering-card'
-                template: decl_sonoff2
-                variables:
-                  - device: sonoff1_2914
-                  - device_name: Coffee
-                  - device_status: coffee_maker
-              - type: 'custom:decluttering-card'
-                template: decl_sonoff2
-                variables:
-                  - device: sonoff2_3110
-                  - device_name: Toothbrush
-                  - device_status: toothbrush
-              - type: 'custom:decluttering-card'
-                template: decl_sonoff2
-                variables:
-                  - device: sonoff5_1083
-                  - device_name: Garage
-                  - device_status: garage_door
-              - type: 'custom:decluttering-card'
-                template: decl_sonoff2
-                variables:
-                  - device: sonoff6_3719
-                  - device_name: Alarm
-                  - device_status: alarm
-              - type: 'custom:decluttering-card'
-                template: decl_sonoff2
-                variables:
-                  - device: nodemcu_lounge
-                  - device_name: Weather
-                  - device_status: nodemcu_lounge
-              - type: 'custom:decluttering-card'
-                template: decl_sonoff2
-                variables:
-                  - device: nodemcu_bedroom
-                  - device_name: Bedroom
-                  - device_status: nodemcu_bedroom
-              - type: 'custom:decluttering-card'
-                template: decl_sonoff2
-                variables:
-                  - device: sonoff3_0898
-                  - device_name: Office
-                  - device_status: xcy_mini_pc
-              - type: 'custom:decluttering-card'
-                template: decl_sonoff2
-                variables:
-                  - device: sonoff4_0851
-                  - device_name: TV
-                  - device_status: tv_switch
+          - type: 'custom:state-switch'
+            entity: mediaquery
+            states:
+              "(min-width: 1200px)":
+                type: entities
+                title: MQTT & Wifi Connections
+                show_header_toggle: false
+                entities:
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff2
+                    variables:
+                      - device: sonoff1_2914
+                      - device_name: Coffee
+                      - device_status: coffee_maker
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff2
+                    variables:
+                      - device: sonoff2_3110
+                      - device_name: Toothbrush
+                      - device_status: toothbrush
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff2
+                    variables:
+                      - device: sonoff5_1083
+                      - device_name: Garage
+                      - device_status: garage_door
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff2
+                    variables:
+                      - device: sonoff6_3719
+                      - device_name: Alarm
+                      - device_status: alarm
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff2
+                    variables:
+                      - device: nodemcu_lounge
+                      - device_name: Weather
+                      - device_status: nodemcu_lounge
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff2
+                    variables:
+                      - device: nodemcu_bedroom
+                      - device_name: Bedroom
+                      - device_status: nodemcu_bedroom
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff2
+                    variables:
+                      - device: sonoff3_0898
+                      - device_name: Office
+                      - device_status: xcy_mini_pc
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff2
+                    variables:
+                      - device: sonoff4_0851
+                      - device_name: TV
+                      - device_status: tv_switch
+              "all":
+                type: entities
+                title: MQTT & Wifi Connections
+                show_header_toggle: false
+                entities:
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff1
+                    variables:
+                      - device: sonoff1_2914
+                      - device_name: Coffee
+                      - device_status: coffee_maker
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff1
+                    variables:
+                      - device: sonoff2_3110
+                      - device_name: Toothbrush
+                      - device_status: toothbrush
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff1
+                    variables:
+                      - device: sonoff5_1083
+                      - device_name: Garage
+                      - device_status: garage_door
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff1
+                    variables:
+                      - device: sonoff6_3719
+                      - device_name: Alarm
+                      - device_status: alarm
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff1
+                    variables:
+                      - device: nodemcu_lounge
+                      - device_name: Weather
+                      - device_status: nodemcu_lounge
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff1
+                    variables:
+                      - device: nodemcu_bedroom
+                      - device_name: Bedroom
+                      - device_status: nodemcu_bedroom
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff1
+                    variables:
+                      - device: sonoff3_0898
+                      - device_name: Office
+                      - device_status: xcy_mini_pc
+                  - type: 'custom:decluttering-card'
+                    template: decl_sonoff1
+                    variables:
+                      - device: sonoff4_0851
+                      - device_name: TV
+                      - device_status: tv_switch
   - title: Media
     path: media
     icon: mdi:vlc
