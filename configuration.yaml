@@ -52,11 +52,6 @@ webostv:
 
 # Device Trackers - Fritz!Box & iPhone Detect
 device_tracker:
-  - platform: fritz
-    host: !secret my_fritz_host
-    consider_home: 180
-    new_device_defaults:
-      track_new_devices: false
   - platform: iphonedetect
     consider_home: 60
     hosts:
@@ -170,6 +165,7 @@ sensor:
     provider: 'ipapi'
     exclude:
       - !secret my_ipv4_network
+      - 172.16.0.0/12.           # Docker
       - fd00::/8
       - !secret zerotier_network
       - !secret my_ipv6_network
