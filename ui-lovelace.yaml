@@ -29,9 +29,9 @@ decluttering_templates:
                     {% elif states('sensor.[[device]]_rssi')|int >= 80 %}
                     color: orange;
                     {% elif states('sensor.[[device]]_rssi')|int >= 60 %}
-                    color: red;
-                    {% else %}
                     color: magenta;
+                    {% else %}
+                    color: red;
                     {% endif %}
                   }
         card:
@@ -89,10 +89,10 @@ decluttering_templates:
                   color: orange;
                   content: "Good\A";
                   {% elif states('sensor.[[device]]_rssi')|int >= 60 %}
-                  color: red;
+                  color: magenta;
                   content: "Fair\A";
                   {% else %}
-                  color: magenta;
+                  color: red;
                   content: "Weak\A";
                   {% endif %}
                   line-height: var(--mdc-typography-body1-line-height, 1.5rem);
