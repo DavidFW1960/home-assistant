@@ -3563,7 +3563,7 @@ views:
       - type: vertical-stack
         cards:
           - type: custom:apexcharts-card
-            graph_span: 24h
+            graph_span: 144h
             header: 
               show: true
               title: Fuel Prices Central Coast
@@ -3666,7 +3666,7 @@ views:
                 stroke_width: 3
                 fill_raw: last
           - type: custom:apexcharts-card
-            graph_span: 24h
+            graph_span: 144h
             header: 
               show: true
               title: Fuel Prices Sydney
