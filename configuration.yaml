@@ -165,7 +165,6 @@ sensor:
     provider: 'ipapi'
     exclude:
       - !secret my_ipv4_network
-      - 172.16.0.0/12.           # Docker
       - fd00::/8
       - !secret zerotier_network
       - !secret my_ipv6_network
