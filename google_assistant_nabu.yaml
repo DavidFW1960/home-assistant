@@ -1,0 +1,83 @@
+google_actions: 
+  entity_config:
+    light.lounge:
+      room: lounge room
+    light.dining:
+      room: dining room
+    light.office:
+      room: office
+    light.desk:
+      room: office
+    switch.sonoff12914:
+      room: kitchen
+    switch.sonoff23110:
+      room: bathroom
+    switch.sonoff30898:
+      room: office
+    switch.sonoff40851:
+      room: lounge room
+    switch.sonoff51083:
+      room: house
+    switch.sonoff63719:
+      room: house
+    input_boolean.homeandawayauto:
+      room: house
+    input_boolean.alarmgaragedoor:
+      room: house
+    input_boolean.overtime:
+      room: kitchen
+    input_boolean.holiday:
+      room: kitchen
+    input_boolean.lizcovid:
+      room: house
+    switch.harmony:
+      room: lounge room
+    sensor.nodemcu_bedroom_bme280_temperature:
+  # sensor.nodemcu_bedroom_am2301_temperature:
+      room: bedroom
+      name: Bedroom Temperature
+    sensor.nodemcu_lounge_bme280_temperature:
+      room: lounge room
+      name: Lounge Temperature
+    sensor.sonoff1_2914_si7021_temperature:
+      room: kitchen
+      name: Kitchen Temperature
+    sensor.sonoff3_0898_si7021_temperature:
+      room: office
+      name: Office Temperature
+    sensor.gosford_temp:
+      room: house
+      name: BOM Air Temp
+    script.bedtime:
+      room: bedroom
+    script.diningdaylight:
+      room: dining room
+    script.diningnormal:
+      room: dining room
+    script.diningwarm:
+      room: dining room
+    script.lounge100:
+      room: lounge room
+    script.loungedaylight:
+      room: lounge room
+    script.loungemovie:
+      room: lounge room
+    script.loungenormal:
+      room: lounge room
+    script.loungewarm:
+      room: lounge room
+    script.officeall:
+      room: office
+    script.officedaylight:
+      room: office
+    script.officemain:
+      room: office
+    script.officewarm:
+      room: office
+    script.deskdaylight:
+      room: office
+    script.desknormal:
+      room: office
+    script.deskwarm:
+      room: office
+  
