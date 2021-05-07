@@ -3138,6 +3138,20 @@ views:
                 hide: 
                   power_state: false
                 info: scroll
+              - entity: media_player.kodi_googletv_lan_fritz_box
+                type: custom:mini-media-player
+                icon: mdi:kodi
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+              - entity: media_player.android
+                type: custom:mini-media-player
+                icon: mdi:cast
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
               - entity: media_player.wdtvlive
                 type: custom:mini-media-player
                 icon: mdi:play-network
@@ -3162,6 +3176,14 @@ views:
                   power_state: false
                 info: scroll
                 source: full
+              - entity:  media_player.lg_webos_tv_c429
+                type: custom:mini-media-player
+                icon: mdi:television-classic
+                artwork: full-cover
+                hide: 
+                  power_state: false
+                info: scroll
+                source: full
               - entity:  media_player.lg_tv_lounge_room
                 type: custom:mini-media-player
                 icon: mdi:television-classic
@@ -3170,20 +3192,6 @@ views:
                   power_state: false
                 info: scroll
                 source: full
-              - entity: media_player.android
-                type: custom:mini-media-player
-                icon: mdi:cast
-                artwork: full-cover
-                hide: 
-                  power_state: false
-                info: scroll
-              - entity: media_player.kodi_googletv_lan_fritz_box
-                type: custom:mini-media-player
-                icon: mdi:kodi
-                artwork: full-cover
-                hide: 
-                  power_state: false
-                info: scroll
               - entity: sensor.gpodder
                 type: custom:podcast-card
                 name: Home Assistant Podcasts
