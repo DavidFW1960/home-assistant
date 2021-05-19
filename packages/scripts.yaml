@@ -48,6 +48,17 @@ script:
         payload: '1'
         topic: cmnd/nodemcu_lounge/Restart
       service: mqtt.publish
+  restart_all_tasmota:
+    alias: Restart all Tasmota Devices
+    sequence:
+    - data:
+        payload: '1'
+        topic: cmnd/sonoffs/Restart
+      service: mqtt.publish
+    - data:
+        payload: '1'
+        topic: cmnd/nodemcu/Restart
+      service: mqtt.publish
   updateversions:
     alias: Update Versions HA
     sequence:
