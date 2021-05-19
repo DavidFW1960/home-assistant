@@ -2267,6 +2267,7 @@ views:
             geo_location_sources:
               - nsw_rural_fire_service_feed
               - gdacs
+              - blitzortung
             entities:
               - zone.home
               - device_tracker.lightning
