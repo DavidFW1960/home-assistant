@@ -22,14 +22,14 @@ sensor:
       - PDL
   - platform: nsw_fuel_station
     station_id: 874
-#   friendly_name: Caltex 30A Pacific Hwy West Gosford (From Gosford)
-#   sensor.caltex_gosford_west_pdl_2
+#   friendly_name: Ampol 30A Pacific Hwy West Gosford (From Gosford)
+#   sensor.ampol_woolworths_gosford_west_westbound_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 819
-#   friendly_name: Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
-#   sensor.caltex_gosford_west_pdl
+#   friendly_name: Ampol Gosford West (Eastbound) (To Gosford)
+#   sensor.ampol_gosford_west_eastbound_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
@@ -151,22 +151,12 @@ sensor:
         friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
         unit_of_measurement: ¢/L
       ccgw1:
-        value_template: "{{states('sensor.caltex_gosford_west_pdl')}}"
-        friendly_name_template: >
-          {% if state_attr('sensor.caltex_gosford_west_pdl', 'station_id') == 874 %}
-            Caltex 30A Pacific Hwy West Gosford (From Gosford)
-          {% else %}
-            Caltex 69-71 Pacific Hwy Gosford West (To Gosford)
-          {% endif %}
+        value_template: "{{states('sensor.ampol_gosford_west_eastbound_pdl')}}"
+        friendly_name: Ampol 69-71 Pacific Hwy Gosford West (To Gosford)
         unit_of_measurement: ¢/L
       ccgw2:
-        value_template: "{{states('sensor.caltex_gosford_west_pdl_2')}}"
-        friendly_name_template: >
-          {% if state_attr('sensor.caltex_gosford_west_pdl_2', 'station_id') == 874 %}
-            Caltex 30A Pacific Hwy West Gosford (From Gosford)
-          {% else %}
-            Caltex 69-71 Pacific Hwy West Gosford (To Gosford)
-          {% endif %}
+        value_template: "{{states('sensor.ampol_woolworths_gosford_west_westbound_pdl')}}"
+        friendly_name: Ampol 30A Pacific Hwy West Gosford (From Gosford)
         unit_of_measurement: ¢/L
       cc18323:
         value_template: "{{states('sensor.ampol_gosford_west_pdl')}}"
@@ -228,10 +218,10 @@ homeassistant:
     sensor.caltex_belrose_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_gosford_west_pdl:
+    sensor.ampol_gosford_west_eastbound_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_gosford_west_pdl_2:
+    sensor.ampol_woolworths_gosford_west_westbound_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.ampol_gosford_west_pdl:
