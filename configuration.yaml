@@ -334,7 +334,7 @@ media_player:
     host: !secret onkyo
 
 recorder: !include recorder.yaml
-# google_assistant: !include google_assistant.yaml
+#google_assistant: !include google_assistant.yaml
 cloud: !include google_assistant_nabu.yaml
 light: !include lights.yaml
 group: !include groups.yaml
