@@ -2447,6 +2447,13 @@ views:
                   action: call-service
                   service: script.startupalltasmota
               - type: entity-button
+                entity: script.restart_all_tasmota
+                icon: mdi:restart
+                name: Restart
+                tap_action:
+                  action: call-service
+                  service: script.restart_all_tasmota
+              - type: entity-button
                 entity: script.setupalltasmotadevices
                 icon: mdi:script
                 name: Setup
