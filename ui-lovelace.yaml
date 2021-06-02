@@ -868,6 +868,8 @@ views:
               - device_tracker.davids_ipad
               - sensor.davids_ipad_battery_level
               - sensor.davids_iphone_battery_level
+              - sensor.davids_iphone_battery_state
+              - sensor.davids_ipad_battery_state
             card:
               type: 'custom:hui-entities-card'
               title: iOS Devices
