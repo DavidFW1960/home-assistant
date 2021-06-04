@@ -3540,7 +3540,7 @@ views:
           - sensor.sonarr_disk_space
           - sensor.radarr_movies
           - sensor.radarr_upcoming
-          - sensor.radarr_commands
+#          - sensor.radarr_commands
           - sensor.radarr_status
   - title: Buses, Trains & Fuel
     path: transport
