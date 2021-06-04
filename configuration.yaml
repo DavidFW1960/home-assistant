@@ -209,7 +209,7 @@ sensor:
     monitored_conditions:
       - movies
       - upcoming
-      - commands
+#      - commands
       - status
     days: 10
   - platform: sonarr_upcoming_media
