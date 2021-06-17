@@ -457,6 +457,9 @@ automation:
       platform: time
     condition:
     - "{{ now().strftime('%H:%M') == '09:00' and now().weekday() == 1 }}"
+    - condition: state
+      entity_id: 'input_boolean.homeandawayauto'
+      state: 'on'
     action:
     - data:
         message: Is Liz Home or at Work today?
@@ -468,6 +471,9 @@ automation:
       platform: time
     condition:
     - "{{ now().strftime('%H:%M') == '09:00' and now().weekday() == 2 }}"
+    - condition: state
+      entity_id: 'input_boolean.homeandawayauto'
+      state: 'on'
     action:
     - data:
         message: Is Liz Home or at Work today?
@@ -479,6 +485,9 @@ automation:
       platform: time
     condition:
     - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 1 }}"
+    - condition: state
+      entity_id: 'input_boolean.homeandawayauto'
+      state: 'on'
     action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.lizcovid
@@ -492,6 +501,9 @@ automation:
       platform: time
     condition:
     - "{{ now().strftime('%H:%M') == '00:00' and now().weekday() == 2 }}"
+    - condition: state
+      entity_id: 'input_boolean.homeandawayauto'
+      state: 'on'
     action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.lizcovid
