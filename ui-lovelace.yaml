@@ -2470,10 +2470,20 @@ views:
             show_header_toggle: false
             entities:
               - switch.sonoff12914
-              - switch.home_assistant
+              - type: custom:template-entity-row
+                entity: switch.home_assistant
+                name: Home Assistant
+                secondary: "Temperature {{ state_attr('switch.home_assistant', 'temperature') }}°C"
+                toggle: true
+                active: "{{ is_state('switch.home_assistant', 'on') }}"
               - switch.sonoff40851
               - switch.hifi
-              - switch.vpn_router
+              - type: custom:template-entity-row
+                entity: switch.vpn_router
+                name: VPN Router
+                secondary: "Temperature {{ state_attr('switch.vpn_router', 'temperature') }}°C"
+                toggle: true
+                active: "{{ is_state('switch.vpn_router', 'on') }}"
               - switch.sonoff23110
               - switch.sonoff30898
           - type: horizontal-stack
