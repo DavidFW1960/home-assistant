@@ -994,6 +994,26 @@ views:
                   func: raw
                   duration: 30min
           - type: entities
+            title: Fritz!Box
+            show_header_toggle: false
+            entities: 
+              - type: custom:auto-entities
+                card:
+                  type: custom:fold-entity-row
+                  padding: 0
+                  head:
+                    type: section
+                    label: Fritz!Box Switches and Sensors
+                  open: false
+                filter:
+                  include:
+                    - entity_id: "sensor.fritz_*"
+                    - entity_id: "switch.fritz_*"
+                    - entity_id: "binary_sensor.fritz_*"
+                show_empty: true
+                sort:
+                  method: name
+          - type: entities
             title: Brother MFC-9335CDW
             show_header_toggle: false
             entities:
@@ -1158,7 +1178,6 @@ views:
               show: true
               title: Change in Day Length
               show_states: true
-            y_axis_precision: 0
             apex_config:
               yaxis:
                 forceNiceScale: true
@@ -1574,7 +1593,6 @@ views:
             header:
               show: true
               title: Outdoor Illuminance
-            y_axis_precision: 0
             apex_config:
               responsive:
                 - breakpoint: 765
