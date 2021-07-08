@@ -330,6 +330,7 @@ input_boolean:
 shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
+  remove_ip_bans: /bin/bash /config/remove_bans.sh
 
 media_player:
   - platform: onkyo
