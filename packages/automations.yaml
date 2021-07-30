@@ -171,13 +171,13 @@ automation:
       data:
         entity_id: switch.sonoff23110
   - id: '1519082437913'
-    alias: Make Snapshot
+    alias: Make Backup
     trigger:
     - platform: time
       at: '00:30:00'
     condition: []
     action:
-    - service: hassio.snapshot_full
+    - service: hassio.backup_full
       data:
         name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
     - service: notify.david_ios_notify
