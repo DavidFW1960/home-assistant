@@ -63,10 +63,6 @@ sensor:
     start: '{{ 0 }}'
     end: '{{ now() }}'
 
-# FritzBox
-  - platform: fritzbox_netmonitor
-    host: !secret my_fritz_host
-
 # Docker Containers
   - platform: rest
     resource: http://10.90.11.100:8126/container/ha_dockermon/stats
