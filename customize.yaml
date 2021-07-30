@@ -299,3 +299,15 @@ sensor.cert_expiry_portainer_days:
   icon: mdi:calendar
 sensor.cert_expiry_tasmoadmin_days:
   icon: mdi:calendar
+switch.fritz_box_7590_call_deflection_0:
+  friendly_name: Unknown Call Blocker
+switch.fritz_box_7590_call_deflection_1:
+  friendly_name: Alarm
+switch.fritz_box_7590_call_deflection_2:
+  friendly_name: Lenny
+switch.fritz_box_7590_wi_fi_williams:
+  friendly_name: 2.4GHz WiFi
+switch.fritz_box_7590_wi_fi_williams_5ghz:
+  friendly_name: 5Ghz WiFi
+switch.fritz_box_7590_wi_fi_williams2:
+  friendly_name: Guest WiFi
