@@ -866,10 +866,10 @@ views:
             entities:
               - device_tracker.davids_iphone
               - device_tracker.davids_ipad
-              - sensor.davids_ipad_battery_level
+              - sensor.david_s_ipad_battery_level
               - sensor.davids_iphone_battery_level
               - sensor.davids_iphone_battery_state
-              - sensor.davids_ipad_battery_state
+              - sensor.david_s_ipad_battery_state
             card:
               type: 'custom:hui-entities-card'
               title: iOS Devices
@@ -882,8 +882,8 @@ views:
                 - entity: sensor.davids_iphone_battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.davids_iphone_battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
                 - entity: device_tracker.davids_ipad
-                - entity: sensor.davids_ipad_battery_level
-                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.davids_ipad_battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
+                - entity: sensor.david_s_ipad_battery_level
+                  name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.david_s_ipad_battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
       - type: vertical-stack
         cards:
           - type: entities
@@ -902,7 +902,7 @@ views:
                 secondary_info: last-updated
               - entity: sensor.speedtest_lastrun
                 format: relative
-              - sensor.fritz_netmonitor
+              - binary_sensor.fritz_box_7590_connectivity
           - type: horizontal-stack
             cards:
               - type: gauge
@@ -1024,7 +1024,7 @@ views:
                             }
                 show_empty: true
                 sort:
-                  method: name
+                  method: entity_id
           - type: entities
             title: Brother MFC-9335CDW
             show_header_toggle: false
