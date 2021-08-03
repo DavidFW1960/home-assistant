@@ -177,7 +177,7 @@ automation:
       at: '00:30:00'
     condition: []
     action:
-    - service: hassio.backup_full
+    - service: hassio.snapshot_full
       data:
         name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
     - service: notify.david_ios_notify
