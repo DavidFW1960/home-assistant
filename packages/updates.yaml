@@ -373,7 +373,7 @@ automation:
     action:
       - service: notify.david_ios_notify
         data:
-          message: "Home Assistant version {{ states('sensor.current_ha_stable') }} is now available for Hass.io"
+          message: "Home Assistant version {{ states('sensor.current_ha_stable') }} is now available for HA Supervised"
           title: Home Assistant Update
   - alias: 'Beta Update Available'
     id: 'BetaUpdateAvailable'
@@ -386,7 +386,7 @@ automation:
     action:
       - service: notify.david_ios_notify
         data:
-          message: "Home Assistant Beta version {{ states('sensor.current_ha_beta') }} is now available for Hass.io"
+          message: "Home Assistant Beta version {{ states('sensor.current_ha_beta') }} is now available for HA Supervised"
           title: Home Assistant Beta Update
 
 ################################################
