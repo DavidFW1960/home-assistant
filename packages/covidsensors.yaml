@@ -1,0 +1,30 @@
+sensor:
+  - platform: rest
+    resource: https://worldometers.p.rapidapi.com/api/coronavirus/country/Australia
+    name: Corona Australia
+    headers:
+      x-rapidapi-key: !secret x-rapid-api
+      x-rapidapi-host: "worldometers.p.rapidapi.com"
+    value_template: '{{ value_json.data["Active Cases"] }}'
+    unit_of_measurement: people 
+    scan_interval: 3600    
+    json_attributes:
+      - data
+  - platform: template
+    sensors:
+      corona_australia_recovered:
+        value_template: "{{ state_attr('sensor.corona_australia', 'data')['Total Recovered'] }}"
+        unit_of_measurement: people
+rest:
+  - scan_interval: 3600
+    resource: https://worldometer.herokuapp.com/api/coronavirus/world/
+    timeout: 60
+    sensor:
+      - name: Coronavirus Active Cases World
+        value_template: '{{ value_json.data["Active Cases"] }}'
+        unit_of_measurement: people 
+        json_attributes:
+          - data
+      - name: Coronavirus Recovered Cases World
+        value_template: '{{ value_json.data["Total Recovered"] }}'
+        unit_of_measurement: people 
