@@ -578,16 +578,19 @@ homeassistant:
     sensor.speedtest_download:
       friendly_name: Speedtest Download
       icon: mdi:speedometer
+      state_class: measurement
       unit_of_measurement: Mbit/s
       <<: *common
     sensor.speedtest_upload:
       friendly_name: Speedtest Upload
       icon: mdi:speedometer
+      state_class: measurement
       unit_of_measurement: Mbit/s
       <<: *common
     sensor.speedtest_ping:
       friendly_name: Speedtest Ping
       icon: mdi:speedometer
+      state_class: measurement
       unit_of_measurement: ms
       <<: *common
     sensor.speedtest_result:
