@@ -311,3 +311,5 @@ switch.fritz_box_7590_wi_fi_williams_5ghz:
   friendly_name: 5Ghz WiFi
 switch.fritz_box_7590_wi_fi_williams2:
   friendly_name: Guest WiFi
+switch.fritz_box_internet_access:
+  friendly_name: Internet Access
