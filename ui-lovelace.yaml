@@ -3816,10 +3816,10 @@ views:
               - entity: sensor.australia_coronavirus_confirmed
                 icon: 'mdi:account-box'
                 name: Confirmed
-              - entity: sensor.australia_coronavirus_current
+              - entity: sensor.corona_australia
                 icon: 'mdi:biohazard'
                 name: Current
-              - entity: sensor.australia_coronavirus_recovered
+              - entity: sensor.corona_australia_recovered
                 icon: 'mdi:calendar-check-outline'
                 name: Recovered
               - entity: sensor.australia_coronavirus_deaths
@@ -3834,10 +3834,10 @@ views:
               - entity: sensor.worldwide_coronavirus_confirmed
                 icon: 'mdi:account-box'
                 name: Confirmed
-              - entity: sensor.worldwide_coronavirus_current
+              - entity: sensor.coronavirus_active_cases_world
                 icon: 'mdi:biohazard'
                 name: Current
-              - entity: sensor.worldwide_coronavirus_recovered
+              - entity: sensor.coronavirus_recovered_cases_world
                 icon: 'mdi:calendar-check-outline'
                 name: Recovered
               - entity: sensor.worldwide_coronavirus_deaths
