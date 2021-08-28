@@ -1,86 +1,86 @@
 3ative_blue:
   ### Main Interface Colors ###
-  primary-color: "#3776c3"
-  light-primary-color: "#1f4573" # Logo Circle BG
-  primary-background-color: "#002c42" # Main Pages Background Colour
-  secondary-background-color: "#16304e" # Pop up Box Header Color
-  divider-color: var(--primary-color)
-  mdc-button: "#008686"
-  paper-listbox-background-color: "#000000" # Side Bar Background Colour
-  accent-color: "#3ba1a5" # Circle Plus Button Color
-  primary-bg-color: "#3776c3"
-  app-header-background-color: "#000d22"
+  primary-color: "rgb(55, 118, 195)"
+  light-primary-color: "rgb(31, 69, 115)" # Logo Circle BG
+  primary-background-color: rgb(0, 44, 66) # Main Pages Background Colour
+  secondary-background-color: "rgb(22, 48, 78)" # Pop up Box Header Color
+  divider-color: rgb(39, 90, 132, 20%)
+  mdc-button: "rgb(0, 134, 134)"
+  paper-listbox-background-color: "rgb(0, 0, 0)" # Side Bar Background Colour
+  accent-color: "rgb(59, 161, 165)" # Circle Plus Button Color
+  primary-bg-color: "rgb(4, 9, 31)"
+  app-header-background-color: "rgb(0, 13, 34)" #Top Banner
+  header-height: 60px
 
   ### Cards ###
   ch-background: "rgba(0, 0, 20, 0.6)" # fix for 0.113
   mdc-theme-surface: "rgb(16 44 75)" # Pop up card BG fix for 0.113
   ha-card-border-radius: 3px
   card-background-color: "rgba(0, 0, 20, 0.7)" # Cards Background Colour
-  markdown-code-background-color: "#112640"
+  markdown-code-background-color: "rgb(17, 38, 64)"
   material-background-color: var(--mdc-theme-surface) #Dropdown Menu BG
 
   ### Text ###
-  primary-text-color: "#dbe0e4" # Main Text Colour
-  secondary-text-color: "#12afff"
-  text-primary-color: "white" # Page Header Text & Icon text Color
-  disabled-text-color: "#A3A3A3"
+  primary-text-color: "rgb(219, 224, 228)" # Main Text Colour
+  secondary-text-color: "rgb(18, 175, 255)"
+  text-primary-color: "rgb(255, 255, 255)" # Page Header Text & Icon text Color
+  disabled-text-color: "rgb(163, 163, 163)"
   lumo-body-text-color: "#03d032" # 'Logbook' Date Color
-  codemirror-meta: "white"
+  codemirror-meta: "rgb(255, 255, 255)"
 
   ### Sidebar Menu ###
-  sidebar-icon-color: "#3776c37d"
+  sidebar-icon-color: "rgba(55, 118, 195, 49%)"
   sidebar-text-color: var(--primary-color)
   # sidebar-selected-background-color: var(--primary-background-color)
-  sidebar-selected-icon-color: "#82b7ff" # Selected Icon Colour
+  sidebar-selected-icon-color: "rgb(130, 183, 255)" # Selected Icon Colour
   sidebar-selected-text-color: var(--primary-text-color)
 
   ### States and Badges ###
-  state-icon-color: "#17416f" # Icon Off Color
-  state-icon-active-color: "#469dff" # Icon On Color
+  state-icon-color: rgb(25 76 165) # Icon Off Color
+  state-icon-active-color: rgb(92 165 255) # Icon On Color
   state-icon-unavailable-color: var(--disabled-text-color)
 
-  ### Sliders ###
-  paper-slider-knob-color: "#68ccff"
+ ### Sliders ###
+  paper-slider-knob-color: "rgb(104, 204, 255)"
   paper-slider-knob-start-color: var(--state-icon-color) # Slider Knob Off Color
   paper-slider-pin-color: var(--state-icon-active-color)
-  paper-slider-active-color: "#376e8a" # Slider On track Color
+  paper-slider-active-color: "rgb(55, 110, 138)" # Slider On track Color
   paper-slider-secondary-color: var(--light-primary-color)
   paper-slider-container-color: var(--slider-bar-color) # Slider Bar OFF Colour
 
   ### Top Badges ###
-  label-badge-background-color: "#00000000" # Background Colour
-  label-badge-text-color: "#75b6ff" # Text Colour
+  label-badge-background-color: "rgb(0, 0, 0, 100%)" # Background Colour
+  label-badge-text-color: "rgb(117, 182, 255)" # Text Colour
   label-badge-red: var(--primary-color) # Boarder Colour
 
   ### Toggles ###
-  switch-checked-color: "#469dff"
-  switch-unchecked-button-color: "#163d68"
+  switch-checked-color: "rgb(70, 157, 255)"
+  switch-unchecked-button-color: "rgb(22, 61, 104)"
   switch-unchecked-track-color: var(--primary-color)
 
   ### Table row ###
-  table-row-background-color: "#000000"
-  table-row-alternative-background-color: "#0b1623"
+  table-row-background-color: "rgb(0, 0, 0)"
+  table-row-alternative-background-color: "rgb(11, 22, 35)"
   data-table-background-color: var(--primary-background-color)
-  dark-primary-color: "#0288d1"
+  dark-primary-color: "rgb(2, 136, 209)"
 
   paper-item-icon-color: var(--state-icon-color) # Icon OFF COLOUR
   paper-item-icon-active-color: var(--state-icon-active-color)
 
   ha-paper-slider-pin-font-size: 15px
-  background-image: 'url("/local/3ative_bg.jpg") top center/cover no-repeat fixed '
+  background-image-main: url(/local/3ative_bg.jpg) no-repeat top left / 100% 100%
 
-  paper-input-container-focus-color: "white"
+  paper-input-container-focus-color: "rgb(255, 255, 255)"
 
   sidebar-background-color: var(--paper-listbox-background-color)
 
-  label-badge-blue: "#039be5"
-  label-badge-green: "#0DA035"
-  label-badge-yellow: "#f4b400"
+  label-badge-blue: "rgb(3, 155, 229)"
+  label-badge-green: "rgb(13, 160, 53)"
+  label-badge-yellow: "rgb(244, 180, 0)"
   label-badge-grey: var(--paper-grey-500)
-  # accent-color: "#ff0000"
 
   ### Code Editor
-  codemirror-atom: "#5aa2f1"
-  codemirror-string: "#30f2ff"
-  codemirror-keyword: "#87c0ff"
-  codemirror-number: "#26f1ff"
+  codemirror-atom: rgb(87, 199, 255)
+  codemirror-string: rgb(244, 249, 97)
+  codemirror-keyword: rgb(135, 192, 255)
+  codemirror-number: rgb(255, 152, 0)
