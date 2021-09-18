@@ -15,6 +15,12 @@ sensor:
       corona_australia_recovered:
         value_template: "{{ state_attr('sensor.corona_australia', 'data')['Total Recovered'] }}"
         unit_of_measurement: people
+      corona_australia_total_cases:
+        value_template: "{{ state_attr('sensor.corona_australia', 'data')['Total Cases'] }}"
+        unit_of_measurement: people
+      corona_australia_total_deaths:
+        value_template: "{{ state_attr('sensor.corona_australia', 'data')['Total Deaths'] }}"
+        unit_of_measurement: people
 rest:
   - scan_interval: 3600
     resource: https://worldometer.herokuapp.com/api/coronavirus/world/
@@ -28,3 +34,70 @@ rest:
       - name: Coronavirus Recovered Cases World
         value_template: '{{ value_json.data["Total Recovered"] }}'
         unit_of_measurement: people 
+      - name: Coronavirus Confirmed Cases World
+        value_template: '{{ value_json.data["Total Cases"] }}'
+        unit_of_measurement: people 
+      - name: Coronavirus Deaths World
+        value_template: '{{ value_json.data["Total Deaths"] }}'
+        unit_of_measurement: people 
+
+# NSW Derived from Integration
+# NSW Last 24 Hrs
+template:
+   - sensor:
+       - name: "Covid NSW Last 24 Hours State"
+         unique_id: "covid_nsw_last_24_hours_state"
+         icon: "mdi:virus"
+         unit_of_measurement: "cases"
+         state: >
+           {% set total = states('sensor.covid_nsw_last_24_hours_total') | int %}
+           {% set overseas = states('sensor.covid_nsw_last_24_hours_overseas_source') | int %}
+           {% set interstate = states('sensor.covid_nsw_last_24_hours_interstate_source') | int %}
+           {% set out_of_state = (overseas + interstate) %}
+           {{ (total - out_of_state) }}
+         attributes:
+           attribution: >
+             {{ state_attr('sensor.covid_nsw_last_24_hours_total', 'attribution') }}
+           published: >
+             {{ state_attr('sensor.covid_nsw_last_24_hours_total', 'published') }}
+# NSW Vaccinated
+   - sensor:
+       - name: "Covid NSW Fully Vaccinated"
+         unique_id: "covid_nsw_state_vaccination_rate"
+         icon: "mdi:needle"
+         unit_of_measurement: "%"
+         state: >
+           {% set total_population = 6565651 %}
+           {% set half_dose_total = (states('sensor.covid_nsw_doses') | int) / 2 %}
+           {% set state_second_dose_vaccinated_total = half_dose_total / total_population %}
+           {{ (state_second_dose_vaccinated_total * 100)|round(2, 'floor') }}
+         attributes:
+           attribution: >
+             {{ state_attr('sensor.covid_nsw_doses', 'attribution') }}
+           published: >
+             {{ state_attr('sensor.covid_nsw_doses', 'gp_network_doses_updated') }}
+           first_dose: >
+             {% set total_population = 6565651 %}
+             {% set first_dose_total = states('sensor.covid_nsw_total_first_dose_vaccine') | int %}
+             {% set state_first_dose_vaccinated_total = first_dose_total / total_population %}
+             {{ (state_first_dose_vaccinated_total * 100)|round(2, 'floor') }}
+           first_dose_last_24_hours: >
+             {% set total_population = 6565651 %}
+             {% set first_dose_last24 = states('sensor.covid_nsw_last_24_hours_first_dose_vaccine') | int %}
+             {% set state_first_dose_vaccinated_last24 = first_dose_last24 / total_population %}
+             {{ (state_first_dose_vaccinated_last24 * 100)|round(6, 'floor') }}
+           second_dose: >
+             {% set total_population = 6565651 %}
+             {% set second_dose_total = states('sensor.covid_nsw_total_second_dose_vaccine') | int %}
+             {% set state_second_dose_vaccinated_total = second_dose_total / total_population %}
+             {{ (state_second_dose_vaccinated_total * 100)|round(2, 'floor') }}
+           second_dose_last_24_hours: >
+             {% set total_population = 6565651 %}
+             {% set second_dose_last24 = states('sensor.covid_nsw_last_24_hours_second_dose_vaccine') | int %}
+             {% set state_second_dose_vaccinated_last24 = second_dose_last24 / total_population %}
+             {{ (state_second_dose_vaccinated_last24 * 100)|round(6, 'floor') }}
+           last_24_hours: >
+             {% set total_population = 6565651 %}
+             {% set second_dose_last24 = states('sensor.covid_nsw_last_24_hours_second_dose_vaccine') | int %}
+             {% set state_second_dose_vaccinated_last24 = second_dose_last24 / total_population %}
+             {{ (state_second_dose_vaccinated_last24 * 100)|round(6, 'floor') }}
