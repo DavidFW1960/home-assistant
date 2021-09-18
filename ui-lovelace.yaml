@@ -3813,7 +3813,7 @@ views:
             show_state: true
             title: Australia
             entities:
-              - entity: sensor.australia_coronavirus_confirmed
+              - entity: sensor.corona_australia_total_cases
                 icon: 'mdi:account-box'
                 name: Confirmed
               - entity: sensor.corona_australia
@@ -3822,7 +3822,7 @@ views:
               - entity: sensor.corona_australia_recovered
                 icon: 'mdi:calendar-check-outline'
                 name: Recovered
-              - entity: sensor.australia_coronavirus_deaths
+              - entity: sensor.corona_australia_total_deaths
                 icon: 'mdi:grave-stone'
                 name: Deaths
           - type: glance
@@ -3831,7 +3831,7 @@ views:
             show_state: true
             title: Worldwide
             entities:
-              - entity: sensor.worldwide_coronavirus_confirmed
+              - entity: sensor.coronavirus_confirmed_cases_world
                 icon: 'mdi:account-box'
                 name: Confirmed
               - entity: sensor.coronavirus_active_cases_world
@@ -3840,6 +3840,17 @@ views:
               - entity: sensor.coronavirus_recovered_cases_world
                 icon: 'mdi:calendar-check-outline'
                 name: Recovered
-              - entity: sensor.worldwide_coronavirus_deaths
+              - entity: sensor.coronavirus_deaths_world
                 icon: 'mdi:grave-stone'
                 name: Deaths
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: NSW Covid
+          show_header_toggle: false
+        filter:
+          include:
+            - entity_id: sensor.covid_nsw*
+        sort:
+          method: state
+          numeric: true
