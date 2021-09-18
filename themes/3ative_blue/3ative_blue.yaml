@@ -40,13 +40,14 @@
   state-icon-active-color: rgb(92 165 255) # Icon On Color
   state-icon-unavailable-color: var(--disabled-text-color)
 
- ### Sliders ###
+  ### Sliders ###
   paper-slider-knob-color: "rgb(104, 204, 255)"
   paper-slider-knob-start-color: var(--state-icon-color) # Slider Knob Off Color
   paper-slider-pin-color: var(--state-icon-active-color)
   paper-slider-active-color: "rgb(55, 110, 138)" # Slider On track Color
   paper-slider-secondary-color: var(--light-primary-color)
   paper-slider-container-color: var(--slider-bar-color) # Slider Bar OFF Colour
+  slider-bar-color: "rgb(0 169 255 / 30%)"
 
   ### Top Badges ###
   label-badge-background-color: "rgb(0, 0, 0, 100%)" # Background Colour
