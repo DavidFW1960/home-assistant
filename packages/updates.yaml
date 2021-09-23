@@ -30,6 +30,11 @@ homeassistant:
       friendly_name: 'HA Supervised Installed Version'
       icon: mdi:check-decagram
 
+    sensor.ha_os_agent_installed_version:
+      <<: *customize
+      friendly_name: 'HA OS-Agent Installed Version'
+      icon: mdi:check-decagram
+
     sensor.hass_available_to_install_version:
       <<: *customize
       friendly_name: 'HA Supervised Available Version Sensor'
@@ -193,6 +198,11 @@ sensor:
     beta: true
     image: qemux86-64
     source: hassio
+
+  - platform: mqtt
+    name: "HA OS-Agent Installed Version"
+    state_topic: "haosagentinstalled"
+    value_template: "{{ value_json.state }}"
 
   - platform: command_line
     name: Supervisor Installed

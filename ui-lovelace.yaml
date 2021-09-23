@@ -495,6 +495,25 @@ views:
               - type: custom:fold-entity-row
                 head: 
                   type: section
+                  label: HA OS-Agent
+                padding: 0
+                entities:
+                  - sensor.ha_os_agent_installed_version
+              - entity: sensor.github_ha_os_agent_available
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states(config.entity) != states('sensor.ha_os_agent_installed_version') %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
+              - type: custom:fold-entity-row
+                head: 
+                  type: section
                   label: DNS
                 padding: 0
                 entities:
