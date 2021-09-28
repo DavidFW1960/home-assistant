@@ -500,6 +500,9 @@ views:
                 entities:
                   - sensor.ha_os_agent_installed_version
               - entity: sensor.github_ha_os_agent_available
+                tap_action:
+                  action: url
+                  url_path: https://github.com/home-assistant/os-agent/releases
                 card_mod:
                   style: |
                     :host {
