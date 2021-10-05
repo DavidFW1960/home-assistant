@@ -3298,7 +3298,7 @@ function deepcopy(value) {
   return result;
 }
 
-const CARD_VERSION = '1.3.1';
+const CARD_VERSION = '1.3.5';
 
 /* eslint no-console: 0 */
 console.info(`%c  CONFIG-TEMPLATE-CARD  \n%c  Version ${CARD_VERSION}         `, 'color: orange; font-weight: bold; background: black', 'color: white; font-weight: bold; background: dimgray');
@@ -3320,8 +3320,8 @@ let ConfigTemplateCard = class ConfigTemplateCard extends LitElement {
         if (config.card && config.card.type === 'picture-elements') {
             console.warn('WARNING: config-template-card should not be used with the picture-elements card itself. Instead use it as one of the elements. Check the README for details');
         }
-        if (config.element && !config.style) {
-            throw new Error('No style defined for element');
+        if (config.element && !config.element.type) {
+            throw new Error('No element type defined');
         }
         if (!config.entities) {
             throw new Error('No entities defined');
@@ -3362,13 +3362,29 @@ let ConfigTemplateCard = class ConfigTemplateCard extends LitElement {
             : this._config.row
                 ? deepcopy(this._config.row)
                 : deepcopy(this._config.element);
+        let style = this._config.style ? deepcopy(this._config.style) : {};
         config = this._evaluateConfig(config);
+        if (style) {
+            style = this._evaluateConfig(style);
+        }
         const element = this._config.card
             ? this._helpers.createCardElement(config)
             : this._config.row
                 ? this._helpers.createRowElement(config)
                 : this._helpers.createHuiElement(config);
         element.hass = this.hass;
+        if (this._config.element) {
+            if (style) {
+                Object.keys(style).forEach(prop => {
+                    this.style.setProperty(prop, style[prop]);
+                });
+            }
+            if (config.style) {
+                Object.keys(config.style).forEach(prop => {
+                    element.style.setProperty(prop, config.style[prop]);
+                });
+            }
+        }
         return html `
       ${element}
     `;
