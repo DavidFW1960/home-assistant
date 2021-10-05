@@ -924,7 +924,7 @@ views:
                 secondary_info: last-updated
               - entity: sensor.speedtest_lastrun
                 format: relative
-              - binary_sensor.fritz_box_7590_connectivity
+              - binary_sensor.fritz_box_7590_connection
           - type: horizontal-stack
             cards:
               - type: gauge
