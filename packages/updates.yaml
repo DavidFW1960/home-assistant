@@ -363,10 +363,11 @@ binary_sensor:
     sensors:
       hass_update_available:
         value_template: >-
-          {{ states('sensor.current_ha_stable') != 'unavailable' and 
-             states('sensor.current_ha_stable') > states('sensor.hass_installed_version')
-              }}
-
+           {%- if states('sensor.current_ha_stable') != 'unavailable' -%}
+           {% set next = states('sensor.current_ha_stable') %}
+           {% set current = states('sensor.hass_installed_version') | replace('b','.') %}
+           {{ next.split('.') | map('int') | list >  current.split('.') | map('int') | list }}
+           {%- endif %}
 ################################################
 ## Automation
 ################################################
