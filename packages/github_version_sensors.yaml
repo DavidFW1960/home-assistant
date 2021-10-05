@@ -78,7 +78,7 @@ sensor:
   - platform: rest
     resource: https://api.github.com/repos/docker/compose/releases/latest
     name: Docker Compose Version Available
-    value_template: 'v{{ value_json.tag_name }}'
+    value_template: '{{ value_json.tag_name }}'
     headers:
       Authorization: !secret github-access-token-token
       Accept: application/vnd.github.v3+json
