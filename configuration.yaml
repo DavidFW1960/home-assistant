@@ -132,11 +132,6 @@ panel_iframe:
 #   url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
     url: https://dev.materialdesignicons.com/icons
 
-# Discover some devices automatically
-discovery:
-  enable:
-    - dlna_dmr
-
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
@@ -235,32 +230,62 @@ sensor:
     sensors:
       cert_expiry_ha_domain_days:
         friendly_name: 'SSL Certificate Expiry Days'
-        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_ha_domain')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+        value_template: >-
+          {% if is_state('sensor.cert_expiry_ha_domain', 'unavailable') %}
+            unavailable
+          {% else %}
+            {{ (as_timestamp(states('sensor.cert_expiry_ha_domain')) - as_timestamp( now())) | timestamp_custom('%-j') }}
+          {% endif %}
   - platform: template
     sensors:
       cert_expiry_cockpit_days:
         friendly_name: 'SSL Cockpit Expiry Days'
-        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_cockpit')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+        value_template: >-
+          {% if is_state('sensor.cert_expiry_cockpit', 'unavailable') %}
+            unavailable
+          {% else %}
+            {{ (as_timestamp(states('sensor.cert_expiry_cockpit')) - as_timestamp( now())) | timestamp_custom('%-j') }}
+          {% endif %}
   - platform: template
     sensors:
       cert_expiry_glances_days:
         friendly_name: 'SSL Glances Expiry Days'
-        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_glances')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+        value_template: >-
+          {% if is_state('sensor.cert_expiry_glances', 'unavailable') %}
+            unavailable
+          {% else %}
+            {{ (as_timestamp(states('sensor.cert_expiry_glances')) - as_timestamp( now())) | timestamp_custom('%-j') }}
+          {% endif %}
   - platform: template
     sensors:
       cert_expiry_logviewer_days:
         friendly_name: 'SSL Logviewer Expiry Days'
-        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_logviewer')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+        value_template: >-
+          {% if is_state('sensor.cert_expiry_logviewer', 'unavailable') %}
+            unavailable
+          {% else %}
+            {{ (as_timestamp(states('sensor.cert_expiry_logviewer')) - as_timestamp( now())) | timestamp_custom('%-j') }}
+          {% endif %}
   - platform: template
     sensors:
       cert_expiry_portainer_days:
         friendly_name: 'SSL Portainer Expiry Days'
-        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_portainer')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+        value_template: >-
+          {% if is_state('sensor.cert_expiry_portainer', 'unavailable') %}
+            unavailable
+          {% else %}
+            {{ (as_timestamp(states('sensor.cert_expiry_portainer')) - as_timestamp( now())) | timestamp_custom('%-j') }}
+          {% endif %}
   - platform: template
     sensors:
       cert_expiry_tasmoadmin_days:
         friendly_name: 'SSL Tasmoadmin Expiry Days'
-        value_template: "{{ (as_timestamp(states('sensor.cert_expiry_tasmoadmin')) - as_timestamp( now())) | timestamp_custom('%-j') }}"
+        value_template: >-
+          {% if is_state('sensor.cert_expiry_tasmoadmin', 'unavailable') %}
+            unavailable
+          {% else %}
+            {{ (as_timestamp(states('sensor.cert_expiry_tasmoadmin')) - as_timestamp( now())) | timestamp_custom('%-j') }}
+          {% endif %}
 
 # Artisan Charge
   - platform: mqtt
