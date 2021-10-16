@@ -4,8 +4,8 @@
 sensor:
   - platform: nsw_fuel_station
     station_id: 18424
-#   friendly_name: Caltex 153 Forest Way Belrose
-#   sensor.caltex_belrose_pdl
+#   friendly_name: Ampol 153 Forest Way Belrose
+#   sensor.ampol_belrose_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
@@ -34,14 +34,14 @@ sensor:
       - PDL
   - platform: nsw_fuel_station
     station_id: 17340
-#   friendly_name: Caltex Langford Drive Kariong
-#   sensor.caltex_kariong_pdl
+#   friendly_name: Ampol Woolworths Kariong
+#   sensor.ampol_woolworths_kariong_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 18253
 #   friendly_name: Ampol 164 Mona Vale Rd St Ives Foodary
-#   sensor.caltex_st_ives_foodary_pdl
+#   sensor.ampol_foodary_st_ives_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
@@ -52,8 +52,8 @@ sensor:
       - PDL
   - platform: nsw_fuel_station
     station_id: 17249
-#   friendly_name: Caltex Woolies 155 The Entrance Rd Erina
-#   sensor.caltex_woolworths_erina_pdl
+#   friendly_name: Ampol Woolies 155 The Entrance Rd Erina
+#   sensor.ampol_woolworths_erina_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
@@ -127,12 +127,12 @@ sensor:
         friendly_name: Caltex Woolies 900 Pacific Hwy Lisarow
         unit_of_measurement: ¢/L
       cc17249:
-        value_template: "{{states('sensor.caltex_woolworths_erina_pdl')}}"
-        friendly_name: Caltex Woolies 155 The Entrance Rd Erina
+        value_template: "{{states('sensor.ampol_woolworths_erina_pdl')}}"
+        friendly_name: Ampol Woolies 155 The Entrance Rd Erina
         unit_of_measurement: ¢/L
       cc17340:
-        value_template: "{{states('sensor.caltex_kariong_pdl')}}"
-        friendly_name: Caltex Langford Drive Kariong
+        value_template: "{{states('sensor.ampol_woolworths_kariong_pdl')}}"
+        friendly_name: Ampol Woolworths Kariong
         unit_of_measurement: ¢/L
       cc2263:
         value_template: "{{states('sensor.caltex_wyoming_pdl')}}"
@@ -189,8 +189,8 @@ sensor:
         friendly_name: Ampol 164 Mona Vale Rd St Ives Foodary
         unit_of_measurement: ¢/L
       syd18424:
-        value_template: "{{states('sensor.caltex_belrose_pdl')}}"
-        friendly_name: Caltex 153 Forest Way Belrose
+        value_template: "{{states('sensor.ampol_belrose_pdl')}}"
+        friendly_name: Ampol 153 Forest Way Belrose
         unit_of_measurement: ¢/L
       syd2436:
         value_template: "{{states('sensor.ampol_woolworths_waitara_pdl')}}"
@@ -215,7 +215,7 @@ homeassistant:
       common: &common
         package: "fuel"
 
-    sensor.caltex_belrose_pdl:
+    sensor.ampol_belrose_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.ampol_gosford_west_eastbound_pdl:
@@ -227,7 +227,7 @@ homeassistant:
     sensor.ampol_gosford_west_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_kariong_pdl:
+    sensor.ampol_kariong_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.ampol_foodary_st_ives_pdl:
@@ -236,7 +236,7 @@ homeassistant:
     sensor.caltex_st_ives_north_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_woolworths_erina_pdl:
+    sensor.ampol_woolworths_erina_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_woolworths_glenrose_pdl:
