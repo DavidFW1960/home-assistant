@@ -485,7 +485,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states(config.entity) != states('sensor.current_supervisor_beta') %}
+                      {% if states(config.entity) < states('sensor.current_supervisor_beta') %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
@@ -507,7 +507,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states(config.entity) != states('sensor.ha_os_agent_installed_version') %}
+                      {% if states(config.entity) > states('sensor.ha_os_agent_installed_version') %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
@@ -531,7 +531,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states(config.entity) != states('sensor.current_dns_beta') %}
+                      {% if states(config.entity) < states('sensor.current_dns_beta') %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
@@ -555,7 +555,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states(config.entity) != states('sensor.current_audio_beta') %}
+                      {% if states(config.entity) < states('sensor.current_audio_beta') %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
@@ -579,7 +579,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states(config.entity) != states('sensor.current_cli_beta') %}
+                      {% if states(config.entity) < states('sensor.current_cli_beta') %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
@@ -601,7 +601,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states(config.entity) != states('sensor.current_multicast_latest') %}
+                      {% if states(config.entity) < states('sensor.current_multicast_latest') %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
@@ -623,7 +623,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states(config.entity) != states('sensor.current_observer_latest') %}
+                      {% if states(config.entity) < states('sensor.current_observer_latest') %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
