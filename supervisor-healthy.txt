@@ -1,0 +1,1 @@
+ha jobs options --ignore-conditions healthy
