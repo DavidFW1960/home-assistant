@@ -24,11 +24,11 @@ decluttering_templates:
               hui-generic-entity-row:
                 $: |
                   .info.pointer .secondary {
-                    {% if states('sensor.[[device]]_rssi')|int >= 100 %}
+                    {% if states('sensor.[[device]]_rssi')|int(0) >= 100 %}
                     color: green;
-                    {% elif states('sensor.[[device]]_rssi')|int >= 80 %}
+                    {% elif states('sensor.[[device]]_rssi')|int(0) >= 80 %}
                     color: orange;
-                    {% elif states('sensor.[[device]]_rssi')|int >= 60 %}
+                    {% elif states('sensor.[[device]]_rssi')|int(0) >= 60 %}
                     color: magenta;
                     {% else %}
                     color: red;
@@ -82,13 +82,13 @@ decluttering_templates:
             $:
               hui-generic-entity-row: |
                 .entities-row div.entity:nth-child(4) div::before {
-                  {% if states('sensor.[[device]]_rssi')|int >= 100 %}
+                  {% if states('sensor.[[device]]_rssi')|int(0) >= 100 %}
                   color: green;
                   content: "Excellent\A";
-                  {% elif states('sensor.[[device]]_rssi')|int >= 80 %}
+                  {% elif states('sensor.[[device]]_rssi')|int(0) >= 80 %}
                   color: orange;
                   content: "Good\A";
-                  {% elif states('sensor.[[device]]_rssi')|int >= 60 %}
+                  {% elif states('sensor.[[device]]_rssi')|int(0) >= 60 %}
                   color: magenta;
                   content: "Fair\A";
                   {% else %}
@@ -714,7 +714,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states(config.entity)|int > 0 %}
+                      {% if states(config.entity)|int(0) > 0 %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
@@ -740,7 +740,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states(config.entity)|int > 0 %}
+                      {% if states(config.entity)|int(0) > 0 %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
@@ -1479,12 +1479,12 @@ views:
                 - entity: sensor.illuminance
                   type: "custom:template-entity-row"
                   secondary: "{{ states('weather.kariong') }} weather.kariong"
-                  state: "{{ '{:,}'.format((states('sensor.illuminance'))|int) }} lx"
+                  state: "{{ '{:,}'.format((states('sensor.illuminance'))|int(0)) }} lx"
                   icon: mdi:brightness-5
                 - entity: sensor.estimated_illuminance
                   type: "custom:template-entity-row"
                   secondary: "{{ states('weather.home') }} weather.home"
-                  state: "{{ '{:,}'.format((states('sensor.estimated_illuminance'))|int) }} lx"
+                  state: "{{ '{:,}'.format((states('sensor.estimated_illuminance'))|int(0)) }} lx"
                   icon: mdi:brightness-5
           - type: 'custom:compass-card'
             header:

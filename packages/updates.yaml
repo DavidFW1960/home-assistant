@@ -366,7 +366,7 @@ binary_sensor:
            {%- if states('sensor.current_ha_stable') != 'unavailable' -%}
            {% set next = states('sensor.current_ha_stable') %}
            {% set current = states('sensor.hass_installed_version') | replace('b','.') %}
-           {{ next.split('.') | map('int') | list >  current.split('.') | map('int') | list }}
+           {{ next.split('.') | map('int', 0) | list >  current.split('.') | map('int', 0) | list }}
            {%- endif %}
 ################################################
 ## Automation
