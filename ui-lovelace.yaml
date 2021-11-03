@@ -3865,14 +3865,14 @@ views:
               - entity: sensor.coronavirus_deaths_world
                 icon: 'mdi:grave-stone'
                 name: Deaths
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: NSW Covid
-          show_header_toggle: false
-        filter:
-          include:
-            - entity_id: sensor.covid_nsw*
-        sort:
-          method: state
-          numeric: true
+#      - type: custom:auto-entities
+#        card:
+#          type: entities
+#          title: NSW Covid
+#          show_header_toggle: false
+#        filter:
+#          include:
+#            - entity_id: sensor.covid_nsw*
+#        sort:
+#          method: state
+#          numeric: true
