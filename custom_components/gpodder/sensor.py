@@ -23,6 +23,6 @@ class GpodderSensor(GpodderEntity):
         return len(self.coordinator.data)
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the state attributes."""
         return {"podcasts": self.coordinator.data}
