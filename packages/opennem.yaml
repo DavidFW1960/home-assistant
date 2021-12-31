@@ -5,7 +5,8 @@ sensor:
     monitored_conditions:
       - battery_charging
       - battery_discharging
-      - biomass
+      - bioenergy_biomass
+      - bioenergy_biogas
       - coal_black
       - coal_brown
       - exports
@@ -17,6 +18,7 @@ sensor:
       - gas_ocgt
       - gas_recip
       - gas_steam
+      - gas_wcmg
       - generation
       - hydro
       - imports
@@ -26,3 +28,91 @@ sensor:
       - solar_utility
       - temperature
       - wind
+
+homeassistant:
+  customize:
+    package.node_anchors:
+      common: &common
+        package: "opennem"
+
+    sensor.ampol_belrose_pdl:
+      fiendly_name:
+      <<: *common
+    sensor.opennem_nsw1_battery_charging:
+      friendly_name: Battery (Charging)
+      <<: *common
+    sensor.opennem_nsw1_battery_discharging:
+      friendly_name: Battery (Discharging)
+      <<: *common
+    sensor.opennem_nsw1_biomass:
+      friendly_name: Biomass
+      <<: *common
+    sensor.opennem_nsw1_black_coal:
+      friendly_name: Black Coal
+      <<: *common
+    sensor.opennem_nsw1_brown_coal:
+      friendly_name: Brown Coal
+      <<: *common
+    sensor.opennem_nsw1_current_price:
+      friendly_name: Current Price
+      <<: *common
+    sensor.opennem_nsw1_distillate:
+      friendly_name: Distillate
+      <<: *common
+    sensor.opennem_nsw1_electricity_demand:
+      friendly_name: Electricity Demand
+      <<: *common
+    sensor.opennem_nsw1_electricity_generation:
+      friendly_name: Electricity Generation
+      <<: *common
+    sensor.opennem_nsw1_exported_power:
+      friendly_name: Exported Power
+      <<: *common
+    sensor.opennem_nsw1_gas_ccgt:
+      friendly_name: Gas (CCGT)
+      <<: *common
+    sensor.opennem_nsw1_gas_ocgt:
+      friendly_name: Gas (OCGT)
+      <<: *common
+    sensor.opennem_nsw1_gas_recip:
+      friendly_name: Gas (Recip)
+      <<: *common
+    sensor.opennem_nsw1_gas_steam:
+      friendly_name: Gas (Steam)
+      <<: *common
+    sensor.opennem_nsw1_gen_from_fossil_fuels:
+      friendly_name: Gen from Fossil Fuels
+      <<: *common
+    sensor.opennem_nsw1_gen_from_renewables:
+      friendly_name: Gen from Renewables
+      <<: *common
+    sensor.opennem_nsw1_hydro:
+      friendly_name: Hydro
+      <<: *common
+    sensor.opennem_nsw1_imported_power:
+      friendly_name: Imported Power
+      <<: *common
+    sensor.opennem_nsw1_pumps:
+      friendly_name: Pumps
+      <<: *common
+    sensor.opennem_nsw1_solar_rooftop:
+      friendly_name: Solar (Rooftop)
+      <<: *common
+    sensor.opennem_nsw1_solar_utility:
+      friendly_name: Solar (Utility)
+      <<: *common
+    sensor.opennem_nsw1_temperature:
+      friendly_name: Temperature
+      <<: *common
+    sensor.opennem_nsw1_wind:
+      friendly_name: Wind
+      <<: *common
+    sensor.opennem_nsw1_bioenergy_biogas:
+      friendly_name: Bioenergy (Biogas)
+      <<: *common
+    sensor.opennem_nsw1_bioenergy_biomass:
+      friendly_name: Bioenergy (Biomass)
+      <<: *common
+    sensor.opennem_nsw1_gas_waste:
+      friendly_name: Gas(Waste)
+      <<: *common
