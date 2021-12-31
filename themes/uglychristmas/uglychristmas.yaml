@@ -6,18 +6,19 @@ uglychristmas:
   text-color: '#FFFFFF'
   text-medium-light-color: '#FFFFFF'
   text-medium-color: '#FFFFFF'
-  text-dark-color: '#F8B229'
-  accent-color: '#F8B229'
-  accent-medium-color: '#F8B229'
+  text-dark-color: '#F8CF29'
+  accent-color: '#F8CF29'
+  accent-medium-color: '#F8CF29'
   background-color: '#165B33'
   background-color-2: '#BB2528'
   background-card-color: '#BB2528'
-  border-color: '#EA4630'
+  border-color: ''
 
   # Header
-  primary-color: '#BB2528'
+  primary-color: '#FFFFFF'
   text-primary-color: 'var(--text-color)'
-
+  app-header-background-color: "#BB2528"
+  
   # Left Menu
   paper-listbox-background-color: 'var(--background-color)'
   sidebar-icon-color: 'var(--text-medium-color)'
@@ -48,7 +49,7 @@ uglychristmas:
   # Switches
   switch-checked-button-color: 'var(--text-medium-light-color)'
   switch-unchecked-button-color: 'var(--text-medium-light-color)'
-  switch-checked-track-color: '#F8B229'
+  switch-checked-track-color: '#F8CF29'
   switch-unchecked-track-color: '#767682'
 
   # Slider

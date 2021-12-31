@@ -31,7 +31,7 @@ ux_goodie:
   card-background-color: "var(--secondary-background-color)"
   paper-listbox-background-color: "var(--ha-card-background)"
   ha-card-border-radius: "15px"
-  ha-card-background: "rgba(10, 10, 10, 0.87)"
+  ha-card-background: "rgba(5, 5, 5, 0.87)"
   paper-card-background-color: "var(--ha-card-background)"  # lovelace cards background  # REMOVED IN HA 0.113 <---
   paper-dialog-background-color: "rgba(20, 20, 20, 0.95)"  # entity details background
 
@@ -137,3 +137,12 @@ ux_goodie:
         background-color: var(--app-header-background-color-custom) !important;
         color: var(--primary-text-color) !important;
       }
+
+
+# Xiaomi Vacuum Map Card
+  map-card-secondary-text-color: "#F1F1F1"
+  map-card-secondary-color: "#2e2e2e"
+  map-card-zoomer-background: "#2e2e2e"
+  map-card-room-icon-background-color-selected: "#1F1F1F"
+  map-card-predefined-rectangle-icon-background-color-selected: "#1F1F1F"
+  map-card-predefined-point-icon-background-color-selected: "#1F1F1F"

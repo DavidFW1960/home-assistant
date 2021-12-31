@@ -83,7 +83,16 @@ darkish:
   # mdc
   mdc-dialog-title-ink-color: "var(--accent)"
   mdc-checkbox__native-control: "var(--primary-text-color)"
-  
+
+  mdc-select-fill-color: "var(primary-background-color:)"
+  mdc-select-ink-color: "var(--primary-text-color)"
+  mdc-select-disabled-ink-color: "var(--secondary-text-color)"
+  input-fill-color: "rgba(255, 255, 255, 0.05)"
+  input-disabled-fill-color: "rgba(255, 255, 255, 0.02)"
+  input-ink-color: "rgba(255, 255, 255, 0.87)"
+  input-label-ink-color: "rgba(255, 255, 255, 0.6)"
+  input-disabled-ink-color: "rgba(255, 255, 255, 0.37)"
+  input-dropdown-icon-color: "rgba(255, 255, 255, 0.54)"
   #test
   #mdc-checkbox: "#ff0000"
   #mdc-checkbox-border: "ff0000"
