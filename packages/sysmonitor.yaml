@@ -412,9 +412,11 @@ sensor:
         friendly_name: "Load Averages"
         value_template: "{{states('sensor.load_1m')|round(2)}}, {{states('sensor.load_5m')|round(2)}}, {{states('sensor.load_15m')|round(2)}} (1, 5, 15 min)"
   - platform: statistics
+    state_characteristic: mean
     entity_id: sensor.memory_use_percent
     name: memory
   - platform: statistics
+    state_characteristic: mean
     entity_id: sensor.processor_use
     name: processor
 
