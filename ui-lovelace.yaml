@@ -1486,6 +1486,10 @@ views:
                   secondary: "{{ states('weather.home') }} weather.home"
                   state: "{{ '{:,}'.format((states('sensor.estimated_illuminance'))|int(0)) }} lx"
                   icon: mdi:brightness-5
+          - type: custom:weather-chart-card
+            entity: weather.kariong_hourly
+          - type: custom:weather-chart-card
+            entity: weather.kariong
           - type: 'custom:compass-card'
             header:
               title:
@@ -3608,8 +3612,9 @@ views:
           - sensor.sonarr_disk_space
           - sensor.radarr_movies
           - sensor.radarr_upcoming
-#          - sensor.radarr_commands
+          - sensor.radarr_commands
           - sensor.radarr_status
+          - sensor.radarr_disk_space
   - title: Buses, Trains & Fuel
     path: transport
     icon: mdi:train
