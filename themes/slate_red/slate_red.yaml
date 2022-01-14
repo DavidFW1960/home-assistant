@@ -90,3 +90,7 @@ slate_red:
   st-mode-background: 'var(--primary-background-color)'
   # fix white on white markdown code sections (eg. the addons infos)
   markdown-code-background-color: 'var(--secondary-background-color)'
+  # fix white textfields on addons config forms
+  mdc-text-field-fill-color: 'var(--material-secondary-background-color)'
+  mdc-text-field-label-ink-color: 'var(--primary-text-color)'
+  mdc-text-field-ink-color: 'var(--primary-text-color)'
