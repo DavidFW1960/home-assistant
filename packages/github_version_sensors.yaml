@@ -2,30 +2,25 @@
 
 sensor:
 
-# Github Sensors
-  - platform: github
-    access_token: !secret github-access-token
-    entity_namespace: Github
-    scan_interval: 3600
-    repositories:
-      - path: artisan-roaster-scope/artisan
-        name: Artisan
-      - path: docker/compose
-        name: Docker Compose
-      - path: arendst/Tasmota
-        name: Tasmota
-      - path: moby/moby
-        name: Docker-CE
-      - path: home-assistant/os-agent
-        name: HA OS-Agent
   - platform: template
     sensors:
       github_docker_ce_available:
         friendly_name: 'Github Docker-CE Available'
-        value_template: "{{ state_attr('sensor.github_docker_ce', 'latest_release_tag') }}"
+        value_template: "{{ states('sensor.moby_moby_latest_release') }}"
       github_ha_os_agent_available:
         friendly_name: 'HA OS-Agent Available Version'
-        value_template: "v{{ state_attr('sensor.github_ha_os_agent', 'latest_release_tag') }}"
+        value_template: "v{{ states('sensor.home_assistant_os_agent_latest_release') }}"
+      artisan_software_version:
+        value_template: "{{ states('sensor.artisan_roaster_scope_artisan_latest_release') }}"
+        friendly_name: 'Artisan Software Version'
+# Docker Compose Version
+      docker_compose_version_available:
+        friendly_name: 'Docker Compose Version Available'
+        value_template: "{{ states('sensor.docker_compose_latest_release') }}"
+# Tasmota
+      tasmota_firmware_version_available:
+        friendly_name: 'Tasmota Firmware Version Available'
+        value_template: "{{ state_attr('sensor.arendst_tasmota_latest_release', 'tag') }}"
 
 # Github Rate Limits
   - platform: rest
@@ -49,15 +44,6 @@ sensor:
 
 # Artisan Software Version
 # Getting Artisan version from JSON
-  - platform: rest
-    resource: https://api.github.com/repos/artisan-roaster-scope/artisan/releases/latest
-    name: Artisan Software Version
-    value_template: '{{ value_json.tag_name }}'
-    headers:
-      Authorization: !secret github-access-token-token
-      Accept: application/vnd.github.v3+json
-      Content-Type: application/json
-      User-Agent: Home Assistant REST sensor
   - platform: mqtt
     name: "Artisan Software Version Installed"
     state_topic: "artisan_version"
@@ -73,17 +59,6 @@ sensor:
     name: "Docker-CE Version Installed"
     state_topic: "docker-ce-version"
     value_template: "{{ value_json.state }}"
-
-# Docker Compose Version
-  - platform: rest
-    resource: https://api.github.com/repos/docker/compose/releases/latest
-    name: Docker Compose Version Available
-    value_template: '{{ value_json.tag_name }}'
-    headers:
-      Authorization: !secret github-access-token-token
-      Accept: application/vnd.github.v3+json
-      Content-Type: application/json
-      User-Agent: Home Assistant REST sensor
 
 # Docker-CE Version
   - platform: rest
@@ -115,15 +90,6 @@ sensor:
 
 # Tasmota Firmware
 # Getting Firmware from JSON for Tasmota
-  - platform: rest
-    resource: https://api.github.com/repos/arendst/Tasmota/releases/latest
-    name: Tasmota Firmware Version Available
-    value_template: '{{ value_json.tag_name }}'
-    headers:
-      Authorization: !secret github-access-token-token
-      Accept: application/vnd.github.v3+json
-      Content-Type: application/json
-      User-Agent: Home Assistant REST sensor
   - platform: mqtt
     name: "Coffee Maker Firmware"
     state_topic: "stat/sonoff1/STATUS2"
