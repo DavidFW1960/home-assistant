@@ -62,7 +62,7 @@ sensor:
         unit_of_measurement: °C
         device_class: temperature
         value_template: >
-            {%- if states('sensor.gosford_temp') | float(default='n/a') > 27 and states('sensor.gosford_humidity') | float(default='n/a') > 40 -%}
+            {%- if states('sensor.gosford_temp') | float(default=0) > 27 and states('sensor.gosford_humidity') | float(default=0) > 40 -%}
             {% set T = states('sensor.gosford_temp') | float(default='n/a') %}
             {% set R = states('sensor.gosford_humidity') | float(default='n/a') %}
             {% set c1 = -8.78469475556 %}
@@ -184,7 +184,28 @@ sensor:
     sensors:
       dewpoint_outside:
         temperature: sensor.gosford_temp
-        rel_hum: sensor.gosford_humidity
+        rel_hum: sensor.nodemcu_bedroom_am2301_humidity #sensor.home_humidity
+ 
+#Sensors for Humidity, Windspeed conversion and Temp Feels Like
+
+  - platform: template
+    sensors:
+      home_humidity:
+        value_template: >
+            {{ expand(['sensor.nodemcu_bedroom_am2301_humidity', 'sensor.nodemcu_bedroom_bme280_humidity', 'sensor.nodemcu_lounge_bme280_humidity', 'sensor.sonoff1_2914_si7021_humidity', 'sensor.sonoff3_0898_si7021_humidity'])|map(attribute='state')|map('float')|average | round(1)}} 
+
+      home_windspeed:
+        value_template: >
+            {% set speed=states('sensor.gosford_wind_speed_kilometre')|float(default='n/a') *(1000/3600)%}
+            {{speed}}
+        unit_of_measurement: m/s
+
+  - platform: temperature_feels_like
+    name: 'Home Feels Like Temperature'
+    source:
+      - sensor.gosford_temp
+      - sensor.home_humidity
+      - sensor.home_windspeed
 
 automation:
 - alias: 'Update BOM Icons'
@@ -216,16 +237,19 @@ homeassistant:
       friendly_name: Air Temp
       device_class: temperature
       <<: *common
-    sensor.gosford_temp_feels_like:
+#    sensor.gosford_temp_feels_like:
+    sensor.home_feels_like_temperature:
       friendly_name: Feels Like
       <<: *common
     sensor.gosford_rain_since_9am:
       friendly_name: Rain Today
       icon: mdi:weather-rainy
       <<: *common
-    sensor.gosford_humidity:
+#    sensor.gosford_humidity:
+    sensor.home_humidity:
       friendly_name: Relative Humidity
       icon: mdi:water-percent
+      unit_of_measurement: "%"
       <<: *common
     sensor.gosford_wind_direction:
       friendly_name: Wind Direction
