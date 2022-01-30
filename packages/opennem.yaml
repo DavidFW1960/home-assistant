@@ -1,33 +1,85 @@
 # OpenNEM (National Energy Market)
 sensor:
-  - platform: opennem
-    region: nsw1
-    monitored_conditions:
-      - battery_charging
-      - battery_discharging
-      - bioenergy_biomass
-      - bioenergy_biogas
-      - coal_black
-      - coal_brown
-      - exports
-      - demand
-      - distillate
-      - fossilfuel
-      - renewables
-      - gas_ccgt
-      - gas_ocgt
-      - gas_recip
-      - gas_steam
-      - gas_wcmg
-      - generation
-      - hydro
-      - imports
-      - price
-      - pumps
-      - solar_rooftop
-      - solar_utility
-      - temperature
-      - wind
+  - platform: template
+    sensors:
+#      opennem_nsw1_battery_discharging:
+#        value_template: "{{ state_attr('sensor.opennem', 'battery_discharging') }}"
+#        unit_of_measurement: MW
+#      opennem_nsw1_battery_charging:
+#        value_template: "{{ state_attr('sensor.opennem', 'battery_charging') }}"
+#        unit_of_measurement: MW
+#      opennem_nsw1_bioenergy_biomass:
+#        value_template: "{{ state_attr('sensor.opennem', 'bioenergy_biomass') }}"
+#        unit_of_measurement: MW
+#      opennem_nsw1_bioenergy_biogas:
+#        value_template: "{{ state_attr('sensor.opennem', 'bioenergy_biogas') }}"
+#        unit_of_measurement: MW
+      opennem_nsw1_coal_black:
+        value_template: "{{ state_attr('sensor.opennem', 'coal_black') }}"
+        unit_of_measurement: MW
+#      opennem_nsw1_coal_brown:
+#        value_template: "{{ state_attr('sensor.opennem', 'coal_brown') }}"
+#        unit_of_measurement: MW
+      opennem_nsw1_distillate:
+        value_template: "{{ state_attr('sensor.opennem', 'distillate') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_gas_ccgt:
+        value_template: "{{ state_attr('sensor.opennem', 'gas_ccgt') }}"
+        unit_of_measurement: MW
+#      opennem_nsw1_gas_ocgt:
+#        value_template: "{{ state_attr('sensor.opennem', 'gas_ocgt') }}"
+#        unit_of_measurement: MW
+#      opennem_nsw1_gas_recip:
+#        value_template: "{{ state_attr('sensor.opennem', 'gas_recip') }}"
+#        unit_of_measurement: MW
+#      opennem_nsw1_gas_steam:
+#        value_template: "{{ state_attr('sensor.opennem', 'gas_steam') }}"
+#        unit_of_measurement: MW
+#      opennem_nsw1_gas_wcmg:
+#        value_template: "{{ state_attr('sensor.opennem', 'gas_wcmg') }}"
+#        unit_of_measurement: MW
+      opennem_nsw1_hydro:
+        value_template: "{{ state_attr('sensor.opennem', 'hydro') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_pumps:
+        value_template: "{{ state_attr('sensor.opennem', 'pumps') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_solar_utility:
+        value_template: "{{ state_attr('sensor.opennem', 'solar_utility') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_solar_rooftop:
+        value_template: "{{ state_attr('sensor.opennem', 'solar_rooftop') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_wind:
+        value_template: "{{ state_attr('sensor.opennem', 'wind') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_exports:
+        value_template: "{{ state_attr('sensor.opennem', 'exports') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_imports:
+        value_template: "{{ state_attr('sensor.opennem', 'imports') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_price:
+        value_template: "{{ state_attr('sensor.opennem', 'price') }}"
+        unit_of_measurement: $/MWh
+      opennem_nsw1_temperature:
+        value_template: "{{ state_attr('sensor.opennem', 'temperature') }}"
+        unit_of_measurement: °C
+      opennem_nsw1_demand:
+        value_template: "{{ state_attr('sensor.opennem', 'demand') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_fossilfuel:
+        value_template: "{{ state_attr('sensor.opennem', 'fossilfuel') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_generation:
+        value_template: "{{ state_attr('sensor.opennem', 'generation') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_renewables:
+        value_template: "{{ state_attr('sensor.opennem', 'renewables') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_genvsdemand:
+        value_template: "{{ state_attr('sensor.opennem', 'genvsdemand') }}"
+        unit_of_measurement: MW
 
 homeassistant:
   customize:
@@ -35,84 +87,107 @@ homeassistant:
       common: &common
         package: "opennem"
 
-    sensor.ampol_belrose_pdl:
-      fiendly_name:
-      <<: *common
-    sensor.opennem_nsw1_battery_charging:
-      friendly_name: Battery (Charging)
-      <<: *common
-    sensor.opennem_nsw1_battery_discharging:
-      friendly_name: Battery (Discharging)
-      <<: *common
-    sensor.opennem_nsw1_biomass:
-      friendly_name: Biomass
-      <<: *common
-    sensor.opennem_nsw1_black_coal:
+#    sensor.opennem_nsw1_battery_discharging:
+#      friendly_name: Battery (Discharging)
+#      icon: mdi:transmission-tower
+#      <<: *common
+#    sensor.opennem_nsw1_battery_charging:
+#      friendly_name: Battery (Charging)
+#      icon: mdi:transmission-tower
+#      <<: *common
+#    sensor.opennem_nsw1_bioenergy_biomass:
+#      friendly_name: Bioenergy (Biomass)
+#      icon: mdi:transmission-tower
+#      <<: *common
+#    sensor.opennem_nsw1_bioenergy_biogas:
+#      friendly_name: Bioenergy (Biogas)
+#      icon: mdi:transmission-tower
+#      <<: *common
+    sensor.opennem_nsw1_coal_black:
       friendly_name: Black Coal
+      icon: mdi:transmission-tower
       <<: *common
-    sensor.opennem_nsw1_brown_coal:
-      friendly_name: Brown Coal
-      <<: *common
-    sensor.opennem_nsw1_current_price:
-      friendly_name: Current Price
-      <<: *common
+#    sensor.opennem_nsw1_coal_brown:
+#      friendly_name: Brown Coal
+#      icon: mdi:transmission-tower
+#      <<: *common
     sensor.opennem_nsw1_distillate:
       friendly_name: Distillate
-      <<: *common
-    sensor.opennem_nsw1_electricity_demand:
-      friendly_name: Electricity Demand
-      <<: *common
-    sensor.opennem_nsw1_electricity_generation:
-      friendly_name: Electricity Generation
-      <<: *common
-    sensor.opennem_nsw1_exported_power:
-      friendly_name: Exported Power
+      icon: mdi:transmission-tower
       <<: *common
     sensor.opennem_nsw1_gas_ccgt:
-      friendly_name: Gas (CCGT)
+      friendly_name: Gas (Combined Cycle Power Plant)
+      icon: mdi:transmission-tower
       <<: *common
-    sensor.opennem_nsw1_gas_ocgt:
-      friendly_name: Gas (OCGT)
-      <<: *common
-    sensor.opennem_nsw1_gas_recip:
-      friendly_name: Gas (Recip)
-      <<: *common
-    sensor.opennem_nsw1_gas_steam:
-      friendly_name: Gas (Steam)
-      <<: *common
-    sensor.opennem_nsw1_gen_from_fossil_fuels:
-      friendly_name: Gen from Fossil Fuels
-      <<: *common
-    sensor.opennem_nsw1_gen_from_renewables:
-      friendly_name: Gen from Renewables
-      <<: *common
+#    sensor.opennem_nsw1_gas_ocgt:
+#      friendly_name: Gas (Open Cycle Gas Turbines)
+#      icon: mdi:transmission-tower
+#      <<: *common
+#    sensor.opennem_nsw1_gas_recip:
+#      friendly_name: Gas (Reciprocating Engine)
+#      icon: mdi:transmission-tower
+#      <<: *common
+#    sensor.opennem_nsw1_gas_steam:
+#      friendly_name: Gas (Steam)
+#      icon: mdi:transmission-tower
+#      <<: *common
+#    sensor.opennem_nsw1_gas_wcmg:
+#      friendly_name: Gas (Waste Coal Mine)
+#      icon: mdi:transmission-tower
+#      <<: *common
     sensor.opennem_nsw1_hydro:
       friendly_name: Hydro
-      <<: *common
-    sensor.opennem_nsw1_imported_power:
-      friendly_name: Imported Power
+      icon: mdi:transmission-tower
       <<: *common
     sensor.opennem_nsw1_pumps:
       friendly_name: Pumps
-      <<: *common
-    sensor.opennem_nsw1_solar_rooftop:
-      friendly_name: Solar (Rooftop)
+      icon: mdi:transmission-tower
       <<: *common
     sensor.opennem_nsw1_solar_utility:
       friendly_name: Solar (Utility)
+      icon: mdi:transmission-tower
       <<: *common
-    sensor.opennem_nsw1_temperature:
-      friendly_name: Temperature
+    sensor.opennem_nsw1_solar_rooftop:
+      friendly_name: Solar (Rooftop)
+      icon: mdi:transmission-tower
       <<: *common
     sensor.opennem_nsw1_wind:
       friendly_name: Wind
+      icon: mdi:transmission-tower
       <<: *common
-    sensor.opennem_nsw1_bioenergy_biogas:
-      friendly_name: Bioenergy (Biogas)
+    sensor.opennem_nsw1_exports:
+      friendly_name: Exported Power
+      icon: mdi:transmission-tower
       <<: *common
-    sensor.opennem_nsw1_bioenergy_biomass:
-      friendly_name: Bioenergy (Biomass)
+    sensor.opennem_nsw1_imports:
+      friendly_name: Imported Power
+      icon: mdi:transmission-tower
       <<: *common
-    sensor.opennem_nsw1_gas_waste:
-      friendly_name: Gas(Waste)
+    sensor.opennem_nsw1_price:
+      friendly_name: Spot Price
+      icon: mdi:transmission-tower
+      <<: *common
+    sensor.opennem_nsw1_temperature:
+      friendly_name: Temperature
+      icon: mdi:transmission-tower
+      <<: *common
+    sensor.opennem_nsw1_demand:
+      friendly_name: Electricity Demand
+      icon: mdi:transmission-tower
+      <<: *common
+    sensor.opennem_nsw1_fossilfuel:
+      friendly_name: Generation by Fossil Fuels
+      icon: mdi:transmission-tower
+      <<: *common
+    sensor.opennem_nsw1_generation:
+      friendly_name: Electricity Generation
+      icon: mdi:transmission-tower
+      <<: *common
+    sensor.opennem_nsw1_renewables:
+      friendly_name: Generation by Renewables
+      icon: mdi:transmission-tower
+      <<: *common
+    sensor.opennem_nsw1_genvsdemand:
+      friendly_name: Generation vs Demand
+      icon: mdi:transmission-tower
       <<: *common
