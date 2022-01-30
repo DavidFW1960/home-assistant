@@ -193,12 +193,6 @@ sensor:
     name: Hass Installed Version
     command: "cat /config/.HA_VERSION"
 
-  - platform: version
-    name: Hass Available to Install Version
-    beta: true
-    image: qemux86-64
-    source: hassio
-
   - platform: mqtt
     name: "HA OS-Agent Installed Version"
     state_topic: "haosagentinstalled"
