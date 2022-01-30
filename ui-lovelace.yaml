@@ -1266,9 +1266,11 @@ views:
             entities:
               - sensor.bom_forecast_0
               - sensor.gosford_temp
-              - sensor.gosford_temp_feels_like
+#              - sensor.gosford_temp_feels_like
+              - sensor.home_feels_like_temperature
               - sensor.gosford_rain_since_9am
-              - sensor.gosford_humidity
+#              - sensor.gosford_humidity
+              - sensor.home_humidity
               - sensor.gosford_wind_direction
               - sensor.gosford_wind_speed_kilometre
               - sensor.gosford_gust_speed_kilometre
@@ -1285,9 +1287,11 @@ views:
               entities:
                 - entity: sensor.bom_forecast_0
                 - entity: sensor.gosford_temp
-                - entity: sensor.gosford_temp_feels_like
+#                - entity: sensor.gosford_temp_feels_like
+                - entity: sensor.home_feels_like_temperature
                 - entity: sensor.gosford_rain_since_9am
-                - entity: sensor.gosford_humidity
+#                - entity: sensor.gosford_humidity
+                - entity: sensor.home_humidity
                 - entity: sensor.dewpoint_outside
                 - entity: sensor.gosford_wind_direction
                 - entity: sensor.gosford_wind_speed_kilometre
@@ -1384,9 +1388,11 @@ views:
             entity_wind_gust: sensor.gosford_gust_speed_kilometre
 #           entity_wind_speed_kt: sensor.gosford_wind_speed_knot
 #           entity_wind_gust_kt: sensor.gosford_gust_speed_knot
-            entity_humidity: sensor.gosford_humidity
+#            entity_humidity: sensor.gosford_humidity
+            entity_humidity: sensor.home_humidity
             entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
-            entity_apparent_temp: sensor.gosford_temp_feels_like
+#            entity_apparent_temp: sensor.gosford_temp_feels_like
+            entity_apparent_temp: sensor.home_feels_like_temperature
             entity_daily_summary: sensor.kariong_extended_text_0
             entity_pop: sensor.kariong_rain_chance_0
             entity_pop_intensity: sensor.gosford_rain_since_9am
@@ -1617,7 +1623,8 @@ views:
                 group_by:
                   func: avg
                   duration: 12min
-              - entity: sensor.gosford_temp_feels_like
+#              - entity: sensor.gosford_temp_feels_like
+              - entity: sensor.home_feels_like_temperature
                 show:
                   extremas: true
                 stroke_width: 3
@@ -1927,7 +1934,8 @@ views:
               legend:
                 showForSingleSeries: true
             series:
-              - entity: sensor.gosford_humidity
+#              - entity: sensor.gosford_humidity
+              - entity: sensor.home_humidity
                 show:
                   extremas: true
                 stroke_width: 3
