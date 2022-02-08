@@ -2,83 +2,61 @@
 sensor:
   - platform: template
     sensors:
-#      opennem_nsw1_battery_discharging:
-#        value_template: "{{ state_attr('sensor.opennem', 'battery_discharging') }}"
-#        unit_of_measurement: MW
-#      opennem_nsw1_battery_charging:
-#        value_template: "{{ state_attr('sensor.opennem', 'battery_charging') }}"
-#        unit_of_measurement: MW
-#      opennem_nsw1_bioenergy_biomass:
-#        value_template: "{{ state_attr('sensor.opennem', 'bioenergy_biomass') }}"
-#        unit_of_measurement: MW
-#      opennem_nsw1_bioenergy_biogas:
-#        value_template: "{{ state_attr('sensor.opennem', 'bioenergy_biogas') }}"
-#        unit_of_measurement: MW
       opennem_nsw1_coal_black:
-        value_template: "{{ state_attr('sensor.opennem', 'coal_black') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'coal_black') }}"
         unit_of_measurement: MW
-#      opennem_nsw1_coal_brown:
-#        value_template: "{{ state_attr('sensor.opennem', 'coal_brown') }}"
-#        unit_of_measurement: MW
       opennem_nsw1_distillate:
-        value_template: "{{ state_attr('sensor.opennem', 'distillate') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'distillate') }}"
         unit_of_measurement: MW
       opennem_nsw1_gas_ccgt:
-        value_template: "{{ state_attr('sensor.opennem', 'gas_ccgt') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'gas_ccgt') }}"
         unit_of_measurement: MW
-#      opennem_nsw1_gas_ocgt:
-#        value_template: "{{ state_attr('sensor.opennem', 'gas_ocgt') }}"
-#        unit_of_measurement: MW
-#      opennem_nsw1_gas_recip:
-#        value_template: "{{ state_attr('sensor.opennem', 'gas_recip') }}"
-#        unit_of_measurement: MW
-#      opennem_nsw1_gas_steam:
-#        value_template: "{{ state_attr('sensor.opennem', 'gas_steam') }}"
-#        unit_of_measurement: MW
-#      opennem_nsw1_gas_wcmg:
-#        value_template: "{{ state_attr('sensor.opennem', 'gas_wcmg') }}"
-#        unit_of_measurement: MW
+      opennem_nsw1_gas_ocgt:
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'gas_ocgt') }}"
+        unit_of_measurement: MW
       opennem_nsw1_hydro:
-        value_template: "{{ state_attr('sensor.opennem', 'hydro') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'hydro') }}"
         unit_of_measurement: MW
       opennem_nsw1_pumps:
-        value_template: "{{ state_attr('sensor.opennem', 'pumps') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'pumps') }}"
         unit_of_measurement: MW
       opennem_nsw1_solar_utility:
-        value_template: "{{ state_attr('sensor.opennem', 'solar_utility') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'solar_utility') }}"
         unit_of_measurement: MW
       opennem_nsw1_solar_rooftop:
-        value_template: "{{ state_attr('sensor.opennem', 'solar_rooftop') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'solar_rooftop') }}"
         unit_of_measurement: MW
       opennem_nsw1_wind:
-        value_template: "{{ state_attr('sensor.opennem', 'wind') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'wind') }}"
         unit_of_measurement: MW
       opennem_nsw1_exports:
-        value_template: "{{ state_attr('sensor.opennem', 'exports') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'exports') }}"
         unit_of_measurement: MW
       opennem_nsw1_imports:
-        value_template: "{{ state_attr('sensor.opennem', 'imports') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'imports') }}"
         unit_of_measurement: MW
       opennem_nsw1_price:
-        value_template: "{{ state_attr('sensor.opennem', 'price') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'price') }}"
         unit_of_measurement: $/MWh
       opennem_nsw1_temperature:
-        value_template: "{{ state_attr('sensor.opennem', 'temperature') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'temperature') }}"
         unit_of_measurement: °C
       opennem_nsw1_demand:
-        value_template: "{{ state_attr('sensor.opennem', 'demand') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'demand') }}"
         unit_of_measurement: MW
       opennem_nsw1_fossilfuel:
-        value_template: "{{ state_attr('sensor.opennem', 'fossilfuel') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'fossilfuel') }}"
         unit_of_measurement: MW
       opennem_nsw1_generation:
-        value_template: "{{ state_attr('sensor.opennem', 'generation') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'generation') }}"
         unit_of_measurement: MW
       opennem_nsw1_renewables:
-        value_template: "{{ state_attr('sensor.opennem', 'renewables') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'renewables') }}"
         unit_of_measurement: MW
+      opennem_nsw1_emissionsfactor:
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'emissions_factor') }}"
       opennem_nsw1_genvsdemand:
-        value_template: "{{ state_attr('sensor.opennem', 'genvsdemand') }}"
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'genvsdemand') }}"
         unit_of_measurement: MW
 
 homeassistant:
@@ -87,30 +65,14 @@ homeassistant:
       common: &common
         package: "opennem"
 
-#    sensor.opennem_nsw1_battery_discharging:
-#      friendly_name: Battery (Discharging)
-#      icon: mdi:transmission-tower
-#      <<: *common
-#    sensor.opennem_nsw1_battery_charging:
-#      friendly_name: Battery (Charging)
-#      icon: mdi:transmission-tower
-#      <<: *common
-#    sensor.opennem_nsw1_bioenergy_biomass:
-#      friendly_name: Bioenergy (Biomass)
-#      icon: mdi:transmission-tower
-#      <<: *common
-#    sensor.opennem_nsw1_bioenergy_biogas:
-#      friendly_name: Bioenergy (Biogas)
-#      icon: mdi:transmission-tower
-#      <<: *common
     sensor.opennem_nsw1_coal_black:
       friendly_name: Black Coal
       icon: mdi:transmission-tower
       <<: *common
-#    sensor.opennem_nsw1_coal_brown:
-#      friendly_name: Brown Coal
-#      icon: mdi:transmission-tower
-#      <<: *common
+    sensor.opennem_nsw1_emissionsfactor:
+      friendly_name: Emissions Factor
+      icon: mdi:transmission-tower
+      <<: *common
     sensor.opennem_nsw1_distillate:
       friendly_name: Distillate
       icon: mdi:transmission-tower
@@ -119,22 +81,10 @@ homeassistant:
       friendly_name: Gas (Combined Cycle Power Plant)
       icon: mdi:transmission-tower
       <<: *common
-#    sensor.opennem_nsw1_gas_ocgt:
-#      friendly_name: Gas (Open Cycle Gas Turbines)
-#      icon: mdi:transmission-tower
-#      <<: *common
-#    sensor.opennem_nsw1_gas_recip:
-#      friendly_name: Gas (Reciprocating Engine)
-#      icon: mdi:transmission-tower
-#      <<: *common
-#    sensor.opennem_nsw1_gas_steam:
-#      friendly_name: Gas (Steam)
-#      icon: mdi:transmission-tower
-#      <<: *common
-#    sensor.opennem_nsw1_gas_wcmg:
-#      friendly_name: Gas (Waste Coal Mine)
-#      icon: mdi:transmission-tower
-#      <<: *common
+    sensor.opennem_nsw1_gas_ocgt:
+      friendly_name: Gas (Open Cycle Gas Turbines)
+      icon: mdi:transmission-tower
+      <<: *common
     sensor.opennem_nsw1_hydro:
       friendly_name: Hydro
       icon: mdi:transmission-tower
