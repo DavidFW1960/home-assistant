@@ -11,9 +11,6 @@ sensor:
       opennem_nsw1_gas_ccgt:
         value_template: "{{ state_attr('sensor.opennem_nsw', 'gas_ccgt') }}"
         unit_of_measurement: MW
-      opennem_nsw1_gas_ocgt:
-        value_template: "{{ state_attr('sensor.opennem_nsw', 'gas_ocgt') }}"
-        unit_of_measurement: MW
       opennem_nsw1_hydro:
         value_template: "{{ state_attr('sensor.opennem_nsw', 'hydro') }}"
         unit_of_measurement: MW
@@ -38,23 +35,29 @@ sensor:
       opennem_nsw1_price:
         value_template: "{{ state_attr('sensor.opennem_nsw', 'price') }}"
         unit_of_measurement: $/MWh
-      opennem_nsw1_temperature:
-        value_template: "{{ state_attr('sensor.opennem_nsw', 'temperature') }}"
-        unit_of_measurement: °C
       opennem_nsw1_demand:
         value_template: "{{ state_attr('sensor.opennem_nsw', 'demand') }}"
         unit_of_measurement: MW
-      opennem_nsw1_fossilfuel:
-        value_template: "{{ state_attr('sensor.opennem_nsw', 'fossilfuel') }}"
-        unit_of_measurement: MW
       opennem_nsw1_generation:
         value_template: "{{ state_attr('sensor.opennem_nsw', 'generation') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_temperature:
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'temperature') }}"
+        unit_of_measurement: °C
+      opennem_nsw1_fossilfuel:
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'fossilfuel') }}"
         unit_of_measurement: MW
       opennem_nsw1_renewables:
         value_template: "{{ state_attr('sensor.opennem_nsw', 'renewables') }}"
         unit_of_measurement: MW
       opennem_nsw1_emissionsfactor:
         value_template: "{{ state_attr('sensor.opennem_nsw', 'emissions_factor') }}"
+      opennem_nsw1_flow_qld:
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'flow_QLD') }}"
+        unit_of_measurement: MW
+      opennem_nsw1_flow_vic:
+        value_template: "{{ state_attr('sensor.opennem_nsw', 'flow_VIC') }}"
+        unit_of_measurement: MW
       opennem_nsw1_genvsdemand:
         value_template: "{{ state_attr('sensor.opennem_nsw', 'genvsdemand') }}"
         unit_of_measurement: MW
@@ -79,10 +82,6 @@ homeassistant:
       <<: *common
     sensor.opennem_nsw1_gas_ccgt:
       friendly_name: Gas (Combined Cycle Power Plant)
-      icon: mdi:transmission-tower
-      <<: *common
-    sensor.opennem_nsw1_gas_ocgt:
-      friendly_name: Gas (Open Cycle Gas Turbines)
       icon: mdi:transmission-tower
       <<: *common
     sensor.opennem_nsw1_hydro:
@@ -139,5 +138,13 @@ homeassistant:
       <<: *common
     sensor.opennem_nsw1_genvsdemand:
       friendly_name: Generation vs Demand
+      icon: mdi:transmission-tower
+      <<: *common
+    sensor.opennem_nsw1_flow_qld:
+      friendly_name: Flow between NSW-QLD
+      icon: mdi:transmission-tower
+      <<: *common
+    sensor.opennem_nsw1_flow_vic:
+      friendly_name: Flow between NSW-VIC
       icon: mdi:transmission-tower
       <<: *common
