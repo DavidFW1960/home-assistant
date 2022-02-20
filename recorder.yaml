@@ -7,7 +7,6 @@ exclude:
     - geo_location
   entity_globs:
     - sensor.kariong_*
-    - sensor.opennem_*
   entities:
     - sensor.busmonitor1
     - sensor.busmonitor2
@@ -29,9 +28,9 @@ exclude:
     - sensor.load_1m
     - sensor.load_5m
     - sensor.load_15m
-    - sensor.bom_today_max
-    - sensor.bom_today_min
-    - sensor.today_temp_bom
+#    - sensor.bom_today_max
+#    - sensor.bom_today_min
+#    - sensor.today_temp_bom
     - sensor.bom_fire_danger
     - sensor.bom_uv_alert
     - sensor.bom_uv_alert_summary
