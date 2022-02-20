@@ -271,7 +271,12 @@ class OpenNEMDataUpdateCoordinator(DataUpdateCoordinator):
                 elif row["type"] == "price":
                     value = row["history"]["data"][-2]
                 elif ftype == "solar_rooftop":
-                    value = row["history"]["data"][-2]
+                    if (row["history"]["data"][-1] != 0):
+                        value = row["history"]["data"][-1]
+                    elif (row["history"]["data"][-2] != 0):
+                        value = row["history"]["data"][-2]
+                    else:
+                        value = row["history"]["data"][-3]
                 elif ftype == "imports":
                     value = abs(row["history"]["data"][-1])
                 elif ftype == "exports":
