@@ -646,6 +646,7 @@ views:
 #                  - sensor.docker_version_available # repo via mqtt
                   - sensor.github_docker_ce_available
                   - sensor.docker_compose_version_installed
+                  - sensor.docker_compose_latest_tag
               - entity: sensor.docker_compose_version_available
                 tap_action:
                   action: url
@@ -688,7 +689,7 @@ views:
                       {% endif %}
                       ;
                     }
-              - entity: binary_sensor.updater
+              - entity: binary_sensor.home_assistant_website_update_available
                 card_mod:
                   style: |
                     :host {
@@ -3604,17 +3605,17 @@ views:
         title: Newsgroups
         show_header_toggle: false
         entities:
-          - sensor.sabnzbd_status
-          - sensor.sabnzbd_queue
-          - sensor.sabnzbd_queue_count
-          - sensor.sabnzbd_speed
-          - sensor.sabnzbd_left
-          - sensor.sabnzbd_disk
-          - sensor.sabnzbd_disk_free
-          - sensor.sabnzbd_daily_total
-          - sensor.sabnzbd_weekly_total
-          - sensor.sabnzbd_monthly_total
-          - sensor.sabnzbd_total
+#         - sensor.sabnzbd_status
+#         - sensor.sabnzbd_queue
+#         - sensor.sabnzbd_queue_count
+#         - sensor.sabnzbd_speed
+#         - sensor.sabnzbd_left
+#         - sensor.sabnzbd_disk
+#         - sensor.sabnzbd_disk_free
+#         - sensor.sabnzbd_daily_total
+#         - sensor.sabnzbd_weekly_total
+#         - sensor.sabnzbd_monthly_total
+#         - sensor.sabnzbd_total
           - sensor.sonarr_shows
           - sensor.sonarr_upcoming
           - sensor.sonarr_wanted
