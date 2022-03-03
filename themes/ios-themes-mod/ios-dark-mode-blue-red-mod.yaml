@@ -48,6 +48,12 @@ ios-dark-mode-blue-red-mod:
   ha-card-border-radius: 10px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  # set colors on quickbar
+  mdc-text-field-fill-color: var(--card-background-color) # quickbar header
+  mdc-text-field-ink-color: var(--primary-text-color) #var(--mdc-theme-primary)
+# set colors on input_select
+  mdc-select-ink-color: var(--primary-text-color)
+  mdc-select-fill-color: rgba(25, 25, 25, 0) #var(--card-background-color)
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
