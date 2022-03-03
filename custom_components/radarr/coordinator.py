@@ -2,26 +2,29 @@
 from __future__ import annotations
 
 import asyncio
-from datetime import date, datetime, timedelta, tzinfo
-import time
+from datetime import timedelta
+import logging
 from typing import cast
 
-from aiopyarr import exceptions
+from aiopyarr import Command, Diskspace, RootFolder, exceptions
 from aiopyarr.models import radarr
 from aiopyarr.models.host_configuration import PyArrHostConfiguration
+from aiopyarr.models.request import SystemStatus
 from aiopyarr.radarr_client import RadarrClient
 
-from homeassistant.config_entries import ConfigEntry, ConfigEntryState
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
+from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt as dt_util
 
-from .const import CONF_UPCOMING_DAYS, DOMAIN, LOGGER
+from .const import CONF_UPCOMING_DAYS, DOMAIN
 
 
 class RadarrDataUpdateCoordinator(DataUpdateCoordinator):
     """Data update coordinator for the Radarr integration."""
+
+    config_entry: ConfigEntry
 
     def __init__(
         self,
@@ -32,72 +35,50 @@ class RadarrDataUpdateCoordinator(DataUpdateCoordinator):
         """Initialize the coordinator."""
         super().__init__(
             hass=hass,
-            logger=LOGGER,
+            logger=logging.getLogger(__name__),
             name=DOMAIN,
             update_interval=timedelta(seconds=30),
         )
-        self.agg_space: dict = {}
         self.api_client = api_client
-        self.calendar: list[radarr.RadarrCalendar] | None = None
-        self.commands: list[radarr.RadarrCommand] | None = None
-        self.disk_space: list[radarr.RadarrRootFolder] | None = None
-        self.get_space = True
+        self.calendar: list[radarr.RadarrCalendar] = []
+        self.commands: list[Command] = []
+        self.disk_space: list[Diskspace] = []
         self.host_configuration = host_configuration
-        self.movies: list[radarr.RadarrMovie] | None = None
+        self.movies: list[radarr.RadarrMovie] = []
         self.movies_count_enabled: bool = False
-        self.system_status = radarr.RadarrSystemStatus
+        self.rootfolder: list[RootFolder] = []
+        self.system_status: SystemStatus = SystemStatus({"": ""})
 
     async def _async_update_data(self) -> None:
         """Get the latest data from Radarr."""
-        time_zone = cast(tzinfo, dt_util.get_time_zone(self.hass.config.time_zone))
-        assert isinstance(self.config_entry, ConfigEntry)
-        upcoming = self.config_entry.options.get(CONF_UPCOMING_DAYS, 7)
-        start = get_date(time_zone)
-        end = get_date(time_zone, upcoming)
+        start = dt_util.as_utc(dt_util.start_of_local_day().replace(microsecond=0))
+        end = start + timedelta(days=self.config_entry.options[CONF_UPCOMING_DAYS])
         try:
             [
-                self.disk_space,
+                self.system_status,
+                self.rootfolder,
                 self.calendar,
                 self.commands,
-                self.system_status,
             ] = await asyncio.gather(
                 *[
-                    self.api_client.async_get_root_folders(),
-                    self.api_client.async_get_calendar(start, end),
-                    self.api_client.async_get_command(),
                     self.api_client.async_get_system_status(),
+                    self.api_client.async_get_root_folders(),
+                    self.api_client.async_get_calendar(start_date=start, end_date=end),
+                    self.api_client.async_get_commands(),
                 ]
             )
             # Diskspace can timeout with large systems with remote mapped storage
-            if self.get_space:
-                mounts = await self.api_client.async_get_diskspace()
-                for mount in mounts:
-                    self.agg_space[mount.totalSpace] = mount.freeSpace
-                self.get_space = False
-            elif self.movies_count_enabled is True:
+            # We attempt to get total disk capacity first
+            if not self.disk_space and not self.movies_count_enabled:
+                self.disk_space = await self.api_client.async_get_diskspace()
+            else:
                 # Wait to get movie count after disk capacity is determined
-                self.movies = await self.api_client.async_get_movies()
+                self.movies_count_enabled = True
+                self.movies = cast(list, await self.api_client.async_get_movies())
 
-        except (
-            exceptions.ArrConnectionException,
-            asyncio.exceptions.TimeoutError,
-        ) as ex:
-            # We attempt to get total disk capacity once
-            if not self.get_space:
-                if (
-                    self.config_entry
-                    and self.config_entry.state == ConfigEntryState.LOADED
-                ):
-                    raise UpdateFailed(ex) from ex
-                raise ConfigEntryNotReady from ex
-            self.get_space = False
+        except exceptions.ArrConnectionException as ex:
+            raise UpdateFailed(ex) from ex
         except exceptions.ArrAuthenticationException as ex:
             raise ConfigEntryAuthFailed(
                 "API Key is no longer valid. Please reauthenticate"
             ) from ex
-
-
-def get_date(zone: tzinfo, offset: int = 0) -> date:
-    """Get date based on timezone and offset of days."""
-    day = 60 * 60 * 24
-    return datetime.date(datetime.fromtimestamp(time.time() + day * offset, tz=zone))
