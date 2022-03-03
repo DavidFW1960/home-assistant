@@ -267,3 +267,6 @@ switch.fritz_box_7590_wi_fi_williams2:
   friendly_name: Guest WiFi
 switch.fritz_box_internet_access:
   friendly_name: Internet Access
+sensor.docker_compose_latest_tag:
+  friendly_name: Docker Compose Latest Tag
+  icon: mdi:docker
