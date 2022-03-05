@@ -3605,17 +3605,17 @@ views:
         title: Newsgroups
         show_header_toggle: false
         entities:
-#         - sensor.sabnzbd_status
-#         - sensor.sabnzbd_queue
-#         - sensor.sabnzbd_queue_count
-#         - sensor.sabnzbd_speed
-#         - sensor.sabnzbd_left
-#         - sensor.sabnzbd_disk
-#         - sensor.sabnzbd_disk_free
-#         - sensor.sabnzbd_daily_total
-#         - sensor.sabnzbd_weekly_total
-#         - sensor.sabnzbd_monthly_total
-#         - sensor.sabnzbd_total
+          - sensor.sabnzbd_status
+          - sensor.sabnzbd_queue
+          - sensor.sabnzbd_queue_count
+          - sensor.sabnzbd_speed
+          - sensor.sabnzbd_left
+          - sensor.sabnzbd_disk
+          - sensor.sabnzbd_disk_free
+          - sensor.sabnzbd_daily_total
+          - sensor.sabnzbd_weekly_total
+          - sensor.sabnzbd_monthly_total
+          - sensor.sabnzbd_total
           - sensor.sonarr_shows
           - sensor.sonarr_upcoming
           - sensor.sonarr_wanted
