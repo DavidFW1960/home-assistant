@@ -81,7 +81,14 @@
   label-badge-grey: var(--paper-grey-500)
 
   ### Code Editor
-  codemirror-atom: rgb(87, 199, 255)
-  codemirror-string: rgb(244, 249, 97)
-  codemirror-keyword: rgb(135, 192, 255)
-  codemirror-number: rgb(255, 152, 0)
+  input-label-ink-color: rgb(7 166 255)
+  input-dropdown-icon-color: rgb(106 180 203)
+  input-ink-color: rgb(82 163 255)
+  codemirror-atom: rgb(255 255 255)
+  codemirror-string: rgb(239 243 195)
+  codemirror-keyword: rgb(183 229 251)
+  codemirror-number: rgb(41 123 199)
+  codemirror-dialog-min-width: 100%
+  mdc-dialog-min-width: 90%
+  input-fill-color: rgb(10 10 10)
+  error-code: rgb(255 9 0)
