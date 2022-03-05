@@ -283,6 +283,25 @@ sensor:
     icon: mdi:coffee
     value_template: "{{ value_json.state }}"
 
+# SABnzbd
+sabnzbd:
+  api_key: !secret my_sabnzbd_api
+  host: !secret my_sab_host
+  port: 8080
+  ssl: false
+  sensors:
+    - current_status
+    - speed
+    - queue_size
+    - queue_remaining
+    - disk_size
+    - disk_free
+    - queue_count
+    - day_size
+    - week_size
+    - month_size
+    - total_size
+
 # Text to speech
 tts:
   - platform: google_translate
