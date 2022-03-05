@@ -1,0 +1,16 @@
+{
+  "domain": "gpodder",
+  "name": "gPodder",
+  "documentation": "https://github.com/custom-components/gpodder/blob/master/README.md",
+  "issue_tracker": "https://github.com/custom-components/gpodder/issues",
+  "version": "2.0.0",
+  "config_flow": true,
+  "dependencies": [],
+  "codeowners": [
+    "@iantrich"
+  ],
+  "requirements": [
+    "mygpoclient==1.8",
+    "podcastparser==0.6.4"
+  ]
+}

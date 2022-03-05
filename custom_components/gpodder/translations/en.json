@@ -1,0 +1,16 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "gPodder",
+                "description": "If you need help with the configuration have a look here: https://github.com/custom-components/gpodder",
+                "data": {
+                    "username": "Username",
+                    "password": "Password",
+                    "device": "Device",
+                    "name": "Name"
+                }
+            }
+        }
+    }
+}

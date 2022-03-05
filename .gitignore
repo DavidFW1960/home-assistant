@@ -3,7 +3,7 @@
 *.csr
 *.crt
 *.key
-home-assistant.log
+home-assistant.*
 home-assistant_v2.db
 *.db-journal
 *.db
@@ -24,8 +24,7 @@ g-actions
 entity_registry.yaml
 delete-gmail-email.sh
 emptyinbox.py
-abbcookie.txt
-*.json
+gh-ha-2bb06375cfba.json
 backlog_tasmota.yaml
 ssh_keys
 remove_bans.sh

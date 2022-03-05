@@ -1,0 +1,12 @@
+{
+  "domain": "opennem",
+  "name": "OpenNEM",
+  "version": "2022.02.3b1",
+  "documentation": "https://github.com/bacco007/sensor.opennem",
+  "issue_tracker": "https://github.com/bacco007/sensor.opennem/issues",
+  "dependencies": [],
+  "codeowners": ["@bacco007"],
+  "config_flow": true,
+  "requirements": [],
+  "iot_class": "cloud_polling"
+}
