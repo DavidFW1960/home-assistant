@@ -132,7 +132,7 @@ script:
     sequence:
     - data:
         dashboard_path: lovelace
-        entity_id: media_player.lounge_room_chrome_cast
+        entity_id: media_player.lounge_room_chromecast
         view_path: home_assistant
       service: cast.show_lovelace_view
   castweatherlg:
@@ -140,7 +140,7 @@ script:
     sequence:
     - data:
         dashboard_path: lovelace
-        entity_id: media_player.lounge_room_chrome_cast
+        entity_id: media_player.lounge_room_chromecast
         view_path: weather
       service: cast.show_lovelace_view
   castswitcheslg:
@@ -148,7 +148,7 @@ script:
     sequence:
     - data:
         dashboard_path: lovelace
-        entity_id: media_player.lounge_room_chrome_cast
+        entity_id: media_player.lounge_room_chromecast
         view_path: lights_and_switches
       service: cast.show_lovelace_view
   castmedialg:
@@ -156,7 +156,7 @@ script:
     sequence:
     - data:
         dashboard_path: lovelace
-        entity_id: media_player.lounge_room_chrome_cast
+        entity_id: media_player.lounge_room_chromecast
         view_path: media
       service: cast.show_lovelace_view
   casttvandmovieslg:
@@ -164,7 +164,7 @@ script:
     sequence:
     - data:
         dashboard_path: lovelace
-        entity_id: media_player.lounge_room_chrome_cast
+        entity_id: media_player.lounge_room_chromecast
         view_path: tv_and_movies
       service: cast.show_lovelace_view
   casttransportlg:
@@ -172,7 +172,7 @@ script:
     sequence:
     - data:
         dashboard_path: lovelace
-        entity_id: media_player.lounge_room_chrome_cast
+        entity_id: media_player.lounge_room_chromecast
         view_path: transport
       service: cast.show_lovelace_view
   castmedicallg:
@@ -180,7 +180,7 @@ script:
     sequence:
     - data:
         dashboard_path: lovelace
-        entity_id: media_player.lounge_room_chrome_cast
+        entity_id: media_player.lounge_room_chromecast
         view_path: medical
       service: cast.show_lovelace_view
   casthomeassistantfox:
@@ -243,7 +243,7 @@ script:
     alias: Stop Casting Samsung
     sequence:
     - data:
-        entity_id: media_player.office_tv, media_player.foxtel_7587, media_player.lounge_room_chrome_cast
+        entity_id: media_player.office_tv, media_player.foxtel_7587, media_player.lounge_room_chromecast
       service: media_player.turn_off
   startalladdons:
     alias: Start all Hass.io addons
