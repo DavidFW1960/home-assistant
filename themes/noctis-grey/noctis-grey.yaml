@@ -21,6 +21,23 @@ noctis-grey:
   text-medium-color: '#80828A'
   disabled-text-color: '#626569'
 
+  # Text Fields an Dropdowns
+  mdc-text-field-fill-color: 'var(--background-color)'
+  mdc-text-field-ink-color: 'var(--text-color)'
+  mdc-select-fill-color: 'var(--background-color)'
+  mdc-text-field-label-ink-color: 'var(--secondary-text-color)'
+  input-fill-color: 'var(--background-color)'
+  input-ink-color: 'var(--text-color)'
+  input-label-ink-color: 'var(--text-color)'
+  input-disabled-fill-color: 'var(--background-color)'
+  input-disabled-ink-color: 'var(--disabled-text-color)'
+  input-disabled-label-ink-color: 'var(--disabled-text-color)'
+  input-idle-line-color: 'var(--background-color)'
+  input-dropdown-icon-color: 'var(--secondary-text-color)'
+  input-hover-line-color: 'var(--primary-color)'
+  code-editor-background-color: '#1c1c1c'
+  codemirror-property: 'var(--accent-color)'
+
   # Main Colors
   app-header-background-color: 'var(--background-color)'
   accent-color: '#1A89F5'
