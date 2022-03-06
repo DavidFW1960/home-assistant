@@ -258,6 +258,8 @@ switch.fritz_box_7590_call_deflection_0:
 switch.fritz_box_7590_call_deflection_1:
   friendly_name: Alarm
 switch.fritz_box_7590_call_deflection_2:
+  friendly_name: Alarm2
+switch.fritz_box_7590_call_deflection_3:
   friendly_name: Lenny
 switch.fritz_box_7590_wi_fi_williams:
   friendly_name: 2.4GHz WiFi
