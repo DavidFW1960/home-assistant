@@ -100,13 +100,13 @@ sensor:
       - PDL
   - platform: nsw_fuel_station
     station_id: 907
-#   friendly_name: Caltex M1 Southbound
+#   friendly_name: Ampol M1 Southbound
 #   sensor.caltex_wyong_pdl_2
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
     station_id: 906
-#   friendly_name: Caltex M1 Northbound
+#   friendly_name: Ampol M1 Northbound
 #   sensor.caltex_wyong_pdl
     fuel_types:
       - PDL
@@ -163,21 +163,21 @@ sensor:
         friendly_name: Ampol 283 Manns Rd West Gosford
         unit_of_measurement: ¢/L
       ccm11:
-        value_template: "{{states('sensor.caltex_wyong_pdl')}}"
+        value_template: "{{states('sensor.ampol_wyong_pdl')}}"
         friendly_name_template: >
-          {% if state_attr('sensor.caltex_wyong_pdl', 'station_id') == 906 %}
-            Caltex M1 Northbound
+          {% if state_attr('sensor.ampol_wyong_pdl', 'station_id') == 906 %}
+            Ampol M1 Northbound
           {% else %}
-            Caltex M1 Southbound
+            Ampol M1 Southbound
           {% endif %}
         unit_of_measurement: ¢/L
       ccm12:
-        value_template: "{{states('sensor.caltex_wyong_pdl_2')}}"
+        value_template: "{{states('sensor.ampol_wyong_pdl_2')}}"
         friendly_name_template: >
-          {% if state_attr('sensor.caltex_wyong_pdl_2', 'station_id') == 906 %}
-            Caltex M1 Northbound
+          {% if state_attr('sensor.ampol_wyong_pdl_2', 'station_id') == 906 %}
+            Ampol M1 Northbound
           {% else %}
-            Caltex M1 Southbound
+            Ampol M1 Southbound
           {% endif %}
         unit_of_measurement: ¢/L
       syd17310:
@@ -263,10 +263,10 @@ homeassistant:
     sensor.caltex_wyoming_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_wyong_pdl:
+    sensor.ampol_wyong_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_wyong_pdl_2:
+    sensor.ampol_wyong_pdl_2:
       icon: mdi:gas-station
       <<: *common
     sensor.coles_express_kariong_dl:
