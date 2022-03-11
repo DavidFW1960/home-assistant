@@ -86,6 +86,14 @@ ux_goodie:
 # SUPERVISOR
   ha-bar-background-color: "#2E2E2E"
 
+# Something new – MDC Ripple & Dev Tools specifics – e.g. "set state" focus, entities table rows
+  mdc-text-field-fill-color: "rgba(20, 20, 20, 0.95)" # "rgba(25, 25, 25, 0.95)" # Quick Navigation / Spotlight input box background
+  mdc-text-field-ink-color: "var(--primary-text-color)" # Quick Navigation / Spotlight input box text color
+  mdc-text-field-label-ink-color: "var(--secondary-text-color)" # Quick Navigation / Spotlight input box secondary text color
+  input-dropdown-icon-color: "var(--primary-text-color)" # Quick Navigation / Spotlight input box icons color
+  input-fill-color: "rgba(46, 46, 46, 0.7)"
+  table-row-background-color: "rgba(10, 10, 10, 0.95)"
+  table-row-alternative-background-color: "rgba(20, 20, 20, 0.95)"
 
 ### OTHERS
   error-color: "#FF453A"
@@ -93,9 +101,6 @@ ux_goodie:
   paper-green-400: "#30D158"
   paper-blue-400: "#0A84FF"
   paper-orange-400: "#FF9F0A"
-  
-  table-row-background-color: "#484848"
-  table-row-alternative-background-color: "#323232"
   
   paper-item-icon-color: "white"  # entity icons "off" status
   more-info-header-background: "rgba(25, 25, 25, 0.5)"
@@ -140,9 +145,96 @@ ux_goodie:
 
 
 # Xiaomi Vacuum Map Card
-  map-card-secondary-text-color: "#F1F1F1"
+
+  # map-card-primary-color:
+  # map-card-primary-text-color:
   map-card-secondary-color: "#2e2e2e"
+  map-card-secondary-text-color: "#F1F1F1"
+  # map-card-tertiary-color:
+  # map-card-tertiary-text-color:
+  # map-card-disabled-text-color:
   map-card-zoomer-background: "#2e2e2e"
-  map-card-room-icon-background-color-selected: "#1F1F1F"
-  map-card-predefined-rectangle-icon-background-color-selected: "#1F1F1F"
-  map-card-predefined-point-icon-background-color-selected: "#1F1F1F"
+  # map-card-ripple-color:
+  # map-card-big-radius:
+  # map-card-small-radius:
+  # map-card-predefined-point-icon-wrapper-size:
+  # map-card-predefined-point-icon-size:
+  map-card-predefined-point-icon-color: "#FFFFFF"
+  map-card-predefined-point-icon-color-selected: "#FFFFFF"
+  map-card-predefined-point-icon-background-color: "#0F0F0F"
+  map-card-predefined-point-icon-background-color-selected: "#0F0F0F"
+  # map-card-predefined-point-label-color:
+  # map-card-predefined-point-label-color-selected:
+  # map-card-predefined-point-label-font-size:
+  # map-card-manual-point-radius:
+  # map-card-manual-point-line-color:
+  # map-card-manual-point-fill-color:
+  # map-card-manual-point-line-width:
+  # map-card-manual-path-point-radius:
+  # map-card-manual-path-point-line-color:
+  # map-card-manual-path-point-fill-color:
+  # map-card-manual-path-point-line-width:
+  # map-card-manual-path-line-color:
+  # map-card-manual-path-line-width:
+  # map-card-predefined-rectangle-line-width:
+  map-card-predefined-rectangle-line-color: "transparent"
+  # map-card-predefined-rectangle-fill-color:
+  map-card-predefined-rectangle-line-color-selected: "transparent"
+  # map-card-predefined-rectangle-fill-color-selected:
+  # map-card-predefined-rectangle-line-segment-line:
+  # map-card-predefined-rectangle-line-segment-gap:
+  # map-card-predefined-rectangle-icon-wrapper-size:
+  # map-card-predefined-rectangle-icon-size:
+  map-card-predefined-rectangle-icon-color: "#FFFFFF"
+  map-card-predefined-rectangle-icon-color-selected: "#FFFFFF"
+  map-card-predefined-rectangle-icon-background-color: "#0F0F0F"
+  map-card-predefined-rectangle-icon-background-color-selected: "#0F0F0F"
+  # map-card-predefined-rectangle-label-color:
+  # map-card-predefined-rectangle-label-color-selected:
+  # map-card-predefined-rectangle-label-font-size:
+  # map-card-manual-rectangle-line-width:
+  # map-card-manual-rectangle-line-color:
+  # map-card-manual-rectangle-fill-color:
+  # map-card-manual-rectangle-line-color-selected:
+  # map-card-manual-rectangle-fill-color-selected:
+  # map-card-manual-rectangle-line-segment-line:
+  # map-card-manual-rectangle-line-segment-gap:
+  # map-card-manual-rectangle-description-color:
+  # map-card-manual-rectangle-description-font-size:
+  # map-card-manual-rectangle-description-offset-x:
+  # map-card-manual-rectangle-description-offset-y:
+  # map-card-manual-rectangle-delete-circle-radius:
+  # map-card-manual-rectangle-delete-circle-line-color:
+  map-card-manual-rectangle-delete-circle-fill-color: "#1F1F1F"
+  # map-card-manual-rectangle-delete-circle-line-color-selected:
+  map-card-manual-rectangle-delete-circle-fill-color-selected: "#1F1F1F"
+  # map-card-manual-rectangle-delete-circle-line-width:
+  map-card-manual-rectangle-delete-icon-color: "#FFFFFF"
+  map-card-manual-rectangle-delete-icon-color-selected: "#FFFFFF"
+  # map-card-manual-rectangle-resize-circle-radius:
+  # map-card-manual-rectangle-resize-circle-line-color:
+  map-card-manual-rectangle-resize-circle-fill-color: "#1F1F1F"
+  # map-card-manual-rectangle-resize-circle-line-color-selected:
+  map-card-manual-rectangle-resize-circle-fill-color-selected: "#1F1F1F"
+  # map-card-manual-rectangle-resize-circle-line-width:
+  map-card-manual-rectangle-resize-icon-color: "#FFFFFF"
+  map-card-manual-rectangle-resize-icon-color-selected: "#FFFFFF"
+  map-card-room-outline-line-color: "transparent"
+  # map-card-room-outline-line-width:
+  # map-card-room-outline-line-segment-line:
+  # map-card-room-outline-line-segment-gap:
+  # map-card-room-outline-fill-color:
+  map-card-room-outline-line-color-selected: "trannsparent"
+  # map-card-room-outline-fill-color-selected:
+  # map-card-room-icon-wrapper-size:
+  # map-card-room-icon-size:
+  map-card-room-icon-color: "#FFFFFF"
+  map-card-room-icon-color-selected: "#FFFFFF"
+  map-card-room-icon-background-color: "#0F0F0F"
+  map-card-room-icon-background-color-selected: "#0F0F0F"
+  # map-card-room-label-color:
+  # map-card-room-label-color-selected:
+  # map-card-room-label-font-size:
+  # map-card-toast-successful-icon-color:
+  # map-card-toast-unsuccessful-icon-color:
+  # map-card-transitions-duration:
