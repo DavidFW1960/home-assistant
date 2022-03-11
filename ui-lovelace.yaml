@@ -1140,6 +1140,8 @@ views:
                 filter:
                   include:
                     - entity_id: "sensor.opennem_*"
+                  exclude:
+                    - state: "unknown"
                 show_empty: true
                 sort:
                   method: name
