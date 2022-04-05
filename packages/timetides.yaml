@@ -77,8 +77,6 @@ sensor:
       - max_elevation
     entity_namespace: solar
 
-  - platform: moon
-
   - platform: template
     sensors:
       nextsunrise:
