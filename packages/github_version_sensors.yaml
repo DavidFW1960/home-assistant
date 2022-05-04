@@ -93,7 +93,7 @@ sensor:
   - platform: mqtt
     name: "Coffee Maker Firmware"
     state_topic: "stat/sonoff1/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
     json_attributes_topic: "stat/sonoff1/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
@@ -105,7 +105,7 @@ sensor:
   - platform: mqtt
     name: "Toothbrush Firmware"
     state_topic: "stat/sonoff2/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
     json_attributes_topic: "stat/sonoff2/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
@@ -117,7 +117,7 @@ sensor:
   - platform: mqtt
     name: "XCY Mini PC Firmware"
     state_topic: "stat/sonoff3/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
     json_attributes_topic: "stat/sonoff3/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
@@ -129,7 +129,7 @@ sensor:
   - platform: mqtt
     name: "TV Switch Firmware"
     state_topic: "stat/sonoff4/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
     json_attributes_topic: "stat/sonoff4/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
@@ -141,7 +141,7 @@ sensor:
   - platform: mqtt
     name: "Garage Door Firmware"
     state_topic: "stat/sonoff5/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
     json_attributes_topic: "stat/sonoff5/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
@@ -153,7 +153,7 @@ sensor:
   - platform: mqtt
     name: "Alarm Firmware"
     state_topic: "stat/sonoff6/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
     json_attributes_topic: "stat/sonoff6/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
@@ -165,7 +165,7 @@ sensor:
   - platform: mqtt
     name: "Nodemcu Lounge Firmware"
     state_topic: "stat/nodemcu_lounge/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
     json_attributes_topic: "stat/nodemcu_lounge/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
@@ -177,7 +177,7 @@ sensor:
   - platform: mqtt
     name: "Nodemcu Bedroom Firmware"
     state_topic: "stat/nodemcu_bedroom/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
     json_attributes_topic: "stat/nodemcu_bedroom/STATUS2"
     json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
   - platform: mqtt
