@@ -45,15 +45,6 @@ homeassistant:
 # Python
 # python_script:
 
-# Device Trackers iPhone Detect
-device_tracker:
-  - platform: iphonedetect
-    consider_home: 60
-    hosts:
-      hostname1: !secret david_iphone
-      hostname2: !secret david_ipad
-      hostname3: !secret liz_iphone
-
 # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes
@@ -166,15 +157,6 @@ sensor:
       - !secret ben_ipv6_network
       - 2001:4860:4000::/36      # Google
 
-# Sql Sensor
-  - platform: sql
-    db_url: !secret sqlurl
-    queries:
-      - name: DB size
-        query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
-        column: "value"
-        unit_of_measurement: MB
-
 # Home Assistant Uptime
   - platform: uptime
     name: HA Uptime
@@ -282,25 +264,6 @@ sensor:
     state_topic: "artisan"
     icon: mdi:coffee
     value_template: "{{ value_json.state }}"
-
-# SABnzbd
-sabnzbd:
-  api_key: !secret my_sabnzbd_api
-  host: !secret my_sab_host
-  port: 8080
-  ssl: false
-  sensors:
-    - current_status
-    - speed
-    - queue_size
-    - queue_remaining
-    - disk_size
-    - disk_free
-    - queue_count
-    - day_size
-    - week_size
-    - month_size
-    - total_size
 
 # Text to speech
 tts:
