@@ -146,7 +146,7 @@ views:
               - sensor.last_successful_authentication
               - sensor.cert_expiry_ha_domain_days
               - sensor.cert_expiry_ha_domain
-              - sensor.db_size
+              - sensor.select_value_sql_query
               - sensor.cert_expiry_cockpit_days
               - sensor.cert_expiry_cockpit
               - sensor.cert_expiry_glances_days
@@ -163,7 +163,7 @@ views:
               show_header_toggle: false
               entities:
                 - entity: sensor.last_successful_authentication
-                - entity: sensor.db_size
+                - sensor.select_value_sql_query
                 - entity: sensor.cert_expiry_ha_domain_days
                   name: "${'HA Certificate Expires in'}"
                 - entity: sensor.cert_expiry_ha_domain
@@ -454,7 +454,7 @@ views:
               - entity: sensor.hass_installed_version
                 tap_action:
                   action: navigate
-                  navigation_path: /hassio/dashboard
+                  navigation_path: /config/dashboard
                 card_mod:
                   style: |
                     :host {
@@ -480,7 +480,7 @@ views:
               - entity: sensor.current_supervisor_installed
                 tap_action:
                   action: navigate
-                  navigation_path: /hassio/dashboard
+                  navigation_path: /config/dashboard
                 card_mod:
                   style: |
                     :host {
@@ -526,7 +526,7 @@ views:
               - entity: sensor.current_dns_installed
                 tap_action:
                   action: navigate
-                  navigation_path: /hassio/dashboard
+                  navigation_path: /config/dashboard
                 card_mod:
                   style: |
                     :host {
@@ -550,7 +550,7 @@ views:
               - entity: sensor.current_audio_installed
                 tap_action:
                   action: navigate
-                  navigation_path: /hassio/dashboard
+                  navigation_path: /config/dashboard
                 card_mod:
                   style: |
                     :host {
@@ -574,7 +574,7 @@ views:
               - entity: sensor.current_cli_installed
                 tap_action:
                   action: navigate
-                  navigation_path: /hassio/dashboard
+                  navigation_path: /config/dashboard
                 card_mod:
                   style: |
                     :host {
@@ -596,7 +596,7 @@ views:
               - entity: sensor.current_multicast_installed
                 tap_action:
                   action: navigate
-                  navigation_path: /hassio/dashboard
+                  navigation_path: /config/dashboard
                 card_mod:
                   style: |
                     :host {
@@ -618,7 +618,7 @@ views:
               - entity: sensor.current_observer_installed
                 tap_action:
                   action: navigate
-                  navigation_path: /hassio/dashboard
+                  navigation_path: /config/dashboard
                 card_mod:
                   style: |
                     :host {
@@ -710,7 +710,7 @@ views:
               - entity: sensor.supervisor_installed
                 tap_action:
                   action: navigate
-                  navigation_path: /hassio/dashboard
+                  navigation_path: /config/dashboard
                 card_mod:
                   style: |
                     :host {
@@ -778,7 +778,7 @@ views:
                 name: Repack Database
                 tap_action:
                   action: call-service
-                  service: script.1593403010853
+                  service: script.recorder_repack_db
           - type: custom:apexcharts-card
             graph_span: 24h
             header:
@@ -1272,8 +1272,8 @@ views:
 #              - sensor.gosford_temp_feels_like
               - sensor.home_feels_like_temperature
               - sensor.gosford_rain_since_9am
-#              - sensor.gosford_humidity
-              - sensor.home_humidity
+              - sensor.gosford_humidity
+#              - sensor.home_humidity
               - sensor.gosford_wind_direction
               - sensor.gosford_wind_speed_kilometre
               - sensor.gosford_gust_speed_kilometre
@@ -1290,11 +1290,11 @@ views:
               entities:
                 - entity: sensor.bom_forecast_0
                 - entity: sensor.gosford_temp
-#                - entity: sensor.gosford_temp_feels_like
-                - entity: sensor.home_feels_like_temperature
+                - entity: sensor.gosford_temp_feels_like
+#                - entity: sensor.home_feels_like_temperature
                 - entity: sensor.gosford_rain_since_9am
-#                - entity: sensor.gosford_humidity
-                - entity: sensor.home_humidity
+                - entity: sensor.gosford_humidity
+#                - entity: sensor.home_humidity
                 - entity: sensor.dewpoint_outside
                 - entity: sensor.gosford_wind_direction
                 - entity: sensor.gosford_wind_speed_kilometre
@@ -1382,6 +1382,10 @@ views:
             entity_summary_3: sensor.kariong_short_text_3
             entity_summary_4: sensor.kariong_short_text_4
             entity_summary_5: sensor.kariong_short_text_5
+            entity_temp_next: sensor.kariong_now_temp_now
+            entity_temp_next_label: sensor.kariong_now_now_label
+            entity_temp_following: sensor.kariong_now_temp_later
+            entity_temp_following_label: sensor.kariong_now_later_label
             entity_sun: sun.sun
 #           entity_visibility: sensor.dark_sky_visibility
             entity_daytime_high: sensor.bom_today_max
@@ -1391,11 +1395,12 @@ views:
             entity_wind_gust: sensor.gosford_gust_speed_kilometre
 #           entity_wind_speed_kt: sensor.gosford_wind_speed_knot
 #           entity_wind_gust_kt: sensor.gosford_gust_speed_knot
-#            entity_humidity: sensor.gosford_humidity
-            entity_humidity: sensor.home_humidity
+            entity_humidity: sensor.gosford_humidity
+#            entity_humidity: sensor.home_humidity
             entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
-#            entity_apparent_temp: sensor.gosford_temp_feels_like
-            entity_apparent_temp: sensor.home_feels_like_temperature
+            show_decimals_pressure: 1
+            entity_apparent_temp: sensor.gosford_temp_feels_like
+#            entity_apparent_temp: sensor.home_feels_like_temperature
             entity_daily_summary: sensor.kariong_extended_text_0
             entity_pop: sensor.kariong_rain_chance_0
             entity_pop_intensity: sensor.gosford_rain_since_9am
@@ -1454,8 +1459,8 @@ views:
             separator_top_margin: 6em       #default 6em px or em
             summary_top_padding: 2em        #default 2em px or em pre-0.109.x default was 1em
             summary_font_size: 0.8em        #default 0.8em px or em
-            slot_l1: daytime_high           #daytime_high
-            slot_l2: daytime_low            #daytime_low
+            slot_l1: temp_next              #daytime_high
+            slot_l2: temp_following         #daytime_low
             slot_l3: wind                   #wind
             slot_l4: pressure               #pressure
             slot_l5: sun_next               #sun_next
@@ -1626,8 +1631,8 @@ views:
                 group_by:
                   func: avg
                   duration: 12min
-#              - entity: sensor.gosford_temp_feels_like
-              - entity: sensor.home_feels_like_temperature
+              - entity: sensor.gosford_temp_feels_like
+#              - entity: sensor.home_feels_like_temperature
                 show:
                   extremas: true
                 stroke_width: 3
@@ -1937,8 +1942,8 @@ views:
               legend:
                 showForSingleSeries: true
             series:
-#              - entity: sensor.gosford_humidity
-              - entity: sensor.home_humidity
+              - entity: sensor.gosford_humidity
+#              - entity: sensor.home_humidity
                 show:
                   extremas: true
                 stroke_width: 3
