@@ -165,17 +165,35 @@ sensor:
       bom_today_max:
         value_template: >
           {{ state_attr('sensor.today_temp_bom', 'max_value') }}
+          {{ states('sensor.today_temp_bom_max') }}
 
       bom_today_min:
         value_template: >
           {{ state_attr('sensor.today_temp_bom', 'min_value') }}
+          {{ states('sensor.today_temp_bom_min') }}
 
-  - platform: average
-    name: today_temp_bom
-    entities:
-      - sensor.gosford_temp
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+# - platform: average
+#   name: today_temp_bom
+#   entities:
+#     - sensor.gosford_temp
+#   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#   end: '{{ now() }}'
+
+  - platform: statistics
+    name: today_temp_bom_min
+    sampling_size: 150
+    entity_id: sensor.gosford_temp
+    state_characteristic: value_min
+    max_age:
+      hours: 24
+
+  - platform: statistics
+    name: today_temp_bom_max
+    sampling_size: 150
+    entity_id: sensor.gosford_temp
+    state_characteristic: value_max
+    max_age:
+      hours: 24
 
 # Dewpoint Custom Component
 # https://github.com/miguelangel-nubla/home-assistant-dewpoint
@@ -188,24 +206,24 @@ sensor:
  
 #Sensors for Humidity, Windspeed conversion and Temp Feels Like
 
-  - platform: template
-    sensors:
-      home_humidity:
-        value_template: >
-            {{ expand(['sensor.nodemcu_bedroom_am2301_humidity', 'sensor.nodemcu_bedroom_bme280_humidity', 'sensor.nodemcu_lounge_bme280_humidity', 'sensor.sonoff1_2914_si7021_humidity', 'sensor.sonoff3_0898_si7021_humidity'])|map(attribute='state')|map('float')|average | round(1)}} 
-
-      home_windspeed:
-        value_template: >
-            {% set speed=states('sensor.gosford_wind_speed_kilometre')|float(default='n/a') *(1000/3600)%}
-            {{speed}}
-        unit_of_measurement: m/s
-
-  - platform: temperature_feels_like
-    name: 'Home Feels Like Temperature'
-    source:
-      - sensor.gosford_temp
-      - sensor.home_humidity
-      - sensor.home_windspeed
+# - platform: template
+#   sensors:
+#     home_humidity:
+#       value_template: >
+#           {{ expand(['sensor.nodemcu_bedroom_am2301_humidity', 'sensor.nodemcu_bedroom_bme280_humidity', 'sensor.nodemcu_lounge_bme280_humidity', 'sensor.sonoff1_2914_si7021_humidity', 'sensor.sonoff3_0898_si7021_humidity'])|map(attribute='state')|map('float')|average | round(1)}} 
+#
+#     home_windspeed:
+#       value_template: >
+#           {% set speed=states('sensor.gosford_wind_speed_kilometre')|float(default='n/a') *(1000/3600)%}
+#           {{speed}}
+#       unit_of_measurement: m/s
+#
+# - platform: temperature_feels_like
+#   name: 'Home Feels Like Temperature'
+#   source:
+#     - sensor.gosford_temp
+#     - sensor.home_humidity
+#     - sensor.home_windspeed
 
 automation:
 - alias: 'Update BOM Icons'
