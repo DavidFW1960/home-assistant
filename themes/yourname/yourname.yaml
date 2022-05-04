@@ -56,3 +56,9 @@ yourname:
   ### Switches ###
   switch-unchecked-button-color: var(--divider-color)
   switch-unchecked-track-color: var(--divider-color)
+  ### Inputs ###
+  input-fill-color: "rgba(0, 0, 0, 0.5)"
+  input-label-ink-color: var(--primary-color)
+  input-ink-color: var(--primary-color)
+  input-disabled-fill-color: "rgba(0, 0, 0, 0.33)"
+  input-disabled-ink-color: var(--disabled-primary-color)
