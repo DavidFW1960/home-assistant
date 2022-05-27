@@ -39,7 +39,6 @@ from homeassistant.exceptions import TemplateError
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.config_validation import PLATFORM_SCHEMA
 from homeassistant.helpers.event import async_track_state_change
-from homeassistant.helpers.typing import StateType
 from homeassistant.util import Throttle
 from homeassistant.util.temperature import convert as convert_temperature
 from homeassistant.util.unit_system import TEMPERATURE_UNITS
@@ -60,7 +59,7 @@ from .const import (
 
 try:  # pragma: no cover
     # HA version >=2021.6
-    from homeassistant.components.recorder import history
+    from homeassistant.components.recorder import get_instance, history
     from homeassistant.components.recorder.models import LazyState
 except ImportError:  # pragma: no cover
     # HA version <=2021.5
@@ -133,11 +132,11 @@ async def async_setup_platform(
     )
 
 
-# pylint: disable=r0902
+# pylint: disable=too-many-instance-attributes
 class AverageSensor(SensorEntity):
     """Implementation of an Average sensor."""
 
-    # pylint: disable=r0913
+    # pylint: disable=too-many-arguments
     def __init__(
         self,
         hass: HomeAssistant,
@@ -166,8 +165,8 @@ class AverageSensor(SensorEntity):
         self.min_value = self.max_value = None
 
         self._attr_name = name
-        self._attr_state = None
-        self._attr_unit_of_measurement = None
+        self._attr_native_value = None
+        self._attr_native_unit_of_measurement = None
         self._attr_icon = None
         self._attr_state_class = STATE_CLASS_MEASUREMENT
         self._attr_device_class = None
@@ -201,12 +200,7 @@ class AverageSensor(SensorEntity):
     @property
     def available(self) -> bool:
         """Return True if entity is available."""
-        return self.available_sources > 0 and self._has_state(self._attr_state)
-
-    @property
-    def state(self) -> StateType:
-        """Return the state of the sensor."""
-        return self._attr_state if self.available else STATE_UNAVAILABLE
+        return self.available_sources > 0 and self._has_state(self._attr_native_value)
 
     @property
     def extra_state_attributes(self) -> Optional[Mapping[str, Any]]:
@@ -223,24 +217,26 @@ class AverageSensor(SensorEntity):
 
         # pylint: disable=unused-argument
         @callback
-        def sensor_state_listener(entity, old_state, new_state):
+        async def async_sensor_state_listener(entity, old_state, new_state):
             """Handle device state changes."""
-            last_state = self._attr_state
-            self._update_state()
-            if last_state != self._attr_state:
+            last_state = self._attr_native_value
+            await self._async_update_state()
+            if last_state != self._attr_native_value:
                 self.async_schedule_update_ha_state(True)
 
         # pylint: disable=unused-argument
         @callback
-        def sensor_startup(event):
+        async def async_sensor_startup(event):
             """Update template on startup."""
             if self._has_period:
                 self.async_schedule_update_ha_state(True)
             else:
-                async_track_state_change(self.hass, self.sources, sensor_state_listener)
-                sensor_state_listener(None, None, None)
+                async_track_state_change(
+                    self.hass, self.sources, async_sensor_state_listener
+                )
+                await async_sensor_state_listener(None, None, None)
 
-        self.hass.bus.async_listen_once(EVENT_HOMEASSISTANT_START, sensor_startup)
+        self.hass.bus.async_listen_once(EVENT_HOMEASSISTANT_START, async_sensor_startup)
 
     @staticmethod
     def _has_state(state) -> bool:
@@ -299,10 +295,10 @@ class AverageSensor(SensorEntity):
         return state
 
     @Throttle(UPDATE_MIN_TIME)
-    def update(self):
+    async def async_update(self):
         """Update the sensor state if it needed."""
         if self._has_period:
-            self._update_state()
+            await self._async_update_state()
 
     @staticmethod
     def handle_template_exception(exc, field):
@@ -316,7 +312,7 @@ class AverageSensor(SensorEntity):
         else:
             _LOGGER.error('Error parsing template for field "%s": %s', field, exc)
 
-    def _update_period(self):  # pylint: disable=r0912
+    async def _async_update_period(self):  # pylint: disable=too-many-branches
         """Parse the templates and calculate a datetime tuples."""
         start = end = None
         now = dt_util.now()
@@ -325,7 +321,7 @@ class AverageSensor(SensorEntity):
         if self._start_template is not None:
             _LOGGER.debug("Process start template: %s", self._start_template)
             try:
-                start_rendered = self._start_template.render()
+                start_rendered = self._start_template.async_render()
             except (TemplateError, TypeError) as ex:
                 self.handle_template_exception(ex, "start")
                 return
@@ -346,7 +342,7 @@ class AverageSensor(SensorEntity):
         if self._end_template is not None:
             _LOGGER.debug("Process end template: %s", self._end_template)
             try:
-                end_rendered = self._end_template.render()
+                end_rendered = self._end_template.async_render()
             except (TemplateError, TypeError) as ex:
                 self.handle_template_exception(ex, "end")
                 return
@@ -398,28 +394,34 @@ class AverageSensor(SensorEntity):
 
         domain = split_entity_id(state.entity_id)[0]
         self._attr_device_class = state.attributes.get(ATTR_DEVICE_CLASS)
-        self._attr_unit_of_measurement = state.attributes.get(ATTR_UNIT_OF_MEASUREMENT)
+        self._attr_native_unit_of_measurement = state.attributes.get(
+            ATTR_UNIT_OF_MEASUREMENT
+        )
         self._temperature_mode = (
             self._attr_device_class == DEVICE_CLASS_TEMPERATURE
             or domain in (WEATHER_DOMAIN, CLIMATE_DOMAIN, WATER_HEATER_DOMAIN)
-            or self._attr_unit_of_measurement in TEMPERATURE_UNITS
+            or self._attr_native_unit_of_measurement in TEMPERATURE_UNITS
         )
         if self._temperature_mode:
             _LOGGER.debug("%s is a temperature entity.", state.entity_id)
             self._attr_device_class = DEVICE_CLASS_TEMPERATURE
-            self._attr_unit_of_measurement = self.hass.config.units.temperature_unit
+            self._attr_native_unit_of_measurement = (
+                self.hass.config.units.temperature_unit
+            )
         else:
             _LOGGER.debug("%s is NOT a temperature entity.", state.entity_id)
             self._attr_icon = state.attributes.get(ATTR_ICON)
 
-    def _update_state(self):  # pylint: disable=r0914,r0912,r0915
+    async def _async_update_state(
+        self,
+    ):  # pylint: disable=too-many-locals,too-many-branches,too-many-statements
         """Update the sensor state."""
         _LOGGER.debug('Updating sensor "%s"', self.name)
         start = end = start_ts = end_ts = None
         p_period = self._period
 
         # Parse templates
-        self._update_period()
+        await self._async_update_period()
 
         if self._period is not None:
             now = datetime.datetime.now()
@@ -474,11 +476,19 @@ class AverageSensor(SensorEntity):
 
             else:
                 # Get history between start and now
-                history_list = history.state_changes_during_period(
-                    self.hass, start, end, str(entity_id)
+                history_list = await get_instance(self.hass).async_add_executor_job(
+                    history.state_changes_during_period,
+                    self.hass,
+                    start,
+                    end,
+                    str(entity_id),
                 )
 
-                if entity_id not in history_list.keys():
+                if (
+                    entity_id not in history_list.keys()
+                    or history_list[entity_id] is None
+                    or len(history_list[entity_id]) == 0
+                ):
                     value = self._get_state_value(state)
                     _LOGGER.warning(
                         'Historical data not found for entity "%s". '
@@ -488,7 +498,7 @@ class AverageSensor(SensorEntity):
                     )
                 else:
                     # Get the first state
-                    item = history.get_state(self.hass, start, entity_id)
+                    item = history_list[entity_id][0]
                     _LOGGER.debug("Initial historical state: %s", item)
                     last_state = None
                     last_time = start_ts
@@ -524,9 +534,9 @@ class AverageSensor(SensorEntity):
                 self.available_sources += 1
 
         if values:
-            self._attr_state = round(sum(values) / len(values), self._precision)
+            self._attr_native_value = round(sum(values) / len(values), self._precision)
             if self._precision < 1:
-                self._attr_state = int(self._attr_state)
+                self._attr_native_value = int(self._attr_native_value)
         else:
-            self._attr_state = None
-        _LOGGER.debug("Total average state: %s", self._attr_state)
+            self._attr_native_value = None
+        _LOGGER.debug("Total average state: %s", self._attr_native_value)
