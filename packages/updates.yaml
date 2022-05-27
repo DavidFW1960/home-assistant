@@ -188,15 +188,16 @@ homeassistant:
 ## Sensor
 ################################################
 
+mqtt:
+  sensor:
+    - name: "HA OS-Agent Installed Version"
+      state_topic: "haosagentinstalled"
+      value_template: "{{ value_json.state }}"
+
 sensor:
   - platform: command_line
     name: Hass Installed Version
     command: "cat /config/.HA_VERSION"
-
-  - platform: mqtt
-    name: "HA OS-Agent Installed Version"
-    state_topic: "haosagentinstalled"
-    value_template: "{{ value_json.state }}"
 
   - platform: command_line
     name: Supervisor Installed

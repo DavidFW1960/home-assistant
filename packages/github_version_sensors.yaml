@@ -42,24 +42,6 @@ sensor:
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
 
-# Artisan Software Version
-# Getting Artisan version from JSON
-  - platform: mqtt
-    name: "Artisan Software Version Installed"
-    state_topic: "artisan_version"
-    icon: mdi:coffee
-    value_template: "{{ value_json.state }}"
-    
-# Docker Compose and Docker-CE Version Installed
-  - platform: mqtt
-    name: "Docker Compose Version Installed"
-    state_topic: "docker-compose-version"
-    value_template: "{{ value_json.state }}"
-  - platform: mqtt
-    name: "Docker-CE Version Installed"
-    state_topic: "docker-ce-version"
-    value_template: "{{ value_json.state }}"
-
 # Docker-CE Version
   - platform: rest
     resource: https://api.github.com/repos/moby/moby/releases/latest
@@ -81,111 +63,114 @@ sensor:
       Accept: application/vnd.github.v3+json
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
-  - platform: mqtt
-    name: "Docker Version Available"
-# friendly_name: Docker Version Available (Repo)
-    state_topic: "docker-ce-version-available"
-    icon: mdi:docker
-    value_template: "{{ value_json.state }}"
+
+# Artisan Software Version
+# Getting Artisan version from JSON
+
+mqtt:
+  sensor:
+
+    - name: "Artisan Software Version Installed"
+      state_topic: "artisan_version"
+      icon: mdi:coffee
+      value_template: "{{ value_json.state }}"
+    
+# Docker Compose and Docker-CE Version Installed
+    - name: "Docker Compose Version Installed"
+      state_topic: "docker-compose-version"
+      value_template: "{{ value_json.state }}"
+    - name: "Docker-CE Version Installed"
+      state_topic: "docker-ce-version"
+      value_template: "{{ value_json.state }}"
+
+    - name: "Docker Version Available"
+#   friendly_name: Docker Version Available (Repo)
+      state_topic: "docker-ce-version-available"
+      icon: mdi:docker
+      value_template: "{{ value_json.state }}"
 
 # Tasmota Firmware
 # Getting Firmware from JSON for Tasmota
-  - platform: mqtt
-    name: "Coffee Maker Firmware"
-    state_topic: "stat/sonoff1/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
-    json_attributes_topic: "stat/sonoff1/STATUS2"
-    json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
-  - platform: mqtt
-    name: "Coffee Maker Status"
-    state_topic: "stat/sonoff1/STATUS11"
-    value_template: '{{ value_json.StatusSTS.MqttCount}}'
-    json_attributes_topic: "stat/sonoff1/STATUS11"
-    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
-  - platform: mqtt
-    name: "Toothbrush Firmware"
-    state_topic: "stat/sonoff2/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
-    json_attributes_topic: "stat/sonoff2/STATUS2"
-    json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
-  - platform: mqtt
-    name: "Toothbrush Status"
-    state_topic: "stat/sonoff2/STATUS11"
-    value_template: '{{ value_json.StatusSTS.MqttCount}}'
-    json_attributes_topic: "stat/sonoff2/STATUS11"
-    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
-  - platform: mqtt
-    name: "XCY Mini PC Firmware"
-    state_topic: "stat/sonoff3/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
-    json_attributes_topic: "stat/sonoff3/STATUS2"
-    json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
-  - platform: mqtt
-    name: "XCY Mini PC Status"
-    state_topic: "stat/sonoff3/STATUS11"
-    value_template: '{{ value_json.StatusSTS.MqttCount}}'
-    json_attributes_topic: "stat/sonoff3/STATUS11"
-    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
-  - platform: mqtt
-    name: "TV Switch Firmware"
-    state_topic: "stat/sonoff4/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
-    json_attributes_topic: "stat/sonoff4/STATUS2"
-    json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
-  - platform: mqtt
-    name: "TV Switch Status"
-    state_topic: "stat/sonoff4/STATUS11"
-    value_template: '{{ value_json.StatusSTS.MqttCount}}'
-    json_attributes_topic: "stat/sonoff4/STATUS11"
-    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
-  - platform: mqtt
-    name: "Garage Door Firmware"
-    state_topic: "stat/sonoff5/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
-    json_attributes_topic: "stat/sonoff5/STATUS2"
-    json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
-  - platform: mqtt
-    name: "Garage Door Status"
-    state_topic: "stat/sonoff5/STATUS11"
-    value_template: '{{ value_json.StatusSTS.MqttCount}}'
-    json_attributes_topic: "stat/sonoff5/STATUS11"
-    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
-  - platform: mqtt
-    name: "Alarm Firmware"
-    state_topic: "stat/sonoff6/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
-    json_attributes_topic: "stat/sonoff6/STATUS2"
-    json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
-  - platform: mqtt
-    name: "Alarm Status"
-    state_topic: "stat/sonoff6/STATUS11"
-    value_template: '{{ value_json.StatusSTS.MqttCount}}'
-    json_attributes_topic: "stat/sonoff6/STATUS11"
-    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
-  - platform: mqtt
-    name: "Nodemcu Lounge Firmware"
-    state_topic: "stat/nodemcu_lounge/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
-    json_attributes_topic: "stat/nodemcu_lounge/STATUS2"
-    json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
-  - platform: mqtt
-    name: "Nodemcu Lounge Status"
-    state_topic: "stat/nodemcu_lounge/STATUS11"
-    value_template: '{{ value_json.StatusSTS.MqttCount}}'
-    json_attributes_topic: "stat/nodemcu_lounge/STATUS11"
-    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
-  - platform: mqtt
-    name: "Nodemcu Bedroom Firmware"
-    state_topic: "stat/nodemcu_bedroom/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
-    json_attributes_topic: "stat/nodemcu_bedroom/STATUS2"
-    json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
-  - platform: mqtt
-    name: "Nodemcu Bedroom Status"
-    state_topic: "stat/nodemcu_bedroom/STATUS11"
-    value_template: '{{ value_json.StatusSTS.MqttCount}}'
-    json_attributes_topic: "stat/nodemcu_bedroom/STATUS11"
-    json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+    - name: "Coffee Maker Firmware"
+      state_topic: "stat/sonoff1/STATUS2"
+      value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
+      json_attributes_topic: "stat/sonoff1/STATUS2"
+      json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+    - name: "Coffee Maker Status"
+      state_topic: "stat/sonoff1/STATUS11"
+      value_template: '{{ value_json.StatusSTS.MqttCount}}'
+      json_attributes_topic: "stat/sonoff1/STATUS11"
+      json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+    - name: "Toothbrush Firmware"
+      state_topic: "stat/sonoff2/STATUS2"
+      value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
+      json_attributes_topic: "stat/sonoff2/STATUS2"
+      json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+    - name: "Toothbrush Status"
+      state_topic: "stat/sonoff2/STATUS11"
+      value_template: '{{ value_json.StatusSTS.MqttCount}}'
+      json_attributes_topic: "stat/sonoff2/STATUS11"
+      json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+    - name: "XCY Mini PC Firmware"
+      state_topic: "stat/sonoff3/STATUS2"
+      value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
+      json_attributes_topic: "stat/sonoff3/STATUS2"
+      json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+    - name: "XCY Mini PC Status"
+      state_topic: "stat/sonoff3/STATUS11"
+      value_template: '{{ value_json.StatusSTS.MqttCount}}'
+      json_attributes_topic: "stat/sonoff3/STATUS11"
+      json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+    - name: "TV Switch Firmware"
+      state_topic: "stat/sonoff4/STATUS2"
+      value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
+      json_attributes_topic: "stat/sonoff4/STATUS2"
+      json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+    - name: "TV Switch Status"
+      state_topic: "stat/sonoff4/STATUS11"
+      value_template: '{{ value_json.StatusSTS.MqttCount}}'
+      json_attributes_topic: "stat/sonoff4/STATUS11"
+      json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+    - name: "Garage Door Firmware"
+      state_topic: "stat/sonoff5/STATUS2"
+      value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
+      json_attributes_topic: "stat/sonoff5/STATUS2"
+      json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+    - name: "Garage Door Status"
+      state_topic: "stat/sonoff5/STATUS11"
+      value_template: '{{ value_json.StatusSTS.MqttCount}}'
+      json_attributes_topic: "stat/sonoff5/STATUS11"
+      json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+    - name: "Alarm Firmware"
+      state_topic: "stat/sonoff6/STATUS2"
+      value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
+      json_attributes_topic: "stat/sonoff6/STATUS2"
+      json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+    - name: "Alarm Status"
+      state_topic: "stat/sonoff6/STATUS11"
+      value_template: '{{ value_json.StatusSTS.MqttCount}}'
+      json_attributes_topic: "stat/sonoff6/STATUS11"
+      json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+    - name: "Nodemcu Lounge Firmware"
+      state_topic: "stat/nodemcu_lounge/STATUS2"
+      value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
+      json_attributes_topic: "stat/nodemcu_lounge/STATUS2"
+      json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+    - name: "Nodemcu Lounge Status"
+      state_topic: "stat/nodemcu_lounge/STATUS11"
+      value_template: '{{ value_json.StatusSTS.MqttCount}}'
+      json_attributes_topic: "stat/nodemcu_lounge/STATUS11"
+      json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
+    - name: "Nodemcu Bedroom Firmware"
+      state_topic: "stat/nodemcu_bedroom/STATUS2"
+      value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") | replace("(sensors)", "")}}'
+      json_attributes_topic: "stat/nodemcu_bedroom/STATUS2"
+      json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+    - name: "Nodemcu Bedroom Status"
+      state_topic: "stat/nodemcu_bedroom/STATUS11"
+      value_template: '{{ value_json.StatusSTS.MqttCount}}'
+      json_attributes_topic: "stat/nodemcu_bedroom/STATUS11"
+      json_attributes_template: "{{ value_json.StatusSTS | tojson }}"
 
 binary_sensor:
   - platform: template

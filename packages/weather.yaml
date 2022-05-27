@@ -165,59 +165,44 @@ sensor:
       bom_today_max:
         value_template: >
           {{ state_attr('sensor.today_temp_bom', 'max_value') }}
-          {{ states('sensor.today_temp_bom_max') }}
 
       bom_today_min:
         value_template: >
           {{ state_attr('sensor.today_temp_bom', 'min_value') }}
-          {{ states('sensor.today_temp_bom_min') }}
 
-# - platform: average
-#   name: today_temp_bom
-#   entities:
-#     - sensor.gosford_temp
-#   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-#   end: '{{ now() }}'
-
-  - platform: statistics
-    name: today_temp_bom_min
-    sampling_size: 150
-    entity_id: sensor.gosford_temp
-    state_characteristic: value_min
-    max_age:
-      hours: 24
-
-  - platform: statistics
-    name: today_temp_bom_max
-    sampling_size: 150
-    entity_id: sensor.gosford_temp
-    state_characteristic: value_max
-    max_age:
-      hours: 24
+  - platform: average
+    name: today_temp_bom
+    entities:
+      - sensor.gosford_temp
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
 
 # Dewpoint Custom Component
 # https://github.com/miguelangel-nubla/home-assistant-dewpoint
 
-  - platform: dewpoint
-    sensors:
-      dewpoint_outside:
-        temperature: sensor.gosford_temp
-        rel_hum: sensor.nodemcu_bedroom_am2301_humidity #sensor.home_humidity
+# - platform: dewpoint
+#   sensors:
+#     dewpoint_outside:
+#       temperature: sensor.gosford_temp
+#       rel_hum: sensor.nodemcu_bedroom_am2301_humidity #sensor.home_humidity
  
 #Sensors for Humidity, Windspeed conversion and Temp Feels Like
 
-# - platform: template
-#   sensors:
-#     home_humidity:
-#       value_template: >
-#           {{ expand(['sensor.nodemcu_bedroom_am2301_humidity', 'sensor.nodemcu_bedroom_bme280_humidity', 'sensor.nodemcu_lounge_bme280_humidity', 'sensor.sonoff1_2914_si7021_humidity', 'sensor.sonoff3_0898_si7021_humidity'])|map(attribute='state')|map('float')|average | round(1)}} 
-#
+  - platform: template
+    sensors:
+      home_humidity:
+        value_template: >
+            {{ expand(['sensor.nodemcu_bedroom_am2301_humidity', 'sensor.nodemcu_bedroom_bme280_humidity', 'sensor.nodemcu_lounge_bme280_humidity', 'sensor.sonoff1_2914_si7021_humidity', 'sensor.sonoff3_0898_si7021_humidity'])|map(attribute='state')|map('float')|average | round(1)}} 
+ 
 #     home_windspeed:
 #       value_template: >
 #           {% set speed=states('sensor.gosford_wind_speed_kilometre')|float(default='n/a') *(1000/3600)%}
 #           {{speed}}
 #       unit_of_measurement: m/s
 #
+# Feels Like Custom Component
+# https://github.com/Limych/ha-temperature-feels-like
+
 # - platform: temperature_feels_like
 #   name: 'Home Feels Like Temperature'
 #   source:
@@ -247,10 +232,10 @@ homeassistant:
       common: &common
         package: "weather"
 
-    sensor.dewpoint_outside:
-      friendly_name: Dew Point
-      device_class: temperature
-      <<: *common
+#    sensor.dewpoint_outside:
+#      friendly_name: Dew Point
+#      device_class: temperature
+#      <<: *common
     sensor.gosford_temp:
       friendly_name: Air Temp
       device_class: temperature

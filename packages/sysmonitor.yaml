@@ -37,47 +37,53 @@ switch:
     body_off: '{"state": "stop"}'
     is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
-sensor:
-
 # CPU Resources Used & Temperature, Fritz!Box
 # Speedtest Sensor Filters
 # Shell Script Speedtest stuff
-  - platform: mqtt
-    name: "Speedtest Result"
-    state_topic: "speedtestresult"
-    value_template: "{{ value_json.state }}"
-    json_attributes_topic: "speedtestresult"
-    json_attributes_template: "{{ value_json.attributes | tojson }}"
+# IPv6 Address
 
-# - platform: average
-#   name: "Speedtest Download Average"
-#   entities:
-#     - sensor.speedtest_download
-#   start: '{{ 0 }}'
-#   end: '{{ now() }}'
+mqtt:
+  sensor:
+    - name: "Speedtest Result"
+      state_topic: "speedtestresult"
+      value_template: "{{ value_json.state }}"
+      json_attributes_topic: "speedtestresult"
+      json_attributes_template: "{{ value_json.attributes | tojson }}"
 
-  - platform: statistics
-    name: speedtest_download_average
-    entity_id: sensor.speedtest_download
-    state_characteristic: mean
-    max_age:
-      days: 2
-    sampling_size: 10000
+    - name: "WAN IP Address"
+      state_topic: "wan_ip_address"
+      value_template: "{{ value_json.state }}"
 
-# - platform: average
-#   name: "Speedtest Upload Average"
-#   entities:
-#     - sensor.speedtest_upload
-#   start: '{{ 0 }}'
-#   end: '{{ now() }}'
+sensor:
+  - platform: average
+    name: "Speedtest Download Average"
+    entities:
+      - sensor.speedtest_download
+    start: '{{ 0 }}'
+    end: '{{ now() }}'
 
-  - platform: statistics
-    name: speedtest_upload_average
-    entity_id: sensor.speedtest_upload
-    state_characteristic: mean
-    max_age:
-      days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: speedtest_download_average
+#   entity_id: sensor.speedtest_download
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
+
+  - platform: average
+    name: "Speedtest Upload Average"
+    entities:
+      - sensor.speedtest_upload
+    start: '{{ 0 }}'
+    end: '{{ now() }}'
+
+# - platform: statistics
+#   name: speedtest_upload_average
+#   entity_id: sensor.speedtest_upload
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
 
 # Docker Containers
   - platform: rest
@@ -86,361 +92,361 @@ sensor:
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: ha_dockermon_memory_average
-#   entities:
-#     - sensor.ha_dockermon_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: ha_dockermon_memory_average
-    entity_id: sensor.ha_dockermon_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.ha_dockermon_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: ha_dockermon_memory_average
+#   entity_id: sensor.ha_dockermon_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/lazylibrarian/stats
     name: LazyLibrarian Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: lazylibrarian_memory_average
-#   entities:
-#     - sensor.lazylibrarian_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: lazylibrarian_memory_average
-    entity_id: sensor.lazylibrarian_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.lazylibrarian_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: lazylibrarian_memory_average
+#   entity_id: sensor.lazylibrarian_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/sabnzbd/stats
     name: Sabnzbd Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: sabnzbd_memory_average
-#   entities:
-#     - sensor.sabnzbd_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: sabnzbd_memory_average
-    entity_id: sensor.sabnzbd_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.sabnzbd_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: sabnzbd_memory_average
+#   entity_id: sensor.sabnzbd_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/sonarr/stats
     name: Sonarr Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: sonarr_memory_average
-#   entities:
-#     - sensor.sonarr_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: sonarr_memory_average
-    entity_id: sensor.sonarr_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.sonarr_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: sonarr_memory_average
+#   entity_id: sensor.sonarr_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/radarr/stats
     name: Radarr Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: radarr_memory_average
-#   entities:
-#     - sensor.radarr_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: radarr_memory_average
-    entity_id: sensor.radarr_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.radarr_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: radarr_memory_average
+#   entity_id: sensor.radarr_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_appdaemon/stats
     name: Appdaemon Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: appdaemon_memory_average
-#   entities:
-#     - sensor.appdaemon_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: appdaemon_memory_average
-    entity_id: sensor.appdaemon_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.appdaemon_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: appdaemon_memory_average
+#   entity_id: sensor.appdaemon_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_glances/stats
     name: Glances Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: glances_memory_average
-#   entities:
-#     - sensor.glances_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: glances_memory_average
-    entity_id: sensor.glances_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.glances_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: glances_memory_average
+#   entity_id: sensor.glances_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_logviewer/stats
     name: Logviewer Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: logviewer_memory_average
-#   entities:
-#     - sensor.logviewer_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: logviewer_memory_average
-    entity_id: sensor.logviewer_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.logviewer_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: logviewer_memory_average
+#   entity_id: sensor.logviewer_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_sonweb/stats
     name: Tasmoadmin Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: tasmoadmin_memory_average
-#   entities:
-#     - sensor.tasmoadmin_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: tasmoadmin_memory_average
-    entity_id: sensor.tasmoadmin_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.tasmoadmin_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: tasmoadmin_memory_average
+#   entity_id: sensor.tasmoadmin_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_ssh/stats
     name: SSH & Web Terminal Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: ssh_memory_average
-#   entities:
-#     -  sensor.ssh_web_terminal_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: ssh_memory_average
-    entity_id: sensor.ssh_web_terminal_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      -  sensor.ssh_web_terminal_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: ssh_memory_average
+#   entity_id: sensor.ssh_web_terminal_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_vscode/stats
     name: VSCode Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: vscode_memory_average
-#   entities:
-#     - sensor.vscode_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: vscode_memory_average
-    entity_id: sensor.vscode_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.vscode_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: vscode_memory_average
+#   entity_id: sensor.vscode_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_zerotier/stats
     name: ZeroTier One Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: zerotier_one_memory_average
-#   entities:
-#     - sensor.zerotier_one_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: zerotier_one_memory_average
-    entity_id: sensor.zerotier_one_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.zerotier_one_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: zerotier_one_memory_average
+#   entity_id: sensor.zerotier_one_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_core_configurator/stats
     name: Configurator Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: configurator_memory_average
-#   entities:
-#     - sensor.configurator_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: configurator_memory_average
-    entity_id: sensor.configurator_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.configurator_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: configurator_memory_average
+#   entity_id: sensor.configurator_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_core_mariadb/stats
     name: MariaDB Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: mariadb_memory_average
-#   entities:
-#     - sensor.mariadb_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: mariadb_memory_average
-    entity_id: sensor.mariadb_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.mariadb_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: mariadb_memory_average
+#   entity_id: sensor.mariadb_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_a0d7b954_phpmyadmin/stats
     name: phpMyAdmin Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: phpmyadmin_memory_average
-#   entities:
-#     - sensor.phpmyadmin_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: phpmyadmin_memory_average
-    entity_id: sensor.phpmyadmin_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.phpmyadmin_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: phpmyadmin_memory_average
+#   entity_id: sensor.phpmyadmin_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_core_mosquitto/stats
     name: Mosquitto Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: mosquitto_memory_average
-#   entities:
-#     - sensor.mosquitto_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: mosquitto_memory_average
-    entity_id: sensor.mosquitto_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.mosquitto_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: mosquitto_memory_average
+#   entity_id: sensor.mosquitto_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_core_samba/stats
     name: Samba Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: samba_memory_average
-#   entities:
-#     - sensor.samba_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: samba_memory_average
-    entity_id: sensor.samba_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.samba_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: samba_memory_average
+#   entity_id: sensor.samba_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/addon_c80c7555_caddy-2/stats
     name: Caddy Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: caddy_memory_average
-#   entities:
-#     - sensor.caddy_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: caddy_memory_average
-    entity_id: sensor.caddy_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.caddy_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: caddy_memory_average
+#   entity_id: sensor.caddy_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
   - platform: rest
     resource: http://10.90.11.100:8126/container/portainer/stats
     name: Portainer Memory
     scan_interval: 900
     value_template: '{{ (value_json.memory_stats.usage /1024/1024) |round(2) }}'
     unit_of_measurement: 'MB'
-# - platform: average
-#   name: portainer_memory_average
-#   entities:
-#     - sensor.portainer_memory
-#   duration:
-#     days: 2
-  - platform: statistics
+  - platform: average
     name: portainer_memory_average
-    entity_id: sensor.portainer_memory
-    state_characteristic: mean
-    max_age:
+    entities:
+      - sensor.portainer_memory
+    duration:
       days: 2
-    sampling_size: 10000
+# - platform: statistics
+#   name: portainer_memory_average
+#   entity_id: sensor.portainer_memory
+#   state_characteristic: mean
+#   max_age:
+#     days: 2
+#   sampling_size: 10000
 
 # Speedtest and Up Time
 
@@ -526,10 +532,6 @@ sensor:
 #  - platform: command_line
 #    name: "WAN IP Address"
 #    command: wget -qO- https://ipv6.icanhazip.com/
-  - platform: mqtt
-    name: "WAN IP Address"
-    state_topic: "wan_ip_address"
-    value_template: "{{ value_json.state }}"
   - platform: systemmonitor
     resources:
     - type: disk_use
