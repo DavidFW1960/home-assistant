@@ -1,12 +1,13 @@
 sweetpink:
   # used these colors
-  light: "#dbebfb"
+  light: "#f2f8fe"
   dark: "#32334a"
   pink: "#e83e8c"
   gray: "#1d1e2f"
   gray-dark: "#11111d"
   indigo: "#6610f2"
   purple: "#6f42c1"
+  dark-purple: "#261743"
   teal: "#20c997"
   cyan: "#17a2b8"
 
@@ -23,6 +24,10 @@ sweetpink:
   primary-text-color: "var(--light)"
   light-primary-color: "var(--cyan)"
   accent-color: "var(--teal)"
+
+  label-badge-green: "var(--green)"
+  label-badge-yellow: "var(--yellow)"
+  label-badge-gray: "var(--gray)"
 
   secondary-background-color: "var(--gray)"
   secondary-text-color: "var(--cyan)"
@@ -49,6 +54,7 @@ sweetpink:
   paper-item-icon-active-color: "var(--cyan)"
   paper-item-icon_-_color: "var(--primary-text-color)"
 
+  sidebar-background-color: var(--dark-purple)
   sidebar-icon-color: "var(--light)"
   sidebar-text-color: "var(--light)"
   sidebar-selected-background-color: "var(--cyan)"
@@ -64,6 +70,11 @@ sweetpink:
   switch-unchecked-color: "var(--teal)"
   switch-unchecked-button-color: "var(--teal)"
 
+  # codemirror
+
+  code-editor-background-color: var(--secondary-background-color)
+  codemirror-property: var(--accent-color)
+
   # Themable CCS vars in HACS (https://hacs.xyz/docs/basic/theming)
   link-text-color: "var(--cyan)"
   hacs-status-installed: "var(--teal)"
@@ -74,3 +85,17 @@ sweetpink:
   paper-dialog-button-color: "var(--light)"
   iron-icon-fill-color: "var(--light)"
   update-heading: "var(--light)"
+
+  input-fill-color: var(--secondary-background-color)
+  input-ink-color: var(--primary-text-color)
+  input-label-ink-color: var(--primary-text-color)
+  input-disabled-fill-color: var(--primary-background-color)
+  input-disabled-ink-color: var(--disabled-text-color)
+  input-disabled-label-ink-color: var(--disabled-text-color)
+  input-idle-line-color: var(--primary-background-color)
+  input-dropdown-icon-color: var(--secondary-text-color)
+  input-hover-line-color: var(--primary-color)
+  mdc-text-field-fill-color: var(--secondary-background-color)
+  mdc-text-field-ink-color: var(--primary-text-color)
+  mdc-select-fill-color: var(--secondary-background-color)
+  mdc-text-field-label-ink-color: var(--secondary-text-color)
