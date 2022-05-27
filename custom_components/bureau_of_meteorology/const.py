@@ -8,6 +8,7 @@ from homeassistant.const import (
 ATTRIBUTION = "Data provided by the Australian Bureau of Meteorology"
 COLLECTOR = "collector"
 
+CONF_WEATHER_NAME = "weather_name"
 CONF_FORECASTS_BASENAME = "forecasts_basename"
 CONF_FORECASTS_CREATE = "forecasts_create"
 CONF_FORECASTS_DAYS = "forecasts_days"
@@ -15,6 +16,8 @@ CONF_FORECASTS_MONITORED = "forecasts_monitored"
 CONF_OBSERVATIONS_BASENAME = "observations_basename"
 CONF_OBSERVATIONS_CREATE = "observations_create"
 CONF_OBSERVATIONS_MONITORED = "observations_monitored"
+CONF_WARNINGS_CREATE = "warnings_create"
+CONF_WARNINGS_BASENAME = "warnings_basename"
 
 COORDINATOR = "coordinator"
 DOMAIN = "bureau_of_meteorology"
@@ -80,4 +83,5 @@ SENSOR_NAMES = {
     "now_temp_later":  [TEMP_CELSIUS, DEVICE_CLASS_TEMPERATURE],
     "astronomical_sunrise_time": [None, DEVICE_CLASS_TIMESTAMP],
     "astronomical_sunset_time": [None, DEVICE_CLASS_TIMESTAMP],
+    "warnings": [None, None],
 }
