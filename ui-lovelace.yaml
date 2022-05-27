@@ -888,7 +888,7 @@ views:
           - type: 'custom:config-template-card'
             entities:
               - device_tracker.davids_iphone
-              - device_tracker.davids_ipad
+              - device_tracker.david_s_ipad
               - sensor.david_s_ipad_battery_level
               - sensor.davids_iphone_battery_level
               - sensor.davids_iphone_battery_state
@@ -904,7 +904,7 @@ views:
                 - entity: device_tracker.davids_iphone
                 - entity: sensor.davids_iphone_battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.davids_iphone_battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
-                - entity: device_tracker.davids_ipad
+                - entity: device_tracker.david_s_ipad
                 - entity: sensor.david_s_ipad_battery_level
                   name: "${'Battery Status:' + '\xa0'.repeat(5) + states['sensor.david_s_ipad_battery_state'].state + '\xa0'.repeat(5) + 'Level:'}"
       - type: vertical-stack
@@ -1282,7 +1282,6 @@ views:
               - sensor.beaufort
               - sensor.heatindex
               - sensor.heatindexrating
-              - sensor.dewpoint_outside
             card:
               type: 'custom:hui-entities-card'
               title: Weather from BOM Australia
@@ -1295,7 +1294,6 @@ views:
                 - entity: sensor.gosford_rain_since_9am
                 - entity: sensor.gosford_humidity
 #                - entity: sensor.home_humidity
-                - entity: sensor.dewpoint_outside
                 - entity: sensor.gosford_wind_direction
                 - entity: sensor.gosford_wind_speed_kilometre
                 - entity: sensor.gosford_gust_speed_kilometre
@@ -1305,6 +1303,25 @@ views:
                   name: "${'Beaufort force:' + '\xa0'.repeat(2) + (vars[0] == 12 ? 'Hurricane Force' : vars[0] == 11 ? 'Violent Storm' : vars[0] == 10 ? 'Storm, whole gale' : vars[0] == 9 ? 'Strong/severe gale' : vars[0] == 8 ? 'Gale/ fresh gale' : vars[0] == 7 ? 'High wind, moderate/near gale' : vars[0] == 6 ? 'Strong breeze' : vars[0] == 5 ? 'Fresh breeze' : vars[0] == 4 ? 'Moderate breeze' : vars[0] == 3 ? 'Gentle breeze' : vars[0] == 2 ? 'Light breeze' : vars[0] == 1 ? 'Light air' : 'Calm')}"
                 - entity: sensor.heatindex
                   name: "${'Heat Index:' + '\xa0'.repeat(2) + vars[2]}"
+          - type: entities
+            title: Thermal Comfort
+            entities:
+              - entity: sensor.thermal_comfort_absolutehumidity
+                name: Absolute Humidity
+              - entity: sensor.thermal_comfort_dewpoint
+                name: Dew Point
+              - entity: sensor.thermal_comfort_frostpoint
+                name: Frost Point
+              - entity: sensor.thermal_comfort_frostrisk
+                name: Frost Risk
+              - entity: sensor.thermal_comfort_heatindex
+                name: Heat Index
+              - entity: sensor.thermal_comfort_simmerindex
+                name: Simmer Index
+              - entity: sensor.thermal_comfort_simmerzone
+                name: Simmer Zone
+              - entity: sensor.thermal_comfort_perception
+                name: Thermal Perception
           - type: entities
             title: BOM Forecast
             show_header_toggle: false
@@ -1737,7 +1754,7 @@ views:
               legend:
                 showForSingleSeries: true
             series:
-              - entity: sensor.dewpoint_outside
+              - entity: sensor.thermal_comfort_dewpoint
                 show:
                   extremas: true
                 stroke_width: 3
