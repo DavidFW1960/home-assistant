@@ -39,7 +39,7 @@ homeassistant:
         !secret trusted_ipv6: !secret user_id
         !secret ben_trusted_ipv6: !secret user_id
         !secret zerotier_network: !secret user_id
-      allow_bypass_login: true
+      allow_bypass_login: false
     - type: homeassistant
 
 # Python
@@ -161,13 +161,6 @@ sensor:
   - platform: uptime
     name: HA Uptime
 
-# HERE Travel Time
-  - platform: here_travel_time
-    api_key: !secret here_api_key
-    name: Travel to Home
-    origin_entity_id: person.david
-    destination_entity_id : zone.home
-
 # Alarm Emails
   - platform: imap
     name: Alarm Triggers
@@ -259,7 +252,8 @@ sensor:
           {% endif %}
 
 # Artisan Charge
-  - platform: mqtt
+mqtt:
+  sensor:
     name: "Artisan Events"
     state_topic: "artisan"
     icon: mdi:coffee
