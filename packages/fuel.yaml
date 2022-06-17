@@ -93,12 +93,6 @@ sensor:
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
-    station_id: 2263
-#   friendly_name: Caltex 465 Pacific Hwy Wyoming
-#   sensor.caltex_wyoming_pdl
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
     station_id: 907
 #   friendly_name: Ampol M1 Southbound
 #   sensor.caltex_wyong_pdl_2
@@ -133,10 +127,6 @@ sensor:
       cc17340:
         value_template: "{{states('sensor.ampol_woolworths_kariong_pdl')}}"
         friendly_name: Ampol Woolworths Kariong
-        unit_of_measurement: ¢/L
-      cc2263:
-        value_template: "{{states('sensor.caltex_wyoming_pdl')}}"
-        friendly_name: Caltex 465 Pacific Hwy Wyoming
         unit_of_measurement: ¢/L
       cc523:
         value_template: "{{states('sensor.caltex_woolworths_tuggerah_north_pdl')}}"
@@ -260,9 +250,6 @@ homeassistant:
     sensor.ampol_woolworths_waitara_pdl:
       icon: mdi:gas-station
       <<: *common
-    sensor.caltex_wyoming_pdl:
-      icon: mdi:gas-station
-      <<: *common
     sensor.ampol_wyong_pdl:
       icon: mdi:gas-station
       <<: *common
@@ -297,9 +284,6 @@ homeassistant:
       icon: mdi:gas-station
       <<: *common
     sensor.cc18323:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.cc2263:
       icon: mdi:gas-station
       <<: *common
     sensor.syd2436:
