@@ -1,4 +1,5 @@
 # OpenNEM (National Energy Market)
+# https://github.com/bacco007/sensor.opennem
 sensor:
   - platform: template
     sensors:
