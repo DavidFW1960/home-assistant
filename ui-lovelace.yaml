@@ -2128,6 +2128,77 @@ views:
                   duration: 12min
       - type: vertical-stack
         cards:
+          - card_config_version: 4
+            custom1_icon: mdi:brightness-7
+            custom1_units: lx
+            custom1_value: sensor.estimated_illuminance
+            custom2_icon: mdi:snowflake-alert
+            custom2_value: sensor.thermal_comfort_frostrisk
+            daily_forecast_layout: horizontal
+            entity_apparent_temp: sensor.gosford_temp_feels_like
+            entity_current_conditions: sensor.kariong_icon_descriptor_0
+            entity_current_text: sensor.bom_current_text
+            entity_daily_summary: sensor.kariong_extended_text_0
+            entity_fire_danger: sensor.bom_fire_danger
+            entity_fire_danger_summary: sensor.kariong_fire_danger_0
+            entity_forecast_high_temp_1: sensor.kariong_temp_max_1
+            entity_forecast_icon_1: sensor.kariong_icon_descriptor_1
+            entity_forecast_low_temp_1: sensor.kariong_temp_min_1
+            entity_forecast_max: sensor.kariong_temp_max_0
+            entity_forecast_min: sensor.kariong_temp_min_0
+            entity_humidity: sensor.gosford_humidity
+            entity_observed_max: sensor.bom_today_max
+            entity_observed_min: sensor.bom_today_min
+            entity_pop: sensor.kariong_rain_chance_0
+            entity_pop_1: sensor.kariong_rain_chance_1
+            entity_pos_1: sensor.kariong_rain_amount_range_1
+            entity_possible_today: sensor.gosford_rain_since_9am
+            entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
+            entity_summary_1: sensor.kariong_short_text_1
+            entity_sun: sun.sun
+            entity_temp_following: sensor.kariong_now_temp_later
+            entity_temp_following_label: sensor.kariong_now_later_label
+            entity_temp_next: sensor.kariong_now_temp_now
+            entity_temp_next_label: sensor.kariong_now_now_label
+            entity_temperature: sensor.gosford_temp
+            entity_todays_fire_danger: sensor.bom_fire_danger
+            entity_todays_uv_forecast: sensor.bom_uv_alert
+            entity_uv_alert_summary: sensor.kariong_uv_category_0
+            entity_wind_bearing: sensor.gosford_wind_direction
+            entity_wind_gust: sensor.gosford_gust_speed_kilometre
+            entity_wind_speed: sensor.gosford_wind_speed_kilometre
+            old_daily_format: false
+            option_locale: en
+            option_pressure_decimals: 1
+            option_tooltips: true
+            section_order:
+              - title
+              - overview
+              - slots
+              - daily_forecast
+              - extended
+            show_decimals: false
+            show_section_daily_forecast: true
+            show_section_extended: true
+            show_section_main: true
+            show_section_title: false
+            show_separator: false
+            slot_l1: temp_next
+            slot_l2: temp_following
+            slot_l3: wind
+            slot_l4: pressure
+            slot_l5: temp_minimums
+            slot_l6: temp_maximums
+            slot_l7: sun_next
+            slot_r1: popforecast
+            slot_r2: humidity
+            slot_r3: uv_summary
+            slot_r4: fire_summary
+            slot_r5: custom1
+            slot_r6: custom2
+            slot_r7: sun_following
+            text_card_title: Kariong
+            type: custom:weather-card
           - type: 'custom:bom-radar-card'
             center_latitude: '-24.2744'
             center_longitude: '133.7751'
@@ -2312,6 +2383,7 @@ views:
                     - entity_id: "geo_location.*"
                   exclude:
                     - state: unknown
+                    - state: unavailable
                     - state: '0'
                     - entity_id: "geo_location.lightning*"
                     - entity_id: "geo_location.nsw*"
@@ -3258,13 +3330,6 @@ views:
                   power_state: false
                 info: scroll
                 source: full
-              - entity: sensor.gpodder
-                type: custom:podcast-card
-                name: Home Assistant Podcasts
-                icon: mdi:home-assistant
-                default_target: media_player.office_speaker
-                show_player: true
-                custom_player: true
       - type: vertical-stack
         cards:
           - type: markdown
@@ -3701,11 +3766,6 @@ views:
                 stroke_width: 3
                 fill_raw: last
               - entity: sensor.cc18323
-                show:
-                  extremas: true
-                stroke_width: 3
-                fill_raw: last
-              - entity: sensor.cc2263
                 show:
                   extremas: true
                 stroke_width: 3
