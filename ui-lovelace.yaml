@@ -2129,11 +2129,12 @@ views:
       - type: vertical-stack
         cards:
           - card_config_version: 4
-            custom1_icon: mdi:brightness-7
-            custom1_units: lx
-            custom1_value: sensor.estimated_illuminance
+            custom1_icon: mdi:brightness-5
+            custom1_value: sensor.illuminance_friendly
             custom2_icon: mdi:snowflake-alert
-            custom2_value: sensor.thermal_comfort_frostrisk
+            custom2_value: sensor.frost_risk
+            custom4_icon: mdi:sun-thermometer
+            custom4_value: sensor.thermal_perception
             daily_forecast_layout: horizontal
             entity_apparent_temp: sensor.gosford_temp_feels_like
             entity_current_conditions: sensor.kariong_icon_descriptor_0
@@ -2152,8 +2153,9 @@ views:
             entity_pop: sensor.kariong_rain_chance_0
             entity_pop_1: sensor.kariong_rain_chance_1
             entity_pos_1: sensor.kariong_rain_amount_range_1
-            entity_possible_today: sensor.gosford_rain_since_9am
+            entity_possible_today: sensor.kariong_rain_amount_range_0
             entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
+            entity_rainfall: sensor.gosford_rain_since_9am
             entity_summary_1: sensor.kariong_short_text_1
             entity_sun: sun.sun
             entity_temp_following: sensor.kariong_now_temp_later
@@ -2185,43 +2187,22 @@ views:
             show_separator: false
             slot_l1: temp_next
             slot_l2: temp_following
-            slot_l3: wind
-            slot_l4: pressure
-            slot_l5: temp_minimums
-            slot_l6: temp_maximums
-            slot_l7: sun_next
+            slot_l3: temp_minimums
+            slot_l4: temp_maximums
+            slot_l5: wind
+            slot_l6: pressure
+            slot_l7: custom4
+            slot_l8: sun_next
             slot_r1: popforecast
-            slot_r2: humidity
-            slot_r3: uv_summary
-            slot_r4: fire_summary
-            slot_r5: custom1
-            slot_r6: custom2
-            slot_r7: sun_following
+            slot_r2: rainfall
+            slot_r3: humidity
+            slot_r4: uv_summary
+            slot_r5: fire_summary
+            slot_r6: custom1
+            slot_r7: custom2
+            slot_r8: sun_following
             text_card_title: Kariong
             type: custom:weather-card
-          - type: 'custom:bom-radar-card'
-            center_latitude: '-24.2744'
-            center_longitude: '133.7751'
-            zoom_level: '4'
-            frame_delay: 500
-            frame_count: 30
-            show_marker: true
-            markerIcon: true
-            marker_latitude: '-33.425018'
-            marker_longitude: '151.342224'
-            show_range: false
-            show_scale: false
-            show_zoom: false
-            show_recenter: true
-            show_playback: false
-            extra_labels: false
-            map_style: 'satellite'
-            static_map: false
-            show_radar_coverage: true
-            show_radar_location: false
-            radar_location_radius: 2
-            radar_location_line_colour: '#FF0000'
-            radar_location_fill_colour: '#FFFF00'
           - type: 'custom:bom-radar-card'
             center_latitude: '-33.440'
             center_longitude: '151.293'
