@@ -8,6 +8,13 @@ sensor:
   - platform: template
     sensors:
 
+      frost_risk:
+        value_template: "{{ states('sensor.thermal_comfort_frostrisk') | replace('_',' ') | title}}"
+      illuminance_friendly:
+        value_template: "{{ '{:,}'.format((states('sensor.estimated_illuminance'))|int(0)) }} lx"
+      thermal_perception: 
+        value_template: "{{ states('sensor.thermal_comfort_perception') | replace('_',' ') | title}}"
+
       bom_current_text:
         value_template: >
             {% set val = states('sensor.kariong_short_text_0').split('.')[0] %} 
