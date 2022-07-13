@@ -297,7 +297,7 @@ input_boolean:
   retrigger:
     name: Retrigger Docker Containers Restart
 
-# Clear Out Gmail Alarm Notifications & Clean Known Devices file
+# Clear Out Gmail Alarm Notifications, Clean Known Devices file, Remove Bans and restart
 shell_command:
   removealarm: python /config/emptyinbox.py
   clean_knowndevices: /bin/bash /config/clean_knowndevices.sh
