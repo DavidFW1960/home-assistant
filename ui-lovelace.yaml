@@ -899,7 +899,7 @@ views:
               show_header_toggle: false
               entities:
                 - entity: person.david
-                - entity: sensor.travel_to_home
+                - entity: sensor.travel_to_home_duration
                 - entity: person.liz
                 - entity: device_tracker.davids_iphone
                 - entity: sensor.davids_iphone_battery_level
@@ -1378,6 +1378,7 @@ views:
           - type: custom:platinum-weather-card
             card_config_version: 4
             custom1_icon: mdi:brightness-5
+            custom1_units: lx
             custom1_value: sensor.illuminance_friendly
             custom2_icon: mdi:snowflake-alert
             custom2_value: sensor.frost_risk
@@ -1432,6 +1433,12 @@ views:
                 font-size: 0.8em; 
                 font-weight: 400; 
                 line-height: 1.2em;
+              }
+              .unit-temp-small {
+                padding-left: 0.2em;
+              }
+              .unit {
+                padding-left: 0.2em;
               }
             show_decimals: false
             show_section_daily_forecast: true
