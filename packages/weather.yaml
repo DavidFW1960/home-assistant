@@ -11,7 +11,7 @@ sensor:
       frost_risk:
         value_template: "{{ states('sensor.thermal_comfort_frostrisk') | replace('_',' ') | title}}"
       illuminance_friendly:
-        value_template: "{{ '{:,}'.format((states('sensor.estimated_illuminance'))|int(0)) }} lx"
+        value_template: "{{ '{:,}'.format((states('sensor.estimated_illuminance'))|int(0)) }}"
       thermal_perception: 
         value_template: "{{ states('sensor.thermal_comfort_perception') | replace('_',' ') | title}}"
 
@@ -63,6 +63,10 @@ sensor:
             {%- else -%}
             0
             {%- endif -%}
+# Winter Doona
+      doona:
+        value_template: >
+            {%- if  states('sensor.nodemcu_bedroom_bme280_temperature') | float < 16 and states('sensor.kariong_temp_min_1') | float(default=0) < 8  -%} Heavy Doona {%- else -%} Light Doona {%- endif -%}
 
 # Heatindex
 # https://en.wikipedia.org/wiki/Heat_index
@@ -233,6 +237,22 @@ automation:
   action:
     - service: homeassistant.update_entity
       entity_id: sensor.bom_forecast_0, sensor.bom_forecast_1, sensor.bom_forecast_2, sensor.bom_forecast_3, sensor.bom_forecast_4, sensor.bom_forecast_5 #, sensor.bom_forecast_6
+- alias: 'Doona Notify'
+  id: 'doonanotify'
+  trigger:
+    - platform: time
+      at:
+        - '21:00:00'
+  condition:
+    - condition: state
+      entity_id: sensor.seasonname
+      state: 'winter'
+  action:
+    - service: notify.david_ios_notify
+      data:
+        message: >
+          {{ states('sensor.doona') }} Needed. It is {{ states('sensor.season')}}. Inside {{ states('sensor.nodemcu_bedroom_bme280_temperature') }} Outside {{ states('sensor.kariong_temp_min_1')}}
+        title: 'Doona Needed'
 
 homeassistant:
   customize:
