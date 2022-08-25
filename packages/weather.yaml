@@ -34,7 +34,7 @@ sensor:
 
       bom_extended_rainfall: 
         value_template: >
-          Extended Rain forecast: 75% chance of more than {{ states('sensor.kariong_rain_amount_min_0')}}mm and 25% chance of more than {{ states('sensor.kariong_rain_amount_max_0')}}mm. There is a {{ states('sensor.kariong_rain_chance_0')}}% chance of some rain 
+          Extended Rain forecast: 50% chance of more than {{ states('sensor.kariong_rain_amount_min_0')}}mm and 25% chance of more than {{ states('sensor.kariong_rain_amount_max_0')}}mm. There is a {{ states('sensor.kariong_rain_chance_0')}}% chance of some rain 
 
 
 
