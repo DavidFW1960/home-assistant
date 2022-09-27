@@ -399,3 +399,4 @@ automation:
 ## CLI Commands
 ################################################
 # ha su options --channel dev
+# ha jobs options --ignore-conditions-healthy
