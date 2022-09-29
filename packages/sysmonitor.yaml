@@ -468,46 +468,6 @@ sensor:
         value_template: '{{ states.sensor.speedtest_result.attributes["time_run"] }}'
         unique_id: speedtimerun
 
-# Up since
-
-      systemuptime:
-        value_template: >-
-          {% set time = (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) %}
-          {% set minutes = ((time % 3600) / 60) | int %}
-          {% set hours = ((time % 86400) / 3600) | int %}
-          {% set days = (time / 86400) | int %}
-          {%- if time < 60 -%}
-            Less than a minute
-          {%- else -%}
-            {%- if days > 0 -%}
-              {%- if days == 1 -%}
-                1 day
-              {%- else -%}
-                {{ days }} days
-              {%- endif -%}
-            {%- endif -%}
-            {%- if hours > 0 -%}
-              {%- if days > 0 -%}
-                {{ ', ' }}
-              {%- endif -%}
-              {%- if hours == 1 -%}
-                1 hour
-              {%- else -%}
-                {{ hours }} hours
-              {%- endif -%}
-            {%- endif -%}
-            {%- if minutes > 0 -%}
-              {%- if days > 0 or hours > 0 -%}
-                {{ ', ' }}
-              {%- endif -%}
-              {%- if minutes == 1 -%}
-                1 minute
-              {%- else -%}
-                {{ minutes }} minutes
-              {%- endif -%}
-            {%- endif -%}
-          {%- endif -%}
-
 # NUC Resources
   - platform: filter
     name: "NUC Memory Used Filtered"
@@ -571,17 +531,6 @@ sensor:
     entity_id: sensor.processor_use
     name: processor
 
-automation:
-  - alias: 'System Runtime'
-    id: 'runtime'
-    trigger:
-      platform: time_pattern
-      minutes: '/1'
-      seconds: 0
-    action:
-      - service: homeassistant.update_entity
-        entity_id: sensor.systemuptime
-
 homeassistant:
   customize:
     package.node_anchors:
@@ -641,10 +590,6 @@ homeassistant:
     sensor.last_boot:
       friendly_name: Last Boot
       device_class: timestamp
-      icon: mdi:clock
-      <<: *common
-    sensor.systemuptime:
-      friendly_name: Since Last Boot
       icon: mdi:clock
       <<: *common
     sensor.last_successful_authentication:

@@ -432,7 +432,8 @@ views:
               - sensor.network_out_eno1
               - entity: sensor.last_boot
                 format: datetime
-              - sensor.systemuptime
+              - entity: sensor.last_boot
+                format: relative
               - entity: sensor.ha_uptime
                 format: relative
       - type: vertical-stack
@@ -1376,7 +1377,7 @@ views:
       - type: vertical-stack
         cards:
           - type: custom:platinum-weather-card
-            card_config_version: 4
+            card_config_version: 6
             custom1_icon: mdi:brightness-5
             custom1_units: lx
             custom1_value: sensor.illuminance_friendly
@@ -1386,25 +1387,25 @@ views:
             custom4_value: sensor.thermal_perception
             daily_forecast_layout: horizontal
             entity_apparent_temp: sensor.gosford_temp_feels_like
-            entity_current_conditions: sensor.kariong_icon_descriptor_0
-            entity_current_text: sensor.bom_current_text
-            entity_daily_summary: sensor.kariong_extended_text_0
+            entity_extended: sensor.kariong_extended_text_0
             entity_fire_danger: sensor.bom_fire_danger
             entity_fire_danger_summary: sensor.kariong_fire_danger_0
-            entity_forecast_high_temp_1: sensor.kariong_temp_max_1
+            entity_forecast_icon: sensor.kariong_icon_descriptor_0
             entity_forecast_icon_1: sensor.kariong_icon_descriptor_1
-            entity_forecast_low_temp_1: sensor.kariong_temp_min_1
             entity_forecast_max: sensor.kariong_temp_max_0
+            entity_forecast_max_1: sensor.kariong_temp_max_1
             entity_forecast_min: sensor.kariong_temp_min_0
+            entity_forecast_min_1: sensor.kariong_temp_min_1
             entity_humidity: sensor.gosford_humidity
             entity_observed_max: sensor.bom_today_max
             entity_observed_min: sensor.bom_today_min
             entity_pop: sensor.kariong_rain_chance_0
             entity_pop_1: sensor.kariong_rain_chance_1
+            entity_pos: sensor.kariong_rain_amount_range_0
             entity_pos_1: sensor.kariong_rain_amount_range_1
-            entity_possible_today: sensor.kariong_rain_amount_range_0
             entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
             entity_rainfall: sensor.gosford_rain_since_9am
+            entity_summary: sensor.bom_current_text
             entity_summary_1: sensor.kariong_short_text_1
             entity_sun: sun.sun
             entity_temp_following: sensor.kariong_now_temp_later
@@ -1423,7 +1424,6 @@ views:
             option_pressure_decimals: 1
             option_tooltips: true
             section_order:
-              - title
               - overview
               - slots
               - daily_forecast
@@ -1443,8 +1443,6 @@ views:
             show_decimals: false
             show_section_daily_forecast: true
             show_section_extended: true
-            show_section_main: true
-            show_section_title: false
             show_separator: false
             slot_l1: temp_next
             slot_l2: temp_following
@@ -1462,7 +1460,6 @@ views:
             slot_r6: custom1
             slot_r7: custom2
             slot_r8: sun_following
-            text_card_title: Kariong
           - type: 'custom:config-template-card'
             variables:
               - states['sensor.beaufort'].state
@@ -3568,10 +3565,10 @@ views:
           - sensor.sonarr_commands
           - sensor.sonarr_disk_space
           - sensor.radarr_movies
-          - sensor.radarr_upcoming
-          - sensor.radarr_commands
-          - sensor.radarr_status
-          - sensor.radarr_disk_space
+          - binary_sensor.radarr_health
+          - sensor.radarr_memory
+          - sensor.radarr_start_time
+          - sensor.radarr_disk_space_movies
   - title: Buses, Trains & Fuel
     path: transport
     icon: mdi:train

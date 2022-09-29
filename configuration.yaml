@@ -140,7 +140,6 @@ history:
       - sensor.gosfordcentral
       - sensor.karionggosford
       - sensor.gosfordkariong
-      - sensor.systemuptime
 
 # Sensors
 sensor:
@@ -156,10 +155,6 @@ sensor:
       - !secret my_ipv6_network
       - !secret ben_ipv6_network
       - 2001:4860:4000::/36      # Google
-
-# Home Assistant Uptime
-  - platform: uptime
-    name: HA Uptime
 
 # Alarm Emails
   - platform: imap
