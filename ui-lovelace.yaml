@@ -1477,6 +1477,7 @@ views:
               entities:
                 - entity: sensor.bom_forecast_0
                 - entity: sensor.bom_extended_rainfall
+                - entity: sensor.kariong_warnings
                 - entity: sensor.beaufort
                   name: "${'Beaufort force:' + '\xa0'.repeat(2) + (vars[0] == 12 ? 'Hurricane Force' : vars[0] == 11 ? 'Violent Storm' : vars[0] == 10 ? 'Storm, whole gale' : vars[0] == 9 ? 'Strong/severe gale' : vars[0] == 8 ? 'Gale/ fresh gale' : vars[0] == 7 ? 'High wind, moderate/near gale' : vars[0] == 6 ? 'Strong breeze' : vars[0] == 5 ? 'Fresh breeze' : vars[0] == 4 ? 'Moderate breeze' : vars[0] == 3 ? 'Gentle breeze' : vars[0] == 2 ? 'Light breeze' : vars[0] == 1 ? 'Light air' : 'Calm')}"
                 - entity: sensor.heatindex
@@ -2179,19 +2180,19 @@ views:
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
-              image: /local/icons/firedanger/Icons.png
+              image: /local/icons/firedanger/fdr-no-rating.svg
           - type: conditional
             conditions:
               - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
-                state: 'Low moderate'
+                state: 'Moderate'
             card:
               type: picture-entity
               entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
-              image: /local/icons/firedanger/low-moderate.png
+              image: /local/icons/firedanger/fdr-moderate.svg
           - type: conditional
             conditions:
               - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
@@ -2203,31 +2204,7 @@ views:
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
-              image: /local/icons/firedanger/high.png
-          - type: conditional
-            conditions:
-              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
-#              - entity: sensor.bom_fire_danger_summary
-                state: 'Very high'
-            card:
-              type: picture-entity
-              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
-#              entity: sensor.bom_fire_danger_summary
-              show_name: false
-              show_state: false
-              image: /local/icons/firedanger/very-high.png
-          - type: conditional
-            conditions:
-              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
-#              - entity: sensor.bom_fire_danger_summary
-                state: 'Severe'
-            card:
-              type: picture-entity
-              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
-#              entity: sensor.bom_fire_danger_summary
-              show_name: false
-              show_state: false
-              image: /local/icons/firedanger/severe.png
+              image: /local/icons/firedanger/fdr-high.png
           - type: conditional
             conditions:
               - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
@@ -2239,7 +2216,7 @@ views:
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
-              image: /local/icons/firedanger/extreme.png
+              image: /local/icons/firedanger/fdr-extreme.svg
           - type: conditional
             conditions:
               - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
@@ -2251,7 +2228,7 @@ views:
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
-              image: /local/icons/firedanger/catastrophic.png
+              image: /local/icons/firedanger/fdr-catastrophic.svg
           - type: entities
             title: Geo Location Incidents
             show_header_toggle: false
@@ -2267,6 +2244,7 @@ views:
                 filter:
                   include:
                     - entity_id: "geo_location.nsw*"
+                    - entity_id: "sensor.kariong_warnings"
                   exclude:
                     - state: unknown
                     - state: '0'
