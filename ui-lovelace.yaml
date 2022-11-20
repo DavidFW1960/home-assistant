@@ -1456,7 +1456,7 @@ views:
             slot_r2: rainfall
             slot_r3: humidity
             slot_r4: uv_summary
-            slot_r5: fire_summary
+            slot_r5: fire_danger
             slot_r6: custom1
             slot_r7: custom2
             slot_r8: sun_following
