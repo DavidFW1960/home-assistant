@@ -1,6 +1,6 @@
 uglychristmas:
   #Ugly Christmas theme created by @houtknots | https://github.com/houtknots
-  #Ugly Christ theme is based of the "Dark Clear Theme" made by @naofireblade | https://github.com/naofireblade
+  #Ugly Christmas theme is based of the "Dark Clear Theme" made by @naofireblade | https://github.com/naofireblade
 
   # Colors
   text-color: '#FFFFFF'
@@ -15,13 +15,13 @@ uglychristmas:
   border-color: ''
 
   # Header
-  primary-color: '#FFFFFF'
+  primary-color: '#A0A0A0'
   text-primary-color: 'var(--text-color)'
   app-header-background-color: "#BB2528"
-  
+
   # Left Menu
   paper-listbox-background-color: 'var(--background-color)'
-  sidebar-icon-color: 'var(--text-medium-color)'
+  sidebar-icon-color: 'var(--text-dark-color)'
   sidebar-selected-icon-color: 'var(--text-medium-light-color)'
   sidebar-selected-text-color: 'var(--text-color)'
 
@@ -43,8 +43,8 @@ uglychristmas:
   secondary-background-color: 'var(--background-color-2)'
 
   # Icons
-  paper-item-icon-color: 'var(--text-dark-color)'
-  paper-item-icon-active-color: 'var(--accent-color)'
+  state-icon-color: 'var(--text-dark-color)'
+  state-icon-active-color: 'var(--accent-color)' # icon active
 
   # Switches
   switch-checked-button-color: 'var(--text-medium-light-color)'

@@ -11,7 +11,7 @@ ios-light-mode-dark-green-alternative:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -50,6 +50,7 @@ ios-light-mode-dark-green-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -85,9 +86,6 @@ ios-light-mode-dark-green-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - dark-green
@@ -100,7 +98,7 @@ ios-light-mode-dark-green:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -139,6 +137,7 @@ ios-light-mode-dark-green:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -174,9 +173,6 @@ ios-light-mode-dark-green:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - dark-green
@@ -189,7 +185,7 @@ ios-dark-mode-dark-green-alternative:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -228,6 +224,7 @@ ios-dark-mode-dark-green-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -263,9 +260,6 @@ ios-dark-mode-dark-green-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - dark-green
@@ -278,7 +272,7 @@ ios-dark-mode-dark-green:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -317,6 +311,7 @@ ios-dark-mode-dark-green:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -352,9 +347,6 @@ ios-dark-mode-dark-green:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - light-blue
@@ -367,7 +359,7 @@ ios-light-mode-light-blue-alternative:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -406,6 +398,7 @@ ios-light-mode-light-blue-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -441,9 +434,6 @@ ios-light-mode-light-blue-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - light-blue
@@ -456,7 +446,7 @@ ios-light-mode-light-blue:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -495,6 +485,7 @@ ios-light-mode-light-blue:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -530,9 +521,6 @@ ios-light-mode-light-blue:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - light-blue
@@ -545,7 +533,7 @@ ios-dark-mode-light-blue-alternative:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -584,6 +572,7 @@ ios-dark-mode-light-blue-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -619,9 +608,6 @@ ios-dark-mode-light-blue-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - light-blue
@@ -634,7 +620,7 @@ ios-dark-mode-light-blue:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -673,6 +659,7 @@ ios-dark-mode-light-blue:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -708,9 +695,6 @@ ios-dark-mode-light-blue:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - light-green
@@ -723,7 +707,7 @@ ios-light-mode-light-green-alternative:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -762,6 +746,7 @@ ios-light-mode-light-green-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -797,9 +782,6 @@ ios-light-mode-light-green-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - light-green
@@ -812,7 +794,7 @@ ios-light-mode-light-green:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -851,6 +833,7 @@ ios-light-mode-light-green:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -886,9 +869,6 @@ ios-light-mode-light-green:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - light-green
@@ -901,7 +881,7 @@ ios-dark-mode-light-green-alternative:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -940,6 +920,7 @@ ios-dark-mode-light-green-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -975,9 +956,6 @@ ios-dark-mode-light-green-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - light-green
@@ -990,7 +968,7 @@ ios-dark-mode-light-green:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -1029,6 +1007,7 @@ ios-dark-mode-light-green:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1064,9 +1043,6 @@ ios-dark-mode-light-green:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - orange
@@ -1079,7 +1055,7 @@ ios-light-mode-orange-alternative:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -1118,6 +1094,7 @@ ios-light-mode-orange-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1153,9 +1130,6 @@ ios-light-mode-orange-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - orange
@@ -1168,7 +1142,7 @@ ios-light-mode-orange:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -1207,6 +1181,7 @@ ios-light-mode-orange:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1242,9 +1217,6 @@ ios-light-mode-orange:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - orange
@@ -1257,7 +1229,7 @@ ios-dark-mode-orange-alternative:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -1296,6 +1268,7 @@ ios-dark-mode-orange-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1331,9 +1304,6 @@ ios-dark-mode-orange-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - orange
@@ -1346,7 +1316,7 @@ ios-dark-mode-orange:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -1385,6 +1355,7 @@ ios-dark-mode-orange:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1420,9 +1391,6 @@ ios-dark-mode-orange:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - blue-red
@@ -1435,7 +1403,7 @@ ios-light-mode-blue-red-alternative:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -1474,6 +1442,7 @@ ios-light-mode-blue-red-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1509,9 +1478,6 @@ ios-light-mode-blue-red-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - blue-red
@@ -1524,7 +1490,7 @@ ios-light-mode-blue-red:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -1563,6 +1529,7 @@ ios-light-mode-blue-red:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1598,9 +1565,6 @@ ios-light-mode-blue-red:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - blue-red
@@ -1613,7 +1577,7 @@ ios-dark-mode-blue-red-alternative:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -1652,6 +1616,7 @@ ios-dark-mode-blue-red-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1687,9 +1652,6 @@ ios-dark-mode-blue-red-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - blue-red
@@ -1702,7 +1664,7 @@ ios-dark-mode-blue-red:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -1741,6 +1703,7 @@ ios-dark-mode-blue-red:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1776,9 +1739,6 @@ ios-dark-mode-blue-red:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - red
@@ -1791,7 +1751,7 @@ ios-light-mode-red-alternative:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -1830,6 +1790,7 @@ ios-light-mode-red-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1865,9 +1826,6 @@ ios-light-mode-red-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - red
@@ -1880,7 +1838,7 @@ ios-light-mode-red:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -1919,6 +1877,7 @@ ios-light-mode-red:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -1954,9 +1913,6 @@ ios-light-mode-red:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - red
@@ -1969,7 +1925,7 @@ ios-dark-mode-red-alternative:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -2008,6 +1964,7 @@ ios-dark-mode-red-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -2043,9 +2000,6 @@ ios-dark-mode-red-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - red
@@ -2058,7 +2012,7 @@ ios-dark-mode-red:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -2097,6 +2051,7 @@ ios-dark-mode-red:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -2132,9 +2087,6 @@ ios-dark-mode-red:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - dark-blue
@@ -2147,7 +2099,7 @@ ios-light-mode-dark-blue-alternative:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -2186,6 +2138,7 @@ ios-light-mode-dark-blue-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -2221,9 +2174,6 @@ ios-light-mode-dark-blue-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Light Mode Theme - dark-blue
@@ -2236,7 +2186,7 @@ ios-light-mode-dark-blue:
   light-primary-color: "#2c2c2e"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#e5e5ea"  # systemGray5 light mode
   secondary-background-color: rgba(255, 255, 255, 0.9)
-  divider-color: "#8e8e93"  # from Apple systemGray light mode
+  divider-color: rgba(142, 142, 147, 0.3)  # from Apple systemGray light mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#464a47"
@@ -2275,6 +2225,7 @@ ios-light-mode-dark-blue:
   ha-card-border-radius: 20px
   ha-card-background: rgba(245, 245, 245, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -2310,9 +2261,6 @@ ios-light-mode-dark-blue:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - dark-blue
@@ -2325,7 +2273,7 @@ ios-dark-mode-dark-blue-alternative:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -2364,6 +2312,7 @@ ios-dark-mode-dark-blue-alternative:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -2399,9 +2348,6 @@ ios-dark-mode-dark-blue-alternative:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
 
 #
 # iOS Dark Mode Theme - dark-blue
@@ -2414,7 +2360,7 @@ ios-dark-mode-dark-blue:
   light-primary-color: "#B6B6C1"  # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)
   primary-background-color: "#2c2c2e"  # systemGray5 dark mode
   secondary-background-color: rgba(25, 25, 25, 0.9)
-  divider-color: "#98989d"  # from Apple systemGray dark mode
+  divider-color: rgba(152, 152, 157, 0.3)  # from Apple systemGray dark mode
   accent-color: rgba(255, 159, 9, 1)
   # Text
   primary-text-color: "#FFF"
@@ -2453,6 +2399,7 @@ ios-dark-mode-dark-blue:
   ha-card-border-radius: 20px
   ha-card-background: rgba(10, 10, 10, 0.4)
   paper-card-background-color: var(--ha-card-background)
+  ha-card-border-width: 0  # https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/82#event-7732695357
   # Toggles
   paper-toggle-button-checked-button-color: "#484848"
   paper-toggle-button-checked-bar-color: "#484848"
@@ -2488,6 +2435,3 @@ ios-dark-mode-dark-blue:
   input-idle-line-color: var(--secondary-text-color)
   input-hover-line-color: var(--secondary-text-color)
   codemirror-property: var(--accent-color)
-  mdc-select-fill-color: transparent
-  # TODO: does the line below do anything?
-  input-disabled-label-ink-color: var(--disabled-text-color)
