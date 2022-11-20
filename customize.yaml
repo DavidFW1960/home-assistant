@@ -42,7 +42,7 @@ switch.hifi:
   icon: mdi:television
   friendly_name: HiFi
 switch.harmony:
-  friendly_name: Switch Harmony Remote On or Off
+  friendly_name: Harmony Remote
   icon: mdi:television-guide
 input_boolean.alarmgaragedoor:
   friendly_name: Exit-Enter
