@@ -525,10 +525,12 @@ sensor:
   - platform: statistics
     state_characteristic: mean
     entity_id: sensor.memory_use_percent
+    sampling_size: 20
     name: memory
   - platform: statistics
     state_characteristic: mean
     entity_id: sensor.processor_use
+    sampling_size: 20
     name: processor
 
 homeassistant:
