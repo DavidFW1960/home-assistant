@@ -1376,8 +1376,7 @@ views:
               - entity: sensor.nodemcu_bedroom_bh1750_illuminance
       - type: vertical-stack
         cards:
-          - type: custom:platinum-weather-card
-            card_config_version: 6
+          - card_config_version: 8
             custom1_icon: mdi:brightness-5
             custom1_units: lx
             custom1_value: sensor.illuminance_friendly
@@ -1388,8 +1387,7 @@ views:
             daily_forecast_layout: horizontal
             entity_apparent_temp: sensor.gosford_temp_feels_like
             entity_extended: sensor.kariong_extended_text_0
-            entity_fire_danger: sensor.bom_fire_danger
-            entity_fire_danger_summary: sensor.kariong_fire_danger_0
+            entity_fire_danger: sensor.kariong_fire_danger_0
             entity_forecast_icon: sensor.kariong_icon_descriptor_0
             entity_forecast_icon_1: sensor.kariong_icon_descriptor_1
             entity_forecast_max: sensor.kariong_temp_max_0
@@ -1428,6 +1426,24 @@ views:
               - slots
               - daily_forecast
               - extended
+            show_section_daily_forecast: true
+            show_section_extended: true
+            slot_l1: temp_next
+            slot_l2: temp_following
+            slot_l3: temp_minimums
+            slot_l4: temp_maximums
+            slot_l5: wind
+            slot_l6: uv_summary
+            slot_l7: fire_danger
+            slot_l8: sun_next
+            slot_r1: popforecast
+            slot_r2: rainfall
+            slot_r3: humidity
+            slot_r4: pressure
+            slot_r5: custom4
+            slot_r6: custom1
+            slot_r7: custom2
+            slot_r8: sun_following
             style: |
               .f-extended { 
                 font-size: 0.8em; 
@@ -1440,26 +1456,7 @@ views:
               .unit {
                 padding-left: 0.2em;
               }
-            show_decimals: false
-            show_section_daily_forecast: true
-            show_section_extended: true
-            show_separator: false
-            slot_l1: temp_next
-            slot_l2: temp_following
-            slot_l3: temp_minimums
-            slot_l4: temp_maximums
-            slot_l5: wind
-            slot_l6: pressure
-            slot_l7: custom4
-            slot_l8: sun_next
-            slot_r1: popforecast
-            slot_r2: rainfall
-            slot_r3: humidity
-            slot_r4: uv_summary
-            slot_r5: fire_danger
-            slot_r6: custom1
-            slot_r7: custom2
-            slot_r8: sun_following
+            type: custom:platinum-weather-card
           - type: 'custom:config-template-card'
             variables:
               - states['sensor.beaufort'].state
