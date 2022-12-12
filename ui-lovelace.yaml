@@ -3620,7 +3620,7 @@ views:
               legend:
                 showForSingleSeries: true
             series:
-              - entity: sensor.cc17249
+              - entity: sensor.cc2263
                 show:
                   extremas: true
                 stroke_width: 3
@@ -3748,60 +3748,3 @@ views:
                   extremas: true
                 stroke_width: 3
                 fill_raw: last
-  - title: Medical Alerts
-    background: center / cover no-repeat url("/local/images/covid19-background.jpg") fixed
-    path: medical
-    icon: mdi:medical-bag
-    cards:
-      - type: vertical-stack
-        cards:
-          - entities: null
-            type: picture
-            image: local/images/coronavirus.jpg
-          - type: glance
-            show_icon: true
-            show_name: true
-            show_state: true
-            title: Australia
-            entities:
-              - entity: sensor.corona_australia_total_cases
-                icon: 'mdi:account-box'
-                name: Confirmed
-              - entity: sensor.corona_australia
-                icon: 'mdi:biohazard'
-                name: Current
-              - entity: sensor.corona_australia_recovered
-                icon: 'mdi:calendar-check-outline'
-                name: Recovered
-              - entity: sensor.corona_australia_total_deaths
-                icon: 'mdi:grave-stone'
-                name: Deaths
-          - type: glance
-            show_icon: true
-            show_name: true
-            show_state: true
-            title: Worldwide
-            entities:
-              - entity: sensor.coronavirus_confirmed_cases_world
-                icon: 'mdi:account-box'
-                name: Confirmed
-              - entity: sensor.coronavirus_active_cases_world
-                icon: 'mdi:biohazard'
-                name: Current
-              - entity: sensor.coronavirus_recovered_cases_world
-                icon: 'mdi:calendar-check-outline'
-                name: Recovered
-              - entity: sensor.coronavirus_deaths_world
-                icon: 'mdi:grave-stone'
-                name: Deaths
-#      - type: custom:auto-entities
-#        card:
-#          type: entities
-#          title: NSW Covid
-#          show_header_toggle: false
-#        filter:
-#          include:
-#            - entity_id: sensor.covid_nsw*
-#        sort:
-#          method: state
-#          numeric: true
