@@ -51,12 +51,6 @@ sensor:
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
-    station_id: 17249
-#   friendly_name: Ampol Woolies 155 The Entrance Rd Erina
-#   sensor.ampol_woolworths_erina_pdl
-    fuel_types:
-      - PDL
-  - platform: nsw_fuel_station
     station_id: 643
 #   friendly_name: Caltex Woolies 60 Glenn St Belrose
 #   sensor.caltex_woolworths_glenrose_pdl
@@ -66,6 +60,12 @@ sensor:
     station_id: 622
 #   friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
 #   sensor.caltex_woolworths_gosford_pdl
+    fuel_types:
+      - PDL
+  - platform: nsw_fuel_station
+    station_id: 2263
+#   friendly_name: Ampol Wyoming 465 Pacific Hwy Wyoming
+#   sensor.ampol_wyoming_pdl
     fuel_types:
       - PDL
   - platform: nsw_fuel_station
@@ -120,13 +120,13 @@ sensor:
         value_template: "{{states('sensor.caltex_woolworths_lisarow_pdl')}}"
         friendly_name: Caltex Woolies 900 Pacific Hwy Lisarow
         unit_of_measurement: ¢/L
-      cc17249:
-        value_template: "{{states('sensor.ampol_woolworths_erina_pdl')}}"
-        friendly_name: Ampol Woolies 155 The Entrance Rd Erina
-        unit_of_measurement: ¢/L
       cc17340:
         value_template: "{{states('sensor.ampol_woolworths_kariong_pdl')}}"
         friendly_name: Ampol Woolworths Kariong
+        unit_of_measurement: ¢/L
+      cc2263:
+        value_template: "{{states('sensor.ampol_wyoming_pdl')}}"
+        friendly_name: Ampol 465 Pacific Hwy Wyoming
         unit_of_measurement: ¢/L
       cc523:
         value_template: "{{states('sensor.caltex_woolworths_tuggerah_north_pdl')}}"
@@ -208,6 +208,9 @@ homeassistant:
     sensor.ampol_belrose_pdl:
       icon: mdi:gas-station
       <<: *common
+    sensor.ampol_wyoming_pdl:
+      icon: mdi:gas-station
+      <<: *common
     sensor.ampol_gosford_west_eastbound_pdl:
       icon: mdi:gas-station
       <<: *common
@@ -224,9 +227,6 @@ homeassistant:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_st_ives_north_pdl:
-      icon: mdi:gas-station
-      <<: *common
-    sensor.ampol_woolworths_erina_pdl:
       icon: mdi:gas-station
       <<: *common
     sensor.caltex_woolworths_glenrose_pdl:
@@ -262,13 +262,13 @@ homeassistant:
     sensor.cc18217:
       icon: mdi:gas-station
       <<: *common
-    sensor.cc17249:
-      icon: mdi:gas-station
-      <<: *common
     sensor.syd17310:
       icon: mdi:gas-station
       <<: *common
     sensor.cc17340:
+      icon: mdi:gas-station
+      <<: *common
+    sensor.cc2263:
       icon: mdi:gas-station
       <<: *common
     sensor.syd18253:
