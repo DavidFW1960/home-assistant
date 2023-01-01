@@ -31,6 +31,7 @@ homeassistant:
         - !secret zerotier_network
         - !secret my_ipv6_network
         - !secret ben_ipv6_network
+#        - !secret sam_ipv6_network
       trusted_users:
         127.0.0.1: !secret user_id
         "::1": !secret user_id
@@ -38,6 +39,7 @@ homeassistant:
         "fd00::/8": !secret user_id
         !secret trusted_ipv6: !secret user_id
         !secret ben_trusted_ipv6: !secret user_id
+#        !secret sam_trusted_ipv6: !secret user_id
         !secret zerotier_network: !secret user_id
       allow_bypass_login: false
     - type: homeassistant
