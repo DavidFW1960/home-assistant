@@ -1440,9 +1440,9 @@ views:
             slot_r2: rainfall
             slot_r3: humidity
             slot_r4: pressure
-            slot_r5: custom4
-            slot_r6: custom1
-            slot_r7: custom2
+            slot_r5: custom2
+            slot_r6: custom4
+            slot_r7: custom1
             slot_r8: sun_following
             style: |
               .f-extended { 
