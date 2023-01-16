@@ -3752,22 +3752,28 @@ views:
     path: precious-metals
     icon: mdi:currency-usd
     cards:
-      - type: markdown
-        content: '#'
-        title: Precious Metals
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
-          - show_state: false
-            show_name: false
-            camera_view: auto
-            type: picture-entity
-            camera_image: camera.www_kitconet_com_gold
-            entity: sensor.open_exchange_rates_usd_xau
-            name: Gold
-          - show_state: false
-            show_name: false
-            camera_view: auto
-            type: picture-entity
-            camera_image: camera.www_kitconet_com_silver
-            entity: sensor.open_exchange_rates_usd_xag
+          - type: markdown
+            content: '#'
+            title: Precious Metals
+          - type: entity
+            entity: sensor.silver_aud
             name: Silver
+            unit: AUD
+          - type: horizontal-stack
+            cards:
+              - show_state: false
+                show_name: false
+                camera_view: auto
+                type: picture-entity
+                camera_image: camera.www_kitconet_com_gold
+                entity: sensor.open_exchange_rates_usd_xau
+                name: Gold
+              - show_state: false
+                show_name: false
+                camera_view: auto
+                type: picture-entity
+                camera_image: camera.www_kitconet_com_silver
+                entity: sensor.open_exchange_rates_usd_xag
+                name: Silver
