@@ -3748,3 +3748,26 @@ views:
                   extremas: true
                 stroke_width: 3
                 fill_raw: last
+  - title: Precious Metals
+    path: precious-metals
+    icon: mdi:currency-usd
+    cards:
+      - type: markdown
+        content: '#'
+        title: Precious Metals
+      - type: horizontal-stack
+        cards:
+          - show_state: false
+            show_name: false
+            camera_view: auto
+            type: picture-entity
+            camera_image: camera.www_kitconet_com_gold
+            entity: sensor.open_exchange_rates_usd_xau
+            name: Gold
+          - show_state: false
+            show_name: false
+            camera_view: auto
+            type: picture-entity
+            camera_image: camera.www_kitconet_com_silver
+            entity: sensor.open_exchange_rates_usd_xag
+            name: Silver
