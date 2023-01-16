@@ -1,0 +1,17 @@
+sensor:
+
+  - platform: template
+    sensors:
+      silver_aud:
+        friendly_name: 'Silver Spot AUD'
+        value_template: "{{ '$%.2f'|format((states('sensor.open_exchange_rates_usd_aud')|round(4))/(states('sensor.open_exchange_rates_usd_xag')|round(4)))}}
+"
+homeassistant:
+  customize:
+    package.node_anchors:
+      common: &common
+        package: "precious_metals_sensors"
+
+    sensor.silver_aud:
+      icon: mdi:currency-usd
+      <<: *common
