@@ -159,14 +159,14 @@ sensor:
       - 2001:4860:4000::/36      # Google
 
 # Alarm Emails
-  - platform: imap
-    name: Alarm Triggers
-    server: imap.gmail.com
-    port: 993
-    username: !secret outlooksyncuser
-    password: !secret outlooksyncpass
-    folder: inbox
-    search: !secret alarmnotification
+#  - platform: imap
+#    name: Alarm Triggers
+#    server: imap.gmail.com
+#    port: 993
+#    username: !secret outlooksyncuser
+#    password: !secret outlooksyncpass
+#    folder: inbox
+#    search: !secret alarmnotification
 
 # Radarr and Sonarr Upcoming Media
 
