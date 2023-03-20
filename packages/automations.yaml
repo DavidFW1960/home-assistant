@@ -33,7 +33,7 @@ automation:
             - "{{ now().strftime('%H:%M') == '07:00' and (states('binary_sensor.workday_sensor') == 'on') and (states('input_boolean.holiday') == 'off') }}"
             - "{{ now().strftime('%H:%M') == '08:00' }}"
             - "{{ now().strftime('%H:%M') == '12:30' and (states('binary_sensor.workday_sensor') == 'on') }}"
-            - "{{ now().strftime('%H:%M') == '13:30' and (states('binary_sensor.workday_sensor') == 'off') }}"
+            - "{{ now().strftime('%H:%M') == '13:00' and (states('binary_sensor.workday_sensor') == 'off') }}"
             - "{{ now().strftime('%H:%M') == '18:30' }}" 
       - condition: and
         conditions:
@@ -46,10 +46,10 @@ automation:
         - condition: or
           conditions:
             - "{{ now().strftime('%H:%M') == '07:00' and (states('binary_sensor.workday_sensor') == 'on') and (states('input_boolean.holiday') == 'off') }}"
-            - "{{ now().strftime('%H:%M') == '07:15' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
+#            - "{{ now().strftime('%H:%M') == '07:15' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
             - "{{ now().strftime('%H:%M') == '08:00' }}"
-            - "{{ now().strftime('%H:%M') == '12:00' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
-            - "{{ now().strftime('%H:%M') == '13:30' and (states('binary_sensor.workday_sensor') == 'off') }}"
+#            - "{{ now().strftime('%H:%M') == '12:00' and ((as_timestamp(now()) - as_timestamp('2017-09-24 00:00:00')) / 86400)|int % 28 == 0 }}"
+            - "{{ now().strftime('%H:%M') == '13:00' and (states('binary_sensor.workday_sensor') == 'off') }}"
             - "{{ now().strftime('%H:%M') == '19:00' and (states('input_boolean.overtime') == 'off') }}"
             - "{{ now().strftime('%H:%M') == '19:00' and (states('binary_sensor.workday_sensor') == 'off') }}"
             - "{{ now().strftime('%H:%M') == '20:00' and (states('input_boolean.overtime') == 'on') and (states('binary_sensor.workday_sensor') == 'on') }}"
@@ -139,7 +139,7 @@ automation:
     alias: Toothbrush On
     trigger:
     - platform: time
-      at: '08:00:00'
+      at: '07:00:00'
     condition:
     - condition: state
       entity_id: 'input_boolean.homeandawayauto'
@@ -152,7 +152,7 @@ automation:
     alias: Toothbrush Off
     trigger:
     - platform: time
-      at: '21:00:00'
+      at: '22:00:00'
     - entity_id: switch.sonoff23110
       from: 'off'
       platform: state
@@ -161,11 +161,11 @@ automation:
       condition: or
       conditions:
       - condition: time
-        after: '21:00:00'
+        after: '22:00:00'
         before: '00:00:00'
       - condition: time
         after: '00:00:00'
-        before: '08:00:00'
+        before: '07:00:00'
     action:
     - service: switch.turn_off
       data:
