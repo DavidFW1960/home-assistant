@@ -2103,11 +2103,12 @@ views:
       - type: vertical-stack
         cards:
           - type: 'custom:bom-radar-card'
+            data_source: RainViewer-Original
             center_latitude: '-24.2744'
             center_longitude: '133.7751'
             zoom_level: '4'
-            frame_delay: 500
-            frame_count: 30
+            frame_delay: 100
+            frame_count: 144
             show_marker: true
             markerIcon: true
             marker_latitude: '-33.425018'
@@ -2126,6 +2127,7 @@ views:
             radar_location_line_colour: '#FF0000'
             radar_location_fill_colour: '#FFFF00'
           - type: 'custom:bom-radar-card'
+            data_source: RainViewer-Original
             center_latitude: '-33.440'
             center_longitude: '151.293'
             zoom_level: '9'
@@ -2201,7 +2203,7 @@ views:
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
-              image: /local/icons/firedanger/fdr-high.png
+              image: /local/icons/firedanger/fdr-high.svg
           - type: conditional
             conditions:
               - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
@@ -2308,7 +2310,7 @@ views:
                   method: state
                   numeric: true
           - type: map
-            show_header_toggle: false
+#            show_header_toggle: false
             dark_mode: true
             geo_location_sources:
               - nsw_rural_fire_service_feed
