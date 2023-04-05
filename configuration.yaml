@@ -106,6 +106,7 @@ logger:
 #   homeassistant.components.webhook: debug
 #   homeassistant.components.http: debug
     fritzconnection: info
+#   homeassistant.components.imap: debug
 
 # iFrame/Panel Custom 
 panel_iframe:
