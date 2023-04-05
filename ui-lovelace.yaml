@@ -642,9 +642,9 @@ views:
                 padding: 0
                 entities:
                   - sensor.docker_ce_version_installed
-                  - sensor.docker_ce_version_available
+#                 - sensor.docker_ce_version_available
                   - sensor.docker_ce_version_moby_available
-#                  - sensor.docker_version_available # repo via mqtt
+                  - sensor.docker_version_available # repo via mqtt
                   - sensor.github_docker_ce_available
                   - sensor.docker_compose_version_installed
                   - sensor.docker_compose_latest_tag
@@ -663,7 +663,7 @@ views:
                       {% endif %}
                       ;
                     }
-              - entity: sensor.docker_version_available
+              - entity: sensor.docker_ce_version_available
                 tap_action:
                   action: url
                   url_path: https://github.com/moby/moby/releases
@@ -671,7 +671,7 @@ views:
                   style: |
                     :host {
                     --paper-item-icon-color:
-                      {% if states('sensor.docker_version_available') != states('sensor.docker_ce_version_installed') %}
+                      {% if states('sensor.docker_ce_version_available') != states('sensor.docker_ce_version_installed') %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
@@ -927,6 +927,7 @@ views:
               - entity: sensor.speedtest_lastrun
                 format: relative
               - binary_sensor.fritz_box_7590_connection
+              - entity: sensor.nbn_status
           - type: horizontal-stack
             cards:
               - type: gauge
@@ -2154,76 +2155,76 @@ views:
             title: NSW Warnings & Events
             show_header_toggle: false
             entities:
-              - entity: binary_sensor.fire_danger_in_greater_sydney_region_fire_ban_today
+              - entity: binary_sensor.fire_danger_greater_sydney_region_fire_ban_today
                 state_color: true
                 card_mod:
                   style: |
                     :host {
-                      {% if states('binary_sensor.fire_danger_in_greater_sydney_region_fire_ban_today') == 'on' %}
+                      {% if states('binary_sensor.fire_danger_greater_sydney_region_fire_ban_today') == 'on' %}
                         var(--state-icon-active-color)
                       {% else %}
                         var(--state-icon-color)
                       {% endif %}
                       ;
                     }
-              - sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              - sensor.fire_danger_greater_sydney_region_danger_level_today
 #              - sensor.bom_fire_danger_summary
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              - entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'None'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/fdr-no-rating.svg
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              - entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'Moderate'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/fdr-moderate.svg
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              - entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'High'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/fdr-high.svg
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              - entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'Extreme'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
               image: /local/icons/firedanger/fdr-extreme.svg
           - type: conditional
             conditions:
-              - entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              - entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              - entity: sensor.bom_fire_danger_summary
                 state: 'Catastrophic'
             card:
               type: picture-entity
-              entity: sensor.fire_danger_in_greater_sydney_region_danger_level_today
+              entity: sensor.fire_danger_greater_sydney_region_danger_level_today
 #              entity: sensor.bom_fire_danger_summary
               show_name: false
               show_state: false
@@ -2344,6 +2345,8 @@ views:
                     state_not: "0"
                   - entity: sensor.alarm_triggers
                     state_not: "unavailable"
+                  - entity: sensor.alarm_triggers
+                    state_not: "unknown"
                 card:
                   type: entities
                   entities:
@@ -2354,6 +2357,8 @@ views:
                     state_not: "0"
                   - entity: sensor.alarm_triggers
                     state_not: "unavailable"
+                  - entity: sensor.alarm_triggers
+                    state_not: "unknown"
                 card:
                   type: 'custom:button-card'
                   color_type: card
@@ -2522,6 +2527,17 @@ views:
                 secondary: "Temperature {{ state_attr('switch.home_assistant', 'temperature') }}°C"
                 toggle: true
                 active: "{{ is_state('switch.home_assistant', 'on') }}"
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states('switch.home_assistant') == 'on' %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - switch.sonoff40851
               - switch.hifi
               - type: custom:template-entity-row
@@ -2530,6 +2546,17 @@ views:
                 secondary: "Temperature {{ state_attr('switch.vpn_router', 'temperature') }}°C"
                 toggle: true
                 active: "{{ is_state('switch.vpn_router', 'on') }}"
+                card_mod:
+                  style: |
+                    :host {
+                    --paper-item-icon-color:
+                      {% if states('switch.vpn_router') == 'on' %}
+                        var(--state-icon-active-color)
+                      {% else %}
+                        var(--state-icon-color)
+                      {% endif %}
+                      ;
+                    }
               - switch.sonoff23110
               - switch.sonoff30898
           - type: horizontal-stack
@@ -2677,7 +2704,7 @@ views:
                     secondary_info: last-triggered
                   - entity: automation.lights_off_failsafe
                     secondary_info: last-triggered
-                  - automation.system_runtime
+#                  - automation.system_runtime
                   - automation.update_available
                   - automation.beta_update_available
                   - automation.hacs_persistent_notification
