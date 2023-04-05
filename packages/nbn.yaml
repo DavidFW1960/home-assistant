@@ -1,0 +1,41 @@
+sensor:
+  - platform: rest
+    name: NBN Alt Reason Code
+    resource: https://places.nbnco.net.au/places/v2/details/LOC000099081217
+    headers:
+      Referer: https://www.nbnco.com.au/
+    value_template: "{{ value_json.addressDetail.altReasonCode }}"
+    scan_interval: 7200 # update the value every 2 hours
+
+  - platform: template
+    sensors:
+      nbn_status:
+        friendly_name: "NBN Status"
+        value_template: >-
+          {% set alt_reason_code = states('sensor.nbn_alt_reason_code') %}
+          {% if alt_reason_code == 'NULL_NA' %}
+            No FTTP upgrade
+          {% elif alt_reason_code == 'FTTP_NA' %}
+            FTTP Upgrade coming soon
+          {% elif alt_reason_code == 'FTTP_SA' %}
+            FTTP Upgrade available
+          {% else %}
+            {% if alt_reason_code %}
+              {{ alt_reason_code }} was returned
+            {% else %}
+              Error
+            {% endif %}
+          {% endif %}
+
+homeassistant:
+  customize:
+    package.node_anchors:
+      common: &common
+        package: "nbn"
+
+    sensor.nbn_alt_reason_code:
+      icon: mdi:server-network
+      <<: *common
+    sensor.nbn_status:
+      icon: mdi:server-network
+      <<: *common
