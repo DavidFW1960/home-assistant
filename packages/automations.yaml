@@ -361,7 +361,10 @@ automation:
     - platform: state
       entity_id: sensor.alarm_triggers
     condition:
-      - "{{ states('sensor.alarm_triggers') != '0' and states('sensor.alarm_triggers') != 'unavailable' }}"
+#      - "{{ states('sensor.alarm_triggers') != '0' and states('sensor.alarm_triggers') != 'unavailable' }}"
+      - "{{ states('sensor.alarm_triggers') |int(0) >0 }}"
+      - "{{ states('sensor.alarm_triggers') != 'unavailable' }}"
+      - "{{ states('sensor.alarm_triggers') != 'unknown' }}"
     action:
     - service: notify.david_ios_notify
       data:
