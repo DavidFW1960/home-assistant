@@ -160,7 +160,7 @@ ios-dark-mode-blue-red-mod:
 # CUSTOM-HEADER MODS
   card-mod-theme: ios-dark-mode-blue-red-mod
   card-mod-root: |
-    .edit-mode, app-header, app-toolbar {
+    .edit-mode, app-header, app-toolbar, .header, .toolbar {
       background: url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg') !important;
     }
   header-height: 48px
