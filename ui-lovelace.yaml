@@ -3788,9 +3788,21 @@ views:
             content: '#'
             title: Precious Metals
           - type: entity
-            entity: sensor.silver_aud
+            entity: sensor.kitco_silver_aud
             name: Silver
             unit: AUD
+          - type: entity
+            entity: sensor.kitco_gold_aud
+            name: Gold
+            unit: AUD
+          - type: entity
+            entity: sensor.kitco_silver_usd
+            name: Silver
+            unit: USD
+          - type: entity
+            entity: sensor.kitco_gold_usd
+            name: Gold
+            unit: USD
           - type: horizontal-stack
             cards:
               - show_state: false
@@ -3845,7 +3857,7 @@ views:
               legend:
                 showForSingleSeries: true
             series:
-              - entity: sensor.silver_aud
+              - entity: sensor.kitco_silver_aud
                 show:
                   extremas: true
                 stroke_width: 3
@@ -3853,3 +3865,49 @@ views:
                 float_precision: 2
             yaxis:
               - decimals: 2
+          - type: custom:apexcharts-card
+            graph_span: 144h
+            header: 
+              show: true
+              title: Gold Prices AUD
+            apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
+              stroke:
+                curve: stepline
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
+            series:
+              - entity: sensor.kitco_gold_aud
+                show:
+                  extremas: true
+                stroke_width: 3
+                fill_raw: last
+                float_precision: 2
+            yaxis:
+              - decimals: 2              
