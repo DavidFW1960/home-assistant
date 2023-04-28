@@ -3786,7 +3786,7 @@ views:
         cards:
           - type: markdown
             content: '#'
-            title: Precious Metals
+            title: Precious Metals Prices
           - type: entity
             entity: sensor.kitco_silver_aud
             name: Silver
@@ -3819,8 +3819,13 @@ views:
                 camera_image: camera.www_kitconet_com_silver
                 entity: sensor.open_exchange_rates_usd_xag
                 name: Silver
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: '#'
+            title: History
           - type: custom:apexcharts-card
-            graph_span: 144h
+            graph_span: 48h
             header: 
               show: true
               title: Silver Prices AUD
@@ -3839,7 +3844,7 @@ views:
                     chart:
                       height: auto
               stroke:
-                curve: stepline
+                curve: smooth
               chart:
                 zoom:
                   enabled: true
@@ -3866,7 +3871,7 @@ views:
             yaxis:
               - decimals: 2
           - type: custom:apexcharts-card
-            graph_span: 144h
+            graph_span: 48h
             header: 
               show: true
               title: Gold Prices AUD
@@ -3885,7 +3890,7 @@ views:
                     chart:
                       height: auto
               stroke:
-                curve: stepline
+                curve: smooth
               chart:
                 zoom:
                   enabled: true
