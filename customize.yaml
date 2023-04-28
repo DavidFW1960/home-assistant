@@ -272,3 +272,12 @@ switch.fritz_box_internet_access:
 sensor.docker_compose_latest_tag:
   friendly_name: Docker Compose Latest Tag
   icon: mdi:docker
+light.desk:
+  unique_id: desklight
+light.lounge:
+  unique_id: loungelight
+light.dining:
+  unique_id: dininglight
+light.office:
+  unique_id: officelight
+
