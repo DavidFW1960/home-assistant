@@ -1,11 +1,10 @@
 sensor:
 
-  - platform: template
-    sensors:
-      silver_aud:
-        friendly_name: 'Silver Spot AUD'
-        value_template: "{{ '%.2f'|format((states('sensor.open_exchange_rates_usd_aud')|round(4))/(states('sensor.open_exchange_rates_usd_xag')|round(4)))}}
-"
+#  - platform: template
+#    sensors:
+#      silver_aud:
+#        friendly_name: 'Silver Spot AUD'
+#        value_template: "{{ '%.2f'|format((states('sensor.open_exchange_rates_usd_aud')|round(4))/(states('sensor.open_exchange_rates_usd_xag')|round(4)))}}"
 
   - platform: command_line
     command: python /config/kitco_silver_aud.py
@@ -25,12 +24,14 @@ homeassistant:
     package.node_anchors:
       common: &common
         package: "precious_metals_sensors"
+        device_class: monetary
+        scan_interva1: 300
 
-    sensor.silver_aud:
-      icon: mdi:currency-usd
-      device_class: monetary
-      unit_of_measurement: $
-      <<: *common
+#    sensor.silver_aud:
+#      icon: mdi:currency-usd
+#      device_class: monetary
+#      unit_of_measurement: $
+#      <<: *common
     sensor.kitco_silver_aud:
       icon: mdi:currency-usd
       unit_of_measurement: $

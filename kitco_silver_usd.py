@@ -5,15 +5,8 @@ import requests
 
 website = requests.get('https://www.kitco.com/silver-price-today-usa')
 soup = BeautifulSoup(website.content, 'html.parser')
-my_silver_usa = soup.find(class_ = 'table-price--body-table--overview-bid')
-my_silver_usa = my_silver_usa.text
-my_silver_usa = my_silver_usa.split()
-my_silver_usa = my_silver_usa[1:2]
-my_silver_usa = str(my_silver_usa)
-my_silver_usa = my_silver_usa.replace("[","")
-my_silver_usa = my_silver_usa.replace("]","")
-my_silver_usa = my_silver_usa.replace("'","")
 
-#with open('file1.txt', 'w') as f:
-#    print(my_silver_usa, file=f)
-print(my_silver_usa)
+my_silver_usd = soup.find(class_ = 'table-price--body-table--overview-bid').text.split()
+my_silver_usd = float(str(my_silver_usd[1:2]).replace("[","").replace("]","").replace("'","").replace(",",""))
+
+print(my_silver_usd)
