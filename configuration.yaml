@@ -128,21 +128,21 @@ panel_iframe:
 conversation:
 
 # Enables support for tracking state changes over time
-history:
-  exclude:
-    domains:
-      - automation
-      - binary_sensor
-      - geo_location
-    entities:
-      - sensor.busmonitor1
-      - sensor.busmonitor
-      - sensor.trainmonitor1
-      - sensor.trainmonitor2
-      - sensor.centralgosford
-      - sensor.gosfordcentral
-      - sensor.karionggosford
-      - sensor.gosfordkariong
+# history:
+#  exclude:
+#    domains:
+#      - automation
+#      - binary_sensor
+#      - geo_location
+#    entities:
+#      - sensor.busmonitor1
+#      - sensor.busmonitor
+#      - sensor.trainmonitor1
+#      - sensor.trainmonitor2
+#      - sensor.centralgosford
+#      - sensor.gosfordcentral
+#      - sensor.karionggosford
+#      - sensor.gosfordkariong
 
 # Sensors
 sensor:
