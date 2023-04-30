@@ -18,6 +18,12 @@ sensor:
   - platform: command_line
     command: python /config/kitco_gold_usd.py
     name: Kitco Gold USD
+  - platform: command_line
+    command: python /config/dxy.py
+    name: US Dollar Index
+  - platform: command_line
+    command: python /config/goldratio.py
+    name: Gold Silver Ratio
 
 homeassistant:
   customize:
@@ -47,4 +53,10 @@ homeassistant:
     sensor.kitco_gold_usd:
       icon: mdi:currency-usd
       unit_of_measurement: $
+      <<: *common
+    sensor.us_dollar_index:
+      icon: mdi:currency-usd
+      <<: *common
+    sensor.gold_silver_ratio:
+      icon: mdi:chart-line
       <<: *common

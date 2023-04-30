@@ -3803,6 +3803,10 @@ views:
             entity: sensor.kitco_gold_usd
             name: Gold
             unit: USD
+          - type: entity
+            entity: sensor.gold_silver_ratio
+          - type: entity
+            entity: sensor.us_dollar_index
           - type: horizontal-stack
             cards:
               - show_state: false
@@ -3825,7 +3829,7 @@ views:
             content: '#'
             title: History
           - type: custom:apexcharts-card
-            graph_span: 48h
+            graph_span: 144h
             header: 
               show: true
               title: Silver Prices AUD
@@ -3865,13 +3869,13 @@ views:
               - entity: sensor.kitco_silver_aud
                 show:
                   extremas: true
-                stroke_width: 3
+                stroke_width: 1
                 fill_raw: last
                 float_precision: 2
             yaxis:
               - decimals: 2
           - type: custom:apexcharts-card
-            graph_span: 48h
+            graph_span: 144h
             header: 
               show: true
               title: Gold Prices AUD
@@ -3911,8 +3915,105 @@ views:
               - entity: sensor.kitco_gold_aud
                 show:
                   extremas: true
-                stroke_width: 3
+                stroke_width: 1
                 fill_raw: last
                 float_precision: 2
             yaxis:
-              - decimals: 2              
+              - decimals: 2
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: '#'
+            title: Ratios
+          - type: custom:apexcharts-card
+            graph_span: 144h
+            header: 
+              show: true
+              title: Gold - Silver Ratio
+            apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
+              stroke:
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
+            series:
+              - entity: sensor.gold_silver_ratio
+                show:
+                  extremas: true
+                stroke_width: 1
+                fill_raw: last
+                float_precision: 2
+            yaxis:
+              - decimals: 2
+          - type: custom:apexcharts-card
+            graph_span: 144h
+            header: 
+              show: true
+              title: US Dollar Index
+            apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
+              stroke:
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
+            series:
+              - entity: sensor.us_dollar_index
+                show:
+                  extremas: true
+                stroke_width: 1
+                fill_raw: last
+                float_precision: 2
+            yaxis:
+              - decimals: 2
