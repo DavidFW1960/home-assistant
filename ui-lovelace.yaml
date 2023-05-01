@@ -3807,6 +3807,8 @@ views:
             entity: sensor.gold_silver_ratio
           - type: entity
             entity: sensor.us_dollar_index
+          - type: entity
+            entity: sensor.aud_usd
           - type: horizontal-stack
             cards:
               - show_state: false
@@ -4017,3 +4019,49 @@ views:
                 float_precision: 2
             yaxis:
               - decimals: 2
+          - type: custom:apexcharts-card
+            graph_span: 144h
+            header: 
+              show: true
+              title: AUD-USD Exchange Rate
+            apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
+              stroke:
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
+            series:
+              - entity: sensor.aud_usd
+                show:
+                  extremas: true
+                stroke_width: 1
+                fill_raw: last
+                float_precision: 4
+            yaxis:
+              - decimals: 4
