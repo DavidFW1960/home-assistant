@@ -269,6 +269,7 @@ switch:
     switches:
       harmony:
         value_template: "{{ not is_state_attr('remote.harmony_hub', 'current_activity', 'PowerOff') }}"
+        unique_id: harmonyswitch
         turn_on:
           service: remote.turn_on
           data:
