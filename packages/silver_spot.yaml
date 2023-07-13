@@ -12,24 +12,42 @@ sensor:
         friendly_name: 'Exchange Rate AUD - USD'
         value_template: "{{ '%.4f'|format(1/(states('sensor.open_exchange_rates_usd_aud')|round(4)))}}"
 
-  - platform: command_line
-    command: python /config/kitco_silver_aud.py
-    name: Kitco Silver AUD
-  - platform: command_line
-    command: python /config/kitco_gold_aud.py
-    name: Kitco Gold AUD
-  - platform: command_line
-    command: python /config/kitco_silver_usd.py
-    name: Kitco Silver USD
-  - platform: command_line
-    command: python /config/kitco_gold_usd.py
-    name: Kitco Gold USD
-  - platform: command_line
-    command: python /config/dxy.py
-    name: US Dollar Index
-  - platform: command_line
-    command: python /config/goldratio.py
-    name: Gold Silver Ratio
+command_line:
+
+  - sensor:
+      command: python /config/kitco_silver_aud.py
+      name: Kitco Silver AUD
+      unit_of_measurement: '$'
+      unique_id: silver_aud
+      value_template: '{{ value }}'
+  - sensor:
+      command: python /config/kitco_gold_aud.py
+      name: Kitco Gold AUD
+      unit_of_measurement: '$'
+      unique_id: gold_aud
+      value_template: '{{ value }}'
+  - sensor:
+      command: python /config/kitco_silver_usd.py
+      name: Kitco Silver USD
+      unit_of_measurement: '$'
+      unique_id: silver_usd
+      value_template: '{{ value }}'
+  - sensor:
+      command: python /config/kitco_gold_usd.py
+      name: Kitco Gold USD
+      unit_of_measurement: '$'
+      unique_id: gold_usd
+      value_template: '{{ value }}'
+  - sensor:
+      command: python /config/dxy.py
+      name: US Dollar Index
+      unique_id: dxy
+      value_template: '{{ value }}'
+  - sensor:
+      command: python /config/goldratio.py
+      name: Gold Silver Ratio
+      unique_id: gold-silver-ratio
+      value_template: '{{ value }}'
 
 homeassistant:
   customize:
@@ -46,26 +64,22 @@ homeassistant:
 #      <<: *common
     sensor.kitco_silver_aud:
       icon: mdi:currency-usd
-      unit_of_measurement: $
       <<: *common
     sensor.kitco_gold_aud:
       icon: mdi:currency-usd
-      unit_of_measurement: $
       <<: *common
     sensor.kitco_silver_usd:
       icon: mdi:currency-usd
-      unit_of_measurement: $
       <<: *common
     sensor.kitco_gold_usd:
       icon: mdi:currency-usd
-      unit_of_measurement: $
       <<: *common
     sensor.us_dollar_index:
-      icon: mdi:currency-usd
+      icon: mdi:chart-line
       <<: *common
     sensor.gold_silver_ratio:
       icon: mdi:chart-line
       <<: *common
     sensor.aud_usd:
-      icon: mdi:chart-line
+      icon: mdi:currency-usd
       <<: *common
