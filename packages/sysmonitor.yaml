@@ -483,15 +483,6 @@ sensor:
       - filter: lowpass
         time_constant: 20
         precision: 2
-  - platform: command_line
-    name: "CPU Temperature"
-    command: "cat /sys/class/thermal/thermal_zone0/temp"
-    unit_of_measurement: "°C"
-    value_template: '{{ value | multiply(0.001) | round(1) }}'
-# IPv6 Address
-#  - platform: command_line
-#    name: "WAN IP Address"
-#    command: wget -qO- https://ipv6.icanhazip.com/
   - platform: systemmonitor
     resources:
     - type: disk_use
@@ -532,6 +523,16 @@ sensor:
     entity_id: sensor.processor_use
     sampling_size: 20
     name: processor
+command_line:
+  - sensor:
+      name: "CPU Temperature"
+      command: "cat /sys/class/thermal/thermal_zone0/temp"
+      unit_of_measurement: "°C"
+      value_template: '{{ value | multiply(0.001) | round(1) }}'
+# IPv6 Address
+#  - sensor:
+#      name: "WAN IP Address"
+#      command: wget -qO- https://ipv6.icanhazip.com/
 
 homeassistant:
   customize:

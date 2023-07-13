@@ -79,6 +79,7 @@ sensor:
             {%- else -%}
             Blankets
             {%- endif -%}
+        unique_id: doonarecommend
 
 # Heatindex
 # https://en.wikipedia.org/wiki/Heat_index
@@ -340,4 +341,7 @@ homeassistant:
       friendly_name: Extended Rainfall
       icon: mdi:weather-rainy
       <<: *common
-    
+    sensor.doona:
+      friendly_name: Recommended Bed Covering
+      icon: mdi:bed-king-outline
+      <<: *common
