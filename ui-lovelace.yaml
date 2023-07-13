@@ -1209,6 +1209,7 @@ views:
                 - entity: sensor.daylighttoday
                 - entity: sensor.daylighttomorrow
                 - entity: sensor.moonphases
+                - entity: sensor.doona
                 - entity: sensor.bom_uv_alert
                 - entity: sensor.bom_fire_danger
           - type: custom:apexcharts-card
@@ -4065,3 +4066,87 @@ views:
                 float_precision: 4
             yaxis:
               - decimals: 4
+  - title: Camera
+    path: camera
+    icon: mdi:webcam
+    theme: ios-dark-mode-blue-red-mod
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: button.tapo_camera_c160_calibrate
+            name: Calibrate
+          - entity: button.tapo_camera_c160_manual_alarm_start
+            name: Manual Alarm Start
+          - entity: button.tapo_camera_c160_manual_alarm_stop
+            name: Manual Alarm Stop
+          - entity: button.tapo_camera_c160_move_down
+            name: Move Down
+          - entity: button.tapo_camera_c160_move_left
+            name: Move Left
+          - entity: button.tapo_camera_c160_move_right
+            name: Move Right
+          - entity: select.tapo_camera_c160_move_to_preset
+            name: Move to Preset
+          - entity: button.tapo_camera_c160_move_up
+            name: Move Up
+          - entity: select.tapo_camera_c160_patrol_mode
+            name: Patrol Mode
+          - entity: switch.tapo_camera_c160_privacy
+            name: Privacy
+          - entity: siren.tapo_camera_c160_siren
+            name: Siren
+        title: Tapo Camera C200
+      - type: entities
+        entities:
+          - entity: switch.tapo_camera_c160_auto_track
+            name: Auto Track
+          - entity: select.tapo_camera_c160_automatic_alarm
+            name: Automatic Alarm
+          - entity: select.tapo_camera_c160_baby_cry_detection
+            name: Baby Cry Detection
+          - switch.c200_75c160_internet_access
+          - entity: switch.tapo_camera_c160_flip
+            name: Flip
+          - entity: button.tapo_camera_c160_format_sd_card
+            name: Format SD Card
+          - entity: switch.tapo_camera_c160_indicator_led
+            name: Indicator LED
+          - entity: switch.tapo_camera_c160_lens_distortion_correction
+            name: Lens Distortion Correction
+          - entity: select.tapo_camera_c160_light_frequency
+            name: Light Frequency
+          - entity: select.tapo_camera_c160_motion_detection
+            name: Motion Detection
+          - entity: number.tapo_camera_c160_movement_angle
+            name: Movement Angle
+          - entity: select.tapo_camera_c160_night_vision
+            name: Night Vision
+          - entity: select.tapo_camera_c160_person_detection
+            name: Person Detection
+          - entity: button.tapo_camera_c160_reboot
+            name: Reboot
+          - entity: button.tapo_camera_c160_sync_time
+            name: Sync Time
+          - entity: select.tapo_camera_c160_tamper_detection
+            name: Tamper Detection
+          - entity: update.tapo_camera_c160_update
+            name: Update
+        title: Tapo Camera C200
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - device_tracker.c200_75c160
+            title: Tapo Camera C200
+          - type: grid
+            square: false
+            columns: 1
+            cards:
+              - show_state: true
+                show_name: true
+                camera_view: auto
+                type: picture-entity
+                entity: camera.tapo_camera_c160_hd_stream
+              - type: picture-entity
+                entity: camera.tapo_camera_c160_sd_stream
