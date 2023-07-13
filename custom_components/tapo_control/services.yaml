@@ -1,0 +1,30 @@
+save_preset:
+  name: Save preset
+  description: Saves the current PTZ position to a preset
+  target:
+    entity:
+      domain: camera
+      integration: tapo_control
+  fields:
+    name:
+      description: "Name of the preset."
+      example: "Entry Door"
+      required: true
+      name: Name
+      selector:
+        text:
+delete_preset:
+  name: Delete preset
+  description: Deletes a preset
+  target:
+    entity:
+      domain: camera
+      integration: tapo_control
+  fields:
+    preset:
+      description: "PTZ preset ID or a Name. See possible presets in entity attributes"
+      example: "1"
+      required: true
+      name: Name
+      selector:
+        text:

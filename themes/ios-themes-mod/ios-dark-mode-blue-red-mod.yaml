@@ -8,7 +8,8 @@ ios-dark-mode-blue-red-mod:
   ha-card-border-width: 0px
   ha-card-box-shadow: none
   accent-color: rgba(255, 159, 9, 1)
-  app-header-background-color: rgba(63, 36, 75, 0.4)
+#  app-header-background-color: rgba(63, 36, 75, 1)
+  app-header-background-color: rgba(43, 18, 34, 1)
   app-header-text-color: "#e1e1e1"
   background-image: "center / cover no-repeat fixed url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg')"
   card-background-color: var(--secondary-background-color)  # Unused entities table background
@@ -163,5 +164,8 @@ ios-dark-mode-blue-red-mod:
     .edit-mode, app-header, app-toolbar, .header, .toolbar {
       background: url('/hacsfiles/themes/ios-themes-mod/homekit-bg-blue-red.jpg') !important;
     }
+  card-mod-root-yaml: |
+    ha-tabs$: |
+      paper-icon-button { display: none !important; }
   header-height: 48px
 
