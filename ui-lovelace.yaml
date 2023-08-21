@@ -3923,6 +3923,98 @@ views:
                 float_precision: 2
             yaxis:
               - decimals: 2
+          - type: custom:apexcharts-card
+            graph_span: 144h
+            header: 
+              show: true
+              title: Silver Prices USD
+            apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
+              stroke:
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
+            series:
+              - entity: sensor.kitco_silver_usd
+                show:
+                  extremas: true
+                stroke_width: 1
+                fill_raw: last
+                float_precision: 2
+            yaxis:
+              - decimals: 2
+          - type: custom:apexcharts-card
+            graph_span: 144h
+            header: 
+              show: true
+              title: Gold Prices USD
+            apex_config:
+              responsive:
+                - breakpoint: 765
+                  options:
+                    chart:
+                      height: 500px
+                - breakpoint: 1025
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: auto
+              stroke:
+                curve: smooth
+              chart:
+                zoom:
+                  enabled: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+              plotOptions:
+                bar:
+                  columnWidth: '50%'
+              legend:
+                showForSingleSeries: true
+            series:
+              - entity: sensor.kitco_gold_usd
+                show:
+                  extremas: true
+                stroke_width: 1
+                fill_raw: last
+                float_precision: 2
+            yaxis:
+              - decimals: 2
       - type: vertical-stack
         cards:
           - type: markdown
