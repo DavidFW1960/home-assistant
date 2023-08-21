@@ -1,4 +1,6 @@
 3ative_blue:
+  3ative_main_on_colour: rgb(92 165 255)
+  3ative_main_off_colour: rgb(25 76 165)
   ### Main Interface Colors ###
   primary-color: "rgb(55, 118, 195)"
   light-primary-color: "rgb(31, 69, 115)" # Logo Circle BG
@@ -35,12 +37,22 @@
   sidebar-selected-icon-color: "rgb(130, 183, 255)" # Selected Icon Colour
   sidebar-selected-text-color: var(--primary-text-color)
 
-  ### States and Badges ###
-  state-icon-color: rgb(25 76 165) # Icon Off Color
-  state-icon-active-color: rgb(92 165 255) # Icon On Color
+  ############## Icons ##############
+  button-card-light-color: rgb(255 0 0)
+  state-switch-active-color: var(--3ative_main_on_colour) # Light Swtich On Colour
+  state-automation-active-color: var(--3ative_main_on_colour)
+  state-binary_sensor-opening-on-color: var(--3ative_main_on_colour) # Binary Sensor (Door/Window) On Colour
+  state-binary_sensor-on-color: var(--3ative_main_on_colour)
+  state-binary_sensor-motion-on-color: var(--3ative_main_on_colour) # Binary Sensor (Motion) On Colour
+  state-input_boolean-on-color: var(--3ative_main_on_colour) # Input Boolean On Colour
+  state-person-home-color: var(--3ative_main_on_colour) #Person "Home" Colour
+  state-switch-on-color: var(--3ative_main_on_colour) # Switch On Colour
   state-icon-unavailable-color: var(--disabled-text-color)
 
+  # state-binary_sensor-active-color: rgb(0 0 255)
+
   ### Sliders ###
+  state-light-on-color: var(--3ative_main_on_colour) # Mono Light Slider Colour
   paper-slider-knob-color: "rgb(104, 204, 255)"
   paper-slider-knob-start-color: var(--state-icon-color) # Slider Knob Off Color
   paper-slider-pin-color: var(--state-icon-active-color)
