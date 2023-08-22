@@ -734,6 +734,21 @@ script:
         entity_id: light.fan_light
       service: light.turn_on
 
+# Precious Metals pricing Notify
+
+  pm_report:
+    alias: Metals
+    sequence:
+    - service: notify.david_ios_notify
+      data:
+        message: >
+          Silver AUD ${{ states('sensor.kitco_silver_aud') }} USD ${{ states('sensor.kitco_silver_usd') }}
+
+          Gold AUD ${{ states('sensor.kitco_gold_aud') }} USD ${{ states('sensor.kitco_gold_usd') }}
+          
+          AG/AU Ratio {{ states('sensor.gold_silver_ratio') }} DXY {{ states('sensor.us_dollar_index') }}
+        title: "Precious Metals Prices"
+
 # Repack Database
   recorder_repack_db:
     alias: Recorder Repack Database
