@@ -743,11 +743,17 @@ script:
       data:
         message: >
           Silver AUD ${{ states('sensor.kitco_silver_aud') }} USD ${{ states('sensor.kitco_silver_usd') }}
-
+        title: "Silver Prices"
+    - service: notify.david_ios_notify
+      data:
+        message: >
           Gold AUD ${{ states('sensor.kitco_gold_aud') }} USD ${{ states('sensor.kitco_gold_usd') }}
-          
+        title: "Gold Prices"
+    - service: notify.david_ios_notify
+      data:
+        message: >
           AG/AU Ratio {{ states('sensor.gold_silver_ratio') }} DXY {{ states('sensor.us_dollar_index') }}
-        title: "Precious Metals Prices"
+        title: "DXY and Ratio"
 
 # Repack Database
   recorder_repack_db:
