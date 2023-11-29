@@ -75,10 +75,24 @@ def getStreamSource(entry, hdStream):
     return streamURL
 
 
+def pytapoLog(msg):
+    LOGGER.debug(f"[pytapo] {msg}")
+
+
 def registerController(
     host, username, password, password_cloud="", super_secret_key="", device_id=None
 ):
-    return Tapo(host, username, password, password_cloud, super_secret_key, device_id)
+    return Tapo(
+        host,
+        username,
+        password,
+        password_cloud,
+        super_secret_key,
+        device_id,
+        reuseSession=False,
+        printDebugInformation=pytapoLog,
+        retryStok=False,
+    )
 
 
 def isOpen(ip, port):
@@ -992,6 +1006,56 @@ async def getCamData(hass, controller):
         whitelampStatus = None
     camData["whitelampStatus"] = whitelampStatus
 
+    try:
+        sdCardData = []
+        for hdd in data["getSdCardStatus"]["harddisk_manage"]["hd_info"]:
+            sdCardData.append(hdd["hd_info_1"])
+    except Exception:
+        sdCardData = []
+    camData["sdCardData"] = sdCardData
+
+    try:
+        recordPlan = data["getRecordPlan"]["record_plan"]["chn1_channel"]
+    except Exception:
+        recordPlan = None
+    camData["recordPlan"] = recordPlan
+
+    try:
+        microphoneVolume = data["getAudioConfig"]["audio_config"]["microphone"][
+            "volume"
+        ]
+    except Exception:
+        microphoneVolume = None
+    camData["microphoneVolume"] = microphoneVolume
+
+    try:
+        microphoneMute = data["getAudioConfig"]["audio_config"]["microphone"]["mute"]
+    except Exception:
+        microphoneMute = None
+    camData["microphoneMute"] = microphoneMute
+
+    try:
+        microphoneNoiseCancelling = data["getAudioConfig"]["audio_config"][
+            "microphone"
+        ]["noise_cancelling"]
+    except Exception:
+        microphoneNoiseCancelling = None
+    camData["microphoneNoiseCancelling"] = microphoneNoiseCancelling
+
+    try:
+        speakerVolume = data["getAudioConfig"]["audio_config"]["speaker"]["volume"]
+    except Exception:
+        speakerVolume = None
+    camData["speakerVolume"] = speakerVolume
+
+    try:
+        autoUpgradeEnabled = data["getFirmwareAutoUpgradeConfig"]["auto_upgrade"][
+            "common"
+        ]["enabled"]
+    except Exception:
+        autoUpgradeEnabled = None
+    camData["autoUpgradeEnabled"] = autoUpgradeEnabled
+
     LOGGER.debug("getCamData - done")
     LOGGER.debug("Processed update data:")
     LOGGER.debug(camData)
@@ -1192,6 +1256,8 @@ def pytapoFunctionMap(pytapoFunctionName):
         return ["getMsgPushConfig"]
     elif pytapoFunctionName == "getWhitelampStatus":
         return ["getWhitelampStatus"]
+    elif pytapoFunctionName == "getRecordPlan":
+        return ["getRecordPlan"]
     elif pytapoFunctionName == "getWhitelampConfig":
         return ["getWhitelampConfig"]
     elif pytapoFunctionName == "getBasicInfo":
@@ -1242,6 +1308,10 @@ def pytapoFunctionMap(pytapoFunctionName):
         return ["getRotationStatus", "getLdc"]
     elif pytapoFunctionName == "getLensDistortionCorrection":
         return ["getLdc"]
+    elif pytapoFunctionName == "getAudioConfig":
+        return ["getAudioConfig"]
+    elif pytapoFunctionName == "getFirmwareAutoUpgradeConfig":
+        return ["getFirmwareAutoUpgradeConfig"]
     return []
 
 

@@ -3,6 +3,19 @@
   "config": {
     "flow_title": "Tapo: Cameras Control {name}",
     "step": {
+      "reauth_confirm_stream": {
+        "data": {
+          "username": "Camera Account - Username",
+          "password": "Camera Account - Password"
+        },
+        "description": "Your password(s) changed. Please enter up to date passwords.\n\nCamera account is created via Tapo app at:\nCamera Settings > Advanced Settings > Camera Account.\n\nYou can test if these credentials work via rtsp stream, for example VLC using link\nrtsp://username:password@IP Address:554/stream1"
+      },
+      "reauth_confirm_cloud": {
+        "data": {
+          "cloud_password": "Cloud Password"
+        },
+        "description": "Camera requires your cloud password for control.\nThis is the password you used for your Tapo Cloud account with your email.\nUnless you used the same password for cloud as for your Camera account, this password is not the same.\nEmail is not needed and all communication is still fully local."
+      },
       "ip": {
         "data": {
           "ip_address": "IP Address"
@@ -46,6 +59,8 @@
       }
     },
     "error": {
+      "invalid_stream_auth": "Invalid RTSP stream authentication data",
+      "account_suspended": "Account temporarily suspended, please try again later.\n See log for more details.",
       "not_tapo_device": "IP address is not a supported Tapo device",
       "ports_closed": "Port 443, 554, or 2020 is closed",
       "invalid_auth": "Invalid authentication data.\nMake sure you have created your 3rd party account via Tapo app.\nYou can also test if these credentials work via rtsp stream, for example VLC using link\nrtsp://username:password@IP Address:554/stream1",
@@ -58,7 +73,8 @@
     },
     "abort": {
       "already_configured": "IP address already configured",
-      "not_tapo_device": "Discovered device is not a Tapo camera"
+      "not_tapo_device": "Discovered device is not a Tapo camera",
+      "reauth_successful": "Reauthentication has been successful."
     }
   },
   "options": {
@@ -106,6 +122,8 @@
       }
     },
     "error": {
+      "invalid_stream_auth": "Invalid RTSP stream authentication data",
+      "account_suspended": "Account temporarily suspended, please try again later.\nSee log for more details.",
       "invalid_auth": "Invalid authentication data",
       "unknown": "Unknown error",
       "connection_failed": "Connection failed",

@@ -96,6 +96,7 @@ blue_night:
   sidebar-text-color: "hsl(var(--huesat) 90%)"
   sidebar-text_-_color: "hsl(var(--huesat) 90%)"
   state-icon-active-color: "var(--amber-color)"
+  state-unavailable-color: "var(--paper-item-icon-color)"
   table-row-alternative-background-color: "hsl(var(--huesat) 10%)"
   table-row-background-color: "hsl(var(--huesat) 12%)"
   text-primary-color: "hsl(var(--huesat) 90%)"

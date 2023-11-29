@@ -1,4 +1,7 @@
 yourname:
+  dialog-backdrop-filter: blur(20px)
+  iron-overlay-backdrop-opacity: 1
+  iron-overlay-backdrop-background-color: rgba(0, 0, 0, 0.32)
   ### Header Height ###
   header-height: 44px
   ### Main Interface Colors ###

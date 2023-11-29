@@ -1403,7 +1403,7 @@ views:
             entity_pop_1: sensor.kariong_rain_chance_1
             entity_pos: sensor.kariong_rain_amount_range_0
             entity_pos_1: sensor.kariong_rain_amount_range_1
-            entity_pressure: sensor.nodemcu_lounge_bme280_seapressure
+            entity_pressure: sensor.nodemcu_bedroom_bme280_seapressure
             entity_rainfall: sensor.gosford_rain_since_9am
             entity_summary: sensor.bom_current_text
             entity_summary_1: sensor.kariong_short_text_1
