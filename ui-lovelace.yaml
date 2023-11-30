@@ -1522,7 +1522,7 @@ views:
                   type: circle
             value_sensors:
               - sensor: sensor.gosford_wind_speed_kilometre
-              - sensor: sensor.solar_elevation
+              - sensor: sensor.home_sun_elevation
             compass:
               north:
                 show: true
