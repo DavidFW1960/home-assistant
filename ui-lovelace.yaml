@@ -271,7 +271,7 @@ views:
               - type: gauge
                 name: Disk Usage
                 unit: '%'
-                entity: sensor.disk_use_percent
+                entity: sensor.system_monitor_disk_use_percent_config
           - type: horizontal-stack
             cards:
               - type: gauge
@@ -417,9 +417,9 @@ views:
               - sensor.processor
               - sensor.nuc_processor_used_filtered
               - sensor.cpu_temperature
-              - sensor.disk_use
-              - sensor.disk_free
-              - sensor.disk_use_percent
+              - sensor.system_monitor_disk_use_config
+              - sensor.system_monitor_disk_free_config
+              - sensor.system_monitor_disk_use_percent_config
               - sensor.memory_use_percent
               - sensor.memory_use
               - sensor.memory_free

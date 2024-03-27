@@ -118,7 +118,7 @@ sensor:
 
       cc18217:
         value_template: "{{states('sensor.caltex_woolworths_lisarow_pdl')}}"
-        friendly_name: Caltex Woolies 900 Pacific Hwy Lisarow
+        friendly_name: EG Ampol 900 Pacific Hwy Lisarow
         unit_of_measurement: ¢/L
       cc17340:
         value_template: "{{states('sensor.ampol_woolworths_kariong_pdl')}}"
@@ -130,15 +130,15 @@ sensor:
         unit_of_measurement: ¢/L
       cc523:
         value_template: "{{states('sensor.caltex_woolworths_tuggerah_north_pdl')}}"
-        friendly_name: Caltex Woolies 186 Pacific Hwy Tuggerah
+        friendly_name: EG Ampol 186 Pacific Hwy Tuggerah
         unit_of_measurement: ¢/L
       cc620:
         value_template: "{{states('sensor.caltex_woolworths_tuggerah_pdl')}}"
-        friendly_name: Caltex Woolies Westfield 24-26 Gavenlock Road
+        friendly_name: EG Ampol Westfield 24-26 Gavenlock Road
         unit_of_measurement: ¢/L
       cc622:
         value_template: "{{states('sensor.caltex_woolworths_gosford_pdl')}}"
-        friendly_name: Caltex Woolies 522 Pacific Hwy Wyoming
+        friendly_name: EG Ampol 522 Pacific Hwy Wyoming
         unit_of_measurement: ¢/L
       ccgw1:
         value_template: "{{states('sensor.ampol_gosford_west_eastbound_pdl')}}"
@@ -188,11 +188,11 @@ sensor:
         unit_of_measurement: ¢/L
       syd643:
         value_template: "{{states('sensor.caltex_woolworths_glenrose_pdl')}}"
-        friendly_name: Caltex Woolies 60 Glenn St Belrose
+        friendly_name: EG Ampol 60 Glenn St Belrose
         unit_of_measurement: ¢/L
       syd663:
         value_template: "{{states('sensor.caltex_woolworths_turramurra_pdl')}}"
-        friendly_name: Caltex Woolies 1233 Pacific Hwy Turramurra
+        friendly_name: EG Ampol 1233 Pacific Hwy Turramurra
         unit_of_measurement: ¢/L
       cc902:
         value_template: "{{states('sensor.coles_express_kariong_dl')}}"

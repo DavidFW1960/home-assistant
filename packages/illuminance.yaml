@@ -55,6 +55,6 @@ sensor:
           {{ illuminance }}
  
  # Use PBruckner Component
-  - platform: illuminance
-    entity_id: weather.home
-    name: Estimated Illuminance
+#  - platform: illuminance
+#    entity_id: weather.home
+#    name: Estimated Illuminance

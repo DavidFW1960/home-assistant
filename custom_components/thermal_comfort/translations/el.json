@@ -44,15 +44,14 @@
   },
   "entity": {
     "sensor": {
-      "frost_risk": {
-        "state": {
-          "no_risk": "Κανένας κίνδυνος",
-          "unlikely": "Απίθανο",
-          "probable": "Πιθανό",
-          "high": "Μεγάλη πιθανότητα"
-        }
+      "absolute_humidity": {
+        "name": "Απόλυτη υγρασία"
+      },
+      "dew_point": {
+        "name": "Σημείο δρόσου"
       },
       "dew_point_perception": {
+        "name": "Αντίληψη σημείου δρόσου",
         "state": {
           "dry": "Λίγο ξηρή για κάποιους",
           "very_comfortable": "Πολύ άνετη",
@@ -64,7 +63,26 @@
           "severely_high": "Σοβαρά υψηλή, ακόμη και θανατηφόρα για ασθένειες που σχετίζονται με το άσθμα"
         }
       },
+      "frost_point": {
+        "name": "Σημείο παγετού"
+      },
+      "frost_risk": {
+        "name": "Κίνδυνος παγετού",
+        "state": {
+          "no_risk": "Κανένας κίνδυνος",
+          "unlikely": "Απίθανο",
+          "probable": "Πιθανό",
+          "high": "Μεγάλη πιθανότητα"
+        }
+      },
+      "heat_index": {
+        "name": "Δείκτης θερμότητας"
+      },
+      "humidex": {
+        "name": "Humidex"
+      },
       "humidex_perception": {
+        "name": "Αντίληψη Humidex",
         "state": {
           "comfortable": "Άνετη",
           "noticable_discomfort": "Αισθητή δυσφορία",
@@ -74,7 +92,11 @@
           "heat_stroke": "Πιθανή θερμοπληξία"
         }
       },
+      "moist_air_enthalpy": {
+        "name": "Ενθαλπία υγρού αέρα"
+      },
       "relative_strain_perception": {
+        "name": "Σχετική αντίληψη καταπόνησης",
         "state": {
           "outside_calculable_range": "Εκτός του υπολογίσιμου εύρους",
           "comfortable": "Άνετη",
@@ -84,7 +106,31 @@
           "extreme_discomfort": "Ακραία δυσφορία"
         }
       },
+      "summer_scharlau_perception": {
+        "name": "Summer Scharlau αντίληψη",
+        "state": {
+          "outside_calculable_range": "Εκτός του υπολογίσιμου εύρους",
+          "comfortable": "Άνετη",
+          "slightly_uncomfortable": "Ελαφρώς άβολη",
+          "moderatly_uncomfortable": "Μέτρια άβολη",
+          "highly_uncomfortable": "Ιδιαίτερα άβολη"
+        }
+      },
+      "winter_scharlau_perception": {
+        "name": "Αντίληψη Winter Scharlau",
+        "state": {
+          "outside_calculable_range": "Εκτός του υπολογίσιμου εύρους",
+          "comfortable": "Άνετη",
+          "slightly_uncomfortable": "Ελαφρώς άβολη",
+          "moderatly_uncomfortable": "Μέτρια άβολη",
+          "highly_uncomfortable": "Ιδιαίτερα άβολη"
+        }
+      },
+      "summer_simmer_index": {
+        "name": "Δείκτης Summer Simmer"
+      },
       "summer_simmer_perception": {
+        "name": "Καλοκαίρι Αντίληψη σιγοβρασμού",
         "state": {
           "cool": "Δροσερή",
           "slightly_cool": "Ελαφρώς δροσερή",
@@ -97,20 +143,12 @@
           "circulatory_collapse_imminent": "Επικείμενη κυκλοφορική κατάρρευση"
         }
       },
-      "scharlau_perception": {
-        "state": {
-          "outside_calculable_range": "Εκτός του υπολογίσιμου εύρους",
-          "comfortable": "Άνετη",
-          "slightly_uncomfortable": "Ελαφρώς άβολη",
-          "moderatly_uncomfortable": "Μέτρια άβολη",
-          "highly_uncomfortable": "Ιδιαίτερα άβολη"
-        }
-      },
       "thoms_discomfort_perception": {
+        "name": "Αντίληψη δυσφορίας Thoms",
         "state": {
           "no_discomfort": "Καμία ενόχληση",
-          "less_then_half": "Λιγότερο από το ήμισυ του πληθυσμού αισθάνεται δυσφορία",
-          "more_then_half": "Περισσότερο από το ήμισυ του πληθυσμού αισθάνεται δυσφορία",
+          "less_than_half": "Λιγότερο από το ήμισυ του πληθυσμού αισθάνεται δυσφορία",
+          "more_than_half": "Περισσότερο από το ήμισυ του πληθυσμού αισθάνεται δυσφορία",
           "most": "Τα περισσότερα άτομα αισθάνονται δυσφορία και επιδείνωση των ψυχοφυσικών συνθηκών",
           "everyone": "Όλοι αισθάνονται σημαντική δυσφορία",
           "dangerous": "Επικίνδυνη, πολύ έντονη δυσφορία που μπορεί να προκαλέσει θερμοπληξία"

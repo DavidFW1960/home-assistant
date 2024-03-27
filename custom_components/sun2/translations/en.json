@@ -1,23 +1,22 @@
 {
     "title": "Sun2",
-    "misc": {
-        "above_horizon": "Above horizon",
-        "above_neg_elev": "Above minus {elevation} °",
-        "above_pos_elev": "Above {elevation} °",
-        "elevation_at": "Elevation at {elev_time}",
-        "rising_neg_elev": "Rising at minus {elevation} °",
-        "rising_pos_elev": "Rising at {elevation} °",
-        "service_name": "{location} Sun",
-        "setting_neg_elev": "Setting at minus {elevation} °",
-        "setting_pos_elev": "Setting at {elevation} °"
-    },
     "config": {
         "step": {
+            "add_entities_menu": {
+                "title": "Add Entities",
+                "description": "Choose type of entity to add",
+                "menu_options": {
+                    "done": "Done",
+                    "elevation_at_time_sensor_menu": "Elevation at time sensor",
+                    "elevation_binary_sensor": "Elevation binary sensor",
+                    "time_at_elevation_sensor": "Time at elevation sensor"
+                }
+            },
             "elevation_at_time_sensor_menu": {
                 "title": "Elevation at Time Type",
                 "menu_options": {
                     "elevation_at_time_sensor_entity": "input_datetime entity",
-                    "elevation_at_time_sensor_time": "Time string"
+                    "elevation_at_time_sensor_time": "Time"
                 }
             },
             "elevation_at_time_sensor_entity": {
@@ -37,7 +36,7 @@
             "elevation_binary_sensor": {
                 "title": "Elevation Binary Sensor Options",
                 "data": {
-                    "use_horizon": "Use horizon as elevation?"
+                    "use_horizon": "Use horizon as elevation"
                 }
             },
             "elevation_binary_sensor_2": {
@@ -50,22 +49,25 @@
             "entities_menu": {
                 "title": "Additional Entities",
                 "menu_options": {
-                    "done": "Done",
-                    "elevation_at_time_sensor_menu": "Add elevation at time sensor",
-                    "elevation_binary_sensor": "Add elevation binary sensor",
-                    "time_at_elevation_sensor": "Add time at elevation sensor"
+                    "add_entities_menu": "Add entities",
+                    "done": "Done"
                 }
             },
             "location": {
                 "title": "Location Options",
                 "data": {
-                    "elevation": "Elevation",
-                    "latitude": "Latitude",
-                    "longitude": "Longitude",
+                    "location": "Location",
                     "time_zone": "Time zone"
                 },
                 "data_description": {
                     "time_zone": "See the \"TZ identifier\" column at https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List."
+                }
+            },
+            "location_menu": {
+                "title": "Location Entry Method",
+                "menu_options": {
+                    "location_manual": "Manually enter latitude, longitude",
+                    "location_map": "Use a map to specify location"
                 }
             },
             "location_name": {
@@ -74,10 +76,27 @@
                     "name": "Name"
                 }
             },
-            "remove_entity": {
-                "title": "Remove {name}?",
+            "observer_elevation": {
+                "title": "Observer Elevation",
+                "description": "For each direction, choose if sun events are affected by an obstruction, such as a mountain.",
                 "data": {
-                    "remove": "Remove"
+                    "sunrise_obstruction": "Sunrise & dawn are affected by an obstruction",
+                    "sunset_obstruction": "Sunset & dusk are affected by an obstruction"
+                }
+            },
+            "obs_elv_values": {
+                "title": "Observer Elevation Values",
+                "data": {
+                    "above_ground": "Elevation",
+                    "sunrise_distance": "Distance to sunrise obstruction",
+                    "sunrise_relative_height": "Relative height of sunrise obstruction",
+                    "sunset_distance": "Distance to sunset obstruction",
+                    "sunset_relative_height": "Relative height of sunset obstruction"
+                },
+                "data_description": {
+                    "above_ground": "Your elevation above GROUND level (not SEA level).",
+                    "sunrise_relative_height": "Height relative to yourself, which may be negative if obstruction is below you.",
+                    "sunset_relative_height": "Height relative to yourself, which may be negative if obstruction is below you."
                 }
             },
             "time_at_elevation_sensor": {
@@ -91,21 +110,32 @@
             },
             "use_home": {
                 "data": {
-                    "use_home": "Use Home Assistant name and location?"
+                    "use_home": "Use Home Assistant name and location"
                 }
             }
         },
         "error": {
+            "invalid_location": "Invalid location value. Enter as: latitude, longitude",
             "name_used": "Location name has already been used."
         }
     },
     "options": {
         "step": {
+            "add_entities_menu": {
+                "title": "Add Entities",
+                "description": "Choose type of entity to add",
+                "menu_options": {
+                    "done": "Done",
+                    "elevation_at_time_sensor_menu": "Elevation at time sensor",
+                    "elevation_binary_sensor": "Elevation binary sensor",
+                    "time_at_elevation_sensor": "Time at elevation sensor"
+                }
+            },
             "elevation_at_time_sensor_menu": {
                 "title": "Elevation at Time Type",
                 "menu_options": {
                     "elevation_at_time_sensor_entity": "input_datetime entity",
-                    "elevation_at_time_sensor_time": "Time string"
+                    "elevation_at_time_sensor_time": "Time"
                 }
             },
             "elevation_at_time_sensor_entity": {
@@ -125,7 +155,7 @@
             "elevation_binary_sensor": {
                 "title": "Elevation Binary Sensor Options",
                 "data": {
-                    "use_horizon": "Use horizon as elevation?"
+                    "use_horizon": "Use horizon as elevation"
                 }
             },
             "elevation_binary_sensor_2": {
@@ -138,28 +168,57 @@
             "entities_menu": {
                 "title": "Additional Entities",
                 "menu_options": {
+                    "add_entities_menu": "Add entities",
                     "done": "Done",
-                    "elevation_at_time_sensor_menu": "Add elevation at time sensor",
-                    "elevation_binary_sensor": "Add elevation binary sensor",
-                    "time_at_elevation_sensor": "Add time at elevation sensor"
+                    "remove_entities": "Remove entities"
                 }
             },
             "location": {
                 "title": "Location Options",
                 "data": {
-                    "elevation": "Elevation",
-                    "latitude": "Latitude",
-                    "longitude": "Longitude",
+                    "location": "Location",
                     "time_zone": "Time zone"
                 },
                 "data_description": {
                     "time_zone": "See the \"TZ identifier\" column at https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List."
                 }
             },
-            "remove_entity": {
-                "title": "Remove {name}?",
+            "location_menu": {
+                "title": "Location Entry Method",
+                "description": "Current location: {location}\nCurrent time zone: {time_zone}",
+                "menu_options": {
+                    "observer_elevation": "Keep current settings",
+                    "location_manual": "Manually enter latitude, longitude",
+                    "location_map": "Use a map to specify location"
+                }
+            },
+            "observer_elevation": {
+                "title": "Observer Elevation",
+                "description": "For each direction, choose if sun events are affected by an obstruction, such as a mountain.",
                 "data": {
-                    "remove": "Remove"
+                    "sunrise_obstruction": "Sunrise & dawn are affected by an obstruction",
+                    "sunset_obstruction": "Sunset & dusk are affected by an obstruction"
+                }
+            },
+            "obs_elv_values": {
+                "title": "Observer Elevation Values",
+                "data": {
+                    "above_ground": "Elevation",
+                    "sunrise_distance": "Distance to sunrise obstruction",
+                    "sunrise_relative_height": "Relative height of sunrise obstruction",
+                    "sunset_distance": "Distance to sunset obstruction",
+                    "sunset_relative_height": "Relative height of sunset obstruction"
+                },
+                "data_description": {
+                    "above_ground": "Your elevation above GROUND level (not SEA level).",
+                    "sunrise_relative_height": "Height relative to yourself, which may be negative if obstruction is below you.",
+                    "sunset_relative_height": "Height relative to yourself, which may be negative if obstruction is below you."
+                }
+            },
+            "remove_entities": {
+                "title": "Remove Entities",
+                "data": {
+                    "choices": "Select entities to remove"
                 }
             },
             "time_at_elevation_sensor": {
@@ -173,9 +232,12 @@
             },
             "use_home": {
                 "data": {
-                    "use_home": "Use Home Assistant name and location?"
+                    "use_home": "Use Home Assistant name and location"
                 }
             }
+        },
+        "error": {
+            "invalid_location": "Invalid location value. Enter as: latitude, longitude"
         }
     },
     "entity": {
@@ -436,6 +498,19 @@
             "options": {
                 "rising": "Rising",
                 "setting": "Setting"
+            }
+        },
+        "misc": {
+            "options": {
+                "above_horizon": "Above horizon",
+                "above_neg_elev": "Above minus {elevation} °",
+                "above_pos_elev": "Above {elevation} °",
+                "elevation_at": "Elevation at {elev_time}",
+                "rising_neg_elev": "Rising at minus {elevation} °",
+                "rising_pos_elev": "Rising at {elevation} °",
+                "service_name": "{location} Sun",
+                "setting_neg_elev": "Setting at minus {elevation} °",
+                "setting_pos_elev": "Setting at {elevation} °"
             }
         }
     },

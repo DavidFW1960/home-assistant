@@ -111,7 +111,7 @@ automation:
     trigger:
     - platform: state
       from: 'on'
-      entity_id: 'binary_sensor.sun_above_25'
+      entity_id: 'binary_sensor.home_sun_sun_above_25'
       to: 'off'
     - platform: time
       at: '16:00:00'
@@ -124,9 +124,9 @@ automation:
         conditions:
         - condition: or
           conditions:
-          - "{{ (states('sensor.illuminance') | float < 7500 ) and (states('sensor.estimated_illuminance') | float < 10000) }}"
+          - "{{ (states('sensor.illuminance') | float < 7500 ) and (states('sensor.estimated_illuminance') | float < 12000) }}"
           - condition: state
-            entity_id: 'binary_sensor.sun_above_25'
+            entity_id: 'binary_sensor.home_sun_sun_above_25'
             state: 'off'
     - condition: state
       entity_id: 'input_boolean.homeandawayauto'

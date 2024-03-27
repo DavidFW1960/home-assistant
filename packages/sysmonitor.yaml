@@ -483,31 +483,31 @@ sensor:
       - filter: lowpass
         time_constant: 20
         precision: 2
-  - platform: systemmonitor
-    resources:
-    - type: disk_use
-      arg: /
-    - type: disk_free
-      arg: /
-    - type: disk_use_percent
-      arg: /
-    - type: memory_use_percent
-    - type: memory_use
-    - type: memory_free
-    - type: swap_use_percent
-    - type: load_1m
-    - type: load_5m
-    - type: load_15m
-    - type: processor_use
-    - type: ipv4_address
-      arg: 'eno1'
-    - type: ipv6_address
-      arg: 'eno1'
-    - type: network_in
-      arg: 'eno1'
-    - type: network_out
-      arg: 'eno1'
-    - type: last_boot
+#  - platform: systemmonitor
+#    resources:
+#    - type: disk_use
+#      arg: /
+#    - type: disk_free
+#      arg: /
+#    - type: disk_use_percent
+#      arg: /
+#    - type: memory_use_percent
+#    - type: memory_use
+#    - type: memory_free
+#    - type: swap_use_percent
+#    - type: load_1m
+#    - type: load_5m
+#    - type: load_15m
+#    - type: processor_use
+#    - type: ipv4_address
+#      arg: 'eno1'
+#    - type: ipv6_address
+#      arg: 'eno1'
+#    - type: network_in
+#      arg: 'eno1'
+#    - type: network_out
+#      arg: 'eno1'
+#    - type: last_boot
   - platform: template
     sensors:
       load:
